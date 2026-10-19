@@ -4,6 +4,9 @@
 This reader does no solve and imports no research module.  Scientific figures
 use saved display-only native-phi gradients; native-cell statistics remain the
 authority for scores.  Run serially under the shared finite resource budget.
+
+Example, after the PDE batch releases its lock:
+    python tools/task1_results_view.py --figures --output docs/CLOUD_RESULTS.html
 """
 from __future__ import annotations
 
@@ -88,6 +91,24 @@ def scales(metrics, reference):
                 composite_candidate_scales=candidates)
 
 
+def full_skin_scale(contact_scales, skin, reference_skin):
+    if skin is None or reference_skin is None:
+        return None
+    candidates = dict(contact_scales['composite_candidate_scales'])
+    for key, degree, label in [('J_vector_RMS_max_A_m2', 1, 'skin-volume total Jmax'),
+                               ('J_vector_RMS_p95_A_m2', 1, 'skin-volume total J95'),
+                               ('skin_SC_plus_dermis_power_W', 2, 'SC+dermis loss')]:
+        a, b = skin[key], reference_skin[key]
+        if not math.isfinite(a+b) or min(a, b) < 0:
+            raise ValueError('Nonnegative finite independently audited full-skin metrics required')
+        if a > 0:
+            candidates[label] = (b/a)**(1/degree)
+    value = min(candidates.values())
+    return dict(scale=value, candidate_scales=candidates,
+        limiting=[key for key, number in candidates.items() if math.isclose(number, value, rel_tol=1e-9, abs_tol=1e-12)],
+        candidate_audit=skin['audit'], reference_audit=reference_skin['audit'])
+
+
 def load_case(path):
     path = Path(path).resolve()
     summary = read(path)
@@ -117,29 +138,54 @@ def load_case(path):
     if sha(probes_path) != expected:
         raise ValueError('Probe artifact SHA mismatch')
     probe_conditions = {item['id']: item['probe40'] for item in read(probes_path)['conditions']}
-    spatial, bulk_skin_j = {}, {}
+    spatial, bulk_skin_j, full_skin, losses, audit_paths = {}, {}, {}, {}, []
     # Only attach stable complete audits whose referenced summary matches.
     for audit_path in sorted((run/'audit').glob('*.json')):
         audit = read(audit_path)
         if audit.get('case_id') == summary['id'] and audit.get('summary_sha256') == sha(path):
+            audit_paths.append(audit_path)
             for item in audit.get('conditions', []):
                 if 'spatial' in item:
                     spatial[item['condition_id']] = item['spatial']
                 if 'bulk_skin_J' in item:
                     bulk_skin_j[item['condition_id']] = item['bulk_skin_J']
+                if 'layer_contact_source_losses' in item:
+                    losses[item['condition_id']] = item['layer_contact_source_losses']
+                # Full-skin normalization requires a source-bound completed audit
+                # of both vector current and actual native six-compartment losses.
+                if (audit.get('native_inputs_unchanged') is True and
+                        audit.get('status') == 'computed_spatial_and_skinJ_audit' and
+                        audit.get('registration_sha256') == sha(run/'preregistration.json') and
+                        audit.get('config_sha256') == config_hash and
+                        audit.get('source_commit') == registration['source_commit'] and
+                        'bulk_skin_J' in item and 'layer_contact_source_losses' in item):
+                    j = item['bulk_skin_J']['regions']['skin_SC_plus_dermis']['total']
+                    power = item['layer_contact_source_losses']['metrics']['skin_SC_plus_dermis_power_W']
+                    full_skin[item['condition_id']] = dict(
+                        J_vector_RMS_max_A_m2=j['J_vector_RMS_max_A_m2'],
+                        J_vector_RMS_p95_A_m2=j['J_vector_RMS_p95_A_m2'], skin_SC_plus_dermis_power_W=power,
+                        audit=dict(path=str(audit_path), SHA256=sha(audit_path), summary_sha256=sha(path),
+                            verification_scope='matched summary/config/registration/source SHA and completed input-preserving audit; not mesh/experimental validation'))
     return dict(path=path, summary=summary, run=run, registration=registration, case=case,
         circuit=circuit, config=config, signature=comparison_signature(summary, config),
         conditions=conditions, probes=probe_conditions, spatial=spatial, bulk_skin_J=bulk_skin_j,
+        full_skin=full_skin, losses=losses, audit_paths=audit_paths,
         physical_model_version=hashlib.sha256(json.dumps({key: value for key, value in config.items()
             if key.endswith(('.sigma', '.epsilon_r')) or key.startswith('z.')}, sort_keys=True).encode()).hexdigest())
 
 
-def row_data(item, condition, reference=None):
+def row_data(item, condition, reference=None, reference_item=None):
     volume = condition['volume_metrics']['regions']
     target = volume['target']['statistics']
     normalizations = scales(condition['metrics'], reference['metrics']) if reference else None
+    skin = item['full_skin'].get(condition['id'])
+    skin_scale = full_skin_scale(normalizations, skin, reference_item['full_skin'].get(reference['id'])) \
+        if normalizations and reference_item else None
+    if normalizations is not None:
+        normalizations['composite_full_skin'] = skin_scale['scale'] if skin_scale else None
+        normalizations['full_skin_evidence'] = skin_scale
     values = {}
-    for mode in ('raw', 'equal_total_power', 'composite_burden'):
+    for mode in ('raw', 'equal_total_power', 'composite_burden', 'composite_full_skin'):
         scale = 1. if mode == 'raw' else (normalizations[mode] if normalizations else None)
         values[mode] = None if scale is None else dict(
             amplitude_scale=scale, source_Vpp_per_output=condition['source_Vpp_per_output']*scale,
@@ -158,6 +204,9 @@ def row_data(item, condition, reference=None):
             SC_loss_uW=condition['metrics']['SC_power_W']*scale**2*1e6,
             contact_loss_uW=condition['metrics']['contact_power_W']*scale**2*1e6,
             source_power_uW=condition['metrics']['source_power_W']*scale**2*1e6,
+            bulk_skin_Jmax_mA_cm2=skin['J_vector_RMS_max_A_m2']*scale*.1 if skin else None,
+            bulk_skin_J95_mA_cm2=skin['J_vector_RMS_p95_A_m2']*scale*.1 if skin else None,
+            skin_SC_plus_dermis_loss_uW=skin['skin_SC_plus_dermis_power_W']*scale**2*1e6 if skin else None,
             max_source_current_RMS_mA=condition['metrics']['max_source_current_RMS_mA']*scale)
     return dict(case_id=item['summary']['id'], condition_id=condition['id'], run_id=item['run'].name,
         n_pads=item['circuit']['n_pads'], n_outputs=item['circuit']['n_outputs'],
@@ -171,7 +220,8 @@ def row_data(item, condition, reference=None):
         status=dict(calculation='complete', conservation=('passed' if all(gate['status'] == 'passed'
             for gate in item['summary']['validation_gate_status'].values()) else 'failed'),
             convergence='not established; see separate mesh evidence', experiment='not validated'),
-        spatial=item['spatial'].get(condition['id']), bulk_skin_J=item['bulk_skin_J'].get(condition['id']))
+        spatial=item['spatial'].get(condition['id']), bulk_skin_J=item['bulk_skin_J'].get(condition['id']),
+        layer_contact_source_losses=item['losses'].get(condition['id']))
 
 
 def esc(value):
@@ -180,6 +230,59 @@ def esc(value):
 
 def number(value):
     return '—' if value is None else f'{value:.6g}'
+
+
+def local_link(path, output, label=None):
+    path = Path(path).resolve()
+    relative = os.path.relpath(path, output.parent)
+    return '<a href="'+esc(relative)+'">'+esc(label or str(path))+'</a>'
+
+
+def c1_matches(items):
+    """Join audit pairs to both complete result hashes, never to display names."""
+    by_hash = {sha(item['path']): item for item in items}
+    selected = {}
+    for run in sorted({item['run'] for item in items}):
+        for path in sorted((run/'audit').glob('*.json')):
+            report = read(path)
+            for match in report.get('C1_matches', []):
+                tis = by_hash.get(match.get('tis_summary_sha256'))
+                single = by_hash.get(match.get('single_summary_sha256'))
+                if tis is None or single is None:
+                    continue
+                if (match.get('status') != 'computed_downstream_scaling' or
+                        match.get('control_waveform') != 'sine'):
+                    continue
+                if tis['circuit']['n_pads'] != 4 or tis['circuit']['n_outputs'] != 2 or \
+                        single['circuit']['n_pads'] != 2 or single['circuit']['n_outputs'] != 1:
+                    raise ValueError('C1 audit source topology differs from four-pad TIS/two-pad C1 contract')
+                if tis['signature'] != single['signature']:
+                    raise ValueError('C1 audit joined to different mesh or physical/contact models')
+                tis_conditions = {row['id']: row for row in tis['summary']['conditions']}
+                single_conditions = {row['id']: row for row in single['summary']['conditions']}
+                for pair in match['pairs']:
+                    if pair['tis_condition_id'] not in tis_conditions or pair['single_condition_id'] not in single_conditions:
+                        raise ValueError('C1 audit references an unavailable source condition')
+                    control = single_conditions[pair['single_condition_id']]
+                    if (control['waveform'] != 'sine' or len(control['actual_fundamental_Hz']) != 1 or
+                            pair.get('single_waveform') != 'sine' or pair.get('single_n_pads') != 2 or
+                            pair.get('single_n_outputs') != 1 or pair['single_fundamental_Hz'] != control['actual_fundamental_Hz'] or
+                            pair['single_metrics_at_match']['target20_modulation_V_m'] != 0):
+                        raise ValueError('C1 table requires a genuine pure-sine single-frequency pair')
+                    key = (match['tis_summary_sha256'], match['single_summary_sha256'],
+                           pair['tis_condition_id'], pair['single_condition_id'], pair['criterion'])
+                    entry = dict(**pair, tis_summary_path=str(tis['path']), single_summary_path=str(single['path']),
+                        tis_summary_sha256=match['tis_summary_sha256'], single_summary_sha256=match['single_summary_sha256'],
+                        tis_run_id=tis['run'].name, single_run_id=single['run'].name,
+                        audit_path=str(path), audit_sha256=sha(path), power_definitions=match.get('power_definitions'),
+                        criterion_definitions=match['RMS_definitions'], physical_validation=match['physical_validation'])
+                    old = selected.get(key)
+                    if old and not math.isclose(old['required_single_open_circuit_Vpp'], entry['required_single_open_circuit_Vpp'],
+                                                 rel_tol=1e-12, abs_tol=1e-15):
+                        raise ValueError('Matching source hashes have inconsistent C1 scaling audits')
+                    if old is None or len(entry['single_metrics_at_match']) > len(old['single_metrics_at_match']):
+                        selected[key] = entry
+    return list(selected.values())
 
 
 def write_csv(path, rows):
@@ -376,11 +479,16 @@ def build(args, directory):
     for item in items:
         if item['circuit']['n_pads'] == 4 and item['circuit']['n_outputs'] == 2 and (
             item['case'].get('design_id') == 'baseline-square15' or item['case'].get('control') == 'original_four_square'):
-            references.setdefault(item['signature'], item['conditions'][0])
+            current = references.get(item['signature'])
+            condition = item['conditions'][0]
+            if current is None or (condition['id'] in item['full_skin'] and current[1]['id'] not in current[0]['full_skin']):
+                references[item['signature']] = (item, condition)
     records = []
     for item in items:
         for condition in item['conditions']:
-            records.append((item, condition, row_data(item, condition, references.get(item['signature']))))
+            reference_item, reference_condition = references.get(item['signature'], (None, None))
+            records.append((item, condition, row_data(item, condition, reference_condition, reference_item)))
+    singles = c1_matches(items)
     payload = dict(schema='task1_offline_result_comparison_v1', created_utc=datetime.now(timezone.utc).isoformat(),
         generator_sha256=sha(__file__), baseline_condition_id=baseline['conditions'][0]['id'],
         definitions=dict(target='r<=5 mm, surface depth15–20 mm volume',
@@ -388,11 +496,13 @@ def build(args, directory):
             RMS='vector E RMS over all active harmonics; not TIS modulation',
             equal_total_power='scale sqrt(P_same_grid_four_pad/P_candidate), may exceed1; source power includes50ohm resistors',
             composite_burden='scale min(1, baseline/candidate Jmax,J95,contactV, sqrt(power ratios SC/contact/source)); per-item cap',
+            composite_full_skin='distinct extra cap: legacy contact cap plus SC+dermis volume total-vector Jmax/P95 and SC+dermis loss; unavailable unless both matched completed audits exist',
             caps='numerical four-pad reference values, not human safety limits',
             contact='PBS-minus-Rs area-specific surrogate, not validated real skin contact',
             actual_instrument='unavailable until differential input impedance, capacitance, bandwidth and calibration are measured'),
         conditions=[row for _, _, row in records], missing_pad_counts=[n for n in (8, 12, 16)
             if not any(row['n_pads'] == n and row['n_outputs'] == 2 for _, _, row in records)],
+        pure_sine_C1_matches=singles,
         new_PDE=0, new_research_postprocess=0, experiment_validated=False)
     (directory/'comparison.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n')
     flat = []
@@ -420,6 +530,9 @@ def build(args, directory):
         '복합 부담 상한은 Jmax·J95·접촉 RMS 전압·SC 손실·접촉 손실·총전력을 각각 4패드 수치값 이하로 제한하며 진폭 scale≤1입니다.</p>')
     sections.append('<p>부담 표의 Jmax/J95는 전극 접촉면 법선 RMS 전류밀도의 최대값 및 접촉면적 가중 P95입니다. '
         'SC·dermis 내부 벡터 전류밀도는 별도 bulk-skin audit가 있을 때 증거 목록에 함께 표시합니다. '
+        'composite_full_skin은 기존 composite_contact 상한에 피부 SC+dermis 부피의 총 복소전류 벡터 RMS '
+        'Jmax·부피 가중 P95 및 SC+dermis 손실 상한을 추가한 별도 비교입니다. '
+        '기준과 후보 모두 summary/config/registration SHA에 연결된 완료 audit가 있을 때만 계산합니다. '
         '이 수치 비교 기준은 인체 안전 한계가 아닙니다.</p>')
     grouped = {}
     for item, condition, row in records:
@@ -431,24 +544,30 @@ def build(args, directory):
         sections.append('<section><h3>'+esc(group_name)+f" · XY {mesh['h_xy_mm']} mm · SC {mesh['sc_cells']} · bulk "+
             esc(mesh['bulk_layer_counts'])+'</h3>')
         for mode, label in [('raw', '동일 명령 1 Vpp'), ('equal_total_power', '동일 총전력'),
-                            ('composite_burden', '복합 부담 상한 · 절대 ROI 변조 잔존값')]:
+                            ('composite_burden', 'composite_contact · 기존 접촉 부담 상한 · 절대 ROI 변조 잔존값'),
+                            ('composite_full_skin', 'composite_full_skin · 피부 부피 부담 추가 상한 · 절대 ROI 변조 잔존값')]:
             rows = []
             for item, condition, row in group:
                 values = row['values'][mode]
                 if values is None:
+                    reason = ('피부 부피 J/손실의 기준·후보 audit 부족; 계산 보류' if
+                              mode == 'composite_full_skin' and row['reference_condition_id'] else
+                              '동일 격자 4패드 기준 없음; 정규화 보류')
                     rows.append([esc(row['condition_id']), str(row['n_pads']), '2',
-                        '<b>동일 격자 4패드 기준 없음; 정규화 보류</b>']+['—']*9)
+                        '<b>'+reason+'</b>']+['—']*12)
                     continue
                 rows.append([esc(row['condition_id']), str(row['n_pads']), str(row['n_outputs']),
                     *[number(values[key]) for key in ('amplitude_scale', 'ROI_mean_V_cm', 'ROI_P10_V_cm',
                     'ROI_max_V_cm', 'Jmax_mA_cm2', 'J95_mA_cm2', 'contact_V_RMS_mV',
-                    'SC_loss_uW', 'contact_loss_uW', 'source_power_uW')]])
+                    'SC_loss_uW', 'contact_loss_uW', 'source_power_uW', 'bulk_skin_Jmax_mA_cm2',
+                    'bulk_skin_J95_mA_cm2', 'skin_SC_plus_dermis_loss_uW')]])
             for n in (4, 8, 12, 16):
                 if not any(row['n_pads'] == n for _, _, row in group):
-                    rows.append([f'{n} pads', str(n), '2 (planned)', '<b>계산 자료 없음</b>']+['—']*9)
+                    rows.append([f'{n} pads', str(n), '2 (planned)', '<b>계산 자료 없음</b>']+['—']*12)
             sections.append('<h4>'+label+'</h4>'+table(['조건', 'pads', 'outputs', 'scale', 'ROI mean V/cm',
                 'ROI P10 V/cm', 'ROI max V/cm', 'Jmax mA/cm²', 'J95 mA/cm²', 'contact mV RMS',
-                'SC µW', 'contact µW', 'source µW'], rows))
+                'SC µW', 'contact µW', 'source µW', '피부 부피 Jmax mA/cm²', '피부 부피 J95 mA/cm²',
+                '피부 SC+dermis µW'], rows))
             if args.figures:
                 for metric in ('square_maxTIS_V_m', 'square_RMS_V_m'):
                     figure = maps_figure(group, mode, metric, directory, group_name)
@@ -477,6 +596,7 @@ def build(args, directory):
             mesh=dict(h_xy_mm=row['mesh']['h_xy_mm'], sc_cells=row['mesh']['sc_cells'],
                 bulk_counts=row['mesh']['bulk_layer_counts'], cells=row['mesh']['cells']),
             composite_scale=row['normalizations'], spatial_audit=row['spatial'], bulk_skin_J=row['bulk_skin_J'],
+            layer_contact_source_losses=row['layer_contact_source_losses'],
             tissue_contact_model=dict(tissue='piecewise-constant complex conductivity; no dielectric dispersion',
                 contact='PBS area-specific impedance minus selected Rs surrogate; z properties in ohm*m2',
                 source_coating_nm=item['case'].get('source_coating_nm'),
@@ -484,7 +604,13 @@ def build(args, directory):
                 model_version_sha256=row['physical_contact_model_sha256']),
             raw_centre_E_peak_complex_spectrum=condition['metrics'].get('centre_field_spectrum'),
             spatial_location_status='native cell locations available' if row['spatial'] else 'spatial audit not attached; maximum location unreported')
-        sections.append('<details><summary>'+esc(row['condition_id'])+'</summary>'+
+        source_paths = [item['path'], item['run']/'preregistration.json', Path(item['case']['config_file']),
+                        Path(item['case']['mask_file']), item['path'].parent/item['summary']['artifacts']['probes_json']]
+        source_paths += item['audit_paths']
+        source_paths += [Path(path) for path in item['summary']['input_sha256']
+                         if str(path).endswith(('mesh-metadata.json', 'validation.json'))]
+        sections.append('<details><summary>'+esc(row['condition_id'])+'</summary><p>로컬 소스·증거 경로:</p><ul>'+
+            ''.join('<li>'+local_link(path, args.output)+'</li>' for path in source_paths)+ '</ul>'+
             table(['영역', '정의', 'mean V/cm', 'P10 V/cm', 'P95 V/cm', 'max V/cm'], spatial_rows)+
             '<pre>'+esc(json.dumps(details,
             ensure_ascii=False, indent=2))+'</pre></details>')
@@ -511,23 +637,76 @@ def build(args, directory):
         if args.figures:
             sections.append(image_tag(waveform_figure(item, condition, probe, directory)))
         sections.append('</details>')
-    c1 = [row for _, _, row in records if row['n_outputs'] == 1]
     sections.append('<h2>단일 전극쌍 비교</h2><p>한 신호 패드와 한 귀환 패드의 단일 출력 조건입니다. '
-        '같은 전기장 RMS는 같은 생리적 활성화 또는 같은 TIS 변조를 뜻하지 않습니다. '+
-        ('C1 계산 '+str(len(c1))+'개를 위 증거 목록과 프로브에서 제공합니다. 목표점/ROI RMS 일치 전압·전류·부담 비교는 별도 C1 분석 산출물을 참조합니다.'
-         if c1 else '완료된 C1 원시 계산이 아직 없어 요구 인가전압 비교를 보류합니다.')+'</p>')
+        '같은 전기장 RMS는 같은 생리적 활성화 또는 같은 TIS 변조를 뜻하지 않습니다. '
+        '아래 대조는 3000 Hz 또는3030 Hz의 순수 단일 정현파이며 TIS square_3h 합성파와 구분합니다. '
+        'centre20은 (0,0,+20) mm의 벡터 E RMS, ROI energy는 √⟨E RMS²⟩, '
+        'ROI mean local은 ⟨E RMS⟩이며 세 기준을 섞지 않습니다. '
+        'C1의 두-carrier TIS는0이지만 전기장·전류·전력은0이 아닙니다.</p>')
+    if singles:
+        single_rows, single_csv = [], []
+        for pair in singles:
+            for kind, metrics, vpp, pads, outputs, carrier in [
+                    ('C1 pure sine', pair['single_metrics_at_match'], pair['required_single_open_circuit_Vpp'], 2, 1,
+                     str(pair['single_fundamental_Hz'][0])+' Hz sine'),
+                    ('TIS reference', pair['tis_metrics_at_1Vpp'], pair['tis_source_open_circuit_Vpp_per_output'], 4, 2,
+                     '3000/3030 +9000/9090 Hz square_3h')]:
+                value = lambda key, factor=1: number(metrics[key]*factor) if key in metrics else '—'
+                single_rows.append([esc(pair['criterion']), esc(kind), f'{pads}/{outputs}', esc(carrier),
+                    number(vpp), number(pair['target_RMS_V_m']*.01), value('max_source_current_RMS_mA'),
+                    value('surface_J_RMS_max_A_m2', .1), value('surface_J_RMS_p95_A_m2', .1),
+                    value('contact_voltage_RMS_max_V', 1000), value('SC_power_W', 1e6),
+                    value('dermis_power_W', 1e6), value('skin_SC_plus_dermis_power_W', 1e6),
+                    value('contact_power_W', 1e6), value('source_power_W', 1e6),
+                    value('target20_modulation_V_m', .01)])
+            flattened = dict(tis_run_id=pair['tis_run_id'], single_run_id=pair['single_run_id'],
+                tis_condition_id=pair['tis_condition_id'], single_condition_id=pair['single_condition_id'],
+                criterion=pair['criterion'], single_waveform='pure sine',
+                single_frequency_Hz=pair['single_fundamental_Hz'][0],
+                target_E_RMS_V_m=pair['target_RMS_V_m'],
+                required_single_open_circuit_Vpp=pair['required_single_open_circuit_Vpp'],
+                tis_summary_sha256=pair['tis_summary_sha256'], single_summary_sha256=pair['single_summary_sha256'],
+                audit_sha256=pair['audit_sha256'])
+            for prefix, metrics in [('single', pair['single_metrics_at_match']), ('tis', pair['tis_metrics_at_1Vpp'])]:
+                for key in ('max_source_current_RMS_mA', 'surface_J_RMS_max_A_m2', 'surface_J_RMS_p95_A_m2',
+                            'contact_voltage_RMS_max_V', 'SC_power_W', 'dermis_power_W',
+                            'skin_SC_plus_dermis_power_W', 'contact_power_W', 'source_power_W',
+                            'target20_modulation_V_m'):
+                    flattened[prefix+'_'+key] = metrics.get(key)
+            single_csv.append(flattened)
+        write_csv(directory/'pure-sine-C1-matches.csv', single_csv)
+        sections.append(table(['RMS 일치 기준', '종류', 'pads/outputs', 'carrier/waveform', '명령 Vpp/output',
+            '목표 E RMS V/cm', '최대 output mA RMS', '접촉 Jmax mA/cm²', '접촉 J95 mA/cm²',
+            '접촉 mV RMS', 'SC µW', 'dermis µW', '피부 SC+dermis µW', 'contact µW', '총 source µW',
+            '중앙20 TIS V/cm'], single_rows))
+        sections.append('<p>피부 손실은 SC+dermis만 포함하며 계면 contact 손실과 분리합니다. '
+            '과거 필드 skin_power_W는 SC+contact의 별칭이므로 피부 총손실로 사용하지 않습니다. '
+            '피부 손실의 별도 audit가 아직 없으면 해당 열은 —로 표시합니다. '
+            'TIS 중앙20 변조 열은 전기장 RMS 일치의 결과를 TIS 등가로 오해하지 않도록 별도 표시합니다. '
+            '측정기 부하·입력 커패시턴스·대역폭·실측 감쇠 및 교정은 미검증이므로 이 표에도 반영되지 않았습니다.</p>')
+        encoded = base64.b64encode((directory/'pure-sine-C1-matches.csv').read_bytes()).decode()
+        sections.append('<p><a download="pure-sine-C1-matches.csv" href="data:text/csv;base64,'+encoded+
+            '">순수 정현파 C1 비교 CSV</a></p><details><summary>C1 비교 출처·정의·SHA</summary>')
+        for path in sorted({pair['audit_path'] for pair in singles}):
+            sections.append('<p>'+local_link(path, args.output)+'</p>')
+        for path in sorted({pair[key] for pair in singles for key in ('tis_summary_path', 'single_summary_path')}):
+            sections.append('<p>'+local_link(path, args.output)+'</p>')
+        sections.append('<pre>'+esc(json.dumps(singles, ensure_ascii=False, indent=2))+'</pre></details>')
+    else:
+        sections.append('<p>현재 완료된 TIS/C1 summary SHA 쌍과 일치하는 순수 정현파 C1 audit가 없습니다. '
+            '필요 인가전압·부담의 수치 비교를 보류합니다.</p>')
     encoded = base64.b64encode((directory/'comparison.csv').read_bytes()).decode()
     sections.append('<p><a download="comparison.csv" href="data:text/csv;base64,'+encoded+'">전체 정규화 비교 CSV</a></p>'+
         '<footer>Generated '+esc(payload['created_utc'])+' · offline, no remote calls · new PDE0 · '+
         '수치 보존 검사는 격자 수렴·독립 solver·실험 검증과 구분합니다.</footer>')
     css = '''body{max-width:1500px;margin:32px auto;padding:0 24px;font:15px/1.55 system-ui,sans-serif;color:#183047;background:#f8fafb}h1,h2,h3,h4{line-height:1.3}h1{font-size:30px}h2{margin-top:34px}section,.notice,details{background:white;border:1px solid #d8e2ea;border-radius:10px;padding:16px;margin:16px 0}.baseline{border-left:6px solid #246b98;position:sticky;top:0;z-index:2;box-shadow:0 2px 7px #18304720}.notice{border-left:6px solid #d69331}table{border-collapse:collapse;font-size:12px;width:100%;white-space:nowrap}th,td{text-align:right;border-bottom:1px solid #e2e7ed;padding:7px}th:first-child,td:first-child{text-align:left;max-width:330px;white-space:normal}th{background:#eaf0f5}tbody tr:hover{background:#f0f5f8}.scroll{overflow:auto}img{max-width:100%;height:auto;margin-top:14px}pre{font-size:11px;white-space:pre-wrap;overflow-wrap:anywhere}summary{cursor:pointer;font-weight:600}footer{font-size:12px;color:#5b6c7b;margin:24px 0}a{color:#145f99}'''
     document = '<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+\
-        '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'; navigate-to data:">'+\
+        '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'">'+\
         '<title>Task 1 TIS results</title><style>'+css+'</style><body>'+''.join(sections)+'</body></html>'
     args.output.write_text(document)
     return dict(status='rendered_offline_evidence', output=str(args.output), assets=str(directory),
         completed_conditions=len(records), missing_pad_counts=payload['missing_pad_counts'],
-        new_PDE=0, source_files_edited=0)
+        pure_sine_C1_match_count=len(singles), new_PDE=0, source_files_edited=0)
 
 
 def self_test():
@@ -543,11 +722,16 @@ def self_test():
     assert result['composite_burden'] == .2
     for key, (degree, _) in CAPS.items():
         assert candidate[key]*result['composite_burden']**degree <= reference[key]*(1+1e-12)
+    skin = dict(J_vector_RMS_max_A_m2=80., J_vector_RMS_p95_A_m2=16., skin_SC_plus_dermis_power_W=256., audit={})
+    reference_skin = dict(J_vector_RMS_max_A_m2=4., J_vector_RMS_p95_A_m2=4., skin_SC_plus_dermis_power_W=4., audit={})
+    assert full_skin_scale(result, None, reference_skin) is None
+    full = full_skin_scale(result, skin, reference_skin)
+    assert full['scale'] == .05 and full['scale'] <= result['composite_burden']
     minimal = dict(mesh_metadata=dict(h_xy_mm=1., sc_cells=2))
     other = dict(mesh_metadata=dict(h_xy_mm=.5, sc_cells=2))
     assert comparison_signature(minimal, {'z.3000.re': '1'}) != comparison_signature(other, {'z.3000.re': '1'})
     assert comparison_signature(minimal, {'z.3000.re': '1'}) != comparison_signature(minimal, {'z.3000.re': '2'})
-    return dict(passed=True, checks='individual nonlinear caps, no voltage boosting, mesh/contact cohort separation', new_PDE=0)
+    return dict(passed=True, checks='individual contact/full-skin caps, missing-skin held, no voltage boosting, mesh/contact cohort separation', new_PDE=0)
 
 
 def main():

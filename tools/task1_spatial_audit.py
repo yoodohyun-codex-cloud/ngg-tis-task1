@@ -180,6 +180,9 @@ def audit(run, case_id, baseline_summary_path, deadline):
     sys.path.insert(0, str(frozen_research if frozen_research.is_dir() else SOURCE))
     from selectivity_postprocess import _load_basis, _geometry, _coefficients, _spectra
     from selectivity_volume import _disk_fractions
+    if case.get('postprocessor') == 'grouped':
+        sys.path.insert(0, str(run/'frozen-source/tools'))
+        from task1_grouped_postprocess import _load_basis
     basis = _load_basis(run/'bases'/case_id, case, deadline)
     if basis['hashes'] != summary['input_sha256']:
         raise ValueError('Loaded native inputs differ from completed postprocess provenance')

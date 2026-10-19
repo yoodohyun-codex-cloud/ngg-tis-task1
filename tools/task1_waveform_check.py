@@ -9,6 +9,7 @@ is reported separately and is not substituted for that quantity.
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import itertools
 import json
@@ -310,11 +311,164 @@ def _roi_energy_rms(summary_path, summary, condition):
 _LINEAR_METRICS = ('target20_modulation_V_m', 'target20_total_E_RMS_V_m',
                    'surface_J_RMS_max_A_m2', 'surface_J_RMS_p95_A_m2',
                    'contact_voltage_RMS_max_V', 'max_source_current_RMS_mA')
-_POWER_METRICS = ('SC_power_W', 'contact_power_W', 'skin_power_W',
-                  'tissue_contact_power_W', 'source_power_W', 'source_resistor_power_W')
+_LEGACY_POWER_METRICS = ('SC_power_W', 'contact_power_W', 'skin_power_W',
+                       'tissue_contact_power_W', 'source_power_W', 'source_resistor_power_W')
+_POWER_METRICS = (*_LEGACY_POWER_METRICS, 'dermis_power_W', 'fat_power_W', 'muscle_power_W',
+                  'skin_SC_plus_dermis_power_W', 'skin_and_contact_power_W')
 
 
-def c1_report(tis_path, single_path, waveform='square_3h'):
+def layer_losses_from_matrices(loss_by_frequency, source_by_frequency, coefficients, saved_metrics=None):
+    """Actual peak-basis quadratic losses, preserving the legacy skin alias.
+
+    Native loss matrices already include the physical peak-to-average factors:
+    evaluate c† L c without another factor of 1/2.  Source matrices store the
+    current induced by the 0.5 Vpeak basis, so supplied average power is
+    Re(c† I_basis c)/4.  All actual active carrier/harmonic coefficients apply.
+    """
+    loss = np.zeros(6)
+    supplied = 0.
+    receipts = []
+    for frequency, coefficient in coefficients.items():
+        coefficient = np.asarray(coefficient, complex)
+        if coefficient.ndim != 1 or not len(coefficient) or not np.isfinite(coefficient).all():
+            raise ValueError('Finite actual output coefficients required for layer losses')
+        if not np.any(coefficient):
+            continue
+        channels = len(coefficient)
+        matrix = np.asarray(loss_by_frequency[frequency], complex)
+        source = np.asarray(source_by_frequency[frequency], complex)
+        if (matrix.shape != (6, channels, channels) or source.shape != (channels, channels)
+                or not np.isfinite(matrix).all() or not np.isfinite(source).all()
+                or not np.allclose(matrix, matrix.conj().transpose(0, 2, 1), rtol=1e-10, atol=1e-12)):
+            raise ValueError('Finite Hermitian native six-compartment loss matrices required')
+        current_loss = np.einsum('i,kij,j->k', coefficient.conj(), matrix, coefficient).real
+        source_power = float(.25*np.vdot(coefficient, source@coefficient).real)
+        roundoff = 512*np.finfo(float).eps*max(float(np.sum(abs(current_loss))), abs(source_power), 1e-30)
+        if np.any(current_loss < -roundoff) or source_power < -roundoff:
+            raise ValueError('Nonpassive native actual-waveform loss/source power')
+        error = float(abs(current_loss.sum()-source_power)/max(abs(source_power), 1e-20))
+        if error > 2e-7:
+            raise ValueError('Actual native layer losses do not conserve source power')
+        loss += current_loss
+        supplied += source_power
+        receipts.append(dict(frequency_Hz=int(frequency), layer_contact_resistor_losses_W=current_loss.tolist(),
+            source_power_W=source_power, power_balance_relative_error=error))
+    if not receipts:
+        raise ValueError('At least one active actual-frequency coefficient required')
+    metrics = dict(SC_power_W=float(loss[0]), dermis_power_W=float(loss[1]),
+        fat_power_W=float(loss[2]), muscle_power_W=float(loss[3]), contact_power_W=float(loss[4]),
+        source_resistor_power_W=float(loss[5]), source_power_W=float(supplied),
+        skin_SC_plus_dermis_power_W=float(loss[0]+loss[1]),
+        skin_and_contact_power_W=float(loss[0]+loss[1]+loss[4]),
+        skin_power_W=float(loss[0]+loss[4]), tissue_contact_power_W=float(sum(loss[:5])))
+    if saved_metrics is not None:
+        for key in _LEGACY_POWER_METRICS:
+            if not math.isclose(metrics[key], saved_metrics[key], rel_tol=2e-12, abs_tol=1e-15):
+                raise ValueError('Recomputed native compartment loss disagrees with saved '+key)
+    return dict(metrics=metrics, per_frequency=receipts,
+        definitions=dict(SC_power_W='SC tissue only, z0–0.1mm', dermis_power_W='dermis tissue only, z0.1–5.1mm',
+            skin_SC_plus_dermis_power_W='actual modeled skin tissue loss = SC + dermis; excludes interface contact',
+            contact_power_W='electrode-interface real loss only; excludes SC and dermis',
+            skin_and_contact_power_W='SC + dermis + electrode-interface loss',
+            skin_power_W='LEGACY ALIAS retained verbatim: SC + contact; excludes dermis; not total skin loss',
+            tissue_contact_power_W='SC + dermis + fat + muscle + contact',
+            source_power_W='all four tissue layers + contact + 50ohm source resistor loss'),
+        actual_active_harmonics_included=True, no_extra_peak_RMS_factor_applied=True)
+
+
+def condition_coefficients(condition, metadata):
+    """Reconstruct the registered waveform/phase coefficients without imports."""
+    waves = dict(sine=(1., 0.), square_3h=(3/(2*math.sqrt(2)), 1/(2*math.sqrt(2))), triangle_3h=(.9, -.1))
+    a1, a3 = waves[condition['waveform']]
+    channels = metadata['channels']
+    fundamentals = condition['actual_fundamental_Hz']
+    group, phases = condition['carrier_group'], np.deg2rad(condition['phase_deg'])
+    if (channels not in (1, 2) or len(group) != channels or len(phases) != channels
+            or len(fundamentals) != channels or not np.isfinite(phases).all()):
+        raise ValueError('Registered one/two-output fundamental/phase topology required')
+    output = {int(f): np.zeros(channels, complex) for f in metadata['frequencies_Hz']}
+    for channel in range(channels):
+        carrier = fundamentals[0] if channels == 1 else fundamentals[group[channel]]
+        for harmonic, amplitude in ((1, a1), (3, a3)):
+            if amplitude:
+                frequency = int(harmonic*carrier)
+                if frequency not in output:
+                    raise ValueError('Missing actual harmonic in native frequency metadata')
+                output[frequency][channel] += -1j*amplitude*np.exp(1j*harmonic*phases[channel])
+    return output
+
+
+def _native_matrix(summary, kind, frequency, shape):
+    names = {f'{kind}-{frequency}.bin', f'{kind}-{frequency}.bin.gz'}
+    candidates = [Path(path) for path in summary['input_sha256'] if Path(path).name in names]
+    if len(candidates) != 1:
+        raise ValueError('Missing/ambiguous native '+kind+' matrix at '+str(frequency))
+    path = candidates[0]
+    expected = summary['input_sha256'][str(path)]
+    if sha256(path) != expected:
+        raise ValueError('Native '+kind+' matrix SHA differs at '+str(frequency))
+    if path.suffix == '.gz':
+        with gzip.open(path, 'rb') as stream:
+            raw = stream.read()
+    else:
+        raw = path.read_bytes()
+    values = np.frombuffer(raw, dtype='<c16')
+    if values.size != math.prod(shape) or not np.isfinite(values).all():
+        raise ValueError('Native '+kind+' matrix little-endian complex128 shape/nonfinite mismatch')
+    return values.reshape(shape), dict(path=str(path), SHA256=expected)
+
+
+def native_layer_losses(summary, condition):
+    """Read only hash-verified small circuit/loss matrices, without a PDE."""
+    coefficients = condition_coefficients(condition, summary['mesh_metadata'])
+    channels = summary['mesh_metadata']['channels']
+    losses, sources, receipts = {}, {}, []
+    for frequency, coefficient in coefficients.items():
+        if np.any(coefficient):
+            losses[frequency], loss_receipt = _native_matrix(summary, 'loss', frequency, (6, channels, channels))
+            sources[frequency], source_receipt = _native_matrix(summary, 'source', frequency, (channels, channels))
+            receipts.extend([loss_receipt, source_receipt])
+    result = layer_losses_from_matrices(losses, sources, coefficients, condition['metrics'])
+    result['native_inputs'] = receipts
+    return result
+
+
+def _sine_C1_roi_energy_rms(summary_path, summary, condition):
+    """Decode one real native fundamental field, never reuse square RMS values."""
+    if condition['waveform'] != 'sine' or summary['mesh_metadata']['channels'] != 1:
+        raise ValueError('This native ROI decoder is limited to a true one-output sine control')
+    carrier = condition['actual_fundamental_Hz']
+    if len(carrier) != 1:
+        raise ValueError('One pure sine carrier required')
+    square = [row for row in summary['conditions'] if row['waveform'] == 'square_3h'
+              and row['actual_fundamental_Hz'] == carrier]
+    if len(square) != 1:
+        raise ValueError('Exact primary same-carrier ROI weight archive required')
+    _, weights, weight_receipt = _roi_energy_rms(summary_path, summary, square[0])
+    names = {f'field-{carrier[0]}.bin', f'field-{carrier[0]}.bin.gz'}
+    candidates = [Path(path) for path in summary['input_sha256'] if Path(path).name in names]
+    if len(candidates) != 1:
+        raise ValueError('Missing/ambiguous original fundamental complex field for sine ROI RMS')
+    path = candidates[0]
+    expected = summary['input_sha256'][str(path)]
+    if sha256(path) != expected:
+        raise ValueError('Sine ROI native fundamental field SHA differs')
+    raw = gzip.open(path, 'rb').read() if path.suffix == '.gz' else path.read_bytes()
+    field = np.frombuffer(raw, dtype='<c16')
+    if field.size != 3*len(weights) or not np.isfinite(field).all():
+        raise ValueError('Sine native little-endian complex128 field shape/nonfinite mismatch')
+    local_rms = np.sqrt(np.sum(abs(field.reshape(len(weights), 3))**2, axis=1)/2)
+    energy = float(np.sqrt((local_rms**2)@weights/weights.sum()))
+    mean_local = float(local_rms@weights/weights.sum())
+    saved_mean = condition['volume_metrics']['regions']['target']['statistics']['RMS']['mean']
+    if not math.isclose(mean_local, saved_mean, rel_tol=2e-12, abs_tol=1e-15):
+        raise ValueError('Recomputed pure-sine ROI mean local RMS disagrees with saved actual waveform')
+    return energy, weights, dict(path=str(path), SHA256=expected,
+        reconstruction='original 0.5Vpeak one-output field × sine coefficient -j; energy includes only actual fundamental',
+        weights_source=weight_receipt)
+
+
+def c1_report(tis_path, single_path, waveform='square_3h', control_waveform='sine'):
     """Same-point, ROI energy RMS and mean-local-RMS matches without a PDE."""
     tis_path, single_path = Path(tis_path).resolve(), Path(single_path).resolve()
     tis, single = (json.loads(path.read_text()) for path in (tis_path, single_path))
@@ -336,12 +490,18 @@ def c1_report(tis_path, single_path, waveform='square_3h'):
     if not relevant or any(configs[0].get(key) != configs[1].get(key) for key in relevant):
         raise ValueError('TIS/C1 material or area-specific complex contact differs')
     references = [row for row in tis['conditions'] if row['waveform'] == waveform]
-    controls = [row for row in single['conditions'] if row['waveform'] == waveform]
+    controls = [row for row in single['conditions'] if row['waveform'] == control_waveform]
     if len(references) != 1 or not controls:
         raise ValueError('One explicit TIS waveform reference and C1 controls required')
     reference = references[0]
+    reference_losses = native_layer_losses(tis, reference)
+    reference_metrics = {**reference['metrics'], **reference_losses['metrics']}
     pairs, archives = [], {}
+    control_losses = {}
     for control in controls:
+        layer_losses = native_layer_losses(single, control)
+        control_losses[control['id']] = layer_losses
+        control_metrics = {**control['metrics'], **layer_losses['metrics']}
         if (len(control['actual_fundamental_Hz']) != 1
                 or control['actual_fundamental_Hz'][0] not in reference['actual_fundamental_Hz']
                 or control['metrics']['target20_modulation_V_m'] != 0):
@@ -350,7 +510,9 @@ def c1_report(tis_path, single_path, waveform='square_3h'):
             if row['source_Vpp_per_output'] != 1:
                 raise ValueError('C1 downstream matching requires unchanged 1Vpp anchors')
         t_roi, tw, tarchive = _roi_energy_rms(tis_path, tis, reference)
-        s_roi, sw, sarchive = _roi_energy_rms(single_path, single, control)
+        s_roi, sw, sarchive = (_sine_C1_roi_energy_rms(single_path, single, control)
+                               if control_waveform == 'sine'
+                               else _roi_energy_rms(single_path, single, control))
         archives[tarchive['path']] = tarchive
         archives[sarchive['path']] = sarchive
         if not np.array_equal(tw, sw):
@@ -365,20 +527,30 @@ def c1_report(tis_path, single_path, waveform='square_3h'):
                 raise ValueError('Positive finite RMS target/control response required')
             scale = target/response
             scaled = {key: float(control['metrics'][key]*scale) for key in _LINEAR_METRICS}
-            scaled.update({key: float(control['metrics'][key]*scale**2) for key in _POWER_METRICS})
+            scaled.update({key: float(control_metrics[key]*scale**2) for key in _POWER_METRICS})
             scaled['source_current_RMS_by_output_mA'] = (np.asarray(control['metrics']['source_current_RMS_by_output_mA'])*scale).tolist()
             scaled['ROI_energy_E_RMS_V_m'] = s_roi*scale
             scaled['ROI_mean_local_E_RMS_V_m'] = control['volume_metrics']['regions']['target']['statistics']['RMS']['mean']*scale
             pairs.append(dict(tis_condition_id=reference['id'], single_condition_id=control['id'],
                 criterion=criterion, target_RMS_V_m=target, required_single_open_circuit_Vpp=scale,
                 tis_source_open_circuit_Vpp_per_output=1., single_n_pads=2, single_n_outputs=1,
-                single_fundamental_Hz=control['actual_fundamental_Hz'], single_metrics_at_match=scaled,
-                tis_metrics_at_1Vpp={key: reference['metrics'][key] for key in (*_LINEAR_METRICS, *_POWER_METRICS)},
+                single_fundamental_Hz=control['actual_fundamental_Hz'],
+                single_waveform=control_waveform,
+                single_frequency_status='pure single-frequency sinusoid' if control_waveform == 'sine'
+                                        else 'one fundamental carrier plus stored third harmonic',
+                single_metrics_at_match=scaled,
+                tis_metrics_at_1Vpp={key: reference_metrics[key] for key in (*_LINEAR_METRICS, *_POWER_METRICS)},
                 exact_linear_scaling=True, additional_PDE=0, envelope_or_physiological_equivalence=False))
     return dict(tis_case_id=tis['id'], single_case_id=single['id'], waveform=waveform,
+                control_waveform=control_waveform,
                 tis_summary_sha256=sha256(tis_path), single_summary_sha256=sha256(single_path),
                 tis_config_sha256=tm['config_sha256'], single_config_sha256=sm['config_sha256'],
                 native_ROI_archives=list(archives.values()),
+                native_layer_losses_at_1Vpp=dict(tis=reference_losses, controls=control_losses),
+                power_definitions=reference_losses['definitions'],
+                single_pad_geometry={str(index): {key[len(f'pad.{index}.'):]: value
+                    for key, value in configs[1].items() if key.startswith(f'pad.{index}.')}
+                    for index in (0, 1)},
                 RMS_definitions=dict(centre20='sqrt(sum_f ||Ehat_f(0,0,20mm)||^2/2)',
                     ROI_energy='sqrt(sum_cells w_i * E_RMS_i^2 / sum_cells w_i)',
                     ROI_mean_local='sum_cells w_i * E_RMS_i / sum_cells w_i; distinct from ROI energy RMS'),
@@ -444,6 +616,7 @@ def main():
     parser.add_argument('--summary', type=Path, action='append', default=[])
     parser.add_argument('--match-tis', type=Path)
     parser.add_argument('--match-single', type=Path, action='append', default=[])
+    parser.add_argument('--match-control-waveform', choices=['sine', 'square_3h'], default='sine')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     if bool(args.match_tis) != bool(args.match_single):
@@ -455,7 +628,8 @@ def main():
     if args.self_test:
         report['synthetic'] = self_test()
     report['summaries'] = [audit_summary(path) for path in args.summary]
-    report['C1_matches'] = [c1_report(args.match_tis, path) for path in args.match_single]
+    report['C1_matches'] = [c1_report(args.match_tis, path, control_waveform=args.match_control_waveform)
+                            for path in args.match_single]
     text = json.dumps(report, indent=2, allow_nan=False)+'\n'
     if args.output:
         with args.output.open('x') as stream:
