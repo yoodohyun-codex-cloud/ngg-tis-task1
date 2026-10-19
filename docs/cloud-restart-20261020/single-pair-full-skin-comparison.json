@@ -1,0 +1,676 @@
+{
+  "schema_version": 1,
+  "audit_code_sha256": "76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032",
+  "new_PDE": 0,
+  "validation_scope": "waveform algebra only; no mesh, physical, activation or safety certification",
+  "summaries": [],
+  "C1_matches": [
+    {
+      "tis_case_id": "baseline-square15-xy80",
+      "single_case_id": "baseline-square15-C1pair0-xy80",
+      "waveform": "square_3h",
+      "control_waveform": "sine",
+      "tis_summary_sha256": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+      "single_summary_sha256": "96b798cf85cdf0218a918a584caba4d01b489c2614f954bd215af17285945950",
+      "tis_config_sha256": "f838aeab4f1729e3eb064318781e49ef72c99f28a90b4f416097cfbdec92b64b",
+      "single_config_sha256": "326ca4c1bb380de90f1d794c6d0acca0d61a90a54c0f95e2168f6e55ae1706e3",
+      "native_ROI_archives": [
+        {
+          "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/volume.npz",
+          "SHA256": "4a255ba0b586c799d5ded6c4cd8c8a8553600f85ea17b4170e87b71e60479f53"
+        },
+        {
+          "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/field-3000.bin.gz",
+          "SHA256": "33957273ffe52f8d276128ee8d9c728defe411b9b6d7f1e14a966af51ed731f1",
+          "reconstruction": "original 0.5Vpeak one-output field \u00d7 sine coefficient -j; energy includes only actual fundamental",
+          "weights_source": {
+            "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/volume-C1-3000Hz.npz",
+            "SHA256": "545fecec4766e25afdaba4199f9a72fe25371e0027bb11d20f6628c8f1b23ffc"
+          }
+        },
+        {
+          "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/field-3030.bin.gz",
+          "SHA256": "0c55581f159fa130681cdd8fdf9ffa96f173e667b03f623576b8f6ea752b073d",
+          "reconstruction": "original 0.5Vpeak one-output field \u00d7 sine coefficient -j; energy includes only actual fundamental",
+          "weights_source": {
+            "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/volume-C1-3030Hz.npz",
+            "SHA256": "3f2e0d55e36cb6a75c418ca84dde8b9fc441d1926a3b5e0a04866574dea3fda1"
+          }
+        }
+      ],
+      "native_layer_losses_at_1Vpp": {
+        "tis": {
+          "metrics": {
+            "SC_power_W": 2.166357019889475e-06,
+            "dermis_power_W": 0.0007340044058890589,
+            "fat_power_W": 0.00014212322073298584,
+            "muscle_power_W": 3.7447776776149746e-05,
+            "contact_power_W": 1.827275482305884e-06,
+            "source_resistor_power_W": 0.00021834651939177824,
+            "source_power_W": 0.001135915555805781,
+            "skin_SC_plus_dermis_power_W": 0.0007361707629089484,
+            "skin_and_contact_power_W": 0.0007379980383912543,
+            "skin_power_W": 3.993632502195359e-06,
+            "tissue_contact_power_W": 0.0009175690359003898
+          },
+          "per_frequency": [
+            {
+              "frequency_Hz": 3000,
+              "layer_contact_resistor_losses_W": [
+                1.0731548584297668e-06,
+                0.000327524917340113,
+                6.391637416327881e-05,
+                1.688862944959974e-05,
+                7.997846405038922e-07,
+                9.70965233663191e-05
+              ],
+              "source_power_W": 0.000507299384078915,
+              "power_balance_relative_error": 5.138397887782272e-10
+            },
+            {
+              "frequency_Hz": 3030,
+              "layer_contact_resistor_losses_W": [
+                1.0560893970907743e-06,
+                0.00032793658839817266,
+                6.392243575852491e-05,
+                1.6887075352769695e-05,
+                7.946826525073005e-07,
+                9.725301278753074e-05
+              ],
+              "source_power_W": 0.0005078498845867815,
+              "power_balance_relative_error": 4.729458112813961e-10
+            },
+            {
+              "frequency_Hz": 9000,
+              "layer_contact_resistor_losses_W": [
+                1.8713393043716075e-08,
+                3.926600171598867e-05,
+                7.141825755552471e-06,
+                1.836374756470539e-06,
+                1.161042194004511e-07,
+                1.1995679707521686e-05
+              ],
+              "source_power_W": 6.037469955574616e-05,
+              "power_balance_relative_error": 1.2867343988702055e-10
+            },
+            {
+              "frequency_Hz": 9090,
+              "layer_contact_resistor_losses_W": [
+                1.839937132521806e-08,
+                3.927689843478451e-05,
+                7.14258505562961e-06,
+                1.8356972173097678e-06,
+                1.167039698942403e-07,
+                1.2001303530406698e-05
+              ],
+              "source_power_W": 6.039158758433845e-05,
+              "power_balance_relative_error": 8.260091914477685e-11
+            }
+          ],
+          "definitions": {
+            "SC_power_W": "SC tissue only, z0\u20130.1mm",
+            "dermis_power_W": "dermis tissue only, z0.1\u20135.1mm",
+            "skin_SC_plus_dermis_power_W": "actual modeled skin tissue loss = SC + dermis; excludes interface contact",
+            "contact_power_W": "electrode-interface real loss only; excludes SC and dermis",
+            "skin_and_contact_power_W": "SC + dermis + electrode-interface loss",
+            "skin_power_W": "LEGACY ALIAS retained verbatim: SC + contact; excludes dermis; not total skin loss",
+            "tissue_contact_power_W": "SC + dermis + fat + muscle + contact",
+            "source_power_W": "all four tissue layers + contact + 50ohm source resistor loss"
+          },
+          "actual_active_harmonics_included": true,
+          "no_extra_peak_RMS_factor_applied": true,
+          "native_inputs": [
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/loss-3000.bin",
+              "SHA256": "3cdb183573088197b12d2360f489977948e3976e02f8036e337a870db26e181d"
+            },
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/source-3000.bin",
+              "SHA256": "5c5eefd94d439ffdf0bc39fd0d16f454c416f7f20afb08df19b5061f75924c04"
+            },
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/loss-3030.bin",
+              "SHA256": "6bd2e12f22c3552ca3e1be329bd62f28c8dff026b0b38a02198cf3fde5061d3e"
+            },
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/source-3030.bin",
+              "SHA256": "3613f83d1658bd5411c8ec021c7b33fb01f81eceed1bd810bbd236576fbbbd7a"
+            },
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/loss-9000.bin",
+              "SHA256": "76d2c4570ffcb89bc7a7bc4b76f85830d5760f417ee9dc1ad1b237a8e5be719e"
+            },
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/source-9000.bin",
+              "SHA256": "97565648174bb8fdc3ebe159af3cad2a0098e65d403e24b2da01778ed14c5fc9"
+            },
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/loss-9090.bin",
+              "SHA256": "2f701dacb2d149072b0efe8fc21d5b2272bb2ac08d5996839e6a723f303628fd"
+            },
+            {
+              "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/source-9090.bin",
+              "SHA256": "46fb36397491f71ff333120ddd7bc54b25b5f5b5df099e652ee6f19f7b9e4fab"
+            }
+          ]
+        },
+        "controls": {
+          "baseline-square15-C1pair0-xy80-C1-3000Hz-sine": {
+            "metrics": {
+              "SC_power_W": 6.883192716270774e-07,
+              "dermis_power_W": 0.00021880358900579235,
+              "fat_power_W": 4.7105612550053544e-05,
+              "muscle_power_W": 1.3149488224415134e-05,
+              "contact_power_W": 5.128814748537565e-07,
+              "source_resistor_power_W": 4.3805078730233336e-05,
+              "source_power_W": 0.0003240649693418138,
+              "skin_SC_plus_dermis_power_W": 0.00021949190827741944,
+              "skin_and_contact_power_W": 0.0002200047897522732,
+              "skin_power_W": 1.201200746480834e-06,
+              "tissue_contact_power_W": 0.00028025989052674185
+            },
+            "per_frequency": [
+              {
+                "frequency_Hz": 3000,
+                "layer_contact_resistor_losses_W": [
+                  6.883192716270774e-07,
+                  0.00021880358900579235,
+                  4.7105612550053544e-05,
+                  1.3149488224415134e-05,
+                  5.128814748537565e-07,
+                  4.3805078730233336e-05
+                ],
+                "source_power_W": 0.0003240649693418138,
+                "power_balance_relative_error": 2.617950447679245e-10
+              }
+            ],
+            "definitions": {
+              "SC_power_W": "SC tissue only, z0\u20130.1mm",
+              "dermis_power_W": "dermis tissue only, z0.1\u20135.1mm",
+              "skin_SC_plus_dermis_power_W": "actual modeled skin tissue loss = SC + dermis; excludes interface contact",
+              "contact_power_W": "electrode-interface real loss only; excludes SC and dermis",
+              "skin_and_contact_power_W": "SC + dermis + electrode-interface loss",
+              "skin_power_W": "LEGACY ALIAS retained verbatim: SC + contact; excludes dermis; not total skin loss",
+              "tissue_contact_power_W": "SC + dermis + fat + muscle + contact",
+              "source_power_W": "all four tissue layers + contact + 50ohm source resistor loss"
+            },
+            "actual_active_harmonics_included": true,
+            "no_extra_peak_RMS_factor_applied": true,
+            "native_inputs": [
+              {
+                "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/loss-3000.bin",
+                "SHA256": "97f812dd1768a555307f1a695af7981625cfb699b003575f67ffd3d0a54d0ef7"
+              },
+              {
+                "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/source-3000.bin",
+                "SHA256": "953f539b306fc633b28b0ab357b6ec0d9e5699b040a645ccec72604a34e2f6d9"
+              }
+            ]
+          },
+          "baseline-square15-C1pair0-xy80-C1-3030Hz-sine": {
+            "metrics": {
+              "SC_power_W": 6.772970421867182e-07,
+              "dermis_power_W": 0.00021907165204774237,
+              "fat_power_W": 4.7122592921516295e-05,
+              "muscle_power_W": 1.3153683832882934e-05,
+              "contact_power_W": 5.095505267047223e-07,
+              "source_resistor_power_W": 4.387544226943073e-05,
+              "source_power_W": 0.0003244102188257525,
+              "skin_SC_plus_dermis_power_W": 0.0002197489490899291,
+              "skin_and_contact_power_W": 0.00022025849961663382,
+              "skin_power_W": 1.1868475688914403e-06,
+              "tissue_contact_power_W": 0.00028053477637103304
+            },
+            "per_frequency": [
+              {
+                "frequency_Hz": 3030,
+                "layer_contact_resistor_losses_W": [
+                  6.772970421867182e-07,
+                  0.00021907165204774237,
+                  4.7122592921516295e-05,
+                  1.3153683832882934e-05,
+                  5.095505267047223e-07,
+                  4.387544226943073e-05
+                ],
+                "source_power_W": 0.0003244102188257525,
+                "power_balance_relative_error": 5.711556882690891e-10
+              }
+            ],
+            "definitions": {
+              "SC_power_W": "SC tissue only, z0\u20130.1mm",
+              "dermis_power_W": "dermis tissue only, z0.1\u20135.1mm",
+              "skin_SC_plus_dermis_power_W": "actual modeled skin tissue loss = SC + dermis; excludes interface contact",
+              "contact_power_W": "electrode-interface real loss only; excludes SC and dermis",
+              "skin_and_contact_power_W": "SC + dermis + electrode-interface loss",
+              "skin_power_W": "LEGACY ALIAS retained verbatim: SC + contact; excludes dermis; not total skin loss",
+              "tissue_contact_power_W": "SC + dermis + fat + muscle + contact",
+              "source_power_W": "all four tissue layers + contact + 50ohm source resistor loss"
+            },
+            "actual_active_harmonics_included": true,
+            "no_extra_peak_RMS_factor_applied": true,
+            "native_inputs": [
+              {
+                "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/loss-3030.bin",
+                "SHA256": "fbb2e6b0ec46b9664a7b9330c509d52212d62fc250b8402bb0bb72402fdb6d18"
+              },
+              {
+                "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/source-3030.bin",
+                "SHA256": "cbd6645ce1fa8a592ec4588a49893771dc723b67e6a4a291e352a5217aa8f567"
+              }
+            ]
+          }
+        }
+      },
+      "power_definitions": {
+        "SC_power_W": "SC tissue only, z0\u20130.1mm",
+        "dermis_power_W": "dermis tissue only, z0.1\u20135.1mm",
+        "skin_SC_plus_dermis_power_W": "actual modeled skin tissue loss = SC + dermis; excludes interface contact",
+        "contact_power_W": "electrode-interface real loss only; excludes SC and dermis",
+        "skin_and_contact_power_W": "SC + dermis + electrode-interface loss",
+        "skin_power_W": "LEGACY ALIAS retained verbatim: SC + contact; excludes dermis; not total skin loss",
+        "tissue_contact_power_W": "SC + dermis + fat + muscle + contact",
+        "source_power_W": "all four tissue layers + contact + 50ohm source resistor loss"
+      },
+      "single_pad_geometry": {
+        "0": {
+          "represented_area_m2": "0.00022499999999999999",
+          "shape": "rectangle",
+          "width_mm": "15",
+          "height_mm": "15",
+          "rotation_deg": "0.0",
+          "analytic_area_mm2": "225",
+          "x_mm": "-10.0",
+          "y_mm": "-10.0"
+        },
+        "1": {
+          "represented_area_m2": "0.00022499999999999999",
+          "shape": "rectangle",
+          "width_mm": "15",
+          "height_mm": "15",
+          "rotation_deg": "0.0",
+          "analytic_area_mm2": "225",
+          "x_mm": "10.0",
+          "y_mm": "-10.0"
+        }
+      },
+      "RMS_definitions": {
+        "centre20": "sqrt(sum_f ||Ehat_f(0,0,20mm)||^2/2)",
+        "ROI_energy": "sqrt(sum_cells w_i * E_RMS_i^2 / sum_cells w_i)",
+        "ROI_mean_local": "sum_cells w_i * E_RMS_i / sum_cells w_i; distinct from ROI energy RMS"
+      },
+      "return_definition": "single signal pad plus one physical return pad; retained 50ohm source to ideal ground",
+      "pairs": [
+        {
+          "tis_condition_id": "baseline-square15-xy80-square_3h",
+          "single_condition_id": "baseline-square15-C1pair0-xy80-C1-3000Hz-sine",
+          "criterion": "centre20_vector_E_RMS",
+          "target_RMS_V_m": 2.095037820228884,
+          "required_single_open_circuit_Vpp": 1.646410362629581,
+          "tis_source_open_circuit_Vpp_per_output": 1.0,
+          "single_n_pads": 2,
+          "single_n_outputs": 1,
+          "single_fundamental_Hz": [
+            3000
+          ],
+          "single_waveform": "sine",
+          "single_frequency_status": "pure single-frequency sinusoid",
+          "single_metrics_at_match": {
+            "target20_modulation_V_m": 0.0,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 24.650162163837074,
+            "surface_J_RMS_p95_A_m2": 17.94593538842837,
+            "contact_voltage_RMS_max_V": 0.002605739666860917,
+            "max_source_current_RMS_mA": 1.5410450022376825,
+            "SC_power_W": 1.8658043916255499e-06,
+            "contact_power_W": 1.390250930942965e-06,
+            "skin_power_W": 3.256055322568515e-06,
+            "tissue_contact_power_W": 0.0007596912597045472,
+            "source_power_W": 0.0008784322448806033,
+            "source_resistor_power_W": 0.00011874098494608693,
+            "dermis_power_W": 0.0005931036861795452,
+            "fat_power_W": 0.0001276876333250758,
+            "muscle_power_W": 3.5643884877357644e-05,
+            "skin_SC_plus_dermis_power_W": 0.0005949694905711708,
+            "skin_and_contact_power_W": 0.0005963597415021138,
+            "source_current_RMS_by_output_mA": [
+              1.5410450022376825
+            ],
+            "ROI_energy_E_RMS_V_m": 2.308521087567319,
+            "ROI_mean_local_E_RMS_V_m": 2.2971050542413223
+          },
+          "tis_metrics_at_1Vpp": {
+            "target20_modulation_V_m": 3.9794562419563912,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 25.49124012699599,
+            "surface_J_RMS_p95_A_m2": 13.553106044904386,
+            "contact_voltage_RMS_max_V": 0.0026848384569140493,
+            "max_source_current_RMS_mA": 1.4782133548390153,
+            "SC_power_W": 2.166357019889475e-06,
+            "contact_power_W": 1.827275482305884e-06,
+            "skin_power_W": 3.993632502195359e-06,
+            "tissue_contact_power_W": 0.0009175690359003898,
+            "source_power_W": 0.001135915555805781,
+            "source_resistor_power_W": 0.00021834651939177824,
+            "dermis_power_W": 0.0007340044058890589,
+            "fat_power_W": 0.00014212322073298584,
+            "muscle_power_W": 3.7447776776149746e-05,
+            "skin_SC_plus_dermis_power_W": 0.0007361707629089484,
+            "skin_and_contact_power_W": 0.0007379980383912543
+          },
+          "exact_linear_scaling": true,
+          "additional_PDE": 0,
+          "envelope_or_physiological_equivalence": false
+        },
+        {
+          "tis_condition_id": "baseline-square15-xy80-square_3h",
+          "single_condition_id": "baseline-square15-C1pair0-xy80-C1-3000Hz-sine",
+          "criterion": "ROI_energy_E_RMS",
+          "target_RMS_V_m": 2.3126345923350664,
+          "required_single_open_circuit_Vpp": 1.6493440663383405,
+          "tis_source_open_circuit_Vpp_per_output": 1.0,
+          "single_n_pads": 2,
+          "single_n_outputs": 1,
+          "single_fundamental_Hz": [
+            3000
+          ],
+          "single_waveform": "sine",
+          "single_frequency_status": "pure single-frequency sinusoid",
+          "single_metrics_at_match": {
+            "target20_modulation_V_m": 0.0,
+            "target20_total_E_RMS_V_m": 2.098770923690029,
+            "surface_J_RMS_max_A_m2": 24.69408576502607,
+            "surface_J_RMS_p95_A_m2": 17.97791287010682,
+            "contact_voltage_RMS_max_V": 0.0026103827791118155,
+            "max_source_current_RMS_mA": 1.543790957645306,
+            "SC_power_W": 1.8724595902786186e-06,
+            "contact_power_W": 1.3952098624175436e-06,
+            "skin_power_W": 3.267669452696162e-06,
+            "tissue_contact_power_W": 0.0007624010272830921,
+            "source_power_W": 0.0008815655535592522,
+            "source_resistor_power_W": 0.00011916452604537054,
+            "dermis_power_W": 0.0005952192470985295,
+            "fat_power_W": 0.00012814308651681056,
+            "muscle_power_W": 3.577102421505598e-05,
+            "skin_SC_plus_dermis_power_W": 0.0005970917066888081,
+            "skin_and_contact_power_W": 0.0005984869165512256,
+            "source_current_RMS_by_output_mA": [
+              1.543790957645306
+            ],
+            "ROI_energy_E_RMS_V_m": 2.3126345923350664,
+            "ROI_mean_local_E_RMS_V_m": 2.301198217021393
+          },
+          "tis_metrics_at_1Vpp": {
+            "target20_modulation_V_m": 3.9794562419563912,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 25.49124012699599,
+            "surface_J_RMS_p95_A_m2": 13.553106044904386,
+            "contact_voltage_RMS_max_V": 0.0026848384569140493,
+            "max_source_current_RMS_mA": 1.4782133548390153,
+            "SC_power_W": 2.166357019889475e-06,
+            "contact_power_W": 1.827275482305884e-06,
+            "skin_power_W": 3.993632502195359e-06,
+            "tissue_contact_power_W": 0.0009175690359003898,
+            "source_power_W": 0.001135915555805781,
+            "source_resistor_power_W": 0.00021834651939177824,
+            "dermis_power_W": 0.0007340044058890589,
+            "fat_power_W": 0.00014212322073298584,
+            "muscle_power_W": 3.7447776776149746e-05,
+            "skin_SC_plus_dermis_power_W": 0.0007361707629089484,
+            "skin_and_contact_power_W": 0.0007379980383912543
+          },
+          "exact_linear_scaling": true,
+          "additional_PDE": 0,
+          "envelope_or_physiological_equivalence": false
+        },
+        {
+          "tis_condition_id": "baseline-square15-xy80-square_3h",
+          "single_condition_id": "baseline-square15-C1pair0-xy80-C1-3000Hz-sine",
+          "criterion": "ROI_mean_local_E_RMS",
+          "target_RMS_V_m": 2.306949462834824,
+          "required_single_open_circuit_Vpp": 1.6534661724160664,
+          "tis_source_open_circuit_Vpp_per_output": 1.0,
+          "single_n_pads": 2,
+          "single_n_outputs": 1,
+          "single_fundamental_Hz": [
+            3000
+          ],
+          "single_waveform": "sine",
+          "single_frequency_status": "pure single-frequency sinusoid",
+          "single_metrics_at_match": {
+            "target20_modulation_V_m": 0.0,
+            "target20_total_E_RMS_V_m": 2.1040162551868726,
+            "surface_J_RMS_max_A_m2": 24.7558022031504,
+            "surface_J_RMS_p95_A_m2": 18.022843982674022,
+            "contact_voltage_RMS_max_V": 0.0026169067512402363,
+            "max_source_current_RMS_mA": 1.5476492612092043,
+            "SC_power_W": 1.8818307365143079e-06,
+            "contact_power_W": 1.4021925047763275e-06,
+            "skin_power_W": 3.2840232412906354e-06,
+            "tissue_contact_power_W": 0.0007662166351359946,
+            "source_power_W": 0.0008859775471540089,
+            "source_resistor_power_W": 0.0001197609117860698,
+            "dermis_power_W": 0.0005981981560351047,
+            "fat_power_W": 0.00012878440748794186,
+            "muscle_power_W": 3.595004837165729e-05,
+            "skin_SC_plus_dermis_power_W": 0.0006000799867716192,
+            "skin_and_contact_power_W": 0.0006014821792763955,
+            "source_current_RMS_by_output_mA": [
+              1.5476492612092043
+            ],
+            "ROI_energy_E_RMS_V_m": 2.318414420391069,
+            "ROI_mean_local_E_RMS_V_m": 2.306949462834824
+          },
+          "tis_metrics_at_1Vpp": {
+            "target20_modulation_V_m": 3.9794562419563912,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 25.49124012699599,
+            "surface_J_RMS_p95_A_m2": 13.553106044904386,
+            "contact_voltage_RMS_max_V": 0.0026848384569140493,
+            "max_source_current_RMS_mA": 1.4782133548390153,
+            "SC_power_W": 2.166357019889475e-06,
+            "contact_power_W": 1.827275482305884e-06,
+            "skin_power_W": 3.993632502195359e-06,
+            "tissue_contact_power_W": 0.0009175690359003898,
+            "source_power_W": 0.001135915555805781,
+            "source_resistor_power_W": 0.00021834651939177824,
+            "dermis_power_W": 0.0007340044058890589,
+            "fat_power_W": 0.00014212322073298584,
+            "muscle_power_W": 3.7447776776149746e-05,
+            "skin_SC_plus_dermis_power_W": 0.0007361707629089484,
+            "skin_and_contact_power_W": 0.0007379980383912543
+          },
+          "exact_linear_scaling": true,
+          "additional_PDE": 0,
+          "envelope_or_physiological_equivalence": false
+        },
+        {
+          "tis_condition_id": "baseline-square15-xy80-square_3h",
+          "single_condition_id": "baseline-square15-C1pair0-xy80-C1-3030Hz-sine",
+          "criterion": "centre20_vector_E_RMS",
+          "target_RMS_V_m": 2.095037820228884,
+          "required_single_open_circuit_Vpp": 1.6460629548048906,
+          "tis_source_open_circuit_Vpp_per_output": 1.0,
+          "single_n_pads": 2,
+          "single_n_outputs": 1,
+          "single_fundamental_Hz": [
+            3030
+          ],
+          "single_waveform": "sine",
+          "single_frequency_status": "pure single-frequency sinusoid",
+          "single_metrics_at_match": {
+            "target20_modulation_V_m": 0.0,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 24.785297943953815,
+            "surface_J_RMS_p95_A_m2": 18.019960283460172,
+            "contact_voltage_RMS_max_V": 0.002609990221823481,
+            "max_source_current_RMS_mA": 1.5419567502681297,
+            "SC_power_W": 1.8351520837610366e-06,
+            "contact_power_W": 1.3806389997579739e-06,
+            "skin_power_W": 3.2157910835190103e-06,
+            "tissue_contact_power_W": 0.0007601154993421783,
+            "source_power_W": 0.000878997030829095,
+            "source_resistor_power_W": 0.00011888153098487256,
+            "dermis_power_W": 0.0005935797348979933,
+            "fat_power_W": 0.00012767976117678597,
+            "muscle_power_W": 3.564021218388002e-05,
+            "skin_SC_plus_dermis_power_W": 0.0005954148869817544,
+            "skin_and_contact_power_W": 0.0005967955259815124,
+            "source_current_RMS_by_output_mA": [
+              1.5419567502681297
+            ],
+            "ROI_energy_E_RMS_V_m": 2.3085463928017185,
+            "ROI_mean_local_E_RMS_V_m": 2.2971305622822933
+          },
+          "tis_metrics_at_1Vpp": {
+            "target20_modulation_V_m": 3.9794562419563912,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 25.49124012699599,
+            "surface_J_RMS_p95_A_m2": 13.553106044904386,
+            "contact_voltage_RMS_max_V": 0.0026848384569140493,
+            "max_source_current_RMS_mA": 1.4782133548390153,
+            "SC_power_W": 2.166357019889475e-06,
+            "contact_power_W": 1.827275482305884e-06,
+            "skin_power_W": 3.993632502195359e-06,
+            "tissue_contact_power_W": 0.0009175690359003898,
+            "source_power_W": 0.001135915555805781,
+            "source_resistor_power_W": 0.00021834651939177824,
+            "dermis_power_W": 0.0007340044058890589,
+            "fat_power_W": 0.00014212322073298584,
+            "muscle_power_W": 3.7447776776149746e-05,
+            "skin_SC_plus_dermis_power_W": 0.0007361707629089484,
+            "skin_and_contact_power_W": 0.0007379980383912543
+          },
+          "exact_linear_scaling": true,
+          "additional_PDE": 0,
+          "envelope_or_physiological_equivalence": false
+        },
+        {
+          "tis_condition_id": "baseline-square15-xy80-square_3h",
+          "single_condition_id": "baseline-square15-C1pair0-xy80-C1-3030Hz-sine",
+          "criterion": "ROI_energy_E_RMS",
+          "target_RMS_V_m": 2.3126345923350664,
+          "required_single_open_circuit_Vpp": 1.6489779639312732,
+          "tis_source_open_circuit_Vpp_per_output": 1.0,
+          "single_n_pads": 2,
+          "single_n_outputs": 1,
+          "single_fundamental_Hz": [
+            3030
+          ],
+          "single_waveform": "sine",
+          "single_frequency_status": "pure single-frequency sinusoid",
+          "single_metrics_at_match": {
+            "target20_modulation_V_m": 0.0,
+            "target20_total_E_RMS_V_m": 2.0987479179188036,
+            "surface_J_RMS_max_A_m2": 24.829190171462997,
+            "surface_J_RMS_p95_A_m2": 18.051871789961186,
+            "contact_voltage_RMS_max_V": 0.0026146122475450223,
+            "max_source_current_RMS_mA": 1.5446873979547193,
+            "SC_power_W": 1.8416575722082207e-06,
+            "contact_power_W": 1.3855332704520133e-06,
+            "skin_power_W": 3.2271908426602336e-06,
+            "tissue_contact_power_W": 0.0007628100567269602,
+            "source_power_W": 0.0008821130151007901,
+            "source_resistor_power_W": 0.00011930295787000604,
+            "dermis_power_W": 0.0005956839344038716,
+            "fat_power_W": 0.00012813237718535813,
+            "muscle_power_W": 3.57665542950702e-05,
+            "skin_SC_plus_dermis_power_W": 0.0005975255919760798,
+            "skin_and_contact_power_W": 0.0005989111252465318,
+            "source_current_RMS_by_output_mA": [
+              1.5446873979547193
+            ],
+            "ROI_energy_E_RMS_V_m": 2.3126345923350664,
+            "ROI_mean_local_E_RMS_V_m": 2.301198545547453
+          },
+          "tis_metrics_at_1Vpp": {
+            "target20_modulation_V_m": 3.9794562419563912,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 25.49124012699599,
+            "surface_J_RMS_p95_A_m2": 13.553106044904386,
+            "contact_voltage_RMS_max_V": 0.0026848384569140493,
+            "max_source_current_RMS_mA": 1.4782133548390153,
+            "SC_power_W": 2.166357019889475e-06,
+            "contact_power_W": 1.827275482305884e-06,
+            "skin_power_W": 3.993632502195359e-06,
+            "tissue_contact_power_W": 0.0009175690359003898,
+            "source_power_W": 0.001135915555805781,
+            "source_resistor_power_W": 0.00021834651939177824,
+            "dermis_power_W": 0.0007340044058890589,
+            "fat_power_W": 0.00014212322073298584,
+            "muscle_power_W": 3.7447776776149746e-05,
+            "skin_SC_plus_dermis_power_W": 0.0007361707629089484,
+            "skin_and_contact_power_W": 0.0007379980383912543
+          },
+          "exact_linear_scaling": true,
+          "additional_PDE": 0,
+          "envelope_or_physiological_equivalence": false
+        },
+        {
+          "tis_condition_id": "baseline-square15-xy80-square_3h",
+          "single_condition_id": "baseline-square15-C1pair0-xy80-C1-3030Hz-sine",
+          "criterion": "ROI_mean_local_E_RMS",
+          "target_RMS_V_m": 2.306949462834824,
+          "required_single_open_circuit_Vpp": 1.6530989190299175,
+          "tis_source_open_circuit_Vpp_per_output": 1.0,
+          "single_n_pads": 2,
+          "single_n_outputs": 1,
+          "single_fundamental_Hz": [
+            3030
+          ],
+          "single_waveform": "sine",
+          "single_frequency_status": "pure single-frequency sinusoid",
+          "single_metrics_at_match": {
+            "target20_modulation_V_m": 0.0,
+            "target20_total_E_RMS_V_m": 2.103992891546284,
+            "surface_J_RMS_max_A_m2": 24.89124071432675,
+            "surface_J_RMS_p95_A_m2": 18.09698516001227,
+            "contact_voltage_RMS_max_V": 0.0026211464159257877,
+            "max_source_current_RMS_mA": 1.548547720862393,
+            "SC_power_W": 1.850874034326152e-06,
+            "contact_power_W": 1.3924670865386505e-06,
+            "skin_power_W": 3.243341120864802e-06,
+            "tissue_contact_power_W": 0.0007666274927677825,
+            "source_power_W": 0.0008865274954635333,
+            "source_resistor_power_W": 0.00011990000218940557,
+            "dermis_power_W": 0.0005986649980383619,
+            "fat_power_W": 0.00012877360779099854,
+            "muscle_power_W": 3.59455458175573e-05,
+            "skin_SC_plus_dermis_power_W": 0.0006005158720726881,
+            "skin_and_contact_power_W": 0.0006019083391592267,
+            "source_current_RMS_by_output_mA": [
+              1.548547720862393
+            ],
+            "ROI_energy_E_RMS_V_m": 2.3184140894072187,
+            "ROI_mean_local_E_RMS_V_m": 2.306949462834824
+          },
+          "tis_metrics_at_1Vpp": {
+            "target20_modulation_V_m": 3.9794562419563912,
+            "target20_total_E_RMS_V_m": 2.095037820228884,
+            "surface_J_RMS_max_A_m2": 25.49124012699599,
+            "surface_J_RMS_p95_A_m2": 13.553106044904386,
+            "contact_voltage_RMS_max_V": 0.0026848384569140493,
+            "max_source_current_RMS_mA": 1.4782133548390153,
+            "SC_power_W": 2.166357019889475e-06,
+            "contact_power_W": 1.827275482305884e-06,
+            "skin_power_W": 3.993632502195359e-06,
+            "tissue_contact_power_W": 0.0009175690359003898,
+            "source_power_W": 0.001135915555805781,
+            "source_resistor_power_W": 0.00021834651939177824,
+            "dermis_power_W": 0.0007340044058890589,
+            "fat_power_W": 0.00014212322073298584,
+            "muscle_power_W": 3.7447776776149746e-05,
+            "skin_SC_plus_dermis_power_W": 0.0007361707629089484,
+            "skin_and_contact_power_W": 0.0007379980383912543
+          },
+          "exact_linear_scaling": true,
+          "additional_PDE": 0,
+          "envelope_or_physiological_equivalence": false
+        }
+      ],
+      "status": "computed_downstream_scaling",
+      "numerical_spatial_validation": "inherited from source summaries; scaling is not new mesh convergence",
+      "physical_validation": "unvalidated",
+      "new_PDE": 0
+    }
+  ]
+}

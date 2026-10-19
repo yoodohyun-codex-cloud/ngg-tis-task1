@@ -1,13 +1,13 @@
 {
-  "schema": "task1-feedback-ledger-v1",
-  "checked_at_utc": "2026-10-19T18:54:43.203113+00:00",
+  "schema": "task1-feedback-ledger-v2",
+  "checked_at_utc": "2026-10-19T19:32:48.617354+00:00",
   "checked_at_timezone": "Asia/Seoul",
   "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
   "feedback_repository": "yoodohyun-codex-cloud/ngg-tis-simulation",
   "feedback_ref": "33f0d6ab106ad4fa54d8fd35672092296c615f87",
   "feedback_unchanged_from_pinned_f4b6d5fa": true,
   "producer_response_ref": "7a6b62a9154e2584548e48bef4717b7e666904df",
-  "new_repo_issues_and_prs": 0,
+  "new_repo_issues_and_prs": 1,
   "old_PR2_PR3_comments_and_reviews": 0,
   "automatic_communication_established": false,
   "original_environment_status": {
@@ -32,19 +32,114 @@
       "producer_last_review_commit": "8c3a30a778cc9bf19ccb52ca523598bff0a84650",
       "historical_producer_decision": "adopted",
       "historical_response_status": "existing_spatial_definitions_and_finite_3k_spatial_postprocessing_verified",
-      "reviewer_latest_status": "반영확인 — 과거 정의/공간 통계 요구 해결.** 기준 H.",
+      "reviewer_latest_status": "반영확인 — 과거 정의/공간 통계 요구 해결. 기준 H.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "same_ROI_definitions_adopted",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "depth_focus_not_validated",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "중심점/부피ROI/비표적·깊이분포 분리; 높은 표면 최대 유지; ROI 절대 mean/P10와 선택도 동시 개선 미확보",
+      "decision_current_environment": "same_ROI_definitions_executed_depth_focus_unvalidated",
+      "adoption_commit_current_environment": "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": [
+          {
+            "path": "docs/cloud-restart-20261020/baseline-spatial.json",
+            "sha256": "18f18fdd1e60c7010f5a8006d398b372317831f3d5350b931859d47d0d894f83",
+            "bytes": 189936
+          },
+          {
+            "path": "docs/cloud-restart-20261020/fine-spatial.json",
+            "sha256": "f76090caeafa633aa81427ee55617e43f7491eeff6f25a13abaa62e6aafb5a6f",
+            "bytes": 190189
+          }
+        ]
+      },
+      "validation_current_environment": "new_ROI_and_spatial_outputs_computed; convergence_open; depth_focus_not_validated",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation",
+        "current_exact_code_full_skin_spatial_successor": {
+          "path": "docs/cloud-restart-20261020/fine-spatial-full-skin.json",
+          "sha256": "5692424f91609d5fc7859930b717e27be540897b6f0a9f90c05c90b2a50ee666",
+          "bytes": 193585
+        }
+      },
+      "remaining_limits": "A/B/C 계산의 r≤5mm z15–20mm·표층/비표적 공간/깊이 audit를 연결. 전역/경계 고전계를 깊이 집중으로 해석하지 않으며 D의Best1정확대조 실패는 유지.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/leader-validation-20261017T190056Z/REPORT.md"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_partial_bounded_scope"
     },
     {
       "feedback_id": "T1-F002",
@@ -57,20 +152,151 @@
       "producer_last_review_commit": "8c3a30a778cc9bf19ccb52ca523598bff0a84650",
       "historical_producer_decision": "adopted",
       "historical_response_status": "existing_comparison_and_definitions_confirmed",
-      "reviewer_latest_status": "반영확인 — 비교 정의와 결과 분리 해결.** 기준 H.",
+      "reviewer_latest_status": "반영확인 — 비교 정의와 결과 분리 해결. 기준 H.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "normalizations_adopted",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "surface_burden_and_power_tradeoffs_preserved",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "동일Vpp/실제동일총전력/복합부담cap 분리; 이전bare J95제외와 새코팅square J95포함 cap 분리",
+      "decision_current_environment": "normalizations_and_full_skin_accounting_implemented_partial_validation",
+      "adoption_commit_current_environment": "07d3dfa956b6662a07ff930577240b091065f5d6",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": [
+          {
+            "path": "docs/cloud-restart-20261020/single-pair-comparison.json",
+            "sha256": "ef43a72786bdb7f187222674d50ecf344a91e70bf20fcd029465f15d5a20284a",
+            "bytes": 70894
+          },
+          {
+            "path": "docs/cloud-restart-20261020/fine-spatial.json",
+            "sha256": "f76090caeafa633aa81427ee55617e43f7491eeff6f25a13abaa62e6aafb5a6f",
+            "bytes": 190189
+          },
+          {
+            "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+            "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+            "bytes": 33716
+          },
+          {
+            "path": "docs/cloud-restart-20261020/fine-spatial-full-skin.json",
+            "sha256": "5692424f91609d5fc7859930b717e27be540897b6f0a9f90c05c90b2a50ee666",
+            "bytes": 193585
+          }
+        ]
+      },
+      "validation_current_environment": "burden_scaling_and_pure_sine_C1_RMS_links_computed; full_skin_limits_not_human_safety",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation",
+        "current_exact_code_C1_successor": {
+          "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+          "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+          "bytes": 33716
+        },
+        "current_exact_code_full_skin_spatial_successor": {
+          "path": "docs/cloud-restart-20261020/fine-spatial-full-skin.json",
+          "sha256": "5692424f91609d5fc7859930b717e27be540897b6f0a9f90c05c90b2a50ee666",
+          "bytes": 193585
+        }
+      },
+      "remaining_limits": "같은Vpp/총전력/복합부담 비교 구현·SC+dermis 손실과 전도/총J를 분리. 같은RMS C1은 h.625 baseline에 대한6개한정 비교이며 최신Best1 samegrid C1은 D에서미실행. 과거bare와새coated cap정의구분유지.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/docs/OPTIMIZATION.md",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/single-vs-tis-20261017T195811Z/REPORT.md"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_partial_bounded_scope",
+      "successor_C1_provenance_resolution": {
+        "finding": "Peer PR1 identifies old C1 report code hash unavailable in the checked committed versions",
+        "old_report": {
+          "path": "docs/cloud-restart-20261020/single-pair-comparison.json",
+          "sha256": "ef43a72786bdb7f187222674d50ecf344a91e70bf20fcd029465f15d5a20284a",
+          "bytes": 70894
+        },
+        "old_claimed_audit_code_sha256": "c61f1ce3639d79a51d653e6456f01cca311218357b5b3aa43a3fa08940a55022",
+        "old_report_source_recovery_status": "Old exact code hash not relabeled or fabricated; historical report remains immutable",
+        "resolution_current_scope": "Existing no-PDE successor with exact committed code is now linked and published as a separate artifact; no new analysis executed in this review",
+        "successor_report": {
+          "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+          "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+          "bytes": 33716
+        },
+        "successor_audit_code_sha256": "76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032",
+        "successor_actual_code_commit": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "successor_new_PDE": 0,
+        "code_hash_matches_actual_committed_bytes": true,
+        "remaining_limits": "Limited waveform algebra/downstream scaling; spatial convergence and experiment unvalidated. This successor does not recreate the unavailable exact old analysis source."
+      }
     },
     {
       "feedback_id": "T1-F003",
@@ -83,20 +309,90 @@
       "producer_last_review_commit": "37d403b112a38b51c7d27c759606f90f02145fba",
       "historical_producer_decision": "adopted",
       "historical_response_status": "existing_bounded_2k_pass_preserved_separate_3k_pass_verified",
-      "reviewer_latest_status": "검증완료 — 등록된 10/10 조건의 수치 gate에 한정해 해결.** 기준 H.",
+      "reviewer_latest_status": "검증완료 — 등록된 10/10 조건의 수치 gate에 한정해 해결. 기준 H.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "historical_bounded_pass_preserved",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
+      "decision_current_environment": "historical_bounded_2k_pass_preserved_no_new_2k_execution",
+      "adoption_commit_current_environment": "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
       "execution_artifact_current_environment": null,
-      "validation_current_environment": "historical_2k_SC_XY_only",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "등록2k SC/XY10조건 통과는 원근거 관찰; 새격자/물성/접촉/전체3D에 전이 불가",
+      "validation_current_environment": "historical_2k_SC_XY_only; current_newruns_are_later_3k_branch",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation"
+      },
+      "remaining_limits": "기존2k 통과는원근거범위. 새실행은3k/3030후기조건으로2k재현/새검증으로바꾸지않음.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/leader-validation-20261017T190056Z/computed-v2/summary.json",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/leader-validation-20261017T190056Z/finalization.json"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_partial_bounded_scope"
     },
     {
       "feedback_id": "T1-F004",
@@ -111,18 +407,103 @@
       "historical_response_status": "registered_exact_3k_scxy_passed_whole3d_and_coating_rs_held",
       "reviewer_latest_status": "보류 — H6의 등록 3 kHz 독립 SC/XY 수치 gate만 검증완료; 결합 SC+XY/bulk-z·정확 선두 접촉/코팅/Rs·물리 검증은 미완료.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "held",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "changed_contact_and_full3D_not_validated",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "3k 독립SC/XY·Rs-window 장전파 완료 이력과 새형상7/18수렴실패·타원SC Jmax+73.1508%를 별도 유지",
+      "decision_current_environment": "held_exact_reference_and_spatial_convergence_open",
+      "adoption_commit_current_environment": "66901b734d0fdcb3d04734b19fea8e16f55bca87",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": [
+          {
+            "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+            "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+            "bytes": 31183
+          }
+        ]
+      },
+      "validation_current_environment": "samegrid_coarse_reproduction_passed; mesh_gates_failed; exactBest1_comparator_failed",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation"
+      },
+      "remaining_limits": "B의9파형별격자비교중6통과/3XY실패·108scalar판정범위. D의Best1native/post는완료했으나정확대조39scalar통과/8matrix중2실패로배치error; C1미실행. 기존형상/접촉/whole3D·실측hold유지.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/PROJECT_CONTEXT.md",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/docs/LEADER_VALIDATION.md"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_hold_preserved"
     },
     {
       "feedback_id": "T1-F005",
@@ -135,20 +516,141 @@
       "producer_last_review_commit": "89051b092c7d362311e7b8ccd871a6051c260620",
       "historical_producer_decision": "adopted",
       "historical_response_status": "existing_harmonic_definition_and_finite_3k_spectrum_verified",
-      "reviewer_latest_status": "반영확인 — 점수 정의의 과거 모호성 해결.** 기준 H.",
+      "reviewer_latest_status": "반영확인 — 점수 정의의 과거 모호성 해결. 기준 H.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "waveform_definitions_adopted",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "new_multifrequency_metric_validation_required",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "기본파TIS와3차 포함RMS/J/손실 분리; 다주파수 실제 합성파 검증 전 기존 두신호 공식을 확장하지 않음",
+      "decision_current_environment": "fundamental_and_actual_harmonic_waveform_audit_executed",
+      "adoption_commit_current_environment": "07d3dfa956b6662a07ff930577240b091065f5d6",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": [
+          {
+            "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+            "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+            "bytes": 33716
+          },
+          {
+            "path": "docs/cloud-restart-20261020/fine-spatial-full-skin.json",
+            "sha256": "5692424f91609d5fc7859930b717e27be540897b6f0a9f90c05c90b2a50ee666",
+            "bytes": 193585
+          }
+        ]
+      },
+      "validation_current_environment": "actual_spectrum_waveform_algebra_audited; exact07d_code_successor_linked; old_c61f_source_not_recovered; physical_validation_open",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation",
+        "current_exact_code_C1_successor": {
+          "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+          "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+          "bytes": 33716
+        },
+        "current_exact_code_full_skin_spatial_successor": {
+          "path": "docs/cloud-restart-20261020/fine-spatial-full-skin.json",
+          "sha256": "5692424f91609d5fc7859930b717e27be540897b6f0a9f90c05c90b2a50ee666",
+          "bytes": 193585
+        }
+      },
+      "remaining_limits": "기본파TIS와3차포함파형/RMS/손실을분리. grouped도출력2개·기본반송파2개이며새다주파수공식일반화성공을뜻하지않음.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/docs/LEADER_VALIDATION.md",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/explore_tis.py"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_successor_provenance_linked_old_source_gap_preserved",
+      "successor_C1_provenance_resolution": {
+        "finding": "Peer PR1 identifies old C1 report code hash unavailable in the checked committed versions",
+        "old_report": {
+          "path": "docs/cloud-restart-20261020/single-pair-comparison.json",
+          "sha256": "ef43a72786bdb7f187222674d50ecf344a91e70bf20fcd029465f15d5a20284a",
+          "bytes": 70894
+        },
+        "old_claimed_audit_code_sha256": "c61f1ce3639d79a51d653e6456f01cca311218357b5b3aa43a3fa08940a55022",
+        "old_report_source_recovery_status": "Old exact code hash not relabeled or fabricated; historical report remains immutable",
+        "resolution_current_scope": "Existing no-PDE successor with exact committed code is now linked and published as a separate artifact; no new analysis executed in this review",
+        "successor_report": {
+          "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+          "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+          "bytes": 33716
+        },
+        "successor_audit_code_sha256": "76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032",
+        "successor_actual_code_commit": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "successor_new_PDE": 0,
+        "code_hash_matches_actual_committed_bytes": true,
+        "remaining_limits": "Limited waveform algebra/downstream scaling; spatial convergence and experiment unvalidated. This successor does not recreate the unavailable exact old analysis source."
+      }
     },
     {
       "feedback_id": "T1-F006",
@@ -161,20 +663,110 @@
       "producer_last_review_commit": "8669c29f7ac93116d0573dfd1ada9156b33a52e3",
       "historical_producer_decision": "partial",
       "historical_response_status": "existing_guards_confirmed_global_zero_duplicate_audit_pending",
-      "reviewer_latest_status": "반영확인 — 구현 존재 확인; 전 실행 이력의 중복 0 검증은 아님.** 기준 H.",
+      "reviewer_latest_status": "반영확인 — 구현 존재 확인; 전 실행 이력의 중복 0 검증은 아님. 기준 H.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "partial",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "historical_zero_duplicate_execution_not_proven",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "단일lock/config hash/완료검증/재사용을 채택; 과거 전체 중복0 미확인",
+      "decision_current_environment": "single_lock_pin_and_no_retry_guards_executed",
+      "adoption_commit_current_environment": "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": [
+          {
+            "path": "docs/cloud-restart-20261020/baseline-execution.json",
+            "sha256": "4fac02b440f6403a12965d42e37061a7792b5fc25b2dfa864e8c731521a13e86",
+            "bytes": 6547
+          },
+          {
+            "path": "docs/cloud-restart-20261020/mesh-c1-execution.json",
+            "sha256": "b77a11ff3a9d529c1b9a7d8bad872f79086117e23c97fd09a0985f558315fca9",
+            "bytes": 24675
+          }
+        ]
+      },
+      "validation_current_environment": "one_executor_finite_batches_observed; historical_zero_duplicates_not_proven",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation"
+      },
+      "remaining_limits": "A/B/C 및D의단일실행잠금·immutable고유경로·hash·checkpoint·실패/notrun보존확인. D미완료run자동재시도없음. 과거전체중복0미증명.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/explore_controller.py",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/explore_tis.py"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_partial_bounded_scope"
     },
     {
       "feedback_id": "T1-F007",
@@ -187,20 +779,167 @@
       "producer_last_review_commit": "89051b092c7d362311e7b8ccd871a6051c260620",
       "historical_producer_decision": "adopted",
       "historical_response_status": "read_only_audit_complete_reuse_opportunities_found_not_operator_optimized",
-      "reviewer_latest_status": "제안.** 기준 H.",
+      "reviewer_latest_status": "제안. 기준 H.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "bounded_read_only_counting_adopted",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "operator_cache_optimization_not_completed",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "후보/후처리/기저/주파수/RHS 수 구분; 과거cache hit/miss/삭제후재계산 미계측",
+      "decision_current_environment": "explicit_new_basis_frequency_RHS_counts_recorded",
+      "adoption_commit_current_environment": "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": []
+      },
+      "validation_current_environment": "new_basis_frequency_RHS_counts_recorded; historical_operator_cache_optimization_not_completed",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation"
+      },
+      "remaining_limits": "후보/후처리/패드/출력/새PDE조건과주파수·RHS분모를분리. D는2조건시작이나완료caseledger1개와Best1post완료가다름. 과거hit/miss·삭제후재계산unknown.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/explore_tis.py",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/explore-20261017T133224038032Z/REPORT.md"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "new_basis_counting": [
+        {
+          "run_id": "cloud-baseline-20261019T185900Z",
+          "basis_conditions_started": 1,
+          "physical_n_pads_per_registered_case": [
+            4
+          ],
+          "n_outputs_per_registered_case": [
+            2
+          ],
+          "retained_frequency_count": 4,
+          "RHS_note": "For each started basis condition, retained frequencies each solve n_outputs RHS; interrupted conditions may not complete all RHS. No count of completed RHS is fabricated from candidate counts."
+        },
+        {
+          "run_id": "cloud-mesh-c1-20261019T190000Z",
+          "basis_conditions_started": 4,
+          "physical_n_pads_per_registered_case": [
+            4,
+            4,
+            4,
+            2
+          ],
+          "n_outputs_per_registered_case": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "retained_frequency_count": 4,
+          "RHS_note": "For each started basis condition, retained frequencies each solve n_outputs RHS; interrupted conditions may not complete all RHS. No count of completed RHS is fabricated from candidate counts."
+        },
+        {
+          "run_id": "cloud-grouped-20261019T191500Z",
+          "basis_conditions_started": 5,
+          "physical_n_pads_per_registered_case": [
+            4,
+            4,
+            8,
+            12,
+            16
+          ],
+          "n_outputs_per_registered_case": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "retained_frequency_count": 4,
+          "RHS_note": "For each started basis condition, retained frequencies each solve n_outputs RHS; interrupted conditions may not complete all RHS. No count of completed RHS is fabricated from candidate counts."
+        },
+        {
+          "run_id": "cloud-reference-20261019T192000Z",
+          "basis_conditions_started": 2,
+          "physical_n_pads_per_registered_case": [
+            4,
+            4,
+            2
+          ],
+          "n_outputs_per_registered_case": [
+            2,
+            2,
+            1
+          ],
+          "retained_frequency_count": 4,
+          "RHS_note": "For each started basis condition, retained frequencies each solve n_outputs RHS; interrupted conditions may not complete all RHS. No count of completed RHS is fabricated from candidate counts."
+        }
+      ],
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_partial_bounded_scope"
     },
     {
       "feedback_id": "T1-F008",
@@ -213,20 +952,317 @@
       "producer_last_review_commit": "37d403b112a38b51c7d27c759606f90f02145fba",
       "historical_producer_decision": "adopted",
       "historical_response_status": "original_native_diagnostics_preserved_separate_3k_1200_native_traces_verified",
-      "reviewer_latest_status": "검증완료 — 게시된 native φ 출력 재현·정합성 및 정의에 한정.** 기준 H.",
+      "reviewer_latest_status": "검증완료 — 게시된 native φ 출력 재현·정합성 및 정의에 한정. 기준 H.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "native_phi_definition_adopted",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "instrument_loaded_predictions_not_validated",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "과거한정nativephi/40trace 좌표계 유지; 전체φ 미이관·장비입력임피던스/대역폭/감쇠/교정 미확인",
+      "decision_current_environment": "new_native_phi_40probe_predictions_executed",
+      "adoption_commit_current_environment": "07d3dfa956b6662a07ff930577240b091065f5d6",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": []
+      },
+      "validation_current_environment": "native_phi_algebraic_checks_and_unloaded_probe_predictions_computed; instrument_unvalidated",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation"
+      },
+      "remaining_limits": "4깊이×5프로브중심×X/Y=40trace와팁gap5mm유지. D의postcomplete도배치통과와구분. 원과거φ복구아님;장비R/C/대역폭/감쇠/교정및실측검증미완료.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/depth-probe-20261017T200912Z/REPORT.md",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/depth-probe-20261017T200912Z/depth-probe-comparison.json"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "probe_execution_details": [
+        {
+          "run_id": "cloud-baseline-20261019T185900Z",
+          "case_id": "baseline-square15-coarse",
+          "probe_artifact": {
+            "path": "data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/probes.json",
+            "sha256": "62520c2d8d389c1c52b787bc28cdefca5e6fa8f7ab0b9341e4161595f8e0b65e",
+            "bytes": 1300227
+          },
+          "status": "complete",
+          "condition_count": 3,
+          "complete_traces": 120,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-mesh-c1-20261019T190000Z",
+          "case_id": "baseline-square15-C1pair0-xy80",
+          "probe_artifact": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json",
+            "sha256": "7ac08215db1ec71a6880d8eded01fcec203e2992e191f91d42ebf780484da83b",
+            "bytes": 1761707
+          },
+          "status": "complete",
+          "condition_count": 6,
+          "complete_traces": 240,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-mesh-c1-20261019T190000Z",
+          "case_id": "baseline-square15-bulk",
+          "probe_artifact": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-bulk/probes.json",
+            "sha256": "4df41591d85ea4dcb6e1d852034b3f73658419ce46537dfd758162ed90b69f30",
+            "bytes": 1312395
+          },
+          "status": "complete",
+          "condition_count": 3,
+          "complete_traces": 120,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-mesh-c1-20261019T190000Z",
+          "case_id": "baseline-square15-sc4",
+          "probe_artifact": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/probes.json",
+            "sha256": "21e44a51a96dd5529fb6e0707945672e830e6f66cbc6f2b37bbc058680320216",
+            "bytes": 1310634
+          },
+          "status": "complete",
+          "condition_count": 3,
+          "complete_traces": 120,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-mesh-c1-20261019T190000Z",
+          "case_id": "baseline-square15-xy80",
+          "probe_artifact": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/probes.json",
+            "sha256": "2e20cb1ab1e4b1068c64723ae8a0cd3c7a1146448829cc5cae4e289ff02b9b09",
+            "bytes": 1310595
+          },
+          "status": "complete",
+          "condition_count": 3,
+          "complete_traces": 120,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-grouped-20261019T191500Z",
+          "case_id": "grouped-historical-square15-xy40",
+          "probe_artifact": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-historical-square15-xy40/probes.json",
+            "sha256": "1398cae490be3b785c6674610cf2465258d94b70a4f09c2e2c2168af49399928",
+            "bytes": 440895
+          },
+          "status": "complete",
+          "condition_count": 1,
+          "complete_traces": 40,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-grouped-20261019T191500Z",
+          "case_id": "grouped-strip225-gap1-p04-xy40",
+          "probe_artifact": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p04-xy40/probes.json",
+            "sha256": "83e9ec7df4fe7b28dcb69bf96db356cfd540053fa06b329cb2da31425a7e91a6",
+            "bytes": 440826
+          },
+          "status": "complete",
+          "condition_count": 1,
+          "complete_traces": 40,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-grouped-20261019T191500Z",
+          "case_id": "grouped-strip225-gap1-p08-xy40",
+          "probe_artifact": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p08-xy40/probes.json",
+            "sha256": "6ca257785d333fe2e8595947ad014c73bd9dbf778f166d64df3e3f44ffcf4c71",
+            "bytes": 440811
+          },
+          "status": "complete",
+          "condition_count": 1,
+          "complete_traces": 40,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-grouped-20261019T191500Z",
+          "case_id": "grouped-strip225-gap1-p12-xy40",
+          "probe_artifact": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p12-xy40/probes.json",
+            "sha256": "d5e4f55d66864f7768676dae55756b084541e0687140c947e2aa2401ebff5b0b",
+            "bytes": 440842
+          },
+          "status": "complete",
+          "condition_count": 1,
+          "complete_traces": 40,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-grouped-20261019T191500Z",
+          "case_id": "grouped-strip225-gap1-p16-xy40",
+          "probe_artifact": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p16-xy40/probes.json",
+            "sha256": "1d0076dc64c6e9691354ab3d68aecf1d6aeb23124f7132739893ba432f240649",
+            "bytes": 440830
+          },
+          "status": "complete",
+          "condition_count": 1,
+          "complete_traces": 40,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "complete"
+        },
+        {
+          "run_id": "cloud-reference-20261019T192000Z",
+          "case_id": "baseline-square15-xy100",
+          "probe_artifact": {
+            "path": "data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/probes.json",
+            "sha256": "7801afe47d0e0477f8b9c06f75034d66ee8db1aa14d3188ee6ec4dcdb3e21df8",
+            "bytes": 1314112
+          },
+          "status": "complete",
+          "condition_count": 3,
+          "complete_traces": 120,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "error"
+        },
+        {
+          "run_id": "cloud-reference-20261019T192000Z",
+          "case_id": "best1-square15-xy120",
+          "probe_artifact": {
+            "path": "data-native/cloud-reference-20261019T192000Z/postprocess/best1-square15-xy120/probes.json",
+            "sha256": "14f34de2050f2696ddbfe169ad0f6d6a2c5d89792115e6aadca1dbb872a08574",
+            "bytes": 1314081
+          },
+          "status": "complete",
+          "condition_count": 3,
+          "complete_traces": 120,
+          "held_data_missing": 0,
+          "validation_failed": 0,
+          "all_native_phi_E_algebraic_checks_passed": true,
+          "unloaded_prediction": true,
+          "instrument_loading_calibration_validated": false,
+          "batch_status": "error"
+        }
+      ],
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_partial_bounded_scope"
     },
     {
       "feedback_id": "T1-F009",
@@ -239,21 +1275,513 @@
       "producer_last_review_commit": "37d403b112a38b51c7d27c759606f90f02145fba",
       "historical_producer_decision": "partial",
       "historical_response_status": "finite_two_anchor_four_measurement_representations_validated_and_published_wider_scope_held",
-      "reviewer_latest_status": "검증완료 — 03542-1/03522-1 두 고정 비교의 공통 네 표현 표시·검사에 한정.** 기준 H5.",
+      "reviewer_latest_status": "검증완료 — 03542-1/03522-1 두 고정 비교의 공통 네 표현 표시·검사에 한정. 기준 H5.",
       "initial_response_publication_commit": "ccb05c9680368be79ac734fa50f386907c0c38a2",
-      "decision_current_environment": "partial",
-      "adoption_commit_current_environment": null,
-      "adoption_commit_note": "to be recorded by coordinator after a real scoped commit; audit receipt is not implementation",
-      "execution_artifact_current_environment": null,
-      "validation_current_environment": "only_two_historical_anchor_displays_validated",
-      "validation_artifact_current_environment": null,
-      "remaining_limits": "03542-1/03522-1 두anchor의 네표현 한정; 새후보/진짜2pad C1·loaded전극파형 확장과 실측 보류",
+      "decision_current_environment": "partial_new_C1_probe_linkage_historical_anchors_preserved",
+      "adoption_commit_current_environment": "07d3dfa956b6662a07ff930577240b091065f5d6",
+      "adoption_commit_note": "Actual implementation evidence for the previously recorded stable ID; formal adoption publication of this newly read peer review remains pending coordinator commit",
+      "execution_artifact_current_environment": {
+        "runs": [
+          "cloud-baseline-20261019T185900Z",
+          "cloud-mesh-c1-20261019T190000Z",
+          "cloud-grouped-20261019T191500Z",
+          "cloud-reference-20261019T192000Z"
+        ],
+        "run_snapshot_pointer": "current_environment_run_snapshot",
+        "small_git_artifacts": [
+          {
+            "path": "docs/cloud-restart-20261020/single-pair-comparison.json",
+            "sha256": "ef43a72786bdb7f187222674d50ecf344a91e70bf20fcd029465f15d5a20284a",
+            "bytes": 70894
+          },
+          {
+            "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+            "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+            "bytes": 33716
+          },
+          {
+            "path": "docs/cloud-restart-20261020/fine-spatial-full-skin.json",
+            "sha256": "5692424f91609d5fc7859930b717e27be540897b6f0a9f90c05c90b2a50ee666",
+            "bytes": 193585
+          }
+        ]
+      },
+      "validation_current_environment": "limited_h0625_pure_sine_C1_6RMS_comparisons_exact_code_successor_linked; latestBest1_C1_not_run; experiment_unvalidated",
+      "validation_artifact_current_environment": {
+        "baseline_samegrid_reproduction": {
+          "path": "docs/cloud-restart-20261020/baseline-reproduction.json",
+          "sha256": "b814f6f547e4c87f38d94ca388560d4e84f1716d827ac43cff94bef0cff0bbd8",
+          "bytes": 12281
+        },
+        "mesh_convergence": {
+          "path": "docs/cloud-restart-20261020/mesh-convergence.json",
+          "sha256": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+          "bytes": 31183
+        },
+        "exactBest1_comparison": {
+          "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+          "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+          "bytes": 16265,
+          "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+          "status": "failed",
+          "scalar_passed": 39,
+          "scalar_count": 39,
+          "matrix_file_passed": 6,
+          "matrix_file_count": 8,
+          "failed_matrix_files": [
+            "source-3000.bin",
+            "loss-3000.bin"
+          ],
+          "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+          "original_entrywise_gate_retained": true,
+          "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+        },
+        "scientific_scope_note": "Artifacts are linked evidence with independent pass/fail scopes; none certifies physical, experimental, human safety or physiological validation",
+        "current_exact_code_C1_successor": {
+          "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+          "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+          "bytes": 33716
+        },
+        "current_exact_code_full_skin_spatial_successor": {
+          "path": "docs/cloud-restart-20261020/fine-spatial-full-skin.json",
+          "sha256": "5692424f91609d5fc7859930b717e27be540897b6f0a9f90c05c90b2a50ee666",
+          "bytes": 193585
+        }
+      },
+      "remaining_limits": "이전2anchor완료범위유지. B의실제2pad/1outputC1와TIS동일RMS6비교를한정연결. 최신Best1 C1은Dnotrun. 모든후보네계측표현/실제loading/실측완료로확대하지않음.",
       "new_execution_from_feedback": false,
       "original_source_urls": [
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/docs/PROBE_MEASUREMENT.md",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/depth-probe-20261017T200912Z/depth-probe-comparison.json",
         "https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/782311fce30c5d55ee1ec90490d8a6a5a302a354/tis-java/runs/single-vs-tis-20261017T195811Z/comparison.json"
-      ]
+      ],
+      "adoption_supporting_commits_current_environment": [
+        "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+        "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "038ce93981adce7b707694d495d69e9b72703430",
+        "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "66901b734d0fdcb3d04734b19fea8e16f55bca87"
+      ],
+      "execution_authorization": "Current user explicitly authorized finite Task1 research; feedback is reviewed evidence, never an executable command queue",
+      "experimental_validation_current_environment": false,
+      "updated_at_utc": "2026-10-19T19:32:48.617354+00:00",
+      "latest_peer_review_source": {
+        "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+        "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+        "branch": "review/task1-mesh-feedback-20261020",
+        "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+        "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+        "changed_files": 1,
+        "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+        "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "stable_feedback_ids": [
+          "T1-F001",
+          "T1-F002",
+          "T1-F003",
+          "T1-F004",
+          "T1-F005",
+          "T1-F006",
+          "T1-F007",
+          "T1-F008",
+          "T1-F009"
+        ],
+        "new_feedback_ids": [],
+        "new_implementation_execution_from_this_readonly_review": false,
+        "adoption_commit_for_latest_peer_review": null,
+        "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+        "old_numeric_snapshot_preserved": true,
+        "remote_messages_or_mutations": 0
+      },
+      "new_execution_from_feedback_note": "No execution launched by this read-only refresh; existing runs were authorized by the current user task and precede this peer-review consumption. Scientific subject matter maps to the stable IDs without inventing causality.",
+      "latest_peer_review_decision": "accepted_successor_provenance_linked_scope_remains_partial",
+      "successor_C1_provenance_resolution": {
+        "finding": "Peer PR1 identifies old C1 report code hash unavailable in the checked committed versions",
+        "old_report": {
+          "path": "docs/cloud-restart-20261020/single-pair-comparison.json",
+          "sha256": "ef43a72786bdb7f187222674d50ecf344a91e70bf20fcd029465f15d5a20284a",
+          "bytes": 70894
+        },
+        "old_claimed_audit_code_sha256": "c61f1ce3639d79a51d653e6456f01cca311218357b5b3aa43a3fa08940a55022",
+        "old_report_source_recovery_status": "Old exact code hash not relabeled or fabricated; historical report remains immutable",
+        "resolution_current_scope": "Existing no-PDE successor with exact committed code is now linked and published as a separate artifact; no new analysis executed in this review",
+        "successor_report": {
+          "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+          "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+          "bytes": 33716
+        },
+        "successor_audit_code_sha256": "76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032",
+        "successor_actual_code_commit": "07d3dfa956b6662a07ff930577240b091065f5d6",
+        "successor_new_PDE": 0,
+        "code_hash_matches_actual_committed_bytes": true,
+        "remaining_limits": "Limited waveform algebra/downstream scaling; spatial convergence and experiment unvalidated. This successor does not recreate the unavailable exact old analysis source."
+      }
     }
-  ]
+  ],
+  "new_repo_issues_and_prs_note": "GitHub issues API includes one OTHER worker review PR1; no standalone issue. PR1 was read as feedback reference, not merged or attached as primary task artifact.",
+  "new_repo_feedback_comments_and_reviews": 0,
+  "refresh_receipt": {
+    "path": "docs/cloud-restart-20261020/feedback-refresh.json",
+    "sha256": "552defeb7cecdec5585f97c2cab3a346519c092d0bf328759c7bd1d9da672f02",
+    "bytes": 10682
+  },
+  "latest_read_only_feedback_refresh": {
+    "checked_at_utc": "2026-10-19T19:32:48.617354+00:00",
+    "PR2_head": "33f0d6ab106ad4fa54d8fd35672092296c615f87",
+    "PR3_head": "7a6b62a9154e2584548e48bef4717b7e666904df",
+    "new_repo_main": "3b5f1861c523a207d02b1a34a5f61c67b88556eb",
+    "new_repo_PR1_head_at_fetch": "8053270779400652da95bd2bca01b7f276b64b8e",
+    "PR2_feedback_sha256": "2f277a9e868879c89687bd040ea4d0bb22adca33596dd3bac6b75aa1322fc384",
+    "PR3_responses_sha256": "25540af092fe30428435e5cb846c840c67542adaf7d24f92bcb800baf3eedd35",
+    "documents_changed_from_previous_review": false,
+    "remote_mutations": 0,
+    "automatic_communication_established": false,
+    "new_repo_PR1_relationship": "Independent peer review branch review/task1-mesh-feedback-20261020; not this implementation branch",
+    "new_peer_review_found": true,
+    "new_feedback_IDs_created": []
+  },
+  "current_environment_run_snapshot": [
+    {
+      "run_id": "cloud-baseline-20261019T185900Z",
+      "status": "complete",
+      "source_commit": "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+      "source_commit_note": "actual prepared code revision; preregistration/result publication commits are separate",
+      "preregistration": {
+        "path": "data-native/cloud-baseline-20261019T185900Z/preregistration.json",
+        "sha256": "f4a4d0540b8d5b82b951abe979aefb06d29659d544af8eee295e0e9f00cd1adc",
+        "bytes": 16838
+      },
+      "execution": {
+        "path": "data-native/cloud-baseline-20261019T185900Z/summary.json",
+        "sha256": "4fac02b440f6403a12965d42e37061a7792b5fc25b2dfa864e8c731521a13e86",
+        "bytes": 6547
+      },
+      "new_PDE_conditions_started": 1,
+      "completed_case_ledger_count": 1,
+      "completed_case_ids": [
+        "baseline-square15-coarse"
+      ],
+      "postprocess_artifacts": [
+        {
+          "case_id": "baseline-square15-coarse",
+          "status": "complete",
+          "condition_count": 3,
+          "summary": {
+            "path": "data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json",
+            "sha256": "117ebca48fc6f62ab20880963714616b8b8037a15d60d125797555afe5b6d4f0",
+            "bytes": 138121
+          },
+          "included_in_batch_completed_case_ledger": true
+        }
+      ],
+      "failed_case": null,
+      "not_run": [],
+      "error": null,
+      "mesh_convergence_validated": false,
+      "experimental_validation": false
+    },
+    {
+      "run_id": "cloud-mesh-c1-20261019T190000Z",
+      "status": "complete",
+      "source_commit": "38f005ecefc2c432cd6424a06f599f93682cc202",
+      "source_commit_note": "actual prepared code revision; preregistration/result publication commits are separate",
+      "preregistration": {
+        "path": "data-native/cloud-mesh-c1-20261019T190000Z/preregistration.json",
+        "sha256": "a5bff7509ba3e881f8885729453df4d0f88bbfc2e08908b93ee7c843d3f5b9b3",
+        "bytes": 40633
+      },
+      "execution": {
+        "path": "data-native/cloud-mesh-c1-20261019T190000Z/summary.json",
+        "sha256": "b77a11ff3a9d529c1b9a7d8bad872f79086117e23c97fd09a0985f558315fca9",
+        "bytes": 24675
+      },
+      "new_PDE_conditions_started": 4,
+      "completed_case_ledger_count": 4,
+      "completed_case_ids": [
+        "baseline-square15-xy80",
+        "baseline-square15-sc4",
+        "baseline-square15-bulk",
+        "baseline-square15-C1pair0-xy80"
+      ],
+      "postprocess_artifacts": [
+        {
+          "case_id": "baseline-square15-C1pair0-xy80",
+          "status": "complete",
+          "condition_count": 6,
+          "summary": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/summary.json",
+            "sha256": "96b798cf85cdf0218a918a584caba4d01b489c2614f954bd215af17285945950",
+            "bytes": 234068
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "baseline-square15-bulk",
+          "status": "complete",
+          "condition_count": 3,
+          "summary": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-bulk/summary.json",
+            "sha256": "90a7e47956ca06b33da782d68c5706027bfea145f9c88f7519537569d6206dd3",
+            "bytes": 141089
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "baseline-square15-sc4",
+          "status": "complete",
+          "condition_count": 3,
+          "summary": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json",
+            "sha256": "7d17d268324fc81544a545058b7482c17dbd458b71bde6036645c23ccc252b4d",
+            "bytes": 138935
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "baseline-square15-xy80",
+          "status": "complete",
+          "condition_count": 3,
+          "summary": {
+            "path": "data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+            "sha256": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+            "bytes": 138849
+          },
+          "included_in_batch_completed_case_ledger": true
+        }
+      ],
+      "failed_case": null,
+      "not_run": [],
+      "error": null,
+      "mesh_convergence_validated": false,
+      "experimental_validation": false
+    },
+    {
+      "run_id": "cloud-grouped-20261019T191500Z",
+      "status": "complete",
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "source_commit_note": "actual prepared code revision; preregistration/result publication commits are separate",
+      "preregistration": {
+        "path": "data-native/cloud-grouped-20261019T191500Z/preregistration.json",
+        "sha256": "b98e591db6fd85af959cd8a19e4c4fec63027a4ca05c411bbab3a8776c2cf0aa",
+        "bytes": 79720
+      },
+      "execution": {
+        "path": "data-native/cloud-grouped-20261019T191500Z/summary.json",
+        "sha256": "1137a9a2c8d8bfa05ceac735795c1c1a2a9fce360fa85ccedb00577ba0487fdd",
+        "bytes": 31938
+      },
+      "new_PDE_conditions_started": 5,
+      "completed_case_ledger_count": 5,
+      "completed_case_ids": [
+        "grouped-historical-square15-xy40",
+        "grouped-strip225-gap1-p04-xy40",
+        "grouped-strip225-gap1-p08-xy40",
+        "grouped-strip225-gap1-p12-xy40",
+        "grouped-strip225-gap1-p16-xy40"
+      ],
+      "postprocess_artifacts": [
+        {
+          "case_id": "grouped-historical-square15-xy40",
+          "status": "complete",
+          "condition_count": 1,
+          "summary": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-historical-square15-xy40/summary.json",
+            "sha256": "6e17c2b41b71948cae8256090f0139be0e799ce6b8bbb395b5d2c487cbf9f986",
+            "bytes": 77182
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "grouped-strip225-gap1-p04-xy40",
+          "status": "complete",
+          "condition_count": 1,
+          "summary": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p04-xy40/summary.json",
+            "sha256": "f6f3ac822906164c2ed6ea0472a655ef6aa8d126da49bd55dcf8ba4cd2f0b8d0",
+            "bytes": 77107
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "grouped-strip225-gap1-p08-xy40",
+          "status": "complete",
+          "condition_count": 1,
+          "summary": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p08-xy40/summary.json",
+            "sha256": "112f19243ede49c03356a7dbe5877b65dcdde2bfe44816572d53f03d8ab150fa",
+            "bytes": 79713
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "grouped-strip225-gap1-p12-xy40",
+          "status": "complete",
+          "condition_count": 1,
+          "summary": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p12-xy40/summary.json",
+            "sha256": "784aafefce2dda641e449b867202dee9da42db421e7d4f93ddb967b6919e03d2",
+            "bytes": 81824
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "grouped-strip225-gap1-p16-xy40",
+          "status": "complete",
+          "condition_count": 1,
+          "summary": {
+            "path": "data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p16-xy40/summary.json",
+            "sha256": "42c5c9e1b716fdf1fd68ad6ae0c22b2e13a4d422932f6e5b5a84832ae1ba525e",
+            "bytes": 84449
+          },
+          "included_in_batch_completed_case_ledger": true
+        }
+      ],
+      "failed_case": null,
+      "not_run": [],
+      "error": null,
+      "mesh_convergence_validated": false,
+      "experimental_validation": false
+    },
+    {
+      "run_id": "cloud-reference-20261019T192000Z",
+      "status": "error",
+      "source_commit": "66901b734d0fdcb3d04734b19fea8e16f55bca87",
+      "source_commit_note": "actual prepared code revision; preregistration/result publication commits are separate",
+      "preregistration": {
+        "path": "data-native/cloud-reference-20261019T192000Z/preregistration.json",
+        "sha256": "678fe5ec33666cbe62dde9ab82ac673672267ac5158e99aa7e938dd89d82a8cc",
+        "bytes": 43609
+      },
+      "execution": {
+        "path": "data-native/cloud-reference-20261019T192000Z/summary.json",
+        "sha256": "f11cd6fadc0aa86ba8bbc848328b997ae2306de17f5e952626aae1daeaa800ba",
+        "bytes": 7192
+      },
+      "new_PDE_conditions_started": 2,
+      "completed_case_ledger_count": 1,
+      "completed_case_ids": [
+        "baseline-square15-xy100"
+      ],
+      "postprocess_artifacts": [
+        {
+          "case_id": "baseline-square15-xy100",
+          "status": "complete",
+          "condition_count": 3,
+          "summary": {
+            "path": "data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json",
+            "sha256": "e1315777c6345be6ceff706253361fa196ebdbc2e3cc319a13282bb9ea46ab93",
+            "bytes": 138998
+          },
+          "included_in_batch_completed_case_ledger": true
+        },
+        {
+          "case_id": "best1-square15-xy120",
+          "status": "complete",
+          "condition_count": 3,
+          "summary": {
+            "path": "data-native/cloud-reference-20261019T192000Z/postprocess/best1-square15-xy120/summary.json",
+            "sha256": "e8b183e6f23d4e472ff12133f9736c2b5dd844cfc0bf8aa300d6637780e55b4e",
+            "bytes": 139206
+          },
+          "included_in_batch_completed_case_ledger": false
+        }
+      ],
+      "failed_case": "best1-square15-xy120",
+      "not_run": [
+        "best1-square15-C1pair0-xy120"
+      ],
+      "error": "Historical Best1 mismatch; C1 not run before investigation",
+      "mesh_convergence_validated": false,
+      "experimental_validation": false
+    }
+  ],
+  "current_exactBest1_reproduction_hold": {
+    "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+    "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+    "bytes": 16265,
+    "scope": "Original exactreference gate failed;39scalarspass,6/8matrixfilegatepass; do not relabel",
+    "status": "failed",
+    "scalar_passed": 39,
+    "scalar_count": 39,
+    "matrix_file_passed": 6,
+    "matrix_file_count": 8,
+    "failed_matrix_files": [
+      "source-3000.bin",
+      "loss-3000.bin"
+    ],
+    "max_matrix_normwise_relative_error": 2.3477601938991445e-09,
+    "original_entrywise_gate_retained": true,
+    "investigation_status": "root investigating nearzero entrywise mismatch; no new tolerance or pass fabricated"
+  },
+  "all_experimental_validation": false,
+  "source_history_preserved": true,
+  "full_local_remote_receipt": {
+    "path": "runtime/audits/feedback-refresh-20261019T193248Z/receipt.json",
+    "sha256": "bd894f98c956a0baeabce9f73ad6aed26b314f72305533c88d68d33953395536",
+    "bytes": 9174
+  },
+  "latest_peer_review": {
+    "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+    "pull_request": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+    "branch": "review/task1-mesh-feedback-20261020",
+    "source_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+    "reviewed_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+    "reviewed_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+    "changed_files": 1,
+    "changed_file_scope": "One review Markdown file only; no compute code or frozen source modified",
+    "reviewer_compute_snapshot": "07d3dfa956b6662a07ff930577240b091065f5d6",
+    "stable_feedback_ids": [
+      "T1-F001",
+      "T1-F002",
+      "T1-F003",
+      "T1-F004",
+      "T1-F005",
+      "T1-F006",
+      "T1-F007",
+      "T1-F008",
+      "T1-F009"
+    ],
+    "new_feedback_ids": [],
+    "new_implementation_execution_from_this_readonly_review": false,
+    "adoption_commit_for_latest_peer_review": null,
+    "adoption_commit_status": "Coordinator commit for this actual decision update pending; no self-reference fabricated",
+    "old_numeric_snapshot_preserved": true,
+    "remote_messages_or_mutations": 0
+  },
+  "C1_analysis_provenance_resolution": {
+    "finding": "Peer PR1 identifies old C1 report code hash unavailable in the checked committed versions",
+    "old_report": {
+      "path": "docs/cloud-restart-20261020/single-pair-comparison.json",
+      "sha256": "ef43a72786bdb7f187222674d50ecf344a91e70bf20fcd029465f15d5a20284a",
+      "bytes": 70894
+    },
+    "old_claimed_audit_code_sha256": "c61f1ce3639d79a51d653e6456f01cca311218357b5b3aa43a3fa08940a55022",
+    "old_report_source_recovery_status": "Old exact code hash not relabeled or fabricated; historical report remains immutable",
+    "resolution_current_scope": "Existing no-PDE successor with exact committed code is now linked and published as a separate artifact; no new analysis executed in this review",
+    "successor_report": {
+      "path": "docs/cloud-restart-20261020/single-pair-full-skin-comparison.json",
+      "sha256": "3a8b73539d6f4f4a3e0539e8b8dbeb155cb0c063225b28eee922d377bade97d8",
+      "bytes": 33716
+    },
+    "successor_audit_code_sha256": "76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032",
+    "successor_actual_code_commit": "07d3dfa956b6662a07ff930577240b091065f5d6",
+    "successor_new_PDE": 0,
+    "code_hash_matches_actual_committed_bytes": true,
+    "remaining_limits": "Limited waveform algebra/downstream scaling; spatial convergence and experiment unvalidated. This successor does not recreate the unavailable exact old analysis source."
+  },
+  "running_followup_snapshot": {
+    "observed_at_utc": "2026-10-19T19:37:08.322635+00:00",
+    "run_id": "cloud-coupled-20261019T193200Z",
+    "status": "running",
+    "source_commit": "73f4ab094bd337ce64611863bc0d8fda38de628a",
+    "current_case": "baseline-square15-coupled-xy100-sc8-bulk",
+    "phase": "solving",
+    "completed_case_ledger_count": 0,
+    "new_PDE_conditions_started": 1,
+    "preregistration_path": "data-native/cloud-coupled-20261019T193200Z/preregistration.json",
+    "preregistration_sha256": "19fb62260a3a2b2c49e4029622af9162bf5e98ad6257e6b657640267432031db",
+    "judgment": "Running registered combined-grid followup; no complete or convergence pass inferred; does not change D error or not-run C1",
+    "execution_from_latest_peer_review": false
+  },
+  "run_snapshot_scope": "A–D selected result snapshots plus a separate current running followup observation. Absence from completed-case ledger never means missing postprocessing arrays are zero or complete."
 }
