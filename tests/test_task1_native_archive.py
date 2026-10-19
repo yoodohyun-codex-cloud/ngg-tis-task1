@@ -3,6 +3,7 @@ import gzip
 import importlib.util
 import io
 import json
+import os
 from pathlib import Path
 import struct
 import tarfile
@@ -227,6 +228,99 @@ class GroupedArchiveTests(ArchiveFixture, unittest.TestCase):
         (basis/'source-3000.bin').write_bytes(b'\0'*(16*16*16))
         with self.assertRaisesRegex(ValueError, 'exceeds declared shape'):
             archive.decode_native(self.run)
+
+
+class TerminalFailureArchiveTests(ArchiveFixture, unittest.TestCase):
+    def make_failure(self, status='error'):
+        (self.run/'controller.json').write_text(json.dumps(dict(status=status, phase='stopped', pid=None, java_pid=None)))
+        (self.run/'summary.json').write_text(json.dumps(dict(status=status,
+            cases=[dict(id='fixture', status='complete')], failed_case='partial', not_run=['not-run'])))
+        (self.run/'preregistration.json').write_text(json.dumps(dict(source_commit='a'*40,
+            cases=[dict(id=value) for value in ('fixture', 'partial', 'not-run', 'missing-inputs')])))
+        partial = self.run/'bases/partial'
+        partial.mkdir()
+        (partial/'partial-field.bin').write_bytes(b'preserve incomplete raw bytes')
+        missing = self.run/'bases/missing-inputs'
+        missing.mkdir()
+        (missing/'BASIS_COMPLETE').write_bytes(b'')
+        (self.run/'failure.json').write_text(json.dumps(dict(status=status,
+            reason='reference comparison gate failed after native calculation; C1 not run')))
+        (self.run/'failure.log').write_bytes(b'original failure and diagnostic evidence\n')
+
+    def test_terminal_error_needs_opt_in_and_restores_status_evidence_and_skips(self):
+        self.make_failure()
+        failure_bytes = (self.run/'failure.json').read_bytes()
+        with self.assertRaisesRegex(ValueError, 'Only completed'):
+            archive.pack(self.run, self.output)
+        self.assertFalse(self.output.exists())
+        packed = archive.pack(self.run, self.output, include_terminal_failure=True)
+        self.assertEqual(packed['original_terminal_status'], 'error')
+        self.assertTrue(packed['terminal_failure_included'])
+        manifest = archive.read(Path(str(self.output)+'.manifest.json'))
+        self.assertEqual(manifest['original_terminal_status'], 'error')
+        self.assertFalse(manifest['scientific_validation_claimed'])
+        self.assertIn('failure.json', manifest['failure_evidence_files'])
+        self.assertIn('failure.log', manifest['failure_evidence_files'])
+        restored = archive.restore(self.output, packed['archive_sha256'], self.root/'clean')
+        clean_run = self.root/'clean/cloud-fixture'
+        self.assertEqual(archive.read(clean_run/'controller.json')['status'], 'error')
+        self.assertEqual(archive.read(clean_run/'summary.json')['status'], 'error')
+        self.assertEqual((clean_run/'failure.json').read_bytes(), failure_bytes)
+        self.assertEqual((clean_run/'failure.log').read_bytes(), b'original failure and diagnostic evidence\n')
+        self.assertEqual((clean_run/'bases/partial/partial-field.bin').read_bytes(), b'preserve incomplete raw bytes')
+        decode = restored['native_array_decode_verification']
+        self.assertEqual(decode['status'], 'available_complete_basis_storage_decode_passed')
+        self.assertEqual(decode['original_terminal_status'], 'error')
+        self.assertTrue(decode['original_failure_status_preserved'])
+        self.assertFalse(decode['scientific_validation_claimed'])
+        self.assertEqual(len(decode['arrays']), 20)
+        self.assertEqual([row['case_id'] for row in decode['bases']], ['fixture'])
+        skipped = {row['case_id']: row for row in decode['skipped_cases']}
+        self.assertEqual(skipped['not-run']['reason'], 'preregistered_not_run')
+        self.assertEqual(skipped['partial']['reason'], 'incomplete_raw_missing_BASIS_COMPLETE')
+        self.assertEqual(skipped['missing-inputs']['reason'], 'incomplete_raw_missing_required_files')
+        self.assertIn('grid.csv.gz', skipped['missing-inputs']['missing_files'])
+        self.assertEqual(archive.read(self.run/'controller.json')['status'], 'error')
+        self.assertFalse(restored['scientific_numerical_reproduction'])
+
+    def test_terminal_active_phase_and_active_pid_are_rejected(self):
+        self.make_failure()
+        controller = archive.read(self.run/'controller.json')
+        controller['phase'] = 'postprocessing'
+        (self.run/'controller.json').write_text(json.dumps(controller))
+        with self.assertRaisesRegex(ValueError, 'phase must be stopped'):
+            archive.pack(self.run, self.output, include_terminal_failure=True)
+        controller.update(phase='stopped', pid=os.getpid())
+        (self.run/'controller.json').write_text(json.dumps(controller))
+        with self.assertRaisesRegex(ValueError, 'active recorded PID'):
+            archive.pack(self.run, self.output, include_terminal_failure=True)
+        self.assertFalse(self.output.exists())
+
+    def test_only_matching_explicit_terminal_failure_statuses_are_accepted(self):
+        self.make_failure('resource_shortage')
+        result = archive.inventory(self.run, include_terminal_failure=True)
+        self.assertEqual(result['original_terminal_status'], 'resource_shortage')
+        controller = archive.read(self.run/'controller.json')
+        controller['status'] = 'error'
+        (self.run/'controller.json').write_text(json.dumps(controller))
+        with self.assertRaisesRegex(ValueError, 'statuses must match'):
+            archive.inventory(self.run, include_terminal_failure=True)
+        controller['status'] = 'running'
+        (self.run/'controller.json').write_text(json.dumps(controller))
+        (self.run/'summary.json').write_text('{"status":"running"}')
+        with self.assertRaisesRegex(ValueError, 'statuses must match'):
+            archive.inventory(self.run, include_terminal_failure=True)
+
+    def test_terminal_no_complete_basis_is_not_labeled_decode_passed(self):
+        self.make_failure('stopped')
+        (self.run/'bases/fixture/BASIS_COMPLETE').unlink()
+        packed = archive.pack(self.run, self.output, include_terminal_failure=True)
+        restored = archive.restore(self.output, packed['archive_sha256'], self.root/'clean')
+        decode = restored['native_array_decode_verification']
+        self.assertEqual(decode['status'], 'no_complete_native_basis_available')
+        self.assertEqual(decode['original_terminal_status'], 'stopped')
+        self.assertEqual(decode['arrays'], [])
+        self.assertFalse(restored['scientific_numerical_reproduction'])
 
 
 if __name__ == '__main__':

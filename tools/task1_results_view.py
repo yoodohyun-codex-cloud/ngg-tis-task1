@@ -109,11 +109,76 @@ def full_skin_scale(contact_scales, skin, reference_skin):
         candidate_audit=skin['audit'], reference_audit=reference_skin['audit'])
 
 
+def case_eligibility(path, summary=None):
+    """Postprocessing alone never promotes a controller-held calculation."""
+    path = Path(path).resolve()
+    summary = read(path) if summary is None else summary
+    run, reasons = path.parents[2], []
+    case_id = summary.get('id', path.parent.name)
+    record_path = run/'cases'/(case_id+'.json')
+    record = read(record_path) if record_path.is_file() else {}
+    digest = sha(path)
+    if summary.get('status') != 'complete':
+        reasons.append('postprocess_not_complete')
+    if record.get('status') != 'complete':
+        reasons.append('case_record_missing_or_not_complete')
+    if record.get('id') != case_id:
+        reasons.append('case_record_id_unverified')
+    if record.get('postprocess_sha256') != digest:
+        reasons.append('case_record_postprocess_sha_unverified')
+    if not record.get('postprocess_path') or Path(record['postprocess_path']).resolve() != path:
+        reasons.append('case_record_postprocess_path_unverified')
+    if record.get('config_sha256') != summary.get('mesh_metadata', {}).get('config_sha256'):
+        reasons.append('case_record_config_sha_unverified')
+    reference_path, reference = run/'reference-comparison.json', None
+    if reference_path.is_file():
+        candidate_reference = read(reference_path)
+        if candidate_reference.get('case_id') == case_id:
+            reference = dict(path=str(reference_path), SHA256=sha(reference_path),
+                status=candidate_reference.get('status'),
+                scalar_passed=sum(row.get('passed') is True for row in candidate_reference.get('scalar_comparisons', [])),
+                scalar_count=len(candidate_reference.get('scalar_comparisons', [])),
+                circuit_passed=sum(row.get('passed') is True for row in candidate_reference.get('circuit_comparisons', [])),
+                circuit_count=len(candidate_reference.get('circuit_comparisons', [])))
+            if candidate_reference.get('status') != 'passed':
+                reasons.append('historical_reference_comparison_not_passed')
+    # Neither a later spatial/waveform audit nor a continued batch changes this
+    # original case's eligibility.  No inferred or user-interface promotion.
+    return dict(run_id=run.name, case_id=case_id, eligible=not reasons, reasons=reasons,
+        postprocess_status=summary.get('status'), postprocess_path=str(path), postprocess_sha256=digest,
+        case_record_path=str(record_path), case_record_status=record.get('status', 'missing'),
+        case_record_sha256=sha(record_path) if record_path.is_file() else None,
+        raw_basis_complete_marker_present=(run/'bases'/case_id/'BASIS_COMPLETE').is_file(),
+        raw_marker_scope='availability marker only; not backup/hash/numerical validation',
+        reference_comparison=reference, acceptance_scope='controller-promoted completed calculation only; not mesh or experimental validation')
+
+
+def batch_states(runs):
+    result = []
+    for run in sorted(set(runs)):
+        summary_path, controller_path = run/'summary.json', run/'controller.json'
+        summary = read(summary_path) if summary_path.is_file() else {}
+        controller = read(controller_path) if controller_path.is_file() else {}
+        result.append(dict(run_id=run.name, status=summary.get('status', controller.get('status', 'unverified')),
+            summary_path=str(summary_path) if summary_path.is_file() else None,
+            summary_sha256=sha(summary_path) if summary_path.is_file() else None,
+            controller_status=controller.get('status', 'unavailable'), phase=controller.get('phase'),
+            updated_utc=controller.get('updated_utc', summary.get('finished_utc')),
+            failed_case=summary.get('failed_case'), error_type=summary.get('error_type'), error=summary.get('error'),
+            not_run=summary.get('not_run', []), partial_evidence_preserved=summary.get('partial_evidence_preserved'),
+            automatic_retry=summary.get('automatic_retry'),
+            completed_case_ids=[case['id'] for case in summary.get('cases', []) if case.get('status') == 'complete'],
+            wall_seconds=summary.get('wall_seconds'),
+            new_PDE=summary.get('new_PDE_conditions', summary.get('new_PDE'))))
+    return result
+
+
 def load_case(path):
     path = Path(path).resolve()
     summary = read(path)
-    if summary.get('status') != 'complete':
-        raise ValueError('Dashboard requires completed result: '+str(path))
+    eligibility = case_eligibility(path, summary)
+    if not eligibility['eligible']:
+        raise ValueError('Dashboard scientific comparison excludes held result: '+json.dumps(eligibility))
     run = path.parents[2]
     registration = read(run/'preregistration.json')
     matches = [case for case in registration['cases'] if case['id'] == summary['id']]
@@ -167,6 +232,7 @@ def load_case(path):
                         audit=dict(path=str(audit_path), SHA256=sha(audit_path), summary_sha256=sha(path),
                             verification_scope='matched summary/config/registration/source SHA and completed input-preserving audit; not mesh/experimental validation'))
     return dict(path=path, summary=summary, run=run, registration=registration, case=case,
+        eligibility=eligibility,
         circuit=circuit, config=config, signature=comparison_signature(summary, config),
         conditions=conditions, probes=probe_conditions, spatial=spatial, bulk_skin_J=bulk_skin_j,
         full_skin=full_skin, losses=losses, audit_paths=audit_paths,
@@ -216,6 +282,7 @@ def row_data(item, condition, reference=None, reference_item=None):
         physical_contact_model_sha256=item['physical_model_version'],
         summary_sha256=sha(item['path']), input_manifest_sha256=item['summary']['input_manifest_sha256'],
         postprocessor_sha256=item['summary']['postprocessor_sha256'],
+        case_completion_evidence=item['eligibility'],
         circuit=item['circuit'], mesh=item['summary']['mesh_metadata'],
         status=dict(calculation='complete', conservation=('passed' if all(gate['status'] == 'passed'
             for gate in item['summary']['validation_gate_status'].values()) else 'failed'),
@@ -402,6 +469,29 @@ def map_archive(item, condition):
     return path
 
 
+def map_row_label(item):
+    case, pads = item['case'], item['circuit']['n_pads']
+    if 'best1' in (case['id']+' '+str(case.get('design_id', ''))).lower():
+        return f'{pads} pads Best1'
+    if case.get('control') == 'original_four_square':
+        return '4 square grouped check'
+    if case.get('design_id') == 'baseline-square15':
+        return '4 square benchmark'
+    if case.get('control') == 'new_four_rectangle_geometry_control':
+        return '4 rectangle control'
+    if case.get('control') == 'physical_strip_count':
+        return f'{pads} strips'
+    return f'{pads} pads candidate'
+
+
+def figures_equal_raw(records, mode):
+    """Reuse raw plots only when every same-cohort row remains represented."""
+    return mode != 'raw' and bool(records) and all(
+        row['values'].get(mode) is not None and
+        math.isclose(row['values'][mode]['amplitude_scale'], 1., rel_tol=0., abs_tol=1e-12)
+        for _, _, row in records)
+
+
 def maps_figure(records, mode, metric, directory, group_name):
     plt, np = plotting()
     from matplotlib.patches import Circle, Rectangle
@@ -440,8 +530,8 @@ def maps_figure(records, mode, metric, directory, group_name):
             ax.axhline(boundary, color='white', alpha=.7, lw=.7)
         ax.add_patch(Rectangle((-5, 15), 10, 5, fill=False, edgecolor='white', lw=1.2))
         ax.set(title='XZ; Y=0', xlabel='X [mm]', ylabel='Depth +z [mm]', xlim=(-25, 25), ylim=(25.1, 0))
-        axes[r, 0].text(-.42, .5, f"{item['circuit']['n_pads']} pads\n{condition['id']}",
-            transform=axes[r, 0].transAxes, rotation=90, va='center', ha='center', fontsize=8)
+        axes[r, 0].text(-.42, .5, map_row_label(item),
+            transform=axes[r, 0].transAxes, rotation=90, va='center', ha='center', fontsize=9)
     metric_label = {'square_maxTIS_V_m': 'Fundamental sampled-direction maxTIS',
         'square_fixedTIS_V_m': 'Fundamental fixed-direction TIS',
         'square_RMS_V_m': 'All-harmonic vector E RMS'}[metric]
@@ -449,6 +539,77 @@ def maps_figure(records, mode, metric, directory, group_name):
     figure.suptitle(f'{group_name} • {mode} • common linear range 0–{maximum:.4g} V/cm\n'
         'Display-only −grad(native φ); blank samples unsupported; boundary peaks do not establish focus', fontsize=12)
     return save_figure(figure, directory/(group_name+'-'+mode+'-'+metric+'.png'), plt)
+
+
+def tis_visibility_figure(records, mode, directory, group_name):
+    """Display supplements only; fixed ROI scale never changes numerical scores."""
+    plt, np = plotting()
+    from matplotlib.colors import LogNorm, Normalize
+    from matplotlib.patches import Circle, Rectangle
+    available, maximum = [], 0.
+    for item, condition, row in records:
+        value = row['values'][mode]
+        path = map_archive(item, condition)
+        if value is None or path is None:
+            continue
+        with np.load(path, allow_pickle=False) as archive:
+            values = archive['square_maxTIS_V_m']*.01*value['amplitude_scale']
+            xy_shape, xz_shape = tuple(archive['xy_shape']), tuple(archive['xz_shape'])
+            axis, z = archive['xy_axis_mm'].copy(), archive['xz_z_mm'].copy()
+        finite = values[np.isfinite(values)]
+        if len(finite):
+            maximum = max(maximum, float(finite.max()))
+        available.append((item, values, xy_shape, xz_shape, axis, z))
+    if not available:
+        return None
+    floor = 1e-4
+    log_norm = LogNorm(vmin=floor, vmax=max(maximum, floor*10), clip=True)
+    roi_norm = Normalize(vmin=0., vmax=.1, clip=True)
+    figure, axes = plt.subplots(len(available), 5, figsize=(16.5, 2.75*len(available)),
+        squeeze=False, layout='constrained')
+    for r, (item, values, xy_shape, xz_shape, axis, z) in enumerate(available):
+        count = math.prod(xy_shape)
+        xy, xz = values[:count].reshape(xy_shape), values[count:].reshape(xz_shape)
+        for col, plane in enumerate((2, 3)):
+            ax = axes[r, col]
+            log_image = ax.pcolormesh(axis, axis, np.maximum(xy[plane], floor),
+                shading='nearest', cmap='viridis', norm=log_norm)
+            ax.add_patch(Circle((0, 0), 5, fill=False, color='white', lw=1.1))
+            ax.set(title=f'Log XY, depth {15 if plane == 2 else 20} mm',
+                xlabel='X [mm]', ylabel='Y [mm]', xlim=(-25, 25), ylim=(-25, 25))
+            ax.set_aspect('equal')
+        ax = axes[r, 2]
+        ax.pcolormesh(axis, z, np.maximum(xz, floor), shading='nearest', cmap='viridis', norm=log_norm)
+        for boundary in (.1, 5.1, 10.1):
+            ax.axhline(boundary, color='white', alpha=.7, lw=.7)
+        ax.add_patch(Rectangle((-5, 15), 10, 5, fill=False, edgecolor='white', lw=1.1))
+        ax.set(title='Log XZ, Y=0', xlabel='X [mm]', ylabel='Depth +z [mm]',
+            xlim=(-25, 25), ylim=(25.1, 0))
+        use = np.flatnonzero(abs(axis) <= 5.)
+        small_axis = axis[use]
+        xx, yy = np.meshgrid(small_axis, small_axis)
+        for col, plane in [(3, 2), (4, 3)]:
+            data = xy[plane][np.ix_(use, use)].copy()
+            data[xx**2+yy**2 > 25.] = np.nan
+            ax = axes[r, col]
+            roi_image = ax.pcolormesh(small_axis, small_axis, data, shading='nearest',
+                cmap='viridis', norm=roi_norm)
+            ax.add_patch(Circle((0, 0), 5, fill=False, color='#555555', lw=.9))
+            ax.set(title=f'ROI XY, depth {15 if plane == 2 else 20} mm',
+                xlabel='X [mm]', ylabel='Y [mm]', xlim=(-5, 5), ylim=(-5, 5),
+                xticks=(-5, 0, 5), yticks=(-5, 0, 5))
+            ax.set_aspect('equal')
+        axes[r, 0].text(-.4, .5, map_row_label(item), transform=axes[r, 0].transAxes,
+            rotation=90, va='center', ha='center', fontsize=9)
+    figure.colorbar(log_image, ax=axes[:, :3].ravel().tolist(), label='Supplementary log TIS [V/cm]',
+        shrink=.75, extend='min')
+    figure.colorbar(roi_image, ax=axes[:, 3:].ravel().tolist(), label='ROI linear TIS [V/cm]; fixed 0–0.1',
+        shrink=.75, extend='max')
+    figure.suptitle(f'{group_name} • {mode} • fundamental sampled-direction maxTIS visibility supplement\n'
+        f'Log: ≤{floor:g} clipped to floor; shared maximum {log_norm.vmax:.4g} V/cm. '
+        'ROI: fixed 0–0.1 V/cm; values >0.1 saturated.\n'
+        'Display clipping only, no activation/safety cutoff. Blank samples unsupported; primary linear map and native-volume scores retained.', fontsize=10)
+    return save_figure(figure, directory/(group_name+'-'+mode+'-TIS-log-and-fixed-ROI.png'), plt)
 
 
 def image_tag(path):
@@ -464,7 +625,12 @@ def table(headers, rows):
 
 def build(args, directory):
     paths = args.summary or sorted((ROOT/'data-native').glob('*/postprocess/*/summary.json'))
-    items = [load_case(path) for path in paths]
+    decisions = [case_eligibility(path) for path in paths]
+    held = [decision for decision in decisions if not decision['eligible']]
+    items = [load_case(decision['postprocess_path']) for decision in decisions if decision['eligible']]
+    runs = {Path(decision['postprocess_path']).parents[2] for decision in decisions}
+    runs.update(path.parent for path in (ROOT/'data-native').glob('*/preregistration.json'))
+    states = batch_states(runs)
     if not items:
         raise ValueError('At least one completed registered four-pad baseline required')
     baseline_path = (args.baseline or ROOT/'data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json').resolve()
@@ -499,10 +665,16 @@ def build(args, directory):
             composite_full_skin='distinct extra cap: legacy contact cap plus SC+dermis volume total-vector Jmax/P95 and SC+dermis loss; unavailable unless both matched completed audits exist',
             caps='numerical four-pad reference values, not human safety limits',
             contact='PBS-minus-Rs area-specific surrogate, not validated real skin contact',
+            display_supplements=dict(enabled=bool(args.figures and args.supplementary_maps),
+                shared_log_floor_V_cm=.0001, shared_log_upper='maximum over all available display samples in same cohort and normalization',
+                ROI_depths_mm=[15, 20], ROI_radius_mm=5, fixed_ROI_linear_limits_V_cm=[0, .1],
+                clipping='color saturation only; stored values/metrics unchanged; not activation or safety cutoffs'),
             actual_instrument='unavailable until differential input impedance, capacitance, bandwidth and calibration are measured'),
         conditions=[row for _, _, row in records], missing_pad_counts=[n for n in (8, 12, 16)
             if not any(row['n_pads'] == n and row['n_outputs'] == 2 for _, _, row in records)],
         pure_sine_C1_matches=singles,
+        batch_states=states, held_calculation_evidence=held,
+        eligibility_policy='require original complete case record with exact postprocess/config SHA and path; failed reference comparison stays held; later analysis audits never implicitly promote',
         new_PDE=0, new_research_postprocess=0, experiment_validated=False)
     (directory/'comparison.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n')
     flat = []
@@ -524,6 +696,41 @@ def build(args, directory):
         'ROI mean <b>'+number(b['ROI_mean_V_cm'])+'</b> V/cm · P10 <b>'+number(b['ROI_P10_V_cm'])+
         '</b> V/cm · global max '+number(b['global_max_V_cm'])+' V/cm. '+
         '계산 완료 / 전류·전력 보존 검사 '+esc(fixed['status']['conservation'])+' / 수렴 미확립 / 실험 미검증.</p></section>')
+    sections.append('<h2>배치 실행 상태와 보류 증거</h2><p>아래 상태는 저장된 배치·controller 기록이며 시각을 함께 표시합니다. '
+        '한 배치가 오류로 끝나도 그 전에 case 완료 기록과 결과 SHA가 확정된 조건은 표시할 수 있습니다. '
+        '원시 해석·후처리가 끝났더라도 controller가 case 완료로 승격하지 않은 조건은 비교 표·지도·프로브·C1 일치 분석에서 제외합니다. '
+        '나중에 추가한 분석 audit만으로 원래 보류 조건을 완료로 바꾸지 않습니다.</p>')
+    state_rows = []
+    for state in states:
+        evidence = local_link(state['summary_path'], args.output, 'batch summary') if state['summary_path'] else '미생성'
+        state_rows.append([esc(state['run_id']), '<b>'+esc(state['status'])+'</b>',
+            esc(state['controller_status']), esc(state['failed_case'] or '—'),
+            esc(', '.join(state['not_run']) or '—'), esc(state['updated_utc'] or '미상'), evidence])
+    sections.append(table(['run ID', '배치 상태', 'controller', '실패 case', '이 배치에서 미실행',
+        '기록 시각 UTC', '증거'], state_rows))
+    for state in states:
+        if state['error'] or state['status'] in ('error', 'failed', 'resource_exhausted'):
+            sections.append('<div class="notice"><b>'+esc(state['run_id'])+' · '+esc(state['status'])+
+                '</b><p>'+esc(state['error'] or state['error_type'] or '실패 사유는 배치 기록 참조')+'</p><pre>'+
+                esc(json.dumps(state, ensure_ascii=False, indent=2))+'</pre></div>')
+    if held:
+        sections.append('<h3>계산 증거는 존재하지만 채택하지 않은 조건</h3><p>이 목록은 계산·후처리 파일의 존재와 '
+            '검증 채택 상태를 구분합니다. 과거 보고서의 최신 후보가 복원되었거나 검증을 통과했다고 주장하지 않습니다.</p>')
+        held_rows = []
+        for decision in held:
+            reference = decision['reference_comparison']
+            reference_text = ('비교 '+str(reference['status'])+f"; scalar {reference['scalar_passed']}/{reference['scalar_count']} passed; "
+                f"circuit {reference['circuit_passed']}/{reference['circuit_count']} passed") if reference else '원본 비교 기록 없음'
+            held_rows.append([esc(decision['case_id']), esc(decision['run_id']),
+                '존재 (완료 marker만 확인)' if decision['raw_basis_complete_marker_present'] else '완료 marker 미확인',
+                esc(decision['postprocess_status']), esc(decision['case_record_status']), esc(reference_text),
+                esc(', '.join(decision['reasons'])), local_link(decision['postprocess_path'], args.output, '보류 후처리 증거')])
+        sections.append(table(['보류 case', 'run ID', '원시 기저', '후처리 상태', 'case 승격 상태',
+            '원본 비교 결과', '보류 사유', '증거'], held_rows))
+        for decision in held:
+            if decision['reference_comparison']:
+                sections.append('<p>'+local_link(decision['reference_comparison']['path'], args.output,
+                    decision['case_id']+' reference-comparison.json')+'</p>')
     sections.append('<h2>같은 격자와 물성에서 비교</h2><p>표의 maxTIS는 기본 두 carrier의 방향별 최대 변조 폭입니다. '
         'square_3h의 전체 합성파 Vpp·RMS 및 기본파 envelope는 프로브 자료에서 별도로 제공합니다. '
         '동일 총전력은 50 Ω 출력저항 손실까지 포함한 source power를 맞춥니다. '
@@ -543,6 +750,9 @@ def build(args, directory):
         mesh = group[0][2]['mesh']
         sections.append('<section><h3>'+esc(group_name)+f" · XY {mesh['h_xy_mm']} mm · SC {mesh['sc_cells']} · bulk "+
             esc(mesh['bulk_layer_counts'])+'</h3>')
+        sections.append(table(['지도 행 이름', '전체 candidate ID', 'run ID'],
+            [[esc(map_row_label(item)), esc(condition['id']), esc(item['run'].name)]
+             for item, condition, _ in group]))
         for mode, label in [('raw', '동일 명령 1 Vpp'), ('equal_total_power', '동일 총전력'),
                             ('composite_burden', 'composite_contact · 기존 접촉 부담 상한 · 절대 ROI 변조 잔존값'),
                             ('composite_full_skin', 'composite_full_skin · 피부 부피 부담 추가 상한 · 절대 ROI 변조 잔존값')]:
@@ -569,10 +779,24 @@ def build(args, directory):
                 'SC µW', 'contact µW', 'source µW', '피부 부피 Jmax mA/cm²', '피부 부피 J95 mA/cm²',
                 '피부 SC+dermis µW'], rows))
             if args.figures:
+                if figures_equal_raw(group, mode):
+                    sections.append('<p>모든 표시 조건의 진폭 scale이1입니다 '
+                        '(|scale−1|≤10⁻¹²). 지도는 위 raw 조건과 동일하므로 공통 선형 지도와 '
+                        '보조 로그·ROI 지도를 재사용합니다. 정규화 수치 표와 CSV는 별도로 유지합니다.</p>')
+                    continue
                 for metric in ('square_maxTIS_V_m', 'square_RMS_V_m'):
                     figure = maps_figure(group, mode, metric, directory, group_name)
                     if figure:
                         sections.append('<details><summary>공통 선형 색범위 · '+esc(metric)+' 지도</summary>'+image_tag(figure)+'</details>')
+                if args.supplementary_maps:
+                    figure = tis_visibility_figure(group, mode, directory, group_name)
+                    if figure:
+                        sections.append('<details><summary>보조 TIS 로그 지도 + ROI 고정 선형 0–0.1 V/cm</summary>'+
+                            '<p>기본 선형 지도는 유지합니다. 보조 로그 지도의 하한은0.0001 V/cm이며 '
+                            '같은 비교군의 모든 패드 수에 동일하게 적용합니다. '
+                            'ROI 지도는 깊이15/20 mm의 r≤5 mm만 확대하고 모든 조건에서0–0.1 V/cm를 사용합니다. '
+                            '표시 범위 밖 값은 색상만 포화되며 지표를 바꾸지 않습니다. '
+                            '이 표시 범위는 활성화·안전 역치가 아닙니다.</p>'+image_tag(figure)+'</details>')
         sections.append('</section>')
     sections.append('<h2>회로·물성·실행 증거</h2><p>다른 carrier에서도 비구동 출력은 0 V/50 Ω로 종단됩니다. '
         '물리 귀환 패드는 각 주파수에 모두 참여하는 단일 이상 공통 GND에 연결됩니다. '
@@ -592,6 +816,7 @@ def build(args, directory):
             config_sha256=row['config_sha256'], physical_contact_model_sha256=row['physical_contact_model_sha256'],
             input_manifest_sha256=row['input_manifest_sha256'], postprocessor_sha256=row['postprocessor_sha256'],
             summary_sha256=row['summary_sha256'], calculation_status=row['status'], circuit=row['circuit'],
+            case_completion_evidence=row['case_completion_evidence'],
             frequencies_Hz=condition['actual_fundamental_Hz'], actual_waveform=condition['waveform'],
             mesh=dict(h_xy_mm=row['mesh']['h_xy_mm'], sc_cells=row['mesh']['sc_cells'],
                 bulk_counts=row['mesh']['bulk_layer_counts'], cells=row['mesh']['cells']),
@@ -605,7 +830,8 @@ def build(args, directory):
             raw_centre_E_peak_complex_spectrum=condition['metrics'].get('centre_field_spectrum'),
             spatial_location_status='native cell locations available' if row['spatial'] else 'spatial audit not attached; maximum location unreported')
         source_paths = [item['path'], item['run']/'preregistration.json', Path(item['case']['config_file']),
-                        Path(item['case']['mask_file']), item['path'].parent/item['summary']['artifacts']['probes_json']]
+                        Path(item['case']['mask_file']), Path(item['eligibility']['case_record_path']),
+                        item['path'].parent/item['summary']['artifacts']['probes_json']]
         source_paths += item['audit_paths']
         source_paths += [Path(path) for path in item['summary']['input_sha256']
                          if str(path).endswith(('mesh-metadata.json', 'validation.json'))]
@@ -706,6 +932,7 @@ def build(args, directory):
     args.output.write_text(document)
     return dict(status='rendered_offline_evidence', output=str(args.output), assets=str(directory),
         completed_conditions=len(records), missing_pad_counts=payload['missing_pad_counts'],
+        held_case_count=len(held), batch_error_count=sum(state['status'] in ('error', 'failed') for state in states),
         pure_sine_C1_match_count=len(singles), new_PDE=0, source_files_edited=0)
 
 
@@ -731,7 +958,38 @@ def self_test():
     other = dict(mesh_metadata=dict(h_xy_mm=.5, sc_cells=2))
     assert comparison_signature(minimal, {'z.3000.re': '1'}) != comparison_signature(other, {'z.3000.re': '1'})
     assert comparison_signature(minimal, {'z.3000.re': '1'}) != comparison_signature(minimal, {'z.3000.re': '2'})
-    return dict(passed=True, checks='individual contact/full-skin caps, missing-skin held, no voltage boosting, mesh/contact cohort separation', new_PDE=0)
+    unit_rows = [(None, None, dict(values=dict(raw=dict(amplitude_scale=1.), equal_total_power=dict(amplitude_scale=1.))))]
+    assert figures_equal_raw(unit_rows, 'equal_total_power') and not figures_equal_raw(unit_rows, 'raw')
+    unit_rows.append((None, None, dict(values=dict(raw=dict(amplitude_scale=1.), equal_total_power=None))))
+    assert not figures_equal_raw(unit_rows, 'equal_total_power')
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix='task1-view-eligibility-') as temporary:
+        run = Path(temporary)/'failed-batch'
+        path = run/'postprocess'/'example'/'summary.json'
+        path.parent.mkdir(parents=True)
+        (run/'cases').mkdir()
+        path.write_text(json.dumps(dict(id='example', status='complete', mesh_metadata=dict(config_sha256='config'))))
+        record_path = run/'cases/example.json'
+        record = dict(id='example', status='complete', config_sha256='config',
+            postprocess_path=str(path), postprocess_sha256=sha(path))
+        # A completed case survives a later failure in its enclosing batch.
+        (run/'summary.json').write_text(json.dumps(dict(status='error', failed_case='other-case')))
+        record_path.write_text(json.dumps(record))
+        assert case_eligibility(path)['eligible']
+        record['postprocess_sha256'] = 'wrong'
+        record_path.write_text(json.dumps(record))
+        assert not case_eligibility(path)['eligible']
+        record_path.unlink()
+        assert not case_eligibility(path)['eligible']
+        record['postprocess_sha256'] = sha(path)
+        record_path.write_text(json.dumps(record))
+        (run/'reference-comparison.json').write_text(json.dumps(dict(case_id='example', status='failed',
+            scalar_comparisons=[dict(passed=True)], circuit_comparisons=[dict(passed=False)])))
+        assert not case_eligibility(path)['eligible']
+        (run/'audit').mkdir()
+        (run/'audit/continuation-analysis.json').write_text(json.dumps(dict(status='passed', promote=True)))
+        assert not case_eligibility(path)['eligible']
+    return dict(passed=True, checks='contact/full-skin caps, missing data held, cohort separation, complete-case SHA gate, failed-reference hold and no audit promotion', new_PDE=0)
 
 
 def main():
@@ -741,6 +999,8 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT/'docs/CLOUD_RESULTS.html')
     parser.add_argument('--assets-dir', type=Path)
     parser.add_argument('--figures', action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument('--supplementary-maps', action=argparse.BooleanOptionalAction, default=True,
+        help='Add shared-log TIS and fixed0–0.1V/cm ROI display supplements; retains primary common-linear maps')
     parser.add_argument('--self-test', action='store_true')
     args = parser.parse_args()
     if args.self_test:

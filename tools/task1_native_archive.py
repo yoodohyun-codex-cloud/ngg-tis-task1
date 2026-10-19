@@ -1,7 +1,8 @@
-"""Archive and clean-restore completed NEW cloud runs without executing research.
+"""Archive and clean-restore NEW cloud runs without executing research.
 
-The archive contains only regular files from one completed data-native/cloud-*
-run. Byte identity and native array decoding are distinct checks. An externally
+Completed runs are the default; terminal failures require an explicit opt-in.
+Original failure status and every regular evidence file remain unchanged.
+Byte identity and native array decoding are distinct checks. An externally
 stored/downloaded archive is required before claiming an independent backup;
 this local tool never changes run status, deletes evidence, or publishes assets.
 """
@@ -28,6 +29,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EMBEDDED_MANIFEST = 'ARCHIVE_MANIFEST.json'
 CHUNK = 1024 * 1024
 DISK_RESERVE = 2 * 1024**3
+TERMINAL_FAILURE_STATUSES = frozenset(('stopped', 'error', 'resource_shortage'))
 
 
 def digest(path):
@@ -69,14 +71,62 @@ def execution_lock():
         yield
 
 
-def inventory(run):
+def _recorded_pid_active(pid, expected_start_ticks=None):
+    require(type(pid) is int and pid > 0, 'Recorded process ID must be a positive integer')
+    if expected_start_ticks is not None:
+        require(type(expected_start_ticks) is int and expected_start_ticks > 0,
+                'Recorded process start ticks must be a positive integer')
+    require(Path('/proc').is_dir(), 'Cannot verify terminal process liveness without /proc')
+    try:
+        value = (Path('/proc')/str(pid)/'stat').read_text()
+    except FileNotFoundError:
+        return False
+    fields = value[value.rfind(')')+2:].split()
+    require(len(fields) > 19, 'Cannot decode recorded process liveness')
+    if fields[0] in ('Z', 'X'):
+        return False
+    # A reused historical PID does not identify the original execution process.
+    return expected_start_ticks is None or int(fields[19]) == expected_start_ticks
+
+
+def terminal_state(controller, summary, include_terminal_failure=False, check_live_pids=False):
+    status = summary.get('status')
+    if status == controller.get('status') == 'complete':
+        return dict(original_terminal_status='complete', terminal_failure_included=False,
+                    scientific_validation_claimed=False)
+    require(include_terminal_failure,
+            'Only completed runs can be frozen for archive; terminal failure requires explicit opt-in')
+    require(status == controller.get('status') and status in TERMINAL_FAILURE_STATUSES,
+            'Terminal failure summary/controller statuses must match stopped/error/resource_shortage')
+    require(controller.get('phase') == 'stopped' and summary.get('phase', 'stopped') == 'stopped',
+            'Terminal failure controller/summary phase must be stopped; active phase cannot be archived')
+    checked = []
+    if check_live_pids:
+        for label, record in (('controller', controller), ('summary', summary)):
+            for key in ('pid', 'java_pid', 'worker_pid', 'child_pid'):
+                pid = record.get(key)
+                if pid is None:
+                    continue
+                ticks = (record.get('proc_start_ticks') if key == 'pid'
+                         else record.get(key.removesuffix('_pid')+'_proc_start_ticks'))
+                require(not _recorded_pid_active(pid, ticks),
+                        'Terminal failure has active recorded PID: '+label+'.'+key)
+                checked.append(dict(record=label, field=key, pid=pid,
+                                    expected_start_ticks=ticks, active=False))
+    return dict(original_terminal_status=status, terminal_failure_included=True,
+                original_failure_status_preserved=True, scientific_validation_claimed=False,
+                source_process_liveness_verification=('passed_no_active_recorded_processes' if check_live_pids
+                                                      else 'historical_record_only_not_rechecked_on_restore'),
+                checked_recorded_processes=checked)
+
+
+def inventory(run, include_terminal_failure=False):
     run = Path(run).absolute()
     require(run == run.resolve() and run.parent == ROOT / 'data-native'
             and run.name.startswith('cloud-') and run.is_dir(),
             'Only a canonical new repository data-native/cloud-* directory is supported')
-    require(read(run / 'controller.json')['status'] == 'complete'
-            and read(run / 'summary.json')['status'] == 'complete',
-            'Only completed runs can be frozen for archive; partial runs stay untouched')
+    state = terminal_state(read(run/'controller.json'), read(run/'summary.json'),
+                           include_terminal_failure, check_live_pids=True)
     require(not (run / EMBEDDED_MANIFEST).exists(), 'Reserved archive manifest filename exists')
     files = []
     for path in sorted(run.rglob('*')):
@@ -87,21 +137,28 @@ def inventory(run):
             name = safe_name(path.relative_to(run).as_posix())
             files.append(dict(path=name, bytes=path.stat().st_size, sha256=digest(path)))
     pre = read(run / 'preregistration.json')
+    final_state = terminal_state(read(run/'controller.json'), read(run/'summary.json'),
+                                 include_terminal_failure, check_live_pids=True)
+    require(final_state == state, 'Terminal source state changed during inventory')
     return dict(schema='task1-new-native-archive-v1', run_id=run.name,
                 created_utc=datetime.now(timezone.utc).isoformat(),
                 source_commit=pre['source_commit'],
                 preregistration_sha256=digest(run / 'preregistration.json'),
                 terminal_summary_sha256=digest(run / 'summary.json'),
+                terminal_controller_sha256=digest(run / 'controller.json'),
+                **state,
+                failure_evidence_files=[row['path'] for row in files
+                                        if 'failure' in PurePosixPath(row['path']).name.lower()],
                 scope='New cloud recomputation only; missing historical arrays are not recovered',
                 frozen_references_note='Absolute paths inside original run metadata remain unchanged; restore is inspection only',
                 raw_bytes=sum(row['bytes'] for row in files), files=files)
 
 
-def pack(run, archive):
+def pack(run, archive, include_terminal_failure=False):
     run, archive = Path(run).absolute(), Path(archive).absolute()
     require(archive == archive.resolve() and run not in archive.parents,
             'Archive must be a canonical path outside its source run')
-    manifest = inventory(run)
+    manifest = inventory(run, include_terminal_failure)
     require(shutil.disk_usage(archive.parent).free >= DISK_RESERVE + manifest['raw_bytes']
             + 4096*len(manifest['files']) + 16*CHUNK,
             'Archive copy plus unchanged 2GiB disk reserve unavailable')
@@ -166,6 +223,22 @@ def inspect_members(bundle):
             for block in iter(lambda: stream.read(CHUNK), b''):
                 result.update(block)
         require(result.hexdigest() == row['sha256'], 'Archived hash differs: ' + member.name)
+    status = manifest.get('original_terminal_status', 'complete')
+    require(status == 'complete' or status in TERMINAL_FAILURE_STATUSES,
+            'Unsupported original terminal status in archive manifest')
+    for filename in ('controller.json', 'summary.json'):
+        member = bundle.getmember(run_id+'/'+filename)
+        require(member.size <= 16*CHUNK, 'Terminal state metadata exceeds bounded size')
+    controller = json.load(bundle.extractfile(run_id+'/controller.json'))
+    summary = json.load(bundle.extractfile(run_id+'/summary.json'))
+    state = terminal_state(controller, summary,
+                           include_terminal_failure=manifest.get('terminal_failure_included', False))
+    require(state['original_terminal_status'] == status,
+            'Original terminal status differs from archived source metadata')
+    if status != 'complete':
+        require(manifest.get('scientific_validation_claimed') is False
+                and manifest.get('original_failure_status_preserved') is True,
+                'Failed archive must preserve original failure status and disclaim scientific validation')
     return manifest, members
 
 
@@ -179,6 +252,9 @@ def verify(archive, expected_sha256):
                 archive_bytes=archive.stat().st_size, archive_sha256=expected_sha256,
                 run_id=manifest['run_id'], files=len(manifest['files']),
                 raw_bytes=manifest['raw_bytes'], byte_hash_verification='passed',
+                original_terminal_status=manifest.get('original_terminal_status', 'complete'),
+                terminal_failure_included=manifest.get('terminal_failure_included', False),
+                scientific_validation_claimed=False,
                 native_array_decode_verification='not_run',
                 independent_persistent_backup_verified=False,
                 original_environment_retirement_allowed=False)
@@ -254,10 +330,46 @@ def grouped_contract(run, folder, meta):
     return count, nodes, expected
 
 
-def decode_native(run):
+def decode_native(run, include_terminal_failure=False):
     """Check native shapes/finite values only; no fields or metrics are recomputed."""
-    records, bases = [], []
-    for folder in sorted((run / 'bases').iterdir()):
+    run = Path(run)
+    records, bases, skipped = [], [], []
+    state = terminal_state(read(run/'controller.json'), read(run/'summary.json'), include_terminal_failure)
+    failure_mode = state['original_terminal_status'] != 'complete'
+    pre, summary = read(run/'preregistration.json'), read(run/'summary.json')
+    registered = [case['id'] for case in pre.get('cases', [])]
+    require(len(registered) == len(set(registered)), 'Duplicate restored registered case IDs')
+    basis_root = run/'bases'
+    available = {folder.name: folder for folder in basis_root.iterdir()} if basis_root.is_dir() else {}
+    case_ids = sorted(set(registered) | set(available)) if failure_mode else sorted(available)
+    original_cases = {case['id']: case.get('status', 'unknown') for case in summary.get('cases', [])}
+    for case_id in case_ids:
+        safe_name(case_id)
+        require('/' not in case_id, 'Restored case ID must identify one basis directory')
+        folder = basis_root/case_id
+        if failure_mode:
+            reason, missing = None, []
+            if case_id not in available:
+                reason = 'preregistered_not_run' if case_id in summary.get('not_run', []) else 'native_basis_not_present'
+            elif not folder.is_dir():
+                raise ValueError('Restored basis path must be a directory')
+            elif not (folder/'BASIS_COMPLETE').is_file():
+                reason = 'incomplete_raw_missing_BASIS_COMPLETE'
+            else:
+                required = ['mesh-metadata.json', 'grid.csv.gz']
+                for frequency in (3000, 3030, 9000, 9090):
+                    required.extend([f'contacts-{frequency}.csv', f'field-{frequency}.bin.gz',
+                        f'potential-{frequency}.bin.gz', f'density-{frequency}.bin',
+                        f'source-{frequency}.bin', f'loss-{frequency}.bin'])
+                missing = [name for name in required if not (folder/name).is_file()]
+                if missing:
+                    reason = 'incomplete_raw_missing_required_files'
+            if reason:
+                skipped.append(dict(case_id=case_id, reason=reason, missing_files=missing,
+                    original_case_status=original_cases.get(case_id,
+                        'not_run' if case_id in summary.get('not_run', []) else 'not_recorded_complete'),
+                    all_partial_and_failure_files_preserved=True))
+                continue
         require(folder.is_dir() and (folder / 'BASIS_COMPLETE').is_file(), 'Incomplete restored basis')
         meta = read(folder / 'mesh-metadata.json')
         cells, channels = meta['cells'], meta['channels']
@@ -319,9 +431,16 @@ def decode_native(run):
         bases.append(dict(case_id=folder.name, exporter_class=meta.get('exporter_class'),
                           cells=cells, n_outputs=channels, n_pads=physical_pads,
                           pad_node_ids=pad_nodes, restored_pad_areas_m2=area_totals,
-                          source_matrix_shape=[channels, channels], loss_matrix_shape=[6, channels, channels]))
-    require(records, 'No native arrays decoded')
-    return dict(status='passed', arrays=records, bases=bases,
+                          source_matrix_shape=[channels, channels], loss_matrix_shape=[6, channels, channels],
+                          original_case_execution_status=original_cases.get(case_id,
+                              'failed_case_of_terminal_'+state['original_terminal_status']+'_run'
+                              if case_id == summary.get('failed_case') else 'not_recorded_complete'),
+                          scientific_validation_claimed=False))
+    require(records or failure_mode, 'No native arrays decoded')
+    decode_status = ('available_complete_basis_storage_decode_passed' if records else 'no_complete_native_basis_available') if failure_mode else 'passed'
+    return dict(status=decode_status, arrays=records, bases=bases, skipped_cases=skipped,
+                original_terminal_status=state['original_terminal_status'],
+                original_failure_status_preserved=failure_mode, scientific_validation_claimed=False,
                 scope='Storage decode, dimensions and finite values only; no scientific metric or PDE reproduction')
 
 
@@ -352,7 +471,8 @@ def restore(archive, expected_sha256, destination):
                            if member.name == manifest['run_id'] + '/' + row['path'])
                 require(output.stat().st_size == row['bytes'] and digest(output) == row['sha256'],
                         'Clean restore hash differs: ' + member.name)
-    native = decode_native(destination / manifest['run_id'])
+    native = decode_native(destination / manifest['run_id'],
+                           include_terminal_failure=manifest.get('original_terminal_status', 'complete') != 'complete')
     receipt.update(clean_restore_destination=str(destination),
                    clean_restored_file_hash_verification='passed',
                    native_array_decode_verification=native,
@@ -368,6 +488,8 @@ def main():
     packing = sub.add_parser('pack')
     packing.add_argument('--run', type=Path, required=True)
     packing.add_argument('--archive', type=Path, required=True)
+    packing.add_argument('--include-terminal-failure', action='store_true',
+                         help='Explicitly include stopped/error/resource_shortage runs while preserving their failure status')
     for name in ('verify', 'restore'):
         command = sub.add_parser(name)
         command.add_argument('--archive', type=Path, required=True)
@@ -377,7 +499,7 @@ def main():
     args = parser.parse_args()
     with execution_lock():
         if args.command == 'pack':
-            result = pack(args.run, args.archive)
+            result = pack(args.run, args.archive, args.include_terminal_failure)
         elif args.command == 'restore':
             result = restore(args.archive, args.expected_sha256, args.destination)
         else:
