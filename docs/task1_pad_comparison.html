@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>작업 1 패드 비교 계획</title>
+<style>body{font:15px sans-serif;margin:24px;color:#18202b}table{border-collapse:collapse;width:100%;table-layout:fixed;margin:20px 0 40px}th,td{border:1px solid #c9d0da;padding:10px;overflow-wrap:anywhere;vertical-align:top}thead th{background:#eaf0f7}td:nth-child(2),thead th:nth-child(2){background:#e6f3e8}th:first-child{width:20%}h2{font-size:18px}.notice{padding:15px;background:#fff5ce}</style>
+<h1>작업 1 · 4 / 8 / 12 / 16 패드 비교 계획</h1>
+<p class="notice">계산 결과 화면이 아닌 계획 미리보기입니다. —는 미계산이며 0이 아닙니다. 현재 코드의 임의 다중 패드 배선 지원은 미구현입니다. 4패드 열은 모든 표에 고정됩니다.</p>
+<p>D50 mm · SC / dermis / fat / muscle = 0.1 / 5 / 5 / 15 mm · 상부 부착 · z=0 표면, +z 깊이.
+목표 ROI r≤5 mm, 깊이 15–20 mm. 비표적 표층 0–5 mm 및 전체 비표적을 분리합니다.</p>
+<p>지도와 색 범위는 아직 생성되지 않았습니다. 같은 격자·ROI·단위의 검증 결과를 확보한 뒤 지표마다 모든 패드 수에 하나의 선형 범위를 적용합니다.
+표면 부담 제한값은 미등록 상태이며 인체 안전 한계가 아닙니다. 총 면적 고정과 패드별 면적 고정은 별도 조건입니다.
+12·16패드의 패드당 225 mm² 조건은 총 면적이 상면을 초과하므로 실행할 수 없습니다.</p>
+<h2>equal_total_area · initial_2000_2010_sine</h2><table><thead><tr><th>항목</th><th>4 패드 / 2 출력</th><th>8 패드 / 2 출력</th><th>12 패드 / 2 출력</th><th>16 패드 / 2 출력</th></tr></thead><tbody>
+<tr><th>총 접촉 면적 (mm²)</th><td>900.0</td><td>900.0</td><td>900.0</td><td>900.0</td></tr>
+<tr><th>형상 상태</th><td>historical_baseline_geometry_only</td><td>unregistered</td><td>unregistered</td><td>unregistered</td></tr>
+<tr><th>구동 / 귀환</th><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td></tr>
+<tr><th>계산 / 수치 / 실험 검증</th><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td></tr>
+<tr><th>동일 전압 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 총 전력 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 표면 부담 ROI 절대 mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>피부 Jmax / J95 (mA/cm²)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>접촉 전압 (mV) / 총 전력 (µW)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>전역 최대 위치 / 비표적 고변조 부피</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>후보 ID</th><td>padplan-v1-p04-equal_total_area-initial_2000_2010_sine</td><td>padplan-v1-p08-equal_total_area-initial_2000_2010_sine</td><td>padplan-v1-p12-equal_total_area-initial_2000_2010_sine</td><td>padplan-v1-p16-equal_total_area-initial_2000_2010_sine</td></tr>
+<tr><th>설정 SHA256</th><td>ea6926258a956383ae0afede31553e1d1a4c479065f686b30332edc9cc6a3cde</td><td>7970141f093a655359edc0f992346d7dbdfdd94770ed5794b8a83911a363ef3b</td><td>eaba1f3e5481d88d5fecaf8be73784ef741af33120a571557146de389ad058a1</td><td>bfed56d31605be88c2253b2e16e45ec5e4b20548afcbb4ecc56a3e98a71794d4</td></tr>
+</tbody></table>
+<h2>equal_total_area · later_3000_3030_square_3h</h2><table><thead><tr><th>항목</th><th>4 패드 / 2 출력</th><th>8 패드 / 2 출력</th><th>12 패드 / 2 출력</th><th>16 패드 / 2 출력</th></tr></thead><tbody>
+<tr><th>총 접촉 면적 (mm²)</th><td>900.0</td><td>900.0</td><td>900.0</td><td>900.0</td></tr>
+<tr><th>형상 상태</th><td>historical_baseline_geometry_only</td><td>unregistered</td><td>unregistered</td><td>unregistered</td></tr>
+<tr><th>구동 / 귀환</th><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td></tr>
+<tr><th>계산 / 수치 / 실험 검증</th><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td></tr>
+<tr><th>동일 전압 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 총 전력 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 표면 부담 ROI 절대 mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>피부 Jmax / J95 (mA/cm²)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>접촉 전압 (mV) / 총 전력 (µW)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>전역 최대 위치 / 비표적 고변조 부피</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>후보 ID</th><td>padplan-v1-p04-equal_total_area-later_3000_3030_square_3h</td><td>padplan-v1-p08-equal_total_area-later_3000_3030_square_3h</td><td>padplan-v1-p12-equal_total_area-later_3000_3030_square_3h</td><td>padplan-v1-p16-equal_total_area-later_3000_3030_square_3h</td></tr>
+<tr><th>설정 SHA256</th><td>865449064ede532b916f628a71daa2585d418743390e7e24eabfd361d9f61275</td><td>4c4a3a71cd68b543673cf01ee91e902cbb0849f4014790efffe366e094b3859a</td><td>a0265ed16fc4d503cc1dc4e07f74e32c4272e59cb796b0426cbe8ebfc800dbf1</td><td>66083bd20184f3bc4ad03afccbef092dbf6ce39cc377c43b85040c2f8c51dd43</td></tr>
+</tbody></table>
+<h2>equal_per_pad_area · initial_2000_2010_sine</h2><table><thead><tr><th>항목</th><th>4 패드 / 2 출력</th><th>8 패드 / 2 출력</th><th>12 패드 / 2 출력</th><th>16 패드 / 2 출력</th></tr></thead><tbody>
+<tr><th>총 접촉 면적 (mm²)</th><td>900.0</td><td>1800.0</td><td>2700.0</td><td>3600.0</td></tr>
+<tr><th>형상 상태</th><td>historical_baseline_geometry_only</td><td>unregistered</td><td>necessary_area_bound_failed</td><td>necessary_area_bound_failed</td></tr>
+<tr><th>구동 / 귀환</th><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td></tr>
+<tr><th>계산 / 수치 / 실험 검증</th><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td></tr>
+<tr><th>동일 전압 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 총 전력 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 표면 부담 ROI 절대 mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>피부 Jmax / J95 (mA/cm²)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>접촉 전압 (mV) / 총 전력 (µW)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>전역 최대 위치 / 비표적 고변조 부피</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>후보 ID</th><td>padplan-v1-p04-equal_per_pad_area-initial_2000_2010_sine</td><td>padplan-v1-p08-equal_per_pad_area-initial_2000_2010_sine</td><td>padplan-v1-p12-equal_per_pad_area-initial_2000_2010_sine</td><td>padplan-v1-p16-equal_per_pad_area-initial_2000_2010_sine</td></tr>
+<tr><th>설정 SHA256</th><td>a133b542575cc51c08ef5a71aea62052a5a002b4512aee161bcefff1369dc82c</td><td>164c4315be1c083b34eeaccacf9b5eebd09e7e9af9ec56c793b5b97df4b8d837</td><td>55bb723424c42af02bb3f31657975fd0fdd0b01e962cbf9e5f39e2139bb3a509</td><td>9653fcd2bb03ebebdda4229caca1beb43a837528a45c2fbbcb559bc8d06f6b21</td></tr>
+</tbody></table>
+<h2>equal_per_pad_area · later_3000_3030_square_3h</h2><table><thead><tr><th>항목</th><th>4 패드 / 2 출력</th><th>8 패드 / 2 출력</th><th>12 패드 / 2 출력</th><th>16 패드 / 2 출력</th></tr></thead><tbody>
+<tr><th>총 접촉 면적 (mm²)</th><td>900.0</td><td>1800.0</td><td>2700.0</td><td>3600.0</td></tr>
+<tr><th>형상 상태</th><td>historical_baseline_geometry_only</td><td>unregistered</td><td>necessary_area_bound_failed</td><td>necessary_area_bound_failed</td></tr>
+<tr><th>구동 / 귀환</th><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td><td>1 Vpp High Z × 2 / 50 Ω / common GND</td></tr>
+<tr><th>계산 / 수치 / 실험 검증</th><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td><td>미실행 / 미시작 / 미수행</td></tr>
+<tr><th>동일 전압 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 총 전력 ROI mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>동일 표면 부담 ROI 절대 mean / P10 (V/cm)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>피부 Jmax / J95 (mA/cm²)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>접촉 전압 (mV) / 총 전력 (µW)</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>전역 최대 위치 / 비표적 고변조 부피</th><td>— / —</td><td>— / —</td><td>— / —</td><td>— / —</td></tr>
+<tr><th>후보 ID</th><td>padplan-v1-p04-equal_per_pad_area-later_3000_3030_square_3h</td><td>padplan-v1-p08-equal_per_pad_area-later_3000_3030_square_3h</td><td>padplan-v1-p12-equal_per_pad_area-later_3000_3030_square_3h</td><td>padplan-v1-p16-equal_per_pad_area-later_3000_3030_square_3h</td></tr>
+<tr><th>설정 SHA256</th><td>eeae1b118e8d8b626b73ea84f0500cdbcb03eb271aebf807dfc8d7202778840b</td><td>d56848ad384ec2c2264109887242991b015f444a4e58910260303aee83bbe69f</td><td>2dba666aa34d5726fd4fec575c0ff3cb4d67bc088f8bf6008fd1ce3922abab92</td><td>969aae8059bc83b75b14175d08cea371d8f615df2c19bd8045cdbf10e9fa75b5</td></tr>
+</tbody></table><p>Plan SHA256: 170a9cf4ee467c5be9355d32a0f472f33932cd73c2cd37e2265f2124eb187081</p></html>
