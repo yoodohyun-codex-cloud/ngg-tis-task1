@@ -1,0 +1,373 @@
+{
+  "schema": "task1-cloud-finite-v1",
+  "status": "prepared",
+  "created_utc": "2026-10-19T18:56:19.121227+00:00",
+  "source_commit": "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+  "historical_source_commit": "8c3a30a778cc9bf19ccb52ca523598bff0a84650",
+  "package_integrity": {
+    "status": "passed",
+    "files": 478,
+    "bytes": 33360627,
+    "scope": "All original indexed bytes; explicitly allows new files. No numerical claim."
+  },
+  "limits": {
+    "cpu": 1,
+    "concurrent_solves": 1,
+    "max_cells": 800000,
+    "per_condition_seconds": 600,
+    "cumulative_seconds": 6600,
+    "java_heap_bytes": 2147483648,
+    "aggregate_rss_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648,
+    "max_batch_added_bytes": 2147483648
+  },
+  "gates": {
+    "max_residual": 2e-07,
+    "max_power_error": 2e-07,
+    "max_current_error": 2e-06,
+    "max_area_relative_error": 1e-10,
+    "max_interface_normal_current_relative_error": 2e-07
+  },
+  "cases": [
+    {
+      "id": "baseline-square15-coarse",
+      "design_id": "baseline-square15",
+      "mesh_id": "coarse",
+      "config_file": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/configs/baseline-square15-coarse.properties",
+      "config_sha256": "f8d6d232a9c47364af0815874805d4ae8373be61d78523b94d04e3b1c539e111",
+      "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/masks/baseline-square15-h1.25.csv",
+      "mask_sha256": "0ca29ca60df703aecfb267c6c04a43879eb9115eadfe58855460175cea394605",
+      "expected_pad_areas_m2": [
+        0.000225,
+        0.000225,
+        0.000225,
+        0.000225
+      ],
+      "channels": 2,
+      "h_xy_mm": 1.25,
+      "sc_cells": 2,
+      "bulk_counts": [
+        14,
+        14,
+        40
+      ],
+      "cells": 88480,
+      "nx": 40,
+      "volume_metadata": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_layer_counts": [
+          14,
+          14,
+          40
+        ],
+        "layer_counts": [
+          2,
+          14,
+          14,
+          40
+        ],
+        "radius_mm": 25,
+        "geometry_volume_tolerance_relative": 0.01,
+        "target_volume_tolerance_relative": 0.001
+      },
+      "source_run_id": "cloud-baseline-20261019T185900Z",
+      "source_coating_nm": 10,
+      "source_Rs_fit_window_Hz": 500,
+      "design": {
+        "id": "baseline-square15",
+        "group": "equal_area_225mm2",
+        "pads": [
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                -17.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 0,
+            "role": "signal",
+            "source_output": 0,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                2.5
+              ],
+              [
+                17.5,
+                2.5
+              ],
+              [
+                17.5,
+                17.5
+              ],
+              [
+                2.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 1,
+            "role": "signal",
+            "source_output": 1,
+            "indexed_pair": 1
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 2,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                2.5
+              ],
+              [
+                -2.5,
+                2.5
+              ],
+              [
+                -2.5,
+                17.5
+              ],
+              [
+                -17.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 3,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 1
+          }
+        ],
+        "phantom_diameter_mm": 50.0,
+        "contact_plane_z_mm": 0.0,
+        "source_outputs": 2,
+        "total_pads": 4,
+        "return_connection": "all_return_pads_ideal_common_GND",
+        "minimum_gap_mm": 1.0,
+        "minimum_gap_status": "unvalidated_manufacturing_assumption_not_safety",
+        "geometry_revision": "feasibility_revised_before_registration",
+        "channels": 2,
+        "xy_mm": [
+          [
+            -10.0,
+            -10.0
+          ],
+          [
+            10.0,
+            10.0
+          ],
+          [
+            10.0,
+            -10.0
+          ],
+          [
+            -10.0,
+            10.0
+          ]
+        ]
+      },
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "n_return_nodes": 1,
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+      }
+    }
+  ],
+  "expected_raw_bound_bytes": 53088000,
+  "java": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+  "source_and_input_sha256": {
+    "/workspace/ngg-tis-task1/tis-java/analyze_selectivity_design.py": "81a79f923418e576093ddf2dccce7159591b71a71dddab20ed3fa3684d3b9673",
+    "/workspace/ngg-tis-task1/tis-java/analyze_selectivity_matched_power.py": "60e372712b648d39850eb57cc6be682d5f175641f149a11f231fc90d2dc648aa",
+    "/workspace/ngg-tis-task1/tis-java/audit_selectivity_saved_results.py": "d041e7f25baf91e00121d47bda3c4f83dde8b40d0a7a2434af26eb932db45919",
+    "/workspace/ngg-tis-task1/tis-java/c4_phase_allocation.py": "976ba07dcaee9e4658acb6459eea059ed5f58b123c7810fe5b76f49b1178208d",
+    "/workspace/ngg-tis-task1/tis-java/coating_rs_validation.py": "11a51310daf674bfe08ac246ad35736d8b7d5859dde749ae8232c3e022b063a2",
+    "/workspace/ngg-tis-task1/tis-java/depth_probe_comparison.py": "d657c55fdcdd01c229830b6f58451873dbf381ace963a8e3fe13c006cdba5293",
+    "/workspace/ngg-tis-task1/tis-java/eis_rs_window_analysis.py": "2c67d92ad2e4f85908d82a2b92c50999d57bb3543793875f1bcb2c519934e350",
+    "/workspace/ngg-tis-task1/tis-java/explore_amplitude.py": "40183baae6665a327dfd663d81d5becfd90560d3e22df0689bf8bb6293426e7c",
+    "/workspace/ngg-tis-task1/tis-java/explore_inputs.py": "a1ef002509b872aa0164140981daab9f5f65efeb22a2821ea79c4612f50c9888",
+    "/workspace/ngg-tis-task1/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-task1/tis-java/fit_ngg_eis.py": "ceba0a811d0c48630e38cbf99d988551cc6de1d86bdf2dbc72392257473aba90",
+    "/workspace/ngg-tis-task1/tis-java/layered_probe_analysis.py": "cda32e600af3e9d3d2cca153d29eaac146c40eb01c3c0d114e046dcc7ea134ea",
+    "/workspace/ngg-tis-task1/tis-java/leader_spatial_diagnostics.py": "f07eaea8249408fb176ebe9c361e43b29597f80643a9a3a3672b786086266e1a",
+    "/workspace/ngg-tis-task1/tis-java/measurement_waveforms.py": "e151d651872aac6f0e17ff27a7d18cc78b406f7d891efa56ed75de272ed13588",
+    "/workspace/ngg-tis-task1/tis-java/mesh_validation.py": "61ca26fb44f85a7a6e0d808d6762b87edddafdc643017cf627374e2eb2164c96",
+    "/workspace/ngg-tis-task1/tis-java/mesh_validation_3k.py": "9782acb67129c6d366e0315798eef9ceab530107578724eca431396ec22a581c",
+    "/workspace/ngg-tis-task1/tis-java/native_probe_followup.py": "8007366e54b47a639da2c6bc6f73a24218564e5838ef0d274826293ead1b48aa",
+    "/workspace/ngg-tis-task1/tis-java/rs_window_tis_validation.py": "ba05156b42a4781124530c1befe933533d90ab53828ecabf242f5204f4a298b7",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_design.py": "7bb8dd79ed8d2e4d80fde1ebf6ef8eb3ec8dc932ca6d0e078b51990056a25a9f",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_geometry.py": "0a33f50ef6db1a4bec4d89f5a1485d17cfb395af91a61742f1a5540338153764",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_postprocess.py": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+    "/workspace/ngg-tis-task1/tis-java/single_vs_tis.py": "f59c5a9015175198355a7e0fa92ea0f91d45b9a6b1b1b3e79dc07d6b3f519f08",
+    "/workspace/ngg-tis-task1/tis-java/update_ngg_eis.py": "0ddca1dcd0f13ba620e378a79d94ed005dccc392b6f33f9c57bbf5049c7b448c",
+    "/workspace/ngg-tis-task1/tis-java/validation_3k_postprocess.py": "9acca0b8cab3d402e38d98cbdfa1d99ec503540440bafc8f8e57ca1361d78629",
+    "/workspace/ngg-tis-task1/tis-java/TisSweep.java": "c3f80a160374213f49da0281274270badff47b955de486ab6dc17ef5278e228b",
+    "/workspace/ngg-tis-task1/tis-java/ExploreBasis.java": "a21d7bc31f688192908de3a9b9dd842c73fe6cbcc667376d22fb4067f4aff276",
+    "/workspace/ngg-tis-task1/tis-java/SelectivityShapeBasis.java": "e1cdf19aec6a56d0df7775cd6b8091206b4c64aa9c318aea96a84174d9b73573",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "230e23ee099fbba12eaddea3519918ec8b304dcfa111c31d4d92da338e686cf6",
+    "/workspace/ngg-tis-task1/tools/java/CloudShapeBasis.java": "f9febd65278f90bbea15341afdb72eae29d412208a3332d0ca7294afa5a3b45f",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/configs/baseline-square15-coarse.properties": "f8d6d232a9c47364af0815874805d4ae8373be61d78523b94d04e3b1c539e111",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/masks/baseline-square15-h1.25.csv": "0ca29ca60df703aecfb267c6c04a43879eb9115eadfe58855460175cea394605",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep.class": "b8160809788fa0898e2fba1412b94e6d0fe741b43523e545875e978781cda655",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep$Scenario.class": "a10c18daee31728bc2722af4cf5a1a2c35c9a0da8ac517bf2109b59b76fdc8c6",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/SelectivityShapeBasis$ValidationMesh.class": "4997fe6facf2794fe037a970ad7ad7277ec5ac37c0c24071109c94d4229ca628",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/CloudShapeBasis.class": "a7bba70b9a9d299bdbbf425c4efaf728ddd8bae814eb303a6dccc34968a4abcb",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/ExploreBasis$Boundary.class": "71f22ac2f8ceb24992a9903c9c60439ed467450838618a8c793610808738ebbc",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/ExploreBasis.class": "018bc5a38cd7680306376cd2d656bb2269d3e6d4b14c02277d8fa0d938124023",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep$Layout.class": "fcc62f4d4c9ffcb065fdb52d0f41e68bac17bd9bf1ab7080c9b5cf5d8d0123cd",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/SelectivityShapeBasis.class": "4b47dc35c5354f0e6c573b3c2aeec7b680cc73349846de08c273333c0db25fe3",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep$Mesh.class": "2e31446a0e6884eb8058eda41c910e97d9c5d9f731a2281aa27eb70e926d8f32",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/SelectivityShapeBasis$ControllerJson.class": "2d0ec768ab5f739adb1e623ad9c6d5a6d786c72dcd99e4d9f4992815da2b00cf",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep$Edge.class": "30326b9bfe586d631ab88be8f2aa9a375dc9ae6e3d13a3df64fbe550525a8ebd",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep$Net.class": "d66d9319f0b986095ae1d4a74c1b272c843ca22f5d90f335ed2f8a49f970dbb5",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/SelectivityShapeBasis$ShapeNet.class": "437f9cf77dcee523c9671443e6ace140c3ca2bbcdb2bbce32d1c7cd6af7d3222",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/ExploreBasis$Contact.class": "06b1c8646d4b742a40f6ac93e7f5684afabf97e8a7e8ed962702959256c5a613",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/ExploreBasis$GNet.class": "c37acfa242d4559f4063b66dd1abe471ac942a54d3291f2fa78d2113af932177",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep$C.class": "60064d9c27b0509f5c0528694db4b47710944723b457dc4b4fabecbede49c0fa",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/classes/TisSweep$Result.class": "9a76da3a1aec32c5a78ebff18fcc65e8cf700c04ee0f4f081a0e34e6e5ce5500"
+  },
+  "preparation_seconds": 3.194711677999976,
+  "path_mapping": [
+    {
+      "original_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-coarse.properties",
+      "original_sha256": "a13957a431ddd575f7e57ce84e1f97d3f4dfd2a3699d2a38f12ca2a8645bc4cd",
+      "new_config": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/configs/baseline-square15-coarse.properties",
+      "new_sha256": "f8d6d232a9c47364af0815874805d4ae8373be61d78523b94d04e3b1c539e111",
+      "changed_fields": [
+        "mask.path"
+      ],
+      "original_mask_reference": "/workspace/ngg-tis-simulation/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-h1.25.csv",
+      "new_mask": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/masks/baseline-square15-h1.25.csv",
+      "mask_sha256": "0ca29ca60df703aecfb267c6c04a43879eb9115eadfe58855460175cea394605"
+    }
+  ],
+  "scientific_scope": "New PDE recomputation, not recovery of missing historical native arrays",
+  "historical_comparison": {
+    "relative_scalar_tolerance": 1e-08,
+    "source_loss_matrix_tolerance": 1e-08,
+    "allow_absolute_error_near_zero": 1e-14,
+    "gate": "Same grid, properties, contact, circuit, directions and metric definitions"
+  },
+  "convergence": {
+    "field_ROI_percent": 1,
+    "J_contact_voltage_percent": 5,
+    "power_percent": 2,
+    "mesh_convergence_validated": false,
+    "experimental_validation": false
+  },
+  "storage": {
+    "native_location": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z",
+    "persistent_backup_verified": false,
+    "retirement_of_old_environment_allowed": false
+  },
+  "next_decision": "Compare baseline to historical scalars/matrices before expanding search; do not promote unconverged designs"
+}
