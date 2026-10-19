@@ -102,7 +102,8 @@ def source_pins():
     files += [SOURCE/p for p in ('TisSweep.java', 'ExploreBasis.java', 'SelectivityShapeBasis.java')]
     files += [Path(__file__), REPO/'tools/java/CloudShapeBasis.java']
     files += [REPO/name for name in ('tools/task1_producer_regression.py',
-              'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py')
+              'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py',
+              'tools/task1_reference_registration.py')
               if (REPO/name).is_file()]
     return {str(p): sha(p) for p in files}
 
@@ -329,6 +330,8 @@ def execute_locked(run, pre):
         flush()
         for case in pre['cases']:
             active = case['id']; case_start = time.monotonic(); peak[0] = rss(pid)
+            for path, expected in pre['source_and_input_sha256'].items():
+                require(sha(path) == expected, 'Pinned source/input changed before condition '+path)
             raw = case['cells']*(600 if case['channels']==2 else 340)
             require(shutil.disk_usage(run).free >= 2*GIB+raw, 'resource_shortage_before_solve')
             state.update(current_case=active, current_config_sha256=case['config_sha256'], phase='solving')
@@ -360,6 +363,13 @@ def execute_locked(run, pre):
                 regression = compare_producer(Path(reference['basis_dir']), basis)
                 write(run/'producer-regression.json', regression)
                 require(regression['status'] == 'passed', 'New producer regression failed; remaining geometries not run')
+            if case.get('requires_full_reference_comparison_before_next'):
+                from task1_reference_registration import compare_reference
+                comparison = compare_reference(run, case, result)
+                write(run/'reference-comparison.json', comparison)
+                require(comparison['status'] == 'passed', 'Historical Best1 mismatch; C1 not run before investigation')
+            for path, expected in pre['source_and_input_sha256'].items():
+                require(sha(path) == expected, 'Pinned source/input changed during condition '+path)
             record = dict(id=active, status=result['status'], config_sha256=case['config_sha256'],
                           circuit=case['circuit'], validation=validation, cache_signature=case.get('cache_signature'),
                           postprocess_path=str(run/'postprocess'/active/'summary.json'),
@@ -409,6 +419,7 @@ def main():
     p.add_argument('--case', action='append', default=[])
     p.add_argument('--grouped-plan', type=Path)
     p.add_argument('--validation-receipt', type=Path)
+    p.add_argument('--reference-plan', action='store_true')
     args = p.parse_args()
     if args.verify_originals:
         print(json.dumps(original_integrity(), indent=2)); return 0
@@ -420,7 +431,12 @@ def main():
         with (REPO/'.task1-execution.lock').open('a+') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            if args.grouped_plan:
+            if args.reference_plan:
+                require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
+                        'Reference plan has exactly its three predefined cases')
+                from task1_reference_registration import prepare_reference
+                prepare_reference(run)
+            elif args.grouped_plan:
                 require(args.validation_receipt is not None, 'Grouped adapter validation receipt required')
                 from task1_grouped_registration import prepare_grouped
                 prepare_grouped(run, args.case, args.grouped_plan, args.validation_receipt)
@@ -431,6 +447,7 @@ def main():
         return 0
     require(not args.case, 'execute uses only frozen registration cases')
     require(args.grouped_plan is None and args.validation_receipt is None, 'execute uses only frozen registration')
+    require(not args.reference_plan, 'execute uses only frozen reference registration')
     return execute(run)
 
 
