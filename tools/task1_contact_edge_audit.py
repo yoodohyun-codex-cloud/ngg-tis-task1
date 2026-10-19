@@ -104,14 +104,17 @@ def weighted_stats(values, areas):
     if not values:
         return None
     order = sorted(range(len(values)), key=lambda i: values[i])
-    total, cumulative, p95 = sum(areas), 0., values[order[-1]]
+    total, cumulative, prefixes = sum(areas), 0., []
     for i in order:
         cumulative += areas[i]
-        if cumulative >= .95 * total:
-            p95 = values[i]
-            break
+        prefixes.append(cumulative)
+    # Match frozen np.cumsum(...)[-1], not Python3.12+ compensated sum().
+    # An exact95% rank tie can move by one patch if the denominator changes.
+    rank = min(bisect.bisect_left(prefixes, .95 * prefixes[-1]), len(order)-1)
+    p95 = values[order[rank]]
     return dict(mean_A_m2=sum(v*a for v, a in zip(values, areas))/total,
-                p95_A_m2=p95, max_A_m2=max(values), contact_area_mm2=total*1e6)
+                p95_A_m2=p95, max_A_m2=max(values), contact_area_mm2=total*1e6,
+                p95_definition="nearest sequential cumulative area; threshold=.95*cumulative[-1]; no interpolation")
 
 
 def audit_case(run_id, ident, used):
@@ -195,7 +198,8 @@ def audit_case(run_id, ident, used):
     checks = {"Jmax": (stats["max_A_m2"], metrics["surface_J_RMS_max_A_m2"]),
               "J95": (stats["p95_A_m2"], metrics["surface_J_RMS_p95_A_m2"]),
               "contact_voltage": (math.sqrt(max(squared_v)), metrics["contact_voltage_RMS_max_V"])}
-    require(all(abs(a-b) <= 1e-10*abs(b)+1e-14 for a,b in checks.values()), "Independent small-array electrical metrics disagree with published summary")
+    require(all(abs(a-b) <= 1e-10*abs(b)+1e-14 for a,b in checks.values()),
+            "Independent small-array electrical metrics disagree with published summary: " + json.dumps(checks))
     bins = []
     for lo, hi in zip(EDGE_BINS_MM, EDGE_BINS_MM[1:]):
         chosen = [i for i,c in enumerate(coordinates) if lo <= c["edge_distance_mm"] < hi or
@@ -260,6 +264,7 @@ def main():
                 input_sha256=used, inputs_unchanged=True,
                 interpretation="Edge growth and finite-grid sensitivity only; existing Jmax/contactV5% failures remain failures. Near-zero matrix diagnostics do not clear strict held reproduction or establish solver forward error.",
                 limitations=["Contact-normal current density on electrode patches is not full skin-vector current density",
+                    "Nearest area-CDF P95 has a one-patch rank sensitivity at exact95% boundaries; frozen sequential-prefix denominator is preserved without interpolation",
                     "Ideal sharp-edge Jmax may remain grid-sensitive; no threshold substitution or relaxation",
                     "PBS-derived area-specific impedance is an uncertain skin contact hypothesis; separate future Rs/area-once sensitivity required"])
         except BaseException as error:
