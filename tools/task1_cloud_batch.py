@@ -101,7 +101,56 @@ def source_pins():
     files = [p for p in SOURCE.glob('*.py') if not p.name.startswith('test_')]
     files += [SOURCE/p for p in ('TisSweep.java', 'ExploreBasis.java', 'SelectivityShapeBasis.java')]
     files += [Path(__file__), REPO/'tools/java/CloudShapeBasis.java']
+    files += [REPO/name for name in ('tools/task1_producer_regression.py',
+              'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py')
+              if (REPO/name).is_file()]
     return {str(p): sha(p) for p in files}
+
+
+def operator_signature(case):
+    """Ignore portable paths, retain physical inputs and actual producer code."""
+    values = {}
+    for line in Path(case['config_file']).read_text().splitlines():
+        if '=' in line and not line.startswith(('#', '!')):
+            key, value = line.split('=', 1)
+            if key != 'mask.path':
+                values[key] = value
+    producer = case.get('java_class', 'CloudShapeBasis')
+    files = [SOURCE/name for name in ('TisSweep.java', 'ExploreBasis.java', 'SelectivityShapeBasis.java')]
+    if producer == 'GroupedPadBasis':
+        files.append(REPO/'tools/java/GroupedPadBasis.java')
+    payload = dict(config=values, mask_sha256=sha(case['mask_file']), producer=producer,
+                   numerical_code_sha256={p.name: sha(p) for p in files})
+    return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+
+
+def check_cached_operator(case, run):
+    signature = operator_signature(case)
+    for path in (REPO/'data-native').glob('cloud-*/preregistration.json'):
+        if path.parent == run:
+            continue
+        prior = read(path)
+        for old in prior['cases']:
+            record = path.parent/'cases'/(old['id']+'.json')
+            if record.exists() and read(record).get('status') == 'complete':
+                if old.get('cache_signature', operator_signature(old)) == signature:
+                    raise ValueError('Completed operator already exists; reuse '+str(record))
+    return signature
+
+
+def freeze_sources(run):
+    pre = read(run/'preregistration.json')
+    manifest = {}
+    for name, expected in pre['source_and_input_sha256'].items():
+        source = Path(name)
+        if source.is_relative_to(REPO) and source.suffix in ('.py', '.java'):
+            require(sha(source) == expected, 'Source drift before freezing '+name)
+            target = run/'frozen-source'/source.relative_to(REPO)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            require(not target.exists(), 'Never overwrite frozen source')
+            shutil.copy2(source, target)
+            manifest[name] = dict(path=str(target), sha256=expected)
+    write(run/'frozen-source-manifest.json', dict(source_commit=pre['source_commit'], files=manifest))
 
 
 def prepare(run, ids):
@@ -144,6 +193,7 @@ def prepare(run, ids):
         case['design'] = copy.deepcopy(case.get('control_design') or designs[case['design_id']])
         case['design']['channels'] = case['channels']
         case['design']['xy_mm'] = [p['center_mm'] for p in case['design']['pads']]
+        case['cache_signature'] = check_cached_operator(case, run)
         case['circuit'] = dict(n_pads=2*case['channels'], n_outputs=case['channels'],
             return_topology='all_return_pads_ideal_common_GND', n_return_nodes=1,
             source_Vpp_each=1., source_peak_V=.5, source_resistance_ohm=50.,
@@ -285,7 +335,7 @@ def execute_locked(run, pre):
             flush()
             basis = run/'bases'/active
             cmd = [pre['java'], '-Xmx2g', '-XX:+UseSerialGC', '-XX:ActiveProcessorCount=1', '-cp', str(run/'classes'),
-                   'CloudShapeBasis', '--execute-parent', str(pid), str(state['proc_start_ticks']),
+                   case.get('java_class', 'CloudShapeBasis'), '--execute-parent', str(pid), str(state['proc_start_ticks']),
                    case['config_file'], str(basis)]
             with (run/'logs'/(active+'.log')).open('x') as log:
                 child = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, start_new_session=True,
@@ -300,9 +350,18 @@ def execute_locked(run, pre):
             for k, cap in GATES.items():
                 require(math.isfinite(validation[k]) and 0<=validation[k]<=cap, 'Native gate '+k)
             state.update(phase='postprocessing', java_pid=None); flush()
-            result = process_case(basis, case, run/'postprocess'/active, min(deadline, case_start+600))
+            processor = process_case
+            if case.get('postprocessor') == 'grouped':
+                from task1_grouped_postprocess import process_case as processor
+            result = processor(basis, case, run/'postprocess'/active, min(deadline, case_start+600))
+            if case.get('requires_original_producer_regression_before_next'):
+                from task1_producer_regression import compare_producer
+                reference = pre['producer_regression']['reference']
+                regression = compare_producer(Path(reference['basis_dir']), basis)
+                write(run/'producer-regression.json', regression)
+                require(regression['status'] == 'passed', 'New producer regression failed; remaining geometries not run')
             record = dict(id=active, status=result['status'], config_sha256=case['config_sha256'],
-                          circuit=case['circuit'], validation=validation,
+                          circuit=case['circuit'], validation=validation, cache_signature=case.get('cache_signature'),
                           postprocess_path=str(run/'postprocess'/active/'summary.json'),
                           postprocess_sha256=sha(run/'postprocess'/active/'summary.json'),
                           wall_seconds=time.monotonic()-case_start,
@@ -322,7 +381,7 @@ def execute_locked(run, pre):
             except subprocess.TimeoutExpired:
                 os.killpg(child.pid, signal.SIGKILL); child.wait(timeout=5)
         reason = str(error)
-        status = 'resource_shortage' if 'resource_shortage' in reason or isinstance(error, TimeoutError) else 'error'
+        status = 'resource_shortage' if 'resource_shortage' in reason or isinstance(error, (TimeoutError, subprocess.TimeoutExpired)) else 'error'
         summary.update(status=status, failed_case=active, error_type=type(error).__name__, error=reason,
                        partial_evidence_preserved=True, automatic_retry=False)
         state.update(status=status, phase='stopped')
@@ -348,6 +407,8 @@ def main():
     mode.add_argument('--verify-originals', action='store_true')
     p.add_argument('--output', type=Path)
     p.add_argument('--case', action='append', default=[])
+    p.add_argument('--grouped-plan', type=Path)
+    p.add_argument('--validation-receipt', type=Path)
     args = p.parse_args()
     if args.verify_originals:
         print(json.dumps(original_integrity(), indent=2)); return 0
@@ -359,9 +420,17 @@ def main():
         with (REPO/'.task1-execution.lock').open('a+') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            prepare(run, args.case)
+            if args.grouped_plan:
+                require(args.validation_receipt is not None, 'Grouped adapter validation receipt required')
+                from task1_grouped_registration import prepare_grouped
+                prepare_grouped(run, args.case, args.grouped_plan, args.validation_receipt)
+            else:
+                require(args.validation_receipt is None, 'Receipt only applies to grouped registration')
+                prepare(run, args.case)
+            freeze_sources(run)
         return 0
     require(not args.case, 'execute uses only frozen registration cases')
+    require(args.grouped_plan is None and args.validation_receipt is None, 'execute uses only frozen registration')
     return execute(run)
 
 
