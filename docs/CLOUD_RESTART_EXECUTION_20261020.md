@@ -1,5 +1,9 @@
 # 작업 1 클라우드 첫 실행 — 2026-10-20 KST
 
+현재 상태: **환경 구축·4패드 기준 재현 완료, 새 PDE 조건14개 계산, 깊이15–20mm 집중 성공·새 최적 후보 채택은 보류**다. 6개 유한 배치는5개 complete·1개 error이며 완료 case13개와 엄격 대조 보류 Best1 1개를 구분한다. 세밀 Best1 C1 1개는 미실행이다. 최신 결합 격자 C1은 별도 실행으로 완료했다. 원본478개 바이트는 보존했다. 현재 PDE worker는0개이고 중단 사유는 유한 배치 종료다.
+
+현재 결과는 [비교 화면](CLOUD_RESULTS.html), [최종 체크포인트](cloud-restart-20261020/checkpoint.json), [측정기 예측600개](cloud-restart-20261020/instrument-predictions.json), [원자료·피드백 감사](CLOUD_FEEDBACK_DATA_AUDIT_20261020.md)를 먼저 본다. 아래 초기 계획·관측은 각 단계의 기록이며 후속 완료 상태를 대신하지 않는다.
+
 원본 패키지 기준은 새 저장소 `3b5f1861c523a207d02b1a34a5f61c67b88556eb`다. 모든 동결 인계 파일은 보존한다. 아래 결과는 원 계산 환경 복원이 아니라 이 환경에서의 별도 검증·재계산이다. 작업 2는 제외한다.
 
 ## 환경·패키지 점검
@@ -116,3 +120,19 @@ ETA5001의 각 입력4MΩ∥7pF로부터3kHz 차동 등가 |Z|≈7.075MΩ를 산
 GitHub release 생성은 되었지만 `uploads.github.com` asset 업로드가HTTP401로 거절되어 빈 draft로 남았다. [차단 기록](cloud-restart-20261020/release-upload-blocker.json)을 보존하며 이를 사용 가능한 백업으로 세지 않는다. 기준 실행 아카이브43,560,960B는 별도 [데이터 브랜치](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/tree/87d8c22af26e480ad4a38e4cb06b70367f187801/native-baseline)에 올려 새 HTTPS clone으로 다시 내려받았다. SHA256 `443a713e6cedb177dec3309a45a8251e7ef6e57b6bf25e296510accf520e63d4`가 일치했고 깨끗한 별도 경로의 파일 해시·원시 complex128 배열 decode를 통과했다.
 
 복원본만으로 동결된 분석 소스를 사용해13개 지표와40프로브의440개 수치를 새로 계산해 통과했다. 이 [readback](cloud-restart-20261020/restore-readback.json)은 현재 live 원시/소스 접근과 복원 파일 쓰기를 차단했다. 과거 누락 원시 자료 복구·독립 solver·공간 수렴·실측 검증을 뜻하지 않는다. 나머지 대형 실행 아카이브는 로컬 해시/깨끗한 복원/배열 decode까지 검증했으며 원격 사본은 미완료다. 원본과 실패·부분 다운로드는 삭제하지 않는다. [통합 보존 영수증](cloud-restart-20261020/native-backup-receipts.json)에서 원격 검증된 기준 실행과 로컬 전용 실행을 구분한다.
+
+## 최신 동일 격자 단일쌍·접촉 감사와 최종 실행 상태
+
+`cloud-coupled-c1-20261019T195100Z`는 최신 TIS와 동일 hXY0.5mm·SC8·bulk18/18/56·786,000셀에서 패드2개/출력1개/공통GND 귀환을 사용한 진짜 단일쌍이다. 배치257.25초, 조건256.70초, 관측 peak RSS1,016,225,792B로 완료했다. source(-10,-10),return(+10,-10)mm의225mm² 두 패드이며 TIS의 네 패드 접촉면 중 해당 두 면을 그대로 선택했다. 동일 물성·PBS 접촉·50Ω·실제 격자에서 비교한다.
+
+3000Hz 순수 정현파 C1은 TIS square_3h의 중심20mm 전기장 RMS2.09541488V/m에 맞추려면1.64563517Vpp, ROI 에너지 RMS2.31321223V/m에 맞추려면1.64857412Vpp가 필요하다. ROI local RMS 평균은 별도 기준1.65268123Vpp다.3030Hz의 각 요구량도 별도 행이다. 중심 RMS 맞춤의 출력전류1.54400356mA RMS, 접촉Jmax/J95 2.58024443/1.68973927mA/cm², 접촉전압2.72754606mV, SC/dermis/contact/source 전력1.887937/593.342271/1.408887/879.327218µW다. 피부 SC+dermis는595.230208µW로 legacy SC+contact3.296824µW와 구분한다. [최신 동일 격자 비교](cloud-restart-20261020/latest-coupled-single-pair-comparison.json)의 두 summary SHA·후보 ID·run ID에 연결한다. RMS 일치는 변조·생리 활성·안전의 동등성을 뜻하지 않는다.
+
+접촉 가장자리 감사는 기존 세 격자의 작은 density/source/loss/contacts 배열을 재사용했고 새 PDE는0개다. h0.625/0.5/(50/120)mm의 접촉 Jmax는2.549124/2.683824/2.792236mA/cm²이며 최대 위치는 모두 실제 패드 모서리에 가장 가까운 셀(경계 거리h/2)이다. 같은 값의 증가를 연속체 최대 수렴으로 해석하지 않는다. h0.5→50/120mm의 Jmax 변화는+4.03944%이나, 앞선 XY 실패와 세밀 역사 대조 보류를 닫지 않는다.
+
+첫 감사는 J95 누적면적 분모의 부동소수점 합산 방식이 달라 고정 기준에서 실패했다. 기존 실패를 보존하고 원래 순차 누적합의 마지막 값을 쓰는 정의로 맞춘 후 세 격자의 Jmax/J95/contactV를1e−10 상대 기준에 대조해 통과했다. 보간·gate 완화는 없으며 원 연구 결과도 바꾸지 않았다. [실패](cloud-restart-20261020/contact-edge-audit.json), [정의 차이 진단](cloud-restart-20261020/contact-edge-metric-diagnosis-v1.json), [수정 감사](cloud-restart-20261020/contact-edge-audit-v2.json)를 분리한다. 이는 표면 부담 진단이며 full3D/실험 검증 통과가 아니다.
+
+총14개 structural/PDE 조건, 주파수별 operator56개, basis RHS104개를 구분한다(12개 TIS×2출력×4주파수+2개 C1×1출력×4주파수). 화면의 기본15행은 완료 TIS11개와 두 C1의3000/3030Hz 각 제어4개다. 계측 보조 자료13개 보고서는 TIS square_3h와 순수정현파 C1의15개 후보조건×40프로브=600개 예측을 연결한다. 실패 Best1은 보류 표에만 표시한다. 새 시험84개와 기존 후처리/프로브/부피 시험33개, 최신 controller13개 재검사 및 실제 복원 readback·화면 자체검사를 통과했다. 중복 집계한 시험 수를 전체 독립 검증 건수로 부르지 않는다.
+
+원장 청구1871.10초/6600초, 잔여4728.90초다. 예산 고갈·승인 대기·환경 종료 때문에 멈춘 것이 아니다. 사전등록 유한 배치와 후속 캐시 감사를 마쳤고, 현재 worker0개·전역 이중 잠금 해제 상태를 PID/startticks와 함께 체크포인트에 기록한다.6개 새 실행 아카이브 합계2,253,291,520B의 로컬 해시·clean restore·원시 배열 decode를 통과했으며 외부 사본 검증은 기준 실행1개만 완료했다. release asset HTTP401로 나머지5개는 로컬 전용이다. 원 환경·과거 원시 누락은 그대로 남고 원본 폐기를 허용하지 않는다.
+
+다음 우선순위는 같은4패드의 잔차·작은 회로 허수 성분 오차 바닥을 구분하는 별도 수치 어댑터와 한정된3000Hz 진단의 사전등록이다. 동결 solver의 stopping1e−9는 설정 키로 바꿀 수 없으므로 존재하지 않는 tighter-tolerance 실행 명령을 제시하지 않는다. 새 어댑터는 기본 회귀, cache signature, 메타데이터와 기존 gate를 유지해야 한다. PBS 계면/Rs 차감/면적 스케일링 감도는 별도 불확실성 배치로 다룬다. 현재 승인 범위 안의 후속 구현이며 별도 사용자 승인 대기 상태가 아니다. 다음 재개 시 우선 `python tools/task1_cloud_batch.py --verify-originals`와 `cat runtime/task1-budget.json`을 실행하고 [다음 배치 선정](cloud-restart-20261020/next-batch-selection.json)을 확인한다. 무한 background worker를 약속하지 않는다.
