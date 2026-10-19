@@ -103,7 +103,7 @@ def source_pins():
     files += [Path(__file__), REPO/'tools/java/CloudShapeBasis.java']
     files += [REPO/name for name in ('tools/task1_producer_regression.py',
               'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py',
-              'tools/task1_reference_registration.py')
+              'tools/task1_reference_registration.py', 'tools/task1_coupled_registration.py')
               if (REPO/name).is_file()]
     return {str(p): sha(p) for p in files}
 
@@ -368,6 +368,10 @@ def execute_locked(run, pre):
                 comparison = compare_reference(run, case, result)
                 write(run/'reference-comparison.json', comparison)
                 require(comparison['status'] == 'passed', 'Historical Best1 mismatch; C1 not run before investigation')
+            if case.get('requires_coupled_comparison_after_postprocess'):
+                from task1_coupled_registration import compare_coupled
+                comparison = compare_coupled(run, case, result)
+                write(run/'coupled-comparison.json', comparison)
             for path, expected in pre['source_and_input_sha256'].items():
                 require(sha(path) == expected, 'Pinned source/input changed during condition '+path)
             record = dict(id=active, status=result['status'], config_sha256=case['config_sha256'],
@@ -420,6 +424,7 @@ def main():
     p.add_argument('--grouped-plan', type=Path)
     p.add_argument('--validation-receipt', type=Path)
     p.add_argument('--reference-plan', action='store_true')
+    p.add_argument('--coupled-plan', action='store_true')
     args = p.parse_args()
     if args.verify_originals:
         print(json.dumps(original_integrity(), indent=2)); return 0
@@ -431,7 +436,13 @@ def main():
         with (REPO/'.task1-execution.lock').open('a+') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            if args.reference_plan:
+            require(not (args.reference_plan and args.coupled_plan), 'Choose one fixed registration plan')
+            if args.coupled_plan:
+                require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
+                        'Coupled plan has exactly its one predefined condition')
+                from task1_coupled_registration import prepare_coupled
+                prepare_coupled(run)
+            elif args.reference_plan:
                 require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
                         'Reference plan has exactly its three predefined cases')
                 from task1_reference_registration import prepare_reference
@@ -448,6 +459,7 @@ def main():
     require(not args.case, 'execute uses only frozen registration cases')
     require(args.grouped_plan is None and args.validation_receipt is None, 'execute uses only frozen registration')
     require(not args.reference_plan, 'execute uses only frozen reference registration')
+    require(not args.coupled_plan, 'execute uses only frozen coupled registration')
     return execute(run)
 
 
