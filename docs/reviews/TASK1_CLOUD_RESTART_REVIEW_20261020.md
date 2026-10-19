@@ -2,7 +2,7 @@
 
 **판정: 같은 4패드 후보의 XY/접촉 가장자리 검증을 다음 과학적 우선순위로 유지한다.** 중심·ROI 지표의 작은 변화만으로 수렴을 선언할 수 없다. 접촉 부담과 선택도는 등록 기준을 넘게 변했다. F004의 전체 검증 보류를 유지하며 새 최적점이나 15–20 mm 집중 성공을 채택하지 않는다.
 
-검토 대상은 `codex/task1-cloud-restart-20261020`의 고정 head **`4890d1d7f76e947b6913a48624d4c498fc6cb668`**다. 요청 시점 `038ce93981adce7b707694d495d69e9b72703430` 뒤에 추가된 한 commit은 grouped 사전등록과 전체 피부 부담 분석 계약 두 파일이다. 이 추가분을 반영해 이미 구현·등록된 사항을 다시 요구하지 않는다. [실행 보고서][report]는 수렴 실패와 결합 3D 미검증을 이미 명시한다. 이 문서는 그 판정의 후속 의사결정 및 F001–F009 추적 근거를 보완한다.
+검토 대상은 `codex/task1-cloud-restart-20261020`의 **`07d3dfa956b6662a07ff930577240b091065f5d6`까지**다. 수치·장부 근거는 `4890d1d7f76e947b6913a48624d4c498fc6cb668`에 고정했고 이후 `07d3dfa`에서 그 파일들은 바뀌지 않았다. 요청 시점 `038ce93981adce7b707694d495d69e9b72703430` 뒤의 `4890d1d`는 grouped 사전등록과 전체 피부 부담 분석 계약 두 파일을, `07d3dfa`는 관련 구현·시험 소스 네 파일을 추가 변경했다. 이 추가분을 반영해 이미 구현·등록된 사항을 다시 요구하지 않는다. [실행 보고서][report]는 수렴 실패와 결합 3D 미검증을 이미 명시한다. 이 문서는 그 판정의 후속 의사결정 및 F001–F009 추적 근거를 보완한다.
 
 별도 review 브랜치는 `main`의 `3b5f1861c523a207d02b1a34a5f61c67b88556eb`에서 만들었다. 이 변경에는 본 문서 하나만 포함한다. 계산 코드·설정·장부·워커·원본·GUI를 변경하지 않았고 계산 브랜치를 병합하지 않았다. Git 객체와 게시 JSON/로그의 문서·정적 검토이며, 연구 모듈 import·시험 재실행·설치·시뮬레이션·native 배열 복구는 수행하지 않았다. 저장소 `AGENTS.md`와 연구 반복 계약을 따랐으며 검토한 tree에는 추가 `.agents/skills` 또는 하위 `AGENTS.md`가 없다.
 
@@ -50,25 +50,39 @@ F003/F004에 연결하는 **제안 상태**다. 계산 담당자의 채택·별�
 
 **권고:** 같은 후보의 가장자리/XY 검증을 다음 과학적 우선순위로 유지한다. 이미 등록한 producer 자격검사 또는 coarse 분할패드 결과가 별도로 게시되어도, 그것은 수렴 실패를 해소하거나 형상 우열을 확정하는 근거가 될 수 없다. 새 후보 선택·순위 채택 전에 동일 후보의 미해결 수렴을 평가한다. 현재 실행을 중단·교체하라는 지시나 새 배치 사전등록은 아니다.
 
+### `07d3dfa` 후속 구현 확인과 남은 provenance 연결
+
+최종 원격 확인 중 새 commit을 발견해 변경된 네 파일을 추가 정적 검토했다. [파형/손실 도구][wave-latest]는 `skin_power_W`의 과거 의미 SC+contact를 보존하고, `skin_SC_plus_dermis_power_W`와 `skin_and_contact_power_W`를 분리했다. pure-sine C1은 기본파 native E에서 ROI 에너지 RMS를 구하는 명시 경로를 추가했다. [비교 화면 도구][view-latest]는 전체 피부 cap과 두 summary SHA에 연결된 C1 비교를 구현하며, 필요한 피부 감사가 없으면 결과를 비워 둔다. grouped spatial loader 연결과 [시험 소스][wave-tests-latest] 변경도 확인했다. F002/F005/F009의 구현 진척으로 인정하되 이 commit에는 새 결과 JSON·갱신된 시험 로그·복구 영수증이 없어 실행/검증 완료로 승격하지 않는다.
+
+F005/F009에는 해결해야 할 **실행 코드 출처 연결**이 남는다. 기존 [single-pair-comparison.json][c1]의 `audit_code_sha256`은 아래 게시 코드 어느 것과도 일치하지 않는다.
+
+| 비교 대상 | `task1_waveform_check.py` SHA256 또는 기록값 |
+|---|---|
+| 게시 C1 보고서의 `audit_code_sha256` | `c61f1ce3639d79a51d653e6456f01cca311218357b5b3aa43a3fa08940a55022` |
+| `38f005e` / `038ce93` / `4890d1d`의 파일 | `8350f140e7355ec2416610a2bb32cdf455e4678104ba797c3e5b7b4243e33b62` |
+| `07d3dfa`의 파일 | `76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032` |
+
+이는 C1 수치가 틀렸다는 판정이 아니라 **이 Git 근거만으로 정확한 실행 코드를 복원할 수 없다는 제한**이다. 당시 `c61f…` frozen source의 실제 위치·바이트·commit/manifest를 연결하거나, 기존 native 입력을 보존한 새 고유 후처리 결과에 실제 실행 코드 SHA와 검증을 연결하도록 제안한다. 과거 보고서의 SHA를 현재 코드에 맞춰 고치지 않는다. 이 검토에서는 재계산하지 않았다. `4890d1d` readiness의 10개 파일 hash 대조와 59개 시험 로그를 `07d3dfa`의 변경 코드 전체에 대한 실행 검증으로 재사용하지 않는다.
+
 ## F001–F009: 제안·구현·실행·검증 연결
 
 [기존 장부][ledger]의 9개 ID 모두에서 `adoption_commit_current_environment`, `execution_artifact_current_environment`, `validation_artifact_current_environment`가 null이다. 장부의 초기 감사 시각 이후 실제 코드와 결과가 게시됐으므로 **null이 곧 구현·실행 부재라는 뜻은 아니다**. 반대로 본 검토가 그 필드를 대신 채웠거나 피드백의 공식 채택을 확정한 것도 아니다. 장부 원본은 수정하지 않고 아래 연결을 계산 담당자의 갱신 근거로 제안한다. 기존 ID의 의미와 과거 한정 완료를 유지하며 새 번호를 만들지 않는다.
 
-`a4636ec`는 실행 어댑터/감사 코드 게시, `38f005e`는 baseline 재현과 파형 검사 게시, `038ce93`은 mesh/C1 결과·공간 감사·grouped 구현 게시, `4890d1d`는 grouped 계획 게시 commit이다. 아래의 **게시 commit**은 그 파일이 확인되는 실제 Git 이력이며, 자동으로 공식 adoption commit이나 실행 당시 전체 코드 SHA가 되지는 않는다.
+`a4636ec`는 실행 어댑터/감사 코드 게시, `38f005e`는 baseline 재현과 파형 검사 게시, `038ce93`은 mesh/C1 결과·공간 감사·grouped 구현 게시, `4890d1d`는 grouped 계획 게시, `07d3dfa`는 피부 손실/C1/표시 후속 구현 commit이다. 아래의 **게시 commit**은 그 파일이 확인되는 실제 Git 이력이며, 자동으로 공식 adoption commit이나 실행 당시 전체 코드 SHA가 되지는 않는다.
 
 실행 기록의 `source_commit`도 따로 보존해야 한다. baseline 실행은 `a4636ec0b1f04c03696eb647307d5c53b2eef5f8`, mesh/C1 실행은 `38f005ecefc2c432cd6424a06f599f93682cc202`, grouped 사전등록은 `038ce93981adce7b707694d495d69e9b72703430`을 기록한다. 후속 게시 commit과 이 값을 합치지 말고 실제 코드/config/input SHA·run ID·검증 artifact를 함께 연결한다. 게시된 코드 hash와 테스트 로그의 일치도 실제 실행 이력 전체의 증명은 아니다.
 
 | 기존 ID | 확인한 구현·계획 및 게시 commit | 게시 실행·검증 근거 | 현재 검토 판정 및 남길 제한 |
 |---|---|---|---|
 | T1-F001 | `038ce93`의 `task1_spatial_audit.py`, 중심/부피 ROI/전역·깊이 통계 분리 | [fine-spatial][spatial], `cloud-mesh-c1-20261019T190000Z` / `baseline-square15-xy80` | 정의·통계 구현과 게시 실행 확인. 표층 최대가 유지되므로 deep focus 미검증. 다음 계획은 절대 mean/P10와 공간 선택도를 함께 유지. |
-| T1-F002 | `038ce93`의 실제 C1 맞춤 분석; `4890d1d`의 contact cap/전체 피부 cap 분리 계획 | [single-pair-comparison][c1], [grouped 분석 계약][burden] | C1 게시 분석과 grouped 계획을 구분. grouped 전체 피부 cap 결과는 이 head에서 미게시. 과거 bare cap의 J95 제외와 새 cap의 J95 포함을 합치지 않음. |
+| T1-F002 | `038ce93`의 C1 분석 게시; `4890d1d`의 cap 분리 계획; `07d3dfa`의 SC+dermis 손실/전체 피부 cap 구현 | [single-pair-comparison][c1], [grouped 분석 계약][burden], [후속 코드][view-latest] | 계획에서 구현으로 진행한 부분을 인정. 새 전체 피부 cap 결과/검증은 이 head에서 미게시. 과거 bare cap의 J95 제외와 새 cap의 J95 포함을 합치지 않음. |
 | T1-F003 | 과거 2 kHz 독립 SC/XY 완료 범위 유지; `038ce93`의 새 축별 gate 보고 | [mesh-convergence][mesh], [mesh/C1 실행][execution] | 이번 SC/bulk 지정 비교 통과와 XY 세 파형 실패를 함께 연결. 과거 한정 완료를 취소하지 않되 새 조건/결합 3D까지 완료로 확대하지 않음. |
 | T1-F004 | `038ce93`의 현 4패드 baseline 검증, `4890d1d`의 수렴 전 미채택 규칙 | 같은 [mesh][mesh]의 실패 행, 본 문서의 동일 후보 검증 제안 | **전체 보류 유지.** 접촉/Rs 물리 타당성·전체 3D·새 형상 가장자리 검증 미완료. 새 ROI 또는 exporter 구현으로 닫지 않음. |
-| T1-F005 | `38f005e`의 `task1_waveform_check.py`; 기본파 변조와 실제 합성 파형/RMS 구분 | [baseline 재현][reproduction], [C1 파형 분석][c1], [게시 시험 로그][tests] | 저장된 조건·파형의 한정 분석 확인. 단일 carrier의 TIS=0과 E/RMS=0을 구분. 임의 다주파수 확장이나 실험 검증으로 확대하지 않음. |
+| T1-F005 | `38f005e`의 기본파/합성파 도구; `07d3dfa`의 명시 pure-sine/실제 고조파 손실 코드 | [baseline 재현][reproduction], [C1 파형 분석][c1], [후속 코드][wave-latest] | 한정 게시 분석과 새 코드 확인. C1 보고서의 `audit_code_sha256` 대응 소스는 미연결. 단일 carrier TIS=0과 E/RMS=0을 구분하며 새 코드 검증·임의 다주파수·실측 완료로 확대하지 않음. |
 | T1-F006 | `a4636ec`/`038ce93`의 `task1_cloud_batch.py`: 전역 lock, hash, 기존 operator 검사 | [baseline 실행][baseline], [mesh/C1 실행][execution], 게시 guard 시험 로그 | 구현 및 두 유한 배치의 게시 기록 확인. 모든 과거 실행의 중복0은 미증명. 새 실행 링크와 전체 중복 감사의 보류를 별도 기록. |
 | T1-F007 | 현재 후보/operator 구분 및 기존 operator 검사; 전역 frequency/RHS hit/miss 계수 결과는 확인하지 못함 | baseline 1조건, mesh/C1 4조건 실행 기록; grouped 5조건은 계획 | 후보·후처리·PDE 조건·주파수/RHS를 별도 계수할 제안 유지. 조건 수를 solve/RHS 수로 바꾸지 않음. operator 최적화 완료나 삭제 후 재계산0을 주장하지 않음. |
 | T1-F008 | `a4636ec` 실행 경로와 `038ce93`의 native φ/E 기반 게시 probe·공간 분석 | [mesh/C1 실행][execution]의 새 `potential-*.bin.gz` 크기/SHA 및 결과 링크 | 새 φ 생성·probe 검사 기록은 확인. 이 검토에서 native 배열을 열거나 재현하지 않음. **과거 φ 이관/복구 미완료**, 실제 장비 loading·대역폭·교정 보류. |
-| T1-F009 | `38f005e`의 파형 도구와 `038ce93`의 실제 2패드/1출력 pure-sine C1 분석 | [single-pair-comparison][c1], 실행의 `baseline-square15-C1pair0-xy80` | 두 과거 anchor만 있던 상태에서 새 C1 게시 근거가 추가됨. 중심 RMS/ROI 에너지 RMS/local RMS 평균 맞춤은 별개. 전체 후보·loaded 측정 네 표현·실측 완료로 닫지 않음. |
+| T1-F009 | `038ce93`에 pure-sine C1 결과 게시; `07d3dfa`에 명시 pure-sine 계산 및 summary SHA 기반 표시 구현 | [single-pair-comparison][c1], 실행의 `baseline-square15-C1pair0-xy80`, [후속 표시 코드][view-latest] | 새 C1 게시 근거를 인정하되 정확한 실행 코드 SHA 연결 보류. 중심/ROI 에너지/local RMS 평균 맞춤은 별개. 새 표시의 실제 렌더/수치 검증·전체 후보·loaded 측정·실측 완료로 닫지 않음. |
 
 장부 갱신 시 `decision_current_environment`와 공식 채택 commit, 실제 run/artifact, 통과·실패의 정확한 범위를 각각 기록하는 것이 필요하다. `new_execution_from_feedback`의 인과관계는 실행 담당자가 확인해야 하며, 단순히 본 문서를 읽었거나 게시했다는 이유로 true로 바꾸지 않는다. 특히 F004의 보류, F006/F007의 전체 이력 미검증, F008/F009의 장비·복구 제한은 남긴다. 이 문서는 수신 확인을 위한 새 완료 건을 만들지 않는다.
 
@@ -82,10 +96,10 @@ F003/F004에 연결하는 **제안 상태**다. 계산 담당자의 채택·별�
 
 ## 이번 검토의 검증 범위
 
-- 고정 Git 이력과 파일을 읽고 `038ce93→4890d1d` 변경이 사전등록/분석 계약 두 파일임을 확인했다.
+- 고정 Git 이력과 파일을 읽고 `038ce93→4890d1d`의 사전등록/분석 계약 두 파일 및 `4890d1d→07d3dfa`의 구현/시험 소스 네 파일을 확인했다. 후자의 변경에는 새 결과/장부/시험 로그가 없다.
 - 게시 mesh JSON의 108개 변화율·gate·6/9 집계를 표준 라이브러리 산술로 대조했다. 새 전계 계산은 없다.
-- 9개 기존 ID의 세 null 필드와 과거/현재 상태를 확인했다. readiness에 열거된 코드 7개·로그/재현 기록 3개의 SHA256을 게시 파일과 대조했다.
-- producer의 59개 시험 통과 로그 및 Java 자격검사 문구는 읽은 증거다. 이 검토자가 시험·PDE·native decode를 다시 실행했다고 주장하지 않는다.
+- 9개 기존 ID의 세 null 필드와 과거/현재 상태를 확인했다. `4890d1d` readiness에 열거된 코드 7개·로그/재현 기록 3개의 SHA256을 해당 snapshot과 대조했다. C1 `audit_code_sha256`은 위에 명시한 파일 버전들의 실제 SHA256과 따로 비교했다.
+- producer의 [59개 시험 통과 로그][tests] 및 Java 자격검사 문구는 읽은 증거다. 이 검토자가 시험·PDE·native decode를 다시 실행했다고 주장하지 않는다.
 - 문서의 고정 commit 링크·저장 수치·수정 범위를 확인한다. 계산 브랜치에 새 commit이 생기면 그 뒤 결과는 별도 근거로 평가하며 본 snapshot의 상태를 조용히 바꾸지 않는다.
 
 [report]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4890d1d7f76e947b6913a48624d4c498fc6cb668/docs/CLOUD_RESTART_EXECUTION_20261020.md
@@ -103,3 +117,6 @@ F003/F004에 연결하는 **제안 상태**다. 계산 담당자의 채택·별�
 [recovery]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4890d1d7f76e947b6913a48624d4c498fc6cb668/docs/cloud-restart-20261020/data-recovery-inventory.json
 [old-final]: https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/7a6b62a9154e2584548e48bef4717b7e666904df/tis-java/runs/final-report-20261019T181935Z/FINAL_COMPLETION.json
 [old-closure]: https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/7a6b62a9154e2584548e48bef4717b7e666904df/tis-java/runs/final-report-20261019T181935Z/closure.json
+[wave-latest]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/07d3dfa956b6662a07ff930577240b091065f5d6/tools/task1_waveform_check.py
+[view-latest]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/07d3dfa956b6662a07ff930577240b091065f5d6/tools/task1_results_view.py
+[wave-tests-latest]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/07d3dfa956b6662a07ff930577240b091065f5d6/tests/test_task1_waveform_check.py
