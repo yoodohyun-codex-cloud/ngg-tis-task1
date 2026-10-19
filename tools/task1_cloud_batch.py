@@ -103,7 +103,8 @@ def source_pins():
     files += [Path(__file__), REPO/'tools/java/CloudShapeBasis.java']
     files += [REPO/name for name in ('tools/task1_producer_regression.py',
               'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py',
-              'tools/task1_reference_registration.py', 'tools/task1_coupled_registration.py')
+              'tools/task1_reference_registration.py', 'tools/task1_coupled_registration.py',
+              'tools/task1_c1_coupled_registration.py')
               if (REPO/name).is_file()]
     return {str(p): sha(p) for p in files}
 
@@ -425,6 +426,7 @@ def main():
     p.add_argument('--validation-receipt', type=Path)
     p.add_argument('--reference-plan', action='store_true')
     p.add_argument('--coupled-plan', action='store_true')
+    p.add_argument('--coupled-c1-plan', action='store_true')
     args = p.parse_args()
     if args.verify_originals:
         print(json.dumps(original_integrity(), indent=2)); return 0
@@ -436,8 +438,14 @@ def main():
         with (REPO/'.task1-execution.lock').open('a+') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            require(not (args.reference_plan and args.coupled_plan), 'Choose one fixed registration plan')
-            if args.coupled_plan:
+            require(sum((args.reference_plan, args.coupled_plan, args.coupled_c1_plan)) <= 1,
+                    'Choose one fixed registration plan')
+            if args.coupled_c1_plan:
+                require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
+                        'Coupled C1 plan has exactly its one predefined condition')
+                from task1_c1_coupled_registration import prepare_c1_coupled
+                prepare_c1_coupled(run)
+            elif args.coupled_plan:
                 require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
                         'Coupled plan has exactly its one predefined condition')
                 from task1_coupled_registration import prepare_coupled
@@ -460,6 +468,7 @@ def main():
     require(args.grouped_plan is None and args.validation_receipt is None, 'execute uses only frozen registration')
     require(not args.reference_plan, 'execute uses only frozen reference registration')
     require(not args.coupled_plan, 'execute uses only frozen coupled registration')
+    require(not args.coupled_c1_plan, 'execute uses only frozen coupled C1 registration')
     return execute(run)
 
 
