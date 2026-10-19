@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "purpose": "Record newly supplied CV settings and independently audit compatibility with preserved Prism traces; no CSC/CIC or safety-limit publication",
+  "evidence": {
+    "source_type": "user_provided_inline_settings_image",
+    "local_image_path": null,
+    "image_sha256": null,
+    "image_values_basis": "Transcription supplied in the current conversation; no local image file available for byte-level archival",
+    "trace_to_settings_mapping": "user_confirmed_common_to_all_bare_50nm_100nm_curves",
+    "user_confirmation": "사진 설정이 모든 곡선에 공통 — 차이는 추가 확인 필요"
+  },
+  "confirmed_measurement_units": {
+    "voltage": "V",
+    "current": "A",
+    "exposed_area_cm2": 1
+  },
+  "electrodes": {
+    "reference": {
+      "value": "Ag/AgCl",
+      "status": "user_tentative_not_confirmed_by_V_REF_label"
+    },
+    "counter": {
+      "value": "Pt",
+      "status": "user_tentative"
+    }
+  },
+  "cv_staircase_settings": {
+    "status": "user_confirmed_common_nominal_settings",
+    "voltage_reference_label": "V_REF",
+    "start_potential_V_REF": 0,
+    "upper_vertex_V_REF": 1,
+    "lower_vertex_V_REF": -1,
+    "stop_potential_V_REF": 0,
+    "scans": 1,
+    "scan_rate_V_s": 0.1,
+    "step_V": 0.00244,
+    "sample_interval_s": 0.0244,
+    "estimated_points": 1640,
+    "estimated_duration_s": 40.016,
+    "stop_crossings": 2,
+    "as_reported": {
+      "start": "0 V_REF",
+      "upper": "+1 V_REF",
+      "lower": "−1 V_REF",
+      "stop": "0 V_REF",
+      "scans": "1",
+      "scan_rate": "0.1 V/s",
+      "step": "0.00244 V",
+      "interval": "0.0244 s",
+      "estimated_points": "1640",
+      "estimated_duration": "40.016 s",
+      "stop_crossings": "2"
+    }
+  },
+  "protocol_sequence": [
+    {
+      "step": "Apply",
+      "potential_V_REF": 0
+    },
+    {
+      "step": "Cell on"
+    },
+    {
+      "step": "Wait",
+      "duration_s": 5
+    },
+    {
+      "step": "CV staircase"
+    },
+    {
+      "step": "Cell off"
+    }
+  ],
+  "other_visible_selected_step": {
+    "method": "Chronopotentiometry fast",
+    "scope": "only the selected step; other steps not visible",
+    "duration_s": 0.01,
+    "sample_interval_s": 0.0001,
+    "estimated_points": 100,
+    "current_A": 0,
+    "as_reported": {
+      "duration": "0.01 s",
+      "interval": "0.0001 s",
+      "estimated_points": "100",
+      "current": "0 A"
+    },
+    "establishes_current_pulse_CIC_protocol": false
+  },
+  "scan_rate_correction": {
+    "previous_state": "unknown when the original run input was created",
+    "newly_reported_settings_scan_rate_V_s": 0.1,
+    "scope": "common nominal settings for every bare,50nm and100nm curve in both paired tables, confirmed by the user",
+    "assignment_to_existing_paired_traces": "user_confirmed_common_nominal_0_1_V_s",
+    "do_not_relabel_as_unknown_for_the_shown_protocol": true,
+    "common_nominal_rate_applied_by_user_confirmation": true,
+    "independent_raw_dV_dt_verification_available": false
+  },
+  "preserved_source_audit": {
+    "source_path": "tis-java/electrode-data/cv-source/pedot cic.pzfx",
+    "source_format": "PCFFGRA4 binary with pzfx extension",
+    "source_sha256": "d1c6c74591a810dbb569f663bfc67e5b13256f13d4a50f826c96d8934614c369",
+    "preserved_run_copy_matches_original": true,
+    "existing_profile_path": "tis-java/runs/explore-20261017T133224038032Z/inputs/cv-profile.json",
+    "existing_profile_sha256": "28bbc5561141354712ce28837ca76e950153d7c6e4972a85837265c57c1a3534",
+    "method": "Independent token/count/length/12-byte <IIf record decoding, then exact index/potential/bare-current/PEDOT-current comparison with CSV and profile plot arrays; no original files changed",
+    "tables": [
+      {
+        "pedot_thickness_nm": 50,
+        "raw_columns": [
+          {
+            "name": "Potential (V)",
+            "source_offset": 68162,
+            "record_count": 1476,
+            "blank_type0_count": 0,
+            "record_type_counts": {
+              "1": 1476
+            }
+          },
+          {
+            "name": "Bare NGG",
+            "source_offset": 109733,
+            "record_count": 1476,
+            "blank_type0_count": 0,
+            "record_type_counts": {
+              "1": 1466,
+              "5": 10
+            }
+          },
+          {
+            "name": "NGG-PEDOT:PSS(50nm)",
+            "source_offset": 151294,
+            "record_count": 1476,
+            "blank_type0_count": 0,
+            "record_type_counts": {
+              "1": 1476
+            }
+          }
+        ],
+        "valid_paired_rows": 1476,
+        "voltage_range_V": [
+          -0.8007799983024597,
+          1.0009770393371582
+        ],
+        "first_recorded_voltage_V": 0.002440999960526824,
+        "last_recorded_voltage_V": 0.0,
+        "turning_points": [
+          {
+            "zero_based_index": 409,
+            "potential_V": 1.0009770393371582
+          },
+          {
+            "zero_based_index": 1147,
+            "potential_V": -0.8007799983024597
+          }
+        ],
+        "absolute_step_range_V": [
+          0.0024399757385253906,
+          0.0024500489234924316
+        ],
+        "absolute_step_median_V": 0.0024409890174865723,
+        "conditional_median_dV_dt_if_photo_interval_applies_V_s": 0.10004053350354804,
+        "measured_time_vector_available": false,
+        "raw_csv_plot_exact_match": true,
+        "csv_path": "tis-java/runs/explore-20261017T133224038032Z/inputs/cv-paired-50nm.csv",
+        "csv_sha256": "74e6645a3d4f7d503f87156c11855958eeeb92502d53b4ef2dbb940a6b5d6ec4",
+        "existing_absolute_integral_I_dV_A_V": {
+          "bare": 0.0002830871671620936,
+          "pedot": 0.0014925948825418242
+        },
+        "existing_integral_is_CSC_or_CIC": false
+      },
+      {
+        "pedot_thickness_nm": 100,
+        "raw_columns": [
+          {
+            "name": "Potential (V)",
+            "source_offset": 247333,
+            "record_count": 1477,
+            "blank_type0_count": 1,
+            "record_type_counts": {
+              "1": 1476,
+              "0": 1
+            }
+          },
+          {
+            "name": "Bare NGG",
+            "source_offset": 288932,
+            "record_count": 1477,
+            "blank_type0_count": 1,
+            "record_type_counts": {
+              "1": 1468,
+              "5": 8,
+              "0": 1
+            }
+          },
+          {
+            "name": "NGG-PEDOT:PSS(100nm)",
+            "source_offset": 330521,
+            "record_count": 1477,
+            "blank_type0_count": 1,
+            "record_type_counts": {
+              "1": 1476,
+              "0": 1
+            }
+          }
+        ],
+        "valid_paired_rows": 1476,
+        "voltage_range_V": [
+          -0.8007799983024597,
+          1.0009770393371582
+        ],
+        "first_recorded_voltage_V": 0.002440999960526824,
+        "last_recorded_voltage_V": 0.0,
+        "turning_points": [
+          {
+            "zero_based_index": 409,
+            "potential_V": 1.0009770393371582
+          },
+          {
+            "zero_based_index": 1147,
+            "potential_V": -0.8007799983024597
+          }
+        ],
+        "absolute_step_range_V": [
+          0.0024399757385253906,
+          0.0024500489234924316
+        ],
+        "absolute_step_median_V": 0.0024409890174865723,
+        "conditional_median_dV_dt_if_photo_interval_applies_V_s": 0.10004053350354804,
+        "measured_time_vector_available": false,
+        "raw_csv_plot_exact_match": true,
+        "csv_path": "tis-java/runs/explore-20261017T133224038032Z/inputs/cv-paired-100nm.csv",
+        "csv_sha256": "d42d465a6da92a1219942c61e092ecb0d2d5d3ea9774a90db09a6e3f65ab4507",
+        "existing_absolute_integral_I_dV_A_V": {
+          "bare": 0.0006263585119620119,
+          "pedot": 0.0031968931053447287
+        },
+        "existing_integral_is_CSC_or_CIC": false
+      }
+    ]
+  },
+  "consistency": {
+    "settings_step_divided_by_interval_V_s": 0.1,
+    "settings_step_interval_scan_rate_self_consistent": true,
+    "settings_points_times_interval_s": 40.016,
+    "full_voltage_range_matches_existing_traces": false,
+    "expected_points_matches_existing_valid_rows": false,
+    "valid_rows_short_of_settings_estimate": 164,
+    "observed_lower_vertex_V": -0.8007799983024597,
+    "reported_lower_vertex_V_REF": -1,
+    "observed_upper_vertex_V": 1.0009770393371582,
+    "reported_upper_vertex_V_REF": 1,
+    "step_scale_plausibly_consistent": true,
+    "independent_measured_scan_rate_confirmed": false,
+    "user_confirmed_common_settings": true,
+    "independent_raw_consistency": false,
+    "full_planned_window_and_point_count_reproduced": false,
+    "range_point_count_discrepancy_status": "unresolved_additional_confirmation_needed"
+  },
+  "charge_analysis": {
+    "CSC_numeric_results_published": false,
+    "CSC_status": "held_branch_window_baseline_and_record_flag_conventions_unresolved",
+    "CIC_numeric_results_published": false,
+    "safe_window_established": false,
+    "conditional_integral_rule": "With user-confirmed common nominal scan_rate=0.1V/s, future explicitly selected branch/recorded-range/convention charge per area can use (1/(area*scan_rate))*integral(I(V)*abs(dV)); cathodic/anodic signs, branch and baseline policy must be documented. No charge or CSC calculation is performed in this update.",
+    "do_not_use_as_CSC": "Existing integral abs(I)*abs(dV) spans all recovered branches and is a shape/comparison metric, not a predefined CSC convention",
+    "do_not_fill_missing_voltage_interval": true
+  },
+  "limitations": [
+    "Image protocol lower vertex −1 V_REF and1640 estimated points do not match both recovered −0.8007799983 V lower vertices and1476 valid rows. The100nm tables each have1477 raw records including one blank; this does not explain164 missing points.",
+    "The user confirmed the shown settings are common to all curves. Voltage-step similarity does not independently verify raw dV/dt: recovered Prism columns contain no time vector or acquisition timestamps. Full planned voltage-window/point-count reproduction remains inconsistent and its cause needs further checking.",
+    "Record type and format flags are preserved. Their semantics are format-specific and have not been certified by the vendor. Different bare traces remain separate.",
+    "The settings limits are programmed scan limits, not a validated reversible electrochemical window, stimulation safety limit or CIC. The visible zero-current chronopotentiometry step is not a demonstrated pulse-injection protocol.",
+    "Raw pzfx, existing CSV/profile/run inputs, GUI and solver outputs are preserved. Downstream linking must display common nominal100mV/s as user-confirmed while retaining unresolved recorded-range/point-count inconsistency and unavailable independent dV/dt verification."
+  ],
+  "user_confirmed_common_settings": true,
+  "scan_rate_V_s": 0.1
+}

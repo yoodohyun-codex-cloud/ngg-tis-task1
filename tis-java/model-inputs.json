@@ -1,0 +1,128 @@
+{
+  "status": "bare initial NGG minus fitted series resistance applied in NggSweep; PBS-to-dry-contact surrogate, phantom material and common ground remain assumptions",
+  "geometry": {
+    "shape": "cylinder",
+    "diameter_mm": 50,
+    "depth_axis": "positive inward from upper SC surface",
+    "layers": [
+      {
+        "name": "stratum_corneum",
+        "thickness_mm": 0.1,
+        "sigma_S_m": null,
+        "epsilon_r": null
+      },
+      {
+        "name": "dermis_phantom",
+        "thickness_mm": 5,
+        "sigma_S_m": null,
+        "epsilon_r": null
+      },
+      {
+        "name": "fat_phantom",
+        "thickness_mm": 5,
+        "sigma_S_m": null,
+        "epsilon_r": null
+      },
+      {
+        "name": "muscle_phantom",
+        "thickness_mm": 15,
+        "sigma_S_m": null,
+        "epsilon_r": null
+      }
+    ],
+    "target_mm": [
+      0,
+      0,
+      20
+    ]
+  },
+  "electrodes": {
+    "count": 4,
+    "width_mm": 10,
+    "height_mm": 10,
+    "gold_thickness_nm": 20,
+    "material": "Nano Gap Gold",
+    "contact": "dry conformal, no gel",
+    "contact_impedance_ohm_m2": null,
+    "contact_impedance_note": "Validated dry-contact impedance remains unknown. NggSweep uses measured initial PBS EIS minus fitted effective Rs as a surrogate, with zero additional dry-contact resistance.",
+    "sheet_resistance_ohm_per_square": null,
+    "positions_mm": null,
+    "measured_eis": {
+      "profile_file": "electrode-data/bare-ngg-eis.json",
+      "updated_date": "2026-10-17",
+      "source_directory": "../NGG electrode EIS result/1015~1022",
+      "filename_convention": "[PBS swelling time] [PEDOT:PSS deposition thickness]",
+      "selected_bare_files": [
+        "0 0.xlsx",
+        "1d 0.xlsx",
+        "2d 0.xlsx"
+      ],
+      "measurement_system": "three-electrode",
+      "exposed_area_cm2": 1,
+      "electrolyte_preparation": "1x PBS : DI water = 8 : 72; nominal 0.1x PBS assuming volume ratio",
+      "reference_state": "initial",
+      "reference_state_note": "Initial selected by user for the corrected TIS calculation.",
+      "simulation_swelling_state": "initial",
+      "PEDOT_PSS_coated_data_included": false,
+      "dry_contact_model_calibrated": false,
+      "numerical_source": "Full measured complex spectra and log-frequency interpolated 2000/2010 Hz values are in profile_file."
+    },
+    "simulation_boundary": {
+      "implementation": "NggSweep.java",
+      "profile_file": "electrode-data/bare-ngg-initial-fit.json",
+      "properties_file": "electrode-data/bare-ngg-initial.properties",
+      "method": "Measured initial complex EIS minus fitted effective Rs; replaces legacy RC",
+      "Rs_ohm": 213.27997221512513,
+      "extra_dry_contact_resistance_ohm": 0,
+      "validated_for_dry_contact": false,
+      "area_normalized_carriers": [
+        {
+          "frequency_Hz": 2000,
+          "real_ohm_m2": 0.0010246703091681638,
+          "imag_ohm_m2": -0.0022333986363121724
+        },
+        {
+          "frequency_Hz": 2010,
+          "real_ohm_m2": 0.0010212321657819615,
+          "imag_ohm_m2": -0.0022243456968300194
+        }
+      ]
+    }
+  },
+  "sources": {
+    "waveform_assumption": "sinusoidal with zero DC offset",
+    "channel1": {
+      "frequency_Hz": 2000,
+      "differential_Vpp": 1,
+      "differential_Vpeak": 0.5
+    },
+    "channel2": {
+      "frequency_Hz": 2010,
+      "differential_Vpp": 1,
+      "differential_Vpeak": 0.5
+    },
+    "output_topology": "common ground working assumption based on user report; channel-low continuity not independently confirmed",
+    "output_impedance_ohm": 50,
+    "generator": "Keysight EDU33212A",
+    "oscilloscope": "Keysight DSOX1202A",
+    "differential_probe": "ETA 5001; input loading specifications unverified",
+    "display_load_setting": "High Z",
+    "display_Vpp_per_channel": 1,
+    "open_circuit_source_Vpeak_per_channel": 0.5,
+    "voltage_reference": "generator display at High Z, confirmed by user; loaded electrode-pair voltage is a solver output, not prescribed",
+    "channel_voltage_fields_note": "channel1/channel2 differential_Vpp and differential_Vpeak refer to nominal open-circuit source values, not loaded tissue voltage"
+  },
+  "legacy_values_not_validated_for_this_phantom": {
+    "source": "../electrode Comsol result/BCE.mph",
+    "frequency_Hz": 60,
+    "thin_layer_thickness_nm": 20,
+    "thin_layer_sigma_S_m": 2500000,
+    "thin_layer_epsilon_r": 1,
+    "skin_sigma_S_m": 0.0002,
+    "skin_epsilon_r": 110000,
+    "fat_sigma_S_m": 0.04,
+    "fat_epsilon_r": 8.9e-06,
+    "muscle_sigma_S_m": 0.3,
+    "muscle_epsilon_r": 26000000
+  }
+}

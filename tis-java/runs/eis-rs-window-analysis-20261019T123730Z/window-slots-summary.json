@@ -1,0 +1,1287 @@
+{
+  "schema_version": 2,
+  "status": "complete_saved_fit_summary_only",
+  "generated_utc": "2026-10-19T12:42:33.400612+00:00",
+  "run_id": "eis-rs-window-analysis-20261019T123730Z",
+  "source_completion_file_sha256": "aa4e6c820f47f2f07522c2f20f8e748b93fbc13a8ba97716ff3243aa6c8ef8af",
+  "source_manifest_file_sha256": "ed197aa0a6ff4c30cd34c98fc57fb4a19b349b7356a89b9ecd52eefc2c06da50",
+  "preexecution_registration_commit": "b023c3494b258e73eadce29af74cf6dd979b8087",
+  "source_observed_fit_finish_utc": "2026-10-19T12:38:55.618029+00:00",
+  "units": {
+    "frequency": "Hz",
+    "Rs": "ohm",
+    "Q": "S*s^n",
+    "n": "dimensionless",
+    "relative_complex_errors": "percent",
+    "weighted_SSE": "dimensionless"
+  },
+  "counts": {
+    "window_slots": 15,
+    "new_unconstrained_window_fits": 8,
+    "new_constrained_fallback_fits": 2,
+    "existing_window_slots_referenced_no_refit": 7,
+    "old_bare_or_1000Hz_refits": 0,
+    "new_PDE": 0,
+    "new_field_results": 0,
+    "new_C4_registry_rows": 0
+  },
+  "method": {
+    "model": "Z(f)=Rs+1/[Q*(j*2*pi*f)^n]",
+    "weight": "1/abs(measured Z), relative-complex least squares",
+    "unconstrained": "Legacy fit_series_cpe; n grid[.2,1]801 samples then70golden-section steps; linear Rs>=0,k>0;Q=1/k.",
+    "fallback": "Only if original30-point subtraction is nonpassive;legacy1601n-grid with Rs clipped[0,min30ReZ],positive-k refit. Two fallback outputs retained;nonpassive originals never removed.",
+    "passivity_scope": "Stored flag tests original measured30points1..10000Hz,not globalpassivity/drycontact/safety.",
+    "window_sensitivity": "Deterministic fit/model-window comparison,not statisticalconfidenceinterval/identifiability or fieldprediction.",
+    "selected_profile_policy": "No original profile/boundary replaced. Selected50nm1k historicalartifact and unconstrained history remain separate.",
+    "hash_types": "file_sha256 hashes exactfilebytes; *_canonical_JSON_sha256 hashes only the named JSONvalue,not the sourcefile.",
+    "missing_values": "Missing historical metrics remain JSONnull/omittedwithin rawfit plus explicit missingfieldlist;CSV blanks never imply zero."
+  },
+  "resource_limits": {
+    "cpu_count": 1,
+    "max_RSS_bytes": 3221225472,
+    "per_case_wall_seconds": 600,
+    "total_wall_seconds": 6600,
+    "concurrency": 1,
+    "minimum_free_disk_bytes": 2147483648,
+    "new_PDE": 0,
+    "Java": 0,
+    "compile": 0
+  },
+  "actual_fitting_wall_seconds": 2.2792519030044787,
+  "original_input_code_unchanged": true,
+  "source_input_file_sha256": {
+    "/workspace/ngg-tis-simulation/tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+    "/workspace/ngg-tis-simulation/tis-java/electrode-data/bare-ngg-initial-fit.json": "37d37c5ac806878847e06d248849541bd4cedcd0b58da6c09b6013ed3138b236",
+    "/workspace/ngg-tis-simulation/tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/EIS-source-audit.json": "20548406a2c243600699a765c0926c83d66419d4720a157ebb538cce9f9d045b",
+    "/workspace/ngg-tis-simulation/tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/contact-boundaries.json": "204771036990cbfeefb19cde05b1ab988af60c3faa1db4653f616a858edcf363",
+    "/workspace/ngg-tis-simulation/tis-java/runs/coating-rs-validation-20261019T101802Z/summary.json": "13d79a2d91c5bf35614ac7a0f6da49d0832a0aaa95c3c1f522aabf627bd97224",
+    "/workspace/ngg-tis-simulation/tis-java/runs/gui-refresh-20261019T110558Z/final-source-audit.json": "1a45ff6e844cfbf4a27c08c4c01d9384bc08b68638a74feb1a25c4189ededea4",
+    "/workspace/ngg-tis-simulation/tis-java/runs/c4-phase-allocation-20261019T121058Z/completion.json": "bea4fd4d1f8775124026102e4b021817c540dc4378088768afddad50d795e377",
+    "/workspace/ngg-tis-simulation/tis-java/fit_ngg_eis.py": "ceba0a811d0c48630e38cbf99d988551cc6de1d86bdf2dbc72392257473aba90",
+    "/workspace/ngg-tis-simulation/tis-java/update_ngg_eis.py": "0ddca1dcd0f13ba620e378a79d94ed005dccc392b6f33f9c57bbf5049c7b448c",
+    "/workspace/ngg-tis-simulation/tis-java/explore_inputs.py": "a1ef002509b872aa0164140981daab9f5f65efeb22a2821ea79c4612f50c9888",
+    "/workspace/ngg-tis-simulation/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-simulation/tis-java/mesh_validation.py": "61ca26fb44f85a7a6e0d808d6762b87edddafdc643017cf627374e2eb2164c96",
+    "/workspace/ngg-tis-simulation/NGG electrode EIS result/1015~1022/0 0.xlsx": "a9389c06bb5d8b22e8fdd171e0426833291cbdddceca68c5cd91d10c6ef48327",
+    "/workspace/ngg-tis-simulation/NGG electrode EIS result/1015~1022/0 10.xlsx": "3ecc99c70db1166fc2137619b6bea9dde468d724ea7bba4c89583e5ca82ac771",
+    "/workspace/ngg-tis-simulation/NGG electrode EIS result/1015~1022/0 30.xlsx": "05537b5df2a1591a399c748cb174d681cbce916c3e4134b09d0b635b5682acd7",
+    "/workspace/ngg-tis-simulation/NGG electrode EIS result/1015~1022/0 50.xlsx": "9dd3b5adc7c29420cd356a130f22558c125982faffc0b4be866ea4fbcdbcef70",
+    "/workspace/ngg-tis-simulation/NGG electrode EIS result/1015~1022/0 100.xlsx": "28398ac167369ed80b2d0762f0010eca9ab9de0f96f118c12e25a57368a223be",
+    "/workspace/ngg-tis-simulation/tis-java/runs/eis-rs-window-preparation-20261019T122759Z/preregistration.json": "005b1143b32b625b6e65a033a0af1ab591fdac52f2b608694ef04972aeb43daf",
+    "/workspace/ngg-tis-simulation/tis-java/runs/eis-rs-window-preparation-20261019T122759Z/current-fit-inventory.json": "5f761af56abc67032f601253a7af6b1841d6a6e4ea59afe3eb03d841c0baed84"
+  },
+  "numeric_producer_Python_file_sha256": {
+    "/workspace/ngg-tis-simulation/tis-java/eis_rs_window_analysis.py": "2c67d92ad2e4f85908d82a2b92c50999d57bb3543793875f1bcb2c519934e350",
+    "/workspace/ngg-tis-simulation/tis-java/fit_ngg_eis.py": "ceba0a811d0c48630e38cbf99d988551cc6de1d86bdf2dbc72392257473aba90",
+    "/workspace/ngg-tis-simulation/tis-java/update_ngg_eis.py": "0ddca1dcd0f13ba620e378a79d94ed005dccc392b6f33f9c57bbf5049c7b448c",
+    "/workspace/ngg-tis-simulation/tis-java/mesh_validation.py": "61ca26fb44f85a7a6e0d808d6762b87edddafdc643017cf627374e2eb2164c96"
+  },
+  "historical_1000Hz_selected_and_unconstrained": [
+    {
+      "thickness_nm": 0,
+      "selected_profile_JSON_pointer": "/0/selected_fit",
+      "unconstrained_profile_JSON_pointer": "/0/unconstrained_fit",
+      "source_profile_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "source_profile_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 213.27997221512513,
+        "Q_S_s_power_n": 4.0857236754981104e-05,
+        "n": 0.7314625513856097,
+        "weighted_SSE": 3.404615055173238e-05,
+        "relative_complex_RMS_percent": 0.2062951482455787,
+        "relative_complex_max_percent": 0.34691627024368954,
+        "subtraction_nonnegative_real_over_full_measured_band": true,
+        "method": "unchanged previously selected bare NGG Rs+CPE"
+      },
+      "stored_unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 213.2799722471832,
+        "Q_S_s_power_n": 4.085723641965185e-05,
+        "n": 0.7314625523240708,
+        "weighted_SSE": 3.4046150551732084e-05,
+        "relative_complex_RMS_percent": 0.2062951482455788,
+        "relative_complex_max_percent": 0.3469162734189601,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "reference_only_no_refit": true
+    },
+    {
+      "thickness_nm": 10,
+      "selected_profile_JSON_pointer": "/10/selected_fit",
+      "unconstrained_profile_JSON_pointer": "/10/unconstrained_fit",
+      "source_profile_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "source_profile_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 236.4568295803518,
+        "Q_S_s_power_n": 0.0013871893554668513,
+        "n": 0.6568869046316923,
+        "weighted_SSE": 1.2530307255915593e-05,
+        "relative_complex_RMS_percent": 0.12515144453778604,
+        "relative_complex_max_percent": 0.2686973352079897,
+        "subtraction_nonnegative_real_over_full_measured_band": true,
+        "method": "Rs+CPE; 1–10 kHz; passive over measured band"
+      },
+      "stored_unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 236.4568295803518,
+        "Q_S_s_power_n": 0.0013871893554668513,
+        "n": 0.6568869046316923,
+        "weighted_SSE": 1.2530307255915593e-05,
+        "relative_complex_RMS_percent": 0.12515144453778604,
+        "relative_complex_max_percent": 0.2686973352079897,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "reference_only_no_refit": true
+    },
+    {
+      "thickness_nm": 30,
+      "selected_profile_JSON_pointer": "/30/selected_fit",
+      "unconstrained_profile_JSON_pointer": "/30/unconstrained_fit",
+      "source_profile_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "source_profile_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 223.53241601044684,
+        "Q_S_s_power_n": 0.025535316539855447,
+        "n": 0.33412131381748744,
+        "weighted_SSE": 8.91146363353319e-06,
+        "relative_complex_RMS_percent": 0.10554302223224703,
+        "relative_complex_max_percent": 0.20611397190964456,
+        "subtraction_nonnegative_real_over_full_measured_band": true,
+        "method": "Rs+CPE; 1–10 kHz; passive over measured band"
+      },
+      "stored_unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 223.53241601044684,
+        "Q_S_s_power_n": 0.025535316539855447,
+        "n": 0.33412131381748744,
+        "weighted_SSE": 8.91146363353319e-06,
+        "relative_complex_RMS_percent": 0.10554302223224703,
+        "relative_complex_max_percent": 0.20611397190964456,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "reference_only_no_refit": true
+    },
+    {
+      "thickness_nm": 50,
+      "selected_profile_JSON_pointer": "/50/selected_fit",
+      "unconstrained_profile_JSON_pointer": "/50/unconstrained_fit",
+      "source_profile_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "source_profile_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "selected_fit": {
+        "Rs_ohm": 214.13262432777125,
+        "Q_S_s_power_n": 0.09124977550369344,
+        "n": 0.2,
+        "relative_complex_RMS_percent": 0.887386098794727,
+        "method": "passivity-constrained Rs+CPE; 1–10 kHz; Rs <= min measured Re(Z)",
+        "Rs_upper_bound_ohm": 214.13262432777125,
+        "Rs_at_bound": true
+      },
+      "stored_unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 215.74160149786607,
+        "Q_S_s_power_n": 0.00014696138782840823,
+        "n": 0.999999999999978,
+        "weighted_SSE": 0.0005448587364539767,
+        "relative_complex_RMS_percent": 0.8252717252926277,
+        "relative_complex_max_percent": 2.093722947428414,
+        "subtraction_nonnegative_real_over_full_measured_band": false
+      },
+      "reference_only_no_refit": true
+    },
+    {
+      "thickness_nm": 100,
+      "selected_profile_JSON_pointer": "/100/selected_fit",
+      "unconstrained_profile_JSON_pointer": "/100/unconstrained_fit",
+      "source_profile_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "source_profile_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 230.629635393921,
+        "Q_S_s_power_n": 0.08622966617912933,
+        "n": 0.20000000000000523,
+        "weighted_SSE": 5.921191931118323e-06,
+        "relative_complex_RMS_percent": 0.08603191218320139,
+        "relative_complex_max_percent": 0.18915541901224536,
+        "subtraction_nonnegative_real_over_full_measured_band": true,
+        "method": "Rs+CPE; 1–10 kHz; passive over measured band"
+      },
+      "stored_unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 230.629635393921,
+        "Q_S_s_power_n": 0.08622966617912933,
+        "n": 0.20000000000000523,
+        "weighted_SSE": 5.921191931118323e-06,
+        "relative_complex_RMS_percent": 0.08603191218320139,
+        "relative_complex_max_percent": 0.18915541901224536,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "reference_only_no_refit": true
+    }
+  ],
+  "rows": [
+    {
+      "slot_id": "eis000-f0500",
+      "thickness_nm": 0,
+      "nominal_lower_frequency_Hz": 500,
+      "actual_frequency_range_Hz": [
+        573.62,
+        10000.0
+      ],
+      "n_points": 10,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 0.xlsx",
+      "source_XLSX_file_sha256": "a9389c06bb5d8b22e8fdd171e0426833291cbdddceca68c5cd91d10c6ef48327",
+      "points_canonical_JSON_sha256": "dca47da5343cd09a2c8fd7966213dc9611ed448f23552efe09216cdf92550f3f",
+      "new_field_result": false,
+      "status": "existing_fit_referenced_no_refit",
+      "selection": "existing_selected_fit_unchanged",
+      "new_unconstrained_fit_calls": 0,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/electrode-data/bare-ngg-initial-fit.json",
+      "fit_result_file_sha256": "37d37c5ac806878847e06d248849541bd4cedcd0b58da6c09b6013ed3138b236",
+      "unconstrained_JSON_pointer": "/window_fits/2",
+      "selected_JSON_pointer": "/window_fits/2",
+      "inventory_stored_fit_canonical_JSON_sha256": "43f9afbc0e3e36a18a041198de644ac9ad97a6f3c1af6134551e69b5eecf1621",
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 213.88978753372703,
+        "Q_S_s_power_n": 3.4273366831335146e-05,
+        "n": 0.752865319216866,
+        "weighted_SSE": 0.00010913703302663222,
+        "relative_complex_RMS_percent": 0.3303589457342301,
+        "relative_complex_max_percent": 0.6008933540569821,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 213.88978753372703,
+        "Q_S_s_power_n": 3.4273366831335146e-05,
+        "n": 0.752865319216866,
+        "weighted_SSE": 0.00010913703302663222,
+        "relative_complex_RMS_percent": 0.3303589457342301,
+        "relative_complex_max_percent": 0.6008933540569821,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "43f9afbc0e3e36a18a041198de644ac9ad97a6f3c1af6134551e69b5eecf1621",
+      "selected_fit_canonical_JSON_sha256": "43f9afbc0e3e36a18a041198de644ac9ad97a6f3c1af6134551e69b5eecf1621",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis000-f1000",
+      "thickness_nm": 0,
+      "nominal_lower_frequency_Hz": 1000,
+      "actual_frequency_range_Hz": [
+        1082.6,
+        10000.0
+      ],
+      "n_points": 8,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 0.xlsx",
+      "source_XLSX_file_sha256": "a9389c06bb5d8b22e8fdd171e0426833291cbdddceca68c5cd91d10c6ef48327",
+      "points_canonical_JSON_sha256": "dca47da5343cd09a2c8fd7966213dc9611ed448f23552efe09216cdf92550f3f",
+      "new_field_result": false,
+      "status": "existing_fit_referenced_no_refit",
+      "selection": "existing_selected_fit_unchanged",
+      "new_unconstrained_fit_calls": 0,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/electrode-data/bare-ngg-initial-fit.json",
+      "fit_result_file_sha256": "37d37c5ac806878847e06d248849541bd4cedcd0b58da6c09b6013ed3138b236",
+      "unconstrained_JSON_pointer": "/window_fits/3",
+      "selected_JSON_pointer": "/window_fits/3",
+      "inventory_stored_fit_canonical_JSON_sha256": "324dc94cd28593ea668b525fa19ad44be5976771734a8d5b11f5a5a96235f81b",
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 213.27997221512513,
+        "Q_S_s_power_n": 4.0857236754981104e-05,
+        "n": 0.7314625513856097,
+        "weighted_SSE": 3.404615055173238e-05,
+        "relative_complex_RMS_percent": 0.2062951482455787,
+        "relative_complex_max_percent": 0.34691627024368954,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 213.27997221512513,
+        "Q_S_s_power_n": 4.0857236754981104e-05,
+        "n": 0.7314625513856097,
+        "weighted_SSE": 3.404615055173238e-05,
+        "relative_complex_RMS_percent": 0.2062951482455787,
+        "relative_complex_max_percent": 0.34691627024368954,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "324dc94cd28593ea668b525fa19ad44be5976771734a8d5b11f5a5a96235f81b",
+      "selected_fit_canonical_JSON_sha256": "324dc94cd28593ea668b525fa19ad44be5976771734a8d5b11f5a5a96235f81b",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis000-f2000",
+      "thickness_nm": 0,
+      "nominal_lower_frequency_Hz": 2000,
+      "actual_frequency_range_Hz": [
+        2043.4,
+        10000.0
+      ],
+      "n_points": 6,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 0.xlsx",
+      "source_XLSX_file_sha256": "a9389c06bb5d8b22e8fdd171e0426833291cbdddceca68c5cd91d10c6ef48327",
+      "points_canonical_JSON_sha256": "dca47da5343cd09a2c8fd7966213dc9611ed448f23552efe09216cdf92550f3f",
+      "new_field_result": false,
+      "status": "existing_fit_referenced_no_refit",
+      "selection": "existing_selected_fit_unchanged",
+      "new_unconstrained_fit_calls": 0,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/electrode-data/bare-ngg-initial-fit.json",
+      "fit_result_file_sha256": "37d37c5ac806878847e06d248849541bd4cedcd0b58da6c09b6013ed3138b236",
+      "unconstrained_JSON_pointer": "/window_fits/4",
+      "selected_JSON_pointer": "/window_fits/4",
+      "inventory_stored_fit_canonical_JSON_sha256": "e3aa38528d192fb86c0837c1a3abea382e4c897a5bde90400c00c90bc8aa34b8",
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 212.76641063169365,
+        "Q_S_s_power_n": 4.9669790523977166e-05,
+        "n": 0.7091403319372462,
+        "weighted_SSE": 1.3171232786490237e-05,
+        "relative_complex_RMS_percent": 0.14816225782617892,
+        "relative_complex_max_percent": 0.255406517775469,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 212.76641063169365,
+        "Q_S_s_power_n": 4.9669790523977166e-05,
+        "n": 0.7091403319372462,
+        "weighted_SSE": 1.3171232786490237e-05,
+        "relative_complex_RMS_percent": 0.14816225782617892,
+        "relative_complex_max_percent": 0.255406517775469,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "e3aa38528d192fb86c0837c1a3abea382e4c897a5bde90400c00c90bc8aa34b8",
+      "selected_fit_canonical_JSON_sha256": "e3aa38528d192fb86c0837c1a3abea382e4c897a5bde90400c00c90bc8aa34b8",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis010-f0500",
+      "thickness_nm": 10,
+      "nominal_lower_frequency_Hz": 500,
+      "actual_frequency_range_Hz": [
+        573.62,
+        10000.0
+      ],
+      "n_points": 10,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 10.xlsx",
+      "source_XLSX_file_sha256": "3ecc99c70db1166fc2137619b6bea9dde468d724ea7bba4c89583e5ca82ac771",
+      "points_canonical_JSON_sha256": "d5788042a0cc67c474f0335bfa0c4be8a51f467f3298538421d60767c15cf144",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "unconstrained",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis010-f0500.json",
+      "fit_result_file_sha256": "897e468ad06a99d3dfd42bc4cb62324cf9d580d0fa7974b07a381f5df1c488bb",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 236.88621289130478,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 236.5717747232937,
+        "Q_S_s_power_n": 0.0008389300981323646,
+        "n": 0.7179544539733049,
+        "weighted_SSE": 1.3485232236077266e-05,
+        "relative_complex_RMS_percent": 0.11612593265966704,
+        "relative_complex_max_percent": 0.27996312999002543,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 236.5717747232937,
+        "Q_S_s_power_n": 0.0008389300981323646,
+        "n": 0.7179544539733049,
+        "weighted_SSE": 1.3485232236077266e-05,
+        "relative_complex_RMS_percent": 0.11612593265966704,
+        "relative_complex_max_percent": 0.27996312999002543,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "828851e2de5ea258ad089ff67c5d5fb39426f447309b31120aa105d90d12b4ec",
+      "selected_fit_canonical_JSON_sha256": "828851e2de5ea258ad089ff67c5d5fb39426f447309b31120aa105d90d12b4ec",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis010-f1000",
+      "thickness_nm": 10,
+      "nominal_lower_frequency_Hz": 1000,
+      "actual_frequency_range_Hz": [
+        1082.6,
+        10000.0
+      ],
+      "n_points": 8,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 10.xlsx",
+      "source_XLSX_file_sha256": "3ecc99c70db1166fc2137619b6bea9dde468d724ea7bba4c89583e5ca82ac771",
+      "points_canonical_JSON_sha256": "d5788042a0cc67c474f0335bfa0c4be8a51f467f3298538421d60767c15cf144",
+      "new_field_result": false,
+      "status": "existing_fit_referenced_no_refit",
+      "selection": "existing_selected_fit_unchanged",
+      "new_unconstrained_fit_calls": 0,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "fit_result_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "unconstrained_JSON_pointer": "/10/unconstrained_fit",
+      "selected_JSON_pointer": "/10/selected_fit",
+      "inventory_stored_fit_canonical_JSON_sha256": "7b0f07042bae9dab1b10f8568788e7fa4a7d1a118df19b14ad6469720c73697c",
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 236.4568295803518,
+        "Q_S_s_power_n": 0.0013871893554668513,
+        "n": 0.6568869046316923,
+        "weighted_SSE": 1.2530307255915593e-05,
+        "relative_complex_RMS_percent": 0.12515144453778604,
+        "relative_complex_max_percent": 0.2686973352079897,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 236.4568295803518,
+        "Q_S_s_power_n": 0.0013871893554668513,
+        "n": 0.6568869046316923,
+        "weighted_SSE": 1.2530307255915593e-05,
+        "relative_complex_RMS_percent": 0.12515144453778604,
+        "relative_complex_max_percent": 0.2686973352079897,
+        "subtraction_nonnegative_real_over_full_measured_band": true,
+        "method": "Rs+CPE; 1–10 kHz; passive over measured band"
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "7b0f07042bae9dab1b10f8568788e7fa4a7d1a118df19b14ad6469720c73697c",
+      "selected_fit_canonical_JSON_sha256": "8c3339f668d9ee5ded0e95c283c8517769cbd02e5ec70184d0406c994c00c0fc",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis010-f2000",
+      "thickness_nm": 10,
+      "nominal_lower_frequency_Hz": 2000,
+      "actual_frequency_range_Hz": [
+        2043.4,
+        10000.0
+      ],
+      "n_points": 6,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 10.xlsx",
+      "source_XLSX_file_sha256": "3ecc99c70db1166fc2137619b6bea9dde468d724ea7bba4c89583e5ca82ac771",
+      "points_canonical_JSON_sha256": "d5788042a0cc67c474f0335bfa0c4be8a51f467f3298538421d60767c15cf144",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "unconstrained",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis010-f2000.json",
+      "fit_result_file_sha256": "1f68d01be77bc7e1f30874d4c6c073c9766a748078409af2a1e6a7e9b365acfd",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 236.88621289130478,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 235.9570728712689,
+        "Q_S_s_power_n": 0.007897106689679006,
+        "n": 0.44515464753702083,
+        "weighted_SSE": 8.759675946223845e-06,
+        "relative_complex_RMS_percent": 0.12082822480849885,
+        "relative_complex_max_percent": 0.2272354429881409,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 235.9570728712689,
+        "Q_S_s_power_n": 0.007897106689679006,
+        "n": 0.44515464753702083,
+        "weighted_SSE": 8.759675946223845e-06,
+        "relative_complex_RMS_percent": 0.12082822480849885,
+        "relative_complex_max_percent": 0.2272354429881409,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "c2f186c3457c3d0ee9aebf46323412baae319b38d9c8f8e14dcd373aaf7318a9",
+      "selected_fit_canonical_JSON_sha256": "c2f186c3457c3d0ee9aebf46323412baae319b38d9c8f8e14dcd373aaf7318a9",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis030-f0500",
+      "thickness_nm": 30,
+      "nominal_lower_frequency_Hz": 500,
+      "actual_frequency_range_Hz": [
+        573.62,
+        10000.0
+      ],
+      "n_points": 10,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 30.xlsx",
+      "source_XLSX_file_sha256": "05537b5df2a1591a399c748cb174d681cbce916c3e4134b09d0b635b5682acd7",
+      "points_canonical_JSON_sha256": "665f05396431df3cbe0d6a9dae331df67f29899a7338163621d10e10082d8451",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "unconstrained",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis030-f0500.json",
+      "fit_result_file_sha256": "8ac6f2ee1e984ac4b3a6ebfc974a7f75fe942286bbc315e795f1652693c650fe",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 224.58708666807536,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 224.06317995354473,
+        "Q_S_s_power_n": 0.007521825890696799,
+        "n": 0.5013133425329752,
+        "weighted_SSE": 1.15988531598747e-05,
+        "relative_complex_RMS_percent": 0.10769797193947027,
+        "relative_complex_max_percent": 0.24658797388462045,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 224.06317995354473,
+        "Q_S_s_power_n": 0.007521825890696799,
+        "n": 0.5013133425329752,
+        "weighted_SSE": 1.15988531598747e-05,
+        "relative_complex_RMS_percent": 0.10769797193947027,
+        "relative_complex_max_percent": 0.24658797388462045,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "bd53b0a945be0e655e2178a95301b6edcff99d43aa316067a97ee4312a4f72c9",
+      "selected_fit_canonical_JSON_sha256": "bd53b0a945be0e655e2178a95301b6edcff99d43aa316067a97ee4312a4f72c9",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis030-f1000",
+      "thickness_nm": 30,
+      "nominal_lower_frequency_Hz": 1000,
+      "actual_frequency_range_Hz": [
+        1082.6,
+        10000.0
+      ],
+      "n_points": 8,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 30.xlsx",
+      "source_XLSX_file_sha256": "05537b5df2a1591a399c748cb174d681cbce916c3e4134b09d0b635b5682acd7",
+      "points_canonical_JSON_sha256": "665f05396431df3cbe0d6a9dae331df67f29899a7338163621d10e10082d8451",
+      "new_field_result": false,
+      "status": "existing_fit_referenced_no_refit",
+      "selection": "existing_selected_fit_unchanged",
+      "new_unconstrained_fit_calls": 0,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [],
+      "fit_result_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "fit_result_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "unconstrained_JSON_pointer": "/30/unconstrained_fit",
+      "selected_JSON_pointer": "/30/selected_fit",
+      "inventory_stored_fit_canonical_JSON_sha256": "a81af3a711d1377ac949762dcf11f3facf7086a5657400e60b316ba97d47e4ce",
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 223.53241601044684,
+        "Q_S_s_power_n": 0.025535316539855447,
+        "n": 0.33412131381748744,
+        "weighted_SSE": 8.91146363353319e-06,
+        "relative_complex_RMS_percent": 0.10554302223224703,
+        "relative_complex_max_percent": 0.20611397190964456,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 223.53241601044684,
+        "Q_S_s_power_n": 0.025535316539855447,
+        "n": 0.33412131381748744,
+        "weighted_SSE": 8.91146363353319e-06,
+        "relative_complex_RMS_percent": 0.10554302223224703,
+        "relative_complex_max_percent": 0.20611397190964456,
+        "subtraction_nonnegative_real_over_full_measured_band": true,
+        "method": "Rs+CPE; 1–10 kHz; passive over measured band"
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "a81af3a711d1377ac949762dcf11f3facf7086a5657400e60b316ba97d47e4ce",
+      "selected_fit_canonical_JSON_sha256": "e499a00e305f528bffccc03ce21e2df46943ab32b92941b60aa3d84b7ed82a9d",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis030-f2000",
+      "thickness_nm": 30,
+      "nominal_lower_frequency_Hz": 2000,
+      "actual_frequency_range_Hz": [
+        2043.4,
+        10000.0
+      ],
+      "n_points": 6,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 30.xlsx",
+      "source_XLSX_file_sha256": "05537b5df2a1591a399c748cb174d681cbce916c3e4134b09d0b635b5682acd7",
+      "points_canonical_JSON_sha256": "665f05396431df3cbe0d6a9dae331df67f29899a7338163621d10e10082d8451",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "unconstrained",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [
+        "CPE exponent is at/near the original search bound; Rs/model identifiability remains held."
+      ],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis030-f2000.json",
+      "fit_result_file_sha256": "1147c86ca7563f21b5c2e45e3fba35de4b7a6c9d7b74d4e19019564d7709bf70",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 224.58708666807536,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 222.62168355447264,
+        "Q_S_s_power_n": 0.058729074149722164,
+        "n": 0.20000000000004076,
+        "weighted_SSE": 5.755867027392089e-06,
+        "relative_complex_RMS_percent": 0.0979444317576052,
+        "relative_complex_max_percent": 0.167099022697925,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 222.62168355447264,
+        "Q_S_s_power_n": 0.058729074149722164,
+        "n": 0.20000000000004076,
+        "weighted_SSE": 5.755867027392089e-06,
+        "relative_complex_RMS_percent": 0.0979444317576052,
+        "relative_complex_max_percent": 0.167099022697925,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "a1d0c2c34d9d3415522b2fa510392a79cda09138a2801b7e4c21583cce93cd32",
+      "selected_fit_canonical_JSON_sha256": "a1d0c2c34d9d3415522b2fa510392a79cda09138a2801b7e4c21583cce93cd32",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis050-f0500",
+      "thickness_nm": 50,
+      "nominal_lower_frequency_Hz": 500,
+      "actual_frequency_range_Hz": [
+        573.62,
+        10000.0
+      ],
+      "n_points": 10,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 50.xlsx",
+      "source_XLSX_file_sha256": "9dd3b5adc7c29420cd356a130f22558c125982faffc0b4be866ea4fbcdbcef70",
+      "points_canonical_JSON_sha256": "25852d32fa313f39aaee6d0d5db6654bd739629e91ee848f6b3e75ee3f3ffc8e",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "passivity_constrained_fallback",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 1,
+      "unconstrained_subtraction_passive": false,
+      "selected_subtraction_passive": true,
+      "warnings": [
+        "Original unconstrained fit/subtraction is nonpassive and remains preserved; fallback is a surrogate, not physical validation.",
+        "CPE exponent is at/near the original search bound; Rs/model identifiability remains held.",
+        "Rs is at the full-measured-band real-Z bound; do not interpret as confidence limit."
+      ],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis050-f0500.json",
+      "fit_result_file_sha256": "20f082c7dda4d248eeac9849ac2f84ecc5d13ef670228a19ff93883ebac0016c",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 214.13262432777125,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 215.5623765903537,
+        "Q_S_s_power_n": 0.00020651707653359915,
+        "n": 0.9999999999999842,
+        "weighted_SSE": 0.0005778898934042948,
+        "relative_complex_RMS_percent": 0.760190695420757,
+        "relative_complex_max_percent": 2.176276230421358,
+        "subtraction_nonnegative_real_over_full_measured_band": false
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 214.13262432777125,
+        "Q_S_s_power_n": 0.10905681350170986,
+        "n": 0.2,
+        "weighted_SSE": 0.0006873994428983262,
+        "relative_complex_RMS_percent": 0.8290955571575125,
+        "relative_complex_max_percent": 2.3767682584883225,
+        "method": "Legacy1601n-grid/clipRs/refitk; only cutoff is parameterized",
+        "Rs_upper_bound_ohm": 214.13262432777125,
+        "Rs_at_bound": true,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "acafdbc0e22e28f5b41e516fb22e08219591bd4cd4f7a418f78429280f9ea99e",
+      "selected_fit_canonical_JSON_sha256": "54cd8aee1ba2f6b67a3e623d3f7f7e14ac0febbf4c010f25eebaaab05dc36a2a",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis050-f1000",
+      "thickness_nm": 50,
+      "nominal_lower_frequency_Hz": 1000,
+      "actual_frequency_range_Hz": [
+        1082.6,
+        10000.0
+      ],
+      "n_points": 8,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 50.xlsx",
+      "source_XLSX_file_sha256": "9dd3b5adc7c29420cd356a130f22558c125982faffc0b4be866ea4fbcdbcef70",
+      "points_canonical_JSON_sha256": "25852d32fa313f39aaee6d0d5db6654bd739629e91ee848f6b3e75ee3f3ffc8e",
+      "new_field_result": false,
+      "status": "existing_fit_referenced_no_refit",
+      "selection": "existing_passivity_constrained_selected_fit",
+      "new_unconstrained_fit_calls": 0,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": false,
+      "selected_subtraction_passive": null,
+      "warnings": [
+        "Unconstrained Rs subtraction is nonpassive; selected constrained Rs is a surrogate requiring Rs sensitivity checks.",
+        "CPE exponent is at the search bound; Rs separation is model-sensitive."
+      ],
+      "fit_result_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "fit_result_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "unconstrained_JSON_pointer": "/50/unconstrained_fit",
+      "selected_JSON_pointer": "/50/selected_fit",
+      "inventory_stored_fit_canonical_JSON_sha256": "edf8c79e4c92fd733901c0c959306795b8d6ecd4cedf4257069d606f6f53d729",
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 215.74160149786607,
+        "Q_S_s_power_n": 0.00014696138782840823,
+        "n": 0.999999999999978,
+        "weighted_SSE": 0.0005448587364539767,
+        "relative_complex_RMS_percent": 0.8252717252926277,
+        "relative_complex_max_percent": 2.093722947428414,
+        "subtraction_nonnegative_real_over_full_measured_band": false
+      },
+      "selected_fit": {
+        "Rs_ohm": 214.13262432777125,
+        "Q_S_s_power_n": 0.09124977550369344,
+        "n": 0.2,
+        "relative_complex_RMS_percent": 0.887386098794727,
+        "method": "passivity-constrained Rs+CPE; 1–10 kHz; Rs <= min measured Re(Z)",
+        "Rs_upper_bound_ohm": 214.13262432777125,
+        "Rs_at_bound": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "edf8c79e4c92fd733901c0c959306795b8d6ecd4cedf4257069d606f6f53d729",
+      "selected_fit_canonical_JSON_sha256": "ddf36dfddd674c30484d3694421eaefcd79afa832dd4fd3be7f27c7f99f3eef8",
+      "missing_selected_metric_fields": [
+        "weighted_SSE",
+        "relative_complex_max_percent",
+        "subtraction_nonnegative_real_over_full_measured_band"
+      ],
+      "missing_selected_metric_reason": "Historical selected-fit artifact omits weighted_SSE/relative_complex_max_percent/passivity boolean. Preserved as missing; no refit or derived passivity/metrics substituted."
+    },
+    {
+      "slot_id": "eis050-f2000",
+      "thickness_nm": 50,
+      "nominal_lower_frequency_Hz": 2000,
+      "actual_frequency_range_Hz": [
+        2043.4,
+        10000.0
+      ],
+      "n_points": 6,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 50.xlsx",
+      "source_XLSX_file_sha256": "9dd3b5adc7c29420cd356a130f22558c125982faffc0b4be866ea4fbcdbcef70",
+      "points_canonical_JSON_sha256": "25852d32fa313f39aaee6d0d5db6654bd739629e91ee848f6b3e75ee3f3ffc8e",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "passivity_constrained_fallback",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 1,
+      "unconstrained_subtraction_passive": false,
+      "selected_subtraction_passive": true,
+      "warnings": [
+        "Original unconstrained fit/subtraction is nonpassive and remains preserved; fallback is a surrogate, not physical validation.",
+        "CPE exponent is at/near the original search bound; Rs/model identifiability remains held.",
+        "Rs is at the full-measured-band real-Z bound; do not interpret as confidence limit."
+      ],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis050-f2000.json",
+      "fit_result_file_sha256": "c58198971884875f26945b84fbc245ede06bd890c8dc8008aed75092ab89d809",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 214.13262432777125,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 216.05399325192298,
+        "Q_S_s_power_n": 9.319770214071384e-05,
+        "n": 0.999999999999992,
+        "weighted_SSE": 0.0004892568845907424,
+        "relative_complex_RMS_percent": 0.9030105984896144,
+        "relative_complex_max_percent": 1.9493113408665612,
+        "subtraction_nonnegative_real_over_full_measured_band": false
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 214.13262432777125,
+        "Q_S_s_power_n": 0.0708068327259985,
+        "n": 0.2,
+        "weighted_SSE": 0.0005596981208781062,
+        "relative_complex_RMS_percent": 0.9658313524956158,
+        "relative_complex_max_percent": 2.136865442048486,
+        "method": "Legacy1601n-grid/clipRs/refitk; only cutoff is parameterized",
+        "Rs_upper_bound_ohm": 214.13262432777125,
+        "Rs_at_bound": true,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "a1237ad888d3ebcb686204e949ba408ffbb8f5f40b26075c29edb4ad3f3ab600",
+      "selected_fit_canonical_JSON_sha256": "be8865b3a55528aeb5baada314cdcc18697206f5bcae2370634e29720898cece",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis100-f0500",
+      "thickness_nm": 100,
+      "nominal_lower_frequency_Hz": 500,
+      "actual_frequency_range_Hz": [
+        573.62,
+        10000.0
+      ],
+      "n_points": 10,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 100.xlsx",
+      "source_XLSX_file_sha256": "28398ac167369ed80b2d0762f0010eca9ab9de0f96f118c12e25a57368a223be",
+      "points_canonical_JSON_sha256": "dc5b1c4bf9e9b7a94ba811b0f4da85153907eb51f56a49d601d3f309e0dfa909",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "unconstrained",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [
+        "CPE exponent is at/near the original search bound; Rs/model identifiability remains held."
+      ],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis100-f0500.json",
+      "fit_result_file_sha256": "44dd4d842fdc41c27d3513090c59f1df441bcc44f9453ca44e5042dd60f0779f",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 231.86228532017662,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 230.6466860111135,
+        "Q_S_s_power_n": 0.0883556513081818,
+        "n": 0.20000000000000995,
+        "weighted_SSE": 6.4655257780352725e-06,
+        "relative_complex_RMS_percent": 0.08040849319590021,
+        "relative_complex_max_percent": 0.19356034576154546,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 500,
+        "actual_frequency_range_Hz": [
+          573.62,
+          10000.0
+        ],
+        "n_points": 10,
+        "Rs_ohm": 230.6466860111135,
+        "Q_S_s_power_n": 0.0883556513081818,
+        "n": 0.20000000000000995,
+        "weighted_SSE": 6.4655257780352725e-06,
+        "relative_complex_RMS_percent": 0.08040849319590021,
+        "relative_complex_max_percent": 0.19356034576154546,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "1a8dc0ca5ad03bc5bcbb2fcbf205269c8d754658403a7a2bbf55da74a895fdb1",
+      "selected_fit_canonical_JSON_sha256": "1a8dc0ca5ad03bc5bcbb2fcbf205269c8d754658403a7a2bbf55da74a895fdb1",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis100-f1000",
+      "thickness_nm": 100,
+      "nominal_lower_frequency_Hz": 1000,
+      "actual_frequency_range_Hz": [
+        1082.6,
+        10000.0
+      ],
+      "n_points": 8,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 100.xlsx",
+      "source_XLSX_file_sha256": "28398ac167369ed80b2d0762f0010eca9ab9de0f96f118c12e25a57368a223be",
+      "points_canonical_JSON_sha256": "dc5b1c4bf9e9b7a94ba811b0f4da85153907eb51f56a49d601d3f309e0dfa909",
+      "new_field_result": false,
+      "status": "existing_fit_referenced_no_refit",
+      "selection": "existing_selected_fit_unchanged",
+      "new_unconstrained_fit_calls": 0,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [
+        "CPE exponent is at the search bound; Rs separation is model-sensitive."
+      ],
+      "fit_result_path": "tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+      "fit_result_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+      "unconstrained_JSON_pointer": "/100/unconstrained_fit",
+      "selected_JSON_pointer": "/100/selected_fit",
+      "inventory_stored_fit_canonical_JSON_sha256": "166a02705596b77abd91fa181c9b06cc7ddb1d905035474f4880cd41ac239095",
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 230.629635393921,
+        "Q_S_s_power_n": 0.08622966617912933,
+        "n": 0.20000000000000523,
+        "weighted_SSE": 5.921191931118323e-06,
+        "relative_complex_RMS_percent": 0.08603191218320139,
+        "relative_complex_max_percent": 0.18915541901224536,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 1000,
+        "actual_frequency_range_Hz": [
+          1082.6,
+          10000.0
+        ],
+        "n_points": 8,
+        "Rs_ohm": 230.629635393921,
+        "Q_S_s_power_n": 0.08622966617912933,
+        "n": 0.20000000000000523,
+        "weighted_SSE": 5.921191931118323e-06,
+        "relative_complex_RMS_percent": 0.08603191218320139,
+        "relative_complex_max_percent": 0.18915541901224536,
+        "subtraction_nonnegative_real_over_full_measured_band": true,
+        "method": "Rs+CPE; 1–10 kHz; passive over measured band"
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "166a02705596b77abd91fa181c9b06cc7ddb1d905035474f4880cd41ac239095",
+      "selected_fit_canonical_JSON_sha256": "dfb1090a721077748ab7d60b11f3ca9b6061c0bf9f1df8a671e7864fc86654a0",
+      "missing_selected_metric_fields": []
+    },
+    {
+      "slot_id": "eis100-f2000",
+      "thickness_nm": 100,
+      "nominal_lower_frequency_Hz": 2000,
+      "actual_frequency_range_Hz": [
+        2043.4,
+        10000.0
+      ],
+      "n_points": 6,
+      "full_measured_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "full_measured_point_count": 30,
+      "source_XLSX_path": "NGG electrode EIS result/1015~1022/0 100.xlsx",
+      "source_XLSX_file_sha256": "28398ac167369ed80b2d0762f0010eca9ab9de0f96f118c12e25a57368a223be",
+      "points_canonical_JSON_sha256": "dc5b1c4bf9e9b7a94ba811b0f4da85153907eb51f56a49d601d3f309e0dfa909",
+      "new_field_result": false,
+      "status": "new_fit_complete",
+      "selection": "unconstrained",
+      "new_unconstrained_fit_calls": 1,
+      "new_constrained_fallback_calls": 0,
+      "unconstrained_subtraction_passive": true,
+      "selected_subtraction_passive": true,
+      "warnings": [
+        "CPE exponent is at/near the original search bound; Rs/model identifiability remains held."
+      ],
+      "fit_result_path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/cases/eis100-f2000.json",
+      "fit_result_file_sha256": "849030c26873b5bd66f0eea355ec9ab8b957d7a1be90dd48b3bf8f4ba13c5ec9",
+      "unconstrained_JSON_pointer": "/unconstrained_fit",
+      "selected_JSON_pointer": "/selected_fit",
+      "original_fullband_min_real_Z_ohm": 231.86228532017662,
+      "unconstrained_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 230.51945876273223,
+        "Q_S_s_power_n": 0.07926561844523351,
+        "n": 0.20000000000002477,
+        "weighted_SSE": 5.305708100803984e-06,
+        "relative_complex_RMS_percent": 0.09403641228095419,
+        "relative_complex_max_percent": 0.17437385635645536,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "selected_fit": {
+        "nominal_lower_frequency_Hz": 2000,
+        "actual_frequency_range_Hz": [
+          2043.4,
+          10000.0
+        ],
+        "n_points": 6,
+        "Rs_ohm": 230.51945876273223,
+        "Q_S_s_power_n": 0.07926561844523351,
+        "n": 0.20000000000002477,
+        "weighted_SSE": 5.305708100803984e-06,
+        "relative_complex_RMS_percent": 0.09403641228095419,
+        "relative_complex_max_percent": 0.17437385635645536,
+        "subtraction_nonnegative_real_over_full_measured_band": true
+      },
+      "unconstrained_fit_canonical_JSON_sha256": "ddb48be9f608ff35201e5db8b9791356ab3dad4e6b0d2c36c8ee27d89f96d0ac",
+      "selected_fit_canonical_JSON_sha256": "ddb48be9f608ff35201e5db8b9791356ab3dad4e6b0d2c36c8ee27d89f96d0ac",
+      "missing_selected_metric_fields": []
+    }
+  ],
+  "holds": [
+    "Rs is an effective series term, not isolated electrolyte/lead/film/spreading resistance.",
+    "No replicate/noise/temperature/ACamplitude metadata for statistical uncertainty; no dry-contact validation.",
+    "50nm Rsconstraint/nonpassive originalfit and50/100nm n-bound warnings remain.",
+    "Changed coating/contact SCXY,combinedSCXY/bulkz/whole3D,measurement/physiology and Objective2 models remain held.",
+    "Changing Rs changes the complex boundary operator;no existing E/J/current/loss scalar scaling or endpoint-field interpolation can predict the newfield.",
+    "C4 rawphase results/registry and GUI pointers remain unchanged. Summary is not a fresh neural/force/measurement or COMSOL5.3a result."
+  ],
+  "independent_result_audit": {
+    "status": "passed",
+    "path": "tis-java/runs/eis-rs-window-analysis-20261019T123730Z/audit/result-verification.json",
+    "file_sha256": "148b62ef40bcb9af9d1dd5277269e8538c60b6ee33d4fb9459162e0bd41d5b61",
+    "observed_utc": "2026-10-19T12:41:10.000821+00:00",
+    "completed_cases": 8,
+    "stored_parameter_roles": 16,
+    "prediction_only_SSE_RMS_max_checks": 48,
+    "separate_optimization_refit_calls": 0,
+    "scope": "Stored-parameter predictions at original measured fitting points and hashes/resources;not goodness-of-fit acceptance,physical/model validation,CI or fieldvalidation."
+  },
+  "result_publication_commit": null,
+  "canonical_JSON_hash_definition": {
+    "named_fit_value_hashes": "Python json.dumps(value, ensure_ascii=True, sort_keys=True, separators=(comma,colon), allow_nan=False), UTF-8 encoded; JSON escapes are part of canonical bytes. Source file-byte hashes remain separate.",
+    "inventory_reference_hashes": "Retained from the explicitly pinned preparation inventory; not file-byte hashes."
+  },
+  "prior_summary_version": {
+    "path": "window-slots-summary.v1.json",
+    "file_SHA256": "d8a44b44e69adabf769259bbaa4224ce11f94c698e7b6e0eaa96624de7e12986",
+    "reason": "Explicit canonical JSON serialization namespace; source fit/CSV/field values unchanged."
+  }
+}

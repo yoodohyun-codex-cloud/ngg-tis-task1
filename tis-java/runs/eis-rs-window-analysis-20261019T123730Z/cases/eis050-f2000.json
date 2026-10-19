@@ -1,0 +1,81 @@
+{
+  "status": "complete",
+  "cutoff_Hz": 2000,
+  "actual_frequency_range_Hz": [
+    2043.4,
+    10000.0
+  ],
+  "n_points": 6,
+  "unconstrained_fit": {
+    "nominal_lower_frequency_Hz": 2000,
+    "actual_frequency_range_Hz": [
+      2043.4,
+      10000.0
+    ],
+    "n_points": 6,
+    "Rs_ohm": 216.05399325192298,
+    "Q_S_s_power_n": 9.319770214071384e-05,
+    "n": 0.999999999999992,
+    "weighted_SSE": 0.0004892568845907424,
+    "relative_complex_RMS_percent": 0.9030105984896144,
+    "relative_complex_max_percent": 1.9493113408665612,
+    "subtraction_nonnegative_real_over_full_measured_band": false
+  },
+  "unconstrained_passive": false,
+  "unconstrained_calls": 1,
+  "fallback_calls": 1,
+  "model_window_sensitivity_not_confidence_interval": true,
+  "selected_fit": {
+    "nominal_lower_frequency_Hz": 2000,
+    "actual_frequency_range_Hz": [
+      2043.4,
+      10000.0
+    ],
+    "n_points": 6,
+    "Rs_ohm": 214.13262432777125,
+    "Q_S_s_power_n": 0.0708068327259985,
+    "n": 0.2,
+    "weighted_SSE": 0.0005596981208781062,
+    "relative_complex_RMS_percent": 0.9658313524956158,
+    "relative_complex_max_percent": 2.136865442048486,
+    "method": "Legacy1601n-grid/clipRs/refitk; only cutoff is parameterized",
+    "Rs_upper_bound_ohm": 214.13262432777125,
+    "Rs_at_bound": true,
+    "subtraction_nonnegative_real_over_full_measured_band": true
+  },
+  "selection": "passivity_constrained_fallback",
+  "selected_subtraction_passive": true,
+  "warnings": [
+    "Original unconstrained fit/subtraction is nonpassive and remains preserved; fallback is a surrogate, not physical validation.",
+    "CPE exponent is at/near the original search bound; Rs/model identifiability remains held.",
+    "Rs is at the full-measured-band real-Z bound; do not interpret as confidence limit."
+  ],
+  "original_fullband_min_real_Z_ohm": 214.13262432777125,
+  "interpretation": "Deterministic input-fit/window sensitivity only; no new field/contact/physiological result",
+  "case_id": "eis050-f2000",
+  "input": {
+    "id": "eis050-f2000",
+    "thickness_nm": 50,
+    "cutoff_Hz": 2000,
+    "profile_key": "50",
+    "points_canonical_JSON_sha256": "25852d32fa313f39aaee6d0d5db6654bd739629e91ee848f6b3e75ee3f3ffc8e",
+    "source_XLSX_file_sha256": "9dd3b5adc7c29420cd356a130f22558c125982faffc0b4be866ea4fbcdbcef70",
+    "expected_points": 6,
+    "actual_fit_frequency_range_Hz": [
+      2043.4,
+      10000.0
+    ],
+    "maximum_unconstrained_calls": 1,
+    "maximum_constrained_fallback_calls": 1
+  },
+  "input_profile_path": "/workspace/ngg-tis-simulation/tis-java/runs/coating-rs-validation-20261019T101802Z/inputs/eis-profiles.json",
+  "input_profile_file_sha256": "052334a4f29dcdc5a2193a74456585da8bd24b5cd97d9db0041c39ceaf494dae",
+  "analysis_code_file_sha256": {
+    "/workspace/ngg-tis-simulation/tis-java/eis_rs_window_analysis.py": "2c67d92ad2e4f85908d82a2b92c50999d57bb3543793875f1bcb2c519934e350",
+    "/workspace/ngg-tis-simulation/tis-java/fit_ngg_eis.py": "ceba0a811d0c48630e38cbf99d988551cc6de1d86bdf2dbc72392257473aba90",
+    "/workspace/ngg-tis-simulation/tis-java/update_ngg_eis.py": "0ddca1dcd0f13ba620e378a79d94ed005dccc392b6f33f9c57bbf5049c7b448c",
+    "/workspace/ngg-tis-simulation/tis-java/mesh_validation.py": "61ca26fb44f85a7a6e0d808d6762b87edddafdc643017cf627374e2eb2164c96"
+  },
+  "new_PDE": 0,
+  "new_field_results": 0
+}

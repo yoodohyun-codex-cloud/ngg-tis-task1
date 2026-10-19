@@ -1,0 +1,481 @@
+{
+  "schema_version": 1,
+  "source_file": "NGG electrode EIS result/1015~1022/0 0.xlsx",
+  "source_sha256": "a9389c06bb5d8b22e8fdd171e0426833291cbdddceca68c5cd91d10c6ef48327",
+  "source_sheet": "Sheet1",
+  "source_range": "A1:G31",
+  "measurement": {
+    "system": "three-electrode EIS",
+    "exposed_working_electrode_area_cm2": 1.0,
+    "exposed_working_electrode_area_m2": 0.0001,
+    "electrolyte": {
+      "stock": "1x PBS",
+      "diluent": "DI water",
+      "stock_to_DI_ratio": [
+        8,
+        72
+      ],
+      "ratio_basis": "assumed volume ratio",
+      "nominal_final_PBS_strength_x": 0.1,
+      "concentration_basis": "calculated dilution, not measured ionic concentration"
+    },
+    "reference_electrode": null,
+    "counter_electrode": null,
+    "AC_excitation_amplitude": null,
+    "DC_bias_or_OCP": null,
+    "temperature_C": null,
+    "replicate_count_per_state": null,
+    "same_specimen_followed_over_time": null
+  },
+  "method": "Rs + 1/(Q*(j*2*pi*f)^n), relative-complex least squares",
+  "selected_fit": {
+    "nominal_lower_frequency_Hz": 1000,
+    "actual_frequency_range_Hz": [
+      1082.6,
+      10000.0
+    ],
+    "n_points": 8,
+    "Rs_ohm": 213.27997221512513,
+    "Q_S_s_power_n": 4.0857236754981104e-05,
+    "n": 0.7314625513856097,
+    "weighted_SSE": 3.404615055173238e-05,
+    "relative_complex_RMS_percent": 0.2062951482455787,
+    "relative_complex_max_percent": 0.34691627024368954,
+    "subtraction_nonnegative_real_over_full_measured_band": true
+  },
+  "window_fits": [
+    {
+      "nominal_lower_frequency_Hz": 1,
+      "actual_frequency_range_Hz": [
+        1.0,
+        10000.0
+      ],
+      "n_points": 30,
+      "Rs_ohm": 223.78208825310358,
+      "Q_S_s_power_n": 1.1224033425653985e-05,
+      "n": 0.9120561580196871,
+      "weighted_SSE": 0.03168082636693454,
+      "relative_complex_RMS_percent": 3.2496577443855306,
+      "relative_complex_max_percent": 6.284667337867009,
+      "subtraction_nonnegative_real_over_full_measured_band": false
+    },
+    {
+      "nominal_lower_frequency_Hz": 100,
+      "actual_frequency_range_Hz": [
+        117.21,
+        10000.0
+      ],
+      "n_points": 15,
+      "Rs_ohm": 217.24054318542295,
+      "Q_S_s_power_n": 1.931360295998295e-05,
+      "n": 0.8302053200006967,
+      "weighted_SSE": 0.003207475676996762,
+      "relative_complex_RMS_percent": 1.462298573478701,
+      "relative_complex_max_percent": 3.1096160939055344,
+      "subtraction_nonnegative_real_over_full_measured_band": false
+    },
+    {
+      "nominal_lower_frequency_Hz": 500,
+      "actual_frequency_range_Hz": [
+        573.62,
+        10000.0
+      ],
+      "n_points": 10,
+      "Rs_ohm": 213.88978753372703,
+      "Q_S_s_power_n": 3.4273366831335146e-05,
+      "n": 0.752865319216866,
+      "weighted_SSE": 0.00010913703302663222,
+      "relative_complex_RMS_percent": 0.3303589457342301,
+      "relative_complex_max_percent": 0.6008933540569821,
+      "subtraction_nonnegative_real_over_full_measured_band": true
+    },
+    {
+      "nominal_lower_frequency_Hz": 1000,
+      "actual_frequency_range_Hz": [
+        1082.6,
+        10000.0
+      ],
+      "n_points": 8,
+      "Rs_ohm": 213.27997221512513,
+      "Q_S_s_power_n": 4.0857236754981104e-05,
+      "n": 0.7314625513856097,
+      "weighted_SSE": 3.404615055173238e-05,
+      "relative_complex_RMS_percent": 0.2062951482455787,
+      "relative_complex_max_percent": 0.34691627024368954,
+      "subtraction_nonnegative_real_over_full_measured_band": true
+    },
+    {
+      "nominal_lower_frequency_Hz": 2000,
+      "actual_frequency_range_Hz": [
+        2043.4,
+        10000.0
+      ],
+      "n_points": 6,
+      "Rs_ohm": 212.76641063169365,
+      "Q_S_s_power_n": 4.9669790523977166e-05,
+      "n": 0.7091403319372462,
+      "weighted_SSE": 1.3171232786490237e-05,
+      "relative_complex_RMS_percent": 0.14816225782617892,
+      "relative_complex_max_percent": 0.255406517775469,
+      "subtraction_nonnegative_real_over_full_measured_band": true
+    }
+  ],
+  "selection_reason": "1-10 kHz spans both 2000/2010 Hz carriers with 8 points; the full-band single-CPE fit has systematic residuals and implies negative high-frequency real impedance after subtraction.",
+  "Rs_window_sensitivity_ohm": [
+    212.76641063169365,
+    213.88978753372703
+  ],
+  "sensitivity_note": "500 Hz, 1 kHz, 2 kHz lower cutoffs; model/window sensitivity, not a confidence interval.",
+  "boundary_method": "Subtract the selected frequency-independent real Rs from measured complex Z, interpolate real and imaginary parts versus log(f), then multiply by the exposed area.",
+  "carriers": [
+    {
+      "frequency_Hz": 2000,
+      "measured_real_ohm": 223.52667530680677,
+      "measured_imag_ohm": -22.33398636312172,
+      "electrode_real_ohm": 10.246703091681638,
+      "electrode_imag_ohm": -22.33398636312172,
+      "electrode_magnitude_ohm": 24.572380249320272,
+      "electrode_phase_deg": -65.35461803765816,
+      "area_real_ohm_m2": 0.0010246703091681638,
+      "area_imag_ohm_m2": -0.0022333986363121724,
+      "source_ranges": [
+        "B8:G8",
+        "B7:G7"
+      ],
+      "bracket_frequency_Hz": [
+        1487.4,
+        2043.4
+      ]
+    },
+    {
+      "frequency_Hz": 2010,
+      "measured_real_ohm": 223.49229387294474,
+      "measured_imag_ohm": -22.243456968300194,
+      "electrode_real_ohm": 10.212321657819615,
+      "electrode_imag_ohm": -22.243456968300194,
+      "electrode_magnitude_ohm": 24.47576130671718,
+      "electrode_phase_deg": -65.33939893003948,
+      "area_real_ohm_m2": 0.0010212321657819615,
+      "area_imag_ohm_m2": -0.0022243456968300194,
+      "source_ranges": [
+        "B8:G8",
+        "B7:G7"
+      ],
+      "bracket_frequency_Hz": [
+        1487.4,
+        2043.4
+      ]
+    }
+  ],
+  "estimated_spectrum": [
+    {
+      "frequency_Hz": 1.0,
+      "source_range": "B31:G31",
+      "measured_real_ohm": 3360.044169444332,
+      "measured_imag_ohm": -16751.80740707473,
+      "electrode_real_ohm": 3146.7641972292067,
+      "electrode_imag_ohm": -16751.80740707473,
+      "electrode_magnitude_ohm": 17044.7990987482,
+      "electrode_phase_deg": -79.36118104495552
+    },
+    {
+      "frequency_Hz": 1.3738,
+      "source_range": "B30:G30",
+      "measured_real_ohm": 2333.146532540432,
+      "measured_imag_ohm": -12595.583838478786,
+      "electrode_real_ohm": 2119.8665603253066,
+      "electrode_imag_ohm": -12595.583838478786,
+      "electrode_magnitude_ohm": 12772.727448189498,
+      "electrode_phase_deg": -80.44651632172274
+    },
+    {
+      "frequency_Hz": 1.8874,
+      "source_range": "B29:G29",
+      "measured_real_ohm": 1798.881447977191,
+      "measured_imag_ohm": -9439.60745675309,
+      "electrode_real_ohm": 1585.601475762066,
+      "electrode_imag_ohm": -9439.60745675309,
+      "electrode_magnitude_ohm": 9571.85044688473,
+      "electrode_phase_deg": -80.46485523800257
+    },
+    {
+      "frequency_Hz": 2.5929,
+      "source_range": "B28:G28",
+      "measured_real_ohm": 1305.5749525769456,
+      "measured_imag_ohm": -7015.971642487138,
+      "electrode_real_ohm": 1092.2949803618205,
+      "electrode_imag_ohm": -7015.971642487138,
+      "electrode_magnitude_ohm": 7100.4905754678175,
+      "electrode_phase_deg": -81.15083706393014
+    },
+    {
+      "frequency_Hz": 3.5622,
+      "source_range": "B27:G27",
+      "measured_real_ohm": 974.4519259124727,
+      "measured_imag_ohm": -5285.337777037189,
+      "electrode_real_ohm": 761.1719536973476,
+      "electrode_imag_ohm": -5285.337777037189,
+      "electrode_magnitude_ohm": 5339.866867298459,
+      "electrode_phase_deg": -81.80485185042129
+    },
+    {
+      "frequency_Hz": 4.8939,
+      "source_range": "B26:G26",
+      "measured_real_ohm": 753.7540283100125,
+      "measured_imag_ohm": -3918.138438243938,
+      "electrode_real_ohm": 540.4740560948874,
+      "electrode_imag_ohm": -3918.138438243938,
+      "electrode_magnitude_ohm": 3955.2396926806223,
+      "electrode_phase_deg": -82.14609592884665
+    },
+    {
+      "frequency_Hz": 6.7234,
+      "source_range": "B25:G25",
+      "measured_real_ohm": 601.9736501937192,
+      "measured_imag_ohm": -2927.2934454884944,
+      "electrode_real_ohm": 388.6936779785941,
+      "electrode_imag_ohm": -2927.2934454884944,
+      "electrode_magnitude_ohm": 2952.9865714730954,
+      "electrode_phase_deg": -82.43636155403378
+    },
+    {
+      "frequency_Hz": 9.2367,
+      "source_range": "B24:G24",
+      "measured_real_ohm": 499.8385884792736,
+      "measured_imag_ohm": -2204.540227851768,
+      "electrode_real_ohm": 286.55861626414844,
+      "electrode_imag_ohm": -2204.540227851768,
+      "electrode_magnitude_ohm": 2223.0864708265285,
+      "electrode_phase_deg": -82.59389584620676
+    },
+    {
+      "frequency_Hz": 12.69,
+      "source_range": "B23:G23",
+      "measured_real_ohm": 424.2227474358375,
+      "measured_imag_ohm": -1594.3265630088558,
+      "electrode_real_ohm": 210.94277522071238,
+      "electrode_imag_ohm": -1594.3265630088558,
+      "electrode_magnitude_ohm": 1608.2207696499406,
+      "electrode_phase_deg": -82.46306371766663
+    },
+    {
+      "frequency_Hz": 17.433,
+      "source_range": "B22:G22",
+      "measured_real_ohm": 383.87366031356294,
+      "measured_imag_ohm": -1209.459921373736,
+      "electrode_real_ohm": 170.5936880984378,
+      "electrode_imag_ohm": -1209.459921373736,
+      "electrode_magnitude_ohm": 1221.431745055118,
+      "electrode_phase_deg": -81.97142348366656
+    },
+    {
+      "frequency_Hz": 23.95,
+      "source_range": "B21:G21",
+      "measured_real_ohm": 342.6851039768655,
+      "measured_imag_ohm": -894.6968882468916,
+      "electrode_real_ohm": 129.40513176174036,
+      "electrode_imag_ohm": -894.6968882468916,
+      "electrode_magnitude_ohm": 904.0067532739698,
+      "electrode_phase_deg": -81.77005554560414
+    },
+    {
+      "frequency_Hz": 32.903,
+      "source_range": "B20:G20",
+      "measured_real_ohm": 319.9715177288251,
+      "measured_imag_ohm": -662.6874998080838,
+      "electrode_real_ohm": 106.69154551369999,
+      "electrode_imag_ohm": -662.6874998080838,
+      "electrode_magnitude_ohm": 671.2211321807374,
+      "electrode_phase_deg": -80.85396242982642
+    },
+    {
+      "frequency_Hz": 45.204,
+      "source_range": "B19:G19",
+      "measured_real_ohm": 300.62957800509633,
+      "measured_imag_ohm": -498.4576675667954,
+      "electrode_real_ohm": 87.3496057899712,
+      "electrode_imag_ohm": -498.4576675667954,
+      "electrode_magnitude_ohm": 506.0533568585365,
+      "electrode_phase_deg": -80.0604255829826
+    },
+    {
+      "frequency_Hz": 62.102,
+      "source_range": "B18:G18",
+      "measured_real_ohm": 267.4585120221697,
+      "measured_imag_ohm": -355.87500488507555,
+      "electrode_real_ohm": 54.17853980704459,
+      "electrode_imag_ohm": -355.87500488507555,
+      "electrode_magnitude_ohm": 359.975462049257,
+      "electrode_phase_deg": -81.3437371322638
+    },
+    {
+      "frequency_Hz": 85.317,
+      "source_range": "B17:G17",
+      "measured_real_ohm": 270.8324993619802,
+      "measured_imag_ohm": -275.8207728107596,
+      "electrode_real_ohm": 57.552527146855056,
+      "electrode_imag_ohm": -275.8207728107596,
+      "electrode_magnitude_ohm": 281.7612324201364,
+      "electrode_phase_deg": -78.21382101951062
+    },
+    {
+      "frequency_Hz": 117.21,
+      "source_range": "B16:G16",
+      "measured_real_ohm": 263.66115960423167,
+      "measured_imag_ohm": -208.91473812261145,
+      "electrode_real_ohm": 50.38118738910654,
+      "electrode_imag_ohm": -208.91473812261145,
+      "electrode_magnitude_ohm": 214.90377346053185,
+      "electrode_phase_deg": -76.44161901118775
+    },
+    {
+      "frequency_Hz": 161.03,
+      "source_range": "B15:G15",
+      "measured_real_ohm": 256.6072103069763,
+      "measured_imag_ohm": -158.0620132640817,
+      "electrode_real_ohm": 43.32723809185117,
+      "electrode_imag_ohm": -158.0620132640817,
+      "electrode_magnitude_ohm": 163.89279910283642,
+      "electrode_phase_deg": -74.67087771140393
+    },
+    {
+      "frequency_Hz": 221.22,
+      "source_range": "B14:G14",
+      "measured_real_ohm": 250.43692026773033,
+      "measured_imag_ohm": -121.02768164232356,
+      "electrode_real_ohm": 37.1569480526052,
+      "electrode_imag_ohm": -121.02768164232356,
+      "electrode_magnitude_ohm": 126.60307465579035,
+      "electrode_phase_deg": -72.93288656070581
+    },
+    {
+      "frequency_Hz": 303.92,
+      "source_range": "B13:G13",
+      "measured_real_ohm": 245.98155070352635,
+      "measured_imag_ohm": -93.82783144902362,
+      "electrode_real_ohm": 32.701578488401225,
+      "electrode_imag_ohm": -93.82783144902362,
+      "electrode_magnitude_ohm": 99.36324868913783,
+      "electrode_phase_deg": -70.78514966007252
+    },
+    {
+      "frequency_Hz": 417.53,
+      "source_range": "B12:G12",
+      "measured_real_ohm": 239.47986378425009,
+      "measured_imag_ohm": -73.01750143312219,
+      "electrode_real_ohm": 26.199891569124958,
+      "electrode_imag_ohm": -73.01750143312219,
+      "electrode_magnitude_ohm": 77.57570388833031,
+      "electrode_phase_deg": -70.2611709278607
+    },
+    {
+      "frequency_Hz": 573.62,
+      "source_range": "B11:G11",
+      "measured_real_ohm": 235.6328020464907,
+      "measured_imag_ohm": -56.56757763194945,
+      "electrode_real_ohm": 22.35282983136557,
+      "electrode_imag_ohm": -56.56757763194945,
+      "electrode_magnitude_ohm": 60.82384269853898,
+      "electrode_phase_deg": -68.43841329566665
+    },
+    {
+      "frequency_Hz": 788.05,
+      "source_range": "B10:G10",
+      "measured_real_ohm": 231.76997390850696,
+      "measured_imag_ohm": -44.46577176451657,
+      "electrode_real_ohm": 18.490001693381828,
+      "electrode_imag_ohm": -44.46577176451657,
+      "electrode_magnitude_ohm": 48.15687927218023,
+      "electrode_phase_deg": -67.42121322179408
+    },
+    {
+      "frequency_Hz": 1082.6,
+      "source_range": "B9:G9",
+      "measured_real_ohm": 228.34481760433908,
+      "measured_imag_ohm": -35.02914988136078,
+      "electrode_real_ohm": 15.064845389213957,
+      "electrode_imag_ohm": -35.02914988136078,
+      "electrode_magnitude_ohm": 38.131232710361715,
+      "electrode_phase_deg": -66.72910519752877
+    },
+    {
+      "frequency_Hz": 1487.4,
+      "source_range": "B8:G8",
+      "measured_real_ohm": 225.5679507492145,
+      "measured_imag_ohm": -27.708847435141298,
+      "electrode_real_ohm": 12.287978534089376,
+      "electrode_imag_ohm": -27.708847435141298,
+      "electrode_magnitude_ohm": 30.31129562783778,
+      "electrode_phase_deg": -66.08426076221531
+    },
+    {
+      "frequency_Hz": 2043.4,
+      "source_range": "B7:G7",
+      "measured_real_ohm": 223.3786870825856,
+      "measured_imag_ohm": -21.944320113796035,
+      "electrode_real_ohm": 10.098714867460473,
+      "electrode_imag_ohm": -21.944320113796035,
+      "electrode_magnitude_ohm": 24.15651521289899,
+      "electrode_phase_deg": -65.28824458957428
+    },
+    {
+      "frequency_Hz": 2807.2,
+      "source_range": "B6:G6",
+      "measured_real_ohm": 221.11827553348058,
+      "measured_imag_ohm": -17.491333357132735,
+      "electrode_real_ohm": 7.838303318355457,
+      "electrode_imag_ohm": -17.491333357132735,
+      "electrode_magnitude_ohm": 19.167309188326005,
+      "electrode_phase_deg": -65.8616570791743
+    },
+    {
+      "frequency_Hz": 3856.6,
+      "source_range": "B5:G5",
+      "measured_real_ohm": 219.6301840463575,
+      "measured_imag_ohm": -14.005996612428854,
+      "electrode_real_ohm": 6.350211831232372,
+      "electrode_imag_ohm": -14.005996612428854,
+      "electrode_magnitude_ohm": 15.378333180448788,
+      "electrode_phase_deg": -65.61082362065926
+    },
+    {
+      "frequency_Hz": 5298.3,
+      "source_range": "B4:G4",
+      "measured_real_ohm": 218.36085772508753,
+      "measured_imag_ohm": -11.338120413160468,
+      "electrode_real_ohm": 5.0808855099624,
+      "electrode_imag_ohm": -11.338120413160468,
+      "electrode_magnitude_ohm": 12.424506914508598,
+      "electrode_phase_deg": -65.86169669376434
+    },
+    {
+      "frequency_Hz": 7279.0,
+      "source_range": "B3:G3",
+      "measured_real_ohm": 217.37587531032617,
+      "measured_imag_ohm": -9.256673513439807,
+      "electrode_real_ohm": 4.095903095201038,
+      "electrode_imag_ohm": -9.256673513439807,
+      "electrode_magnitude_ohm": 10.122372582536938,
+      "electrode_phase_deg": -66.13151542882092
+    },
+    {
+      "frequency_Hz": 10000.0,
+      "source_range": "B2:G2",
+      "measured_real_ohm": 216.53914692935012,
+      "measured_imag_ohm": -7.640002198365387,
+      "electrode_real_ohm": 3.259174714224997,
+      "electrode_imag_ohm": -7.640002198365387,
+      "electrode_magnitude_ohm": 8.306133481281861,
+      "electrode_phase_deg": -66.89722332862617
+    }
+  ],
+  "limitations": [
+    "Rs is an effective series term; lead, film, or spreading resistance cannot be uniquely separated from electrolyte resistance with these data alone.",
+    "No high-frequency intercept was directly reached; 10 kHz still has a nonzero imaginary part.",
+    "The CPE model is local to the selected band and is not asserted to explain the entire spectrum.",
+    "PBS interface impedance is used as a dry NGG-SC boundary surrogate by user request, not as validated dry-contact impedance.",
+    "No additional dry-contact resistance is added; this is an optimistic contact assumption.",
+    "Tissue dielectric properties and common-ground topology retain previous assumptions."
+  ],
+  "reference": "https://www.gamry.com/application-notes/eis/basics-of-electrochemical-impedance-spectroscopy"
+}

@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-17T20:12:08.858646+00:00",
+  "purpose": "Measurement settings and provenance for an independent depth20mm/5mm differential-voltage comparison; not a solver input or measured response result",
+  "confirmed_by_user": {
+    "probe_model": "ETA5001",
+    "probe_manufacturer": "ETA / AiYong Instruments (Suzhou) Co., Ltd.",
+    "oscilloscope_model": "Keysight DSOX1202A",
+    "measurement_location": "phantom centre, depth20mm; not generator terminals",
+    "depth_from_top_mm": 20,
+    "tip_spacing_mm": 5,
+    "directions": [
+      "X",
+      "Y"
+    ]
+  },
+  "probe_positions_mm": {
+    "coordinate_definition": "x/y origin at phantom centre; positive z is depth from top",
+    "difference_definition": "potential at plus endpoint minus potential at minus endpoint",
+    "X": {
+      "minus": [
+        -2.5,
+        0,
+        20
+      ],
+      "plus": [
+        2.5,
+        0,
+        20
+      ]
+    },
+    "Y": {
+      "minus": [
+        0,
+        -2.5,
+        20
+      ],
+      "plus": [
+        0,
+        2.5,
+        20
+      ]
+    }
+  },
+  "actual_settings_not_yet_confirmed": {
+    "probe_hardware_attenuation": null,
+    "scope_probe_factor": null,
+    "scope_coupling": null,
+    "scope_bandwidth_limit_enabled": null,
+    "scope_acquisition_mode": null,
+    "scope_time_per_division_s": null,
+    "scope_actual_firmware_and_calibration": null
+  },
+  "recommended_initial_settings": {
+    "status": "recommendation_not_user_selected_setting",
+    "probe_hardware_attenuation": 50,
+    "scope_manual_probe_factor": 50,
+    "scope_probe_units": "Volts",
+    "scope_input_coupling": "DC",
+    "scope_input_impedance_ohm": 1000000,
+    "scope_input_impedance_mode": "fixed analog input; no native50ohm selection prescribed",
+    "external_50ohm_termination": false,
+    "scope_bandwidth_limit_Hz": 20000000,
+    "initial_acquisition_mode": "Normal, then consider High Resolution within one acquisition",
+    "cross_acquisition_averaging": "Only after confirming stable triggering and repeatability of both carrier phases over the complete beat period",
+    "reason": "50x leaves ten times the BNC signal of500x for the same small tip voltage; no measurement-success guarantee"
+  },
+  "probe_specifications": {
+    "model_scope": "original ETA5001; do not substitute B/U/+ family specifications",
+    "bandwidth_minus3dB_upper_Hz": 15000000,
+    "rise_time_upper_s": 2.3e-08,
+    "attenuation_options": [
+      50,
+      500
+    ],
+    "each_input_to_ground": {
+      "resistance_ohm": 4000000,
+      "capacitance_upper_exclusive_F": 7e-12
+    },
+    "between_inputs_differential": {
+      "resistance_ohm": 8000000,
+      "capacitance_upper_exclusive_F": 3.5e-12
+    },
+    "maximum_differential_DC_plus_peak_AC_V": {
+      "50x": 70,
+      "500x": 700
+    },
+    "manufacturer_accuracy_percent": 2,
+    "accuracy_interpretation": "Manufacturer specification; not a combined measurement confidence interval or a millivolt detection guarantee",
+    "DC_measurement_support": "DC+peakAC ranges and DC-coupled scope operation are explicitly documented",
+    "separate_low_frequency_minus3dB_cutoff_Hz": null,
+    "low_frequency_cutoff_status": "No separate numerical lower cutoff verified",
+    "noise_reference_plane_status": "unresolved_between_official_sources",
+    "noise_official_web_table": {
+      "50x_upper_rms_V_as_printed": 0.0015,
+      "500x_upper_rms_V_as_printed": 0.001,
+      "input_or_output_reference_plane": "not explicitly stated",
+      "integration_bandwidth_Hz": null,
+      "source_id": "eta5001_product_page"
+    },
+    "noise_official_manual_table": {
+      "50x_upper_rms_V_as_printed": 0.075,
+      "500x_upper_rms_V_as_printed": 0.5,
+      "input_or_output_reference_plane": "not explicitly stated",
+      "integration_bandwidth_Hz": null,
+      "source_id": "eta5000_manual",
+      "pdf_page_1_based": 8,
+      "printed_page": 14
+    },
+    "noise_interpretation": "Web values multiplied by the hardware attenuation equal manual values. Input-versus-output referral is a plausible interpretation, not a verified reference-plane definition. Neither table is a measured noise floor or minimum detectable2-3kHz signal."
+  },
+  "oscilloscope_specifications": {
+    "model": "DSOX1202A",
+    "analog_input_impedance_ohm": 1000000,
+    "input_resistance_relative_tolerance": 0.02,
+    "analog_input_capacitance_F": 1.6e-11,
+    "input_capacitance_absolute_tolerance_F": 3e-12,
+    "input_coupling_options": [
+      "DC",
+      "AC"
+    ],
+    "AC_coupling_cutoff_Hz": 10,
+    "input_sensitivity_range_V_per_division": [
+      0.0005,
+      10
+    ],
+    "minimum_display_scale_caveat": "500uV/div is2x digital magnification of1mV/div; it is not a new analog sensitivity or a detection guarantee",
+    "base_vertical_resolution_bits": 8,
+    "manual_probe_factor_range": [
+      0.1,
+      10000
+    ],
+    "manual_probe_factor_sequence": "1-2-5",
+    "manual_probe_factor_50_and_500_supported": true,
+    "automatic_probe_identification": false,
+    "hardware_bandwidth_limit_Hz_approximate": 20000000,
+    "averaging_count_range_power_of_two": [
+      2,
+      65536
+    ],
+    "averaging_requires": "stable trigger and coherent complete repeated waveform",
+    "high_resolution": {
+      "mechanism": "within-acquisition boxcar averaging; reduces effective real-time bandwidth",
+      "effective_resolution_bits_at_timebase_ge_20us_per_division": 12,
+      "effective_resolution_is_accuracy_or_noise_guarantee": false
+    },
+    "verified_scope_input_rms_noise_bound_V": null,
+    "scope_noise_status": "No relevant guaranteed input RMS-noise table found in the reviewed datasheet/user guide",
+    "menu_paths": {
+      "coupling": "Channel[1]or[2] > Coupling > DC",
+      "bandwidth_limit": "Channel[1]or[2] > BW Limit > On",
+      "probe_units": "Channel > Probe > Units > Volts",
+      "probe_factor": "Channel > Probe > Ratio > Entry knob >50:1 or500:1 matching hardware",
+      "high_resolution": "Acquire > Acq Mode > High Resolution",
+      "averaging": "Acquire > Acq Mode > Averaging; Acquire > #Avgs"
+    }
+  },
+  "voltage_conversion": {
+    "BNC_formula": "v_BNC(t) = delta_v_tip(t)/A, within linear range and specified output loading",
+    "scope_display_formula": "v_display(t) = K*v_BNC(t) = (K/A)*delta_v_tip(t)",
+    "variables": {
+      "A": "hardware attenuation",
+      "K": "scope manual probe factor"
+    },
+    "scope_factor_does_not_change_ADC_input_signal_or_SNR": true,
+    "corrected_display_must_not_be_multiplied_by_A_again": true,
+    "examples_are_not_measured_or_simulated_results": true,
+    "examples": [
+      {
+        "tip_Vpp": 0.02,
+        "hardware_A": 50,
+        "BNC_Vpp": 0.0004,
+        "scope_K": 50,
+        "displayed_Vpp": 0.02
+      },
+      {
+        "tip_Vpp": 0.02,
+        "hardware_A": 500,
+        "BNC_Vpp": 4e-05,
+        "scope_K": 500,
+        "displayed_Vpp": 0.02
+      },
+      {
+        "tip_Vpp": 0.02,
+        "hardware_A": 500,
+        "BNC_Vpp": 4e-05,
+        "scope_K": 50,
+        "displayed_Vpp": 0.002,
+        "mismatched": true
+      },
+      {
+        "tip_Vpp": 0.02,
+        "hardware_A": 50,
+        "BNC_Vpp": 0.0004,
+        "scope_K": 500,
+        "displayed_Vpp": 0.2,
+        "mismatched": true
+      }
+    ]
+  },
+  "period_and_processing": {
+    "current_3000_3030_Hz": {
+      "fundamentals_Hz": [
+        3000,
+        3030
+      ],
+      "third_harmonics_Hz": [
+        9000,
+        9090
+      ],
+      "common_frequency_Hz": 30,
+      "full_period_s": 0.03333333333333333
+    },
+    "separate_2000_2010_Hz": {
+      "fundamentals_Hz": [
+        2000,
+        2010
+      ],
+      "third_harmonics_Hz": [
+        6000,
+        6030
+      ],
+      "common_frequency_Hz": 10,
+      "full_period_s": 0.1
+    },
+    "timebase_example": {
+      "seconds_per_division": 0.01,
+      "horizontal_divisions": 10,
+      "window_s": 0.1,
+      "30Hz_periods": 3,
+      "10Hz_periods": 1,
+      "status": "starting example; verify actual record and frequencies"
+    },
+    "phasor_convention": "peak complex phasors; positive time exponent",
+    "potential_difference": "delta_Phi_f = Phi_f(r_plus)-Phi_f(r_minus)",
+    "waveform": "delta_v(t) = Re sum_f delta_Phi_f*exp(+j2pi*f*t)",
+    "total_RMS": "sqrt(sum_f abs(delta_Phi_f)^2/2) over complete common period",
+    "Vpp": "maximum minus minimum of the synthesized signed waveform; not2sqrt(2) times multitone totalRMS",
+    "directional_average_field": "-delta_Phi_f/0.005m; path-averaged component, not centre-point vector magnitude or direction-maximizedTIS",
+    "average_trigger_caveat": "Triggering on one carrier alone may not preserve the other carrier phase across acquisitions and can wash out beats; this is a signal-processing inference from the documented stable-trigger requirement",
+    "AC_coupling_caveat": "A10Hz AC-coupling high-pass does not directly reject a10Hz envelope made by2kHz/2010Hz carriers"
+  },
+  "loading_interpretation": {
+    "probe_RC_specification_is_phantom_tip_perturbation_validation": false,
+    "scope_1Mohm_16pF_is_after_active_probe_buffer": true,
+    "do_not_apply_scope_input_RC_directly_between_phantom_tips": true,
+    "do_not_double_count_leg_and_differential_specifications_as_independent_branches": true,
+    "unverified": [
+      "tip material and exposed area",
+      "tip contact impedance",
+      "local field perturbation",
+      "lead and earth coupling",
+      "actual noise/calibration and operating settings"
+    ]
+  },
+  "validated_depth_comparison_results": {
+    "run_id": "depth-probe-20261017T200912Z",
+    "result_file": "tis-java/runs/depth-probe-20261017T200912Z/depth-probe-comparison.json",
+    "original_output_SHA256_reproduction": "exact",
+    "native_potential_E_consistency": "passed",
+    "actual_hardware_measurement_validation": false
+  },
+  "sources": [
+    {
+      "id": "eta5001_product_page",
+      "url": "https://en.tw-eta.com/index.php?c=show&id=121",
+      "publisher": "AiYong Instruments (Suzhou) Co., Ltd.",
+      "verified": "Original ETA5001 family table including50x/500x, resistance/capacitance and web noise values"
+    },
+    {
+      "id": "eta5000_manual",
+      "url": "https://www.tw-eta.com/index.php?c=file&id=4fa177df22864518b2d7818d4db5db2d&m=down&s=api",
+      "catalog_url": "https://www.tw-eta.com/index.php?c=category&id=29",
+      "publisher": "AiYong Instruments (Suzhou) Co., Ltd.",
+      "cover_document_id": "ETA Ver.2010; copyright2020",
+      "pdf_metadata_created_utc": "2025-04-19T12:05:01Z",
+      "pdf_pages": 14,
+      "relevant_pdf_pages_1_based": [
+        5,
+        8
+      ],
+      "relevant_printed_pages": [
+        7,
+        8,
+        13,
+        14
+      ],
+      "temporary_local_copy": "/tmp/eta5005-eta5010-official-manual.pdf",
+      "bytes": 5537196,
+      "sha256": "480ad954cfe2eb8dd5c06986bc0a5729b3b6606ac1cac15a0b64a3de8d087fe3"
+    },
+    {
+      "id": "keysight_1200x_user_guide",
+      "url": "https://www.keysight.com/content/dam/keysight/en/doc/gate/user-manuals/9018-70020.pdf",
+      "catalog_url": "https://www.keysight.com/us/en/assets/9018-70020/user-manuals/9018-70020.pdf",
+      "publisher": "Keysight Technologies",
+      "document_id": "N2137-97038",
+      "edition": "Fifth edition, August2022",
+      "exact_model_included": "DSOX1202A",
+      "relevant_pdf_and_printed_pages_1_based": [
+        32,
+        50,
+        51,
+        52,
+        53,
+        138,
+        139,
+        140,
+        141,
+        266
+      ],
+      "temporary_local_copy": "/tmp/keysight-1200x-users-guide.pdf",
+      "bytes": 5370934,
+      "sha256": "fd356eeaf699ebbc29f56b357da3048b15e6f200a2c3ba4157b2003728f24b84"
+    },
+    {
+      "id": "keysight_1000x_datasheet",
+      "url": "https://www.keysight.com/content/dam/keysight/en/doc/ungate/data-sheets/5992-3484.pdf",
+      "catalog_url": "https://www.keysight.com/us/en/assets/7018-06411/data-sheets/5992-3484.pdf",
+      "publisher": "Keysight Technologies",
+      "document_id": "5992-3484EN",
+      "publication_date": "2024-11-12",
+      "exact_model_included": "DSOX1202A",
+      "relevant_pdf_and_printed_pages_1_based": [
+        12,
+        13
+      ],
+      "temporary_local_copy": "/tmp/keysight-1000x-datasheet.pdf",
+      "bytes": 1862369,
+      "sha256": "cef0180cf1cf4ff477f7ca76cdbf27b00341312b74973eb5c2f8044bdc93a1f6"
+    }
+  ],
+  "sha256_interpretation": "Fetched-byte provenance, not a manufacturer digital signature or accuracy certificate"
+}
