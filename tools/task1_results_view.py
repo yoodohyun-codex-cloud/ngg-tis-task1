@@ -157,12 +157,18 @@ def batch_states(runs):
     result = []
     for run in sorted(set(runs)):
         summary_path, controller_path = run/'summary.json', run/'controller.json'
+        registration_path = run/'preregistration.json'
         summary = read(summary_path) if summary_path.is_file() else {}
         controller = read(controller_path) if controller_path.is_file() else {}
+        registration = read(registration_path) if registration_path.is_file() else {}
         result.append(dict(run_id=run.name, status=summary.get('status', controller.get('status', 'unverified')),
             summary_path=str(summary_path) if summary_path.is_file() else None,
             summary_sha256=sha(summary_path) if summary_path.is_file() else None,
             controller_status=controller.get('status', 'unavailable'), phase=controller.get('phase'),
+            source_commit=summary.get('source_commit', registration.get('source_commit')),
+            registration_path=str(registration_path) if registration_path.is_file() else None,
+            registration_sha256=sha(registration_path) if registration_path.is_file() else None,
+            original_persistent_backup_verified=summary.get('persistent_backup_verified'),
             updated_utc=controller.get('updated_utc', summary.get('finished_utc')),
             failed_case=summary.get('failed_case'), error_type=summary.get('error_type'), error=summary.get('error'),
             not_run=summary.get('not_run', []), partial_evidence_preserved=summary.get('partial_evidence_preserved'),
@@ -170,6 +176,52 @@ def batch_states(runs):
             completed_case_ids=[case['id'] for case in summary.get('cases', []) if case.get('status') == 'complete'],
             wall_seconds=summary.get('wall_seconds'),
             new_PDE=summary.get('new_PDE_conditions', summary.get('new_PDE'))))
+    return result
+
+
+def external_backup_receipt(path):
+    """Read a separate restore receipt without changing historical run states."""
+    path = Path(path).resolve()
+    result = dict(path=str(path), status='unverified_receipt_missing', receipt_sha256=None,
+        release_url=None, archives=[], old_native_recovery_complete=False,
+        old_environment_retirement_allowed=False,
+        scope='external archive byte/hash and native-array decode restore evidence only; not simulation/mesh/experimental verification')
+    if not path.is_file():
+        return result
+    receipt = read(path)
+    result.update(receipt_sha256=sha(path), release_url=receipt.get('release_url'),
+        old_native_recovery_complete=receipt.get('old_native_recovery_complete') is True,
+        old_environment_retirement_allowed=receipt.get('old_environment_retirement_allowed') is True)
+    valid_schema = receipt.get('schema') == 'task1-external-native-backup-v1'
+    for original in receipt.get('archives', []):
+        entry, reasons = dict(original), []
+        archive_hash, download_hash = entry.get('archive_sha256'), entry.get('download_sha256')
+        if not valid_schema:
+            reasons.append('receipt_schema_unverified')
+        if not isinstance(archive_hash, str) or len(archive_hash) != 64 or any(
+                char not in '0123456789abcdefABCDEF' for char in archive_hash) or archive_hash != download_hash:
+            reasons.append('archive_download_hash_unverified')
+        for key in ('byte_hash_verification', 'native_array_decode_verification'):
+            if entry.get(key) != 'passed':
+                reasons.append(key+'_not_passed')
+        if entry.get('independent_persistent_backup_verified') is not True:
+            reasons.append('external_backup_not_declared_verified')
+        restore_path = Path(entry['restore_receipt_path']) if entry.get('restore_receipt_path') else None
+        if restore_path is not None and not restore_path.is_absolute():
+            rooted = ROOT/restore_path
+            restore_path = rooted if rooted.is_file() else path.parent/restore_path
+        if restore_path is None or not restore_path.is_file():
+            reasons.append('local_restore_receipt_missing')
+        elif sha(restore_path) != entry.get('restore_receipt_sha256'):
+            reasons.append('local_restore_receipt_sha_mismatch')
+        entry.update(display_verification_status='verified_external_backup' if not reasons else 'unverified',
+            display_verification_reasons=reasons,
+            resolved_restore_receipt_path=str(restore_path.resolve()) if restore_path else None,
+            verification_receipt_path=str(path), verification_receipt_sha256=result['receipt_sha256'])
+        result['archives'].append(entry)
+    result['status'] = ('verified_external_backup_receipts' if valid_schema and result['archives'] and
+        all(entry['display_verification_status'] == 'verified_external_backup' for entry in result['archives'])
+        else 'unverified_or_partial_receipts')
     return result
 
 
@@ -305,6 +357,13 @@ def local_link(path, output, label=None):
     return '<a href="'+esc(relative)+'">'+esc(label or str(path))+'</a>'
 
 
+def external_link(url, label):
+    from urllib.parse import urlsplit
+    if not isinstance(url, str) or urlsplit(url).scheme not in ('https', 'http'):
+        return esc(label)+' (URL 미확인)'
+    return '<a href="'+esc(url)+'">'+esc(label)+'</a>'
+
+
 def c1_matches(items):
     """Join audit pairs to both complete result hashes, never to display names."""
     by_hash = {sha(item['path']): item for item in items}
@@ -380,7 +439,7 @@ def probe_csv(item, condition, directory):
             fundamental_modulation_index=envelope['modulation_index'],
             spectrum_peak_phasors=json.dumps(row['spectrum'], separators=(',', ':')),
             nominal_attenuation_only=json.dumps(row.get('nominal_instrument', []), separators=(',', ':')),
-            actual_instrument_prediction_status='unavailable: differential impedance/capacitance, bandwidth, calibration unverified',
+            actual_instrument_prediction_status='true phantom-loaded prediction held: native differential-port impedance missing; separate downstream instrument artifact when available',
             source_config_sha256=item['case']['config_sha256']))
     path = directory/(condition['id']+'-probe40.csv')
     write_csv(path, rows)
@@ -631,6 +690,18 @@ def build(args, directory):
     runs = {Path(decision['postprocess_path']).parents[2] for decision in decisions}
     runs.update(path.parent for path in (ROOT/'data-native').glob('*/preregistration.json'))
     states = batch_states(runs)
+    backup = external_backup_receipt(args.backup_receipt)
+    for state in states:
+        state['external_backup_archives'] = [entry for entry in backup['archives'] if entry.get('run_id') == state['run_id']]
+        state['external_backup_verified_separately'] = bool(state['external_backup_archives']) and all(
+            entry['display_verification_status'] == 'verified_external_backup' for entry in state['external_backup_archives'])
+    instrument_config_path = ROOT/'configs/task1_instrument_ETA5001_DSOX1202A.json'
+    instrument_predictions_path = ROOT/'docs/cloud-restart-20261020/instrument-predictions.json'
+    instrument = dict(config_path=str(instrument_config_path), prediction_path=str(instrument_predictions_path),
+        config_sha256=sha(instrument_config_path) if instrument_config_path.is_file() else None,
+        prediction_sha256=sha(instrument_predictions_path) if instrument_predictions_path.is_file() else None,
+        true_phantom_loaded_prediction='held: native differential-port impedance not supplied',
+        actual_attenuator_switch='unknown', measured_bandwidth_validation='not established by a nominal15MHz specification')
     if not items:
         raise ValueError('At least one completed registered four-pad baseline required')
     baseline_path = (args.baseline or ROOT/'data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json').resolve()
@@ -669,11 +740,12 @@ def build(args, directory):
                 shared_log_floor_V_cm=.0001, shared_log_upper='maximum over all available display samples in same cohort and normalization',
                 ROI_depths_mm=[15, 20], ROI_radius_mm=5, fixed_ROI_linear_limits_V_cm=[0, .1],
                 clipping='color saturation only; stored values/metrics unchanged; not activation or safety cutoffs'),
-            actual_instrument='unavailable until differential input impedance, capacitance, bandwidth and calibration are measured'),
+            actual_instrument='user-specified input parameters and downstream attenuator/scope proxies are separate artifacts; true phantom loading held without native differential-port impedance'),
         conditions=[row for _, _, row in records], missing_pad_counts=[n for n in (8, 12, 16)
             if not any(row['n_pads'] == n and row['n_outputs'] == 2 for _, _, row in records)],
         pure_sine_C1_matches=singles,
         batch_states=states, held_calculation_evidence=held,
+        external_native_backup=backup, external_instrument_artifacts=instrument,
         eligibility_policy='require original complete case record with exact postprocess/config SHA and path; failed reference comparison stays held; later analysis audits never implicitly promote',
         new_PDE=0, new_research_postprocess=0, experiment_validated=False)
     (directory/'comparison.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n')
@@ -708,6 +780,44 @@ def build(args, directory):
             esc(', '.join(state['not_run']) or '—'), esc(state['updated_utc'] or '미상'), evidence])
     sections.append(table(['run ID', '배치 상태', 'controller', '실패 case', '이 배치에서 미실행',
         '기록 시각 UTC', '증거'], state_rows))
+    sections.append('<h3>외부 영속 원시 기저 백업 · 실행 상태와 별도 검증</h3><p>외부 영속 백업의 '
+        '업로드·재다운로드 바이트 해시·깨끗한 복구 공간의 native 배열 decode 검증을 별도로 연결합니다. '
+        '원본 run summary의 persistent_backup_verified 값, 배치 오류, 보류 조건을 바꾸지 않습니다. '
+        '백업·배열 decode 통과는 시뮬레이션 재현·격자 수렴·실험 검증과 구분합니다.</p>')
+    if backup['receipt_sha256']:
+        sections.append('<p>'+local_link(backup['path'], args.output, '외부 백업 검증 receipt')+
+            ' · SHA256 '+esc(backup['receipt_sha256'])+' · '+esc(backup['status'])+' · '+
+            external_link(backup['release_url'], 'GitHub native archive release')+'</p>')
+    else:
+        sections.append('<p><b>외부 백업 검증 receipt가 없어 미검증 상태입니다.</b> 예상 경로: '+esc(backup['path'])+'</p>')
+    backup_rows = []
+    for state in states:
+        entries = state['external_backup_archives']
+        if not entries:
+            backup_rows.append([esc(state['run_id']), esc(state['original_persistent_backup_verified']),
+                '미검증 · 해당 run receipt 없음', '—', '—', '—', '—'])
+            continue
+        for entry in entries:
+            restore_path = entry['resolved_restore_receipt_path']
+            restore = local_link(restore_path, args.output, 'clean-restore receipt') if restore_path and Path(restore_path).is_file() else '미확인'
+            archive = external_link(entry.get('asset_url'), 'archive asset')
+            backup_rows.append([esc(state['run_id']), esc(state['original_persistent_backup_verified']),
+                esc(entry['display_verification_status']), esc(entry.get('archive_bytes')),
+                esc(entry.get('byte_hash_verification')), esc(entry.get('native_array_decode_verification')), archive+' · '+restore])
+    sections.append(table(['run ID', '원본 run의 백업 flag', '외부 백업 별도 상태', 'archive bytes',
+        '재다운로드 byte/hash', 'native 배열 decode', '외부·복구 증거'], backup_rows))
+    sections.append('<p>과거 전체 native 원자료 복구 완료: '+esc(backup['old_native_recovery_complete'])+
+        ' · 원 환경 폐기 허용: '+esc(backup['old_environment_retirement_allowed'])+'</p>')
+    if backup['archives']:
+        sections.append('<details><summary>백업 SHA·코드·설정 manifest·출처</summary>')
+        for state in states:
+            if state['external_backup_archives']:
+                sections.append('<p>'+esc(state['run_id'])+' · '+
+                    external_link('https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/commit/'+str(state['source_commit']),
+                        'pinned solver source commit '+str(state['source_commit']))+' · '+
+                    (local_link(state['registration_path'], args.output, '입력·코드 SHA manifest / preregistration')
+                        if state['registration_path'] else 'manifest 미확인')+'</p>')
+        sections.append('<pre>'+esc(json.dumps(backup, ensure_ascii=False, indent=2))+'</pre></details>')
     for state in states:
         if state['error'] or state['status'] in ('error', 'failed', 'resource_exhausted'):
             sections.append('<div class="notice"><b>'+esc(state['run_id'])+' · '+esc(state['status'])+
@@ -840,11 +950,31 @@ def build(args, directory):
             table(['영역', '정의', 'mean V/cm', 'P10 V/cm', 'P95 V/cm', 'max V/cm'], spatial_rows)+
             '<pre>'+esc(json.dumps(details,
             ensure_ascii=False, indent=2))+'</pre></details>')
+    sections.append('<h2>측정기 조건 · 별도 예측 산출물</h2><p>ETA5001의 입력 저항·입력 커패시턴스는 팬텀에 '
+        '접속되는 입력단 조건입니다. DSOX1202A의 scope 입력 커패시턴스는 차동 프로브 감쇠·출력 뒤의 '
+        '다운스트림 조건이며 팬텀 입력 커패시턴스에 단순히 더하지 않습니다. '
+        '50×/500× 감쇠별 BNC 전압과 scope probe-factor 적용 표시 전압은 구분합니다. '
+        '실제 감쇠 스위치·scope 설정은 미확인입니다. 명목15 MHz 사양만으로 전달함수나 필터 실측 검증을 가정하지 않습니다. '
+        '팬텀의 차동 포트 임피던스가 없어 실제 부하를 반영한 팬텀 전위 재해석은 보류합니다.</p>')
+    if instrument_config_path.is_file():
+        sections.append('<p>'+local_link(instrument_config_path, args.output, 'ETA5001 / DSOX1202A 설정·단위·출처')+
+            ' · SHA256 '+esc(instrument['config_sha256'])+'</p><details><summary>측정기 설정 메타데이터</summary><pre>'+
+            esc(json.dumps(read(instrument_config_path), ensure_ascii=False, indent=2))+'</pre></details>')
+    else:
+        sections.append('<p>측정기 설정 JSON은 아직 생성되지 않았습니다. '+esc(instrument_config_path)+'</p>')
+    if instrument_predictions_path.is_file():
+        predictions = read(instrument_predictions_path)
+        scalars = {key: value for key, value in predictions.items() if not isinstance(value, (dict, list))}
+        sections.append('<p>'+local_link(instrument_predictions_path, args.output, '측정기 다운스트림 예측·제한·소스 SHA')+
+            ' · SHA256 '+esc(instrument['prediction_sha256'])+'</p><pre>'+esc(json.dumps(scalars, ensure_ascii=False, indent=2))+'</pre>')
+    else:
+        sections.append('<p>별도 측정기 예측 receipt가 없어 미검증 상태입니다. '+esc(instrument_predictions_path)+'</p>')
     sections.append('<h2>프로브: 4깊이 × 5중심 × 2방향 = 조건별40행</h2><p>z=0 피부 표면, +z 깊이. '
         '중심 (0,0), (±5,0), (0,±5) mm 각각에서 X/Y 차동 팁 간격5 mm를 유지합니다. '
         '복소 φ(+)−φ(−)로 실제 합성파를 재구성하며 E×간격 대체값은 사용하지 않습니다. '
         '표는 무부하 계산입니다. ETA5001 50×/500× 명목 감쇠만 반영한 값은 CSV에 별도 표시합니다. '
-        '입력 임피던스·대역폭·보정 검증이 없으므로 실제 측정기 부하가 반영된 예측은 보류합니다.</p>')
+        '새로 제공된 측정기 사양을 적용한 다운스트림 예측은 위 별도 산출물에 연결합니다. '
+        '팬텀 차동 포트 임피던스가 없어 실제 측정기 입력 부하가 반영된 팬텀 전압은 보류합니다.</p>')
     if args.figures:
         sections.append(image_tag(coordinates_figure(directory)))
     for item, condition, row in records:
@@ -909,7 +1039,9 @@ def build(args, directory):
             '과거 필드 skin_power_W는 SC+contact의 별칭이므로 피부 총손실로 사용하지 않습니다. '
             '피부 손실의 별도 audit가 아직 없으면 해당 열은 —로 표시합니다. '
             'TIS 중앙20 변조 열은 전기장 RMS 일치의 결과를 TIS 등가로 오해하지 않도록 별도 표시합니다. '
-            '측정기 부하·입력 커패시턴스·대역폭·실측 감쇠 및 교정은 미검증이므로 이 표에도 반영되지 않았습니다.</p>')
+            '이 전계·부담 일치 표에는 측정기 부하를 반영하지 않았습니다. '
+            '입력 R/C·명목 대역폭·감쇠 사양과 다운스트림 표시 전압은 별도 측정기 산출물로 연결하며 '
+            '실측 전달함수·감쇠 설정·교정은 미검증입니다.</p>')
         encoded = base64.b64encode((directory/'pure-sine-C1-matches.csv').read_bytes()).decode()
         sections.append('<p><a download="pure-sine-C1-matches.csv" href="data:text/csv;base64,'+encoded+
             '">순수 정현파 C1 비교 CSV</a></p><details><summary>C1 비교 출처·정의·SHA</summary>')
@@ -933,6 +1065,7 @@ def build(args, directory):
     return dict(status='rendered_offline_evidence', output=str(args.output), assets=str(directory),
         completed_conditions=len(records), missing_pad_counts=payload['missing_pad_counts'],
         held_case_count=len(held), batch_error_count=sum(state['status'] in ('error', 'failed') for state in states),
+        external_backup_verified_run_count=sum(state['external_backup_verified_separately'] for state in states),
         pure_sine_C1_match_count=len(singles), new_PDE=0, source_files_edited=0)
 
 
@@ -989,13 +1122,34 @@ def self_test():
         (run/'audit').mkdir()
         (run/'audit/continuation-analysis.json').write_text(json.dumps(dict(status='passed', promote=True)))
         assert not case_eligibility(path)['eligible']
-    return dict(passed=True, checks='contact/full-skin caps, missing data held, cohort separation, complete-case SHA gate, failed-reference hold and no audit promotion', new_PDE=0)
+        backup_path, restore_path = Path(temporary)/'backup.json', Path(temporary)/'restore.json'
+        assert external_backup_receipt(backup_path)['status'] == 'unverified_receipt_missing'
+        restore_path.write_text(json.dumps(dict(status='passed')))
+        backup_path.write_text(json.dumps(dict(schema='task1-external-native-backup-v1',
+            release_url='https://github.com/example/release', old_native_recovery_complete=False,
+            old_environment_retirement_allowed=False, archives=[dict(run_id=run.name,
+                asset_url='https://github.com/example/asset', archive_sha256='a'*64, download_sha256='a'*64,
+                archive_bytes=1, byte_hash_verification='passed', native_array_decode_verification='passed',
+                independent_persistent_backup_verified=True, original_terminal_status='error',
+                restore_receipt_path=str(restore_path), restore_receipt_sha256=sha(restore_path))])))
+        original_summary_sha = sha(run/'summary.json')
+        backup = external_backup_receipt(backup_path)
+        assert backup['status'] == 'verified_external_backup_receipts'
+        assert backup['archives'][0]['original_terminal_status'] == 'error'
+        assert not backup['old_native_recovery_complete'] and not backup['old_environment_retirement_allowed']
+        assert sha(run/'summary.json') == original_summary_sha and not case_eligibility(path)['eligible']
+        restore_path.write_text(json.dumps(dict(status='changed')))
+        assert external_backup_receipt(backup_path)['status'] == 'unverified_or_partial_receipts'
+    return dict(passed=True, checks='contact/full-skin caps, missing data held, cohort separation, case SHA gate, reference hold, no audit/backup promotion, external restore-receipt tamper rejection', new_PDE=0)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--summary', type=Path, action='append')
     parser.add_argument('--baseline', type=Path)
+    parser.add_argument('--backup-receipt', type=Path,
+        default=ROOT/'docs/cloud-restart-20261020/native-backup-receipts.json',
+        help='Optional separate external archive download/hash/decode restore evidence; never promotes original runs')
     parser.add_argument('--output', type=Path, default=ROOT/'docs/CLOUD_RESULTS.html')
     parser.add_argument('--assets-dir', type=Path)
     parser.add_argument('--figures', action=argparse.BooleanOptionalAction, default=True)
