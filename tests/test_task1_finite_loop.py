@@ -388,5 +388,40 @@ class PipelineFixtureTests(unittest.TestCase):
             loop.completed_run(self.run)
 
 
+class PaginatedArrayDecodeTests(unittest.TestCase):
+    def test_empty_array_is_valid_but_empty_response_is_not(self):
+        self.assertEqual(loop.decode_paginated_arrays('[]'),[])
+        for text in ('',' \t\r\n'):
+            with self.subTest(text=text),self.assertRaises(ValueError):
+                loop.decode_paginated_arrays(text)
+
+    def test_whitespace_separated_pages_flatten_in_page_order(self):
+        text = ' \n [{"id":1},{"id":2}]\t\r\n[]\n [{"id":3}] \n'
+        self.assertEqual(loop.decode_paginated_arrays(text),[{'id':1},{'id':2},{'id':3}])
+
+    def test_invalid_trailing_text_cannot_be_silently_ignored(self):
+        for text in ('[] trailing','[{"id":1}]\n[','[]\ntrue','[]\nnull'):
+            with self.subTest(text=text),self.assertRaises(ValueError):
+                loop.decode_paginated_arrays(text)
+
+    def test_nonarray_page_is_rejected_including_after_a_valid_page(self):
+        for text in ('{}','{"items":[]}','1','"list"','[]\n{"id":2}'):
+            with self.subTest(text=text),self.assertRaises(ValueError):
+                loop.decode_paginated_arrays(text)
+
+    def test_page_limit_counts_empty_pages_too(self):
+        self.assertEqual(loop.decode_paginated_arrays('[]\n'*100),[])
+        with self.assertRaises(ValueError):
+            loop.decode_paginated_arrays('[]\n'*101)
+
+    def test_four_MiB_limit_uses_UTF8_bytes_not_character_count(self):
+        limit = 4*1024**2
+        text = '["'+('가'*(limit//3+1))+'"]'
+        self.assertLess(len(text),limit)
+        self.assertGreater(len(text.encode('utf-8')),limit)
+        with self.assertRaises(ValueError):
+            loop.decode_paginated_arrays(text)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -166,6 +166,29 @@ def candidate_mesh_validation(paths):
     return report
 
 
+def decode_paginated_arrays(text, max_pages=100, max_bytes=4*1024**2):
+    """Decode old gh --paginate output: adjacent JSON arrays, without --slurp."""
+    if not isinstance(text, str) or len(text.encode('utf-8')) > max_bytes:
+        raise ValueError('Paginated feedback response exceeds4MiB or is not text')
+    decoder = json.JSONDecoder()
+    cursor, pages, rows = 0, 0, []
+    while cursor < len(text):
+        while cursor < len(text) and text[cursor].isspace():
+            cursor += 1
+        if cursor == len(text):
+            break
+        if pages >= max_pages:
+            raise ValueError('Paginated feedback response exceeds100pages')
+        page, cursor = decoder.raw_decode(text, cursor)
+        if not isinstance(page, list):
+            raise ValueError('Every paginated feedback page must be a JSON array')
+        rows.extend(page)
+        pages += 1
+    if pages == 0:
+        raise ValueError('Paginated feedback response contains no JSON array')
+    return rows
+
+
 def completed_run(run):
     pre, summary = read(run/'preregistration.json'), read(run/'summary.json')
     if summary.get('status') != 'complete' or summary.get('registration_sha256') != sha(run/'preregistration.json'):
@@ -183,9 +206,9 @@ def peer_snapshot(deadline):
     result = {}
     commands = {
         'head': ['gh', 'api', 'repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/1'],
-        'comments': ['gh', 'api', '--paginate', '--slurp', 'repos/yoodohyun-codex-cloud/ngg-tis-task1/issues/1/comments'],
-        'reviews': ['gh', 'api', '--paginate', '--slurp', 'repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/1/reviews'],
-        'review_comments': ['gh', 'api', '--paginate', '--slurp', 'repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/1/comments'],
+        'comments': ['gh', 'api', '--paginate', 'repos/yoodohyun-codex-cloud/ngg-tis-task1/issues/1/comments'],
+        'reviews': ['gh', 'api', '--paginate', 'repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/1/reviews'],
+        'review_comments': ['gh', 'api', '--paginate', 'repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/1/comments'],
     }
     try:
         for key, command in commands.items():
@@ -193,9 +216,9 @@ def peer_snapshot(deadline):
             if seconds <= 0:
                 raise TimeoutError('feedback deadline')
             output = subprocess.check_output(command, cwd=ROOT, text=True, stderr=subprocess.DEVNULL, timeout=seconds)
-            data = json.loads(output)
-            if key != 'head':
-                data = [row for page in data for row in page]
+            data = json.loads(output) if key == 'head' else decode_paginated_arrays(output)
+            if key != 'head' and not all(isinstance(row, dict) and 'id' in row for row in data):
+                raise ValueError('Paginated feedback rows require stable object IDs')
             result[key] = ({'head_sha': data['head']['sha'], 'updated_at': data['updated_at']} if key == 'head'
                 else [{'id': row['id'], 'updated_at': row.get('updated_at', row.get('submitted_at')),
                        'body_sha256': hashlib.sha256((row.get('body') or '').encode()).hexdigest()} for row in data])

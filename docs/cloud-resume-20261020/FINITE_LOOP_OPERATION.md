@@ -11,7 +11,7 @@ CPU1·동시PDE1·800000셀·600초/조건·누적6600초·heap2GiB·RSS3GiB·�
 실행 예:
 
 ```sh
-python tools/task1_finite_loop.py --coarse-run /workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z --output /workspace/ngg-tis-task1/runtime/finite-loop-20261020T002300Z
+python tools/task1_finite_loop.py --coarse-run /workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z --output /workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z
 ```
 
 `checkpoint.json`에 PID/startticks·시각·현재 자식·단계·정확한 다음 명령·완료/자원부족/오류/피드백 검토 사유를 기록한다. heartbeat 시각만으로 생존을 판단하지 말고 PID와 시작 tick 및 실행 잠금을 확인한다. 같은 output 경로로 재실행하거나 이미 계산한 조건을 새 워커에서 반복하지 않는다. 실패 시 저장된 단계·현재 자식·완료 캐시를 먼저 조사한다.
