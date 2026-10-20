@@ -66,7 +66,9 @@ public class ResidualShapeBasis extends CloudShapeBasis {
     Mesh mesh=new Mesh(2.5);
     ShapeNet net=overridden?new ResidualNet(mesh,new Boundary(.01,-.02),3000,Collections.<double[]>emptyList(),tolerance,12000):
       new ShapeNet(mesh,new Boundary(.01,-.02),2,3000,Collections.<double[]>emptyList());
-    net.edges.clear();mesh.n=ladder?64:3;net.N=mesh.n+2;net.dr=new double[net.N];net.di=new double[net.N];
+    // The64-node ladder terminates at66 algebraic DOFs before either threshold
+    // can differ. A256-node lumped ladder resolves both stopping parameters.
+    net.edges.clear();mesh.n=ladder?256:3;net.N=mesh.n+2;net.dr=new double[net.N];net.di=new double[net.N];
     if(ladder){
       for(int i=0;i<mesh.n;i++){
         net.add(i,-1,new C(1,0).div(new C(200+2*i,-5)),0,1);
@@ -99,7 +101,7 @@ public class ResidualShapeBasis extends CloudShapeBasis {
     require(rejected,"Reject loosened tolerance");
     rejected=false;try{solverParameters(1e-11,24000);}catch(IllegalStateException e){rejected=true;}
     require(rejected,"Reject iteration budget expansion");
-    System.out.printf("RESIDUAL_SELFTEST analytic complex series; inherited/default exact bitwise vector+iteration+residual; tiny64node lumped ladder default residual=%.17g iterations=%d tight residual=%.17g iterations=%d; forbidden tolerance/cap rejected; phantom PDE0%n",same.residual,same.iterations,tight.residual,tight.iterations);
+    System.out.printf("RESIDUAL_SELFTEST analytic complex series; inherited/default exact bitwise vector+iteration+residual; tiny256node lumped ladder default residual=%.17g iterations=%d tight residual=%.17g iterations=%d; forbidden tolerance/cap rejected; phantom PDE0%n",same.residual,same.iterations,tight.residual,tight.iterations);
   }
 
   static void metadataResidual(File dir,ValidationMesh m,Properties p,String hash,double tolerance,int maximum)throws Exception{
