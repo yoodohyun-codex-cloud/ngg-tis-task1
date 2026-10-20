@@ -1,5 +1,91 @@
 # Task 1 클라우드 재시작 검토 — 2026-10-20 KST
 
+## 연속 실행 피드백 — 계산 PR #2 `be724b0`까지 재검토
+
+**계산 담당자에게 요청: 완료한 6조건을 재실행하거나 별도 워커를 시작하지 말고, 현재 실행기·자식·잠금 상태를 확인한 뒤 승인된 남은 예산 안에서 기존 유한 후속 큐를 이어간다. 각 배치는 검증·보고·다음 배치 결정과 실제 진입 기록까지 마친다.** 계획 문서 작성 또는 `completed_finite_queue`만으로 연구 지속 업무를 끝내지 않는다. 조건을 충족하지 못하면 정확한 차단 사유와 재개에 필요한 행동을 남긴다.
+
+이 추가 검토의 공개 근거는 계산 [PR #2](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2) head `be724b0b314263f284fdbc5397bdaf019685fa29`다. 요청 시점 `f84abb8` 뒤 `c8e8fd3`에 6조건 완료·유한 실행기·F004 채택 delta가, `be724b0`에 GitHub CLI 호환성 수정·중단 증거가 게시됐다. 아래 요청은 기존 구현을 인정한 후속 피드백이다. 이 검토에서는 계산·프로세스 조작·설치·삭제를 하지 않았다.
+
+추가로 전달받은 00:28 UTC 계산 보고는 호환성 수정 후 **현재 미세 격자 유한 큐가 실행 중**이며 checkpoint는 계산 환경의 `/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/checkpoint.json`이라고 한다. 이는 검토자가 해당 runtime을 직접 읽은 증거가 아니므로 live PID/자식/잠금·새 결과 게시로 확인해야 한다. 이 피드백은 **현재 큐의 검증·후속 선택·게시 조건을 보완**하며 새 큐 생성이나 재시작을 요청하지 않는다. 대화 턴의 종료, Git 게시 시각, 과거 중단 checkpoint만으로 현재 워커 종료를 단정하지 않는다.
+
+공개 PR2 본문에도 **00:24 UTC snapshot**으로 같은 큐, coordinator PID8017·PDE controller PID8105·source `be724b0`, 최대2개 xy80+3개 확인 조건이 게시돼 있음을 재확인했다. 따라서 후속 시작의 공개 보고는 존재한다. 그 timestamp 이후의 생존·완료·잔여 예산을 이 검토가 실시간 검증한 것은 아니다.
+
+### 이미 끝난 작업과 지금 이어갈 지점
+
+| 공개 증거 | 확인한 실제 상태 | 중복 없이 이어갈 행동 |
+|---|---|---|
+| [잔차 실행 summary][resume-residual] | `cloud-residual-20261020T001300Z`, 2조건 complete, 67.235153824초 | 기본 producer 대조 및 tight 잔차 진단을 다시 실행하지 않음. 아래 목적별 보류를 유지. |
+| [4패드 6조건 summary][resume-six] | `cloud-fourpad-20261020T001400Z`, 6/6 complete, 217.421313564초, `not_run=[]` | 계획의 오래된 `calculation_completed=false`를 현재 상태로 읽지 않음. 기존 native·감사·baseline을 재사용. |
+| [coarse 순위][resume-rank] | 6조건 모두 `numerically_promising=false`; full-skin-cap ROI mean/P10 개선 후보 없음 | `free-square10-r12p5xy`, `adjacent-square15`의 선택은 **수치 진단용**이지 개선/최적 후보 채택이 아님. |
+| [첫 실행기 checkpoint][resume-checkpoint] / [중단 진단][resume-stop] | coarse 순위 단계 완료, 후속 PDE 시작0, `peer_review_required`; 원인은 설치된 `gh`의 `--slurp` 미지원 | 기존 완료 순위/감사를 보존. 이 과거 상태를 새 피드백 도착·현재 워커 종료로 오해하지 않음. |
+| [실제 GET 확인][resume-get] / [실행기 코드][resume-loop-code] | `--paginate` 연속 JSON 배열 해석으로 수정; 실제 PR1 head/댓글/리뷰 GET 성공 기록 | 호환성 구현을 다시 요구하지 않음. 현재 소유자가 새 PR1 피드백을 읽고 채택 범위·고정 snapshot을 기록한 뒤 안전한 다음 단계에서 계속 진행. |
+
+순위의 `balanced_absolute_gain_floor`는 free-square10 약0.79837, adjacent-square15 약0.74533이다. 이는 같은 전체 피부 부담에서 ROI mean/P10 두 비율 중 작은 값이며 둘 다 baseline 미만이다. 현재 무개선 분기로 처리한다. 총면적400 mm²인 free-square10과900 mm²인 대조를 같은 면적 설계로 설명하지 않는다. 나머지 형상을 새 이름으로 다시 계산하지 않는다.
+
+### F004: 어떤 실패가 어느 목적을 막는가
+
+[잔차 원인 감사][resume-residual-audit]는 기본 residual producer의 coarse 3000 Hz E/φ/density/source/loss 5배열 동일성과 tight fine 잔차 약3.6453e−12를 기록한다. 그러나 역사적 source 4성분·loss 2성분은 원 `abs(new-old) <= 1e−14 + 1e−8*abs(old)` 기준에서 여전히 실패다. 작은 전역 norm·잔차 감소·reciprocity 개선으로 그 판정을 바꾸지 않는다.
+
+| 목적 | 계속/보류 판단 |
+|---|---|
+| 과거 Best1 성분별 재현 완료, 원 native 복구 완료 주장 | **보류.** 6성분 실패 및 과거 전체 배열 부재가 해당 주장을 막음. |
+| 3000 Hz 단일 진단을 두 carrier TIS·고조파 결과에 편입 | **불가.** 진단 용도를 유지하고 TIS 순위에서 제외. |
+| 같은 현재 producer·물성·접촉·소스·격자·정의의 coarse 형상 비교 | 각 조건의 native/전류·면적·전력 gate, 같은 격자 baseline, 코드/입력 hash와 예산이 유효하면 **진행 가능**. 과거 성분별 실패가 모든 탐색을 무기한 막는 전역 중단 조건은 아님. |
+| coarse 차이를 개선 후보 선별에 사용 | 등록한 실용적 1% 선별 여유와 전체 피부 부담/공간 조건을 그대로 적용. 한 형상·한 주파수에서 관측한 solver 민감도를 모든 ROI P10/격자/접촉의 보장 오차로 사용하지 않음. |
+| 최적 후보 채택·깊이 집중·전체 XY/가장자리/3D 수렴·실험 타당성 | **보류.** 후보별 추가 검증과 해당 근거가 필요. 제한된 결합 격자 36 gate 통과도 전역 수렴으로 확대하지 않음. |
+
+F004는 [실제 채택 delta][resume-adoption]의 `partially_adopted_executed_residual_mesh_separation`을 인정한다. 이전 검토의 “모든 adoption 링크 null”은 당시 snapshot의 기록이며 현재 판단이 아니다. 잔차/격자 분리 구현·실행의 채택은 확인됐지만 전체 F004 보류는 유지한다.
+
+### T1-F010 — 배치 종료부터 다음 실행까지의 책임 계약
+
+새 ID는 **연속 실행의 인계 누락** 한 항목에만 추가한다. F001/F002는 공간·동일 부담 평가, F004는 검증 범위, F006/F007은 단일 소유·재사용·실행 계수의 기존 의미로 계속 사용한다. T1-F010의 현재 상태는 **제안/계산측 채택 미확인**이다. 검토 문서 게시나 PR2 상호참조가 자동 채택·실행을 의미하지 않는다.
+
+**진입 조건과 현재 소유자**
+
+1. 현재 계산 담당자가 최신 checkpoint의 PID/startticks·프로세스 상태·자식 명령·마지막 갱신과 `.task1-loop.lock`, `.task1-execution.lock`을 실제 환경에서 확인한다. 살아 있는 실행기/자식이 있으면 그 소유자가 이어간다. 다른 실행기를 띄우거나 같은 단계/조건을 병렬 수행하지 않는다. 종료 판정에는 실제 프로세스 정체성과 잠금 확인을 함께 남긴다.
+2. [4패드 계획][resume-plan]의 코드·등록·마스크/config SHA, 완료 원자료와 같은 격자 baseline, 기존 캐시를 확인한다. 6조건 coarse 진입 조건은 실제 완료로 이미 충족됐다. 현재 단계는 등록된 최대2조건 xy80, 그 결과에 따른 한 설계의 xy100/SC4/bulk 최대3조건이다. 실제 이미 완료된 후속이 있다면 그 결과부터 사용한다.
+3. `runtime/task1-budget.json`의 **live 잔여**를 읽는다. 옛 중단 진단의 잔여4728.904초는 이후 잔차·6조건·감사 비용 이전 관측이므로 현재 예산이 아니다. 기존 6600초 원장을 이어 쓰고 CPU1·동시PDE1·800000셀·600초/조건·heap2 GiB·RSS3 GiB·디스크 예약2 GiB를 유지한다. 새 phase는 코드가 요구하는 `600초×조건수`와 마지막 렌더120초, 준비/감사/보고 여유를 함께 확보해야 한다. 전체 phase 예약이 안 되면 현재 코드가 지원하지 않는 부분 실행 flag를 만들어내지 말고, 실행 가능한 등록 subset 또는 `not_run_budget`을 명시한다.
+4. 새 피드백 확인은 기존 안전한 phase 경계에서 처리한다. `peer_gate`가 PR1 head/댓글 변경을 감지해 멈추면 계산 담당자가 변경 내용·채택/보류·관련 commit을 검토한다. 이를 새 사용자 허가 대기나 연구 완료로 바꾸지 않는다. 피드백 확인을 우회하지 않고, 이미 실행 중인 자식이나 고정 source를 임의 교체하지 않는다. 이번 PR 업데이트 때문에 또 조회가 달라졌다면 **같은 변경을 읽고 판단한 뒤** 그 snapshot을 다음 실행 근거로 고정한다.
+
+**결과별 다음 행동 — 현재는 B 분기**
+
+| 분기 | 완료 직후 검증·보고 | 이어갈 유한 행동 |
+|---|---|---|
+| A. 같은 전체 피부 부담에서 ROI mean/P10 모두 baseline 이상, 적어도 하나 >1% 개선 | 같은 격자 비교·부담 cap·표층/전체 비표적 P95·최대·전역 최대 위치를 확인. 진폭 변경 후 고정 baseline 역치의 비표적 고변조 부피가 `unavailable`이면 원 native로 재평가할 때까지 해당 조건 보류. | 이미 등록된 최대2개 xy80, 그중 한 후보의 가장자리·xy100/SC4/bulk 검증을 진행. 실패하면 C로 분기. 통과는 한정 gate 통과로 보고하며 자동 최적점·C1 채택은 하지 않음. |
+| B. 개선 없음 — 현재 6조건 해당 | 동일 전압/동일 총전력/접촉 cap/전체 피부 cap을 분해해 어떤 제한 항목이 ROI 이득을 상쇄하는지 기록. free-square10의 면적/위치 변화와 adjacent의 배선·위치 효과를 구분. | 이미 선택된 최대2개를 **수치 진단**으로 xy80에서 확인하되 기존 실행/캐시를 먼저 확인. 그다음 최대3조건 확인은 어떤 격자 민감도 질문을 해결하는지 명시. 무개선이면 baseline을 유지하고, 기존 결과 분석으로 면적·위치·배선 중 한 요인만 바꾸는 미계산 소수 대조를 선정해 다음 유한 계획을 등록한다. 예: 총900 mm²·4패드/2출력·파형 고정 상태의 배치 효과를 분리하는 최대2개 새 위치 대조. 실제 형상 가능성·producer 지원·중복 signature·남은 예산이 확인된 경우에만 진행하며 이미 계산한 형상을 다시 포장하지 않음. |
+| C. 수치·출처·가용 자료·실행 실패 | 최초 실패·부분파일·잔차·원소별 차이·source/config SHA·exit 상태를 보존. 수렴 실패와 실행 인프라 오류를 구분하고 다음 조건에 영향을 미치는 범위를 판단. | 무제한 retry 대신 특정 원인을 수정/검증하고 새 고유 기록으로 재개. 이미 완료된 coarse/감사/후속 PDE는 재사용. 필요한 원인 분석이 읽기 전용이면 그것부터 수행. 허용치 완화·reserve 감소·원자료 삭제로 통과시키지 않음. |
+
+위 B의 새 위치 대조는 **다음 질문의 구체적 후보**이며 지금 등록·실행됐다는 뜻은 아니다. 현재 후속 큐의 결과로 필요성이 없어지면 그 근거와 다른 다음 질문을 기록한다. 남은 예산 안에서 타당한 준비·검증·배치를 이어가는 것이 계산 담당자의 업무이며, 제안 문서만 저장한 뒤 끝내지 않는다. 예산·자료·실행 지원이 실제로 부족하면 그 항목을 정확히 차단 사유로 남긴다. 승인 범위 밖 자원 확대·설치·삭제·보안 변경·별도 워커·상주 서비스는 계속 보류다.
+
+**현재 실행기의 끝부분에서 보완할 실제 누락**
+
+[실행기 코드][resume-loop-code]에는 coarse 감사/순위→fine→confirm→mesh 판정→최종 순위/화면 갱신까지의 자동 순차 처리가 이미 있다. 이를 다시 만들 필요는 없다. 다만 마지막 `next_decision`은 일반적인 root review이고 `next_command`는 `cat checkpoint.json`이다. 첫 중단 기록의 `next_command`도 이미 완료한 `rank-coarse`를 가리킨다. 이 값들은 **다음 계산 재개 명령의 확정본이 아니다**. 현재 구현에는 `--resume` 옵션도 없고 이미 존재하는 `--output` 재사용을 거절한다. 오래된 명령을 복사해 실행하거나 존재하지 않는 재개 flag를 제안하지 않는다.
+
+각 배치/큐 마지막 기록에는 다음 필드를 채우도록 계산 담당자에게 요청한다. 이는 기존 checkpoint를 덮어써 과거 상태를 바꾸라는 요청이 아니라, 실제 단계 종료의 새 기록/후속 결정을 남기라는 요청이다.
+
+| 필수 기록 | 실제로 담아야 할 내용 |
+|---|---|
+| `next_action`, `decision_basis` | A/B/C 중 선택, 관련 run/case/판정/hash, 다음 과학적 질문과 정확한 유한 범위 |
+| `next_registration`, `next_command` | 실행 가능한 코드에 맞는 등록 artifact/SHA 및 완전히 해석된 명령·cwd·입력·고유 출력. 단순 `cat`은 관찰 명령으로 따로 표시. 아직 지원되지 않으면 구현/검증의 정확한 다음 명령과 차단 이유를 먼저 기록. |
+| `actual_started`, `started_utc`, `owner`, `child` | 다음 단계 실제 시작 여부와 PID/startticks·소유 잠금·자식 명령·run ID. 준비 완료를 실행 시작으로 쓰지 않음. |
+| `terminal_status`, `idle_reason`, `blocker`, `resume_condition` | 완료/오류/예산부족/피드백 검토/자료부족을 구분. 시작하지 않았다면 왜인지, 누가 무엇을 확인하면 재개 가능한지, 실제 재개 명령을 명시. |
+| `budget_before_after`, `cache_reuse`, `remaining_limits` | 기존 원장 차감·잔여·예약, 재사용/새 PDE·주파수/RHS 계수, 실패와 수렴/물리적 보류 유지 |
+
+현재 실행기가 살아 있으면 위 후속 판단은 그 소유자가 처리한다. 실제 종료가 확인된 경우에만 계산 담당자가 보존된 checkpoint·완료 캐시·등록/소스 snapshot을 검토하여 **기존 작업의 중복 없는 재개 절차**를 선택하고 위 필드에 정확한 명령을 남긴다. 이 검토는 별도 워커 시작을 요청하지 않는다. 추가 PDE가 이미 일부 끝난 경우, 현재 finite-loop의 처음부터 다시 실행하면 그 완료 phase를 자동 재사용하지 않을 수 있으므로 그대로 재시작하지 말고 완료 단계를 제외하는 지원 경로를 먼저 검증한다.
+
+`completed_finite_queue` 뒤에도 계산 담당자는 결과 검증·보고를 마친 같은 작업 흐름에서 다음 유한 배치를 선택하고, 진입 조건이 충족되면 그 다음 단계를 실제로 시작한다. 자동 진행은 **승인된 유한 큐 내부의 처리와 담당자의 후속 의사결정**을 뜻하며 무기한 daemon이나 자동 과학적 채택을 뜻하지 않는다. 정당한 차단이 생기면 유휴 사유와 재개 경로를 남기는 것으로 종료 상태를 명확히 한다. 단순 수신확인 댓글/빈 commit 반복은 하지 않는다.
+
+### 채택 상태와 이번 확인의 한계
+
+- F001–F009의 [현재 장부][resume-ledger]는 적용 commit/실행 근거를 이미 연결했다. F004의 잔차/격자 분리는 별도 [채택 delta][resume-adoption]와 실제 2조건 결과까지 확인했다. 이 이전 피드백 채택을 새로운 T1-F010 채택으로 세지 않는다.
+- T1-F010은 본 검토 commit을 source로 계산 담당자가 채택/보류, 구현 commit, 실제 계속 실행/종료 기록, 검증 artifact를 연결해야 한다. 공개 PR2 상호참조만으로 실행·채택 완료를 선언하지 않는다.
+- 새 baseline의 별도 복구 검증과 다른 새 native의 로컬 archive, 과거 전체 native 미복구를 구분한다. 이 검토는 전체 데이터 이전이나 환경 폐기를 승인하지 않는다.
+- 공개 JSON·코드·Git 이력과 게시 시험 로그만 확인했다. 최신 로그는 전체157개/실행기33개 시험 통과를 기록하지만 여기서 재실행하지 않았다. 현재 워커 생존·live 잔여 예산·새 후속 결과는 계산 소유자의 실제 기록이 필요하다.
+
+## 이전 검토 이력 — `07d3dfa` 당시의 근거와 보류
+
+아래는 이전 snapshot의 기록이다. 현재 실행·채택 상태에는 위 연속 실행 피드백과 고정 출처를 우선 적용한다. 과거 실패·null·미구현 관찰을 현재 상태로 재사용하지 않는다.
+
 **판정: 같은 4패드 후보의 XY/접촉 가장자리 검증을 다음 과학적 우선순위로 유지한다.** 중심·ROI 지표의 작은 변화만으로 수렴을 선언할 수 없다. 접촉 부담과 선택도는 등록 기준을 넘게 변했다. F004의 전체 검증 보류를 유지하며 새 최적점이나 15–20 mm 집중 성공을 채택하지 않는다.
 
 검토 대상은 `codex/task1-cloud-restart-20261020`의 **`07d3dfa956b6662a07ff930577240b091065f5d6`까지**다. 수치·장부 근거는 `4890d1d7f76e947b6913a48624d4c498fc6cb668`에 고정했고 이후 `07d3dfa`에서 그 파일들은 바뀌지 않았다. 요청 시점 `038ce93981adce7b707694d495d69e9b72703430` 뒤의 `4890d1d`는 grouped 사전등록과 전체 피부 부담 분석 계약 두 파일을, `07d3dfa`는 관련 구현·시험 소스 네 파일을 추가 변경했다. 이 추가분을 반영해 이미 구현·등록된 사항을 다시 요구하지 않는다. [실행 보고서][report]는 수렴 실패와 결합 3D 미검증을 이미 명시한다. 이 문서는 그 판정의 후속 의사결정 및 F001–F009 추적 근거를 보완한다.
@@ -120,3 +206,14 @@ F005/F009에는 해결해야 할 **실행 코드 출처 연결**이 남는다. �
 [wave-latest]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/07d3dfa956b6662a07ff930577240b091065f5d6/tools/task1_waveform_check.py
 [view-latest]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/07d3dfa956b6662a07ff930577240b091065f5d6/tools/task1_results_view.py
 [wave-tests-latest]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/07d3dfa956b6662a07ff930577240b091065f5d6/tests/test_task1_waveform_check.py
+[resume-plan]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/fourpad-exploration-plan.md
+[resume-residual]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/residual-results/summary.json
+[resume-six]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/fourpad-coarse-results/summary.json
+[resume-rank]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/first-loop-attempt/rank-coarse.json
+[resume-checkpoint]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/first-loop-attempt/checkpoint.json
+[resume-stop]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/first-loop-attempt/stop-diagnosis.json
+[resume-get]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/actual-gh-pagination-check.json
+[resume-loop-code]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/tools/task1_finite_loop.py
+[resume-residual-audit]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-restart-20261020/RESIDUAL_3000_CAUSE_AUDIT.md
+[resume-adoption]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/feedback-adoption-delta.json
+[resume-ledger]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-restart-20261020/feedback-ledger.json
