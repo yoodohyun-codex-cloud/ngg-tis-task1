@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One finite, serialized follow-up queue; no resident worker or automatic C1.
 
-The supplied six-case coarse run must already have terminal status complete.
+The supplied one-to-six-case coarse run must already have terminal status complete.
 Children own the shared PDE lock and debit their own actual time.  This process
 owns a separate duplicate-coordinator lock and charges only its own overhead.
 """
@@ -98,8 +98,11 @@ def remaining_budget(path=BUDGET):
 def choose_cases(pool, coarse_ids, selected_designs, mesh_ids, max_designs):
     if not 0 <= max_designs <= 2 or len(selected_designs) > max_designs or len(set(selected_designs)) != len(selected_designs):
         raise ValueError('At most two distinct registered coarse designs may advance')
-    if len(set(coarse_ids)) != len(coarse_ids) or any(case not in pool for case in coarse_ids):
+    if not 1 <= len(coarse_ids) <= 6 or len(set(coarse_ids)) != len(coarse_ids) or any(case not in pool for case in coarse_ids):
         raise ValueError('Unknown or duplicated coarse case')
+    if len(set(mesh_ids)) != len(mesh_ids) or any(pool[ident].get('mesh_id') != 'coarse' or
+            pool[ident].get('channels') != 2 or pool[ident].get('existing_reference') for ident in coarse_ids):
+        raise ValueError('Distinct packaged meshes and two-output coarse TIS cases required')
     allowed = {pool[case]['design_id'] for case in coarse_ids}
     if not set(selected_designs) <= allowed or not set(mesh_ids) <= {'xy80', 'xy100', 'sc4', 'bulk'}:
         raise ValueError('Design or mesh escapes the finite packaged plan')
@@ -112,6 +115,22 @@ def choose_cases(pool, coarse_ids, selected_designs, mesh_ids, max_designs):
                 raise ValueError('Exactly one packaged TIS case required: '+design+'/'+mesh)
             result.append(matches[0])
     return result
+
+
+def validate_coarse_cases(pool, cases):
+    ids = [case['id'] for case in cases]
+    if not 1 <= len(ids) <= 6 or len(set(ids)) != len(ids):
+        raise ValueError('One to six distinct packaged coarse TIS cases required')
+    for case in cases:
+        expected = pool.get(case['id'])
+        if (expected is None or expected.get('existing_reference') or case.get('existing_reference') or
+                expected.get('mesh_id') != case.get('mesh_id') or case.get('mesh_id') != 'coarse' or
+                expected.get('channels') != 2 or case.get('channels') != 2 or
+                expected.get('design_id') != case.get('design_id')):
+            raise ValueError('Packaged coarse ID/design/mesh/two-output contract differs')
+    if len({pool[ident]['design_id'] for ident in ids}) != len(ids):
+        raise ValueError('Duplicate coarse physical design')
+    return ids
 
 
 def source_snapshot(repo=ROOT, extra_paths=()):
@@ -246,7 +265,28 @@ class FiniteLoop:
             pid=os.getpid(), proc_start_ticks=ticks(os.getpid()), created_utc=now(), updated_utc=now(),
             coarse_run=str(self.coarse), maximum_PDE_conditions=11, maximum_new_PDE_conditions=5,
             source_commit=None, stages=[], current_child=None, next_command=None,
-            automatic_C1=False, automatic_adoption=False, background_daemon=False)
+            automatic_C1=False, automatic_adoption=False, background_daemon=False,
+            actual_started=False, pde_owner=None, next_registration='not_prepared', next_PDE_command=None,
+            next_step_owner='root', planned_new_PDE_conditions=0)
+
+    def ending_receipt(self, status, reason):
+        """Record an actual stopped owner and explicit root responsibility, never a fake worker."""
+        budget = read(BUDGET)
+        remaining_budget(BUDGET)
+        queue_finished = self.state.get('all_predefined_PDE_steps_finished') is True
+        normal_finish = status == 'completed_predefined_queue_pending_root_selection'
+        self.state.update(status=status, phase='finished', completed_utc=now(), actual_started=False,
+            pde_owner=None, next_registration='not_prepared', next_PDE_command=None, next_command=None,
+            next_step_owner='root', budget=dict(limit_seconds=budget['limit_seconds'],
+                spent_seconds=budget['spent_seconds'], remaining_seconds=budget['limit_seconds']-budget['spent_seconds']),
+            idle_reason=('no_further_preregistered_cases_in_this_finite_queue' if queue_finished else
+                'execution_stopped_before_predefined_queue_finished'),
+            execution_blocker=None if normal_finish else dict(classification=status, reason=reason, owner='root'),
+            scientific_blocker=dict(classification=('adoption_blocked_by_unresolved_convergence' if queue_finished else
+                'scientific_validation_incomplete'), reason=reason, owner='root',
+                resolution='Root selects and preregisters the next finite research question within the remaining budget; unresolved adoption gates do not prohibit further exploration'),
+            coordinator_owner=dict(pid=os.getpid(), proc_start_ticks=ticks(os.getpid()),
+                script=str(Path(__file__).resolve()), resident_worker=False))
 
     def save(self):
         self.state['updated_utc'] = now()
@@ -287,6 +327,9 @@ class FiniteLoop:
                 process = subprocess.Popen(list(map(str, command)), cwd=ROOT, stdout=stream,
                     stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL)
                 self.state['current_child'] = dict(pid=process.pid, proc_start_ticks=ticks(process.pid), command=list(map(str, command)))
+                if '--execute' in command and str(ROOT/'tools/task1_cloud_batch.py') in list(map(str, command)):
+                    owner = dict(self.state['current_child'], role='PDE_controller', run=str(command[-1]))
+                    self.state.update(actual_started=True, pde_owner=owner, last_pde_owner=owner)
                 self.save()
                 while process.poll() is None:
                     left = self.deadline-time.monotonic()
@@ -314,6 +357,7 @@ class FiniteLoop:
             self.state['stages'].append(dict(stage=stage, command=list(map(str, command)), log=str(log),
                 wall_seconds=elapsed, exit_code=process.returncode if process else None))
             self.state['current_child'] = None
+            self.state.update(actual_started=False, pde_owner=None)
             self.save()
         self.check()
 
@@ -361,6 +405,10 @@ class FiniteLoop:
         return selected
 
     def execute_phase(self, label, ids):
+        if (label not in ('fine', 'confirm') or not ids or len(set(ids)) != len(ids) or
+                len(ids) > (2 if label == 'fine' else 3) or
+                self.state.get('planned_new_PDE_conditions', 0)+len(ids) > 5):
+            raise ValueError('Finite phase exceeds distinct two-fine/three-confirm/five-new condition bounds')
         self.peer_gate(label)
         run = ROOT/'data-native'/('cloud-'+self.output.name+'-'+label)
         prepare = core_command('prepare', run, ids)
@@ -370,6 +418,10 @@ class FiniteLoop:
             raise RuntimeError('resource_shortage: remaining budget below preregistered '+str(len(ids)*600)+'s phase reserve')
         if run.exists():
             raise RuntimeError('Existing phase path must be preserved; no retry/overwrite')
+        self.state['planned_new_PDE_conditions'] = self.state.get('planned_new_PDE_conditions', 0)+len(ids)
+        self.state.update(next_registration=str(run/'preregistration.json'),
+            next_PDE_command=shlex.join(map(str, core_command('execute', run))), actual_started=False, pde_owner=None)
+        self.save()
         self.child('prepare-'+label, prepare)
         self.child('execute-'+label, core_command('execute', run))
         completed_run(run)
@@ -399,10 +451,9 @@ class FiniteLoop:
         self.snapshot = source_snapshot(extra_paths=self.extra_pins)
         self.state['source_commit'] = self.snapshot['source_commit']
         checkpoint(self.output/'source-pins.json', self.snapshot)
-        coarse_ids = [case['id'] for case in pre['cases']]
         pool = read(HIST/'preregistration.json')['case_pool']
-        if len(coarse_ids) != 6 or any(ident not in pool or pool[ident]['mesh_id'] != 'coarse' or pool[ident].get('channels') != 2 for ident in coarse_ids):
-            raise ValueError('Exactly six packaged original-plan coarse TIS cases required')
+        coarse_ids = validate_coarse_cases(pool, pre['cases'])
+        self.state.update(maximum_PDE_conditions=len(coarse_ids)+5, registered_coarse_count=len(coarse_ids))
         self.state['registered_coarse_cases'] = coarse_ids
         self.state['peer_before'] = peer_snapshot(self.deadline)
         self.save()
@@ -433,21 +484,26 @@ class FiniteLoop:
         self.rank('rank-final', all_summaries, 1)
         self.state['peer_after'] = peer_snapshot(self.deadline)
         changed = self.state['peer_after'] != self.state['peer_before']
-        final_status = 'peer_review_required' if changed or self.state['peer_after']['status'] != 'read_only_GitHub_GET_verified' else 'completed_finite_queue'
+        final_status = 'peer_review_required' if changed or self.state['peer_after']['status'] != 'read_only_GitHub_GET_verified' else 'completed_predefined_queue_pending_root_selection'
         self.state.update(status='running', phase='final_feedback_checked',
-            next_decision='Root review of mesh/surface gates, held results and peer feedback; no automatic C1, adoption or background continuation.',
-            next_command=shlex.join(['cat', str(self.output/'checkpoint.json'), str(self.output/'candidate-mesh-validation.json')]))
+            numerical_execution_status='complete', all_predefined_PDE_steps_finished=True,
+            next_decision='Root must select the next finite numerical question; no candidate has passed joint grid/contact-model convergence.',
+            next_command=None, next_PDE_command=None)
         self.save()
         if remaining_budget() < 120:
-            self.state['next_command'] = shlex.join([PYTHON, str(ROOT/'tools/task1_results_view.py'), '--figures', '--output', str(ROOT/'docs/CLOUD_RESULTS.html')])
-            raise RuntimeError('resource_shortage: final render120s reserve unavailable; calculated evidence preserved')
-        self.child('render-final', [PYTHON, ROOT/'tools/task1_results_view.py', '--figures', '--output', ROOT/'docs/CLOUD_RESULTS.html'])
-        self.state.update(status='running', phase='finalizing',
-            next_command=shlex.join(['cat', str(self.output/'checkpoint.json')]+([str(self.output/'candidate-mesh-validation.json')]
-                if (self.output/'candidate-mesh-validation.json').exists() else [])))
+            self.state['ui_render_status'] = 'not_run_resource_reserve'
+        else:
+            try:
+                self.child('render-final', [PYTHON, ROOT/'tools/task1_results_view.py', '--figures', '--output', ROOT/'docs/CLOUD_RESULTS.html'])
+                self.state['ui_render_status'] = 'complete'
+            except RuntimeError as error:
+                if not str(error).startswith('child_error: render-final '):
+                    raise
+                self.state.update(ui_render_status='failed_preserved', ui_render_error=str(error))
+        self.state.update(status='running', phase='finalizing', next_command=None, next_PDE_command=None)
         self.save()
         self.debit_overhead()
-        self.state.update(status=final_status, phase='finished', completed_utc=now())
+        self.ending_receipt(final_status, 'All PDE cases already defined in this finite geometry/refinement queue are complete. Candidate adoption still requires convergence validation. Root owns selection and registration of the next finite exploration queue, which is not yet prepared by this coordinator.')
         self.save()
 
 
@@ -489,6 +545,7 @@ def main():
                 loop.debit_overhead()
             except BaseException as budget_error:
                 loop.state['overhead_debit_blocker'] = str(budget_error)
+            loop.ending_receipt(loop.state['status'], text)
             loop.save()
             print(json.dumps(loop.state, ensure_ascii=False))
             return 2

@@ -1,0 +1,95 @@
+{
+  "schema": "task1-remaining-radial-controls-plan-v1",
+  "status": "selected_not_prepared",
+  "created_utc": "2026-10-20T09:03:53.001652+00:00",
+  "owner": "root finite coordinator",
+  "actual_started": false,
+  "new_worker": false,
+  "question": "Reconstruct the three remaining frozen four-pad radial/area controls at17–18.5mm placement radii and compare whole-volume ROI and complete-skin burden against the cached same-grid four-square baseline.",
+  "novelty": "Historically simulated shapes with missing native arrays; new reconstruction, not a new discovery.",
+  "cases": [
+    {
+      "case_id": "free-ellipse24-r17-coarse",
+      "design_id": "free-ellipse24-r17",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "h_xy_mm": 1.25,
+      "cells": 88480,
+      "config_sha256": "93f95c06242971afa1dffcb6d3e4056c43c19cf06cf52f0dfe9595e95bdb2c90",
+      "mask_sha256": "9d5bbb86fa918b9143bd7cdc262d94f8b60a6cc9e31ebabaca25392b85cea858"
+    },
+    {
+      "case_id": "free-rectangle22x8-r17p5-coarse",
+      "design_id": "free-rectangle22x8-r17p5",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "h_xy_mm": 1.25,
+      "cells": 88480,
+      "config_sha256": "e5ae066f942f6a4aab7fbd64c68a8af23bdafb3975a96f1f7c39be01e0023af6",
+      "mask_sha256": "aafaeaf935818d91dece1f2a78b251c3e048f481b865c1598d2851e04fa39b98"
+    },
+    {
+      "case_id": "free-circle12-r18p5-coarse",
+      "design_id": "free-circle12-r18p5",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "h_xy_mm": 1.25,
+      "cells": 88480,
+      "config_sha256": "963366f607691b0a418b4b4cac4cccd62c1eb727be39fe2a6e4ce268cc11b9c2",
+      "mask_sha256": "f8056a6d2bd0643cae5a1c01fd1a4e3435e43af270fd7c420a86488daeb69b14"
+    }
+  ],
+  "baseline": "baseline-square15-coarse cached cloud-baseline-20261019T185900Z; no duplicate baseline PDE",
+  "fixed": {
+    "D_mm": 50,
+    "layers_mm": [
+      0.1,
+      5,
+      5,
+      15
+    ],
+    "attachment": "top",
+    "return_topology": "common_GND",
+    "source_outputs": 2,
+    "source_Vpp_HighZ_each": 1,
+    "source_peak_V": 0.5,
+    "Rsource_ohm": 50,
+    "inactive_output": "0V through50ohm",
+    "frequencies_Hz": [
+      3000,
+      3030,
+      9000,
+      9090
+    ],
+    "contact": "unchanged PBS-minusRs uncertainty model; area scaling once"
+  },
+  "target": "r<=5mm depth15–20mm, mean/P10/max and non-target distribution",
+  "screen": "same complete skin/contact/source cap; both ROI mean/P10 nonworse and at leastone>1%; no adoption before own convergence/contact sensitivity",
+  "holds": [
+    "OldD historicalstrictfail unchanged",
+    "Previous small-square XY J/contact failures unchanged",
+    "No human activation/safety or COMSOL validation",
+    "No automatic C1/latest instrument update without genuine accepted improvement"
+  ],
+  "resource": {
+    "cpu": 1,
+    "concurrent_PDE": 1,
+    "per_condition_seconds": 600,
+    "max_cells": 800000,
+    "cumulative_seconds": 6600,
+    "remaining_seconds_at_selection": 3628.759165119989,
+    "coarse_max_seconds": 1800,
+    "expected_coarse_seconds": 120,
+    "max_fine_conditions": 2,
+    "max_confirm_conditions": 3,
+    "max_geometry_conditions": 8,
+    "phase_reservation": "Before each phase require600s times its number of conditions; stop with exactreason if unavailable",
+    "heap_GiB": 2,
+    "RSS_GiB": 3,
+    "disk_reserve_GiB": 2,
+    "max_added_GiB_per_batch": 2
+  },
+  "next_registration": "data-native/cloud-radial-20261020T090600Z/preregistration.json",
+  "next_prepare_command": "python tools/task1_cloud_batch.py --prepare --output /workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z --case free-ellipse24-r17-coarse --case free-rectangle22x8-r17p5-coarse --case free-circle12-r18p5-coarse",
+  "next_execute_command": "python tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z"
+}

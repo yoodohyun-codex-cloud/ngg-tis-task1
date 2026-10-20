@@ -39,6 +39,8 @@ class CaseSelectionTests(unittest.TestCase):
             'outside-xy80': {'design_id':'outside', 'mesh_id':'xy80'},
         }
         self.coarse = ['circle-coarse', 'rounded-coarse', 'ellipse-coarse']
+        for case in self.pool.values():
+            case['channels'] = 2
 
     def choose(self, designs, meshes=('xy80','xy100'), maximum=2):
         return loop.choose_cases(self.pool, self.coarse, designs, list(meshes), maximum)
@@ -74,6 +76,33 @@ class CaseSelectionTests(unittest.TestCase):
                 pool['circle-xy80'].update(change)
                 with self.assertRaises(ValueError):
                     loop.choose_cases(pool,self.coarse,['circle'],['xy80'],2)
+
+    def test_duplicate_mesh_and_noncoarse_source_cannot_duplicate_conditions(self):
+        with self.assertRaises(ValueError):
+            self.choose(['circle'], meshes=('xy80', 'xy80'))
+        with self.assertRaises(ValueError):
+            loop.choose_cases(self.pool, ['circle-xy80'], ['circle'], ['xy100'], 1)
+
+    def test_one_three_and_six_coarse_cases_have_exact_overall_bound(self):
+        for count in (1, 3, 6):
+            pool = {f'd{i}': dict(design_id=f'd{i}', mesh_id='coarse', channels=2) for i in range(count)}
+            cases = [dict(id=key, **case) for key, case in pool.items()]
+            self.assertEqual(loop.validate_coarse_cases(pool, cases), list(pool))
+            self.assertLessEqual(len(cases)+5, 11)
+        for count in (0, 7):
+            pool = {f'd{i}': dict(design_id=f'd{i}', mesh_id='coarse', channels=2) for i in range(count)}
+            with self.assertRaises(ValueError):
+                loop.validate_coarse_cases(pool, [dict(id=key, **case) for key, case in pool.items()])
+
+    def test_actual_coarse_registration_must_match_packaged_id_design_mesh_channels(self):
+        pool = {'d': dict(design_id='d', mesh_id='coarse', channels=2)}
+        case = dict(id='d', **pool['d'])
+        for change in ({'id':'unknown'}, {'design_id':'other'}, {'mesh_id':'xy80'}, {'channels':1},
+                       {'existing_reference':True}):
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                loop.validate_coarse_cases(pool, [dict(case, **change)])
+        with self.assertRaises(ValueError):
+            loop.validate_coarse_cases(pool, [case, case])
 
 
 class BudgetTests(unittest.TestCase):
@@ -314,8 +343,14 @@ class PipelineFixtureTests(unittest.TestCase):
                 self.paths[ident] = path
         (self.hist/'preregistration.json').write_text(json.dumps({'case_pool':self.pool}))
         self.pre = {'cases':[{'id':f'd{i}-coarse','config_sha256':'0'*64,
+                             'design_id':f'd{i}','mesh_id':'coarse','channels':2,
                              'config_file':str(self.repo/f'config-{i}.properties'),
                              'mask_file':str(self.repo/f'mask-{i}.csv')} for i in range(6)]}
+        self.budget = self.repo/'budget.json'
+        self.budget.write_text(json.dumps(dict(limit_seconds=6600, spent_seconds=1234., runs=[])))
+        self.budget_patch = patch.object(loop, 'BUDGET', self.budget)
+        self.budget_patch.start()
+        self.addCleanup(self.budget_patch.stop)
 
     def instance(self):
         instance = object.__new__(loop.FiniteLoop)
@@ -351,6 +386,55 @@ class PipelineFixtureTests(unittest.TestCase):
         self.assertEqual(instance.state['candidate_mesh_validation']['status'],'failed_gates_preserved')
         # Only a mocked final renderer is reached; no prepare/PDE child is invoked.
         self.assertEqual([c.args[0] for c in instance.child.call_args_list],['render-final'])
+        self.assertEqual(instance.state['status'], 'completed_predefined_queue_pending_root_selection')
+        self.assertEqual(instance.state['maximum_PDE_conditions'], 11)
+        self.assertFalse(instance.state['actual_started'])
+        self.assertIsNone(instance.state['pde_owner'])
+        self.assertIsNone(instance.state['next_PDE_command'])
+        self.assertIsNone(instance.state['next_command'])
+        self.assertEqual(instance.state['next_registration'], 'not_prepared')
+        self.assertEqual(instance.state['scientific_blocker']['owner'], 'root')
+        self.assertEqual(instance.state['scientific_blocker']['classification'],'adoption_blocked_by_unresolved_convergence')
+        self.assertIsNone(instance.state['execution_blocker'])
+        self.assertEqual(instance.state['idle_reason'],'no_further_preregistered_cases_in_this_finite_queue')
+        self.assertEqual(instance.state['budget'],dict(limit_seconds=6600,spent_seconds=1234.,remaining_seconds=5366.))
+
+    def test_three_case_queue_and_failed_render_preserve_complete_numerics_and_truthful_stop(self):
+        instance = self.instance()
+        pre = {'cases': self.pre['cases'][:3]}
+        coarse = [self.paths[f'd{i}-coarse'] for i in range(3)]
+        instance.audit = Mock(return_value=coarse)
+        instance.rank = Mock(side_effect=[[], []])
+        instance.execute_phase = Mock()
+        instance.child.side_effect = RuntimeError('child_error: render-final exit1')
+        peer = {'status':'read_only_GitHub_GET_verified','evidence':{}}
+        with patch.object(loop,'HIST',self.hist), patch.object(loop,'BASELINES',{}), \
+                patch.object(loop,'source_snapshot',return_value={'source_commit':'a'*40,'files':{}}), \
+                patch.object(loop,'completed_run',return_value=pre), \
+                patch.object(loop,'peer_snapshot',return_value=peer), \
+                patch.object(loop,'remaining_budget',return_value=5366):
+            instance.execute()
+        instance.execute_phase.assert_not_called()
+        self.assertEqual(instance.state['maximum_PDE_conditions'],8)
+        self.assertEqual(instance.state['numerical_execution_status'],'complete')
+        self.assertTrue(instance.state['all_predefined_PDE_steps_finished'])
+        self.assertEqual(instance.state['ui_render_status'],'failed_preserved')
+        self.assertEqual(instance.state['status'],'completed_predefined_queue_pending_root_selection')
+        self.assertIsNone(instance.state['execution_blocker'])
+        self.assertEqual(instance.state['scientific_blocker']['classification'],'adoption_blocked_by_unresolved_convergence')
+        self.assertIsNone(instance.state['next_PDE_command'])
+        self.assertFalse(instance.state['actual_started'])
+
+    def test_phase_cannot_expand_five_new_conditions_or_duplicate_ids(self):
+        instance = self.instance()
+        instance.state['planned_new_PDE_conditions'] = 4
+        instance.peer_gate = Mock()
+        for label, ids in [('fine',['d0-xy80','d1-xy80']), ('confirm',['d0-sc4','d0-sc4']),
+                           ('confirm',['a','b','c','d']), ('other',['d0-xy80'])]:
+            with self.subTest(label=label,ids=ids), self.assertRaises(ValueError):
+                instance.execute_phase(label,ids)
+        instance.peer_gate.assert_not_called()
+        instance.child.assert_not_called()
 
     def test_unknown_ranking_selection_is_rejected_without_phase_or_PDE(self):
         instance = self.instance()
