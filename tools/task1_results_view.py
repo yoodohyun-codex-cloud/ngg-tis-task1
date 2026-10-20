@@ -750,9 +750,33 @@ def tis_visibility_figure(records, mode, directory, group_name):
     return save_figure(figure, directory/(group_name+'-'+mode+'-TIS-log-and-fixed-ROI.png'), plt)
 
 
-def image_tag(path):
-    encoded = base64.b64encode(path.read_bytes()).decode()
-    return f'<img loading="lazy" alt="{esc(path.stem)}" src="data:image/png;base64,{encoded}">'
+def image_tag(path, output=None, embed=False):
+    """Keep each PNG once in the offline asset bundle by default."""
+    path = Path(path).resolve()
+    if embed:
+        encoded = base64.b64encode(path.read_bytes()).decode()
+        source = 'data:image/png;base64,'+encoded
+    else:
+        if output is None:
+            raise ValueError('Linked offline images require an explicit HTML entrypoint')
+        from urllib.parse import quote
+        source = quote(os.path.relpath(path, Path(output).resolve().parent), safe='/')
+    return f'<img loading="lazy" alt="{esc(path.stem)}" src="{esc(source)}">'
+
+
+def asset_manifest(directory, output):
+    """Record portable bundle hashes without re-embedding scientific figures."""
+    directory, output = Path(directory), Path(output)
+    path = directory/'asset-manifest.json'
+    if path.exists():
+        raise ValueError('Never overwrite an earlier asset manifest')
+    value = dict(schema='task1-offline-evidence-bundle-v1',
+        HTML_entrypoint=dict(path=os.path.relpath(output, directory), SHA256=sha(output), bytes=output.stat().st_size),
+        assets={item.name: dict(SHA256=sha(item), bytes=item.stat().st_size)
+                for item in sorted(directory.iterdir()) if item.is_file()},
+        portability='Keep HTML and the uniquely named sibling asset directory together; relative image paths require no network')
+    path.write_text(json.dumps(value, indent=2)+'\n')
+    return path
 
 
 def table(headers, rows):
@@ -762,6 +786,7 @@ def table(headers, rows):
 
 
 def build(args, directory):
+    render_image = lambda path: image_tag(path, args.output, embed=args.embed_images)
     paths = args.summary or sorted((ROOT/'data-native').glob('*/postprocess/*/summary.json'))
     decisions = []
     for path in paths:
@@ -1022,7 +1047,7 @@ def build(args, directory):
                 for metric in ('square_maxTIS_V_m', 'square_RMS_V_m'):
                     figure = maps_figure(group, mode, metric, directory, group_name)
                     if figure:
-                        sections.append('<details><summary>공통 선형 색범위 · '+esc(metric)+' 지도</summary>'+image_tag(figure)+'</details>')
+                        sections.append('<details><summary>공통 선형 색범위 · '+esc(metric)+' 지도</summary>'+render_image(figure)+'</details>')
                 if args.supplementary_maps:
                     figure = tis_visibility_figure(group, mode, directory, group_name)
                     if figure:
@@ -1031,7 +1056,7 @@ def build(args, directory):
                             '같은 비교군의 모든 패드 수에 동일하게 적용합니다. '
                             'ROI 지도는 깊이15/20 mm의 r≤5 mm만 확대하고 모든 조건에서0–0.1 V/cm를 사용합니다. '
                             '표시 범위 밖 값은 색상만 포화되며 지표를 바꾸지 않습니다. '
-                            '이 표시 범위는 활성화·안전 역치가 아닙니다.</p>'+image_tag(figure)+'</details>')
+                            '이 표시 범위는 활성화·안전 역치가 아닙니다.</p>'+render_image(figure)+'</details>')
         sections.append('</section>')
     sections.append('<h2>회로·물성·실행 증거</h2><p>다른 carrier에서도 비구동 출력은 0 V/50 Ω로 종단됩니다. '
         '물리 귀환 패드는 각 주파수에 모두 참여하는 단일 이상 공통 GND에 연결됩니다. '
@@ -1101,7 +1126,7 @@ def build(args, directory):
         '새로 제공된 측정기 사양을 적용한 다운스트림 예측은 위 별도 산출물에 연결합니다. '
         '팬텀 차동 포트 임피던스가 없어 실제 측정기 입력 부하가 반영된 팬텀 전압은 보류합니다.</p>')
     if args.figures:
-        sections.append(image_tag(coordinates_figure(directory)))
+        sections.append(render_image(coordinates_figure(directory)))
     for item, condition, row in records:
         csv_path, probe = probe_csv(item, condition, directory)
         encoded = base64.b64encode(csv_path.read_bytes()).decode()
@@ -1116,7 +1141,7 @@ def build(args, directory):
         sections.append(table(['ID', 'centre X/Y/+z mm', 'full Vpp lower mV', 'full Vpp upper mV',
             'RMS mV', 'fundamental envelope width mV'], probe_rows))
         if args.figures:
-            sections.append(image_tag(waveform_figure(item, condition, probe, directory)))
+            sections.append(render_image(waveform_figure(item, condition, probe, directory)))
         sections.append('</details>')
     sections.append('<h2>단일 전극쌍 비교</h2><p>한 신호 패드와 한 귀환 패드의 단일 출력 조건입니다. '
         '같은 전기장 RMS는 같은 생리적 활성화 또는 같은 TIS 변조를 뜻하지 않습니다. '
@@ -1180,14 +1205,19 @@ def build(args, directory):
             '필요 인가전압·부담의 수치 비교를 보류합니다.</p>')
     encoded = base64.b64encode((directory/'comparison.csv').read_bytes()).decode()
     sections.append('<p><a download="comparison.csv" href="data:text/csv;base64,'+encoded+'">전체 정규화 비교 CSV</a></p>'+
+        '<p>오프라인 자료 묶음: 이 HTML과 '+esc(directory.name)+' 폴더를 함께 보관합니다. '
+        '모든 지도·프로브 그림은 해당 로컬 폴더에서 읽으며 외부 이미지 요청은 없습니다. '
+        +local_link(directory/'asset-manifest.json', args.output, '그림·CSV·HTML SHA manifest')+'</p>'+
         '<footer>Generated '+esc(payload['created_utc'])+' · offline, no remote calls · new PDE0 · '+
         '수치 보존 검사는 격자 수렴·독립 solver·실험 검증과 구분합니다.</footer>')
     css = '''body{max-width:1500px;margin:32px auto;padding:0 24px;font:15px/1.55 system-ui,sans-serif;color:#183047;background:#f8fafb}h1,h2,h3,h4{line-height:1.3}h1{font-size:30px}h2{margin-top:34px}section,.notice,details{background:white;border:1px solid #d8e2ea;border-radius:10px;padding:16px;margin:16px 0}.baseline{border-left:6px solid #246b98;position:sticky;top:0;z-index:2;box-shadow:0 2px 7px #18304720}.notice{border-left:6px solid #d69331}table{border-collapse:collapse;font-size:12px;width:100%;white-space:nowrap}th,td{text-align:right;border-bottom:1px solid #e2e7ed;padding:7px}th:first-child,td:first-child{text-align:left;max-width:330px;white-space:normal}th{background:#eaf0f5}tbody tr:hover{background:#f0f5f8}.scroll{overflow:auto}img{max-width:100%;height:auto;margin-top:14px}pre{font-size:11px;white-space:pre-wrap;overflow-wrap:anywhere}summary{cursor:pointer;font-weight:600}footer{font-size:12px;color:#5b6c7b;margin:24px 0}a{color:#145f99}'''
     document = '<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+\
-        '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'">'+\
+        '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src \'self\' file: data:; style-src \'unsafe-inline\'">'+\
         '<title>Task 1 TIS results</title><style>'+css+'</style><body>'+''.join(sections)+'</body></html>'
     args.output.write_text(document)
     return dict(status='rendered_offline_evidence', output=str(args.output), assets=str(directory),
+        image_storage='base64_embedded_and_saved' if args.embed_images else 'relative_local_assets_once',
+        offline_bundle='Keep the HTML entrypoint and its uniquely named sibling asset directory together; no remote image fetches',
         completed_conditions=len(records), missing_pad_counts=payload['missing_pad_counts'],
         residual_diagnostic_count=len(diagnostics), unsupported_postprocess_count=len(unsupported),
         held_case_count=len(held), batch_error_count=sum(state['status'] in ('error', 'failed') for state in states),
@@ -1223,6 +1253,25 @@ def self_test():
     assert not figures_equal_raw(unit_rows, 'equal_total_power')
     import tempfile
     with tempfile.TemporaryDirectory(prefix='task1-view-eligibility-') as temporary:
+        from urllib.parse import unquote
+        asset_directory = Path(temporary)/'assets with spaces'
+        asset_directory.mkdir()
+        picture = asset_directory/'panel #1.png'
+        picture.write_bytes(b'PNG-fixture-payload-'*256)
+        entrypoint = Path(temporary)/'view.html'
+        tag = image_tag(picture, entrypoint)
+        assert 'base64,' not in tag and 'https:' not in tag and 'file:' not in tag
+        source = tag.split('src="', 1)[1].split('"', 1)[0]
+        assert (entrypoint.parent/unquote(source)).resolve() == picture.resolve()
+        assert 'assets%20with%20spaces/panel%20%231.png' in tag
+        assert len(tag) < picture.stat().st_size//2  # No duplicated PNG bytes.
+        assert 'data:image/png;base64,' in image_tag(picture, entrypoint, embed=True)
+        entrypoint.write_text(tag)
+        manifest_path = asset_manifest(asset_directory, entrypoint)
+        manifest = read(manifest_path)
+        assert manifest['HTML_entrypoint']['SHA256'] == sha(entrypoint)
+        assert manifest['assets'][picture.name]['SHA256'] == sha(picture)
+        assert picture.read_bytes() == b'PNG-fixture-payload-'*256  # Original figure preserved.
         run = Path(temporary)/'failed-batch'
         path = run/'postprocess'/'example'/'summary.json'
         path.parent.mkdir(parents=True)
@@ -1301,7 +1350,7 @@ def self_test():
         registered['postprocessor'] = 'unrecognized_new_postprocessor'
         registration_path.write_text(json.dumps(dict(cases=[registered])))
         assert result_kind(diagnostic_path)['kind'] == 'unsupported'
-    return dict(passed=True, checks='burden caps, cohort/eligibility SHA gates, reference hold, no implicit promotion, backup tamper rejection, one-frequency diagnostics excluded from TIS and reported separately', new_PDE=0)
+    return dict(passed=True, checks='linked offline image paths/byte preservation/bundle hashes, burden and provenance gates, no implicit promotion, diagnostics separated from TIS', new_PDE=0)
 
 
 def main():
@@ -1314,6 +1363,8 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT/'docs/CLOUD_RESULTS.html')
     parser.add_argument('--assets-dir', type=Path)
     parser.add_argument('--figures', action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument('--embed-images', action='store_true',
+        help='Explicit single-HTML image embedding; duplicates saved PNG bytes and remains subject to the fixed50MiB cap')
     parser.add_argument('--supplementary-maps', action=argparse.BooleanOptionalAction, default=True,
         help='Add shared-log TIS and fixed0–0.1V/cm ROI display supplements; retains primary common-linear maps')
     parser.add_argument('--self-test', action='store_true')
@@ -1349,6 +1400,8 @@ def main():
         directory.mkdir()
         try:
             result = build(args, directory)
+            manifest_path = asset_manifest(directory, args.output)
+            result['asset_manifest'] = dict(path=str(manifest_path), SHA256=sha(manifest_path))
             added = sum(path.stat().st_size for path in directory.glob('*'))+args.output.stat().st_size
             if added > 50*1024**2:
                 raise RuntimeError('Visualization exceeded50MiB output allowance; preserve generated evidence')
