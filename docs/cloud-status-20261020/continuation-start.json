@@ -1,0 +1,44 @@
+{
+  "schema": "task1-continuation-actual-start-v1",
+  "observed_utc": "2026-10-20T09:11:24.094223+00:00",
+  "observed_KST": "2026-10-20T18:11:24.094223+09:00",
+  "feedback_id": "T1-F010",
+  "implementation_commit": "b59c840",
+  "source_PDE_commit": "b59c84014a12518412e16ad43aef7f658e62f1b7",
+  "actual_started": true,
+  "started_utc": "2026-10-20T09:10:49.342511+00:00",
+  "current_case": "free-ellipse24-r17-coarse",
+  "current_phase": "postprocessing",
+  "owner": {
+    "role": "single_PDE_controller",
+    "pid": 9720,
+    "proc_start_ticks": 5164357,
+    "java_pid": null,
+    "lock": ".task1-execution.lock flock+POSIX"
+  },
+  "coordinator_handoff": {
+    "pid": 9717,
+    "proc_start_ticks": 5164355,
+    "mode": "finite shell sequence; subsequent coordinator starts only after successful coarse completion",
+    "next_registration": "Each followup core prepare creates a fresh immutable registration",
+    "next_command": "python tools/task1_finite_loop.py --coarse-run /workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z --output /workspace/ngg-tis-task1/runtime/finite-loop-20261020T091200Z-radial"
+  },
+  "next_registration": {
+    "path": "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/preregistration.json",
+    "SHA256": "36bce1102a1056b936fbc44e5b8d99a698e1eb23abc67a9bfebf833a3d8d0303"
+  },
+  "live_state_path": "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/controller.json",
+  "next_live_state_path": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T091200Z-radial/checkpoint.json",
+  "budget": {
+    "limit_seconds": 6600,
+    "spent_seconds": 3112.4697931980136,
+    "remaining_seconds": 3487.5302068019864,
+    "inflight_time_debited_by_controller_on_exit": true
+  },
+  "cache_reuse": "Completed11conditions and matchingbaseline audits are reused; no repeatedbaseline PDE",
+  "remaining_limits": [
+    "3remaining oldradial/area controls reconstructed, not a single-factor causal experiment",
+    "Atmost2fine+3confirm after3coarse; eachphase mustfitremainingbudget",
+    "No automaticoptimum/C1; adoption/convergence holds remain"
+  ]
+}
