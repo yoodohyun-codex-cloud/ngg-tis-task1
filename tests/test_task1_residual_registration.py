@@ -39,8 +39,8 @@ class CachedReferenceTests(unittest.TestCase):
         folder.mkdir(parents=True)
         config, mask = run/'configs/source.properties', run/'masks/source.csv'
         config.parent.mkdir(); mask.parent.mkdir()
-        config.write_bytes(b'channels=2\nfrequencies=3000,3030,9000,9090\n')
         mask.write_bytes(b'pad,i,j,area_m2\n0,1,1,.000225\n')
+        config.write_text('channels=2\nfrequencies=3000,3030,9000,9090\nmask.sha256='+digest(mask.read_bytes())+'\n')
         case = dict(id=case_id, config_file=str(config), config_sha256=digest(config.read_bytes()),
                     mask_file=str(mask), mask_sha256=digest(mask.read_bytes()))
         files = ['BASIS_COMPLETE', 'grid.csv', 'contacts-3000.csv']
@@ -50,7 +50,9 @@ class CachedReferenceTests(unittest.TestCase):
         put(folder/'mesh-metadata.json', dict(exporter_class='SelectivityShapeBasis', channels=2,
             config_sha256=case['config_sha256'], frequencies_Hz=[3000, 3030, 9000, 9090]))
         put(folder/'validation.json', {key: limit/10 for key, limit in residual.core.GATES.items()})
-        pins = {str(path): digest(path.read_bytes()) for path in (*folder.iterdir(), config, mask)}
+        # Match frozen postprocessing: pinned config contains the mask SHA;
+        # its native input manifest does not hash the mask a second time.
+        pins = {str(path): digest(path.read_bytes()) for path in (*folder.iterdir(), config)}
         manifest = digest(json.dumps(pins, sort_keys=True, separators=(',', ':'), allow_nan=False).encode())
         post = run/'postprocess'/case_id/'summary.json'
         put(post, dict(id=case_id, status='complete', input_sha256=pins, input_manifest_sha256=manifest))

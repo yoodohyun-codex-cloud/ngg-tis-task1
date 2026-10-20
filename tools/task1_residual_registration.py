@@ -97,8 +97,17 @@ def _reference(case_id):
                 pins[path] = expected
             for key in ('config', 'mask'):
                 path = Path(case[key+'_file'])
-                core.require(core.sha(path) == case[key+'_sha256'] == post['input_sha256'].get(str(path)),
-                             'Cached physical input SHA differs')
+                core.require(core.sha(path) == case[key+'_sha256'], 'Cached physical input SHA differs')
+                if key == 'config':
+                    core.require(post['input_sha256'].get(str(path)) == case['config_sha256'],
+                                 'Cached postprocess config SHA differs')
+                else:
+                    # Frozen postprocessing hashes the config, not the mask again.
+                    # That pinned config explicitly commits to the mask digest.
+                    properties = dict(line.split('=', 1) for line in Path(case['config_file']).read_text().splitlines()
+                                      if '=' in line and not line.startswith(('#', '!')))
+                    core.require(properties.get('mask.sha256') == case['mask_sha256'],
+                                 'Cached config mask SHA differs')
                 pins[str(path)] = case[key+'_sha256']
             for path in (registration, post_path, *([record_path] if record_path.is_file() else [])):
                 pins[str(path)] = core.sha(path)
