@@ -330,6 +330,107 @@ def grouped_contract(run, folder, meta):
     return count, nodes, expected
 
 
+def is_residual_diagnostic(meta):
+    return (meta.get('exporter_kind') == 'residual_diagnostic_native'
+            or meta.get('exporter_class') == 'ResidualShapeBasis'
+            or 'solver_relative_tolerance' in meta or 'solver_diagnostics_file' in meta)
+
+
+def native_frequency_order(meta):
+    if is_residual_diagnostic(meta):
+        require(meta.get('exporter_kind') == 'residual_diagnostic_native'
+                and meta.get('exporter_class') == 'ResidualShapeBasis'
+                and meta.get('numerical_base_class') == 'SelectivityShapeBasis.ShapeNet',
+                'Residual diagnostic exporter identity must be explicit; never spoof a legacy four-frequency exporter')
+        require(meta.get('frequencies_Hz') == [3000]
+                and type(meta['frequencies_Hz'][0]) is int,
+                'Residual diagnostic frequency order must be exactly [3000]')
+        return [3000]
+    require(meta.get('frequencies_Hz') == [3000, 3030, 9000, 9090],
+            'Unexpected retained frequency order')
+    return [3000, 3030, 9000, 9090]
+
+
+def required_native_files(meta=None):
+    frequencies = native_frequency_order(meta) if meta is not None else (3000, 3030, 9000, 9090)
+    required = ['mesh-metadata.json', 'grid.csv.gz']
+    for frequency in frequencies:
+        required.extend([f'contacts-{frequency}.csv', f'field-{frequency}.bin.gz',
+            f'potential-{frequency}.bin.gz', f'density-{frequency}.bin',
+            f'source-{frequency}.bin', f'loss-{frequency}.bin'])
+    if meta is not None and is_residual_diagnostic(meta):
+        required.append('solver-diagnostics.json')
+    return required
+
+
+def residual_diagnostic_contract(run, folder, meta):
+    """Honest single-frequency diagnostic ABI; no residual accuracy verdict."""
+    native_frequency_order(meta)
+    require(meta.get('channels') == meta.get('n_outputs') == 2
+            and type(meta.get('n_outputs')) is int and meta.get('n_pads') == 4
+            and type(meta.get('n_pads')) is int,
+            'Residual diagnostic requires four physical pads and two independent outputs')
+    require(meta.get('n_return_nodes') == 1 and meta.get('return_topology') == 'common_GND'
+            and meta.get('pad_node_ids') == [0, 1, -1, -1]
+            and all(type(node) is int for node in meta['pad_node_ids']),
+            'Residual diagnostic common-ground physical-pad mapping differs')
+    require(meta.get('solver_version') == 'literal-frozen-COCG-rtol-v1'
+            and type(meta.get('solver_relative_tolerance')) in (float, int)
+            and meta['solver_relative_tolerance'] in (1e-9, 1e-11)
+            and type(meta.get('solver_max_iterations')) is int
+            and meta['solver_max_iterations'] == 12000
+            and meta.get('solver_diagnostics_file') == 'solver-diagnostics.json',
+            'Explicit residual solver version, registered tolerance and 12000-iteration cap required')
+    require(meta.get('field_reconstruction') == 'half_face_flux; top contact term averaged over full cell face h^2'
+            and meta.get('storage') == 'grid/field/potential losslessgzip; density/source/loss raw; little-endian Float64/complex128'
+            and meta.get('inactive_source') == '0V through50ohm',
+            'Residual diagnostic field/storage/termination ABI differs')
+    require(meta.get('sc_cells') == 2 and meta.get('bulk_layer_counts') == [14, 14, 40]
+            and isinstance(meta.get('h_xy_mm'), (int, float))
+            and (meta['h_xy_mm'] == 1.25 or math.isclose(meta['h_xy_mm'], 50/120, rel_tol=0, abs_tol=1e-14)),
+            'Residual diagnostic supports only registered coarse/XY120 SC2 bulk14,14,40 meshes')
+    matches = [case for case in read(run/'preregistration.json').get('cases', []) if case['id'] == folder.name]
+    require(len(matches) == 1, 'Unique restored residual diagnostic registration case required')
+    case = matches[0]
+    require(case.get('exporter_class', 'ResidualShapeBasis') == 'ResidualShapeBasis'
+            and case.get('frequencies_Hz', [3000]) == [3000],
+            'Restored residual registration must not claim a legacy full TIS exporter')
+    config_name = Path(case.get('config_file', folder.name+'.properties')).name
+    config_path = run/'configs'/config_name
+    require(config_path.is_file() and digest(config_path) == meta.get('config_sha256') == case.get('config_sha256'),
+            'Restored residual config hash differs from native metadata or registration')
+    config = properties(config_path)
+    require(config.get('channels') == '2' and config.get('frequencies') == '3000'
+            and float(config.get('solver.relative_tolerance', 'nan')) == meta['solver_relative_tolerance']
+            and config.get('solver.max_iterations') == '12000',
+            'Restored residual config frequency/output/tolerance/iteration settings differ')
+    diagnostics = read(folder/'solver-diagnostics.json')
+    require(diagnostics.get('schema') == 'task1-residual-solver-v1' and diagnostics.get('status') == 'complete'
+            and diagnostics.get('solver_version') == meta['solver_version']
+            and diagnostics.get('relative_tolerance') == meta['solver_relative_tolerance']
+            and diagnostics.get('max_iterations') == 12000
+            and diagnostics.get('native_residual_limit') == 2e-7
+            and diagnostics.get('recomputed_diagnostic_limit') == (1e-9 if meta['solver_relative_tolerance'] == 1e-11 else 2e-7),
+            'Residual diagnostics header differs from completed registered solver metadata')
+    solves = diagnostics.get('solves')
+    require(isinstance(solves, list) and len(solves) == 2
+            and all(isinstance(row, dict) and type(row.get('basis_channel')) is int for row in solves)
+            and {row.get('basis_channel') for row in solves} == {0, 1},
+            'Residual diagnostics require exactly two completed output-basis receipts')
+    for row in solves:
+        values = [row.get(key) for key in ('recursive_relative_residual', 'recomputed_relative_residual', 'relative_residual')]
+        require(row.get('status') == 'complete' and type(row.get('basis_channel')) is int
+                and type(row.get('iterations')) is int and 1 <= row['iterations'] <= 12000
+                and row.get('requested_relative_tolerance') == meta['solver_relative_tolerance']
+                and all(type(value) in (float, int) and math.isfinite(value) and value >= 0 for value in values)
+                and row['relative_residual'] == row['recomputed_relative_residual'],
+                'Residual diagnostic solve receipt must preserve finite actual/recursive residuals and iteration count')
+    return dict(solver_version=meta['solver_version'], requested_relative_tolerance=meta['solver_relative_tolerance'],
+        max_iterations=12000, solver_receipts=solves, solver_diagnostics_sha256=digest(folder/'solver-diagnostics.json'),
+        full_two_carrier_TIS_basis=False, scientific_residual_gate_validation_claimed=False,
+        scope='Identity, registered solver settings and finite stored receipts only; actual convergence gates belong to separate numerical review')
+
+
 def decode_native(run, include_terminal_failure=False):
     """Check native shapes/finite values only; no fields or metrics are recomputed."""
     run = Path(run)
@@ -356,11 +457,8 @@ def decode_native(run, include_terminal_failure=False):
             elif not (folder/'BASIS_COMPLETE').is_file():
                 reason = 'incomplete_raw_missing_BASIS_COMPLETE'
             else:
-                required = ['mesh-metadata.json', 'grid.csv.gz']
-                for frequency in (3000, 3030, 9000, 9090):
-                    required.extend([f'contacts-{frequency}.csv', f'field-{frequency}.bin.gz',
-                        f'potential-{frequency}.bin.gz', f'density-{frequency}.bin',
-                        f'source-{frequency}.bin', f'loss-{frequency}.bin'])
+                available_meta = read(folder/'mesh-metadata.json') if (folder/'mesh-metadata.json').is_file() else None
+                required = required_native_files(available_meta)
                 missing = [name for name in required if not (folder/name).is_file()]
                 if missing:
                     reason = 'incomplete_raw_missing_required_files'
@@ -375,10 +473,17 @@ def decode_native(run, include_terminal_failure=False):
         cells, channels = meta['cells'], meta['channels']
         require(type(cells) is int and type(channels) is int
                 and 0 < cells <= 800000 and 0 < channels <= 2, 'Unsupported new native shape')
-        grouped = (meta.get('exporter_kind') == 'grouped_native'
+        residual = is_residual_diagnostic(meta)
+        grouped = not residual and (meta.get('exporter_kind') == 'grouped_native'
                    or meta.get('exporter_class') == 'GroupedPadBasis'
                    or any(key in meta for key in ('n_pads', 'n_outputs', 'pad_node_ids')))
-        if grouped:
+        residual_receipt = None
+        if residual:
+            missing = [name for name in required_native_files(meta) if not (folder/name).is_file()]
+            require(not missing, 'Residual diagnostic missing required native files: '+','.join(missing))
+            residual_receipt = residual_diagnostic_contract(run, folder, meta)
+            physical_pads, pad_nodes, expected_areas = 4, [0, 1, -1, -1], None
+        elif grouped:
             physical_pads, pad_nodes, expected_areas = grouped_contract(run, folder, meta)
         else:
             physical_pads, pad_nodes, expected_areas = 2*channels, None, None
@@ -388,8 +493,7 @@ def decode_native(run, include_terminal_failure=False):
         require(meta['radius_mm'] == 25 and meta['total_depth_mm'] == 25.1
                 and meta['tissue_boundaries_mm'] == [0, .1, 5.1, 10.1, 25.1],
                 'Unexpected fixed phantom geometry or layer units')
-        require(meta['frequencies_Hz'] == [3000, 3030, 9000, 9090],
-                'Unexpected retained frequency order')
+        frequencies = native_frequency_order(meta)
         with gzip.open(folder / 'grid.csv.gz', 'rt') as stream:
             rows = csv.DictReader(stream)
             count = 0
@@ -403,7 +507,7 @@ def decode_native(run, include_terminal_failure=False):
                 count += 1
             require(count == cells, 'Restored grid row count differs')
         reference_contacts, area_totals = None, None
-        for frequency in meta['frequencies_Hz']:
+        for frequency in frequencies:
             with (folder / f'contacts-{frequency}.csv').open() as stream:
                 contacts = list(csv.DictReader(stream))
             require(contacts and all(math.isfinite(float(row['area_m2'])) and float(row['area_m2']) > 0
@@ -432,6 +536,7 @@ def decode_native(run, include_terminal_failure=False):
                           cells=cells, n_outputs=channels, n_pads=physical_pads,
                           pad_node_ids=pad_nodes, restored_pad_areas_m2=area_totals,
                           source_matrix_shape=[channels, channels], loss_matrix_shape=[6, channels, channels],
+                          frequencies_Hz=frequencies, residual_diagnostic=residual_receipt,
                           original_case_execution_status=original_cases.get(case_id,
                               'failed_case_of_terminal_'+state['original_terminal_status']+'_run'
                               if case_id == summary.get('failed_case') else 'not_recorded_complete'),

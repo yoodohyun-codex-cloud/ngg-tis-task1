@@ -128,7 +128,7 @@ def case_eligibility(path, summary=None):
         reasons.append('case_record_postprocess_sha_unverified')
     if not record.get('postprocess_path') or Path(record['postprocess_path']).resolve() != path:
         reasons.append('case_record_postprocess_path_unverified')
-    if record.get('config_sha256') != summary.get('mesh_metadata', {}).get('config_sha256'):
+    if record.get('config_sha256') != summary.get('mesh_metadata', {}).get('config_sha256', summary.get('config_sha256')):
         reasons.append('case_record_config_sha_unverified')
     reference_path, reference = run/'reference-comparison.json', None
     if reference_path.is_file():
@@ -151,6 +151,83 @@ def case_eligibility(path, summary=None):
         raw_basis_complete_marker_present=(run/'bases'/case_id/'BASIS_COMPLETE').is_file(),
         raw_marker_scope='availability marker only; not backup/hash/numerical validation',
         reference_comparison=reference, acceptance_scope='controller-promoted completed calculation only; not mesh or experimental validation')
+
+
+def result_kind(path, summary=None):
+    """Use explicit registration to keep single-frequency diagnostics out of TIS."""
+    path = Path(path).resolve()
+    summary = read(path) if summary is None else summary
+    registration_path = path.parents[2]/'preregistration.json'
+    registration = read(registration_path) if registration_path.is_file() else {}
+    cases = [case for case in registration.get('cases', []) if case.get('id') == summary.get('id')]
+    if len(cases) != 1:
+        return dict(kind='unsupported', reason='one_exact_registered_case_not_found')
+    processor = cases[0].get('postprocessor')
+    if processor == 'residual_diagnostic':
+        return dict(kind='residual_diagnostic', reason='explicit_registered_single_frequency_solver_diagnostic')
+    if processor not in (None, 'legacy_native', 'grouped'):
+        return dict(kind='unsupported', reason='unrecognized_explicit_postprocessor:'+str(processor))
+    conditions = summary.get('conditions')
+    if not isinstance(conditions, list) or not any(row.get('waveform') == 'square_3h' for row in conditions):
+        return dict(kind='unsupported', reason='no_supported_TIS_or_C1_waveform_condition_schema')
+    return dict(kind='tis', reason='registered_TIS_or_C1_complete_condition_schema')
+
+
+def diagnostic_record(path, decision):
+    """Metadata-only diagnostic card; no field, ROI, waveform or probe evaluation."""
+    path = Path(path).resolve()
+    summary, run = read(path), path.parents[2]
+    registration_path = run/'preregistration.json'
+    registration = read(registration_path)
+    case = next(case for case in registration['cases'] if case.get('id') == summary.get('id'))
+    config_path = Path(case['config_file'])
+    actual_hash = sha(config_path) if config_path.is_file() else None
+    declared_hash = summary.get('mesh_metadata', {}).get('config_sha256', summary.get('config_sha256'))
+    provenance_reasons = list(decision['reasons'])
+    if actual_hash != case.get('config_sha256') or actual_hash != declared_hash:
+        provenance_reasons.append('registered_config_sha_unverified')
+    if summary.get('source_commit') != registration.get('source_commit'):
+        provenance_reasons.append('registered_source_commit_unverified')
+    expected_pins = registration.get('source_and_input_sha256')
+    summary_pins = summary.get('source_and_input_sha256')
+    if not isinstance(expected_pins, dict) or not expected_pins or not isinstance(summary_pins, dict) or any(
+            summary_pins.get(key) != value for key, value in expected_pins.items()):
+        provenance_reasons.append('registered_source_and_input_pin_manifest_unverified')
+    metadata_path = run/'bases'/case['id']/'mesh-metadata.json'
+    metadata = summary.get('mesh_metadata') or (read(metadata_path) if metadata_path.is_file() else {})
+    for key, expected in [('exporter_kind', 'residual_diagnostic_native'), ('exporter_class', 'ResidualShapeBasis')]:
+        if metadata.get(key) != expected:
+            provenance_reasons.append(key+'_unverified')
+    frequencies = summary.get('frequencies_Hz', metadata.get('frequencies_Hz'))
+    if frequencies != [3000]:
+        provenance_reasons.append('single_3000Hz_diagnostic_frequency_unverified')
+    comparison_path = path.parent/'comparison.json'
+    comparison = read(comparison_path) if comparison_path.is_file() else {}
+    pick = lambda name: summary.get(name, comparison.get(name))
+    linked_paths = [path, registration_path, config_path, Path(decision['case_record_path']),
+        comparison_path, path.parent/'progress.json', metadata_path, run/'bases'/case['id']/'validation.json']
+    basis_directory = run/'bases'/case['id']
+    if basis_directory.is_dir():
+        linked_paths.extend(sorted(link for link in basis_directory.iterdir() if link.is_file()))
+    linked_paths.extend(sorted((run/'audit').glob('*.json')))
+    return dict(kind='single_frequency_solver_residual', run_id=run.name, case_id=case['id'],
+        calculation_status=summary.get('status'), eligible_completed_diagnostic=not provenance_reasons,
+        provenance_reasons=provenance_reasons, case_completion_evidence=decision,
+        source_commit=registration.get('source_commit'), config_sha256=actual_hash,
+        registration_sha256=sha(registration_path),
+        registered_source_and_input_sha256=registration.get('source_and_input_sha256', {}),
+        frequencies_Hz=frequencies, circuit=case.get('circuit'),
+        requested_relative_tolerance=summary.get('requested_relative_tolerance',
+            case.get('requested_relative_tolerance', metadata.get('requested_relative_tolerance'))),
+        solver_diagnostics=pick('solver_diagnostics'), native_validation=summary.get('validation'),
+        validation_gate_status=summary.get('validation_gate_status', summary.get('five_gates', summary.get('gates'))),
+        numerical_diagnostics=pick('numerical_diagnostics'), producer_regression=pick('producer_regression'),
+        strict_historical_comparison=pick('strict_historical_comparison'),
+        current_default_comparison=pick('current_default_comparison'), new_vs_D=pick('new_vs_D'),
+        exporter_metadata=metadata, summary=summary, comparison=comparison,
+        summary_sha256=sha(path), comparison_sha256=sha(comparison_path) if comparison_path.is_file() else None,
+        source_links=sorted({str(link.resolve()) for link in linked_paths if link.is_file()}),
+        scope='single-frequency numerical diagnostics only; no TIS, ROI optimization, normalization, probe40 or C1 matching; never promotes original held Best1')
 
 
 def batch_states(runs):
@@ -228,6 +305,8 @@ def external_backup_receipt(path):
 def load_case(path):
     path = Path(path).resolve()
     summary = read(path)
+    if result_kind(path, summary)['kind'] != 'tis':
+        raise ValueError('Diagnostic or unsupported results cannot enter TIS comparisons: '+str(path))
     eligibility = case_eligibility(path, summary)
     if not eligibility['eligible']:
         raise ValueError('Dashboard scientific comparison excludes held result: '+json.dumps(eligibility))
@@ -684,9 +763,17 @@ def table(headers, rows):
 
 def build(args, directory):
     paths = args.summary or sorted((ROOT/'data-native').glob('*/postprocess/*/summary.json'))
-    decisions = [case_eligibility(path) for path in paths]
-    held = [decision for decision in decisions if not decision['eligible']]
-    items = [load_case(decision['postprocess_path']) for decision in decisions if decision['eligible']]
+    decisions = []
+    for path in paths:
+        classification = result_kind(path)
+        decisions.append(dict(**case_eligibility(path), result_kind=classification['kind'],
+            classification_reason=classification['reason']))
+    held = [decision for decision in decisions if decision['result_kind'] == 'tis' and not decision['eligible']]
+    diagnostics = [diagnostic_record(decision['postprocess_path'], decision) for decision in decisions
+                   if decision['result_kind'] == 'residual_diagnostic']
+    unsupported = [decision for decision in decisions if decision['result_kind'] == 'unsupported']
+    items = [load_case(decision['postprocess_path']) for decision in decisions
+             if decision['result_kind'] == 'tis' and decision['eligible']]
     runs = {Path(decision['postprocess_path']).parents[2] for decision in decisions}
     runs.update(path.parent for path in (ROOT/'data-native').glob('*/preregistration.json'))
     states = batch_states(runs)
@@ -745,6 +832,7 @@ def build(args, directory):
             if not any(row['n_pads'] == n and row['n_outputs'] == 2 for _, _, row in records)],
         pure_sine_C1_matches=singles,
         batch_states=states, held_calculation_evidence=held,
+        single_frequency_residual_diagnostics=diagnostics, unsupported_postprocess_evidence=unsupported,
         external_native_backup=backup, external_instrument_artifacts=instrument,
         eligibility_policy='require original complete case record with exact postprocess/config SHA and path; failed reference comparison stays held; later analysis audits never implicitly promote',
         new_PDE=0, new_research_postprocess=0, experiment_validated=False)
@@ -761,6 +849,10 @@ def build(args, directory):
         "목표 ROI: 중앙 r≤5 mm, 표면 기준 깊이 15–20 mm. 수치 결과 화면이며 깊이 집중·실험·인체 안전 검증은 완료되지 않았습니다.</p>",
         '<div class="notice">4개 패드 기준은 항상 표시됩니다. 8·12·16개 패드는 각각 물리 접촉 수이며 독립 출력 수와 구분합니다. '
         '다른 격자 사이의 변화를 설계 개선 순위로 사용하지 않습니다. PBS 계면 모델과 피부 접촉 검증은 별개입니다.</div>']
+    resume_note = ROOT/'docs/cloud-resume-20261020/resume-stop-diagnosis.md'
+    if resume_note.is_file():
+        sections.append('<p>'+local_link(resume_note, args.output, '중단 원인 진단과 유한 배치 재개 기록')+
+            ' · 현재 실행 상태는 아래 배치·controller 기록 시각과 함께 확인합니다.</p>')
     fixed = next(row for item, _, row in records if item is baseline)
     b = fixed['values']['raw']
     sections.append('<section class="baseline"><h2>고정 4패드 기준 · '+esc(fixed['condition_id'])+'</h2><p>'+
@@ -780,6 +872,39 @@ def build(args, directory):
             esc(', '.join(state['not_run']) or '—'), esc(state['updated_utc'] or '미상'), evidence])
     sections.append(table(['run ID', '배치 상태', 'controller', '실패 case', '이 배치에서 미실행',
         '기록 시각 UTC', '증거'], state_rows))
+    if diagnostics:
+        sections.append('<h3>단일 주파수 solver 잔차 진단 · TIS 연구 결과와 분리</h3><p>명시적으로 '
+            'residual_diagnostic으로 등록된3000 Hz 단일 주파수 계산입니다. 독립 출력2개·물리 패드4개의 '
+            '수치 선형해·잔차·회로 행렬 비교를 다루며 두 carrier의 TIS 변조를 계산하지 않습니다. '
+            '이 조건들은 TIS ROI·정규화·지도·40개 프로브·C1 일치 분석 및 그 개수에서 제외합니다. '
+            'complete는 진단 계산 완료를 뜻하며 엄격 과거 비교의 통과 여부는 따로 표시합니다. '
+            '후속 진단이 통과해도 기존 실패한 Best1 실행의 보류 상태는 유지합니다.</p>')
+        status_text = lambda value: value.get('status', '미상') if isinstance(value, dict) else (value if value is not None else '미제공')
+        diagnostic_rows = []
+        for diagnostic in diagnostics:
+            native = diagnostic['validation_gate_status']
+            if isinstance(native, dict) and native:
+                native_status = ', '.join(str(key)+':'+str(status_text(value)) for key, value in native.items())
+            else:
+                native_status = '별도 진단 상세 참조' if diagnostic['native_validation'] else '미제공'
+            diagnostic_rows.append([esc(diagnostic['case_id']), esc(diagnostic['run_id']),
+                esc(str(diagnostic['calculation_status'])+' (진단 계산)'),
+                '완료 기록·해시 확인' if diagnostic['eligible_completed_diagnostic'] else '완료·출처 확인 보류',
+                esc(diagnostic['frequencies_Hz']), esc(diagnostic['requested_relative_tolerance']), esc(native_status),
+                esc(status_text(diagnostic['producer_regression'])),
+                esc(status_text(diagnostic['strict_historical_comparison'])),
+                local_link(diagnostic['case_completion_evidence']['postprocess_path'], args.output, 'diagnostic summary')])
+        sections.append(table(['진단 case', 'run ID', '계산 상태', '완료·출처 증거', 'Hz', '요청 solver rtol',
+            'native gates', 'producer regression', '엄격 과거 비교', '증거'], diagnostic_rows))
+        for diagnostic in diagnostics:
+            sections.append('<details><summary>'+esc(diagnostic['case_id'])+' · 코드·설정·잔차·행렬 비교</summary><p>'+
+                '소스 commit '+esc(diagnostic['source_commit'])+' · 설정 SHA256 '+esc(diagnostic['config_sha256'])+
+                '</p><ul>'+''.join('<li>'+local_link(path, args.output)+'</li>' for path in diagnostic['source_links'])+
+                '</ul><pre>'+esc(json.dumps(diagnostic, ensure_ascii=False, indent=2))+'</pre></details>')
+    if unsupported:
+        sections.append('<details><summary>지원 schema가 없어 비교에 포함하지 않은 후처리 '+str(len(unsupported))+
+            '개</summary><p>아래 항목의 지원 여부가 미확인입니다. 과학적 계산 실패로 재분류하지 않습니다.</p><pre>'+
+            esc(json.dumps(unsupported, ensure_ascii=False, indent=2))+'</pre></details>')
     sections.append('<h3>외부 영속 원시 기저 백업 · 실행 상태와 별도 검증</h3><p>외부 영속 백업의 '
         '업로드·재다운로드 바이트 해시·깨끗한 복구 공간의 native 배열 decode 검증을 별도로 연결합니다. '
         '원본 run summary의 persistent_backup_verified 값, 배치 오류, 보류 조건을 바꾸지 않습니다. '
@@ -1064,6 +1189,7 @@ def build(args, directory):
     args.output.write_text(document)
     return dict(status='rendered_offline_evidence', output=str(args.output), assets=str(directory),
         completed_conditions=len(records), missing_pad_counts=payload['missing_pad_counts'],
+        residual_diagnostic_count=len(diagnostics), unsupported_postprocess_count=len(unsupported),
         held_case_count=len(held), batch_error_count=sum(state['status'] in ('error', 'failed') for state in states),
         external_backup_verified_run_count=sum(state['external_backup_verified_separately'] for state in states),
         pure_sine_C1_match_count=len(singles), new_PDE=0, source_files_edited=0)
@@ -1140,7 +1266,42 @@ def self_test():
         assert sha(run/'summary.json') == original_summary_sha and not case_eligibility(path)['eligible']
         restore_path.write_text(json.dumps(dict(status='changed')))
         assert external_backup_receipt(backup_path)['status'] == 'unverified_or_partial_receipts'
-    return dict(passed=True, checks='contact/full-skin caps, missing data held, cohort separation, case SHA gate, reference hold, no audit/backup promotion, external restore-receipt tamper rejection', new_PDE=0)
+        diagnostic_run = Path(temporary)/'residual-batch'
+        diagnostic_path = diagnostic_run/'postprocess/residual/summary.json'
+        diagnostic_path.parent.mkdir(parents=True)
+        (diagnostic_run/'cases').mkdir()
+        config_path = diagnostic_run/'config.properties'
+        config_path.write_text('frequencies=3000\nchannels=2\n')
+        config_hash = sha(config_path)
+        pins = {str(config_path): config_hash}
+        registered = dict(id='residual', postprocessor='residual_diagnostic',
+            config_file=str(config_path), config_sha256=config_hash)
+        registration_path = diagnostic_run/'preregistration.json'
+        registration_path.write_text(json.dumps(dict(source_commit='source', source_and_input_sha256=pins, cases=[registered])))
+        diagnostic_path.write_text(json.dumps(dict(id='residual', status='complete',
+            config_sha256=config_hash, source_commit='source', source_and_input_sha256=pins,
+            mesh_metadata=dict(config_sha256=config_hash, exporter_kind='residual_diagnostic_native',
+                exporter_class='ResidualShapeBasis', frequencies_Hz=[3000]), frequencies_Hz=[3000],
+            strict_historical_comparison=dict(status='failed'), requested_relative_tolerance=1e-11)))
+        (diagnostic_run/'cases/residual.json').write_text(json.dumps(dict(id='residual', status='complete',
+            config_sha256=config_hash, postprocess_path=str(diagnostic_path), postprocess_sha256=sha(diagnostic_path))))
+        diagnostic_decision = case_eligibility(diagnostic_path)
+        assert diagnostic_decision['eligible']
+        assert result_kind(diagnostic_path)['kind'] == 'residual_diagnostic'
+        diagnostic = diagnostic_record(diagnostic_path, diagnostic_decision)
+        assert diagnostic['eligible_completed_diagnostic'] and diagnostic['frequencies_Hz'] == [3000]
+        assert diagnostic['strict_historical_comparison']['status'] == 'failed'
+        try:
+            load_case(diagnostic_path)
+        except ValueError as error:
+            assert 'cannot enter TIS comparisons' in str(error)
+        else:
+            raise AssertionError('One-frequency diagnostic entered TIS comparison loader')
+        assert not case_eligibility(path)['eligible']  # Successor never promotes old failed Best1.
+        registered['postprocessor'] = 'unrecognized_new_postprocessor'
+        registration_path.write_text(json.dumps(dict(cases=[registered])))
+        assert result_kind(diagnostic_path)['kind'] == 'unsupported'
+    return dict(passed=True, checks='burden caps, cohort/eligibility SHA gates, reference hold, no implicit promotion, backup tamper rejection, one-frequency diagnostics excluded from TIS and reported separately', new_PDE=0)
 
 
 def main():

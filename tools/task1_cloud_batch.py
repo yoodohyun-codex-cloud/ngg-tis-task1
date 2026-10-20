@@ -104,7 +104,8 @@ def source_pins():
     files += [REPO/name for name in ('tools/task1_producer_regression.py',
               'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py',
               'tools/task1_reference_registration.py', 'tools/task1_coupled_registration.py',
-              'tools/task1_c1_coupled_registration.py')
+              'tools/task1_c1_coupled_registration.py', 'tools/task1_residual_registration.py',
+              'tools/task1_residual_postprocess.py', 'tools/java/ResidualShapeBasis.java')
               if (REPO/name).is_file()]
     return {str(p): sha(p) for p in files}
 
@@ -121,6 +122,8 @@ def operator_signature(case):
     files = [SOURCE/name for name in ('TisSweep.java', 'ExploreBasis.java', 'SelectivityShapeBasis.java')]
     if producer == 'GroupedPadBasis':
         files.append(REPO/'tools/java/GroupedPadBasis.java')
+    elif producer == 'ResidualShapeBasis':
+        files.append(REPO/'tools/java/ResidualShapeBasis.java')
     payload = dict(config=values, mask_sha256=sha(case['mask_file']), producer=producer,
                    numerical_code_sha256={p.name: sha(p) for p in files})
     return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
@@ -278,7 +281,6 @@ def execute_locked(run, pre):
     cpu = min(os.sched_getaffinity(0))
     os.sched_setaffinity(0, {cpu})
     sys.path.insert(0, str(SOURCE))
-    from selectivity_postprocess import process_case
     deadline = start+remaining
     pid = os.getpid()
     state = dict(status='running', pid=pid, proc_start_ticks=ticks(pid),
@@ -354,10 +356,17 @@ def execute_locked(run, pre):
             for k, cap in GATES.items():
                 require(math.isfinite(validation[k]) and 0<=validation[k]<=cap, 'Native gate '+k)
             state.update(phase='postprocessing', java_pid=None); flush()
-            processor = process_case
-            if case.get('postprocessor') == 'grouped':
+            if case.get('postprocessor') == 'residual_diagnostic':
+                from task1_residual_postprocess import process_case as processor
+            elif case.get('postprocessor') == 'grouped':
                 from task1_grouped_postprocess import process_case as processor
+            else:
+                from selectivity_postprocess import process_case as processor
             result = processor(basis, case, run/'postprocess'/active, min(deadline, case_start+600))
+            if case.get('requires_residual_producer_regression_before_next'):
+                write(run/'residual-producer-regression.json', result['producer_regression'])
+                require(result['producer_regression']['status'] == 'passed',
+                        'Residual producer regression failed; fine diagnostic not run')
             if case.get('requires_original_producer_regression_before_next'):
                 from task1_producer_regression import compare_producer
                 reference = pre['producer_regression']['reference']
@@ -427,6 +436,7 @@ def main():
     p.add_argument('--reference-plan', action='store_true')
     p.add_argument('--coupled-plan', action='store_true')
     p.add_argument('--coupled-c1-plan', action='store_true')
+    p.add_argument('--residual-plan', action='store_true')
     args = p.parse_args()
     if args.verify_originals:
         print(json.dumps(original_integrity(), indent=2)); return 0
@@ -438,9 +448,14 @@ def main():
         with (REPO/'.task1-execution.lock').open('a+') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            require(sum((args.reference_plan, args.coupled_plan, args.coupled_c1_plan)) <= 1,
+            require(sum((args.reference_plan, args.coupled_plan, args.coupled_c1_plan, args.residual_plan)) <= 1,
                     'Choose one fixed registration plan')
-            if args.coupled_c1_plan:
+            if args.residual_plan:
+                require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
+                        'Residual plan has exactly its predefined regression and fine diagnostic')
+                from task1_residual_registration import prepare_residual
+                prepare_residual(run)
+            elif args.coupled_c1_plan:
                 require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
                         'Coupled C1 plan has exactly its one predefined condition')
                 from task1_c1_coupled_registration import prepare_c1_coupled
@@ -469,6 +484,7 @@ def main():
     require(not args.reference_plan, 'execute uses only frozen reference registration')
     require(not args.coupled_plan, 'execute uses only frozen coupled registration')
     require(not args.coupled_c1_plan, 'execute uses only frozen coupled C1 registration')
+    require(not args.residual_plan, 'execute uses only frozen residual registration')
     return execute(run)
 
 
