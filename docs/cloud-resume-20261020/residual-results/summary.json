@@ -1,0 +1,219 @@
+{
+  "status": "complete",
+  "run_id": "cloud-residual-20261020T001300Z",
+  "source_commit": "7bfc39cef2f0d3d17bd7ba12d68a8805f23bbaf5",
+  "registration_sha256": "43c86702796281a8c7ee61b27214bfc8e559d032ca1e8c3de23a0b3478d7b920",
+  "cases": [
+    {
+      "id": "residual-default-square15-coarse-3000",
+      "status": "complete",
+      "config_sha256": "bb488801b76961739b2fbc8e47a42f068e239fe9c3e4189322863b93f998e4d5",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "n_return_nodes": 1,
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics",
+        "actual_diagnostic_frequency_Hz": 3000,
+        "historical_carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3000
+        ],
+        "source_excitation_definition": "Two separate unit basis RHS at3000Hz; not simultaneous two-carrier TIS",
+        "full_TIS_waveform_claimed": false,
+        "basis_source_solves": 2
+      },
+      "validation": {
+        "max_residual": 9.209445466213065e-10,
+        "max_power_error": 3.1310621681477973e-10,
+        "max_current_error": 1.3298054412549866e-09,
+        "max_area_relative_error": 2.220446049250313e-15,
+        "max_interface_normal_current_relative_error": 1.7828528725851607e-15,
+        "channels": 2,
+        "n_outputs": 2,
+        "n_pads": 4,
+        "cells": 88480,
+        "h_xy_mm": 1.25,
+        "sc_cells": 2
+      },
+      "cache_signature": "be000be3da990110162ceddf24a031825b2f2a2b25dba5679928886823b57162",
+      "postprocess_path": "/workspace/ngg-tis-task1/data-native/cloud-residual-20261020T001300Z/postprocess/residual-default-square15-coarse-3000/summary.json",
+      "postprocess_sha256": "a765aa6ae7c5ece46b85f330945572c2a551aadbbff42686d3c8fcbe9dc23d2e",
+      "wall_seconds": 6.465803291001066,
+      "sampled_peak_aggregate_rss_bytes": 197160960,
+      "native_files": {
+        "BASIS_COMPLETE": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "loss-3000.bin": {
+          "bytes": 384,
+          "sha256": "a469d8d269141c362e2252058aa122ac39e507bb3a761d7400ec1dca583fc784"
+        },
+        "source-3000.bin": {
+          "bytes": 64,
+          "sha256": "20a8f841e3b9e92f481d6a65ca238730fff8824e5ce52693e405416665856779"
+        },
+        "contacts-3000.csv": {
+          "bytes": 31126,
+          "sha256": "25cfe7daff61f3ec157752e04ce12f7960d4878d28cc84251cada6adf57b3d6d"
+        },
+        "validation.json": {
+          "bytes": 336,
+          "sha256": "0f5f31b44f9904eea6305d4ebdf8385cd1248617038e056f60eaaa7acae0285c"
+        },
+        "density-3000.bin": {
+          "bytes": 18432,
+          "sha256": "21175e4f43118fe919e2b8322aeca70a58ee6f641fe1155292bf78d49a27639d"
+        },
+        "solver-diagnostics.json": {
+          "bytes": 864,
+          "sha256": "4063fcee92f7c7790eef27229da3f8724600dc08408e2b4aab5e5d54d15ea104"
+        },
+        "grid.csv.gz": {
+          "bytes": 232680,
+          "sha256": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76"
+        },
+        "potential-3000.bin.gz": {
+          "bytes": 2007168,
+          "sha256": "14f295ce93b2843cd6c469d1d3eadbcffd918cda355adc389b3b24a6c3b3a930"
+        },
+        "mesh-metadata.json": {
+          "bytes": 2645,
+          "sha256": "3521528b0f212bc68044ead4d620dffafb4b29388bbad23afd5e87b47ea61f33"
+        },
+        "field-3000.bin.gz": {
+          "bytes": 6872991,
+          "sha256": "9ab28ee8aa8bc8c5b0e888d85ee1694274944ec7b8398f31e634894732108d4a"
+        }
+      }
+    },
+    {
+      "id": "residual-tight-square15-xy120-3000",
+      "status": "complete",
+      "config_sha256": "c89a41348b686d4ee1d919f860fed3e0f845548e55c42f0b435a3036227b4fd6",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_actual_return_pads_ideal_common_GND",
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "C1_separate_actual_carriers_Hz": null,
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "inactive_source_at_other_frequencies": "0 V through50 ohm for every actual inactive output",
+        "phantom_extra_pads_or_outputs_retained": false,
+        "note": "C1 has one physical signal pad and one return; separately driven at each carrier, no two-carrier TIS",
+        "actual_diagnostic_frequency_Hz": 3000,
+        "historical_carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3000
+        ],
+        "source_excitation_definition": "Two separate unit basis RHS at3000Hz; not simultaneous two-carrier TIS",
+        "full_TIS_waveform_claimed": false,
+        "basis_source_solves": 2
+      },
+      "validation": {
+        "max_residual": 3.6453043971430534e-12,
+        "max_power_error": 3.3880382476764165e-12,
+        "max_current_error": 7.098572544181369e-12,
+        "max_area_relative_error": 5.440092820663267e-15,
+        "max_interface_normal_current_relative_error": 1.7415684794143612e-15,
+        "channels": 2,
+        "n_outputs": 2,
+        "n_pads": 4,
+        "cells": 791280,
+        "h_xy_mm": 0.4166666666666667,
+        "sc_cells": 2
+      },
+      "cache_signature": "82f38095d7a1157122a37b4b092791e303d6261157356f853c316bbfefe7c28e",
+      "postprocess_path": "/workspace/ngg-tis-task1/data-native/cloud-residual-20261020T001300Z/postprocess/residual-tight-square15-xy120-3000/summary.json",
+      "postprocess_sha256": "71c0ca2570e85ae0c55ad558013aa31943d6cb4371b882da88a00ad4ce776ec7",
+      "wall_seconds": 60.53910655499931,
+      "sampled_peak_aggregate_rss_bytes": 935956480,
+      "native_files": {
+        "BASIS_COMPLETE": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "loss-3000.bin": {
+          "bytes": 384,
+          "sha256": "ed889799bddee072c8af2f214ca0b7fcb21f044587e9c3cb12371baf8b6f1782"
+        },
+        "source-3000.bin": {
+          "bytes": 64,
+          "sha256": "4bd5ccc4454233b8aaaac03d5be329a6ec2ed4113e2326eb1200ebcae2f41ce3"
+        },
+        "contacts-3000.csv": {
+          "bytes": 279958,
+          "sha256": "0ff3f89ad1de7819097107023208e54f7b1c73cee45bfbac622dabeebff94e54"
+        },
+        "validation.json": {
+          "bytes": 338,
+          "sha256": "464ad4abbc8f49dc0bb99bf75f2d23ce110eba6a2bfb69a8ac7dc9c9cd75f81e"
+        },
+        "density-3000.bin": {
+          "bytes": 165888,
+          "sha256": "cc4ec0300732609874c129218eaeda8a9a289264865d39f3faa7ceece32a8924"
+        },
+        "solver-diagnostics.json": {
+          "bytes": 867,
+          "sha256": "4ea62b5060ac27e822408d067c270ab1dd0306a7f11a52e8c65a908d91c70d41"
+        },
+        "grid.csv.gz": {
+          "bytes": 2166653,
+          "sha256": "47cc6b42b41b871ad75400447745324cffc5fb639e719e48aed05e6f386c1c87"
+        },
+        "potential-3000.bin.gz": {
+          "bytes": 22302835,
+          "sha256": "573ed9cbe22c885a3442c84fc74645f6e350b4f27b41210e0d859288c501ee67"
+        },
+        "mesh-metadata.json": {
+          "bytes": 2648,
+          "sha256": "18c4f302f9283fa28151803a1570a86e40a66766488231de865016c424b48de0"
+        },
+        "field-3000.bin.gz": {
+          "bytes": 71950306,
+          "sha256": "b35ed98554d7e37dd03fbaf958597b2a7fcfb70b1884f45f350321d0902a69e3"
+        }
+      }
+    }
+  ],
+  "new_PDE_conditions": 2,
+  "mesh_convergence_validated": false,
+  "experimental_validation": false,
+  "persistent_backup_verified": false,
+  "wall_seconds": 67.23515382400001,
+  "finished_utc": "2026-10-20T00:11:34.947767+00:00",
+  "not_run": []
+}
