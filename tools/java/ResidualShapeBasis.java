@@ -66,12 +66,12 @@ public class ResidualShapeBasis extends CloudShapeBasis {
     Mesh mesh=new Mesh(2.5);
     ShapeNet net=overridden?new ResidualNet(mesh,new Boundary(.01,-.02),3000,Collections.<double[]>emptyList(),tolerance,12000):
       new ShapeNet(mesh,new Boundary(.01,-.02),2,3000,Collections.<double[]>emptyList());
-    // The64-node ladder terminates at66 algebraic DOFs before either threshold
-    // can differ. A256-node lumped ladder resolves both stopping parameters.
+    // Bounded20–32ohm shunts give enough attenuation before the256-node
+    // Krylov termination cliff to resolve both stopping parameters.
     net.edges.clear();mesh.n=ladder?256:3;net.N=mesh.n+2;net.dr=new double[net.N];net.di=new double[net.N];
     if(ladder){
       for(int i=0;i<mesh.n;i++){
-        net.add(i,-1,new C(1,0).div(new C(200+2*i,-5)),0,1);
+        net.add(i,-1,new C(1,0).div(new C(20+(i%13),-5)),0,1);
         if(i+1<mesh.n)net.add(i,i+1,new C(1,0).div(new C(1+.03*(i%7),-.05)),0,1);
       }
       net.add(mesh.n,0,new C(1,0).div(new C(13,-5)),0,1);
