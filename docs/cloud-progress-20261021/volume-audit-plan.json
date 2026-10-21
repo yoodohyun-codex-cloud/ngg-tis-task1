@@ -1,0 +1,843 @@
+{
+  "schema": "task1-volume-selectivity-audit-preregistration-v1",
+  "created_utc": "2026-10-21T03:40:20.542959+00:00",
+  "status": "preregistered_not_executed",
+  "execution_owner": "root",
+  "feedback_id": "T1-F010-S1-GH6297472037",
+  "parent_feedback_id": "T1-F010",
+  "source_comment_id": 6297472037,
+  "source_comment_url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6297472037",
+  "purpose": "Re-evaluate existing native-cell scalar arrays and fractional-volume ROI weights before selecting new PDE; no candidate adoption",
+  "new_PDE_conditions": 0,
+  "initial_case_count": 7,
+  "cases": [
+    {
+      "run_id": "cloud-baseline-20261019T185900Z",
+      "case_id": "baseline-square15-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "return_topology": "one ideal common GND shared by all return pads",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "out1",
+        "2": "GND",
+        "3": "GND"
+      },
+      "summary": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json",
+      "summary_sha256": "117ebca48fc6f62ab20880963714616b8b8037a15d60d125797555afe5b6d4f0",
+      "volume_npz": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/volume.npz",
+      "volume_npz_sha256": "0ce6a5998e079ad0aad1e33aaa4243e1bf02e0628c90d74d7a83fc3450bf9221",
+      "basis_folder": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse",
+      "registration": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/preregistration.json",
+      "case_receipt": "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/cases/baseline-square15-coarse.json",
+      "config_sha256": "f8d6d232a9c47364af0815874805d4ae8373be61d78523b94d04e3b1c539e111",
+      "mask_sha256": "0ca29ca60df703aecfb267c6c04a43879eb9115eadfe58855460175cea394605",
+      "native_expected_input_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/validation.json": "c0d4f4304d73038b22543028f0b9b737edade2c89199f0b3dbf64860876f00e3",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/mesh-metadata.json": "5097b34d5b8060cf5dc6e898af40fe16e2d2f0da4376bb7449f4b8891d369b8f",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/grid.csv.gz": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/configs/baseline-square15-coarse.properties": "f8d6d232a9c47364af0815874805d4ae8373be61d78523b94d04e3b1c539e111",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/field-3000.bin.gz": "9ab28ee8aa8bc8c5b0e888d85ee1694274944ec7b8398f31e634894732108d4a",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/potential-3000.bin.gz": "14f295ce93b2843cd6c469d1d3eadbcffd918cda355adc389b3b24a6c3b3a930",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/density-3000.bin": "21175e4f43118fe919e2b8322aeca70a58ee6f641fe1155292bf78d49a27639d",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/loss-3000.bin": "a469d8d269141c362e2252058aa122ac39e507bb3a761d7400ec1dca583fc784",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/source-3000.bin": "20a8f841e3b9e92f481d6a65ca238730fff8824e5ce52693e405416665856779",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/contacts-3000.csv": "25cfe7daff61f3ec157752e04ce12f7960d4878d28cc84251cada6adf57b3d6d",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/field-3030.bin.gz": "f7788a6741ab11ef9e9304ba653b2764db837671322a4cee1485eb0932454b62",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/potential-3030.bin.gz": "4a622da741695e6136b85cd40580215e46798aae0dfdf17e2af94f070993417e",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/density-3030.bin": "09043f4234b9a6fa2324e8ed8473dc1bb1b6c290beb93bbad25e9d359c3ec5b8",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/loss-3030.bin": "20fc6b1cfbaa5ff1b0685d4ce6dda85319c0a3ded1946b8c55233ba18590481e",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/source-3030.bin": "f419e07b9f39e6c41ddfb4e93b7dc04bc5903b6d53bc109fd67ed30d3c5af3a8",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/contacts-3030.csv": "25cfe7daff61f3ec157752e04ce12f7960d4878d28cc84251cada6adf57b3d6d",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/field-9000.bin.gz": "0fe1a5898e1e1cfceb6a705bf2e51655976366da0b55839b670193861eacb87d",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/potential-9000.bin.gz": "d2b1d0f72f5dd458b07bdfac0d04f7b443a7080e9aa9ce381d402aa97dfc5917",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/density-9000.bin": "fcca8667e2ffac962a24312b23d26feeae21b476b533f4fa1955037d02c9bc6c",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/loss-9000.bin": "dcd12080399a7470d95085a719d8c77aa24b1bc2ebd076cd217815a626824537",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/source-9000.bin": "115b4c31677cd91a7bd5057e931868ab95d3b2d655416909a3cf05f5733c0140",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/contacts-9000.csv": "25cfe7daff61f3ec157752e04ce12f7960d4878d28cc84251cada6adf57b3d6d",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/field-9090.bin.gz": "6acb307a5b9608d428ccc82b28d5c11426785876e32a93dd9b1905705a8ddcd2",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/potential-9090.bin.gz": "ae39f69d5a7b9462462b6fb9197e97b4c1fb6b160b6c19e46e9a87d371311139",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/density-9090.bin": "35b0ea89468c1ec2bc023addce2478defbdb34aecf61c59db5b02ae1c6e56ed7",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/loss-9090.bin": "5c0e402344d795afc06bf82c8247b52f7ebf57e750dd3262f5dc63dfcb38549e",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/source-9090.bin": "d41507759ed5da77807b9770098a74ede752dd2871c0c453621c7c2808ec72f2",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/bases/baseline-square15-coarse/contacts-9090.csv": "25cfe7daff61f3ec157752e04ce12f7960d4878d28cc84251cada6adf57b3d6d"
+      },
+      "source_commit": "a4636ec0b1f04c03696eb647307d5c53b2eef5f8",
+      "mesh": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 88480
+      },
+      "stored_primary_raw_statistics": {
+        "maxTIS": {
+          "mean": 4.073969592278947,
+          "p10": 3.6529891936370067
+        },
+        "fixedTIS": {
+          "mean": 4.036649023686143,
+          "p10": 3.6151135585803846
+        },
+        "RMS": {
+          "mean": 2.314645432445473,
+          "p10": 2.111702252119146
+        }
+      },
+      "existing_native_probe_predictions": "Preserve and link by original case/run/condition ID; this audit computes no new probe waveform"
+    },
+    {
+      "run_id": "cloud-fourpad-20261020T001400Z",
+      "case_id": "free-square10-r12p5xy-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "return_topology": "one ideal common GND shared by all return pads",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "out1",
+        "2": "GND",
+        "3": "GND"
+      },
+      "summary": "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/free-square10-r12p5xy-coarse/summary.json",
+      "summary_sha256": "68d4681c6d2691a583588ae3aaf060abdb6eee777537122d9ff88ed043af5173",
+      "volume_npz": "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/free-square10-r12p5xy-coarse/volume.npz",
+      "volume_npz_sha256": "c08f954d8a7a798bdcca926937e05b4b947e45c2f91eb4af404abfdc06272cdf",
+      "basis_folder": "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse",
+      "registration": "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/preregistration.json",
+      "case_receipt": "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/cases/free-square10-r12p5xy-coarse.json",
+      "config_sha256": "763922ff8c05a6b1db3d8b49c5b1cc8778e741c77c502c04d68c597a2da30960",
+      "mask_sha256": "0403b8d90e6cb62ea2ea4cf6cf1030b0816aaa39af92e29a2a727aac01348dd5",
+      "native_expected_input_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/validation.json": "50048219bbdff25c3728e83a81245103392f4bfe2f6ba3e7cdd991a1d2f58fa6",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/mesh-metadata.json": "983fecf4b3017c64c688089f965ce89f59e05f371fa44e27a142f8c0b9d868e4",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/grid.csv.gz": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/configs/free-square10-r12p5xy-coarse.properties": "763922ff8c05a6b1db3d8b49c5b1cc8778e741c77c502c04d68c597a2da30960",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/field-3000.bin.gz": "ed0b21a966f2eb36cdf3199d08db06c42c60cb854d01efcd4642a160d412ae35",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/potential-3000.bin.gz": "4f57258f1bf8571e0d0b5b2db764e83b16eaebe207b8000ef50671e6f32eb5b1",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/density-3000.bin": "bb84e15f54aee190e4dc8a6b73bcb22c047f50e256f8ace3ddcdd3feb89be7ce",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/loss-3000.bin": "f95092157a94d48d4af8275de9d3b0315819ea5ad5491005bd18e56aa6317e25",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/source-3000.bin": "72e5dbcf8b4f06f0503b84c54b73e6d192fc4e492613a0758e0af28fea3c1fb3",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/contacts-3000.csv": "47b77c18da95498eb69952a6b94f4bba3c34d4e3fa184687811e9f46105293d9",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/field-3030.bin.gz": "124a1d70daea67d46a938dda3d536d7a5e1743b2ab0aedb5b4f35caea910753c",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/potential-3030.bin.gz": "3e7916a7087857965acff331545dac7afb6ff59a4ea37694699981c0b67ded8e",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/density-3030.bin": "433b053d696173d2b496868dd2e03310b0d9935763d6d516d93e1da0a33ab602",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/loss-3030.bin": "2c18d803e9a8fbacffa0d8eeb1e451fa03884d502f9962f43442791a9dced41f",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/source-3030.bin": "d88a94266c1db92e0ee4e4ca732416604db39156503dc37ded47f73693ed39c3",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/contacts-3030.csv": "47b77c18da95498eb69952a6b94f4bba3c34d4e3fa184687811e9f46105293d9",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/field-9000.bin.gz": "4b972b4ddacb25475406c7303d9ef71593767393f4c0fc7c057c2c6918f42e91",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/potential-9000.bin.gz": "b272934899b9c11ce6622cd84efb222ae42f5e6c68c3f80c228bb10998a1296f",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/density-9000.bin": "d368e83d274ee66e377a6f1ecfaab472c9f8ecc9d6d7a9267c65dfea1d81dcc2",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/loss-9000.bin": "8f1712c23061e1fc23cc37ca19671010777c4b7c417161ea783fc2adfc655f70",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/source-9000.bin": "4452f4825e4e65045d89e10341253791fed726e50eb548fd81cecc74ffe9914f",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/contacts-9000.csv": "47b77c18da95498eb69952a6b94f4bba3c34d4e3fa184687811e9f46105293d9",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/field-9090.bin.gz": "bd97a40fd312350a6107e29212fc4e0a9bc208cfc793f402ccd909353dc8ca08",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/potential-9090.bin.gz": "d096b3ed39e41422849fd10946e4517b2d1896843c7dade05c7095b5985b93bc",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/density-9090.bin": "67515bf9b019694d23f20cb61359f340d3eac85be372d42470a065be2b701826",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/loss-9090.bin": "9bdefe28dd2354beb16160f969cfa14242195c843e0b9e446961eff3b5be48a4",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/source-9090.bin": "23032aca30e4b5d9d09a9f84e278b825171e366cfd7fd94ffcf54455ac4bee7e",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/bases/free-square10-r12p5xy-coarse/contacts-9090.csv": "47b77c18da95498eb69952a6b94f4bba3c34d4e3fa184687811e9f46105293d9"
+      },
+      "source_commit": "f5482060cce97f050f8a164c50e26d9a451df8f7",
+      "mesh": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 88480
+      },
+      "stored_primary_raw_statistics": {
+        "maxTIS": {
+          "mean": 3.3227376536689324,
+          "p10": 3.024884118878312
+        },
+        "fixedTIS": {
+          "mean": 3.3010583444565014,
+          "p10": 3.0045741172329565
+        },
+        "RMS": {
+          "mean": 1.8841896030381642,
+          "p10": 1.7482193045005725
+        }
+      },
+      "existing_native_probe_predictions": "Preserve and link by original case/run/condition ID; this audit computes no new probe waveform"
+    },
+    {
+      "run_id": "cloud-radial-20261020T090600Z",
+      "case_id": "free-ellipse24-r17-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "return_topology": "one ideal common GND shared by all return pads",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "out1",
+        "2": "GND",
+        "3": "GND"
+      },
+      "summary": "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/postprocess/free-ellipse24-r17-coarse/summary.json",
+      "summary_sha256": "82ed36d79912546b1fdcd998137cdd1e35f289c4c0f4d8229def8df189a22163",
+      "volume_npz": "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/postprocess/free-ellipse24-r17-coarse/volume.npz",
+      "volume_npz_sha256": "6db4e6f5244c756029658c52247df8d10878d3193f1e8387146a9a7a2cd326cf",
+      "basis_folder": "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse",
+      "registration": "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/preregistration.json",
+      "case_receipt": "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/cases/free-ellipse24-r17-coarse.json",
+      "config_sha256": "f0c36836aac8054b64cdcd304f8610c7a358885c66931b86e6a3673c4454fbbe",
+      "mask_sha256": "9d5bbb86fa918b9143bd7cdc262d94f8b60a6cc9e31ebabaca25392b85cea858",
+      "native_expected_input_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/validation.json": "5a0d5df6958e7c427e63b72456d797edfc95885e181c974890a80270dc0eafda",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/mesh-metadata.json": "b2a756eef7f25391751d693368917d11adc93b80261d709b588488c7f531f5dc",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/grid.csv.gz": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/configs/free-ellipse24-r17-coarse.properties": "f0c36836aac8054b64cdcd304f8610c7a358885c66931b86e6a3673c4454fbbe",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/field-3000.bin.gz": "980e35ca308fb3c120dd14f5c6bc42ead49d3de0b7a1ec737f443812f369ff94",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/potential-3000.bin.gz": "7ff0f9406208c505dafbd7a61be3b6cf218797a4e029486cd944d9c77f6fdd4e",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/density-3000.bin": "80f0019202dfeb7870f7e2017ef4a33ac016370d1b576b24a7a7971b2d7fd749",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/loss-3000.bin": "80897fcac3a8bd34eb9e83853d8297efd4fc15b14498737fb2a1abc2f395b8fb",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/source-3000.bin": "ef99aa27707679cce4ad55e8fc5f521c4a130134c24abe476d878de2d787c924",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/contacts-3000.csv": "6ea2b85d41b938064f8b8e51cc469e119a38e2a5d57a97f052fb8e06970209ed",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/field-3030.bin.gz": "dda381527b3c46856df54b96bddca181f35fd7bd99e7bb5de65f880a70fb761a",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/potential-3030.bin.gz": "debb41c9a2b4fc01d2a4de3919b244bfced2d14dc1f165d35254ef5f357144eb",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/density-3030.bin": "d88dde812bdabe27dbaf09d94607c4491256c62d5b9d27f72867d9e812ce5c4b",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/loss-3030.bin": "cf6d85a1a86e43aa6fa10ddeb44b7b5a5d509788a877a695c57f8c937c921b3e",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/source-3030.bin": "361992eaf31bfb46783b9935e765bda9f914ec001545d4358e1d6587ea716d4f",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/contacts-3030.csv": "6ea2b85d41b938064f8b8e51cc469e119a38e2a5d57a97f052fb8e06970209ed",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/field-9000.bin.gz": "497b21fdeedf3bd73240bac602200968e9fbd848bb66818b195d25f8c8a8b490",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/potential-9000.bin.gz": "fd0b19f05be34684ec0581544684900d3d7f66798449a1aa7e56b44c05e94bc9",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/density-9000.bin": "e9ea3a0bc77c539c1647a99d0f599debda66f917536711e902fbfd09610d69a6",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/loss-9000.bin": "f8ea6efa48da9a64ade95c489edf0880cc4f2f66ba0bee3e340f786b9f4cd562",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/source-9000.bin": "68d0516f98966654653ec60e4504c2bb1fc0969cff50039a1f4bd249510b7f37",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/contacts-9000.csv": "6ea2b85d41b938064f8b8e51cc469e119a38e2a5d57a97f052fb8e06970209ed",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/field-9090.bin.gz": "d6ba7ae938f1f6c1181f8cddb918721fa5dacf562187cf48ece9324ae5bda321",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/potential-9090.bin.gz": "b026eac6c8384dd53354e49e9e174280848fbff03fea07056c1d11d5e5a00d22",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/density-9090.bin": "50178f9106a909400369ffabd6670783d840d0c06d5d4855d920e23cdfe4ed30",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/loss-9090.bin": "4009b28d5edba73453b666a9e86a615ac79df1cd063718b9fac0614798c3a935",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/source-9090.bin": "81ce76092dab4dfff910007515aebc078896548547ddac18b2e099a707cc1f57",
+        "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/bases/free-ellipse24-r17-coarse/contacts-9090.csv": "6ea2b85d41b938064f8b8e51cc469e119a38e2a5d57a97f052fb8e06970209ed"
+      },
+      "source_commit": "b59c84014a12518412e16ad43aef7f658e62f1b7",
+      "mesh": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 88480
+      },
+      "stored_primary_raw_statistics": {
+        "maxTIS": {
+          "mean": 4.061832080313632,
+          "p10": 3.6914971449558474
+        },
+        "fixedTIS": {
+          "mean": 4.033126104747506,
+          "p10": 3.65276974536983
+        },
+        "RMS": {
+          "mean": 2.3112423299563125,
+          "p10": 2.1429153718606178
+        }
+      },
+      "existing_native_probe_predictions": "Preserve and link by original case/run/condition ID; this audit computes no new probe waveform"
+    },
+    {
+      "run_id": "cloud-grouped-20261019T191500Z",
+      "case_id": "grouped-strip225-gap1-p04-xy40",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "return_topology": "one ideal common GND shared by all return pads",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "out1",
+        "2": "GND",
+        "3": "GND"
+      },
+      "summary": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p04-xy40/summary.json",
+      "summary_sha256": "f6f3ac822906164c2ed6ea0472a655ef6aa8d126da49bd55dcf8ba4cd2f0b8d0",
+      "volume_npz": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p04-xy40/volume.npz",
+      "volume_npz_sha256": "4c26695bcd64c5a1934dc6242bfd6978b669a27b71d98202273053616f65fc74",
+      "basis_folder": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40",
+      "registration": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/preregistration.json",
+      "case_receipt": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p04-xy40.json",
+      "config_sha256": "2885307dd618f0102ada7eab065455a0c2031b853fdc29817738b329d1e77a69",
+      "mask_sha256": "af45183bcf446adcaf079b15e945f9f56fbdc97788546d3e6b9bc626d2c92703",
+      "native_expected_input_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/validation.json": "7b0886a7e550cfba1f77235e070f191055fb51462c168dbcbea9173c87107f04",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/mesh-metadata.json": "b4ac17e2b41f72a9d3cd09433d3a894e06829b5cc394e4dc74ebe79b71825597",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/grid.csv.gz": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p04-xy40.properties": "2885307dd618f0102ada7eab065455a0c2031b853fdc29817738b329d1e77a69",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p04-xy40.csv": "af45183bcf446adcaf079b15e945f9f56fbdc97788546d3e6b9bc626d2c92703",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/field-3000.bin.gz": "def14dcebcbd0f6cf5162bd25801b56b1c9105de9ceb18e1587a619e6e32d958",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/potential-3000.bin.gz": "ac8c8f20fd29d6a54427285c83fc155bad4fcced724bf8721cf474fbaf0216de",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/density-3000.bin": "55b0d7dbcaa348e3b617fc7f8d4f67cd032d71a1f7c08e67f4da8c44dd7d285d",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/loss-3000.bin": "1233c01e73fd5772a2c80b7610c82d262e3de991886a57fb3a361e7586caac24",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/source-3000.bin": "86e224da1830398f2b375434371b4ed32ab2504895f7b14ac96bc8e302e6ab37",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/contacts-3000.csv": "8ed64f5db32ba41be4f7d930dc021e9a6e24b56898d1bf7a637ceb2974329f84",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/field-3030.bin.gz": "a11fab24a50b2223560f3a686d5ec096a58f2b0ce1ab9ddf326362374fc2e87f",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/potential-3030.bin.gz": "eb835361186b85926c10150f1db424de6804d0770b32586be41b814dd30bcef9",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/density-3030.bin": "7b4d57c6a9ddf063806831b51bb821d1ddf0d67436dcb7d77005b8c4b7149330",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/loss-3030.bin": "de5709c1c468ff5d8477c916b7ccc7354fbec6eb11ecb8734f5c77087da2fe8f",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/source-3030.bin": "83cb65ea4f0c8ccb9b0bc3de8f8ed1cc19905dcf9a1f8fd18effa4fd96bb83a1",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/contacts-3030.csv": "8ed64f5db32ba41be4f7d930dc021e9a6e24b56898d1bf7a637ceb2974329f84",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/field-9000.bin.gz": "05092ba6708da1bc5a78732b9fe12dc2e70451cbe4c2db9c126d132504549f52",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/potential-9000.bin.gz": "33cb71c1ee2f9cd7206a65ab677712d453e54156e96f8e6f31d520f0e5e064b1",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/density-9000.bin": "493439ce952b93f6330fb4d047fe46928a61de39f71790db78f248f592b748f2",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/loss-9000.bin": "caa529703859d929912d136ddf47e5c0f36f2a9f65ce178eb4184a80187c9c1c",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/source-9000.bin": "1ac5fa50f05325f640195daea7ad91512034705176b8967c4ecc40e52b898965",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/contacts-9000.csv": "8ed64f5db32ba41be4f7d930dc021e9a6e24b56898d1bf7a637ceb2974329f84",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/field-9090.bin.gz": "f8ba1582337926b50daa408f4acfeaacc22e17cdc3cf837eb5ffd7348fc269a9",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/potential-9090.bin.gz": "7c30b37fdf627d9b7c498bcd033e1eea006211a971846c01648936235090c1c2",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/density-9090.bin": "6a2d87382cc4cb123d1139dd789efb02b01c1e96c8d9a9eb836d042a6234e6ac",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/loss-9090.bin": "612f33cebdbc05a15941dda4573c7c7de0df5dbb1cd44db637e12eedc74c0ac5",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/source-9090.bin": "d03500a5b4b06e87b10bc05d4e77726ed22e7e07c3117bdbb286deceb2fd26e1",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p04-xy40/contacts-9090.csv": "8ed64f5db32ba41be4f7d930dc021e9a6e24b56898d1bf7a637ceb2974329f84"
+      },
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "mesh": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 88480
+      },
+      "stored_primary_raw_statistics": {
+        "maxTIS": {
+          "mean": 3.8284575872963713,
+          "p10": 3.4247911118360688
+        },
+        "fixedTIS": {
+          "mean": 3.7893295577334314,
+          "p10": 3.3795476370566577
+        },
+        "RMS": {
+          "mean": 2.1642887753135525,
+          "p10": 1.9619928832869729
+        }
+      },
+      "existing_native_probe_predictions": "Preserve and link by original case/run/condition ID; this audit computes no new probe waveform"
+    },
+    {
+      "run_id": "cloud-grouped-20261019T191500Z",
+      "case_id": "grouped-strip225-gap1-p08-xy40",
+      "n_pads": 8,
+      "n_outputs": 2,
+      "return_topology": "one ideal common GND shared by all return pads",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "out0",
+        "2": "out1",
+        "3": "out1",
+        "4": "GND",
+        "5": "GND",
+        "6": "GND",
+        "7": "GND"
+      },
+      "summary": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p08-xy40/summary.json",
+      "summary_sha256": "112f19243ede49c03356a7dbe5877b65dcdde2bfe44816572d53f03d8ab150fa",
+      "volume_npz": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p08-xy40/volume.npz",
+      "volume_npz_sha256": "7e55586958b746fdd22c09b4c96ae88c92f0555d43ad756037564786e03fd6b7",
+      "basis_folder": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40",
+      "registration": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/preregistration.json",
+      "case_receipt": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p08-xy40.json",
+      "config_sha256": "fda238c3a7e4728c4dc557aa9eb29d30f9d8aa76db3f54aa9b3c701d1cdc2445",
+      "mask_sha256": "81e91284105421ed9e8a6d33a15eea8d89e3a668ec5332f7da874fd228aaf19e",
+      "native_expected_input_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/validation.json": "49e7e0aeefc448c3edb3f2e07768acf86859026d54eabcc70cd97ba1ebeed8f3",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/mesh-metadata.json": "6953d9b759ef11252ab605687c161c57771dc1d25229c6ad1c8540feaf51c91f",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/grid.csv.gz": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p08-xy40.properties": "fda238c3a7e4728c4dc557aa9eb29d30f9d8aa76db3f54aa9b3c701d1cdc2445",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p08-xy40.csv": "81e91284105421ed9e8a6d33a15eea8d89e3a668ec5332f7da874fd228aaf19e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/field-3000.bin.gz": "541e08420e0c32cff656ce60d972c41cb976d74aabb1d622dfae70dc3e596c37",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/potential-3000.bin.gz": "be1fefa57787164292b62e57f7834f70d312478bea94b8d8fe505cf616ef9ad3",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/density-3000.bin": "73b23fc4e8342c3580cdb6df720968c4cc09e458e2d70bc72df5de152cd2bd3f",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/loss-3000.bin": "d2ce1a8beb00c9a1bd35547997e0476e92936092388af99e2c2fcc1f29543c69",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/source-3000.bin": "69963cdf870e28ebd593b63baa4fcefa39a03cfde68a5b83a8fb9b966d401ea0",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/contacts-3000.csv": "c0f850d9a12b8d316e66dc3a843800da2a9acf9a2db7887e5190f45c3725ff76",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/field-3030.bin.gz": "e5b7385685ab537d4e2b1469a34ea1f6786a3cafca5ff446fb1a209cc66c378e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/potential-3030.bin.gz": "48c2d758856d9a9010c0070b773979d22306519f7112a8896f5c13a91f7b27b2",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/density-3030.bin": "5684459b242b8659f21cac2fe2eb127f1b6ecf7c7bf811d8d924058816b18c23",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/loss-3030.bin": "6db0386bf646084e106e3f0423c55c2f6e4f50b5723ad61e02e7b4b809f175b6",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/source-3030.bin": "686a596052613429ac07dd5af458733774693f996166bfca43341e3fc59df1d8",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/contacts-3030.csv": "c0f850d9a12b8d316e66dc3a843800da2a9acf9a2db7887e5190f45c3725ff76",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/field-9000.bin.gz": "94af85c73d6134ca100969d8a1b4e52a3c7cc620a7af16e19c8509ab6f134c49",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/potential-9000.bin.gz": "48b6b9f2746bdb5196a0e2c90bad817b7f934a7b0dfee84fb08eca3fbe31dd3c",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/density-9000.bin": "7ca8b8deb6a1e4812c346a3e5d4cae783ac4951ec96b51ccaf5415ee6ffbf50f",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/loss-9000.bin": "f20dcea301df574e6d7e5ac86e5d393576924918c92cf0f7965b33ee93172854",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/source-9000.bin": "4f7aae19bde843977e73512437a54e8b9ffd892e75882aac07e7989d269c1332",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/contacts-9000.csv": "c0f850d9a12b8d316e66dc3a843800da2a9acf9a2db7887e5190f45c3725ff76",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/field-9090.bin.gz": "a81b92eb6077d3eb7dc42e9644cfefffaf8c8599d2f626a6f34171449f1de940",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/potential-9090.bin.gz": "38c9e0443ad48aef8f1fb8f60ea30faeda37ade9187f6177b96e66bbc98f0105",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/density-9090.bin": "fe166c9aedb948958aea481b1c9058854e36f97fa0443049a5c8a69bc863e4e7",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/loss-9090.bin": "33d28d4f2575fc21f748daf156049978ccfd98316d14738640be7cf559b4f1d6",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/source-9090.bin": "e49908adf711e516d481af3983fb28f6368c6648e2247a5b2752dda9dc2cd634",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p08-xy40/contacts-9090.csv": "c0f850d9a12b8d316e66dc3a843800da2a9acf9a2db7887e5190f45c3725ff76"
+      },
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "mesh": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 88480
+      },
+      "stored_primary_raw_statistics": {
+        "maxTIS": {
+          "mean": 3.8234105661828095,
+          "p10": 3.419387902360454
+        },
+        "fixedTIS": {
+          "mean": 3.7842290396273404,
+          "p10": 3.3745508241950923
+        },
+        "RMS": {
+          "mean": 2.1613405390592915,
+          "p10": 1.9590100964835673
+        }
+      },
+      "existing_native_probe_predictions": "Preserve and link by original case/run/condition ID; this audit computes no new probe waveform"
+    },
+    {
+      "run_id": "cloud-grouped-20261019T191500Z",
+      "case_id": "grouped-strip225-gap1-p12-xy40",
+      "n_pads": 12,
+      "n_outputs": 2,
+      "return_topology": "one ideal common GND shared by all return pads",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "out0",
+        "2": "out0",
+        "3": "out1",
+        "4": "out1",
+        "5": "out1",
+        "6": "GND",
+        "7": "GND",
+        "8": "GND",
+        "9": "GND",
+        "10": "GND",
+        "11": "GND"
+      },
+      "summary": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p12-xy40/summary.json",
+      "summary_sha256": "784aafefce2dda641e449b867202dee9da42db421e7d4f93ddb967b6919e03d2",
+      "volume_npz": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p12-xy40/volume.npz",
+      "volume_npz_sha256": "c600b5f8b6fbef0881029f33f43e18c65a5fd4419e6470b02c966be3dcc6e4cf",
+      "basis_folder": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40",
+      "registration": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/preregistration.json",
+      "case_receipt": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p12-xy40.json",
+      "config_sha256": "45214bb1216589b0a35a33d0ac751a8b49c2fca86cde9b2520651d0c39a6650d",
+      "mask_sha256": "9405e4e9e9bfcc92f748c1535c99305eaffdaad72564bc967d3e2feb405e4dca",
+      "native_expected_input_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/validation.json": "3f541bee058458ebfe40a58daace8f3315da3e1533a3098c25635ff6b63cde59",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/mesh-metadata.json": "68a5df553788434a638dd77ca244f760dec2f0b94287880f0477a11d63a0f534",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/grid.csv.gz": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p12-xy40.properties": "45214bb1216589b0a35a33d0ac751a8b49c2fca86cde9b2520651d0c39a6650d",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p12-xy40.csv": "9405e4e9e9bfcc92f748c1535c99305eaffdaad72564bc967d3e2feb405e4dca",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/field-3000.bin.gz": "af66965e49493a654d5d6737bd2b3a49aa4687a6b84b4759498a0d881a7f4821",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/potential-3000.bin.gz": "77d40832e72dcc5db0f27f05bbdd8b27bfcd24f0b52c18813aadb42fe2bff28e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/density-3000.bin": "01f532d21639cdfd90e14d33a2e3ef18ae4cf627b4e0a99063370b5b7c380f68",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/loss-3000.bin": "eb2659322a44a84bc525a1b94eac5554cbda6bfdb265dc444af9920cf875b0c8",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/source-3000.bin": "7c9b90d5a02a4837e2942aa7ed11f2346c558299a94abc77b6fb89e3f22d53a8",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/contacts-3000.csv": "125840df3325382786336291d68e94e6a8e9b216f9f7461cd60bb3a333954895",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/field-3030.bin.gz": "9d9cd7a99924756aef87bac71d7086fefebd50b31a7dd9581874c31aed501db8",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/potential-3030.bin.gz": "17908b52e8e9bdb814c34a2e4cd489b0fd5fcc863413acdcf1a840b899fa3c65",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/density-3030.bin": "33a35370435c1a5b77b2c86796a05100b994f486987f9f160a025c186c783c83",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/loss-3030.bin": "55d84b606be2664efdd73b2927caa35380098cbd764adb51db14ba4b2421c387",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/source-3030.bin": "f32be338be36dded21bd3f007237934af80c8ece4022143d481108d54f6d091a",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/contacts-3030.csv": "125840df3325382786336291d68e94e6a8e9b216f9f7461cd60bb3a333954895",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/field-9000.bin.gz": "9a4ea2c20167cb76a9076440b2558772f9e88e6e740ee805e7cbfadf427a1f53",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/potential-9000.bin.gz": "589785e9779a85b7754a2cca6e082be2b81c26819b52b53d04e229db02417cae",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/density-9000.bin": "1faab44d125ca42ea29b13b4d3f6b4ab2e92ac2a0367bab1c5f41f2166ca968e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/loss-9000.bin": "0a0a0c4ebd9d2c0d27f29b848fb2ca7113507477d64abf3416c11de1ddbac9aa",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/source-9000.bin": "801edb7c39cbb8c6ff58264aee35874cbc82efb2993bfebe0af6fa58c13edae9",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/contacts-9000.csv": "125840df3325382786336291d68e94e6a8e9b216f9f7461cd60bb3a333954895",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/field-9090.bin.gz": "4aed472633857d53dc4ccaab35c6dcca4e10ca84909cf29ccbca170811c5ef81",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/potential-9090.bin.gz": "985f9a973856f562360dde58a7944bc5772362244b4f447fd5544bb78e0ad222",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/density-9090.bin": "42716a9996b66ee440f6dd40237123dcf14582b2b0c2a52418804a4321a52bf0",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/loss-9090.bin": "135628bffae955cfc20c6768dddc20756ddf0cfddc364b286be93dae2cf98f03",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/source-9090.bin": "9619eac4587fa8c30596130a4529b3f57c613b8a19bedbadfa3dea6f9795f319",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p12-xy40/contacts-9090.csv": "125840df3325382786336291d68e94e6a8e9b216f9f7461cd60bb3a333954895"
+      },
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "mesh": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 88480
+      },
+      "stored_primary_raw_statistics": {
+        "maxTIS": {
+          "mean": 3.821824472383001,
+          "p10": 3.417393896944241
+        },
+        "fixedTIS": {
+          "mean": 3.7827623731445166,
+          "p10": 3.371554529586769
+        },
+        "RMS": {
+          "mean": 2.15834530227967,
+          "p10": 1.9566939413948532
+        }
+      },
+      "existing_native_probe_predictions": "Preserve and link by original case/run/condition ID; this audit computes no new probe waveform"
+    },
+    {
+      "run_id": "cloud-grouped-20261019T191500Z",
+      "case_id": "grouped-strip225-gap1-p16-xy40",
+      "n_pads": 16,
+      "n_outputs": 2,
+      "return_topology": "one ideal common GND shared by all return pads",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "out0",
+        "2": "out0",
+        "3": "out0",
+        "4": "out1",
+        "5": "out1",
+        "6": "out1",
+        "7": "out1",
+        "8": "GND",
+        "9": "GND",
+        "10": "GND",
+        "11": "GND",
+        "12": "GND",
+        "13": "GND",
+        "14": "GND",
+        "15": "GND"
+      },
+      "summary": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p16-xy40/summary.json",
+      "summary_sha256": "42c5c9e1b716fdf1fd68ad6ae0c22b2e13a4d422932f6e5b5a84832ae1ba525e",
+      "volume_npz": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p16-xy40/volume.npz",
+      "volume_npz_sha256": "b92f74e98a04d590251fc80e6cad374dd99cdf69a42a035a812c6beb0d63b94c",
+      "basis_folder": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40",
+      "registration": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/preregistration.json",
+      "case_receipt": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p16-xy40.json",
+      "config_sha256": "9654b7b05bc4c605922582be62c76f806908cd5cf679ee91ab6dd19300acc400",
+      "mask_sha256": "1dcc70eca5a39ea940bba497f140e1adec6f995d16370f18b69addfb44555e99",
+      "native_expected_input_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/validation.json": "9df96e5ca16696675bfcabba22004eda15a1ed77391d53aac3a6d78c74af553e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/mesh-metadata.json": "af3420c788d8df0ee1009a9ab82d33e658ccc7de385ab772e968a03b5c0f9eec",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/grid.csv.gz": "3abd171921323e19ef0073f0ae821b822b1a1c81ded4e8bd517369c57b193e76",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p16-xy40.properties": "9654b7b05bc4c605922582be62c76f806908cd5cf679ee91ab6dd19300acc400",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p16-xy40.csv": "1dcc70eca5a39ea940bba497f140e1adec6f995d16370f18b69addfb44555e99",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/field-3000.bin.gz": "b37e857964a34de1f4ebbdbfffbe807b2696cc1a23e2491699bf0509e15b68ac",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/potential-3000.bin.gz": "44fd0780ac79564d7432630fdcba9b861f4f1b46a309e1a34d69be6600c8aef2",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/density-3000.bin": "d51884211e0f339fa31655012b36d441d9611aef1762730f8c5c9751fe3dfafa",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/loss-3000.bin": "40ca42f60751982e643b626765042673d83115ed85c29c3134d5c43fc6574eb4",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/source-3000.bin": "e7e4181ec440513799386a4992ef922a5335e2324f443c5b22c63063050cf360",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/contacts-3000.csv": "2250b680fd5c8040c9f20cbab930189422e611a920113438744ffa2be317046e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/field-3030.bin.gz": "cda4c755a5cde26b1d5e649ad42afcdbb518e8477c4691f2a1ac74708f090f82",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/potential-3030.bin.gz": "0c1685364c03f7d13e7382abd27c634e1b40303bc10b45aa25303f996be2b70c",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/density-3030.bin": "2915d0baa40106c04a214ef2c0dff2f92aace8f9ff4918f0fc237dc13e888d1a",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/loss-3030.bin": "20bab362210dc6f8a2b43340788d2de6c54d83b3d67a4e6b3f2f0f6bf27c9a87",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/source-3030.bin": "39dfaf872c8ede3a52292f22601bb3e321a0c4c14a86666fccc568a716615e27",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/contacts-3030.csv": "2250b680fd5c8040c9f20cbab930189422e611a920113438744ffa2be317046e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/field-9000.bin.gz": "5ea5a4bd520379718042576778465f1b9850e48ad5f40e3c825e693655c013ed",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/potential-9000.bin.gz": "c4cd7b1284304fd9ba11d826f164365cbeb3f4658cd6a7f958b8d6546911329e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/density-9000.bin": "a4ee1040ed20999ce6b4ca2102ba73e5b62d3bdfdc51fd73e11aaa4f8cc8ef9f",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/loss-9000.bin": "73cc630ce61eeb47a220ebc5431cadc1c53df8557144b49432abbb6f8b148fdb",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/source-9000.bin": "c55b33af6bdf1fa314c2123474755daea8cb1a2f207d0a3836e72ce98c9d4185",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/contacts-9000.csv": "2250b680fd5c8040c9f20cbab930189422e611a920113438744ffa2be317046e",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/field-9090.bin.gz": "e66b0c788e1c8e749e2d616108bef2daecbb72fed6b6aec8d873942478edf8e9",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/potential-9090.bin.gz": "7902597801705d02ac1aefb5ef7f7bab4c537cca5fd8a3116afbb79a86e3bee7",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/density-9090.bin": "3836a6d4a804931f47cd2cac351e6acd135d9d154ae000b52b9367c76553ec29",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/loss-9090.bin": "1243f4381cf70552cd993331ae3b551939348f953d36f53b731d900ee74a7565",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/source-9090.bin": "6dae3330b5009ef9bb144a6c365f35a7d0e812fd09b00b2819f95e8ee86b7905",
+        "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/bases/grouped-strip225-gap1-p16-xy40/contacts-9090.csv": "2250b680fd5c8040c9f20cbab930189422e611a920113438744ffa2be317046e"
+      },
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "mesh": {
+        "h_xy_mm": 1.25,
+        "sc_cells": 2,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 88480
+      },
+      "stored_primary_raw_statistics": {
+        "maxTIS": {
+          "mean": 3.7851203556676594,
+          "p10": 3.3839339679858953
+        },
+        "fixedTIS": {
+          "mean": 3.7463759385119575,
+          "p10": 3.338800406877288
+        },
+        "RMS": {
+          "mean": 2.1365610607718284,
+          "p10": 1.9368235937019815
+        }
+      },
+      "existing_native_probe_predictions": "Preserve and link by original case/run/condition ID; this audit computes no new probe waveform"
+    }
+  ],
+  "baseline_case_id": "baseline-square15-coarse",
+  "coordinates": {
+    "unit": "mm",
+    "surface_depth_origin_mm": 0,
+    "depth_positive_axis": "+z down into phantom",
+    "xy_axes": "local phantom axes; no anatomical registration",
+    "phantom_diameter_mm": 50,
+    "layer_depth_faces_mm": [
+      0,
+      0.1,
+      5.1,
+      10.1,
+      25.1
+    ]
+  },
+  "regions": {
+    "primary_target": {
+      "name": "central_r5_depth15_20",
+      "definition": "r<=5mm and15<=depth<=20mm",
+      "weight": "Use stored full-precision region_target_m3 unchanged",
+      "default_ranking_scope": true
+    },
+    "supplemental_target": {
+      "name": "whole_modeled_xy_depth15_20",
+      "definition": "All XY cells in modeled D50 cylinder mask,15<=depth<=20mm",
+      "weight": "region_total_m3 times exact native z-face overlap with[15,20] divided by native dz",
+      "default_ranking_scope": false
+    },
+    "surface": {
+      "name": "surface_0_5",
+      "definition": "0<=depth<5mm",
+      "weight": "Stored region_surface_0_5_m3"
+    },
+    "primary_off_target": "region_total_m3 minus primary target weight cell by cell",
+    "supplemental_off_target": "region_total_m3 minus supplemental target weight cell by cell",
+    "whole_modeled_domain": "Stored region_total_m3; native whole-square center-inside-cylinder mask; retain coarse staircase volume and do not silently clip to analytic circle",
+    "depth_partitions": [
+      "0–5",
+      "5–10",
+      "10–15",
+      "15–20",
+      "20–25.1"
+    ]
+  },
+  "volume_weight_contract": {
+    "unit": "m3",
+    "cell_order": "native grid rows z then y then x; NPZ vectors shape(N,)",
+    "field_model": "Piecewise constant per native cell",
+    "partial_XY": "Existing r5 disk fraction from stored full-precision weights; never replace by cell-center binary mask",
+    "partial_depth": "Exact overlap using full-precision mesh z_faces_mm; no rounded CSV-derived dz",
+    "analytic_volume_renormalization": false,
+    "source_npz_float_precision": "Retain stored Float64 weights; no rounding or float32 conversion",
+    "partition_validation": "All weights finite/nonnegative, target<=total; respective target+off_target=total within1e-24m3+1e-12relative percell tolerance; report represented volumes and analytic deviations"
+  },
+  "scalar_definitions": {
+    "waveform": "Existing raw1Vpp square_3h scalar archive only",
+    "maxTIS": "Fundamental3000/3030Hz two-field maximum modulation among2074 stored directions; sampled directional maximum, not a continuous-direction proof or full-harmonic envelope",
+    "fixedTIS": "Existing stored fixed-direction fundamental modulation scalar; retain its source direction/convention without adding direction projections",
+    "RMS": "Existing all-frequency carrier electric-field RMS for square_3h including3000,3030,9000,9090Hz; not modulation",
+    "available_scalar_arrays": [
+      "maxTIS",
+      "fixedTIS",
+      "RMS"
+    ],
+    "prohibited_inferences": [
+      "Do not relabel square_3h arrays as sine/triangle",
+      "Do not invent X/Y/Z modulation arrays",
+      "No new direction search or waveform synthesis",
+      "No physiology/activation/safety/COMSOL validation claim"
+    ]
+  },
+  "statistics": {
+    "weighting": "Use complete fractional m3 weights",
+    "quantiles": "Inverse weighted ECDF: first ascending value whose cumulative volume reaches q times total region volume",
+    "required": [
+      "mean",
+      "P10",
+      "P50",
+      "P90",
+      "P95",
+      "P99",
+      "maximum",
+      "volume_weighted_standard_deviation",
+      "coefficient_of_variation_if_mean_positive",
+      "P10_over_mean_if_mean_positive",
+      "global_max_value_and_native_location",
+      "high_intensity_volume_m3_mm3_and_fraction"
+    ],
+    "cutoffs": {
+      "source": "Raw1Vpp same-grid4pad baseline ROI mean andP10 for each declared ROI scope and scalar independently",
+      "physiological_threshold": false,
+      "units": "V/m",
+      "held_fixed_across_candidates_and_normalizations": true,
+      "operator": "greater than or equal to cutoff (>=); include ties explicitly",
+      "order": "Scale scalar field by candidate amplitude factor BEFORE testing cutoff; never rescale cutoff with candidate",
+      "reporting": "Report actual threshold values, absolute surviving target modulation and complementary non-target high-volume; undefined ratio is null with reason",
+      "RMS_display_name": "high_field_RMS; RMS threshold volume is not modulation volume"
+    }
+  },
+  "normalizations": [
+    {
+      "id": "raw_1Vpp",
+      "amplitude_factor": 1.0,
+      "source": "1Vpp at each nominal output before50ohm resistance; peak0.5V basis"
+    },
+    {
+      "id": "equal_total_source_output_RMS_sum",
+      "amplitude_factor": "baseline sum(output RMS currents) / candidate sum(output RMS currents)",
+      "current_definition": "Sum of output-specific RMS currents across full stored frequency spectrum, including currents through passively terminated outputs; bookkeeping scalar, not net instantaneous/return/peak current",
+      "simultaneous_other_burdens_matched": false
+    },
+    {
+      "id": "equal_total_power",
+      "amplitude_factor": "sqrt(baseline source_power_W / candidate source_power_W)",
+      "power_definition": "Total source real power including50ohm output resistor loss",
+      "simultaneous_other_burdens_matched": false
+    },
+    {
+      "id": "skin_contact_only",
+      "amplitude_factor": "Minimum of8 baseline/candidate burden-derived amplitude caps; no1Vpp ceiling; exclude total source power cap",
+      "burden_caps": [
+        "contact patch Jmax RMS",
+        "contact patch area-weighted J95 RMS",
+        "contact voltage RMS maximum",
+        "SC power",
+        "contact power",
+        "bulk SC+dermis Jmax RMS",
+        "bulk SC+dermis volume-weighted J95 RMS",
+        "SC+dermis skin power"
+      ],
+      "linear_caps": "J and contact voltage baseline/candidate ratio",
+      "quadratic_caps": "sqrt(baseline/candidate) for each listed power",
+      "meaning": "Numerical baseline-matched simultaneous burden caps, not human safety limits; identify active limiting cap"
+    },
+    {
+      "id": "legacy_composite_full_skin",
+      "amplitude_factor": "min(1, all8 skin_contact_only amplitude caps, sqrt(baseline source_power_W/candidate source_power_W))",
+      "meaning": "Legacy composite additionally includes total source power and1Vpp ceiling; separate from skin_contact_only"
+    }
+  ],
+  "scaling": {
+    "linear": [
+      "E scalar amplitudes",
+      "electric field RMS",
+      "J RMS",
+      "contact voltage RMS",
+      "probe voltage if subsequently linked"
+    ],
+    "quadratic": [
+      "tissue power",
+      "SC power",
+      "contact power",
+      "source resistor power",
+      "source power"
+    ],
+    "global_shared_amplitude": "One nonnegative scale on existing two-output waveform; no independent re-optimization",
+    "invalid_denominators": "Fail finite nonpositive required normalization denominator rather than invent scale"
+  },
+  "regression_gates": {
+    "primary_mean_P10": "Reproduce stored raw primary mean/P10 for each scalar andcase from NPZ and stored weights",
+    "relative_tolerance": 1e-10,
+    "absolute_tolerance_V_m": 1e-12,
+    "exact_case_order_mesh_source_validation": true,
+    "raw_native_reconstruction": false,
+    "numerical_audit_completion_distinct_from_candidate_adoption": true
+  },
+  "resources": {
+    "cpu": 1,
+    "duplicate_workers": false,
+    "lock": "Existing .task1-execution.lock owned by root-controlled audit; both flock and POSIX lockf",
+    "per_case_wall_seconds_maximum": 180,
+    "batch_wall_seconds_maximum": 600,
+    "aggregate_RSS_bytes_maximum": 3221225472,
+    "minimum_free_disk_bytes": 2147483648,
+    "maximum_added_bytes": 2147483648,
+    "cumulative_budget_limit_seconds": 6600,
+    "observed_budget_path": "/workspace/ngg-tis-task1/runtime/task1-budget.json",
+    "observed_spent_seconds": 3987.6913470800155,
+    "observed_remaining_seconds": 2612.3086529199845,
+    "budget_policy": "Charge actual postprocess wall time to existing ledger; effective deadline min600s and actual remaining budget; never reset or expand",
+    "failure_policy": "Stop and preserve outputs/checkpoint/failure evidence on gate/hash/resource error; no deletion or duplicate PDE"
+  },
+  "provenance": {
+    "required_before_and_after": [
+      "Implementation source commit and SHA",
+      "this plan SHA",
+      "registration/case/summary/config/mask SHAs",
+      "all consumed NPZ and native file SHAs against stored manifests",
+      "mesh/material/contact version and circuit topology"
+    ],
+    "source_file": "tools/task1_volume_selectivity.py",
+    "source_code_pin": "Root records actual committed implementation SHA and test receipts before executing this preregistered audit",
+    "output_rule": "New unique audit output only; never overwrite original NPZ/raw/summary/old failure receipts",
+    "calculated_status": "Audit calculations complete",
+    "numerically_validated_status": "Only listed readback/regression/partition tests passed; convergence holds remain",
+    "experimentally_validated": false
+  },
+  "retained_holds": [
+    "Historical strictD source/loss componentwise reproduction failure",
+    "SC/XY/bulk/edge/contact sensitivity and candidate convergence failures",
+    "PBS interface uncertainty and missing historical full native fields",
+    "No deep-focus success from center maximum or ratio alone",
+    "No candidate adoption from this audit alone"
+  ],
+  "next_decision": "After7case audit compare absolute mean/P10, uniformity, matched-burden surviving target fields, off-target quantiles/hot-volume and active burden caps; root selects next finite question from evidence and reports actual start or precise blocker/resume condition",
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/preregistration.json": "f4a4d0540b8d5b82b951abe979aefb06d29659d544af8eee295e0e9f00cd1adc",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/cases/baseline-square15-coarse.json": "88e2e6633d4713a66fa949f231fafd2e9c90fcb9d45451b749bcf170d80568fa",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json": "117ebca48fc6f62ab20880963714616b8b8037a15d60d125797555afe5b6d4f0",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/volume.npz": "0ce6a5998e079ad0aad1e33aaa4243e1bf02e0628c90d74d7a83fc3450bf9221",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/configs/baseline-square15-coarse.properties": "f8d6d232a9c47364af0815874805d4ae8373be61d78523b94d04e3b1c539e111",
+    "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/masks/baseline-square15-h1.25.csv": "0ca29ca60df703aecfb267c6c04a43879eb9115eadfe58855460175cea394605",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/preregistration.json": "1c407f7e7aeb52fb9ea0375c27814e54b26a4f02214bd261405e761f7345018b",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/cases/free-square10-r12p5xy-coarse.json": "2c1c439bec686b9a62975e7dfb28cb49b1a1d22f8ee184ee57f0a6a03f117a51",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/free-square10-r12p5xy-coarse/summary.json": "68d4681c6d2691a583588ae3aaf060abdb6eee777537122d9ff88ed043af5173",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/free-square10-r12p5xy-coarse/volume.npz": "c08f954d8a7a798bdcca926937e05b4b947e45c2f91eb4af404abfdc06272cdf",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/configs/free-square10-r12p5xy-coarse.properties": "763922ff8c05a6b1db3d8b49c5b1cc8778e741c77c502c04d68c597a2da30960",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/masks/free-square10-r12p5xy-h1.25.csv": "0403b8d90e6cb62ea2ea4cf6cf1030b0816aaa39af92e29a2a727aac01348dd5",
+    "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/preregistration.json": "36bce1102a1056b936fbc44e5b8d99a698e1eb23abc67a9bfebf833a3d8d0303",
+    "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/cases/free-ellipse24-r17-coarse.json": "d9400661bf54b43bfa6eaf0ec58cbaaf6380ce3b18579d1f89e74426386dba77",
+    "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/postprocess/free-ellipse24-r17-coarse/summary.json": "82ed36d79912546b1fdcd998137cdd1e35f289c4c0f4d8229def8df189a22163",
+    "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/postprocess/free-ellipse24-r17-coarse/volume.npz": "6db4e6f5244c756029658c52247df8d10878d3193f1e8387146a9a7a2cd326cf",
+    "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/configs/free-ellipse24-r17-coarse.properties": "f0c36836aac8054b64cdcd304f8610c7a358885c66931b86e6a3673c4454fbbe",
+    "/workspace/ngg-tis-task1/data-native/cloud-radial-20261020T090600Z/masks/free-ellipse24-r17-h1.25.csv": "9d5bbb86fa918b9143bd7cdc262d94f8b60a6cc9e31ebabaca25392b85cea858",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/preregistration.json": "b98e591db6fd85af959cd8a19e4c4fec63027a4ca05c411bbab3a8776c2cf0aa",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p04-xy40.json": "25b513759360f5d8f05add42baafec72fad153acf5eeb3c1e770147c7a1f3120",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p04-xy40/summary.json": "f6f3ac822906164c2ed6ea0472a655ef6aa8d126da49bd55dcf8ba4cd2f0b8d0",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p04-xy40/volume.npz": "4c26695bcd64c5a1934dc6242bfd6978b669a27b71d98202273053616f65fc74",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p04-xy40.properties": "2885307dd618f0102ada7eab065455a0c2031b853fdc29817738b329d1e77a69",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p04-xy40.csv": "af45183bcf446adcaf079b15e945f9f56fbdc97788546d3e6b9bc626d2c92703",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p08-xy40.json": "8d55d671cc75950e5c92f9292ae2a08df289132fbb441af49713fc1107957d47",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p08-xy40/summary.json": "112f19243ede49c03356a7dbe5877b65dcdde2bfe44816572d53f03d8ab150fa",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p08-xy40/volume.npz": "7e55586958b746fdd22c09b4c96ae88c92f0555d43ad756037564786e03fd6b7",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p08-xy40.properties": "fda238c3a7e4728c4dc557aa9eb29d30f9d8aa76db3f54aa9b3c701d1cdc2445",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p08-xy40.csv": "81e91284105421ed9e8a6d33a15eea8d89e3a668ec5332f7da874fd228aaf19e",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p12-xy40.json": "21d989f110ac139efbe580c8ca9914d6330362b8d5c8a2e4871c9241486672b2",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p12-xy40/summary.json": "784aafefce2dda641e449b867202dee9da42db421e7d4f93ddb967b6919e03d2",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p12-xy40/volume.npz": "c600b5f8b6fbef0881029f33f43e18c65a5fd4419e6470b02c966be3dcc6e4cf",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p12-xy40.properties": "45214bb1216589b0a35a33d0ac751a8b49c2fca86cde9b2520651d0c39a6650d",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p12-xy40.csv": "9405e4e9e9bfcc92f748c1535c99305eaffdaad72564bc967d3e2feb405e4dca",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/cases/grouped-strip225-gap1-p16-xy40.json": "23e0de9b4fc02a5a7f2a2a17bd559de5e696df643feb1850f77757be1f88246e",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p16-xy40/summary.json": "42c5c9e1b716fdf1fd68ad6ae0c22b2e13a4d422932f6e5b5a84832ae1ba525e",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p16-xy40/volume.npz": "b92f74e98a04d590251fc80e6cad374dd99cdf69a42a035a812c6beb0d63b94c",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/configs/grouped-strip225-gap1-p16-xy40.properties": "9654b7b05bc4c605922582be62c76f806908cd5cf679ee91ab6dd19300acc400",
+    "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/masks/grouped-strip225-gap1-p16-xy40.csv": "1dcc70eca5a39ea940bba497f140e1adec6f995d16370f18b69addfb44555e99",
+    "/workspace/ngg-tis-task1/docs/cloud-progress-20261021/new-feedback-6297472037.json": "557121299a7d363d752b8ba6cf0ce7f1de41f028b412bfe788dc52da5b772ec4"
+  }
+}

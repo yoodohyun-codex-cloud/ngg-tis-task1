@@ -436,6 +436,24 @@ def local_link(path, output, label=None):
     return '<a href="'+esc(relative)+'">'+esc(label or str(path))+'</a>'
 
 
+def asset_download_link(path, output, label):
+    from urllib.parse import quote
+    path = Path(path).resolve()
+    relative = quote(os.path.relpath(path, Path(output).resolve().parent), safe='/')
+    return '<a download="'+esc(path.name)+'" href="'+esc(relative)+'">'+esc(label)+'</a>'
+
+
+def compact_technical_details(details):
+    """Keep visible provenance/extrema; link the already-saved depth-curve data."""
+    result = dict(details)
+    spatial = result.get('spatial_audit')
+    if isinstance(spatial, dict) and 'depth_planes' in spatial:
+        result['spatial_audit'] = {key: value for key, value in spatial.items() if key != 'depth_planes'}
+        result['spatial_audit']['depth_plane_count'] = len(spatial['depth_planes'])
+        result['spatial_audit']['depth_curve_data'] = 'Full per-plane statistics remain in linked comparison.json and original spatial audit JSON.'
+    return result
+
+
 def external_link(url, label):
     from urllib.parse import urlsplit
     if not isinstance(url, str) or urlsplit(url).scheme not in ('https', 'http'):
@@ -534,7 +552,9 @@ def plotting():
 
 
 def save_figure(figure, path, plt):
-    figure.savefig(path, dpi=150, bbox_inches='tight', facecolor='white')
+    # Fixed margins/colorbar axes avoid repeated constrained/tight layout passes
+    # over hundreds of scientific axes.  Data, limits and150dpi are unchanged.
+    figure.savefig(path, dpi=150, bbox_inches=None, facecolor='white')
     plt.close(figure)
     return path
 
@@ -542,7 +562,8 @@ def save_figure(figure, path, plt):
 def coordinates_figure(directory):
     plt, np = plotting()
     from matplotlib.patches import Circle, Rectangle
-    figure, axes = plt.subplots(1, 2, figsize=(11, 4.4), layout='constrained')
+    figure, axes = plt.subplots(1, 2, figsize=(11, 4.4))
+    figure.subplots_adjust(left=.07, right=.98, bottom=.18, top=.83, wspace=.32)
     left, right = axes
     left.add_patch(Circle((0, 0), 25, fill=False, color='#344c67'))
     for x, y in [(0, 0), (5, 0), (-5, 0), (0, 5), (0, -5)]:
@@ -580,7 +601,8 @@ def waveform_figure(item, condition, probe, directory):
     fundamental = row['fundamental_fixed_axis_envelope']['frequencies_Hz']
     mask = np.isin(frequencies, fundamental)
     envelope = abs(np.exp(2j*np.pi*t[:, None]*frequencies[mask])@phasors[mask])
-    figure, axes = plt.subplots(1, 2, figsize=(11, 3.8), layout='constrained')
+    figure, axes = plt.subplots(1, 2, figsize=(11, 3.8))
+    figure.subplots_adjust(left=.08, right=.98, bottom=.20, top=.82, wspace=.36)
     axes[0].plot(t*1000, voltage*1000, lw=.55, color='#215a87', label='All active harmonics')
     axes[0].plot(t*1000, envelope*1000, color='#cd6d25', lw=1.2, label='Fundamental-only analytic envelope')
     axes[0].plot(t*1000, -envelope*1000, color='#cd6d25', lw=1.2)
@@ -650,8 +672,10 @@ def maps_figure(records, mode, metric, directory, group_name):
     if not available:
         return None
     maximum = maximum or 1.
-    figure, axes = plt.subplots(len(available), 5, figsize=(17, 3.3*len(available)),
-        squeeze=False, layout='constrained')
+    height = 3.1*len(available)+1.6
+    figure, axes = plt.subplots(len(available), 5, figsize=(17, height), squeeze=False)
+    figure.subplots_adjust(left=.07, right=.98, bottom=.85/height, top=1-.8/height,
+        hspace=.46, wspace=.46)
     for r, (item, condition, values, xy_shape, xz_shape, axis, z) in enumerate(available):
         count = math.prod(xy_shape)
         xy, xz = values[:count].reshape(xy_shape), values[count:].reshape(xz_shape)
@@ -673,9 +697,10 @@ def maps_figure(records, mode, metric, directory, group_name):
     metric_label = {'square_maxTIS_V_m': 'Fundamental sampled-direction maxTIS',
         'square_fixedTIS_V_m': 'Fundamental fixed-direction TIS',
         'square_RMS_V_m': 'All-harmonic vector E RMS'}[metric]
-    figure.colorbar(im, ax=axes.ravel().tolist(), label=metric_label+' [V/cm]', shrink=.8)
+    bar = figure.add_axes([.14, .30/height, .75, .16/height])
+    figure.colorbar(im, cax=bar, orientation='horizontal', label=metric_label+' [V/cm]')
     figure.suptitle(f'{group_name} • {mode} • common linear range 0–{maximum:.4g} V/cm\n'
-        'Display-only −grad(native φ); blank samples unsupported; boundary peaks do not establish focus', fontsize=12)
+        'Display-only −grad(native φ); blank samples unsupported; boundary peaks do not establish focus', fontsize=12, y=1-.1/height)
     return save_figure(figure, directory/(group_name+'-'+mode+'-'+metric+'.png'), plt)
 
 
@@ -703,8 +728,10 @@ def tis_visibility_figure(records, mode, directory, group_name):
     floor = 1e-4
     log_norm = LogNorm(vmin=floor, vmax=max(maximum, floor*10), clip=True)
     roi_norm = Normalize(vmin=0., vmax=.1, clip=True)
-    figure, axes = plt.subplots(len(available), 5, figsize=(16.5, 2.75*len(available)),
-        squeeze=False, layout='constrained')
+    height = 2.7*len(available)+2.
+    figure, axes = plt.subplots(len(available), 5, figsize=(16.5, height), squeeze=False)
+    figure.subplots_adjust(left=.07, right=.98, bottom=1.05/height, top=1-1.1/height,
+        hspace=.52, wspace=.46)
     for r, (item, values, xy_shape, xz_shape, axis, z) in enumerate(available):
         count = math.prod(xy_shape)
         xy, xz = values[:count].reshape(xy_shape), values[count:].reshape(xz_shape)
@@ -739,14 +766,16 @@ def tis_visibility_figure(records, mode, directory, group_name):
             ax.set_aspect('equal')
         axes[r, 0].text(-.4, .5, map_row_label(item), transform=axes[r, 0].transAxes,
             rotation=90, va='center', ha='center', fontsize=9)
-    figure.colorbar(log_image, ax=axes[:, :3].ravel().tolist(), label='Supplementary log TIS [V/cm]',
-        shrink=.75, extend='min')
-    figure.colorbar(roi_image, ax=axes[:, 3:].ravel().tolist(), label='ROI linear TIS [V/cm]; fixed 0–0.1',
-        shrink=.75, extend='max')
+    log_bar = figure.add_axes([.09, .40/height, .43, .15/height])
+    roi_bar = figure.add_axes([.65, .40/height, .26, .15/height])
+    figure.colorbar(log_image, cax=log_bar, orientation='horizontal',
+        label='Supplementary log TIS [V/cm]', extend='min')
+    figure.colorbar(roi_image, cax=roi_bar, orientation='horizontal',
+        label='ROI linear TIS [V/cm]; fixed 0–0.1', extend='max')
     figure.suptitle(f'{group_name} • {mode} • fundamental sampled-direction maxTIS visibility supplement\n'
         f'Log: ≤{floor:g} clipped to floor; shared maximum {log_norm.vmax:.4g} V/cm. '
         'ROI: fixed 0–0.1 V/cm; values >0.1 saturated.\n'
-        'Display clipping only, no activation/safety cutoff. Blank samples unsupported; primary linear map and native-volume scores retained.', fontsize=10)
+        'Display clipping only, no activation/safety cutoff. Blank samples unsupported; primary linear map and native-volume scores retained.', fontsize=10, y=1-.1/height)
     return save_figure(figure, directory/(group_name+'-'+mode+'-TIS-log-and-fixed-ROI.png'), plt)
 
 
@@ -772,11 +801,195 @@ def asset_manifest(directory, output):
         raise ValueError('Never overwrite an earlier asset manifest')
     value = dict(schema='task1-offline-evidence-bundle-v1',
         HTML_entrypoint=dict(path=os.path.relpath(output, directory), SHA256=sha(output), bytes=output.stat().st_size),
-        assets={item.name: dict(SHA256=sha(item), bytes=item.stat().st_size)
+        assets={item.name: dict(SHA256=sha(item), bytes=item.stat().st_size,
+                    **({'plot_identity_sha256': read(item.with_suffix('.plot.json'))['plot_identity_sha256']}
+                        if item.suffix == '.png' and item.with_suffix('.plot.json').is_file() else {}))
                 for item in sorted(directory.iterdir()) if item.is_file()},
         portability='Keep HTML and the uniquely named sibling asset directory together; relative image paths require no network')
     path.write_text(json.dumps(value, indent=2)+'\n')
     return path
+
+
+def identity_sha(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()
+
+
+def map_plot_identity(records, mode, metric, supplement=False):
+    import numpy as np
+    conditions, maximum = [], 0.
+    for item, condition, row in records:
+        values = row['values'].get(mode)
+        path = map_archive(item, condition)
+        if values is None or path is None:
+            continue
+        with np.load(path, allow_pickle=False) as archive:
+            data = archive[metric]*.01*values['amplitude_scale']
+        finite = data[np.isfinite(data)]
+        if len(finite):
+            maximum = max(maximum, float(finite.max()))
+        conditions.append(dict(condition_id=condition['id'], summary_sha256=row['summary_sha256'],
+            comparison_signature=row['comparison_signature'], normalization_values=values,
+            source_map_sha256=sha(path), row_label=map_row_label(item)))
+    if not conditions:
+        return None
+    return dict(contract='native-phi-scientific-plot-v1', family='maps',
+        cohort_signature=conditions[0]['comparison_signature'], conditions=conditions,
+        mode=mode, metric=metric, supplement=supplement, units='V/cm',
+        clims=({'shared_log': [.0001, max(maximum, .001)], 'ROI_linear': [0., .1]}
+            if supplement else {'shared_linear': [0., maximum or 1.]}),
+        coordinate_system='z=0 skin surface; +z depth', XY_depths_mm=[5, 10, 15, 20],
+        ROI=dict(radius_mm=5, depth_mm=[15, 20]), unsupported='blank; no extrapolation')
+
+
+class PlotCache:
+    """Reuse only hash-verified completed bundles with the same scientific inputs."""
+    def __init__(self, directory, caches, current_payload):
+        self.directory, self.payload = Path(directory), current_payload
+        self.caches, self.reused, self.generated, self.rejected = [], 0, 0, []
+        for directory in caches:
+            directory = Path(directory).resolve()
+            manifest_path, comparison_path = directory/'asset-manifest.json', directory/'comparison.json'
+            terminal_path = directory/'render-receipt.json'
+            if not manifest_path.is_file() or not comparison_path.is_file() or not terminal_path.is_file():
+                self.rejected.append(dict(path=str(directory), reason='completed_asset_or_comparison_manifest_missing'))
+                continue
+            terminal = read(terminal_path)
+            if (terminal.get('status') != 'rendered_offline_evidence' or
+                    terminal.get('asset_manifest', {}).get('SHA256') != sha(manifest_path) or
+                    (directory/'render-failure.json').is_file()):
+                self.rejected.append(dict(path=str(directory), reason='successful_terminal_receipt_or_manifest_SHA_unverified'))
+                continue
+            manifest = read(manifest_path)
+            comparison_asset = manifest.get('assets', {}).get('comparison.json', {})
+            if comparison_asset.get('SHA256') != sha(comparison_path):
+                self.rejected.append(dict(path=str(directory), reason='comparison_manifest_SHA_mismatch'))
+                continue
+            comparison = read(comparison_path)
+            if comparison.get('schema') != current_payload.get('schema'):
+                self.rejected.append(dict(path=str(directory), reason='comparison_schema_mismatch'))
+                continue
+            self.caches.append(dict(directory=directory, manifest=manifest, comparison=comparison,
+                terminal_receipt_sha256=sha(terminal_path),
+                manifest_sha256=sha(manifest_path), comparison_sha256=sha(comparison_path)))
+
+    def record(self, path, identity, source_asset=None):
+        path = Path(path)
+        receipt = dict(schema='task1-scientific-PNG-receipt-v1', plot_identity=identity,
+            plot_identity_sha256=identity_sha(identity), image_sha256=sha(path), bytes=path.stat().st_size,
+            source_asset=source_asset, renderer_layout='fixed_manual_margins_v2' if source_asset is None else 'reused_unchanged',
+            meaning='display artifact identity only; not numerical convergence or experimental validation')
+        receipt_path = path.with_suffix('.plot.json')
+        with receipt_path.open('x') as stream:
+            json.dump(receipt, stream, indent=2, allow_nan=False)
+            stream.write('\n')
+        if source_asset is None:
+            self.generated += 1
+        return path
+
+    def _same_legacy_inputs(self, cache, identity):
+        comparison = cache['comparison']
+        definitions = comparison.get('definitions', {})
+        required = ('target', 'maxTIS', 'RMS') if identity['family'] == 'maps' else ('target',)
+        if any(definitions.get(key) != self.payload.get('definitions', {}).get(key) for key in required):
+            return False
+        old_rows = comparison.get('conditions', [])
+        if identity['family'] == 'maps':
+            if identity.get('supplement') and definitions.get('display_supplements') != self.payload['definitions'].get('display_supplements'):
+                return False
+            old_rows = [row for row in old_rows if row.get('n_outputs') == 2 and
+                row.get('comparison_signature') == identity['cohort_signature'] and row['values'].get(identity['mode']) is not None]
+        else:
+            wanted = {row['condition_id'] for row in identity['conditions']}
+            old_rows = [row for row in old_rows if row['condition_id'] in wanted]
+        if [row['condition_id'] for row in old_rows] != [row['condition_id'] for row in identity['conditions']]:
+            return False
+        for old, current in zip(old_rows, identity['conditions']):
+            if old.get('summary_sha256') != current['summary_sha256'] or old.get('comparison_signature') != current['comparison_signature']:
+                return False
+            if identity['family'] == 'maps' and old['values'].get(identity['mode']) != current['normalization_values']:
+                return False
+        # Identical ordered cohort, exact native summary/map bytes and exact
+        # normalization determine identical common min/max under the v1 contract.
+        return True
+
+    def reuse(self, name, identity):
+        from PIL import Image
+        import shutil
+        if identity is None:
+            return None
+        for cache in self.caches:
+            source = cache['directory']/name
+            asset = cache['manifest'].get('assets', {}).get(name)
+            if not source.is_file() or not asset:
+                continue
+            if asset.get('SHA256') != sha(source) or asset.get('bytes') != source.stat().st_size:
+                self.rejected.append(dict(path=str(source), reason='PNG_asset_SHA_or_size_mismatch'))
+                continue
+            receipt_path = source.with_suffix('.plot.json')
+            admission = 'legacy_v1_exact_cohort_summary_normalization_and_clim_contract'
+            if receipt_path.is_file():
+                recorded = cache['manifest'].get('assets', {}).get(receipt_path.name, {})
+                if recorded.get('SHA256') != sha(receipt_path):
+                    continue
+                receipt = read(receipt_path)
+                if not isinstance(receipt.get('plot_identity'), dict):
+                    continue
+                try:
+                    actual_identity_sha = identity_sha(receipt['plot_identity'])
+                except ValueError:
+                    continue
+                if actual_identity_sha != receipt.get('plot_identity_sha256'):
+                    continue
+                if receipt.get('plot_identity_sha256') != identity_sha(identity) or receipt.get('image_sha256') != asset['SHA256']:
+                    continue
+                if asset.get('plot_identity_sha256', identity_sha(identity)) != identity_sha(identity):
+                    continue
+                admission = 'exact_per_PNG_identity_and_asset_SHA'
+            elif not self._same_legacy_inputs(cache, identity):
+                continue
+            try:
+                with Image.open(source) as picture:
+                    picture.verify()
+                with Image.open(source) as picture:
+                    picture.load()
+            except Exception as error:
+                self.rejected.append(dict(path=str(source), reason='PNG_decode_failed', type=type(error).__name__))
+                continue
+            target = self.directory/name
+            with source.open('rb') as incoming, target.open('xb') as outgoing:
+                shutil.copyfileobj(incoming, outgoing)
+            if sha(target) != asset['SHA256']:
+                raise ValueError('PNG copy SHA mismatch; preserve copy/failure evidence')
+            self.reused += 1
+            return self.record(target, identity, dict(path=str(source), SHA256=asset['SHA256'],
+                source_manifest_sha256=cache['manifest_sha256'], source_comparison_sha256=cache['comparison_sha256'],
+                source_terminal_receipt_sha256=cache['terminal_receipt_sha256'],
+                source_generator_sha256=cache['comparison'].get('generator_sha256'), admission=admission,
+                legacy_clim_scope=('shared extrema implied by identical source summaries/native map bytes, ordered cohort and exact scales under the v1 plot contract; legacy PNG had no per-plot receipt'
+                    if admission.startswith('legacy_') else None)))
+        return None
+
+    def map(self, records, mode, metric, group_name, supplement=False):
+        identity = map_plot_identity(records, mode, metric, supplement)
+        if identity is None:
+            return None
+        name = group_name+'-'+mode+('-TIS-log-and-fixed-ROI.png' if supplement else '-'+metric+'.png')
+        reused = self.reuse(name, identity)
+        if reused is not None:
+            return reused
+        path = (tis_visibility_figure(records, mode, self.directory, group_name) if supplement else
+            maps_figure(records, mode, metric, self.directory, group_name))
+        return self.record(path, identity) if path else None
+
+    def waveform(self, item, condition, probe, row):
+        identity = dict(contract='native-phi-scientific-plot-v1', family='waveform',
+            conditions=[dict(condition_id=condition['id'], summary_sha256=row['summary_sha256'],
+                comparison_signature=row['comparison_signature'])],
+            source_probe_sha256=item['summary']['artifacts']['files']['probes.json']['SHA256'],
+            probe_id='d20-centre-X', tip_gap_mm=5, waveform='all-active-harmonics; fundamental-only envelope separate')
+        name = condition['id']+'-waveform.png'
+        reused = self.reuse(name, identity)
+        return reused if reused else self.record(waveform_figure(item, condition, probe, self.directory), identity)
 
 
 def table(headers, rows):
@@ -862,6 +1075,7 @@ def build(args, directory):
         eligibility_policy='require original complete case record with exact postprocess/config SHA and path; failed reference comparison stays held; later analysis audits never implicitly promote',
         new_PDE=0, new_research_postprocess=0, experiment_validated=False)
     (directory/'comparison.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n')
+    plot_cache = PlotCache(directory, getattr(args, 'reuse_assets', []), payload)
     flat = []
     for _, _, row in records:
         for mode, values in row['values'].items():
@@ -922,10 +1136,14 @@ def build(args, directory):
         sections.append(table(['진단 case', 'run ID', '계산 상태', '완료·출처 증거', 'Hz', '요청 solver rtol',
             'native gates', 'producer regression', '엄격 과거 비교', '증거'], diagnostic_rows))
         for diagnostic in diagnostics:
+            diagnostic_summary = {key: diagnostic.get(key) for key in ('case_id', 'run_id', 'source_commit',
+                'config_sha256', 'calculation_status', 'eligible_completed_diagnostic', 'provenance_reasons',
+                'frequencies_Hz', 'requested_relative_tolerance', 'scope')}
             sections.append('<details><summary>'+esc(diagnostic['case_id'])+' · 코드·설정·잔차·행렬 비교</summary><p>'+
                 '소스 commit '+esc(diagnostic['source_commit'])+' · 설정 SHA256 '+esc(diagnostic['config_sha256'])+
                 '</p><ul>'+''.join('<li>'+local_link(path, args.output)+'</li>' for path in diagnostic['source_links'])+
-                '</ul><pre>'+esc(json.dumps(diagnostic, ensure_ascii=False, indent=2))+'</pre></details>')
+                '</ul><p>'+local_link(directory/'comparison.json', args.output, '진단 전체 기술 메타데이터 JSON')+
+                '</p><pre>'+esc(json.dumps(diagnostic_summary, ensure_ascii=False, indent=2))+'</pre></details>')
     if unsupported:
         sections.append('<details><summary>지원 schema가 없어 비교에 포함하지 않은 후처리 '+str(len(unsupported))+
             '개</summary><p>아래 항목의 지원 여부가 미확인입니다. 과학적 계산 실패로 재분류하지 않습니다.</p><pre>'+
@@ -1045,11 +1263,11 @@ def build(args, directory):
                         '보조 로그·ROI 지도를 재사용합니다. 정규화 수치 표와 CSV는 별도로 유지합니다.</p>')
                     continue
                 for metric in ('square_maxTIS_V_m', 'square_RMS_V_m'):
-                    figure = maps_figure(group, mode, metric, directory, group_name)
+                    figure = plot_cache.map(group, mode, metric, group_name)
                     if figure:
                         sections.append('<details><summary>공통 선형 색범위 · '+esc(metric)+' 지도</summary>'+render_image(figure)+'</details>')
                 if args.supplementary_maps:
-                    figure = tis_visibility_figure(group, mode, directory, group_name)
+                    figure = plot_cache.map(group, mode, 'square_maxTIS_V_m', group_name, supplement=True)
                     if figure:
                         sections.append('<details><summary>보조 TIS 로그 지도 + ROI 고정 선형 0–0.1 V/cm</summary>'+
                             '<p>기본 선형 지도는 유지합니다. 보조 로그 지도의 하한은0.0001 V/cm이며 '
@@ -1098,7 +1316,8 @@ def build(args, directory):
         sections.append('<details><summary>'+esc(row['condition_id'])+'</summary><p>로컬 소스·증거 경로:</p><ul>'+
             ''.join('<li>'+local_link(path, args.output)+'</li>' for path in source_paths)+ '</ul>'+
             table(['영역', '정의', 'mean V/cm', 'P10 V/cm', 'P95 V/cm', 'max V/cm'], spatial_rows)+
-            '<pre>'+esc(json.dumps(details,
+            '<p>'+local_link(directory/'comparison.json', args.output, '전체 조건·깊이 곡선·수치 증거 JSON')+
+            ' · candidate ID: '+esc(row['condition_id'])+'</p><pre>'+esc(json.dumps(compact_technical_details(details),
             ensure_ascii=False, indent=2))+'</pre></details>')
     sections.append('<h2>측정기 조건 · 별도 예측 산출물</h2><p>ETA5001의 입력 저항·입력 커패시턴스는 팬텀에 '
         '접속되는 입력단 조건입니다. DSOX1202A의 scope 입력 커패시턴스는 차동 프로브 감쇠·출력 뒤의 '
@@ -1126,12 +1345,15 @@ def build(args, directory):
         '새로 제공된 측정기 사양을 적용한 다운스트림 예측은 위 별도 산출물에 연결합니다. '
         '팬텀 차동 포트 임피던스가 없어 실제 측정기 입력 부하가 반영된 팬텀 전압은 보류합니다.</p>')
     if args.figures:
-        sections.append(render_image(coordinates_figure(directory)))
+        coordinate_identity = dict(contract='native-phi-scientific-plot-v1', family='probe_coordinates',
+            centres_xy_mm=[[0, 0], [5, 0], [-5, 0], [0, 5], [0, -5]],
+            depths_mm=[5, 10, 15, 20], differential_tip_gap_mm=5, depth_axis='+z', surface_z_mm=0,
+            physical_interfaces_mm=[0, .1, 5.1, 10.1, 25.1], ROI_radius_mm=5, ROI_depth_mm=[15, 20])
+        sections.append(render_image(plot_cache.record(coordinates_figure(directory), coordinate_identity)))
     for item, condition, row in records:
         csv_path, probe = probe_csv(item, condition, directory)
-        encoded = base64.b64encode(csv_path.read_bytes()).decode()
         sections.append('<details><summary>'+esc(condition['id'])+' · 40행 프로브</summary>'+
-            f'<p><a download="{esc(csv_path.name)}" href="data:text/csv;base64,{encoded}">40행 CSV 다운로드</a></p>')
+            '<p>'+asset_download_link(csv_path, args.output, '40행 CSV 다운로드')+'</p>')
         probe_rows = []
         for measurement in probe['measurements']:
             envelope = measurement['fundamental_fixed_axis_envelope']
@@ -1141,7 +1363,7 @@ def build(args, directory):
         sections.append(table(['ID', 'centre X/Y/+z mm', 'full Vpp lower mV', 'full Vpp upper mV',
             'RMS mV', 'fundamental envelope width mV'], probe_rows))
         if args.figures:
-            sections.append(render_image(waveform_figure(item, condition, probe, directory)))
+            sections.append(render_image(plot_cache.waveform(item, condition, probe, row)))
         sections.append('</details>')
     sections.append('<h2>단일 전극쌍 비교</h2><p>한 신호 패드와 한 귀환 패드의 단일 출력 조건입니다. '
         '같은 전기장 RMS는 같은 생리적 활성화 또는 같은 TIS 변조를 뜻하지 않습니다. '
@@ -1192,19 +1414,18 @@ def build(args, directory):
             '이 전계·부담 일치 표에는 측정기 부하를 반영하지 않았습니다. '
             '입력 R/C·명목 대역폭·감쇠 사양과 다운스트림 표시 전압은 별도 측정기 산출물로 연결하며 '
             '실측 전달함수·감쇠 설정·교정은 미검증입니다.</p>')
-        encoded = base64.b64encode((directory/'pure-sine-C1-matches.csv').read_bytes()).decode()
-        sections.append('<p><a download="pure-sine-C1-matches.csv" href="data:text/csv;base64,'+encoded+
-            '">순수 정현파 C1 비교 CSV</a></p><details><summary>C1 비교 출처·정의·SHA</summary>')
+        sections.append('<p>'+asset_download_link(directory/'pure-sine-C1-matches.csv', args.output,
+            '순수 정현파 C1 비교 CSV')+'</p><details><summary>C1 비교 출처·정의·SHA</summary>')
         for path in sorted({pair['audit_path'] for pair in singles}):
             sections.append('<p>'+local_link(path, args.output)+'</p>')
         for path in sorted({pair[key] for pair in singles for key in ('tis_summary_path', 'single_summary_path')}):
             sections.append('<p>'+local_link(path, args.output)+'</p>')
-        sections.append('<pre>'+esc(json.dumps(singles, ensure_ascii=False, indent=2))+'</pre></details>')
+        sections.append('<p>'+local_link(directory/'comparison.json', args.output,
+            'C1 일치 기준·원본 지표·검증 정의 전체 JSON')+'</p></details>')
     else:
         sections.append('<p>현재 완료된 TIS/C1 summary SHA 쌍과 일치하는 순수 정현파 C1 audit가 없습니다. '
             '필요 인가전압·부담의 수치 비교를 보류합니다.</p>')
-    encoded = base64.b64encode((directory/'comparison.csv').read_bytes()).decode()
-    sections.append('<p><a download="comparison.csv" href="data:text/csv;base64,'+encoded+'">전체 정규화 비교 CSV</a></p>'+
+    sections.append('<p>'+asset_download_link(directory/'comparison.csv', args.output, '전체 정규화 비교 CSV')+'</p>'+
         '<p>오프라인 자료 묶음: 이 HTML과 '+esc(directory.name)+' 폴더를 함께 보관합니다. '
         '모든 지도·프로브 그림은 해당 로컬 폴더에서 읽으며 외부 이미지 요청은 없습니다. '
         +local_link(directory/'asset-manifest.json', args.output, '그림·CSV·HTML SHA manifest')+'</p>'+
@@ -1215,7 +1436,12 @@ def build(args, directory):
         '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src \'self\' file: data:; style-src \'unsafe-inline\'">'+\
         '<title>Task 1 TIS results</title><style>'+css+'</style><body>'+''.join(sections)+'</body></html>'
     args.output.write_text(document)
+    payload['plot_cache'] = dict(reused=plot_cache.reused, generated=plot_cache.generated,
+        rejected=plot_cache.rejected, requested_sources=[str(path) for path in getattr(args, 'reuse_assets', [])],
+        renderer_layout='fixed_manual_margins_v2; no constrained layout or tight bbox;150dpi unchanged')
+    (directory/'comparison.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n')
     return dict(status='rendered_offline_evidence', output=str(args.output), assets=str(directory),
+        plot_cache=payload['plot_cache'],
         image_storage='base64_embedded_and_saved' if args.embed_images else 'relative_local_assets_once',
         offline_bundle='Keep the HTML entrypoint and its uniquely named sibling asset directory together; no remote image fetches',
         completed_conditions=len(records), missing_pad_counts=payload['missing_pad_counts'],
@@ -1259,6 +1485,26 @@ def self_test():
         picture = asset_directory/'panel #1.png'
         picture.write_bytes(b'PNG-fixture-payload-'*256)
         entrypoint = Path(temporary)/'view.html'
+        csv_path = asset_directory/'probe rows #1.csv'
+        csv_path.write_text('probe,Vpp_V\nd20-centre-X,0.02\n')
+        csv_bytes = csv_path.read_bytes()
+        csv_link = asset_download_link(csv_path, entrypoint, 'CSV')
+        assert 'data:' not in csv_link and 'base64' not in csv_link
+        csv_source = csv_link.split('href="', 1)[1].split('"', 1)[0]
+        assert (entrypoint.parent/unquote(csv_source)).resolve() == csv_path.resolve()
+        assert csv_path.read_bytes() == csv_bytes
+        detail_fixture = dict(source_commit='commit', config_sha256='config',
+            mesh=dict(h_xy_mm=1.25), circuit=dict(n_pads=4, n_outputs=2),
+            calculation_status=dict(calculation='complete', experiment='not validated'),
+            spatial_audit=dict(global_maxima=dict(maxTIS=dict(cell_centre_mm=[1, 2, .025])),
+                high_modulation=dict(cutoff_V_m=2), depth_planes=[dict(depth_mm=1), dict(depth_mm=2)]))
+        compact = compact_technical_details(detail_fixture)
+        assert 'depth_planes' not in compact['spatial_audit'] and compact['spatial_audit']['depth_plane_count'] == 2
+        assert len(detail_fixture['spatial_audit']['depth_planes']) == 2
+        for key in ('source_commit', 'config_sha256', 'mesh', 'circuit', 'calculation_status'):
+            assert compact[key] == detail_fixture[key]
+        assert compact['spatial_audit']['global_maxima'] == detail_fixture['spatial_audit']['global_maxima']
+        assert compact['spatial_audit']['high_modulation'] == detail_fixture['spatial_audit']['high_modulation']
         tag = image_tag(picture, entrypoint)
         assert 'base64,' not in tag and 'https:' not in tag and 'file:' not in tag
         source = tag.split('src="', 1)[1].split('"', 1)[0]
@@ -1350,7 +1596,7 @@ def self_test():
         registered['postprocessor'] = 'unrecognized_new_postprocessor'
         registration_path.write_text(json.dumps(dict(cases=[registered])))
         assert result_kind(diagnostic_path)['kind'] == 'unsupported'
-    return dict(passed=True, checks='linked offline image paths/byte preservation/bundle hashes, burden and provenance gates, no implicit promotion, diagnostics separated from TIS', new_PDE=0)
+    return dict(passed=True, checks='linked offline images/CSV with byte preservation, compact provenance retains extrema/topology/status, bundle hashes and scientific eligibility', new_PDE=0)
 
 
 def main():
@@ -1362,6 +1608,8 @@ def main():
         help='Optional separate external archive download/hash/decode restore evidence; never promotes original runs')
     parser.add_argument('--output', type=Path, default=ROOT/'docs/CLOUD_RESULTS.html')
     parser.add_argument('--assets-dir', type=Path)
+    parser.add_argument('--reuse-assets', type=Path, action='append', default=[],
+        help='Reuse only PNGs from a completed SHA asset manifest with matching current scientific identity; repeatable')
     parser.add_argument('--figures', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--embed-images', action='store_true',
         help='Explicit single-HTML image embedding; duplicates saved PNG bytes and remains subject to the fixed50MiB cap')
