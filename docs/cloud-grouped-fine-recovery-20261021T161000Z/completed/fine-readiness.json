@@ -1,0 +1,39 @@
+{
+  "schema": "task1-grouped-fine-readiness-v1",
+  "status": "passed_for_finite_fine_exploration",
+  "original_readiness": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-restart-20261020/grouped-readiness.json",
+    "SHA256": "444db6f0e69c063fd9193d8bb76d3d1f1639e0e08079fe653782275c6985b51f",
+    "original_bytes_modified": false
+  },
+  "inherited_cached_producer_regression": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-restart-20261020/grouped-producer-regression.json",
+    "SHA256": "d5ec2d6fd68a8185842e75ec59d07d15ab411e097bd621bafb984c1f89dd108f",
+    "passed_comparisons": 20,
+    "array_comparison_repeated": false,
+    "new_PDE": 0,
+    "independent_solver": false
+  },
+  "explicitly_reviewed_orchestration_drift": [
+    {
+      "path": "tools/task1_cloud_batch.py",
+      "old_sha256": "cdd12655650e9b2b3ad0a4f6e2361edec2701dd4c4c496cf3df96943af2558ce",
+      "current_sha256": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+      "frozen_old_source": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/frozen-source/tools/task1_cloud_batch.py",
+      "changed_functions": [
+        "effective_limits",
+        "execute",
+        "execute_locked",
+        "main",
+        "operator_signature",
+        "prepare",
+        "source_pins"
+      ],
+      "scope": "Reviewed budget/registration/producer routing only; grouped numerical Java and grouped postprocessor unchanged"
+    }
+  ],
+  "numerical_grouped_implementation_unchanged": true,
+  "geometry_generator_unchanged": true,
+  "fine_mesh_convergence_validated": false,
+  "raw_native_bytes_rehashed_in_this_readiness": false
+}
