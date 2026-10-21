@@ -2,6 +2,8 @@
 
 루트 README와 PACKAGE_INDEX의478파일은 **초기 이관 패키지의 원본**이므로 그대로 보존한다. 그 문서의 “새 실행 전” 상태는 현재 실행 상태를 뜻하지 않는다. 원본 byte 검증, 새 수치 계산, 격자·접촉 수렴, 실험 검증은 별도다.
 
+- [귀환 net전류 조정6조건](RETURN_CURRENT_RESULTS_20261021.md) / [6행 수치 GUI](RETURN_CURRENT_RESULTS_20261021.html) / [새 피드백6321929825 적용](FEEDBACK_APPLICATION_STATUS_20261021T172000Z.md)
+- [단일 전극쌍 RMS 비교6cohort](COHERENT_SINGLE_PAIR_RESULTS_20261021.md) / [별도 RMS 매칭 GUI](CLOUD_COHERENT_SINGLE_PAIR_RESULTS_20261021.html)
 - [같은4패드 coherent 두 톤8조건](COHERENT_DRIVE_RESULTS_20261021.md) / [10행 수치 GUI](CLOUD_COHERENT_DRIVE_RESULTS_20261021.html) / [공통 눈금 지도24장](cloud-coherent-drive-native-maps-20261021T170500Z/index.html)
 - [약한 coherent 후속6조건 완료 summary](cloud-next-coherent-weak-20261021T170000Z/summary.json) / [게시 오류의 재계산 없는 복구](cloud-coherent-weak-context-20261021T170000Z/publication-failure-disposition.json)
 - [4패드 square/cross × opposite/adjacent 배선 비교](ADJACENT_CROSS_RESULTS_20261021.md) / [4행 수치 GUI](CLOUD_ADJACENT_CROSS_RESULTS_20261021.html)
@@ -29,4 +31,10 @@
 
 16:54:58 UTC에 시작한 weak mixing(r0.05/0.1/0.2,φ90/270°)6조건도 계산·nativeφ 프로브·피드백 GET은 완료했고, 모두 목표2항목 pass/비표적6항목 fail이었습니다. 최초 게시 단계만 존재하지 않는 feedback-before 경로 때문에 실패했습니다. 원 실패와 계산은 보존하고 실제 재사용한 feedback 경로를 고정한 새 metadata-only 게시로 `9ad428c`에서 복구했습니다. 계산 재실행은0입니다.
 
-다음 root 선택은 캐시된 adjacent-square/cross 각각에서 τ0/0.5/1의 주파수별 귀환 패드 NET 전류 조정을 보는6조건입니다. [선택·수식·전역 Vpp 정규화](cloud-return-current-context-20261021T172000Z/decision.json)와 [17:04:55 GitHub GET](cloud-return-current-context-20261021T172000Z-feedback-before.json)을 고정했습니다. 아직 이 다음6조건의 계산을 시작하지 않았습니다. 두 귀환 패드는 같은 GND에 붙어 있으며 net 전류 상쇄가 국소 J 소실이나 전원 절연을 뜻하지 않습니다. 별도로 같은 캐시의 단일 전극쌍에서 최신 미채택 coherent 조건의 중심20mm/목표ROI 에너지RMS를 각각 맞추는 후처리를 준비합니다. 새 PDE·독립출력·절연방식 변경은0입니다. 장비의 다중 톤·위상 동기·전력 흡수 능력과 실험·전체 수렴은 미검증입니다. 실제 시작과 이후 결과는 새 queue/PID/startticks/terminal receipt로 별도 연결합니다.
+17:10:33–17:11:52 UTC의 다음 귀환 net전류 조정6조건 큐도3단계 모두 완료됐고 결과는 `8723508`에 공개했습니다. 실제 scout70.013초로 새 PDE는0입니다. 두 출력의 같은 주파수 전압을 복소합성한 결과이며 GND 전류를 별도 자유변수로 만들지 않았습니다. 모든6조건의 목표mean/P10과 표층P95가 기준에 실패했습니다. τ1에서 선택한 GND패드의 net전류는 상쇄돼도 국소J는 남습니다. 일부 표층 고변조 부피는 감소했으므로 모든 비표적 지표가 실패했다고 묶지 않습니다. 여전히 미채택입니다.
+
+단일 전극쌍 비교도17:09:06 UTC에 실제 계산됐고 `121bed2`에 공개했습니다. 최신 미채택 coherent의 피부8cap 결과와 목표ROI 에너지RMS를 맞추려면 source1.579958Vpp, 중심20mm RMS를 맞추려면1.577268Vpp가 필요합니다. 225mm²패드2개(귀환포함)/독립출력1개이고, 비교TIS의4패드/2출력과footprint가 다릅니다. 총전류·전력·피부부담을 동시에 맞춘 비교나 변조·생리학적 동등성 주장이 아닙니다.
+
+새 댓글6321929825는17:10:52 UTC에 귀환 계산 도중 작성됐고17:11:46 첫 GET로 수신했습니다. 기존 구현·등록·실행에 소급하지 않고 위 적용 문서에 고정 회로 합성/새 회로 풀이의 경계, 작은 혼합비에서 주파수별 음의metal-delivered power, C1 cohort/footprint를 명시적으로 연결했습니다. 새 peer의 후보 승인·전체 수렴 검증은 추론하지 않습니다.
+
+다음 root 선택은 기존 비대칭4패드의 물리 귀환pad2 하나만 중심·면적을 고정해90° 돌리는 새geometry1조건입니다. [선택·원형상·회로·예산](cloud-one-return-rotation-context-20261021T174000Z/decision.json)을 고정했고 현재 코드·소수 합성 테스트를 준비하고 있습니다. 새 PDE1조건/8RHS이며 아직 시작하지 않았습니다. 기존4square와원래비대칭조건은재사용하고, 계산·fullskin·부피·8screen·피드백·공개저장을 같은 유한 큐로 연결합니다. 원본478파일 해시 검증은 다시 통과했으며 이것을 새 수치 검증으로 세지 않습니다. 기존누적13800초/CPU1/RSS3GiB/저장여유2GiB를 유지하고 COMSOL·ETA부하·전체수렴·실험은 미검증입니다.

@@ -1,0 +1,64 @@
+{
+  "schema": "task1-return-current-source-review-v1",
+  "status": "no_material_blocker_identified_in_static_review",
+  "observed_utc": "2026-10-21T17:11:48.483383+00:00",
+  "reviewer_role": "independent_read_only_code_review",
+  "reviewed_worktree_commit": "f5b2757564efa68b31fdc01bab54ccafac6309ff",
+  "source": {
+    "path": "/workspace/ngg-tis-task1/tools/task1_return_current_drive_scout.py",
+    "SHA256": "36105f2956c6f14145904f6dffda8f69befe301a53f650fad5944c93a1b6874b"
+  },
+  "tests": {
+    "path": "/workspace/ngg-tis-task1/tests/test_task1_return_current_drive_scout.py",
+    "SHA256": "5e72cc893058649a6ac1406b978da11e89ce78c9a030b116fd3ffcf5adea675b",
+    "reported_status": "18 synthetic tests passed according to author/root; reviewer inspected tests but did not execute them"
+  },
+  "checks": [
+    {
+      "id": "physical_complex_current_response",
+      "finding": "Density is channel-major; each physical pad net current integrates complex patch J times actual area before taking magnitude. Signal rows match the two-output source matrix and total KCL at2e-6."
+    },
+    {
+      "id": "q_and_common_ground",
+      "finding": "q0=-R3000[2,0]/R3000[2,1],q1=-R3030[3,1]/R3030[3,0] match declared wrong-return pads2/3. Rank/denominator resolution gates precede weights. Actual normalized-density cancellation is rechecked at tau1; local peakJ and integral|J| remain distinct."
+    },
+    {
+      "id": "one_global_source_vpp",
+      "finding": "Actual full-period two-tone command phasors use0.5V peak basis. Both output Vpp brackets determine ONE scale1/max(upper); no independent column scaling. Each raw output upper<=1V and only maximum upper is1V. Subsequent normalization modes scale each output interval."
+    },
+    {
+      "id": "two_real_geometries",
+      "finding": "Square and cross source paths are distinct declared completed adjacent cases. execute loads each native E,phi,density,source,loss basis and its own geometry; comparison signature/grid and exact frozen helper SHA are checked. Canonical square arrays supply baseline masks/cutoffs/caps, not substituted candidate E."
+    },
+    {
+      "id": "coherent_electrical_and_losses",
+      "finding": "Per-frequency linear fields/potentials/currents and Hermitian quadratic losses use actual complex vectors before statistics. Current/power conservation, skin/contact burdens, signed per-output ideal/metal/resistor powers and passive absorption remain explicit."
+    },
+    {
+      "id": "five_comparisons_and_spatial_metrics",
+      "finding": "Raw voltage, total source-output RMS sum, total power, eight skin/contact caps and legacy composite remain separate. Original square cutoff/ROI masks, absolute mean/P10, non-target tails/hotspots/high-volume, fixed diagonal and2074-direction maximum are retained. Numerical limits are not human safety limits."
+    },
+    {
+      "id": "native_probe_and_waveform",
+      "finding": "Actual two-frequency complex phi differences feed40 depth5/10/15/20mm cross probes, X/Y axes and5mm tipgap. Field/probe waveform audits are called; unloaded predictions and hardware input/compliance remain held."
+    },
+    {
+      "id": "bounded_execution_and_evidence",
+      "finding": "Main owns flock+lockf execution lock, oneCPU,600s batch/60s source-or-condition alarms,3GiB RSS and2GiB free disk guards. Immutable checkpoints/5s heartbeat, failure artifacts and actual elapsed ledger append are present; attempted output is not retried. Root decision and public feedback hashes do not infer peer endorsement."
+    }
+  ],
+  "actual_native_fields_read": false,
+  "new_PDE": 0,
+  "numerical_jobs_started": 0,
+  "preparations_started": 0,
+  "existing_files_modified": false,
+  "independent_field_recalculation": false,
+  "remaining_limits": [
+    "Static code/algebra review is not independent field or experimental validation.",
+    "Synthetic tests do not cover a complete native two-geometry end-to-end run; actual execution checks remain necessary.",
+    "Return net-current cancellation does not establish zero local contactJ, isolated returns, physiological selectivity or hardware absorption/compliance.",
+    "SC/XY/bulk/edge/contact convergence and2074-angle sampling limits remain unresolved; no candidate adoption."
+  ],
+  "candidate_adopted": false,
+  "peer_endorsement_inferred": false
+}
