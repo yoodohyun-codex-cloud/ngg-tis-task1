@@ -1,0 +1,151 @@
+{
+  "schema": "task1-return-role-decision-v1",
+  "status": "preregistered_not_started",
+  "source_run_id": "cloud-asymmetric-20261021T051000Z",
+  "source_case_id": "asym-cross281p25-return168p75-xy80",
+  "chosen_case_id": "return-cross281p25-signal168p75-xy80",
+  "chosen_wiring_question": "With the same physical900mm2 mixed four-pad outlines/locations, does swapping signal and common-GND roles reduce broad superficial/non-target modulation while retaining absolute target mean/P10 at original baseline skin/contact caps?",
+  "native_audit": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-continuation-20261021/native-causal-20261021T085900Z/result.json",
+    "SHA256": "3c3ed09cbfb373a8be418248a6f199e0f3576a716edf6974216b6c3e68beca4e"
+  },
+  "inputs_sha256": {
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/postprocess/asym-cross281p25-return168p75-xy80/summary.json": "34fc758cd915fc8b926117c1ccf8762a460c9890a4be3c3294d6a6cf747fc199",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/configs/asym-cross281p25-return168p75-xy80.properties": "12afd425530b37dc0e7ab4f941d279277d00e23d3d3dd6acf81cc8fbdb98c584",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/masks/asym-cross281p25-return168p75-xy80.csv": "8c4464d3daf2c19db1799b2c4fb5bcea1ac911bcbe304f568e5a8b637f6b0c3d"
+  },
+  "adopted": false,
+  "selection": {
+    "kind": "one-variable explanatory wiring experiment, not candidate nomination",
+    "native_result": "Both signal-nearest and return-nearest sectors increased. Broad dermis/fat changes accompany elevated return local J. Return-only attribution is unsupported.",
+    "surface_signed_mean_change_V_m": 2.03996356669729,
+    "non_target_signed_mean_change_V_m": 0.9454457297201273,
+    "readout": "Compare against original square baseline for acceptance screen and against same-physical-geometry original asym for role contrast; no multi-factor area claim"
+  },
+  "physical": {
+    "phantom_diameter_mm": 50,
+    "layers_mm": [
+      0.1,
+      5,
+      5,
+      15
+    ],
+    "n_pads": 4,
+    "n_outputs": 2,
+    "total_contact_area_mm2": 900,
+    "old_to_new_pad": {
+      "0": 2,
+      "1": 3,
+      "2": 0,
+      "3": 1
+    },
+    "new_pad_centres_mm": [
+      [
+        10,
+        -10
+      ],
+      [
+        -10,
+        10
+      ],
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        10
+      ]
+    ],
+    "new_pad_areas_mm2": [
+      168.75,
+      168.75,
+      281.25,
+      281.25
+    ],
+    "return_topology": "one common GND node, newphysicalpads2/3",
+    "source_Vpp_each": 1,
+    "source_resistance_ohm_each": 50,
+    "inactive_frequency": "zero ideal volts through50ohm",
+    "frequencies_Hz": [
+      3000,
+      3030,
+      9000,
+      9090
+    ],
+    "mesh": {
+      "h_xy_mm": 0.625,
+      "SC_cells": 2,
+      "bulk_counts": [
+        14,
+        14,
+        40
+      ],
+      "cells": 351680
+    }
+  },
+  "fixed_screen": {
+    "normalization": "skin_contact_only; original same-grid square baseline eight caps, no sourcepower/1V ceiling",
+    "target": "primary r<=5mm depth15to20",
+    "requirements": [
+      "primary maxTIS mean>=originalbaseline",
+      "primary maxTIS P10>=originalbaseline",
+      "surface0to5 maxTIS P95<=originalbaseline",
+      "primarycomplement maxTIS P95<=originalbaseline",
+      "surface0to5 highvolume<=originalbaseline at EACH fixedprimarymean/P10cutoff",
+      "primarycomplement highvolume<=originalbaseline at EACH fixedprimarymean/P10cutoff"
+    ],
+    "arithmetic_tolerance": {
+      "relative": 1e-10,
+      "field_absolute_V_m": 1e-12,
+      "volume_absolute_m3": 1e-18,
+      "scope": "floating comparison only; not convergence tolerance"
+    },
+    "fixed_cutoffs_V_m": {
+      "baseline_mean": 4.061848941601601,
+      "baseline_p10": 3.6457357391300533
+    },
+    "full_convergence_or_adoption": false
+  },
+  "report_all": [
+    "raw1Vpp",
+    "equal_total_source_output_RMS_sum",
+    "equal_total_source_power",
+    "skin_contact_only",
+    "legacy_composite_full_skin",
+    "primaryandsupplementalslab",
+    "surfaceandallcomplements",
+    "maxTIS/fixedTIS/allcarrierRMS",
+    "sourcecurrents/skinJ/contactV/skin/contact/sourcepower",
+    "globalhotspotandlayerboundaries",
+    "unloadednativephi40probe",
+    "singlepairRMSmatch"
+  ],
+  "resource_limits": {
+    "global_seconds": 6600,
+    "remaining_at_decision_seconds": 1031.2594763719862,
+    "CPU_count": 1,
+    "maximum_new_PDE_conditions": 1,
+    "preparation_seconds": 60,
+    "per_condition_seconds": 600,
+    "postprocessing_reserve_seconds": 180,
+    "UI_reserve_seconds": 60,
+    "RSS_bytes": 3221225472,
+    "Java_heap_bytes": 2147483648,
+    "disk_reserve_bytes": 2147483648,
+    "max_cells": 800000
+  },
+  "feedback": {
+    "source_key": "T1-F010-S3-GH6309148063",
+    "source_comment_id": 6309148063,
+    "discussion_request_comment_id": 6312010304,
+    "peer_reply_observed": false
+  },
+  "holds": [
+    "All original SC/XY/bulk/edge/contact failures remain preserved",
+    "Nominal PBS surrogate is not validated skin contact",
+    "No full numerical or experimental validation, activation or human safety conclusion",
+    "Native scalar association does not identify per-carrier balance",
+    "Fixed output count/commonGND termination preserved; no side mounting or floating supply change"
+  ]
+}

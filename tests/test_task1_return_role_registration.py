@@ -2,11 +2,13 @@
 import copy
 import hashlib
 import importlib.util
+import json
 import math
 from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -234,6 +236,65 @@ class ReturnRoleRegistrationTests(unittest.TestCase):
                 signatures.append(self.registration.core.operator_signature(
                     dict(config_file=str(config_path), mask_file=str(mask_path), java_class='CloudShapeBasis')))
             self.assertNotEqual(*signatures)
+
+    def decision_fixture(self, root):
+        r = self.registration
+        source = root/'data-native'/r.SOURCE_RUN
+        source_paths = [source/'postprocess'/r.SOURCE_ID/'summary.json',
+                        source/'configs'/(r.SOURCE_ID+'.properties'),
+                        source/'masks'/(r.SOURCE_ID+'.csv')]
+        for path, contents in zip(source_paths, ('{"status":"complete"}\n',
+                                                 'h_mm=0.625\n', 'pad,i,j,area_m2\n')):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(contents)
+        pins = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in source_paths}
+        audit_path = root/'native-causal-audit.json'
+        audit = dict(status='complete_diagnostic_only', inputs_unchanged=True,
+                     inputs_sha256=copy.deepcopy(pins))
+        audit_path.write_text(json.dumps(audit))
+        decision = dict(schema='task1-return-role-decision-v1', status='preregistered_not_started',
+            source_run_id=r.SOURCE_RUN, source_case_id=r.SOURCE_ID, chosen_case_id=r.CASE_ID,
+            chosen_wiring_question='At unchanged physical patches, exchange source and common-GND roles?',
+            adopted=False, native_audit=dict(path=str(audit_path),
+                SHA256=hashlib.sha256(audit_path.read_bytes()).hexdigest()), inputs_sha256=pins)
+        decision_path = root/'decision.json'
+        decision_path.write_text(json.dumps(decision))
+        return decision_path, decision, audit_path, audit, source_paths
+
+    def test_decision_verifies_completed_causal_audit_and_source_hashes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path, decision, audit_path, _, source_paths = self.decision_fixture(root)
+            with patch.object(self.registration.core, 'REPO', root):
+                actual, pins = self.registration.verify_decision(path)
+            self.assertEqual(actual, decision)
+            for source in source_paths+[audit_path, path]:
+                self.assertEqual(pins[str(source)], hashlib.sha256(source.read_bytes()).hexdigest())
+
+    def test_decision_rejects_tampered_audit_or_missing_audit_source_mask_binding(self):
+        for variant in ('tampered_bytes', 'missing_mask_binding'):
+            with self.subTest(variant=variant), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                path, decision, audit_path, audit, source_paths = self.decision_fixture(root)
+                if variant == 'tampered_bytes':
+                    audit_path.write_text(audit_path.read_text()+' ')
+                else:
+                    audit['inputs_sha256'].pop(str(source_paths[2]))
+                    audit_path.write_text(json.dumps(audit))
+                    decision['native_audit']['SHA256'] = hashlib.sha256(audit_path.read_bytes()).hexdigest()
+                    path.write_text(json.dumps(decision))
+                with patch.object(self.registration.core, 'REPO', root), self.assertRaises(ValueError):
+                    self.registration.verify_decision(path)
+
+    def test_ROI_only_selection_without_explicit_wiring_question_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path, decision, _, _, _ = self.decision_fixture(root)
+            decision.pop('chosen_wiring_question')
+            decision['ROI_only_selection'] = True
+            path.write_text(json.dumps(decision))
+            with patch.object(self.registration.core, 'REPO', root), self.assertRaises(ValueError):
+                self.registration.verify_decision(path)
 
 
 if __name__ == '__main__':
