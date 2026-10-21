@@ -1,0 +1,134 @@
+{
+  "schema": "task1-return-role-predeclared-screen-v1",
+  "created_utc": "2026-10-21T09:10:21.378447+00:00",
+  "status": "calculated_not_adopted_failed_absolute_target_retention",
+  "source_commit": "0fc554c62898b40005d2901d3a16657aae909bbb",
+  "run_id": "cloud-return-role-20261021T090200Z",
+  "case_id": "return-cross281p25-signal168p75-xy80",
+  "config_SHA256": "6e057bd4441ae8c01d250631e79c481a0399c2c9ca97f30da3cbedbdfaa43135",
+  "input_volume_report": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-next-20261021T085200Z/return-role-volume.json",
+    "SHA256": "7d53bfb0c55167050bfc420d7fa3b53e0e9e58ecdef77ba26d69bbe827e2bc3c"
+  },
+  "normalization": "skin_contact_only",
+  "checks": [
+    {
+      "name": "primary_maxTIS_mean",
+      "baseline": 4.061848941601601,
+      "candidate": 3.4630110249995796,
+      "unit": "V/m",
+      "required_direction": "greater",
+      "passed": false,
+      "relative_change_percent": -14.74298835854534,
+      "arithmetic_tolerance": 4.071848941601601e-10
+    },
+    {
+      "name": "primary_maxTIS_p10",
+      "baseline": 3.6457357391300533,
+      "candidate": 3.099120936860966,
+      "unit": "V/m",
+      "required_direction": "greater",
+      "passed": false,
+      "relative_change_percent": -14.993264498087866,
+      "arithmetic_tolerance": 3.6557357391300533e-10
+    },
+    {
+      "name": "surface_0_5_maxTIS_p95",
+      "baseline": 25.25922183168775,
+      "candidate": 18.373810332938174,
+      "unit": "V/m",
+      "required_direction": "less",
+      "passed": true,
+      "relative_change_percent": -27.25900086958266,
+      "arithmetic_tolerance": 2.526922183168775e-09
+    },
+    {
+      "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+      "baseline": 7.766529017857144e-06,
+      "candidate": 6.740516183035715e-06,
+      "unit": "m3",
+      "required_direction": "less",
+      "passed": true,
+      "relative_change_percent": -13.210699817928639,
+      "arithmetic_tolerance": 7.7765290178571445e-16
+    },
+    {
+      "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+      "baseline": 8.209453125000001e-06,
+      "candidate": 7.308504464285715e-06,
+      "unit": "m3",
+      "required_direction": "less",
+      "passed": true,
+      "relative_change_percent": -10.97452713349022,
+      "arithmetic_tolerance": 8.219453125000001e-16
+    },
+    {
+      "name": "primary_complement_maxTIS_p95",
+      "baseline": 23.43571858123385,
+      "candidate": 19.857365028636963,
+      "unit": "V/m",
+      "required_direction": "less",
+      "passed": true,
+      "relative_change_percent": -15.268802363338896,
+      "arithmetic_tolerance": 2.344571858123385e-09
+    },
+    {
+      "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+      "baseline": 1.9399655254908982e-05,
+      "candidate": 1.7256512276785728e-05,
+      "unit": "m3",
+      "required_direction": "less",
+      "passed": true,
+      "relative_change_percent": -11.047325068217095,
+      "arithmetic_tolerance": 1.940965525490898e-15
+    },
+    {
+      "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+      "baseline": 2.1155655660629288e-05,
+      "candidate": 1.84113139149121e-05,
+      "unit": "m3",
+      "required_direction": "less",
+      "passed": true,
+      "relative_change_percent": -12.972142247637407,
+      "arithmetic_tolerance": 2.1165655660629285e-15
+    }
+  ],
+  "all_screen_checks_passed": false,
+  "decision": "Reject candidate nomination: superficial/non-target reductions accompany absolute target mean/P10 loss. Do not call ratio improvement deep focus.",
+  "retained_holds": [
+    "sampled-direction metric and native cell maxima only",
+    "no SC/XY/bulk/edge/contact convergence promotion",
+    "PBS interface remains unvalidated skin contact",
+    "no activation or human safety claim",
+    "unloaded native phi probes only"
+  ],
+  "native_self_gates": {
+    "status": "passed_existing_five_native_equation_gates_only",
+    "values": {
+      "max_residual": 9.64650824493184e-10,
+      "max_power_error": 3.1191956944257973e-10,
+      "max_current_error": 4.161825407313671e-09,
+      "max_area_relative_error": 1.4210854715202004e-14,
+      "max_interface_normal_current_relative_error": 1.6421224920370673e-15,
+      "channels": 2,
+      "cells": 351680,
+      "h_xy_mm": 0.625,
+      "sc_cells": 2
+    },
+    "limits": {
+      "max_residual": 2e-07,
+      "max_power_error": 2e-07,
+      "max_current_error": 2e-06,
+      "max_area_relative_error": 1e-10,
+      "max_interface_normal_current_relative_error": 2e-07
+    }
+  },
+  "resources": {
+    "condition_seconds": 121.8950903900004,
+    "execution_total_seconds": 122.08914349900078,
+    "sampled_peak_aggregate_RSS_bytes": 513818624
+  },
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "experimentally_validated": false
+}
