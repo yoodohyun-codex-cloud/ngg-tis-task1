@@ -1,0 +1,91 @@
+{
+  "schema": "task1-batch-publication-spec-v1",
+  "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+  "branch": "codex/task1-cloud-restart-20261020",
+  "parent_admission_commit": "fc7e3afdc6d9478e0a53002e407eff93523aecfa",
+  "comment_id": 6314015870,
+  "files": [
+    {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation-plan.json"
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json"
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen.json"
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/feedback-after-cross-allocation.json"
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication-template.md"
+    }
+  ],
+  "required_completed_artifacts": [
+    {
+      "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/summary.json",
+      "statuses": [
+        "complete"
+      ],
+      "source_files": {
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/preregistration.json": "registration_sha256"
+      }
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json",
+      "statuses": [
+        "calculated_unadopted"
+      ],
+      "source_hashes_field": "inputs_sha256"
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen.json",
+      "statuses": [
+        "screen_complete_not_adopted"
+      ],
+      "source_files": {
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json": "input_volume_report.SHA256",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen-plan.json": "preregistration.SHA256"
+      }
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/cases/crossalloc-source200-return250-xy80.json",
+      "statuses": [
+        "complete"
+      ],
+      "source_files": {
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/configs/crossalloc-source200-return250-xy80.properties": "config_sha256",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/postprocess/crossalloc-source200-return250-xy80/summary.json": "postprocess_sha256"
+      }
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/cases/crossalloc-source225-return225-xy80.json",
+      "statuses": [
+        "complete"
+      ],
+      "source_files": {
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/configs/crossalloc-source225-return225-xy80.properties": "config_sha256",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/postprocess/crossalloc-source225-return225-xy80/summary.json": "postprocess_sha256"
+      }
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/cases/crossalloc-source250-return200-xy80.json",
+      "statuses": [
+        "complete"
+      ],
+      "source_files": {
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/configs/crossalloc-source250-return200-xy80.properties": "config_sha256",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/postprocess/crossalloc-source250-return200-xy80/summary.json": "postprocess_sha256"
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication-template.md": "bbb611b911ea5c69b8f7d12006e0652eef1d96bb45f1d49b106396d93832f54f",
+    "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen-plan.json": "7c170b18174e498f2ab44a150ad7480c04f199cf2af1289a62e01a1164eb4766",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/preregistration.json": "443d51945944bd43e5e93ecf42d2ec965f48683e606f657cb0c5c3f426508b6f"
+  },
+  "body_file": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication-template.md",
+  "body_sha256": "bbb611b911ea5c69b8f7d12006e0652eef1d96bb45f1d49b106396d93832f54f",
+  "commit_message": "Publish completed fixed-area cross allocation screen and native gate evidence",
+  "resume_condition": "Root reads fixed8checks and peer feedback, then preregisters the next bounded diagnostics; no automaticadoption or extraresources"
+}
