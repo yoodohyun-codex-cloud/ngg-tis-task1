@@ -1,0 +1,48 @@
+{
+  "checked_utc": "2026-10-21T18:44:32.915020+00:00",
+  "queue": {
+    "schema": "task1-bounded-continuation-v1",
+    "status": "running",
+    "pid": 28491,
+    "proc_start_ticks": 5475248,
+    "created_utc": "2026-10-21T18:44:25.690481+00:00",
+    "phase": "direction-bounds-eight",
+    "stages": [],
+    "current_child": {
+      "pid": 28494,
+      "proc_start_ticks": 5475288,
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_direction_bounds_audit.py",
+        "--preregistration",
+        "/workspace/ngg-tis-task1/docs/cloud-direction-bounds-context-20261021T191000Z/preregistration.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-direction-bounds-20261021T191000Z"
+      ]
+    },
+    "plan_path": "/workspace/ngg-tis-task1/docs/cloud-direction-bounds-context-20261021T191000Z/queue-plan.json",
+    "plan_sha256": "eb8ea1d3a554b7400be55ff1de2e0d7a50b533a7beb0fe6089c93fa5deff4841",
+    "background_daemon": false,
+    "candidate_adopted": false,
+    "updated_utc": "2026-10-21T18:44:31.231260+00:00",
+    "elapsed_seconds": 5.540867231997254,
+    "coordinator_overhead_seconds": 0.17781295399618102,
+    "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_direction_bounds_audit.py --preregistration /workspace/ngg-tis-task1/docs/cloud-direction-bounds-context-20261021T191000Z/preregistration.json --output /workspace/ngg-tis-task1/docs/cloud-direction-bounds-20261021T191000Z",
+    "aggregate_rss_bytes": 20942848,
+    "current_child_members": {
+      "28494": 5475288
+    }
+  },
+  "child_heartbeat": {
+    "phase": "condition_start",
+    "status": "running",
+    "pid": 28494,
+    "proc_start_ticks": 5475288,
+    "updated_utc": "2026-10-21T18:44:31.066156+00:00",
+    "elapsed_seconds": 5.00930796800094,
+    "basis_id": "perimeter-shell225-notch-xy80",
+    "condition_id": "baseline-square15-xy80-square_3h"
+  },
+  "live_process_evidence": "  28491 Wed Oct 21 18:44:24 2026 python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-direction-bounds-context-20261021T191000Z/queue-plan.json\n  28494 Wed Oct 21 18:44:24 2026 /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_direction_bounds_audit.py --preregistration /workspace/ngg-tis-task1/docs/cloud-direction-bounds-context-20261021T191000Z/preregistration.json --output /workspace/ngg-tis-task1/docs/cloud-direction-bounds-20261021T191000Z\n  28505 Wed Oct 21 18:44:31 2026 /bin/bash -lc python - <<'PY' from pathlib import Path import json,subprocess,datetime R=Path.cwd();C=R/'docs/cloud-direction-bounds-context-20261021T191000Z';q=json.loads((C/'queue/heartbeat.json').read_text());h=json.loads((R/'docs/cloud-direction-bounds-20261021T191000Z/heartbeat.json').read_text());proof={'checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'queue':q,'child_heartbeat':h,'live_process_evidence':subprocess.check_output(['ps','-eo','pid,lstart,args'],text=True),'kernel_locks':Path('/proc/locks').read_text()};proof['live_process_evidence']='\\n'.join(s for s in proof['live_process_evidence'].splitlines() if 'task1_'in s or 'Task1'in s);(C/'started-live-proof.json').write_text(json.dumps(proof,indent=2)+'\\n');print({k:h.get(k)for k in['pid','proc_start_ticks','phase','condition_id','status']});print(proof['live_process_evidence']) PY",
+  "kernel_locks": "1: POSIX  ADVISORY  WRITE 28494 00:1b:262185 0 EOF\n2: FLOCK  ADVISORY  WRITE 28494 00:1b:262185 0 EOF\n3: FLOCK  ADVISORY  WRITE 443 00:1b:786894 0 EOF\n4: FLOCK  ADVISORY  WRITE 171 00:1b:9223372036855850032 0 EOF\n5: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849987 0 EOF\n6: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849976 0 EOF\n7: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849990 0 EOF\n8: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849993 0 EOF\n9: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849979 0 EOF\n10: POSIX  ADVISORY  WRITE 28491 00:1b:264792 0 EOF\n11: FLOCK  ADVISORY  WRITE 28491 00:1b:264792 0 EOF\n12: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850079 0 EOF\n13: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850085 0 EOF\n"
+}
