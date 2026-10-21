@@ -1,0 +1,138 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "preregistered_not_executed",
+  "created_utc": "2026-10-21T19:37:12.651334+00:00",
+  "output_directory": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/queue-sensitivity",
+  "max_total_seconds": 720,
+  "stages": [
+    {
+      "id": "fixed-SC2-drive-SC4-sensitivity",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_rounded_sc4_sensitivity.py",
+        "--preregistration",
+        "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/sensitivity-plan.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-sensitivity-20261021T204000Z"
+      ],
+      "max_seconds": 600,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-sensitivity-20261021T204000Z/attempt.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-sensitivity-20261021T204000Z/summary.json",
+        "statuses": [
+          "calculated_unadopted"
+        ]
+      }
+    },
+    {
+      "id": "feedback-after-SC4-sensitivity",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-sensitivity.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-sensitivity.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-sensitivity.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/preregistration.json": "e8397f27483d6b5c5abb8fa7bbfe125d62bd2870de55e44d44bb5c0a8409413b",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/decision.json": "7fffabb7057f841a08e47ca71c4f3846f70c9aae658084d1958c168ef72a9ab4",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-optimization-context-20261021T203000Z/feedback-after.json": "11d5bf08dc003d8bb4573ed45d3996fdeda2b620f546a76ed38a16ff508d45e9",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-optimization-20261021T203000Z/summary.json": "943a0418920f49a778f1edf21a52c1a449799ae44795b2adfcf71e6c89795732",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-optimization-20261021T203000Z/rounded-opt-e7b3bf639935/condition.json": "48fabf8729c4efeb7ffb39737c49fba09bab29185dbc39ddaeede7684e11374e",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/postprocess/rounded-fullface225-sc4-xy80/summary.json": "717bc224f4a18ff912197d44f3e68ab6f0e97c3f706e1d2f2fffbce4b00a57f7",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/configs/rounded-fullface225-sc4-xy80.properties": "5cac8156e6a18af31a17e899f4726dd8cd749dc497c5ea4a5afe10c8ba28b0a0",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/cases/rounded-fullface225-sc4-xy80.json": "41104307d05b7779451d7b32b64e59fb108065ce2a38414816bd43b36876a3a2",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80-same-grid-control.json": "ccda669bb21eaecf1f3f3844e997629542c8054572497efd3fa6e2f4f6c7948d",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/validation.json": "bf22ad6a1baa72f4f3c96f5086675ce5d6e92e62d087b5f62ea3551b6c732c6f",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/mesh-metadata.json": "25f4eb1510c766420cdabd33fc889c7b2890cbd946faed0bd60cdf9d83ca6d37",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/grid.csv.gz": "37d2eca80ed9c793ef6fb866e4b8e9bb8dc084ffe15039499c1d6842a050a088",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/field-3000.bin.gz": "b5767eaf18507c356ab289b7bba4e7b4cc121e4bbe045847d94300e9171a27b2",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/potential-3000.bin.gz": "05e1817743678e3175529c0bc168adc8eaf2bd86e1c5b0db267dbd76e8b27e37",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/density-3000.bin": "117e4db5dc04b074a1590089666cf4d1a2b6b70ddd18f0a957120d35d481184b",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/loss-3000.bin": "2856680f6debbf62b312af4ff461f47e1e2fcf9b52dc078dea7d3e8a334e9461",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/source-3000.bin": "fddd1d00851c28b8c16aadcb11c2120440bf95adb56d08f52d477ebeec049966",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/contacts-3000.csv": "9a9f0b3a4bba95b112f1ea481defdf412480cf57beb45de81cb46049d31a5bb6",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/field-3030.bin.gz": "0b12cc6e73eda9396b7858d481db4beeb1610a844931be79eee427ee5b2127e6",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/potential-3030.bin.gz": "bb33535e88cb8cd5a09cbb5861cb644be6381a320516066a3b173f1feff1b169",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/density-3030.bin": "8d59b7d6e66d4669f6825bfc544896a6d72ae290ee7ff28759623ad77c031396",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/loss-3030.bin": "a223793e7e9ce9544222fdfdd2523aad5c27da3cc67c6803b21862564329b3fd",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/source-3030.bin": "c2a18fa667bc8d2e92429959112edb782f83b137451a9ccd139af64e5d83dd5d",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/contacts-3030.csv": "9a9f0b3a4bba95b112f1ea481defdf412480cf57beb45de81cb46049d31a5bb6",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/field-9000.bin.gz": "dfb2430e64de669c05e300dd7f3d162529e943d66cc822c2de77afd499f3380e",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/potential-9000.bin.gz": "9cc823548cd4f47bc053aa413ad250f65e80125cbce9e22511e0d6d9f776a356",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/density-9000.bin": "69b7b4df8a1968d4d603295ca8625890647baab711e649d22715d5c696c78ac7",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/loss-9000.bin": "3806bf3df111cc371cc8af7c77cfebb69de4bce49a5b6c5126f46b73c2ffd6bf",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/source-9000.bin": "87feea3259445ab51de84113c7f4cb08d3f7cbf497aa6ecfc350d93f4b187634",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/contacts-9000.csv": "9a9f0b3a4bba95b112f1ea481defdf412480cf57beb45de81cb46049d31a5bb6",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/field-9090.bin.gz": "2428a76c5c5426e0608639ac72a2f3e19854342de9abc8ea8fd063c98c6601c6",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/potential-9090.bin.gz": "de55a1bf06b441323f20a3425ebced6a847d30b6203fc958715282f7debb4ad1",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/density-9090.bin": "4e4c90977aae9e67d1118c0a49b99fd79cc9d154a4ea2fd3acd39ff663421b55",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/loss-9090.bin": "2f8c87fab54af562958981031913985d2c268959e360f05b2d8f4f9462f1aa7d",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/source-9090.bin": "2aaebbe5826243da354d5be848b0ec938498661446fce0fb257581589276a3f2",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/bases/rounded-fullface225-sc4-xy80/contacts-9090.csv": "9a9f0b3a4bba95b112f1ea481defdf412480cf57beb45de81cb46049d31a5bb6",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/masks/rounded-fullface225-sc4-xy80.csv": "a18c9697232e5f486acc06a16129c2e4ffb0dee45fb6ec5b0edbe34d1b9def29",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/postprocess/rounded-fullface225-sc4-xy80/volume.npz": "e57b57a7e322dee6d9b0124a674ce3c2f85ead30cf0ba12511f31c614e8c1cfd",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/postprocess/rounded-fullface225-sc4-xy80/probes.json": "b29501784e2f3deca5cd60ee4ab08ed7dadaca1ba3b535624d36b05505d7560b",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-optimization-20261021T203000Z/rounded-opt-e7b3bf639935/probes.json": "17478d4a414c965efaa6e95fab665a501b0e121bfbcd3a39675248cdfdd6d339",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-optimization-20261021T203000Z/rounded-opt-e7b3bf639935/volume.npz": "2cf781f3374598a10efef4361bf216a84822efcc5bc3203166b2e55541e8284f",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-optimization-20261021T203000Z/rounded-opt-e7b3bf639935/native-volume-metrics.json": "c1ffd248c7b816e626915f89e21e4530378b78f561215565484c8cf09d0b2bfd",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/frozen-source/tis-java/selectivity_postprocess.py": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/frozen-source/tis-java/selectivity_postprocess.py": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/frozen-source/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/frozen-source/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/frozen-source/tis-java/layered_probe_analysis.py": "cda32e600af3e9d3d2cca153d29eaac146c40eb01c3c0d114e046dcc7ea134ea",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/frozen-source/tis-java/layered_probe_analysis.py": "cda32e600af3e9d3d2cca153d29eaac146c40eb01c3c0d114e046dcc7ea134ea",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/frozen-source/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/frozen-source/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/frozen-source/tis-java/explore_inputs.py": "a1ef002509b872aa0164140981daab9f5f65efeb22a2821ea79c4612f50c9888",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/frozen-source/tis-java/explore_inputs.py": "a1ef002509b872aa0164140981daab9f5f65efeb22a2821ea79c4612f50c9888",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/frozen-source-manifest.json": "d308c522e56422e3cec89ec8fc4b5a3b820de0807d6fd8401d86a4e259476fda",
+    "/workspace/ngg-tis-task1/tools/task1_rounded_sc4_sensitivity.py": "4fad664d7a2beca465f1080fb553c6b309a16e8a367a3af22801494ba80534de",
+    "/workspace/ngg-tis-task1/tests/test_task1_rounded_sc4_sensitivity.py": "f7c45ac96e6ad113343e638575c10f2395f71ad17b3daf82499cf20a3e260a2a",
+    "/workspace/ngg-tis-task1/tools/task1_rounded_drive_scout.py": "967bf110658caa2515641739f4804eb21cec35dfcea4b7457576701f048beafb",
+    "/workspace/ngg-tis-task1/tools/task1_rounded_drive_optimization.py": "398d5b3a08febd6f7972337874540ed9de7a89f24e379da637d316332d15f761",
+    "/workspace/ngg-tis-task1/tools/task1_rounded_sc4_registration.py": "a6069ad21fc567230f36066df1f1820e8c3ed70e539921013dc68180358e87a8",
+    "/workspace/ngg-tis-task1/tools/task1_drive_ratio_audit.py": "7cb7bf771ddd5f1d2f4ec88556fd6c7e48736e3c5b75e915b9903c9af61ee92f",
+    "/workspace/ngg-tis-task1/tools/task1_volume_selectivity.py": "b85a640c095120f02216d784ffc3886856b3ad05c186e049f061f23638cdd0dc",
+    "/workspace/ngg-tis-task1/tools/task1_waveform_check.py": "76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032",
+    "/workspace/ngg-tis-task1/tools/task1_carrier_balance_audit.py": "53a949985232a4a9a9eac2d4449efbca4f3bda556ef2feed6937528738ae86c7",
+    "/workspace/ngg-tis-task1/tools/task1_frequency_resynthesis.py": "7bc6118978e6d7dda4d7bc1eed9203a9c7700b4ec751d94cd6ba37ecb3fb8ab5",
+    "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py": "180c2133342614f6f0ab3cac327532e5f0e2e8589d8a59614679134d7615fac7",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/tools/task1_results_view.py": "06d4016f1c330a0d6f556a30564f80c46f6298b194a1b58fbbdce128d2889082",
+    "/workspace/ngg-tis-task1/tools/task1_return_current_drive_scout.py": "36105f2956c6f14145904f6dffda8f69befe301a53f650fad5944c93a1b6874b",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/sensitivity-plan.json": "2c877a7c5f97e7870dc4a9de442252e8d268ca8b3b3106636d5f57d798444b2b",
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "89bf821666fedde2484b927641b063effaf01fc71d5749084af5f385aac24dce",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "bf00ce049763482acdb9d7cbc09904a0a2f13b1213b7ad885e255a5c803bf4ce",
+    "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py": "d4e6a1c978b58f6496e961000ce9d4d14a3e4c0a9fec0ec5ef386801bb86f9d5"
+  },
+  "resource_policy_limit_seconds": 13800,
+  "caps": {
+    "CPU_count": 1,
+    "concurrent_children": 1,
+    "aggregate_RSS_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648
+  },
+  "candidate_adopted": false,
+  "background_daemon": false,
+  "automatic_retries": false,
+  "implementation_git_commit": "80c658f3e82b1e0b054a1fc3d116736e50f1da44",
+  "implementation_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "89bf821666fedde2484b927641b063effaf01fc71d5749084af5f385aac24dce",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "bf00ce049763482acdb9d7cbc09904a0a2f13b1213b7ad885e255a5c803bf4ce",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  }
+}
