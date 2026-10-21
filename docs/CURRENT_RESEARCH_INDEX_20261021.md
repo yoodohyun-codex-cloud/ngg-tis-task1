@@ -2,7 +2,8 @@
 
 17:57 UTC 최신 완료: 회전 기하의 새 sine 대조군1개+coherent 구동4개를 실제54.019초에 계산하고 피드백 GET·게시까지 완료했습니다(`4dff5b18`) . 모두 목표2항목 통과/비표적6항목 실패로 미채택입니다. 예를 들어 coherent r1/90°는 같은8개 피부·접촉cap에서 목표mean/P10=4.743313/4.326879 V/m이지만 표층P95=67.804247/전체비표적P95=51.338308 V/m입니다. 이때 실제 source상한은 각1.517825Vpp이므로 raw1Vpp 개선으로 해석하지 않습니다. 새 sine의 nativepost 전기·복소중심장 회귀는 배율1/오차0이며, 이전에 없던 sine 부피·40프로브를 이번에 계산했습니다. 현재 큐는 정상 완료됐고 다음 근거 있는 유한 배치를 선정 중입니다. 승인13800초 중 잔여5432.183초(17:59 조회), 저장여유2GiB/CPU1/RSS3GiB를 유지합니다.
 
-- [새 회전 sine+coherent5조건 원결과](cloud-rotation-coherent-20261021T182000Z/summary.json), [사전등록](cloud-rotation-coherent-context-20261021T182000Z/preregistration.json), [실제 시작 PID·잠금](cloud-rotation-coherent-context-20261021T182000Z/started-live-proof.json), [유도현2에 실질 결과 전달6322870661](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6322870661)
+- [새 회전 sine+coherent5조건 보고](ROTATION_COHERENT_RESULTS_20261021.md) / [7행×5모드 GUI](CLOUD_ROTATION_COHERENT_RESULTS_20261021.html) / [원결과](cloud-rotation-coherent-20261021T182000Z/summary.json), [사전등록](cloud-rotation-coherent-context-20261021T182000Z/preregistration.json), [실제 시작 PID·잠금](cloud-rotation-coherent-context-20261021T182000Z/started-live-proof.json), [유도현2에 실질 결과 전달6322870661](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6322870661)
+- [최신 회전 기준3개×raw/skin8×중심/ROIenergy RMS의 단일쌍12매칭](cloud-rotation-coherent-single-pair-20261021T183500Z/summary.json): 실제1.177초에 계산하고 GET·게시까지18:03:47 UTC에 완료(`61cbbfea`); 총면적450mm²/2패드/1출력과900mm²/4패드/2출력의 footprint 차이 및40무부하프로브를 분리
 - [회전 기하 전압 비율4조건](ROTATION_RATIO_RESULTS_20261021.md) / [6행 수치 GUI](CLOUD_ROTATION_RATIO_RESULTS_20261021.html)
 - [고정 모델에서 양의 전압쌍 진폭 계열의 조건부 상·하한](ROTATION_AMPLITUDE_BOUNDS_20261021.md): 같은 square3h·위상·회로·격자·2074방향에 한정하며 다른 기하/파형/접촉이나 연속체 물리의 불가능성을 뜻하지 않음
 
