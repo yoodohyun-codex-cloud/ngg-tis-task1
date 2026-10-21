@@ -75,9 +75,15 @@ def validate_sc2_scope(case,meta):
         'Only nominalPBS original/rounded four225mm2 SC2 cohorts are compared; no SC4/contact-scaled alias')
 
 
+def same_sc2_grid(config,reference):
+    return (float(config['h_mm'])==float(reference['h_mm'])==.625 and
+        config['validation.sc_cells']==reference['validation.sc_cells']=='2' and
+        config['bulk.counts']==reference['bulk.counts']=='14,14,40')
+
+
 def implementation():
     modules=(old,old.old,rounded,old.drive,old.view,core,policy)
-    paths=[Path(__file__).resolve(),ROOT/'tests/test_task1_rounded_single_pair.py',*[Path(m.__file__).resolve()for m in modules]]
+    paths=[Path(__file__).resolve(),ROOT/'tests/test_task1_rounded_single_pair.py',ROOT/'tests/test_task1_rounded_single_pair_grid_text.py',*[Path(m.__file__).resolve()for m in modules]]
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip();refs={}
     for p in dict.fromkeys(paths):
         require(p.read_bytes()==subprocess.check_output(['git','show',commit+':'+p.relative_to(ROOT).as_posix()],cwd=ROOT),'Commit consumed C1 comparison source/tests before use: '+str(p));refs[str(p)]=sha(p)
@@ -130,8 +136,7 @@ def make_preregistration(output,decision_path,feedback_path):
         reg=bind(path.parents[2]/'preregistration.json');case=next(c for c in reg['cases']if c['id']==path.parent.name);validate_sc2_scope(case,native['mesh_metadata'])
         config=old.properties(case['config_file']);require(sha(case['config_file'])==case['config_sha256'],'Reference config SHA mismatch')
         keys={k for k in c1config if k.startswith('z.')or k.endswith(('.sigma','.epsilon_r'))}
-        require(all(config.get(k)==c1config[k]for k in keys)and config['h_mm']==c1config['h_mm']and
-            config['validation.sc_cells']==c1config['validation.sc_cells']=='2'and config['bulk.counts']==c1config['bulk.counts'],
+        require(all(config.get(k)==c1config[k]for k in keys)and same_sc2_grid(config,c1config),
             'Nominal material/specific-contact model and SC2 grid must match the cached C1 unit response')
         refs[case['config_file']]=case['config_sha256']
         square=next(c for c in native['conditions']if c['id']==row['condition_id'])
