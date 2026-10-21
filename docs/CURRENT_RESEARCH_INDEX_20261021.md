@@ -7,6 +7,7 @@ SC2→SC4는native117.746초/선택후처리14.641초로완료했습니다. 같�
 - [새peer 방향bounds권고·실제수신·적용보류](SC4_FEEDBACK_DISPOSITION_20261021.md)
 - [완료SC4 고정진폭·별도재매칭 실제결과](cloud-rounded-sc4-sensitivity-20261021T204000Z/summary.json) / [첫감사중단·재계산없는복구](cloud-rounded-sc4-context-20261021T204000Z/audit-failure-disposition.json)
 - [SC4 최초큐·감사실패보존](cloud-rounded-sc4-context-20261021T204000Z/queue-native-plan.json) / [선택 근거·고정 SC2조건](cloud-rounded-sc4-context-20261021T204000Z/decision.json) / [실제시작 PID·잠금](cloud-rounded-sc4-context-20261021T204000Z/started-live-proof.json)
+- [완료진폭·위상탐색6행×5모드 GUI](CLOUD_ROUNDED_DRIVE_OPTIMIZATION_RESULTS_20261021.html) / [보고서](ROUNDED_DRIVE_OPTIMIZATION_RESULTS_20261021.md)
 - [118평가·최종4조건 실제 결과](cloud-rounded-drive-optimization-20261021T203000Z/summary.json) / [proxy/전체방향 회귀](cloud-rounded-drive-optimization-20261021T203000Z/proxy-search.json)
 - [rounded signed weak6 보고](ROUNDED_DRIVE_RESULTS_20261021.md) / [8행×5모드 GUI](CLOUD_ROUNDED_DRIVE_RESULTS_20261021.html)
 - [완료 rounded 형상 보고](ROUNDED_FULLFACE_RESULTS_20261021.md) / [2행×5모드 GUI](CLOUD_ROUNDED_FULLFACE_RESULTS_20261021.html) / [실제 TOP 윤곽·공통눈금 지도13장](cloud-rounded-fullface-native-maps-20261021T201000Z/index.html)
