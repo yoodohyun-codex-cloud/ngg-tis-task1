@@ -233,7 +233,7 @@ class QueueFixture(unittest.TestCase):
                      'task1_return_rotation_operator_audit.py', 'task1_rotation_drive_ratio_scout.py',
                      'task1_rotation_amplitude_bounds.py', 'task1_rotation_coherent_scout.py',
                      'task1_rotation_coherent_single_pair.py', 'task1_perimeter_antiphase_scout.py',
-                     'task1_direction_bounds_audit.py', 'task1_perimeter_drive_optimization.py', 'task1_rounded_drive_scout.py'):
+                     'task1_direction_bounds_audit.py', 'task1_perimeter_drive_optimization.py', 'task1_rounded_drive_scout.py', 'task1_rounded_drive_optimization.py'):
             tool = self.root/'tools'/name
             output = self.root/'docs'/name.removesuffix('.py')
             flags = ['--preregistration', str(self.baseline), '--output', str(output)]
