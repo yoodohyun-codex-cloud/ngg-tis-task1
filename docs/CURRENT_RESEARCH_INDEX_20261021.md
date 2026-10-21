@@ -1,5 +1,9 @@
 # 작업1 최신 연구 결과와 실행 경로
 
+20:57 UTC 최신 완료: 동일 구동·fine 5개 진폭의 SC4/XY coarse 진단을 15.316초에 완료했습니다. SC4는 20/20 통과, 최대 변화 0.01828%·상태 변화0/16입니다. XY는 접촉 J95 9.5310%, SC 손실5.7515%, 접촉 손실5.9560% 차이로 6/20 실패했고 기존 XY 실패도 유지합니다. 세 mesh 모두 목표 mean/P10이 기준 미달이라 6/8·미채택이며 전체 수렴이 아닙니다. 현재 워커는 없고, 더 촘촘한 XY native는 저장 공간 gate 차단입니다. 기존 cap 안의 h.4167/791280셀은 여유2756469376B가 필요하며 새 등록 전입니다. 최신 fine 후보와 C1 RMS 비교의 작은 JSON 갱신을 준비 중입니다.
+
+- [최신 격자 결과 GUI](CLOUD_ORIGINAL_MESH_SENSITIVITY_RESULTS_20261021.html) / [보고서](ORIGINAL_MESH_SENSITIVITY_RESULTS_20261021.md) / [실제 두 조건](cloud-original-mesh-sensitivity-20261021T223000Z/summary.json)
+
 20:48 UTC compact refinement 완료: 실제90.517초/72cache재사용+72NEWproxy·개수상한부분종료/새full1/GET큐exit0입니다. 새3e018f8a317a skin8목표mean/P10=4.011539371/3.595322017V/m이기준미달,표층P95=25.247853311·비표적P95=23.395707457·고변조체적넷은통과해6/8·미채택입니다. sourceupper1.089258574/1.093481770Vpp·SC손실제한,raw1Vpp목표3.668592820/3.287957893와구분합니다. compact출력2,891,099B/no새NPZ이며모든전체부피metrics/40φ검증은저장했습니다. 현재워커는없으며samephysicalSC4/XYcoarse캐시의동일command/고정fine5배율민감도를다음질문으로준비합니다. 새mesh실행전이며과거XY수렴실패/전체수렴hold를유지합니다.
 
 - [완료 정밀탐색5행 GUI](CLOUD_ORIGINAL_DRIVE_REFINEMENT_RESULTS_20261021.html) / [보고서](ORIGINAL_DRIVE_REFINEMENT_RESULTS_20261021.md) / [실제144proxy·새1full](cloud-original-drive-refinement-20261021T222000Z/summary.json)

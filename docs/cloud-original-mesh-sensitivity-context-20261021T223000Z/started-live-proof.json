@@ -1,0 +1,61 @@
+{
+  "observed_utc": "2026-10-21T20:57:07.180508+00:00",
+  "status": "actual_worker_metadata_observation",
+  "controllers": {
+    "queue": {
+      "heartbeat": {
+        "schema": "task1-bounded-continuation-v1",
+        "status": "running",
+        "pid": 40545,
+        "proc_start_ticks": 6269646,
+        "created_utc": "2026-10-21T20:56:52.986399+00:00",
+        "phase": "cached-original-fixed-command-mesh-sensitivity",
+        "stages": [],
+        "current_child": {
+          "pid": 40600,
+          "proc_start_ticks": 6270032,
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+            "/workspace/ngg-tis-task1/tools/task1_original_mesh_sensitivity.py",
+            "--preregistration",
+            "/workspace/ngg-tis-task1/docs/cloud-original-mesh-sensitivity-context-20261021T223000Z/preregistration.json",
+            "--output",
+            "/workspace/ngg-tis-task1/docs/cloud-original-mesh-sensitivity-20261021T223000Z"
+          ]
+        },
+        "plan_path": "/workspace/ngg-tis-task1/docs/cloud-original-mesh-sensitivity-context-20261021T223000Z/queue-plan.json",
+        "plan_sha256": "d8959a19f0dcd78c90da8543784e7d30b69c934f77e04fe43fe2523d1ee253f8",
+        "background_daemon": false,
+        "candidate_adopted": false,
+        "updated_utc": "2026-10-21T20:57:04.606432+00:00",
+        "elapsed_seconds": 11.620125298002677,
+        "coordinator_overhead_seconds": 0.3196199779995368,
+        "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_original_mesh_sensitivity.py --preregistration /workspace/ngg-tis-task1/docs/cloud-original-mesh-sensitivity-context-20261021T223000Z/preregistration.json --output /workspace/ngg-tis-task1/docs/cloud-original-mesh-sensitivity-20261021T223000Z",
+        "aggregate_rss_bytes": 462102528,
+        "current_child_members": {
+          "40600": 6270032
+        }
+      },
+      "live_PID_startticks": true
+    },
+    "worker": {
+      "heartbeat": {
+        "phase": "volume_projection",
+        "status": "running",
+        "pid": 40600,
+        "proc_start_ticks": 6270032,
+        "updated_utc": "2026-10-21T20:57:06.233280+00:00",
+        "elapsed_seconds": 12.588027305995638,
+        "cohort_id": "xy_coarse",
+        "condition_id": "original-refine-3e018f8a317a-xy_coarse-same-command"
+      },
+      "live_PID_startticks": true
+    }
+  },
+  "locks": {
+    ".task1-loop.lock": "held",
+    ".task1-execution.lock": "held"
+  },
+  "new_PDE": 0,
+  "free_bytes": 2174054400
+}
