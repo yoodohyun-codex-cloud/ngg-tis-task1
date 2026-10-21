@@ -1,0 +1,122 @@
+{
+  "schema": "task1-curated-feedback-before-extended-batch-v1",
+  "retrieval_utc": "2026-10-21T10:28:33.167581+00:00",
+  "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+  "source_commit_observed": "aa3f3700cd7229e5b539eaa7f0a770d504e1f1c4",
+  "remote_heads": {
+    "main": "3b5f1861c523a207d02b1a34a5f61c67b88556eb",
+    "peer_PR1": "5238a5345d53f10739db2f877000ab9c373116a1",
+    "compute_PR2": "aa3f3700cd7229e5b539eaa7f0a770d504e1f1c4"
+  },
+  "requests": [
+    {
+      "url": "https://api.github.com/repos/yoodohyun-codex-cloud/ngg-tis-task1/commits/main",
+      "method": "GET",
+      "status": 200,
+      "retrieved_utc": "2026-10-21T10:28:33.167581+00:00",
+      "response_SHA256": "429c576f2e83c95e179959b0a95e599bda1e5e026a2e41c1a9577a0c2bd92b77"
+    },
+    {
+      "url": "https://api.github.com/repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/1",
+      "method": "GET",
+      "status": 200,
+      "retrieved_utc": "2026-10-21T10:28:32.893630+00:00",
+      "response_SHA256": "d8c40c71752c0dfd209d12f817b41c1686c976b2aec43ac73747b931c352cbb1"
+    },
+    {
+      "url": "https://api.github.com/repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/2",
+      "method": "GET",
+      "status": 200,
+      "retrieved_utc": "2026-10-21T10:28:32.966608+00:00",
+      "response_SHA256": "82cb7eb7ce38c512c9043b88400e972cf3a60782a4bc0aed063f185b4577b36d"
+    },
+    {
+      "url": "https://api.github.com/repos/yoodohyun-codex-cloud/ngg-tis-task1/issues/2/comments?per_page=100",
+      "method": "GET",
+      "status": 200,
+      "retrieved_utc": "2026-10-21T10:28:32.792047+00:00",
+      "response_SHA256": "0703eca7510210b74266a44f401e94606d472b87f67d248373588c46d241aa12",
+      "count": 8,
+      "pagination_link": null
+    },
+    {
+      "url": "https://api.github.com/repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/2/comments?per_page=100",
+      "method": "GET",
+      "status": 200,
+      "retrieved_utc": "2026-10-21T10:28:32.720642+00:00",
+      "response_SHA256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "count": 0,
+      "pagination_link": null
+    },
+    {
+      "url": "https://api.github.com/repos/yoodohyun-codex-cloud/ngg-tis-task1/pulls/2/reviews?per_page=100",
+      "method": "GET",
+      "status": 200,
+      "retrieved_utc": "2026-10-21T10:28:32.777487+00:00",
+      "response_SHA256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "count": 0,
+      "pagination_link": null
+    }
+  ],
+  "previous_outbound_comment": {
+    "id": 6312175700,
+    "url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6312175700",
+    "created_utc": "2026-10-21T09:02:27Z",
+    "updated_utc": "2026-10-21T09:22:15Z",
+    "body_SHA256": "ed823c2d36145186ca490846d52fbbd757a80a106be7528ff5e0fa4aab1e611e",
+    "ownership": "Known compute-side outbound status update from local feedback-after-batch.json; do not count as peer approval"
+  },
+  "new_substantive_feedback": [
+    {
+      "source_key": "T1-F010-frequency-GH6312627319",
+      "key_scope": "Local stable supplement key, source comment assigns no new T1-FNNN; preserve original IDs",
+      "id": 6312627319,
+      "url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6312627319",
+      "created_utc": "2026-10-21T09:26:49Z",
+      "updated_utc": "2026-10-21T09:26:49Z",
+      "body_SHA256": "3583a8242c06641b58be4d770f73c9aca435354ee7e759eace6d622148871287",
+      "body": "### T1-F010 후속 검토: 저장 고주파 기저 재합성의 해석/입력 조건\n\n[aa3f370](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/commit/aa3f3700cd7229e5b539eaa7f0a770d504e1f1c4)의 S3 채택, return-role 1조건 완료와 절대 목표 mean/P10 실패로 인한 미채택을 확인했습니다. 5개 방정식 gate 통과는 해당 계산의 수치 검사이며 전체 수렴이나 실험 검증을 닫지 않습니다. 저장/로컬 복구는 독립 외부 백업과 구분합니다.\n\n다음 제안된 9000/9090 Hz 저장 기저 재합성은 다음 조건을 먼저 문서화·검증해야 해석 가능합니다.\n- 3000/3030→9000/9090 Hz는 carrier뿐 아니라 차주파수도30→90 Hz로 바뀝니다. 이를 순수 carrier 효과나 동일 생리적 자극 비교라고 명명하지 마세요. 차주파수 고정 기저가 없다면 부재를 그대로 남기고 새 PDE를 암묵적으로 요청하지 않습니다.\n- 실제 해당 주파수의 복소 E/φ·전류·접촉/회로 손실 기저를 확인하고, 새 정현파의 계수와 위상을 명시하세요. 기존 사각파3차고조파의1/3계수를 그대로 새 fundamental에 재사용하거나 집계 envelope를 배율 조정해서는 안 됩니다. 신호 및 부담 정규화가 동일한 물리적 입력을 뜻하는지 검사하세요.\n- 공통 ROI·물리 cutoff·부담 비교와 함께 공통 고정방향 및 위치별 최대방향 변조를 모두 보고하세요. carrier RMS, 균형/겹침 및 목표·표층·비표적 분포를 분리해 방향 변화가 최대방향 지표의 이득을 만드는지 평가하세요.\n- adapter 구현/검사, 유한 후처리 계획 등록, 실제 실행/종료 근거를 구분하세요. 현재 미구현·미등록·미실행을 완료로 표시하지 않습니다. 기존 예산 내 후처리 가능 여부는 계산 담당자가 현재 잔여 자원으로 판단하며,900초 PDE 예약 기준 완화나 예산 확대는 요청하지 않습니다.\n\n이번 항목은 제안 상태입니다. 타당한 입력 기저 또는 예산이 없으면 정확한 한계/재개 조건을 기록하고, 단순 수신확인 답글은 생략해 주세요.",
+      "source_status": "proposal; root owns adoption, implementation, execution and validation evidence"
+    }
+  ],
+  "assessment": {
+    "peer_PR1_head_changed": false,
+    "main_changed": false,
+    "compute_PR2_matches_known_public_head": true,
+    "newer_peer_reply_now_observed": true,
+    "supersedes_prior_no_reply_claim_as_of_this_retrieval": true,
+    "new_actionable_constraints": [
+      "9000/9090 versus3000/3030 changes beat90 versus30Hz too; label as combined carrier/beat change, no pure-carrier or equal-physiological-stimulus inference.",
+      "Use actual-frequency complex E/phi/current/loss arrays. Declare new sine coefficients and phase; do not retain square third-harmonic1/3 amplitude, rescale aggregate envelope or relabel frequency keys.",
+      "Retain common ROI, raw absolute metrics, frozen physical cutoff and distinct burden normalizations. Report fixed-axis and per-location maximum-direction modulation plus carrier RMS and balance/overlap separately.",
+      "Separate adapter tests, finite preregistration, actual start/terminal and numerical/experimental holds. Missing same-beat bases remain missing; this feedback itself requests no implicit PDE."
+    ],
+    "budget_authorization_precedence": {
+      "root_selected_new_cumulative_seconds": 13800,
+      "time_extension_only": "Root explicitly reports new user authorization after the peer comment; this supersedes older no-expansion scope for time only.",
+      "unchanged_limits": "CPU1, single PDE/owner, max800000cells, percase600s, heap2GiB, RSS3GiB, disk reserve2GiB",
+      "not_a_live_ledger_verification": "This read-only feedback snapshot does not alter or independently validate the new budget ledger; root records authorization and actual admission.",
+      "controller_selected_additional_seconds": 7200,
+      "explicit_user_time_increase_authorization": true,
+      "amount_scope": "User authorized more time; root selected7200additional seconds as the finite continuation allocation, not an exact number quoted by the user."
+    },
+    "scientific_scope": "S3 adoption and return-role rejection acknowledged; no new convergence, actual-skin, safety, activation, experimental or independent-backup validation."
+  },
+  "network": {
+    "skill": "cloud-environment-runtime",
+    "previously_read": true,
+    "observations_current": true,
+    "http_policy": {
+      "mode": "unrestricted",
+      "state": "enforced"
+    },
+    "executor_policy_version": 1,
+    "vpn_configured": false,
+    "proxy_and_TLS_verification_preserved": true
+  },
+  "remote_writes": false,
+  "remote_messages_comments_merges": false,
+  "research_modules_imported": false,
+  "calculations_or_worker_started": false,
+  "sanitization": "Relevant public feedback text/source URLs/IDs/times and selected head metadata only; no account profiles, credential values, private content or unrelated diagnostics."
+}
