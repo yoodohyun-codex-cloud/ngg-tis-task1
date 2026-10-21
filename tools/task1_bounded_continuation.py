@@ -45,6 +45,7 @@ ALLOWED = {
     'task1_lower_carrier_recovery.py': {'--execute', '--output'},
     'task1_mid_high_carrier.py': {'--execute', '--output'},
     'task1_coherent_drive_scout.py': {'--preregistration', '--output'},
+    'task1_coherent_drive_weak_scout.py': {'--preregistration', '--output'},
 }
 
 
@@ -166,7 +167,7 @@ def validate_stage(stage, root=ROOT):
         require(seen == ['--execute', '--output'], 'Only frozen lower-carrier execution allowed')
     if tool.name == 'task1_spatial_audit.py':
         require(set(seen) == flags and len(seen) == len(flags), 'Exact spatial audit flags required')
-    if tool.name in ('task1_cross_allocation_volume_registration.py', 'task1_grouped_fine_volume_registration.py', 'task1_grouped_fine_volume_recovery_registration.py', 'task1_adjacent_source_volume_registration.py', 'task1_coherent_drive_scout.py', 'task1_candidate_screen.py', 'task1_batch_publish.py'):
+    if tool.name in ('task1_cross_allocation_volume_registration.py', 'task1_grouped_fine_volume_registration.py', 'task1_grouped_fine_volume_recovery_registration.py', 'task1_adjacent_source_volume_registration.py', 'task1_coherent_drive_scout.py', 'task1_coherent_drive_weak_scout.py', 'task1_candidate_screen.py', 'task1_batch_publish.py'):
         require(set(seen) == flags and len(seen) == len(flags), 'Exact new metadata/publication stage flags required')
     seconds = stage.get('max_seconds')
     require(type(seconds) in (int, float) and math.isfinite(seconds) and 0 < seconds <= 2400,
