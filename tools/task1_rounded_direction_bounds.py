@@ -52,7 +52,7 @@ def _json(path,refs,expected=None):return bounds._json(path,refs,expected)
 def implementation_receipt():
     modules=(bounds,native,probes,view,volume,screen,core,policy)
     paths=[Path(__file__).resolve(),ROOT/'tests/test_task1_rounded_direction_bounds.py',
-        ROOT/'tests/test_task1_direction_bounds_audit.py',*[Path(m.__file__).resolve()for m in modules]]
+        ROOT/'tests/test_task1_direction_bounds_audit.py',ROOT/'tests/test_task1_rounded_direction_bounds_actual_schema.py',*[Path(m.__file__).resolve()for m in modules]]
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip();refs={}
     for p in dict.fromkeys(paths):
         require(p.read_bytes()==subprocess.check_output(['git','show',commit+':'+p.relative_to(ROOT).as_posix()],cwd=ROOT),
@@ -95,10 +95,10 @@ def validate_fixed_modes(selected,sc4):
 def validate_mesh_identity(sc2,sc4,c2,c4):
     require(sc2['sc_cells']==2 and sc4['sc_cells']==4 and sc2['cells']==351680 and sc4['cells']==361728,
         'Genuine SC2/SC4 cell counts required; no SC2 identity adapter')
-    keys=('h_xy_mm','radius_mm','total_depth_mm','bulk_layer_counts','tissue_boundaries_mm','channels','n_outputs',
+    keys=('h_xy_mm','radius_mm','total_depth_mm','bulk_layer_counts','tissue_boundaries_mm','channels',
         'source_peak_V','source_resistance_ohm','phasor_convention','field_reconstruction','frequencies_Hz')
     require(all(sc2[k]==sc4[k]for k in keys)and sc2['h_xy_mm']==.625 and sc2['bulk_layer_counts']==[14,14,40]
-        and sc2['tissue_boundaries_mm']==[0,.1,5.1,10.1,25.1]and sc2['channels']==sc2['n_outputs']==2,
+        and sc2['tissue_boundaries_mm']==[0,.1,5.1,10.1,25.1]and sc2['channels']==2,
         'SC-only refinement must preserve physical layers, XY/bulk, circuit and reconstruction')
     require(c2.keys()==c4.keys()and{k for k in c2 if c2[k]!=c4[k]}=={'validation.sc_cells','mask.path'}
         and c2['validation.sc_cells']=='2'and c4['validation.sc_cells']=='4'and c2['mask.sha256']==c4['mask.sha256'],
@@ -126,7 +126,7 @@ def _sc4_base(refs,rounded_base):
     native._pin(config_path,refs,ROOT,case['config_sha256']);native._pin(mask_path,refs,ROOT,case['mask_sha256'])
     rcase=rounded_base['registered_case'];mask2=Path(rcase['mask_file'])
     require(case['mask_sha256']==rcase['mask_sha256']and mask_path.read_bytes()==mask2.read_bytes()
-        and case['design']==rcase['design']and case['circuit']==rcase['circuit'],
+        and case['design']==rcase['design']and case['circuit']==rcase['circuit']and case['circuit']['n_outputs']==2,
         'SC4 must retain exact physical rounded mask bytes/design/circuit')
     identity=validate_mesh_identity(m2,meta,native._properties(Path(rcase['config_file'])),native._properties(config_path))
     require(meta['exporter_class']==m2['exporter_class']and meta['exporter_kind']==m2['exporter_kind'], 'Honest unchanged native producer required')
