@@ -814,6 +814,11 @@ def identity_sha(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()
 
 
+def comparison_json_text(value):
+    """Preserve every field and numeric value while avoiding JSON indentation."""
+    return json.dumps(value, separators=(',', ':'), ensure_ascii=False, allow_nan=False)+'\n'
+
+
 def map_plot_identity(records, mode, metric, supplement=False):
     import numpy as np
     conditions, maximum = [], 0.
@@ -1074,7 +1079,7 @@ def build(args, directory):
         external_native_backup=backup, external_instrument_artifacts=instrument,
         eligibility_policy='require original complete case record with exact postprocess/config SHA and path; failed reference comparison stays held; later analysis audits never implicitly promote',
         new_PDE=0, new_research_postprocess=0, experiment_validated=False)
-    (directory/'comparison.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n')
+    (directory/'comparison.json').write_text(comparison_json_text(payload))
     plot_cache = PlotCache(directory, getattr(args, 'reuse_assets', []), payload)
     flat = []
     for _, _, row in records:
@@ -1439,7 +1444,7 @@ def build(args, directory):
     payload['plot_cache'] = dict(reused=plot_cache.reused, generated=plot_cache.generated,
         rejected=plot_cache.rejected, requested_sources=[str(path) for path in getattr(args, 'reuse_assets', [])],
         renderer_layout='fixed_manual_margins_v2; no constrained layout or tight bbox;150dpi unchanged')
-    (directory/'comparison.json').write_text(json.dumps(payload, indent=2, allow_nan=False)+'\n')
+    (directory/'comparison.json').write_text(comparison_json_text(payload))
     return dict(status='rendered_offline_evidence', output=str(args.output), assets=str(directory),
         plot_cache=payload['plot_cache'],
         image_storage='base64_embedded_and_saved' if args.embed_images else 'relative_local_assets_once',
