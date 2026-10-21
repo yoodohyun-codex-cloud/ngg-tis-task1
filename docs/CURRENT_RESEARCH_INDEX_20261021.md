@@ -1,8 +1,15 @@
 # 작업1 최신 연구 결과와 실행 경로
 
-최신 완료: 같은외곽패드 윤곽4개를각축.625mm안쪽으로이동한 native1조건(99.620초)을 계산했습니다. 비교표 CLI의순서오류로첫큐는native/fullskin/등록완료후중단됐고, PDE를다시풀지않고4단계후처리복구큐를완료·게시했습니다(`dee30384`). 같은8피부·접촉cap에서목표mean/P10=3.405653/3.114895 V/m로원4square4.061849/3.645736보다낮으며8screen중3개통과로미채택입니다. contactnormalJ95가제한항이고낮은비표적P95하나를깊이집중으로해석하지않습니다. 앞선5gene탐색도124proxy+4전체검증141.859초완료·모두targetmean/P10실패이며게시댓글의이름충돌만재계산없이복구했습니다. 같은3행의공통눈금 지도12장과실제TOP접촉윤곽1장을단일120초guard/실제10.919초로저장했고3형상×5모드signedpower도JSON만으로검증했습니다. 현재same-centre225mm² fullface rounded형상1조건을19:06 UTC에시작해단일PDEworker(JavaPID31112/컨트롤러31110)로실행중입니다. 승인13800초중inward복구종료시잔여4720.043초/CPU1/RSS3GiB/저장여유2GiB를유지합니다. 후보채택/전체수렴/실험·인체안전·활성화검증은미완료이며무기한daemon을약속하지않습니다.
+최신 완료(19:29 UTC 게시): 고정 중심·225mm²×4 rounded fullface 형상과 signed weak 6조건에 이어, 좁은 진폭·위상 5gene 탐색의 고유118평가·최종4조건 전체검증을173.795초에 완료했습니다(`eb2b3bd`). 기준 sine의 목표 mean/P10 회귀 오차는0입니다. 가장 가까운 `rounded-opt-e7b3bf639935`의 같은8피부cap 목표mean/P10=4.064779/3.646953 V/m은 원래4square4.061849/3.645736를 조금 넘지만 표층P95=25.369751/비표적P95=23.648628이 원래25.259222/23.435719를 넘어6/8통과로 미채택입니다. 목표P10 여유는 약0.033%로 수렴 전 성공으로 판정하지 않습니다.
 
-- [현재 rounded 형상 배치 사전등록](cloud-rounded-fullface-context-20261021T200000Z/queue-plan.json) / [실제시작 PID·잠금](cloud-rounded-fullface-context-20261021T200000Z/started-live-proof.json)
+현재 SC2→SC4 한 조건을19:34:08 UTC에 실제 시작했습니다. JavaPID33298/컨트롤러33296/큐33264의 startticks·잠금 snapshot을 연결합니다. 물리SC두께.1mm·동일패드 mask/900mm²·XY/bulk·접촉/회로를 고정하고 두께방향 셀수만2→4입니다. SC2 실제계수·기존진폭 비교와 SC4의 원SC2cap 재매칭을 별도로 평가합니다. 기존square SC4는 재사용하며 새PDE는1/8RHS입니다. 이번 native/fullskin/GET 큐상한840초, 승인13800초중 준비전 잔여4312.617초/CPU1/RSS3GiB/여유2GiB를 유지합니다. 이 문장의 PID는 확인시각 snapshot이며 live 여부는 heartbeat와 실제PID/startticks를 함께 확인해야 합니다. 후보채택·전체수렴·실험·인체안전·활성화 검증은 미완료입니다.
+
+- [SC4 실제3단계 유한큐](cloud-rounded-sc4-context-20261021T204000Z/queue-native-plan.json) / [선택 근거·고정 SC2조건](cloud-rounded-sc4-context-20261021T204000Z/decision.json) / [실제시작 PID·잠금](cloud-rounded-sc4-context-20261021T204000Z/started-live-proof.json)
+- [118평가·최종4조건 실제 결과](cloud-rounded-drive-optimization-20261021T203000Z/summary.json) / [proxy/전체방향 회귀](cloud-rounded-drive-optimization-20261021T203000Z/proxy-search.json)
+- [rounded signed weak6 보고](ROUNDED_DRIVE_RESULTS_20261021.md) / [8행×5모드 GUI](CLOUD_ROUNDED_DRIVE_RESULTS_20261021.html)
+- [완료 rounded 형상 보고](ROUNDED_FULLFACE_RESULTS_20261021.md) / [2행×5모드 GUI](CLOUD_ROUNDED_FULLFACE_RESULTS_20261021.html) / [실제 TOP 윤곽·공통눈금 지도13장](cloud-rounded-fullface-native-maps-20261021T201000Z/index.html)
+
+- [완료 rounded 형상 배치 사전등록](cloud-rounded-fullface-context-20261021T200000Z/queue-plan.json) / [실제시작 PID·잠금](cloud-rounded-fullface-context-20261021T200000Z/started-live-proof.json)
 - [안쪽이동 실제접촉윤곽·공통눈금 지도13장](cloud-perimeter-inward-native-maps-20261021T195000Z/index.html) / [3형상×5모드 signed전력](cloud-inward-output-power-20261021T195500Z.json)
 
 - [안쪽이동 실제3행 부피결과](cloud-perimeter-inward-context-20261021T194000Z/volume.json) / [8screen](cloud-perimeter-inward-context-20261021T194000Z/screen.json) / [PDE재실행 없는 입력순서 복구](cloud-perimeter-inward-context-20261021T194000Z/postprocess-failure-disposition.json) / [native compact snapshot·원시8파일로컬상태](cloud-perimeter-inward-context-20261021T194000Z/completed-snapshot-inventory.json)
