@@ -1,0 +1,13 @@
+원래4square의한정국소refinement를90.517348초에완료했습니다. 기존72개exactproxy를source/metric/개별JSON·SHA로재사용하고새72개를평가해총144개입니다. new_evaluation_cap에따른부분탐색이며시간timeout·모든수준완료·전역최적이아닙니다. 기존16개full을재계산하지않고새최종1개의전체native2074ROI/5모드/40nativeφ/8screen을검증했습니다. feedbackGET까지큐2단계exit0,CPU1/peakRSS541499392B,새PDE0입니다. 이전actualpureerror0회귀는해당SHA-boundcache행에서재사용한것이며새회귀계산으로세지않습니다.
+
+새original-refine-3e018f8a317a의genes=[.03,.0025,.005,-.01,.985]입니다. 원래같은8개수치cap에서목표mean/P10=4.011539371/3.595322017V/m으로기준4.061848942/3.645735739에미달합니다. 표층P95=25.247853311/전체비표적P95=23.395707457과고정cutoff고변조체적넷은모두통과해6/8이지만목표2항목이실패하므로미채택입니다. 이전3f40의목표4.011638/3.595327은거의유지하면서표층P95실패를해소한점과원래기준목표보다여전히낮은점을함께보고합니다. 비표적비율이나통과개수만으로깊이집중성공을선언하지않습니다.
+
+rawsourcewhole-Vpp상한1Vpp에서는목표mean/P10=3.668592820/3.287957893V/m입니다. skin8에서는SC손실제한/진폭1.093481770,실제두outputsourceupper1.089258574/1.093481770Vpp입니다. raw·같은출력RMS전류합·같은총전력·같은8피부cap·legacy를구분하며이cap은인체안전한계가아닙니다. 원래D50/층.1,5,5,15mm/윗면/4physical225each·total900/2actualoutputs/commonGND50Ω·inactive0Vthrough50Ω/SC2XY.625bulk14,14,40/r5depth15–20fractionalROI·원래cutoff/−j구동을유지했습니다. 전체carrierRMS·차이주파수변조·nativepotentialVpp·signedpower·GNDnet/localJ를분리합니다.
+
+compact출력은총2891099B였습니다. 새volume.npz만의도적으로미생성했고실제전체부피float64지표/5모드/40nativeφ/8screen은모두계산·저장했습니다. condition/probes/native-volume-metrics의3artifact와원시기저SHA/실제계수/ROI가중치/재구성recipe를저장했으며원본과모든과거NPZ·실패는보존했습니다. 새scalar지도·독립export재현검증이나현재등록된exportCLI가있다고주장하지않습니다.
+
+다음은다른gene를더늘리는대신같은물리모델의SC4와XYcoarse기저에서이동일sourcecommand를검사하는유한민감도질문입니다. 저장된SC4는sc_cells2→4만,XYcoarse는h.625→1.25와같은물리rectmask표현만다르며각각361728/88480cells·모든Eφ/같은post/scalar/probe소스·native5gate통과기록이존재합니다. source파일존재·작은메타데이터검사를실제byte/decode/새command계산과혼동하지않습니다. 이후별도등록/실행에서확인합니다. 계수/globalg와5개fine배율을고정하고원래finecaps/cutoffs를유지하며새mesh에서같은I/P/부담으로다시맞추지않습니다. actualnewburdens/전류/전력을그대로보고하고목표mean/P101%,offP95/J95/loss2%,8screen상태변화없는지를2격자진단으로검사할예정입니다. 과거3파형XY수렴실패는유지하며새진단이전체SC/XY/bulk/edge/contact수렴을뜻하지않습니다. 아직새mesh후처리는실행전입니다.
+
+새native PDE저장gate차단·PBS→실제피부전이·ETA5001부하·스코프실제설정·fullraw독립영구backup·COMSOL5.3a5.3.1.201실행·실험/생리활성/안전은미검증입니다. 기존13800초/CPU1RSS3GiB/디스크2GiBreserve·출력8MiB이내만사용하고설치·삭제·예산확대·main병합·무기한daemon은없습니다.
+
+[5행 결과 GUI](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/codex/task1-cloud-restart-20261020/docs/CLOUD_ORIGINAL_DRIVE_REFINEMENT_RESULTS_20261021.html), [보고서](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/codex/task1-cloud-restart-20261020/docs/ORIGINAL_DRIVE_REFINEMENT_RESULTS_20261021.md), [계산summary](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/codex/task1-cloud-restart-20261020/docs/cloud-original-drive-refinement-20261021T222000Z/summary.json).
