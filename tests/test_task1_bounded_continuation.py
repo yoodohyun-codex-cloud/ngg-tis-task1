@@ -216,6 +216,17 @@ class QueueFixture(unittest.TestCase):
                 queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad),self.root)
         with self.assertRaises(ValueError):queue.validate_stage(dict(stage,max_seconds=601),self.root)
 
+    def test_inward_volume_requires_exact_context_flags(self):
+        tool=self.root/'tools/task1_perimeter_inward_volume_registration.py'
+        output=self.root/'docs/inward-volume-plan.json'
+        flags=['--feedback',str(self.baseline),'--decision',str(self.baseline),'--output',str(output)]
+        stage=dict(id='inward-metadata',argv=[str(Path(sys.executable).resolve()),str(tool),*flags],
+            max_seconds=120,must_not_exist=str(output),completion=dict(path=str(output),statuses=['preregistered_not_executed']))
+        self.assertEqual(queue.validate_stage(stage,self.root),tool)
+        for bad in (flags[2:],flags[:2]+flags[4:],flags+flags[:2],flags+['--execute']):
+            with self.subTest(flags=bad),self.assertRaises(ValueError):
+                queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad),self.root)
+
     def test_saved_field_and_algebra_stages_require_exact_frozen_plan(self):
         for name in ('task1_return_current_drive_scout.py', 'task1_coherent_single_pair.py',
                      'task1_return_rotation_operator_audit.py', 'task1_rotation_drive_ratio_scout.py',
