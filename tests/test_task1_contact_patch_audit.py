@@ -92,6 +92,42 @@ def synthetic_case(root):
 
 
 class PurePatchTests(unittest.TestCase):
+    def test_pad_current_integrates_complex_patches_before_rms(self):
+        rows = [(0, 0., 0., 1.), (0, 1., 0., 1.), (1, 2., 0., 1.),
+            (2, 3., 0., 1.), (3, 4., 0., 1.)]
+        # Pad0 has opposite patch currents at every frequency: finite patch J
+        # and loss, exactly zero coherent physical-pad current.
+        values = [1+0j, -1+0j, 2+0j, -1+0j, -1+0j]
+        density = {f:values+[0j]*5 if f in (3000,9000) else [0j]*5+values for f in audit.FREQUENCIES}
+        result = audit.reconstruct(rows, density, {f:1+0j for f in audit.FREQUENCIES}, [1., 1.])
+        self.assertGreater(result['J_RMS_A_m2'][0], 0.)
+        self.assertEqual(result['physical_pad_current_RMS_A'][0], 0.)
+        self.assertEqual(result['physical_pad_current_RMS_A'][1], math.sqrt(8.))
+        self.assertEqual(result['common_GND_return_current_RMS_A'], math.sqrt(8.))
+        self.assertEqual(result['KCL_total_RMS_residual_A'], 0.)
+
+    def test_pad_current_frequency_quadrature_and_all_four_ids_preserved(self):
+        rows = [(i, float(i), 0., 1.) for i in range(4)]
+        density, sources = {}, {}
+        for index, frequency in enumerate(audit.FREQUENCIES):
+            values = [1+0j, 2+0j, -1+0j, -2+0j] if index == 0 else (
+                [3j, 4j, -3j, -4j] if index == 1 else [0j]*4)
+            active = 0 if frequency in (3000,9000) else 1
+            density[frequency] = values+[0j]*4 if active == 0 else [0j]*4+values
+            matrix = [0j]*4
+            matrix[active] = values[0]
+            matrix[2+active] = values[1]
+            sources[frequency] = matrix
+        result = audit.reconstruct(rows, density, {f:1+0j for f in audit.FREQUENCIES}, [1., 1.], source_by_frequency=sources)
+        expected = [math.sqrt(5.), math.sqrt(10.), math.sqrt(5.), math.sqrt(10.)]
+        self.assertEqual(result['physical_pad_current_RMS_A'], expected)
+        spectrum = result['physical_pad_current_spectrum']
+        self.assertEqual(spectrum[0]['physical_pad_ids'], [0,1,2,3])
+        self.assertEqual(spectrum[0]['imaginary_A_by_pad'], [-1.,-2.,1.,2.])
+        self.assertEqual(spectrum[1]['real_A_by_pad'], [3.,4.,-3.,-4.])
+        self.assertTrue(all(row['KCL_within_existing_native_diagnostic_limit'] for row in spectrum))
+        self.assertTrue(all(row['source_output_comparison']['within_existing_native_diagnostic_limit'] for row in spectrum))
+
     def test_channel_major_actual_four_frequency_rms_not_patch_interleaved(self):
         rows = contacts()
         result = audit.reconstruct(rows, densities(), {f:1+.5j for f in audit.FREQUENCIES}, [2., 1.])

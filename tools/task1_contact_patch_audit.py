@@ -217,13 +217,16 @@ def validate_mask(contacts, mask_path, h):
     return [row[3]/face_area for row in contacts]
 
 
-def reconstruct(contacts, density_by_frequency, za_by_frequency, coefficients):
+def reconstruct(contacts, density_by_frequency, za_by_frequency, coefficients, *, source_by_frequency=None):
     """Native ABI is complex128(2,npatches), basis-channel-major, peak phasors."""
     n = len(contacts)
     require(n > 0 and len(coefficients) == 2 and all(math.isfinite(a) and a > 0 for a in coefficients),
         'Positive frozen fundamental/third-harmonic coefficients required')
     j2, v2, patch_power = [0.]*n, [0.]*n, [0.]*n
-    by_frequency = []
+    require({row[0] for row in contacts} == set(range(4)), 'Four physical pad IDs required for integrated currents')
+    require(source_by_frequency is None or set(source_by_frequency) == set(FREQUENCIES), 'All four optional source matrices required')
+    by_frequency, pad_spectra = [], []
+    pad_current2, return_current2, kcl_current2 = [0.]*4, 0., 0.
     for frequency in FREQUENCIES:
         density = density_by_frequency[frequency]
         za = za_by_frequency[frequency]
@@ -232,7 +235,7 @@ def reconstruct(contacts, density_by_frequency, za_by_frequency, coefficients):
             'Finite channel-major density and passive area-specific contact impedance required')
         active = 0 if frequency in (3000, 9000) else 1
         amplitude = coefficients[0 if frequency < 9000 else 1]
-        power = 0.
+        power, absolute_patch_current_sum, pad_current = 0., 0., [0j]*4
         for patch, row in enumerate(contacts):
             peak_j = -1j*amplitude*density[active*n+patch]
             jrms2 = abs(peak_j)**2/2
@@ -245,11 +248,49 @@ def reconstruct(contacts, density_by_frequency, za_by_frequency, coefficients):
             require(all(math.isfinite(x) for x in (j2[patch], v2[patch], patch_power[patch])),
                 'Nonfinite accumulated patch square/power')
             power += loss
+            pad_current[row[0]] += peak_j*row[3]
+            absolute_patch_current_sum += abs(peak_j)*row[3]
+        kcl = sum(pad_current)
+        relative_kcl = abs(kcl)/max(absolute_patch_current_sum, 1e-30)
+        comparison = None
+        if source_by_frequency is not None:
+            source = source_by_frequency[frequency]
+            require(len(source) == 4 and all(math.isfinite(z.real) and math.isfinite(z.imag) for z in source),
+                'Finite two-output source matrix required')
+            output_currents = [-1j*amplitude*source[2*output+active] for output in range(2)]
+            absolute_error = max(abs(pad_current[output]-output_currents[output]) for output in range(2))
+            group_error = absolute_error/max(max(map(abs, output_currents)), 1e-30)
+            comparison = dict(source_output_real_A=[z.real for z in output_currents],
+                source_output_imaginary_A=[z.imag for z in output_currents],
+                physical_pad_ids=[0, 1], max_absolute_error_A=absolute_error,
+                groupwise_relative_residual=group_error, existing_native_relative_limit=2e-6,
+                within_existing_native_diagnostic_limit=group_error <= 2e-6,
+                definition='max_output|integral J*A - source_matrix@c| / max_output|source_matrix@c|; no near-zero component relative division')
+        for pad in range(4):
+            pad_current2[pad] += abs(pad_current[pad])**2/2
+        return_current2 += abs(pad_current[2]+pad_current[3])**2/2
+        kcl_current2 += abs(kcl)**2/2
+        pad_spectra.append(dict(frequency_Hz=frequency, physical_pad_ids=[0, 1, 2, 3],
+            real_A_by_pad=[z.real for z in pad_current], imaginary_A_by_pad=[z.imag for z in pad_current],
+            common_GND_return_real_A=(pad_current[2]+pad_current[3]).real,
+            common_GND_return_imaginary_A=(pad_current[2]+pad_current[3]).imag,
+            KCL_absolute_residual_A=abs(kcl), KCL_relative_residual=relative_kcl,
+            KCL_denominator_A=absolute_patch_current_sum,
+            KCL_definition='|sum physical pad peak currents| / integral |peak patch J|*area; existing driven-current convention',
+            existing_native_relative_limit=2e-6, KCL_within_existing_native_diagnostic_limit=relative_kcl <= 2e-6,
+            source_output_comparison=comparison, validation_scope='diagnostic only; no new adoption/convergence gate'))
         by_frequency.append(dict(frequency_Hz=frequency, active_basis_channel=active,
             harmonic=1 if frequency < 9000 else 3, sine_harmonic_coefficient=amplitude,
             area_specific_impedance_ohm_m2=dict(real=za.real, imaginary=za.imag), contact_power_W=power))
     return dict(J_RMS_A_m2=[math.sqrt(v) for v in j2], contact_V_RMS_V=[math.sqrt(v) for v in v2],
-        contact_power_by_patch_W=patch_power, by_frequency=by_frequency)
+        contact_power_by_patch_W=patch_power, by_frequency=by_frequency,
+        physical_pad_current_spectrum=pad_spectra,
+        physical_pad_current_RMS_A=[math.sqrt(v) for v in pad_current2],
+        physical_pad_current_RMS_mA=[math.sqrt(v)*1000 for v in pad_current2],
+        common_GND_return_current_RMS_A=math.sqrt(return_current2),
+        KCL_total_RMS_residual_A=math.sqrt(kcl_current2),
+        physical_pad_current_definition='Coherent complex integral of peak J over each pad first; sqrt(sum_f|I_pad,f|^2/2) afterwards; native density sign retained',
+        common_GND_return_definition='Coherent sum of physical pad2+pad3 current at each frequency before RMS; not sum of individual RMS magnitudes')
 
 
 def generic_stats(values, areas, unit):
@@ -294,6 +335,7 @@ def describe_patches(contacts, fractions, electrical):
         imax_j, imax_v = max(ids, key=lambda i:j[i]), max(ids, key=lambda i:v[i])
         pads.append(dict(pad=pad, patches=len(ids), physical_contact_area_m2=sum(area[i] for i in ids),
             physical_contact_area_mm2=sum(area[i] for i in ids)*1e6,
+            physical_pad_current_RMS_A=electrical['physical_pad_current_RMS_A'][pad],
             area_fraction_min=min(fractions[i] for i in ids), area_fraction_max=max(fractions[i] for i in ids),
             area_fraction_area_weighted_mean=sum(fractions[i]*area[i] for i in ids)/sum(area[i] for i in ids),
             J_RMS=generic_stats([j[i] for i in ids], [area[i] for i in ids], 'A/m2'),
@@ -378,6 +420,7 @@ def audit_case(declared, plan, used):
     pin(source, planned, used, source_digest)
     coefficients = frozen.frozen_square_coefficients(run, registration, used)
     contacts, densities, impedance, matrix_powers = None, {}, {}, dict(contact_power_W=0., source_power_W=0.)
+    source_by_frequency = {}
     for frequency in FREQUENCIES:
         contact_path = pin(basis/f'contacts-{frequency}.csv', planned, used, inputs[str(basis/f'contacts-{frequency}.csv')])
         rows = contact_rows(contact_path)
@@ -391,13 +434,15 @@ def audit_case(declared, plan, used):
             source_path = pin(basis/f'source-{frequency}.bin', planned, used, inputs[str(basis/f'source-{frequency}.bin')])
             loss_path = pin(basis/f'loss-{frequency}.bin', planned, used, inputs[str(basis/f'loss-{frequency}.bin')])
             source_values = frozen.complex_array(source_path, 4)
+            source_by_frequency[frequency] = source_values
             loss_values = frozen.complex_array(loss_path, 24)
             channel = 0 if frequency in (3000, 9000) else 1
             amplitude2 = coefficients[0 if frequency < 9000 else 1]**2
             matrix_powers['contact_power_W'] += amplitude2*loss_values[16+3*channel].real
             matrix_powers['source_power_W'] += .25*amplitude2*source_values[3*channel].real
     fractions = validate_mask(contacts, mask_path, meta['h_xy_mm'])
-    electrical = reconstruct(contacts, densities, impedance, coefficients)
+    electrical = reconstruct(contacts, densities, impedance, coefficients,
+        source_by_frequency=source_by_frequency if plan.get('include_circuit_matrices', False) else None)
     result = describe_patches(contacts, fractions, electrical)
     checks = metric_verification(dict(surface_J_RMS_max_A_m2=result['contact_normal_J_RMS']['max'],
         surface_J_RMS_p95_A_m2=result['contact_normal_J_RMS']['p95'],
@@ -411,6 +456,13 @@ def audit_case(declared, plan, used):
         source_Vpp_per_output=1., waveform='square_3h', source_coefficients=coefficients,
         frequency_contributions=electrical['by_frequency'], summary_metric_verification=checks,
         optional_small_matrix_verification=optional,
+        physical_pad_current_spectrum=electrical['physical_pad_current_spectrum'],
+        physical_pad_current_RMS_A=electrical['physical_pad_current_RMS_A'],
+        physical_pad_current_RMS_mA=electrical['physical_pad_current_RMS_mA'],
+        common_GND_return_current_RMS_A=electrical['common_GND_return_current_RMS_A'],
+        KCL_total_RMS_residual_A=electrical['KCL_total_RMS_residual_A'],
+        physical_pad_current_definition=electrical['physical_pad_current_definition'],
+        common_GND_return_definition=electrical['common_GND_return_definition'],
         numerical_status='contact scalar readback only; prior convergence/held gates unchanged', adopted=False)
     if not all(c['passed'] for c in checks.values()) or (optional and not all(c['passed'] for c in optional.values())):
         raise MetricMismatchError(result)
