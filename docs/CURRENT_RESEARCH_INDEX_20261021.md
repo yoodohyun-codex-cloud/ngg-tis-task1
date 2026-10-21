@@ -1,6 +1,13 @@
 # 작업1 최신 연구 결과와 실행 경로
 
-18:08 UTC 최신 완료: 두 GND패드의 접선 이동1조건을 새로 계산하고7단계 큐를 모두 완료했습니다(`84fe05ec`, native119.392초/큐140.342초). 같은8개 피부·접촉cap에서 목표mean/P10=3.988451/3.596245 V/m, 표층P95=31.536892/전체비표적P95=24.956158 V/m로 고정8항목 모두 실패해 미채택입니다. 제한항은 접촉손실이고 최소gap1.25mm는2XY셀뿐입니다. 공통눈금 지도12장도18:13:57에120초 단일잠금 guard 아래10.374초로 저장했습니다. 현재 완료 큐는 정상 종료했고 다음은4패드 각각225mm²/총900mm²/간격3.75mm를 보존하는 외곽 stepped-faceunion1조건의 코드·검토 준비입니다. smooth arc로 표시하지 않으며 외곽rim여유0.02345mm/전체수렴 보류를 명시합니다. 승인13800초 중 지도 종료시 잔여5268.422초, 저장여유2GiB/CPU1/RSS3GiB를 유지합니다.
+18:45 UTC 최신 완료: 원4square·외곽square·외곽sine/negativecross6의8조건 native XYZ/연속방향 경계 감사를54.908초에 계산하고 GET·게시까지 정상 완료했습니다(`7a8341f`). 같은8개 피부·접촉cap에서 후보7개 모두 최소 하나의 필요 조건에 조건부 방향 강건 실패가 남습니다. 전원·격자·ROI·정규화·기존2074 방향 screen을 바꾸지 않았고 연속방향 상한을 정확한 최적값·mesh오차 인증으로 해석하지 않습니다. 앞선 외곽 native1조건102.093초와 실제파형6조건62.803초도 완료·미채택입니다. 현재5gene 유한 구동탐색이 실제 실행 중입니다(시작proof의PID29342/startticks5514231). 최대124proxy/300초,새개선최대4개의2074방향·40nativephi 최종검증을 별도 수행하며 source/2출력 위상·진폭만 바꿉니다. 완료조건과실패증거를root가확인한뒤게시합니다. 이어서 같은패드 윤곽의 안쪽.625mm 이동1조건을 준비하며 그새PDE는 아직 실행하지 않았습니다. 승인13800초 중18:45 큐종료시 잔여4998.097초, CPU1/RSS3GiB/저장여유2GiB를 유지하며 무기한 상주 실행을 약속하지 않습니다.
+
+- [현재5gene 유한 탐색 사전등록](cloud-perimeter-drive-optimization-context-20261021T192000Z/preregistration.json) / [실제 시작·잠금](cloud-perimeter-drive-optimization-context-20261021T192000Z/started-live-proof.json)
+- [연속방향 상·하한8조건 보고](DIRECTION_BOUNDS_RESULTS_20261021.md) / [실제 완료 JSON](cloud-direction-bounds-20261021T191000Z/summary.json) / [XYZ·bound archive 해시](DIRECTION_BOUNDS_SUPPORT_INVENTORY_20261021T192000Z.json)
+- [외곽 sine/negativecross6조건 보고](PERIMETER_ANTIPHASE_RESULTS_20261021.md) / [8행×5모드 GUI](CLOUD_PERIMETER_ANTIPHASE_RESULTS_20261021.html) / [고정6조건 원결과](cloud-perimeter-antiphase-20261021T190500Z/summary.json)
+- [외곽4패드 native 결과](PERIMETER_SHELL_RESULTS_20261021.md) / [2행×5모드 GUI](CLOUD_PERIMETER_SHELL_RESULTS_20261021.html) / [실제 mask·compact snapshot](cloud-perimeter-shell-context-20261021T185000Z/completed-snapshot-inventory.json)
+- [5형상 출력별·주파수별 signed 전력 감사](CACHED_GEOMETRY_OUTPUT_POWER_20261021.md) / [완료 근거](cloud-cached-geometry-power-20261021T190000Z.json)
+- [유도현2에 실질 결과·다음 질문 전달6323875064](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6323875064): peer 동의로 해석하지 않음
 
 - [접선 이동3행 보고](TANGENTIAL_RETURN_RESULTS_20261021.md) / [3행×5모드 GUI](CLOUD_TANGENTIAL_RETURN_RESULTS_20261021.html) / [공통눈금 지도12장](cloud-tangential-return-native-maps-20261021T184000Z/index.html) / [실제 native compact snapshot·로컬원시8파일 상태](cloud-tangential-return-context-20261021T183000Z/completed-snapshot-inventory.json)
 

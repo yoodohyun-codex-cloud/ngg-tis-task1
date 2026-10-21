@@ -1,0 +1,63 @@
+{
+  "checked_utc": "2026-10-21T18:51:03.067143+00:00",
+  "queue": {
+    "schema": "task1-bounded-continuation-v1",
+    "status": "running",
+    "pid": 29309,
+    "proc_start_ticks": 5514119,
+    "created_utc": "2026-10-21T18:50:55.005881+00:00",
+    "phase": "bounded-five-gene-drive-search",
+    "stages": [],
+    "current_child": {
+      "pid": 29342,
+      "proc_start_ticks": 5514231,
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_perimeter_drive_optimization.py",
+        "--preregistration",
+        "/workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-context-20261021T192000Z/preregistration.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-20261021T192000Z"
+      ]
+    },
+    "plan_path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-context-20261021T192000Z/queue-plan.json",
+    "plan_sha256": "bf3e91eb0dad8c176c41cac497ab53d4158da212a071fb8b1e4d92e168a16e99",
+    "background_daemon": false,
+    "candidate_adopted": false,
+    "updated_utc": "2026-10-21T18:51:00.922063+00:00",
+    "elapsed_seconds": 5.91626897900278,
+    "coordinator_overhead_seconds": 0.29043966199969873,
+    "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_perimeter_drive_optimization.py --preregistration /workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-context-20261021T192000Z/preregistration.json --output /workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-20261021T192000Z",
+    "aggregate_rss_bytes": 20639744,
+    "current_child_members": {
+      "29342": 5514231
+    }
+  },
+  "child_heartbeat": {
+    "phase": "proxy_search",
+    "status": "running",
+    "pid": 29342,
+    "proc_start_ticks": 5514231,
+    "updated_utc": "2026-10-21T18:51:02.781255+00:00",
+    "elapsed_seconds": 7.260191171997576,
+    "completed_evaluations": 3
+  },
+  "live_processes": [
+    {
+      "pid": 29309,
+      "proc_start_ticks": 5514119,
+      "command": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-context-20261021T192000Z/queue-plan.json "
+    },
+    {
+      "pid": 29342,
+      "proc_start_ticks": 5514231,
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_perimeter_drive_optimization.py --preregistration /workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-context-20261021T192000Z/preregistration.json --output /workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-20261021T192000Z "
+    },
+    {
+      "pid": 29366,
+      "proc_start_ticks": 5515003,
+      "command": "/bin/bash -lc python - <<'PY'\nfrom pathlib import Path\nimport json,datetime\nR=Path.cwd();C=R/'docs/cloud-perimeter-drive-optimization-context-20261021T192000Z';O=R/'docs/cloud-perimeter-drive-optimization-20261021T192000Z';q=json.loads((C/'queue/heartbeat.json').read_text());h=json.loads((O/'heartbeat.json').read_text());pids={h['pid']};child=q.get('current_child')or{};pids.update([child['pid']]if 'pid'in child else[])\nprocs=[]\nfor p in Path('/proc').iterdir():\n if p.name.isdigit():\n  try:\n   cmd=(p/'cmdline').read_bytes().replace(b'\\0',b' ').decode();stat=(p/'stat').read_text();ticks=int(stat[stat.rfind(')')+2:].split()[19])\n   if 'task1_bounded_continuation.py --execute'in cmd or int(p.name)in pids:procs.append(dict(pid=int(p.name),proc_start_ticks=ticks,command=cmd))\n  except(FileNotFoundError,ProcessLookupError,PermissionError):pass\nx=dict(checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),queue=q,child_heartbeat=h,live_processes=procs,kernel_locks=Path('/proc/locks').read_text());(C/'started-live-proof.json').write_text(json.dumps(x,indent=2)+'\\n');print({k:h.get(k)for k in['pid','proc_start_ticks','status','phase','completed_evaluations','elapsed_seconds']})\nPY "
+    }
+  ],
+  "kernel_locks": "1: POSIX  ADVISORY  WRITE 29342 00:1b:262185 0 EOF\n2: FLOCK  ADVISORY  WRITE 29342 00:1b:262185 0 EOF\n3: FLOCK  ADVISORY  WRITE 443 00:1b:786894 0 EOF\n4: FLOCK  ADVISORY  WRITE 171 00:1b:9223372036855850032 0 EOF\n5: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849987 0 EOF\n6: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849976 0 EOF\n7: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849990 0 EOF\n8: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849993 0 EOF\n9: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849979 0 EOF\n10: POSIX  ADVISORY  WRITE 29309 00:1b:264792 0 EOF\n11: FLOCK  ADVISORY  WRITE 29309 00:1b:264792 0 EOF\n12: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850079 0 EOF\n13: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850085 0 EOF\n"
+}
