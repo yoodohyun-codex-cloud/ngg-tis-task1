@@ -1,5 +1,9 @@
 # 작업1 최신 연구 결과와 실행 경로
 
+20:38 UTC 원래4square 자유5gene 배치를 실제시작했습니다. worker38890/startticks6158988와coordinator38838/6158647·두잠금held·21proxy진행을20:38:50확인했습니다. 최대72proxy/새final1/360초·GET포함480초·출력32MiB이며기존13800초/CPU1RSS3GiB/디스크2GiB를유지합니다. source0SW/1NE·GND2SE/3NW·4physical225each/2outputs/commonGND50Ω의원래기저이고old14실제−j구동+pure의같은위상/실제rho를보존해중복final을제외했습니다. 아래는시작스냅샷이며최신live를뜻하지않습니다.
+
+- [원래4square 실제 등록](cloud-original-cached-drive-context-20261021T221000Z/queue-plan.json) / [실제시작 PID·잠금](cloud-original-cached-drive-context-20261021T221000Z/started-live-proof.json)
+
 20:31 UTC adjacent 자유구동 완료: 실제125.435초/93proxy·등록수준완료/새2full2074검증/feedback큐exit0입니다. 두조건의skin8 목표mean/P10=4.190714/3.816469와4.784879/4.373123V/m은증가했지만표층P95=44.320772/44.666516,전체비표적P95=29.583877/35.363130과고변조체적4개가모두실패해각2/8·미채택입니다. raw1Vpp목표mean은2.765336/3.080689이며skin8actualsourceupper1.515445/1.553185Vpp와구분합니다. 계산은완료돼현재워커는없으며원래4square의미탐색free5gene를32MiB한도로준비중입니다. 결과발행후실제storageadmission전에는다음시작을주장하지않습니다. 아래20:29문단은시작당시보존기록입니다.
 
 - [완료 인접구동7행 GUI](CLOUD_ADJACENT_CACHED_DRIVE_RESULTS_20261021.html) / [보고서](ADJACENT_CACHED_DRIVE_RESULTS_20261021.md) / [원결과](cloud-adjacent-cached-drive-20261021T220000Z/summary.json)
