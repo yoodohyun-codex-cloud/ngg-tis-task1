@@ -174,6 +174,9 @@ def _case(root, run_id, ident, refs):
     require(manifest['source_commit'] == pre['source_commit'] and manifest['files'], 'Frozen source commit/manifest required')
     for original, frozen in manifest['files'].items():
         frozen_path = Path(frozen['path'])
+        if not frozen_path.is_absolute():
+            require('..' not in frozen_path.parts, 'Frozen source path cannot escape repository')
+            frozen_path = root/frozen_path
         require(frozen_path.is_relative_to(run/'frozen-source') and
             pre['source_and_input_sha256'].get(original) == frozen['sha256'], 'Frozen source pin mismatch')
         _pin(frozen_path, refs, root, frozen['sha256'])

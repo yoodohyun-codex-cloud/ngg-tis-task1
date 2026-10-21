@@ -143,6 +143,35 @@ class ReturnPositionVolumeRegistrationTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'SHA mismatch'):
             self.generate()
 
+    def test_real_style_repository_relative_frozen_paths_are_accepted(self):
+        for run_id in {run for run,_ in reg.CASE_TABLE}:
+            path=self.root/'data-native'/run_id/'frozen-source-manifest.json'
+            obj=json.loads(path.read_text())
+            for frozen in obj['files'].values():
+                frozen['path']=str(Path(frozen['path']).relative_to(self.root))
+            self.write(path,obj)
+        self.assertEqual(self.generate()['initial_case_count'],5)
+
+    def test_relative_frozen_escape_is_rejected(self):
+        run,_=reg.CASE_TABLE[0]
+        path=self.root/'data-native'/run/'frozen-source-manifest.json'
+        obj=json.loads(path.read_text());next(iter(obj['files'].values()))['path']='../outside.py'
+        self.write(path,obj)
+        with self.assertRaisesRegex(ValueError,'cannot escape repository'):
+            self.generate()
+        self.assertFalse(self.output.exists())
+
+    def test_relative_frozen_symlink_is_rejected_even_with_identical_bytes(self):
+        run,_=reg.CASE_TABLE[0]
+        path=self.root/'data-native'/run/'frozen-source-manifest.json'
+        obj=json.loads(path.read_text());entry=next(iter(obj['files'].values()))
+        frozen=Path(entry['path']);other=self.root/'same-bytes.py';other.write_bytes(frozen.read_bytes())
+        frozen.unlink();frozen.symlink_to(other)
+        entry['path']=str(frozen.relative_to(self.root));self.write(path,obj)
+        with self.assertRaisesRegex(ValueError,'Canonical local regular'):
+            self.generate()
+        self.assertFalse(self.output.exists())
+
     def test_config_drift_is_rejected(self):
         run,ident=reg.CASE_TABLE[-1]
         path=self.root/'data-native'/run/'configs'/(ident+'.properties')
