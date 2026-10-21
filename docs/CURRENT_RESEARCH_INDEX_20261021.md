@@ -2,6 +2,8 @@
 
 루트 README와 PACKAGE_INDEX의478파일은 **초기 이관 패키지의 원본**이므로 그대로 보존한다. 그 문서의 “새 실행 전” 상태는 현재 실행 상태를 뜻하지 않는다. 원본 byte 검증, 새 수치 계산, 격자·접촉 수렴, 실험 검증은 별도다.
 
+- [한 귀환 패드 회전3행 결과](ONE_RETURN_ROTATION_RESULTS_20261021.md) / [수치 GUI](CLOUD_ONE_RETURN_ROTATION_RESULTS_20261021.html) / [공통 눈금 지도12장](cloud-one-return-rotation-native-maps-20261021T180000Z/index.html)
+- [실제 귀환 응답 rank 진단](RETURN_ROTATION_OPERATOR_DIAGNOSTIC_20261021.md)
 - [귀환 net전류 조정6조건](RETURN_CURRENT_RESULTS_20261021.md) / [6행 수치 GUI](RETURN_CURRENT_RESULTS_20261021.html) / [새 피드백6321929825 적용](FEEDBACK_APPLICATION_STATUS_20261021T172000Z.md)
 - [단일 전극쌍 RMS 비교6cohort](COHERENT_SINGLE_PAIR_RESULTS_20261021.md) / [별도 RMS 매칭 GUI](CLOUD_COHERENT_SINGLE_PAIR_RESULTS_20261021.html)
 - [같은4패드 coherent 두 톤8조건](COHERENT_DRIVE_RESULTS_20261021.md) / [10행 수치 GUI](CLOUD_COHERENT_DRIVE_RESULTS_20261021.html) / [공통 눈금 지도24장](cloud-coherent-drive-native-maps-20261021T170500Z/index.html)
@@ -37,4 +39,8 @@
 
 새 댓글6321929825는17:10:52 UTC에 귀환 계산 도중 작성됐고17:11:46 첫 GET로 수신했습니다. 기존 구현·등록·실행에 소급하지 않고 위 적용 문서에 고정 회로 합성/새 회로 풀이의 경계, 작은 혼합비에서 주파수별 음의metal-delivered power, C1 cohort/footprint를 명시적으로 연결했습니다. 새 peer의 후보 승인·전체 수렴 검증은 추론하지 않습니다.
 
-다음 root 선택은 기존 비대칭4패드의 물리 귀환pad2 하나만 중심·면적을 고정해90° 돌리는 새geometry1조건입니다. [선택·원형상·회로·예산](cloud-one-return-rotation-context-20261021T174000Z/decision.json)을 고정했고 현재 코드·소수 합성 테스트를 준비하고 있습니다. 새 PDE1조건/8RHS이며 아직 시작하지 않았습니다. 기존4square와원래비대칭조건은재사용하고, 계산·fullskin·부피·8screen·피드백·공개저장을 같은 유한 큐로 연결합니다. 원본478파일 해시 검증은 다시 통과했으며 이것을 새 수치 검증으로 세지 않습니다. 기존누적13800초/CPU1/RSS3GiB/저장여유2GiB를 유지하고 COMSOL·ETA부하·전체수렴·실험은 미검증입니다.
+단일 귀환pad2 회전 조건은17:21:42 UTC에 실제 시작해 네이티브100.395초로완료했습니다. 계산/fullskin/부피/8screen/GET은모두exit0이었고, 게시만root가report별서로다른SHA필드명을잘못연결해실패했습니다. 원실패·코드·결과를보존하고새metadata-only명세로 `312b346d`에서복구했습니다. 재계산0입니다. 같은8피부상한에서목표mean/P10=4.379866/3.945150V/m은원본4square4.061849/3.645736보다높지만, 표층P95=32.158704/비표적P95=25.887362가높고고변조부피4항목도증가해비표적총6항목모두실패했으므로미채택입니다. 원래비대칭parent4.383544/3.951942와비교하면회전이목표를개선하지않았습니다. 원본대조군과parent의형상/면적차이와parent→회전의단일인자대비를구분합니다.
+
+회전결과의저장scalar만사용한지도12장은17:30:45 UTC에단일120초guard아래11.041초로완료했습니다. 별도작은전류응답진단도완료해원본square/회전귀환응답rank1,원래비대칭rank2를실제로확인했습니다. 독립전압출력은모두2개이며GND전류를새출력처럼만들지않았습니다. 이진단은E/φ/grid/NPZ를읽거나새PDE를수행하지않았습니다.
+
+다음root선택은같은회전기하의원래square3h파형·위상·고정회로를유지하며두출력의Vpp비만바꾸는4조건입니다. [선택·정확한전압벡터·rank제약](cloud-rotation-ratio-context-20261021T180500Z/decision.json)을고정했고소스·합성테스트를준비중입니다. 아직이4조건의새장합성은시작하지않았습니다. 원본4square와회전1/1캐시를재사용하며새PDE0입니다. 기존누적13800초/CPU1/RSS3GiB/저장여유2GiB를유지하고후보채택·COMSOL·ETA부하·전체수렴·실험검증은미완료입니다.
