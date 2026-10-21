@@ -35,6 +35,9 @@ ALLOWED = {
     'task1_return_position_volume_registration.py': {'--output'},
     'task1_frequency_sc4_resynthesis.py': {'--baseline-summary', '--plan', '--output'},
     'task1_queue_feedback.py': {'--output'},
+    'task1_cross_allocation_volume_registration.py': {'--output'},
+    'task1_candidate_screen.py': {'--preregistration', '--report', '--output'},
+    'task1_batch_publish.py': {'--spec', '--output'},
 }
 
 
@@ -87,7 +90,8 @@ def ticks(pid):
 
 def live(pid, start):
     try:
-        return ticks(pid) == start
+        row = Path(f'/proc/{pid}/stat').read_text().rsplit(')', 1)[1].split()
+        return int(row[19]) == start and row[0] not in ('Z', 'X')
     except (OSError, ValueError):
         return False
 
@@ -153,6 +157,8 @@ def validate_stage(stage, root=ROOT):
         require(seen == ['--execute', '--output'], 'Only frozen core execution allowed')
     if tool.name == 'task1_spatial_audit.py':
         require(set(seen) == flags and len(seen) == len(flags), 'Exact spatial audit flags required')
+    if tool.name in ('task1_cross_allocation_volume_registration.py', 'task1_candidate_screen.py', 'task1_batch_publish.py'):
+        require(set(seen) == flags and len(seen) == len(flags), 'Exact new metadata/publication stage flags required')
     seconds = stage.get('max_seconds')
     require(type(seconds) in (int, float) and math.isfinite(seconds) and 0 < seconds <= 600, 'Finite stage cap <=600s required')
     completion = stage.get('completion', {})
@@ -179,7 +185,7 @@ def make_preregistration(spec, root=ROOT):
     output = canonical(spec['output_directory'], root)
     require(not output.exists() and output.parent.is_dir(), 'New queue output under existing parent required')
     stages = spec['stages']
-    require(isinstance(stages, list) and 1 <= len(stages) <= 8, 'One to eight finite stages required')
+    require(isinstance(stages, list) and 1 <= len(stages) <= 10, 'One to ten finite stages required')
     require(len({s['id'] for s in stages}) == len(stages), 'Distinct stages required')
     tools = [validate_stage(s, root) for s in stages]
     ledger = policy.load_ledger(root/'runtime/task1-budget.json')
@@ -212,7 +218,7 @@ def verify_plan(path, expected=None, root=ROOT):
     plan = read(path)
     require(plan.get('schema') == SCHEMA and plan.get('status') == 'preregistered_not_executed', 'Preregistered finite queue required')
     require(plan.get('caps') == dict(CPU_count=1, concurrent_children=1, aggregate_RSS_bytes=3*GIB, minimum_free_disk_bytes=2*GIB), 'Queue resource caps changed')
-    require(1 <= len(plan['stages']) <= 8 and len({s['id'] for s in plan['stages']}) == len(plan['stages']), 'Distinct bounded stages required')
+    require(1 <= len(plan['stages']) <= 10 and len({s['id'] for s in plan['stages']}) == len(plan['stages']), 'Distinct bounded stages required')
     for stage in plan['stages']:
         validate_stage(stage, root)
     require(sum(s['max_seconds'] for s in plan['stages'])+60 <= plan['max_total_seconds'] <= 7200,

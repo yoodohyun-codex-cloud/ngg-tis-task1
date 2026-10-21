@@ -202,6 +202,29 @@ class QueueFixture(unittest.TestCase):
         self.assertIsNone(result['current_child'])
         self.assertEqual(result['status'], 'failed_preserved')
 
+    def test_ten_stage_bound_accepts_ten_rejects_eleven_without_relaxing_caps(self):
+        stages = []
+        for i in range(10):
+            stage = self.stage('case'+str(i)); stages.append(stage)
+        path = self.plan(stages)
+        self.assertEqual(len(queue.verify_plan(path, root=self.root)['stages']), 10)
+        obj = queue.read(path); obj['stages'].append(self.stage('case10'))
+        queue.write(path, obj)
+        with self.assertRaisesRegex(ValueError, 'Distinct bounded stages'):
+            queue.verify_plan(path, root=self.root)
+        self.assertEqual(obj['caps']['concurrent_children'], 1)
+        self.assertEqual(obj['caps']['aggregate_RSS_bytes'], 3*queue.GIB)
+
+    def test_zombie_or_reused_identity_is_not_a_live_worker(self):
+        row = ['0']*20; row[0] = 'Z'; row[19] = '12345'
+        with mock.patch.object(queue.Path, 'read_text', return_value='42 (worker) '+' '.join(row)):
+            self.assertFalse(queue.live(42, 12345))
+        row[0] = 'R'
+        with mock.patch.object(queue.Path, 'read_text', return_value='42 (worker) '+' '.join(row)):
+            self.assertTrue(queue.live(42, 12345))
+            self.assertFalse(queue.live(42, 12346))
+        self.assertFalse(queue.live(999999999, 12345))
+
 
 if __name__ == '__main__':
     unittest.main()
