@@ -192,6 +192,17 @@ class QueueFixture(unittest.TestCase):
             with self.subTest(flags=bad),self.assertRaises(ValueError):
                 queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad),self.root)
 
+    def test_one_return_rotation_volume_requires_all_context_flags(self):
+        tool=self.root/'tools/task1_one_return_rotation_volume_registration.py'
+        output=self.root/'docs/rotation-volume-plan.json'
+        flags=['--feedback',str(self.baseline),'--decision',str(self.baseline),'--output',str(output)]
+        stage=dict(id='rotation-metadata',argv=[str(Path(sys.executable).resolve()),str(tool),*flags],
+            max_seconds=60,must_not_exist=str(output),completion=dict(path=str(output),statuses=['preregistered_not_executed']))
+        self.assertEqual(queue.validate_stage(stage,self.root),tool)
+        for bad in (flags[2:],flags[:2]+flags[4:],flags+flags[:2],flags+['--execute']):
+            with self.subTest(flags=bad),self.assertRaises(ValueError):
+                queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad),self.root)
+
     def test_coherent_drive_allows_frozen_plan_and_output_only(self):
         tool=self.root/'tools/task1_coherent_drive_scout.py'
         output=self.root/'docs/coherent-result'
