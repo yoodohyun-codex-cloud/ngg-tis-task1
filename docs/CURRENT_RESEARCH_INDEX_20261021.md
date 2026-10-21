@@ -1,6 +1,12 @@
 # 작업1 최신 연구 결과와 실행 경로
 
-루트 README와 PACKAGE_INDEX의478파일은 **초기 이관 패키지의 원본**이므로 그대로 보존한다. 그 문서의 “새 실행 전” 상태는 현재 실행 상태를 뜻하지 않는다. 원본 byte 검증, 새 수치 계산, 격자·접촉 수렴, 실험 검증은 별도다.
+17:57 UTC 최신 완료: 회전 기하의 새 sine 대조군1개+coherent 구동4개를 실제54.019초에 계산하고 피드백 GET·게시까지 완료했습니다(`4dff5b18`) . 모두 목표2항목 통과/비표적6항목 실패로 미채택입니다. 예를 들어 coherent r1/90°는 같은8개 피부·접촉cap에서 목표mean/P10=4.743313/4.326879 V/m이지만 표층P95=67.804247/전체비표적P95=51.338308 V/m입니다. 이때 실제 source상한은 각1.517825Vpp이므로 raw1Vpp 개선으로 해석하지 않습니다. 새 sine의 nativepost 전기·복소중심장 회귀는 배율1/오차0이며, 이전에 없던 sine 부피·40프로브를 이번에 계산했습니다. 현재 큐는 정상 완료됐고 다음 근거 있는 유한 배치를 선정 중입니다. 승인13800초 중 잔여5432.183초(17:59 조회), 저장여유2GiB/CPU1/RSS3GiB를 유지합니다.
+
+- [새 회전 sine+coherent5조건 원결과](cloud-rotation-coherent-20261021T182000Z/summary.json), [사전등록](cloud-rotation-coherent-context-20261021T182000Z/preregistration.json), [실제 시작 PID·잠금](cloud-rotation-coherent-context-20261021T182000Z/started-live-proof.json), [유도현2에 실질 결과 전달6322870661](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6322870661)
+- [회전 기하 전압 비율4조건](ROTATION_RATIO_RESULTS_20261021.md) / [6행 수치 GUI](CLOUD_ROTATION_RATIO_RESULTS_20261021.html)
+- [고정 모델에서 양의 전압쌍 진폭 계열의 조건부 상·하한](ROTATION_AMPLITUDE_BOUNDS_20261021.md): 같은 square3h·위상·회로·격자·2074방향에 한정하며 다른 기하/파형/접촉이나 연속체 물리의 불가능성을 뜻하지 않음
+
+루트 README와 PACKAGE_INDEX의478파일은 **초기 이관 패키지의 원본**이므로 그대로 보존한다. 그 문서의 “새 실행 전” 상태는 현재 실행 상태를 뜻하지 않는다. 원본 byte 검증, 새 수치 계산, 격자·접촉 수렴, 실험 검증은 별도다. `Rs500` 프로필 표기는 EIS의 Rs 추정 fit창500 Hz이며 Rs=500 Ω를 뜻하지 않는다. 실제 선택 Rs=236.5717747232937 Ω를 한 번 차감하고 명목1 cm²=1e−4 m²로 한 번 변환한 PBS 접촉 모델이다. 전원 출력저항50 Ω와 구분하며 실제 피부 접촉 검증값이 아니다.
 
 - [한 귀환 패드 회전3행 결과](ONE_RETURN_ROTATION_RESULTS_20261021.md) / [수치 GUI](CLOUD_ONE_RETURN_ROTATION_RESULTS_20261021.html) / [공통 눈금 지도12장](cloud-one-return-rotation-native-maps-20261021T180000Z/index.html)
 - [실제 귀환 응답 rank 진단](RETURN_ROTATION_OPERATOR_DIAGNOSTIC_20261021.md)
@@ -43,4 +49,4 @@
 
 회전결과의저장scalar만사용한지도12장은17:30:45 UTC에단일120초guard아래11.041초로완료했습니다. 별도작은전류응답진단도완료해원본square/회전귀환응답rank1,원래비대칭rank2를실제로확인했습니다. 독립전압출력은모두2개이며GND전류를새출력처럼만들지않았습니다. 이진단은E/φ/grid/NPZ를읽거나새PDE를수행하지않았습니다.
 
-다음root선택은같은회전기하의원래square3h파형·위상·고정회로를유지하며두출력의Vpp비만바꾸는4조건입니다. [선택·정확한전압벡터·rank제약](cloud-rotation-ratio-context-20261021T180500Z/decision.json)을고정했고소스·합성테스트를준비중입니다. 아직이4조건의새장합성은시작하지않았습니다. 원본4square와회전1/1캐시를재사용하며새PDE0입니다. 기존누적13800초/CPU1/RSS3GiB/저장여유2GiB를유지하고후보채택·COMSOL·ETA부하·전체수렴·실험검증은미완료입니다.
+같은 회전 기하의 square3h 전압비4조건은 실제46.884초에 완료해 `f5bf9c6`에 게시했습니다. 모두 목표mean/P10·표층/비표적P95 실패입니다. half2조건은 고변조체적4항목을 통과해 개별 보존했습니다. 원본4square·회전1/1캐시와 동일 단위/ROI/5정규화로 위 GUI에 나란히 표시합니다. 뒤이은 JSON 전용 상·하한 진단은0.081772초에 완료해 `428ac3e`에 게시했습니다. 이 고정 모델에서는 ANY 양의 두 출력진폭+공통배율이 목표mean 유지와 표층P95 한도를 함께 만족하지 못합니다. 이 조건부 진폭 가족과 별도로, 두 주파수를 각 출력에 함께 합성하는 새 sine/coherent5조건을 실제 실행한 결과가 맨 위에 있습니다. 후보채택·COMSOL·ETA부하·전체수렴·실험검증은 미완료입니다.
