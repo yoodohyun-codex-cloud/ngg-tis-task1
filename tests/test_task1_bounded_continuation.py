@@ -216,9 +216,10 @@ class QueueFixture(unittest.TestCase):
                 queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad),self.root)
         with self.assertRaises(ValueError):queue.validate_stage(dict(stage,max_seconds=601),self.root)
 
-    def test_return_current_and_single_pair_require_exact_frozen_plan(self):
+    def test_saved_field_and_algebra_stages_require_exact_frozen_plan(self):
         for name in ('task1_return_current_drive_scout.py', 'task1_coherent_single_pair.py',
-                     'task1_return_rotation_operator_audit.py', 'task1_rotation_drive_ratio_scout.py'):
+                     'task1_return_rotation_operator_audit.py', 'task1_rotation_drive_ratio_scout.py',
+                     'task1_rotation_amplitude_bounds.py'):
             tool = self.root/'tools'/name
             output = self.root/'docs'/name.removesuffix('.py')
             flags = ['--preregistration', str(self.baseline), '--output', str(output)]
