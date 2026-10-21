@@ -1,5 +1,9 @@
 # 작업1 최신 연구 결과와 실행 경로
 
+20:46 UTC compact 국소정밀탐색 실제시작: 20:47:26 worker39673/startticks6207109·coordinator39621/6206705·두잠금held,old72재사용+new53proxy진행을확인했습니다. 새최대72proxy/새final1/360초/출력8MiB입니다. 모든전체부피2074지표/5모드/40nativeφ는유지하고새scalarNPZ사본만미생성하며원시기저·과거NPZ·실패보존/재구성recipe·export미등록상태를명시합니다. source/ROI/8caps/물리/13800초·CPU1RSS3GiB·디스크2GiB는변경하지않았습니다. 아래시작관찰은현재live를뜻하지않습니다.
+
+- [compact 정밀탐색 실제등록](cloud-original-drive-refinement-context-20261021T222000Z/queue-plan.json) / [실제시작 PID·잠금](cloud-original-drive-refinement-context-20261021T222000Z/started-live-proof.json)
+
 20:40 UTC 원래4square 자유5gene 완료: 실제91.725초/72proxy·evaluation_cap부분종료/새final1/feedback큐exit0입니다. 새3f40b4b8948b의skin8목표mean/P10=4.011637922/3.595327067V/m은기준보다낮고표층P95=25.276747254도실패,비표적P95=23.406128941·고변조체적4개통과로5/8·미채택입니다. SC손실제한/actualsourceupper1.082631317·1.093400682Vpp입니다. 원래pure회귀오차0,old15actual−j구동sourceSHA확인을완료했습니다. 현재워커는없으며기존72cache재사용의한정국소refinement를8MiBcompact출력으로준비합니다. 새전체부피지표·40φ검증은유지하되새파생scalarNPZ사본은미생성하고원시기저·정확계수로재구성가능한출처를기록합니다. 기존NPZ/원시/실패는모두보존합니다. 실제후속등록/시작전입니다.
 
 - [완료 원래4square4행 GUI](CLOUD_ORIGINAL_CACHED_DRIVE_RESULTS_20261021.html) / [보고서](ORIGINAL_CACHED_DRIVE_RESULTS_20261021.md) / [실제결과](cloud-original-cached-drive-20261021T221000Z/summary.json)
