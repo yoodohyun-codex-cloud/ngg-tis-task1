@@ -45,7 +45,7 @@ def main():
      if i==0:ax.set_title('Central r<=5 mm column'if k==0 else'Whole modeled XY plane')
     for ax in axes[i]:ax.set_xlim(min(allvalues)*.9,max(allvalues)*1.1)
    fig.suptitle('Four pads / two outputs: matched skin-contact burden\nFundamental TIS and all-harmonic vector RMS are separate',fontsize=12)
-   fig.subplots_adjust(left=.10,right=.98,bottom=.08,top=.90,hspace=.36,wspace=.24)
+   fig.subplots_adjust(left=.10,right=.98,bottom=.12,top=.90,hspace=.36,wspace=.24)
    fig.text(.1,.025,'Top z=0; +z enters phantom. Green: target depth 15-20 mm. Native volume-weighted planes.\nCommon amplitude scaling only; no field reconstruction. Tissue interfaces are not evidence of deep focus.',fontsize=8)
    fig.savefig(out/'depth-profiles.png',dpi=150);fig.savefig(out/'depth-profiles.svg');plt.close(fig)
    with (out/'depth-profiles.csv').open('x',newline='')as f:w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
