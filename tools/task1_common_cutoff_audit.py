@@ -158,7 +158,7 @@ def verify_plan(plan):
             plan.get('status') == 'preregistered_not_executed' and
             [c['case_id'] for c in plan['cases']] == list(CASE_IDS), 'Exact four-case preregistration required')
     expected = make_preregistration([r['path'] for r in plan['source_reports']])
-    for key in ('source_reports', 'cases', 'common_cutoffs_V_m', 'modes', 'regions', 'regression', 'resources', 'input_sha256'):
+    for key in ('feedback_id','source_comment_id','source_comment_url','source_reports', 'cases', 'common_cutoffs_V_m', 'modes', 'regions', 'regression', 'resources', 'input_sha256'):
         require(plan[key] == expected[key], 'Preregistered identity or definition changed: '+key)
     for path, digest in plan['input_sha256'].items():
         require(sha(path) == digest, 'Pinned report/source changed: '+path)
