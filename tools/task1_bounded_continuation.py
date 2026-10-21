@@ -40,6 +40,7 @@ ALLOWED = {
     'task1_batch_publish.py': {'--spec', '--output'},
     'task1_lower_carrier.py': {'--execute', '--output'},
     'task1_lower_carrier_recovery.py': {'--execute', '--output'},
+    'task1_mid_high_carrier.py': {'--execute', '--output'},
 }
 
 
@@ -157,7 +158,7 @@ def validate_stage(stage, root=ROOT):
     require('--output' in seen and seen.count('--output') == 1, 'One child output required')
     if tool.name == 'task1_cloud_batch.py':
         require(seen == ['--execute', '--output'], 'Only frozen core execution allowed')
-    if tool.name in ('task1_lower_carrier.py', 'task1_lower_carrier_recovery.py'):
+    if tool.name in ('task1_lower_carrier.py', 'task1_lower_carrier_recovery.py', 'task1_mid_high_carrier.py'):
         require(seen == ['--execute', '--output'], 'Only frozen lower-carrier execution allowed')
     if tool.name == 'task1_spatial_audit.py':
         require(set(seen) == flags and len(seen) == len(flags), 'Exact spatial audit flags required')
