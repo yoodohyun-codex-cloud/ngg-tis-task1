@@ -21,6 +21,13 @@ import subprocess
 import time
 import zipfile
 
+try:
+    from task1_resource_policy import effective_limit
+except ModuleNotFoundError as error:
+    if error.name != 'task1_resource_policy':
+        raise
+    from tools.task1_resource_policy import effective_limit
+
 for _key in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
     os.environ[_key] = '1'
 import numpy as np
@@ -444,16 +451,17 @@ def main():
         fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         ledger_path = ROOT/'runtime/task1-budget.json'
         ledger = view.read(ledger_path)
-        if ledger['limit_seconds'] != 6600 or ledger['spent_seconds'] >= 6600:
-            raise ValueError('Existing6600s global budget must remain; no allocation left')
-        seconds = min(600., 6600-ledger['spent_seconds'])
+        global_limit = effective_limit(ledger)
+        if ledger['spent_seconds'] >= global_limit:
+            raise ValueError('Validated cumulative budget exhausted; no allocation left')
+        seconds = min(600., global_limit-ledger['spent_seconds'])
         os.sched_setaffinity(0, {min(os.sched_getaffinity(0))})
         output.parent.mkdir(parents=True, exist_ok=True)
         if shutil.disk_usage(output.parent).free < 2*GIB:
             raise ValueError('Preserve existing2GiB disk reserve')
         start, status, failure_reason = time.monotonic(), 'failed', None
         def timeout(signum, frame):
-            raise TimeoutError('Finite600s/remaining6600s cached volume-audit deadline exceeded')
+            raise TimeoutError(f'Finite600s/remaining{global_limit}s cached volume-audit deadline exceeded')
         signal.signal(signal.SIGALRM, timeout)
         signal.setitimer(signal.ITIMER_REAL, seconds)
         try:
@@ -479,7 +487,7 @@ def main():
                 raise MemoryError('Exceeded existing3GiB RSS budget')
             result['resources'] = dict(wall_seconds=time.monotonic()-start, max_batch_seconds=seconds,
                 max_case_seconds=180, CPU_count=1, simultaneous_jobs=1, peak_process_RSS_bytes=peak,
-                disk_reserve_bytes=2*GIB)
+                disk_reserve_bytes=2*GIB, global_limit_seconds=global_limit)
             payload = json.dumps(result, indent=2, allow_nan=False)+'\n'
             if shutil.disk_usage(output.parent).free < 2*GIB+len(payload.encode()):
                 raise ValueError('Output would violate2GiB reserve')

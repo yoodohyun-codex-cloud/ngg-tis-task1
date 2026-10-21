@@ -24,6 +24,13 @@ import subprocess
 import time
 from urllib.parse import quote
 
+try:
+    from task1_resource_policy import effective_limit
+except ModuleNotFoundError as error:
+    if error.name != 'task1_resource_policy':
+        raise
+    from tools.task1_resource_policy import effective_limit
+
 ROOT = Path(__file__).resolve().parents[1]
 GIB = 1024**3
 PRIMARY = 'primary_r5_depth15_20'
@@ -323,9 +330,9 @@ def main():
         fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         ledger_path = ROOT/'runtime/task1-budget.json'
         ledger = read(ledger_path)
-        require(ledger['limit_seconds'] == 6600 and type(ledger['spent_seconds']) in (int, float) and
-            math.isfinite(ledger['spent_seconds']) and 0 <= ledger['spent_seconds'] < 6600, 'Existing6600s ledger must remain unchanged')
-        seconds = min(120., 6600-ledger['spent_seconds'])
+        global_limit = effective_limit(ledger)
+        require(ledger['spent_seconds'] < global_limit, 'Validated cumulative budget exhausted')
+        seconds = min(120., global_limit-ledger['spent_seconds'])
         os.sched_setaffinity(0, {min(os.sched_getaffinity(0))})
         current_soft, current_hard = resource.getrlimit(resource.RLIMIT_AS)
         address_limit = min(3*GIB, current_hard) if current_hard != resource.RLIM_INFINITY else 3*GIB
@@ -337,7 +344,7 @@ def main():
         output.parent.mkdir(parents=True, exist_ok=True)
         started, status = time.monotonic(), 'failed'
         def timeout(signum, frame):
-            raise TimeoutError('Finite120s/remaining6600s JSON-view deadline exceeded')
+            raise TimeoutError(f'Finite120s/remaining{global_limit}s JSON-view deadline exceeded')
         signal.signal(signal.SIGALRM, timeout)
         signal.setitimer(signal.ITIMER_REAL, seconds)
         try:
@@ -363,7 +370,7 @@ def main():
                 new_PDE=0, new_volume_analysis=0, source_inputs_unchanged=True,
                 resources=dict(wall_seconds=time.monotonic()-started, max_seconds=seconds, CPU_count=1,
                     peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024, output_limit_bytes=50*1024**2,
-                    global_limit_seconds=6600, minimum_reserve_bytes=2*GIB))
+                    global_limit_seconds=global_limit, minimum_reserve_bytes=2*GIB))
             text = json.dumps(receipt, indent=2, allow_nan=False)+'\n'
             require(output.stat().st_size+len(text.encode()) <= 50*1024**2, 'HTML and receipt exceed50MiB cap')
             require(shutil.disk_usage(output.parent).free >= 2*GIB+len(text.encode()), 'Receipt would violate2GiB reserve')

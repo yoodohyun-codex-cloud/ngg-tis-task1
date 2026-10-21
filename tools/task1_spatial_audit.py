@@ -20,6 +20,13 @@ import signal
 import sys
 import time
 
+try:
+    from task1_resource_policy import effective_limit
+except ModuleNotFoundError as error:
+    if error.name != 'task1_resource_policy':
+        raise
+    from tools.task1_resource_policy import effective_limit
+
 for _name in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
     os.environ[_name] = '1'
 
@@ -251,9 +258,8 @@ def main():
         fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         budget_path = REPO/'runtime/task1-budget.json'
         budget = read(budget_path)
-        if budget['limit_seconds'] != 6600:
-            raise ValueError('Existing 6600-second budget must be preserved')
-        remaining = 6600-budget['spent_seconds']
+        global_limit = effective_limit(budget)
+        remaining = global_limit-budget['spent_seconds']
         if remaining <= 0 or (run/'summary.json').is_file() and read(run/'summary.json')['status'] == 'running':
             raise ValueError('No remaining budget or source run still marked running')
         output.parent.mkdir(parents=True, exist_ok=True)
@@ -272,7 +278,8 @@ def main():
             if peak > 3*GIB:
                 raise MemoryError('Spatial audit exceeded existing aggregate 3GiB RSS limit')
             result['resources'] = dict(wall_seconds=time.monotonic()-start, max_seconds=seconds,
-                peak_process_RSS_bytes=peak, CPU_count=1, simultaneous_jobs=1)
+                peak_process_RSS_bytes=peak, CPU_count=1, simultaneous_jobs=1,
+                global_limit_seconds=global_limit)
             write_new(output, result)
             status = result['status']
             print(json.dumps(dict(status=status, case_id=args.case, output=str(output),

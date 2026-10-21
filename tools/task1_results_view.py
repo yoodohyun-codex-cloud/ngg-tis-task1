@@ -26,6 +26,13 @@ import resource
 import signal
 import time
 
+try:
+    from task1_resource_policy import effective_limit
+except ModuleNotFoundError as error:
+    if error.name != 'task1_resource_policy':
+        raise
+    from tools.task1_resource_policy import effective_limit
+
 for _name in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
     os.environ[_name] = '1'
 
@@ -1637,9 +1644,8 @@ def main():
         fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         budget_path = ROOT/'runtime/task1-budget.json'
         budget = read(budget_path)
-        if budget['limit_seconds'] != 6600:
-            raise ValueError('Existing finite6600-second resource budget changed')
-        remaining = budget['limit_seconds']-budget['spent_seconds']
+        global_limit = effective_limit(budget)
+        remaining = global_limit-budget['spent_seconds']
         if remaining <= 0:
             raise ValueError('Existing time budget exhausted; rendering not started')
         if __import__('shutil').disk_usage(directory.parent).free < 2*GIB+50*1024**2:
@@ -1662,7 +1668,8 @@ def main():
                 raise MemoryError('Visualization exceeded existing3GiB RSS budget')
             result['resources'] = dict(wall_seconds=time.monotonic()-start, generated_bytes=added,
                 peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,
-                max_seconds=min(120., remaining), added_MiB_limit=50, CPU_count=1)
+                max_seconds=min(120., remaining), added_MiB_limit=50, CPU_count=1,
+                global_limit_seconds=global_limit)
             (directory/'render-receipt.json').write_text(json.dumps(result, indent=2)+'\n')
             status = result['status']
             print(json.dumps(result))

@@ -24,6 +24,15 @@ import sys
 import threading
 import time
 
+try:
+    import task1_resource_policy as _resource_policy
+except ModuleNotFoundError as error:
+    if error.name != 'task1_resource_policy':
+        raise
+    from tools import task1_resource_policy as _resource_policy
+effective_limit = _resource_policy.effective_limit
+policy_refs = _resource_policy.policy_refs
+
 REPO = Path(__file__).resolve().parents[1]
 SOURCE = REPO / 'tis-java'
 HIST = SOURCE / 'runs/selectivity-design-20261019T155933Z'
@@ -35,6 +44,11 @@ LIMITS = dict(cpu=1, concurrent_solves=1, max_cells=800000,
 GATES = dict(max_residual=2e-7, max_power_error=2e-7,
              max_current_error=2e-6, max_area_relative_error=1e-10,
              max_interface_normal_current_relative_error=2e-7)
+
+
+def effective_limits(ledger):
+    """Keep historical per-job limits; validate any cumulative-only amendment."""
+    return dict(LIMITS, cumulative_seconds=effective_limit(ledger))
 
 
 def now():
@@ -97,10 +111,12 @@ def paths_check(run):
     require(not run.is_symlink(), 'Run must not be a symlink')
 
 
-def source_pins():
+def source_pins(ledger=None):
+    ledger = read(REPO/'runtime/task1-budget.json') if ledger is None else ledger
+    effective_limit(ledger)
     files = [p for p in SOURCE.glob('*.py') if not p.name.startswith('test_')]
     files += [SOURCE/p for p in ('TisSweep.java', 'ExploreBasis.java', 'SelectivityShapeBasis.java')]
-    files += [Path(__file__), REPO/'tools/java/CloudShapeBasis.java']
+    files += [Path(__file__), REPO/'tools/java/CloudShapeBasis.java', Path(_resource_policy.__file__).resolve()]
     files += [REPO/name for name in ('tools/task1_producer_regression.py',
               'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py',
               'tools/task1_reference_registration.py', 'tools/task1_coupled_registration.py',
@@ -110,7 +126,9 @@ def source_pins():
               'tools/task1_c1_coupled_registration.py', 'tools/task1_residual_registration.py',
               'tools/task1_residual_postprocess.py', 'tools/java/ResidualShapeBasis.java')
               if (REPO/name).is_file()]
-    return {str(p): sha(p) for p in files}
+    pins = {str(p): sha(p) for p in files}
+    pins.update(policy_refs(ledger))
+    return pins
 
 
 def operator_signature(case):
@@ -171,6 +189,10 @@ def prepare(run, ids):
     require(all(i in old['case_pool'] and not old['case_pool'][i].get('existing_reference') for i in ids),
             'Only explicitly packaged fresh-compute historical cases supported')
     require(not run.exists(), 'Never overwrite or retry a prepared/partial run')
+    budgetpath = REPO/'runtime/task1-budget.json'
+    budget = read(budgetpath)
+    limits = effective_limits(budget)
+    require(limits['cumulative_seconds']-budget['spent_seconds'] > 0, 'Cumulative time exhausted')
     run.mkdir(parents=True)
     for d in ('configs', 'masks', 'bases', 'cases', 'postprocess', 'logs', 'classes'):
         (run/d).mkdir()
@@ -217,7 +239,7 @@ def prepare(run, ids):
     javac = shutil.which('javac') or str(jdk/'javac')
     java = str(Path(javac).parent/'java')
     require(Path(javac).is_file() and Path(java).is_file(), 'Java compiler/runtime unavailable')
-    pins = source_pins()
+    pins = source_pins(budget)
     with (run/'logs/compile-selftest.log').open('w') as log:
         subprocess.run([javac, '-J-Xmx2g', '-J-XX:ActiveProcessorCount=1', '-encoding', 'UTF-8', '-d', str(run/'classes'),
                         str(SOURCE/'TisSweep.java'), str(SOURCE/'ExploreBasis.java'),
@@ -231,7 +253,7 @@ def prepare(run, ids):
     plan = dict(schema='task1-cloud-finite-v1', status='prepared', created_utc=now(),
         source_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip(),
         historical_source_commit='8c3a30a778cc9bf19ccb52ca523598bff0a84650',
-        package_integrity=integrity, limits=LIMITS, gates=GATES, cases=cases,
+        package_integrity=integrity, limits=limits, gates=GATES, cases=cases,
         expected_raw_bound_bytes=bound, java=java, source_and_input_sha256=pins,
         preparation_seconds=time.monotonic()-start, path_mapping=mapping,
         scientific_scope='New PDE recomputation, not recovery of missing historical native arrays',
@@ -245,9 +267,6 @@ def prepare(run, ids):
         next_decision='Compare baseline to historical scalars/matrices before expanding search; do not promote unconverged designs')
     write(run/'preregistration.json', plan)
     write(run/'controller.json', dict(status='prepared', updated_utc=now()))
-    budgetpath = REPO/'runtime/task1-budget.json'
-    budgetpath.parent.mkdir(exist_ok=True)
-    budget = read(budgetpath) if budgetpath.exists() else dict(limit_seconds=6600, spent_seconds=0., runs=[])
     budget['spent_seconds'] += plan['preparation_seconds']
     budget['runs'].append(dict(run_id=run.name, stage='preparation', seconds=plan['preparation_seconds']))
     write(budgetpath, budget)
@@ -261,25 +280,30 @@ class BatchStop(RuntimeError):
 def execute(run):
     paths_check(run)
     pre = read(run/'preregistration.json')
-    require(pre['status']=='prepared' and pre['limits']==LIMITS and pre['gates']==GATES, 'Registration mismatch')
+    require(pre['status']=='prepared' and pre['gates']==GATES, 'Registration mismatch')
     require(not (run/'execution-attempt.json').exists(), 'Prior execution attempt preserved; make a new run')
     lockpath = REPO/'.task1-execution.lock'
     with lockpath.open('a+') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        require(not (run/'execution-attempt.json').exists(),
+                'Prior execution attempt preserved; make a new run')
+        require(pre['limits'] == effective_limits(read(REPO/'runtime/task1-budget.json')),
+                'Registration limits unsupported under current validated resource policy; prepare a new run')
         return execute_locked(run, pre)
 
 
 def execute_locked(run, pre):
     start = time.monotonic()
-    budgetpath = REPO/'runtime/task1-budget.json'
-    budgetpath.parent.mkdir(exist_ok=True)
-    budget = read(budgetpath) if budgetpath.exists() else dict(limit_seconds=6600, spent_seconds=0., runs=[])
-    require(budget['limit_seconds']==6600, 'Cumulative budget cannot be expanded')
-    remaining = 6600-budget['spent_seconds']
-    require(remaining > 0, 'Cumulative time exhausted')
     for p, expected in pre['source_and_input_sha256'].items():
         require(sha(p)==expected, 'Pinned source/input changed: '+p)
+    budgetpath = REPO/'runtime/task1-budget.json'
+    budget = read(budgetpath)
+    limits = effective_limits(budget)
+    require(pre['limits'] == limits and pre['gates'] == GATES,
+            'Registration limits/gates unsupported under current validated resource policy')
+    remaining = limits['cumulative_seconds']-budget['spent_seconds']
+    require(remaining > 0, 'Cumulative time exhausted')
     original_integrity()
     cpu = min(os.sched_getaffinity(0))
     os.sched_setaffinity(0, {cpu})
@@ -292,6 +316,7 @@ def execute_locked(run, pre):
                    registration_sha256=sha(run/'preregistration.json'), cases=[], new_PDE_conditions=0,
                    mesh_convergence_validated=False, experimental_validation=False,
                    persistent_backup_verified=False)
+    summary['global_limit_seconds'] = limits['cumulative_seconds']
     write(run/'execution-attempt.json', dict(pid=pid, proc_start_ticks=ticks(pid), started_utc=now()))
     child = None
     active = None
@@ -319,7 +344,7 @@ def execute_locked(run, pre):
                 free = shutil.disk_usage(run).free
                 require(free >= 2*GIB, 'resource_shortage_disk_reserve_2GiB')
                 require(initial_free-free <= 2*GIB, 'resource_shortage_batch_disk_2GiB')
-                require(t < deadline, 'resource_shortage_cumulative_6600s')
+                require(t < deadline, f'resource_shortage_cumulative_{limits["cumulative_seconds"]}s')
                 require(t-case_start < 600, 'resource_shortage_condition_600s')
                 require(not any((run/n).exists() for n in ('STOP','needs_attention','needs_physical_validation')), 'stopped_by_marker')
                 if t-last_write >= 5:
