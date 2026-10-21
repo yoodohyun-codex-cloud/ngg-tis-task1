@@ -1,0 +1,82 @@
+{
+  "schema": "task1-perimeter-antiphase-root-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T18:25:35.495475+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "new_PDE": 0,
+  "source_run_id": "cloud-perimeter-shell-20261021T185000Z",
+  "source_case_id": "perimeter-shell225-notch-xy80",
+  "conditions": [
+    {
+      "id": "perimeter-sine-control",
+      "waveform": "sine"
+    },
+    {
+      "id": "perimeter-antiphase-r0p05",
+      "waveform": "nonunitary_negative_cross_sine",
+      "mix_ratio": 0.05
+    },
+    {
+      "id": "perimeter-antiphase-r0p1",
+      "waveform": "nonunitary_negative_cross_sine",
+      "mix_ratio": 0.1
+    },
+    {
+      "id": "perimeter-antiphase-r0p2",
+      "waveform": "nonunitary_negative_cross_sine",
+      "mix_ratio": 0.2
+    },
+    {
+      "id": "perimeter-antiphase-r0p5",
+      "waveform": "nonunitary_negative_cross_sine",
+      "mix_ratio": 0.5
+    },
+    {
+      "id": "perimeter-antiphase-r1",
+      "waveform": "nonunitary_negative_cross_sine",
+      "mix_ratio": 1.0
+    }
+  ],
+  "question": "At the completed fixed perimeter geometry, can a pure-sine control or two-frequency negative cross drive recover absolute primary mean/P10 while also meeting surface/complement P95 and fixed high-volume screens under original eight skin/contact caps?",
+  "completed_source_findings": "Shell square3h skin8mean3.7940795033/P103.4752090429 belowcanonical4.0618489416/3.6457357391; surfaceP9517.5159424272 below25.2592218317 butsurfacehighvolumes9.75238e-6/9.77190e-6m3 abovebaseline7.76653e-6/8.20945e-6;complementP9524.033237919 above23.4357185812.OnlysurfaceP95passed;7of8screensfailed. Do not generalize one P95 headroom to spatial-selectivity improvement.",
+  "seed_coefficients": "Control:-j*[1,0]at3000,-j*[0,1]at3030. Mix:-j*[1,-r]at3000 and-j*[-r,1]at3030;9000/9090zero. r<1 difference-mode-enriched withcommon/differentialweights1-r/1+r;r1 fullydifference commandsrank1 butactualvoltageoutputsremain2.",
+  "normalization": "Exactly ONE common positive scalar g=1/max(allactualsourceVppupperbounds) for both outputs andbothfrequencies. Verify actual3000/3030 compositefullsourcewaveVpp bounds rawwidth<=1uV;eachupper<=1V,maxupper=1V. Do not independentlyrenormalizecolumns orassumeunitarity. Controlanalytic1Vppscale1.",
+  "novelty_invariant": "K=(c3000,out1/c3000,out0)*(c3030,out0/c3030,out1): newK=+r² vspriorunitaryK=-r² invariantunderpositivecolumnscaling/commoncarrierphase. Adjacentreturn-currentcomplexq sixcases aredifferentgeometryandcoefficients. No raw(1+r)gainassumedafterwholewave normalization.",
+  "fixed_geometry": "Originalcompletedperimeterfullfaceunion576each225mm²/total900/physical4pads/2independentoutputs/commonGND1/50ohm. D50/layers0.1,5,5,15/toponly/h.625SC2bulk14,14,40/nominalPBSspecificZ unchanged. Actualactivecoeffs3k/3030 onbothoutputs exceptpure-sinecontrol,uncommandedfreq0Vthrough50ohm.",
+  "control_policy": "Originalsquare canonical8caps/cutoffs, cachedperimetersquare1/1control unchanged. Newperimetersine fullROI/RMS/40phi computedonce andsourceboundcachednativepostsineelectrical+complexcentrefieldregression scale1;noexisting sine NPZ assumed.",
+  "evaluation": "Same2074sampledrealdirections andfractionalr<=5mmdepth15..20ROIweights;targetabsolute mean/P10/CV/max,wholeXYsupplement,surface0..5/complementP95/hotvol/globalhotspot. CarrierRMS/basicdifferenceTIS/directionalpointE/nativephi40probeVpp separate.5normalizations and8caps/gates unchanged.",
+  "output_power": "Keepall signedsource/metal/resistor powers peroutput/perfrequency,includingnegativecomponents. Storeactualphysicalpadcomplexnetcurrents+localJ separately;zeroGNDnetcurrent doesnotmeanzero localJ orisolatedpairs. Arbitrarywave/phase-sync/powersink hardwareunverified.",
+  "resource_policy_limit_seconds": 13800,
+  "observed_remaining_seconds": 5144.830142480001,
+  "max_queue_seconds": 900,
+  "max_scout_seconds": 600,
+  "max_condition_seconds": 60,
+  "CPU_count": 1,
+  "RSS_bytes": 3221225472,
+  "disk_reserve_bytes": 2147483648,
+  "feedback": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-shell-context-20261021T185000Z/feedback-after.json",
+    "SHA256": "33c82e601c7f13ef6eb47cdd2ea0cb351f97088e99d0d13e9616016a2046ac84"
+  },
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-perimeter-shell-context-20261021T185000Z/feedback-after.json": "33c82e601c7f13ef6eb47cdd2ea0cb351f97088e99d0d13e9616016a2046ac84",
+    "/workspace/ngg-tis-task1/docs/cloud-perimeter-shell-context-20261021T185000Z/volume.json": "60e19c019800cd3b958dda4f183254dcc3687743314ea6016e1fcc0f28987564",
+    "/workspace/ngg-tis-task1/docs/cloud-perimeter-shell-context-20261021T185000Z/screen.json": "8f54c169e54dc8535e11e856406d51483e1de9d968e1c89daee234e060e45548",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/postprocess/perimeter-shell225-notch-xy80/summary.json": "fbbe40074b2219d09607a588ca8b31b35337449459b2eeb19cbb0d74b7c35252",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/preregistration.json": "1a4a6c81c59956d5d575001278b4dd2a5470c596033efe19777e65586e8c9218",
+    "/workspace/ngg-tis-task1/docs/cloud-next-coherent-drive-20261021T165000Z/summary.json": "0d39a5fede92c683d02970556ad227b8941195f536fe76c7abb4e2da949229bb",
+    "/workspace/ngg-tis-task1/docs/cloud-next-coherent-weak-20261021T170000Z/summary.json": "0a40f07ebc77c25951ad987258d1df4b34ef7d648798b104a87e8c31d1c75746",
+    "/workspace/ngg-tis-task1/docs/cloud-next-return-current-20261021T172000Z/summary.json": "482146de98397f3753404aaad2355b0832ff8b64bfbc201d8e9446aa971a2ae1"
+  },
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "experimentally_validated": false,
+  "holds": [
+    "Samephysicalsteppedoutline mustbe retained infuturemeshrefinement,notradialreranking",
+    "Rimclearance0.02344849664mm/SC/XY/bulk/edge/contact/sphereconvergence unvalidated",
+    "OneP95improvement withtargetdecreaseandvolumeincrease isnotdeepfocus",
+    "No hardwareabsorption,ETAloaded,activation,safety,experimentalvalidation",
+    "COMSOL5.3a/planned5.3.1.201 unverified;noinstall/paidresources/budgetexpansion/mainmerge/deletion"
+  ]
+}

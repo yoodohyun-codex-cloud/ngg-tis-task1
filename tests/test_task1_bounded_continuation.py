@@ -220,7 +220,7 @@ class QueueFixture(unittest.TestCase):
         for name in ('task1_return_current_drive_scout.py', 'task1_coherent_single_pair.py',
                      'task1_return_rotation_operator_audit.py', 'task1_rotation_drive_ratio_scout.py',
                      'task1_rotation_amplitude_bounds.py', 'task1_rotation_coherent_scout.py',
-                     'task1_rotation_coherent_single_pair.py'):
+                     'task1_rotation_coherent_single_pair.py', 'task1_perimeter_antiphase_scout.py'):
             tool = self.root/'tools'/name
             output = self.root/'docs'/name.removesuffix('.py')
             flags = ['--preregistration', str(self.baseline), '--output', str(output)]
