@@ -108,6 +108,23 @@ class QueueFixture(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Finite stage cap'):
             queue.validate_stage(bad, self.root)
 
+    def test_recovery_allows_only_exact_frozen_execute_output(self):
+        tool = self.root/'tools/task1_lower_carrier_recovery.py'
+        run = self.root/'run/lower-carrier-recovery'
+        stage = dict(id='recovery', argv=[str(Path(sys.executable).resolve()), str(tool),
+            '--execute', '--output', str(run)], max_seconds=600,
+            must_not_exist=str(run/'execution-attempt.json'),
+            completion=dict(path=str(run/'summary.json'), statuses=['calculated_unadopted']))
+        self.assertEqual(queue.validate_stage(stage, self.root), tool)
+        for flags in (['--prepare', '--output', str(run)], ['--output', str(run)],
+                      ['--execute', '--execute', '--output', str(run)],
+                      ['--output', str(run), '--execute'],
+                      ['--execute', '--output', str(run), '--case', 'extra'],
+                      ['--execute', '--output', '/outside-repository']):
+            bad = copy.deepcopy(stage); bad['argv'] = stage['argv'][:2]+flags
+            with self.subTest(flags=flags), self.assertRaises(ValueError):
+                queue.validate_stage(bad, self.root)
+
     def test_success_keeps_history_and_does_not_double_charge_child_debit(self):
         result = self.run_queue(self.plan())
         self.assertEqual(result['status'], 'completed_preregistered_queue')
