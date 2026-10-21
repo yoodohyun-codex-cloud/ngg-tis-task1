@@ -1,0 +1,99 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "failed_preserved",
+  "pid": 29947,
+  "proc_start_ticks": 5549707,
+  "created_utc": "2026-10-21T18:56:50.305475+00:00",
+  "phase": "finished",
+  "stages": [
+    {
+      "id": "inward-perimeter-native",
+      "elapsed_seconds": 99.9131671790019,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/summary.json",
+        "statuses": [
+          "complete"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 99.9131671790019,
+        "child_ledger_delta_seconds": 99.79440309200436,
+        "excluded_already_recorded_seconds": 99.79440309200436,
+        "unrecorded_child_wall_seconds": 0.11876408699754393
+      }
+    },
+    {
+      "id": "inward-perimeter-fullskin",
+      "elapsed_seconds": 3.039788482004951,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/audit/perimeter-shell225-inward0p625-xy80.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 3.039788482004951,
+        "child_ledger_delta_seconds": 2.8677762340012123,
+        "excluded_already_recorded_seconds": 2.8677762340012123,
+        "unrecorded_child_wall_seconds": 0.17201224800373893
+      }
+    },
+    {
+      "id": "register-inward-three-row-volume",
+      "elapsed_seconds": 0.2741973220036016,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume-plan.json",
+        "statuses": [
+          "preregistered_not_executed"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 0.2741973220036016,
+        "child_ledger_delta_seconds": 0.0,
+        "excluded_already_recorded_seconds": 0.0,
+        "unrecorded_child_wall_seconds": 0.2741973220036016
+      }
+    },
+    {
+      "id": "inward-three-row-volume",
+      "elapsed_seconds": 0.17499065400625113,
+      "exit_code": 1,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume.json",
+        "statuses": [
+          "calculated_unadopted"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 0.17499065400625113,
+        "child_ledger_delta_seconds": 0.0008116130047710612,
+        "excluded_already_recorded_seconds": 0.0008116130047710612,
+        "unrecorded_child_wall_seconds": 0.17417904100148007
+      }
+    }
+  ],
+  "current_child": null,
+  "plan_path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/queue-plan.json",
+  "plan_sha256": "3a34eddd8e15f5ec1ff8893bafc60694b102434a100c083fed3cc3fdfc501dd9",
+  "background_daemon": false,
+  "candidate_adopted": false,
+  "updated_utc": "2026-10-21T18:58:33.970228+00:00",
+  "elapsed_seconds": 103.66481879699859,
+  "coordinator_overhead_seconds": 0.9956483859932632,
+  "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_volume_selectivity.py --preregistration /workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume-plan.json --baseline-summary /workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json --summary /workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json --summary /workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/postprocess/perimeter-shell225-inward0p625-xy80/summary.json --output /workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume.json --summary /workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/postprocess/perimeter-shell225-notch-xy80/summary.json",
+  "aggregate_rss_bytes": 21622784,
+  "current_child_members": {
+    "30187": 5560078
+  },
+  "failure": "ValueError: Child exit failure: 1",
+  "stopped_utc": "2026-10-21T18:58:33.970198+00:00",
+  "stop_reason": "ValueError: Child exit failure: 1",
+  "next_step_owner": "root",
+  "resume_condition": "Do not rerun attempted queue; inspect evidence and preregister a new unique output",
+  "resume_command": null,
+  "next_inspection_command": "cat /workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/queue/heartbeat.json",
+  "numerical_validation_promoted": false
+}
