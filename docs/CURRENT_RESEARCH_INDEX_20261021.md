@@ -1,5 +1,10 @@
 # 작업1 최신 연구 결과와 실행 경로
 
+21:11 UTC 최신 완료: 최신 fine3e 후보의 C1 비교를0.100548초에 완료했습니다. 새4매칭+기준4불변aliases=8,계산/GET큐exit0입니다. 같은skin8 TIS의 중심20mm E_RMS 기준 C1은1.548467460Vpp/1.449370mA/0.777027mW,목표ROIenergyRMS 기준1.551870436Vpp/1.452555mA/0.780446mW입니다. C1접촉J95=16.915447는TIS12.466047보다높아낮은전력을동일부담개선으로해석하지않습니다. C1은귀환포함2패드450mm²/1출력,TIS4패드900mm²/2출력,nominalPBS SC2이며RMS/변조/활성화는구분합니다. 현재numerical워커없음/유한큐완료,다음finerXY는저장gate확인중이며최종전용preflight로갱신합니다. 아래는각시점의보존기록이며옛running표기는현재live를뜻하지않습니다.
+
+- [최신8매칭 C1 GUI](CLOUD_ORIGINAL_SINGLE_PAIR_RESULTS_20261021.html) / [보고서](ORIGINAL_SINGLE_PAIR_RESULTS_20261021.md) / [실제계산](cloud-original-single-pair-20261021T224000Z/summary.json)
+
+
 20:57 UTC 최신 완료: 동일 구동·fine 5개 진폭의 SC4/XY coarse 진단을 15.316초에 완료했습니다. SC4는 20/20 통과, 최대 변화 0.01828%·상태 변화0/16입니다. XY는 접촉 J95 9.5310%, SC 손실5.7515%, 접촉 손실5.9560% 차이로 6/20 실패했고 기존 XY 실패도 유지합니다. 세 mesh 모두 목표 mean/P10이 기준 미달이라 6/8·미채택이며 전체 수렴이 아닙니다. 현재 워커는 없고, 더 촘촘한 XY native는 저장 공간 gate 차단입니다. 기존 cap 안의 h.4167/791280셀은 여유2756469376B가 필요하며 새 등록 전입니다. 최신 fine 후보와 C1 RMS 비교의 작은 JSON 갱신을 준비 중입니다.
 
 - [최신 격자 결과 GUI](CLOUD_ORIGINAL_MESH_SENSITIVITY_RESULTS_20261021.html) / [보고서](ORIGINAL_MESH_SENSITIVITY_RESULTS_20261021.md) / [실제 두 조건](cloud-original-mesh-sensitivity-20261021T223000Z/summary.json)
