@@ -1,0 +1,74 @@
+{
+  "schema": "task1-rotation-coherent-root-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T17:54:54.096076+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "new_PDE": 0,
+  "conditions": [
+    {
+      "id": "rotation-sine-control",
+      "waveform": "sine"
+    },
+    {
+      "id": "rotation-coherent-r0p5-p090",
+      "waveform": "coherent_two_tone_sine",
+      "mix_ratio": 0.5,
+      "phase_deg": 90
+    },
+    {
+      "id": "rotation-coherent-r0p5-p270",
+      "waveform": "coherent_two_tone_sine",
+      "mix_ratio": 0.5,
+      "phase_deg": 270
+    },
+    {
+      "id": "rotation-coherent-r1-p090",
+      "waveform": "coherent_two_tone_sine",
+      "mix_ratio": 1.0,
+      "phase_deg": 90
+    },
+    {
+      "id": "rotation-coherent-r1-p270",
+      "waveform": "coherent_two_tone_sine",
+      "mix_ratio": 1.0,
+      "phase_deg": 270
+    }
+  ],
+  "question": "After the conditional positive exclusive-square amplitude family exclusion, do coherent sine mixes alter spatial carrier fields at the same rotated-return geometry enough to meet canonical absolute target and off-target screens under eight skin/contact caps?",
+  "completed_evidence": "Four amplitude-ratio scouts completed unadopted; all positive exclusive-square amplitude pairs excluded only within cached fixed-grid fixed-direction model. Coherent both-frequency commands fall outside that family.",
+  "fixed_geometry": "D50mm/layers0.1,5,5,15mm/top-only;4physicalpads/2voltageoutputs/onecommonGND/50ohm;sourcecross281.25mm2each,returnrect168.75mm2each;only pad2 previously rotated90;hXY0.625mmSC2bulk14,14,40;nominal PBS Rs500 fitwindow500Hz contact model unvalidated for skin",
+  "drive_definition": "New sine control: (-j,0) at3000,(0,-j)at3030,analytic1Vpp peroutput. Four coherent conditions use seed -j/sqrt(1+r^2)*[[1,-r exp(-jphi)],[r exp(jphi),1]], rows3000/3030Hz colsout0/1; zero thirdharmonics. Normalize each entire actual two-tone source Vpp to upper1V with raw bracket width<=1uV. Both fundamentals actually active on both outputs, uncommanded frequencies terminate0V through50ohm.",
+  "control_policy": "Reuse original4square+rotation1/1square caches; compute new rotation sine fullROI/RMS/40phi once, regress electrical and centre complex field versus nativepost sine reference at scale1; no nonexistent sine NPZ reuse claim.",
+  "normalization_modes": [
+    "raw_1Vpp",
+    "equal_total_source_current",
+    "equal_total_power",
+    "skin_contact_only",
+    "legacy_full_burdens"
+  ],
+  "evaluation": "Same original-square canonical8caps,2074real sampled directions,ROI r<=5mm depth15to20mm fromtop positive+z,fractional-volumeweighted; wholeXY slab supplementary; target absolute mean/P10/distribution plus surface0to5/complementP95/hotvol/globalhotspots. No physiology thresholds.",
+  "max_scout_seconds": 600,
+  "max_condition_seconds": 60,
+  "max_queue_seconds": 900,
+  "resource_policy_limit_seconds": 13800,
+  "observed_remaining_seconds": 5501.988071665997,
+  "CPU_count": 1,
+  "RSS_bytes": 3221225472,
+  "disk_reserve_bytes": 2147483648,
+  "holds": [
+    "No candidate adoption or mesh/edge/SC/contact convergence promotion",
+    "No hardware arbitrary-waveform, phase sync, signed power absorption validation",
+    "No ETA5001 loaded-phantom or experiment validation;40nativephi predictions unloaded",
+    "Sine-versus-square and new mix amplitude normalization kept separate; no global geometry exclusion"
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-20261021T181000Z/summary.json": "70046bad98db81e9ab1ee324d408f56dc68fd035f75dc60bd6825048ee9cc77f",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/summary.json": "33c7e69904b10f8a73fc33e5b743240f9387da2f6aeb9d9b0cb5973821e599b0",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/screen.json": "ba679d6406530219ace98c2749c00b40f006029681d2edd9f54c8e27d24670e8",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json": "8de92edabdcdbe5a0ec7601882ce497e7d2a6c480fa478dbb71853f281041933",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/preregistration.json": "5fdd771477b8c7bcc5df6445f3eb8b8689335948ddad5c5b4cc45a030217a543",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/feedback-after.json": "2ea91c0e48cb6ec71b217c46256c045e3d8eaf233fd01fa9edc67dafd2a9d6d8"
+  }
+}
