@@ -1,0 +1,480 @@
+{
+  "schema": "task1-frequency-native-volume-maps-v1",
+  "status": "rendered_unadopted",
+  "no_new_PDE": true,
+  "no_E_phi_decode": true,
+  "no_scoring_or_gate_recalculation": true,
+  "candidate_adopted": false,
+  "coordinate_system": "x/y horizontal mm; +z depth from skin surface z=0",
+  "primary_ROI": "r<=5mm, depth15..20mm; original frozen partial-cell weights preserved",
+  "metric_definitions": {
+    "maxTIS": "fundamental2carrier maximum over2074 sampled directions; lower bound on continuous direction maximum",
+    "fixedTIS": "fundamental2carrier modulation at fixed (1/sqrt2,1/sqrt2,0)",
+    "RMS": "total vector field RMS from exactly the stored condition; square includes third harmonics, sine two carriers"
+  },
+  "modes": {
+    "raw_1Vpp": "Stored scalar arrays; nominal source1Vpp/output",
+    "skin_contact_only": "Only saved amplitude scale against original square eight skin/contact numerical caps; no source power cap or1Vpp ceiling"
+  },
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/cases/baseline-square15-xy80.json": "93a714a9fb99c091d194827f9943ad22f1b586d818dc995098e5d58826a36b31",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/mesh-metadata.json": "16a419d3dece50876fffb74c04c781983973fd7540fa11a0bad7be96604895d7",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/grid.csv.gz": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/volume.npz": "4a255ba0b586c799d5ded6c4cd8c8a8553600f85ea17b4170e87b71e60479f53",
+    "/workspace/ngg-tis-task1/docs/cloud-next-frequency-20261021T104000Z/summary.json": "3e06482955786976b3be1926300b40b78e35556fc712895939bf1c3f23ee82a1",
+    "/workspace/ngg-tis-task1/docs/cloud-next-frequency-20261021T104000Z/sine-3000-3030-beat30/condition.json": "08e7053dc942975f78880887a5a27e1fa1236d558676b1e8af008da4cb753a29",
+    "/workspace/ngg-tis-task1/docs/cloud-next-frequency-20261021T104000Z/sine-3000-3030-beat30/volume.npz": "bfba2fd1947a8a040a3821a090780d0858ae9e865fedda3d6359ef4cbb2913ce",
+    "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/summary.json": "13414f9858b9d3e86e49fcd76be1abf2c565cfa344e42e73ac93c31cadd17f22",
+    "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/postprocess/sine-1000-1030-beat30/condition.json": "7fe4f15173a7cad4a994e767a8388758b0587e412630743d9535ddbb493ce313",
+    "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/postprocess/sine-1000-1030-beat30/volume.npz": "59bfb43f82542ab3a3aa1bd43d31596d0eb7a22800a45d11c8f3c9f34e6cb5f7",
+    "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/postprocess/sine-2000-2030-beat30/condition.json": "28ee804be836d84965d5227df31dbead9d7a235038c5a1aae17f2dbee367cf6d",
+    "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/postprocess/sine-2000-2030-beat30/volume.npz": "e02f0d6bec4b3833f5483dd8f1e195f525ea09179c2e877045e340ace84fb3af",
+    "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/summary.json": "697edbe08297074ab0f2f330f9d8cff448adfe15595a94035ab19ceb73d9638b",
+    "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/postprocess/sine-5000-5030-beat30/condition.json": "23f3988b4da0ff0165c787ff3382cee8f56c4a4d0127a885eeb2b69535bf840a",
+    "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/postprocess/sine-5000-5030-beat30/volume.npz": "8d80a65a6e785dd3e943dacb543956e6245b0a0c7682afce1b1736ffe30645d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/postprocess/sine-9000-9030-beat30/condition.json": "62ddbb98eafb4a49a3657e408e01ed6237e3463d750736f293ec55273e82a63c",
+    "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/postprocess/sine-9000-9030-beat30/volume.npz": "37bf2a74678d0434c805a1f1a637fe04388562d675ff990221f5f6566b45caf0"
+  },
+  "canonical_square_numerical_limits": {
+    "surface_J_RMS_max_A_m2": 25.49124012699599,
+    "surface_J_RMS_p95_A_m2": 13.553106044904386,
+    "contact_voltage_RMS_max_V": 0.0026848384569140493,
+    "SC_power_W": 2.166357019889475e-06,
+    "contact_power_W": 1.827275482305884e-06,
+    "source_power_W": 0.001135915555805781,
+    "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+    "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+    "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+  },
+  "implementation_file_SHA256": "bbc20eaa892f97990403544134713e6e0923aa3d3a852a10b33e94f4d07c0cdf",
+  "implementation_git_commit": "d8a32811f2cc395b49a721d997665c93f6e4fa2c",
+  "display_only": true,
+  "full_convergence_validated": false,
+  "experimentally_validated": false,
+  "color_limits": {
+    "global_native_range/raw_1Vpp/maxTIS": {
+      "vmin": 0.0,
+      "vmax": 1794.0917706054565,
+      "units": "V/m",
+      "scope": "All represented native cells of all6 conditions; shared across XY and XZ"
+    },
+    "deep_ROI_display_clipped/raw_1Vpp/maxTIS": {
+      "vmin": 0.0,
+      "vmax": 4.971327188666206,
+      "units": "V/m",
+      "scope": "All native cells with positive frozen primary ROI weight, all6 conditions; above-range values clipped for display"
+    },
+    "global_native_range/raw_1Vpp/fixedTIS": {
+      "vmin": 0.0,
+      "vmax": 97.82309201515608,
+      "units": "V/m",
+      "scope": "All represented native cells of all6 conditions; shared across XY and XZ"
+    },
+    "deep_ROI_display_clipped/raw_1Vpp/fixedTIS": {
+      "vmin": 0.0,
+      "vmax": 4.971327188666206,
+      "units": "V/m",
+      "scope": "All native cells with positive frozen primary ROI weight, all6 conditions; above-range values clipped for display"
+    },
+    "global_native_range/raw_1Vpp/RMS": {
+      "vmin": 0.0,
+      "vmax": 1665.2148179090186,
+      "units": "V/m",
+      "scope": "All represented native cells of all6 conditions; shared across XY and XZ"
+    },
+    "deep_ROI_display_clipped/raw_1Vpp/RMS": {
+      "vmin": 0.0,
+      "vmax": 2.618715665851036,
+      "units": "V/m",
+      "scope": "All native cells with positive frozen primary ROI weight, all6 conditions; above-range values clipped for display"
+    },
+    "global_native_range/skin_contact_only/maxTIS": {
+      "vmin": 0.0,
+      "vmax": 1358.083499189897,
+      "units": "V/m",
+      "scope": "All represented native cells of all6 conditions; shared across XY and XZ"
+    },
+    "deep_ROI_display_clipped/skin_contact_only/maxTIS": {
+      "vmin": 0.0,
+      "vmax": 5.0144651863271354,
+      "units": "V/m",
+      "scope": "All native cells with positive frozen primary ROI weight, all6 conditions; above-range values clipped for display"
+    },
+    "global_native_range/skin_contact_only/fixedTIS": {
+      "vmin": 0.0,
+      "vmax": 81.7319647408177,
+      "units": "V/m",
+      "scope": "All represented native cells of all6 conditions; shared across XY and XZ"
+    },
+    "deep_ROI_display_clipped/skin_contact_only/fixedTIS": {
+      "vmin": 0.0,
+      "vmax": 5.014465186327136,
+      "units": "V/m",
+      "scope": "All native cells with positive frozen primary ROI weight, all6 conditions; above-range values clipped for display"
+    },
+    "global_native_range/skin_contact_only/RMS": {
+      "vmin": 0.0,
+      "vmax": 1237.5632432733182,
+      "units": "V/m",
+      "scope": "All represented native cells of all6 conditions; shared across XY and XZ"
+    },
+    "deep_ROI_display_clipped/skin_contact_only/RMS": {
+      "vmin": 0.0,
+      "vmax": 2.618715665851036,
+      "units": "V/m",
+      "scope": "All native cells with positive frozen primary ROI weight, all6 conditions; above-range values clipped for display"
+    }
+  },
+  "artifacts": {
+    "global_native_range--raw_1Vpp--maxTIS.png": {
+      "SHA256": "3d8436eed90ee8a2d24763c1b1ccbc48f7d854bdf8a268e8918273d7e3da5b9b",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/global_native_range--raw_1Vpp--maxTIS.png"
+    },
+    "deep_ROI_display_clipped--raw_1Vpp--maxTIS.png": {
+      "SHA256": "4ddf5d9f00b4b52ba48f60c1f890cdc32b04798defb0a146b18bca8590f1e64a",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/deep_ROI_display_clipped--raw_1Vpp--maxTIS.png"
+    },
+    "global_native_range--raw_1Vpp--fixedTIS.png": {
+      "SHA256": "0a3cdc68496627daee1dbfc50f1138d1e8c6c5cb0e2b25fbb14fbc56f5ca37d8",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/global_native_range--raw_1Vpp--fixedTIS.png"
+    },
+    "deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png": {
+      "SHA256": "27dd96bbad6f5201586d5125e7c890cec889463e44c5de219bd24a56ee9296bd",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png"
+    },
+    "global_native_range--raw_1Vpp--RMS.png": {
+      "SHA256": "d96dce63105589ba60c26b16ccf8c3b4f71fc2f208147f24dc0257388c8a00c0",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/global_native_range--raw_1Vpp--RMS.png"
+    },
+    "deep_ROI_display_clipped--raw_1Vpp--RMS.png": {
+      "SHA256": "8238c72c9e84bed46f6e5267bcf804e27753eda37322dedb51c125a61e0e7469",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/deep_ROI_display_clipped--raw_1Vpp--RMS.png"
+    },
+    "global_native_range--skin_contact_only--maxTIS.png": {
+      "SHA256": "3482651638704e25c6628bc99c2c74daf1292f14b2cdb3350d0b6b850fceafd9",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/global_native_range--skin_contact_only--maxTIS.png"
+    },
+    "deep_ROI_display_clipped--skin_contact_only--maxTIS.png": {
+      "SHA256": "e8674221b7dc0a9b7093111b3e3f460596f97ffff69cb0996b74b4f7b8d4b45f",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/deep_ROI_display_clipped--skin_contact_only--maxTIS.png"
+    },
+    "global_native_range--skin_contact_only--fixedTIS.png": {
+      "SHA256": "f7cd0013ed8fbf5d46d217aa0d9bb3b01973bbc7cb13f9ab40b87cd26629df09",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/global_native_range--skin_contact_only--fixedTIS.png"
+    },
+    "deep_ROI_display_clipped--skin_contact_only--fixedTIS.png": {
+      "SHA256": "49cfbd8a72f41544a94eb71a5e5c97dc4e6abbcbff889ab73cd0ddc8b030793d",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/deep_ROI_display_clipped--skin_contact_only--fixedTIS.png"
+    },
+    "global_native_range--skin_contact_only--RMS.png": {
+      "SHA256": "d754cb744f65ad8728086e1fbf5294311371c264707a2a8a2e188b704d6d8ec7",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/global_native_range--skin_contact_only--RMS.png"
+    },
+    "deep_ROI_display_clipped--skin_contact_only--RMS.png": {
+      "SHA256": "ea804f5e473e8ba02504ac95c9d0301b3d88362c5c33f554fbf41b2ac8d7cbf8",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-frequency-native-maps-20261021T155000Z/deep_ROI_display_clipped--skin_contact_only--RMS.png"
+    }
+  },
+  "cases": [
+    {
+      "id": "baseline-square15-xy80-square_3h",
+      "label": "Square 3k/3.03k + 3rd harmonics",
+      "waveform": "square_3h",
+      "actual_fundamental_Hz": [
+        3000,
+        3030
+      ],
+      "beat_frequency_Hz": 30,
+      "scales": {
+        "raw_1Vpp": 1.0,
+        "skin_contact_only": 1.0
+      },
+      "source_summary": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+      "source_condition_id": "baseline-square15-xy80-square_3h",
+      "scalar_archive": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/volume.npz",
+      "configuration_sha256": "f838aeab4f1729e3eb064318781e49ef72c99f28a90b4f416097cfbdec92b64b",
+      "native_grid_SHA256": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365"
+    },
+    {
+      "id": "sine-1000-1030-beat30",
+      "label": "Sine 1k/1.03k; beat30Hz",
+      "waveform": "sine",
+      "actual_fundamental_Hz": [
+        1000,
+        1030
+      ],
+      "beat_frequency_Hz": 30,
+      "scales": {
+        "raw_1Vpp": 1.0,
+        "skin_contact_only": 0.4713935446814929
+      },
+      "source_summary": "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/summary.json",
+      "source_condition_id": "sine-1000-1030-beat30",
+      "scalar_archive": "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/postprocess/sine-1000-1030-beat30/volume.npz",
+      "canonical_cap_reference_id": "baseline-square15-xy80-square_3h",
+      "source_provenance": {
+        "run_id": "cloud-lower-carrier-recovery-20261021T153000Z",
+        "native_case_id": "lower-1000-1030-2000-2030",
+        "source_commit": "07aba294d20692ebc0454c1486b7ca8b93908b2b",
+        "configuration_sha256": "03b7bd32d9f42a46038df6f33e403cce0627ef0d7a4646ca26504a3372a7c2bf",
+        "circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "n_return_nodes": 1,
+          "source_Vpp_each": 1.0,
+          "source_peak_V": 0.5,
+          "source_resistance_ohm": 50.0,
+          "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "carrier_assignment_Hz": [
+            1000,
+            1030
+          ],
+          "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics",
+          "separate_sine_frequency_pairs_Hz": [
+            [
+              1000,
+              1030
+            ],
+            [
+              2000,
+              2030
+            ]
+          ],
+          "harmonics_Hz": [],
+          "drive_condition_scope": "Two separate sine pairs1000/1030 and2000/2030, never four-carrier TIS"
+        }
+      },
+      "native_grid_SHA256": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365"
+    },
+    {
+      "id": "sine-2000-2030-beat30",
+      "label": "Sine 2k/2.03k; beat30Hz",
+      "waveform": "sine",
+      "actual_fundamental_Hz": [
+        2000,
+        2030
+      ],
+      "beat_frequency_Hz": 30,
+      "scales": {
+        "raw_1Vpp": 1.0,
+        "skin_contact_only": 0.7793712421876964
+      },
+      "source_summary": "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/summary.json",
+      "source_condition_id": "sine-2000-2030-beat30",
+      "scalar_archive": "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-recovery-20261021T153000Z/postprocess/sine-2000-2030-beat30/volume.npz",
+      "canonical_cap_reference_id": "baseline-square15-xy80-square_3h",
+      "source_provenance": {
+        "run_id": "cloud-lower-carrier-recovery-20261021T153000Z",
+        "native_case_id": "lower-1000-1030-2000-2030",
+        "source_commit": "07aba294d20692ebc0454c1486b7ca8b93908b2b",
+        "configuration_sha256": "03b7bd32d9f42a46038df6f33e403cce0627ef0d7a4646ca26504a3372a7c2bf",
+        "circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "n_return_nodes": 1,
+          "source_Vpp_each": 1.0,
+          "source_peak_V": 0.5,
+          "source_resistance_ohm": 50.0,
+          "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "carrier_assignment_Hz": [
+            2000,
+            2030
+          ],
+          "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics",
+          "separate_sine_frequency_pairs_Hz": [
+            [
+              1000,
+              1030
+            ],
+            [
+              2000,
+              2030
+            ]
+          ],
+          "harmonics_Hz": [],
+          "drive_condition_scope": "Two separate sine pairs1000/1030 and2000/2030, never four-carrier TIS"
+        }
+      },
+      "native_grid_SHA256": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365"
+    },
+    {
+      "id": "sine-3000-3030-beat30",
+      "label": "Sine 3k/3.03k; beat30Hz",
+      "waveform": "sine",
+      "actual_fundamental_Hz": [
+        3000,
+        3030
+      ],
+      "beat_frequency_Hz": 30,
+      "scales": {
+        "raw_1Vpp": 1.0,
+        "skin_contact_only": 1.0698639023477048
+      },
+      "source_summary": "/workspace/ngg-tis-task1/docs/cloud-next-frequency-20261021T104000Z/summary.json",
+      "source_condition_id": "sine-3000-3030-beat30",
+      "scalar_archive": "/workspace/ngg-tis-task1/docs/cloud-next-frequency-20261021T104000Z/sine-3000-3030-beat30/volume.npz",
+      "canonical_cap_reference_id": "baseline-square15-xy80-square_3h",
+      "source_provenance": {
+        "run_id": "cloud-mesh-c1-20261019T190000Z",
+        "case_id": "baseline-square15-xy80",
+        "source_commit": "38f005ecefc2c432cd6424a06f599f93682cc202",
+        "source_summary": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "configuration_sha256": "f838aeab4f1729e3eb064318781e49ef72c99f28a90b4f416097cfbdec92b64b",
+        "circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "n_return_nodes": 1,
+          "source_Vpp_each": 1.0,
+          "source_peak_V": 0.5,
+          "source_resistance_ohm": 50.0,
+          "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "carrier_assignment_Hz": [
+            3000,
+            3030
+          ],
+          "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+        }
+      },
+      "native_grid_SHA256": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365"
+    },
+    {
+      "id": "sine-5000-5030-beat30",
+      "label": "Sine 5k/5.03k; beat30Hz",
+      "waveform": "sine",
+      "actual_fundamental_Hz": [
+        5000,
+        5030
+      ],
+      "beat_frequency_Hz": 30,
+      "scales": {
+        "raw_1Vpp": 1.0,
+        "skin_contact_only": 0.9290074349871886
+      },
+      "source_summary": "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/summary.json",
+      "source_condition_id": "sine-5000-5030-beat30",
+      "scalar_archive": "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/postprocess/sine-5000-5030-beat30/volume.npz",
+      "canonical_cap_reference_id": "baseline-square15-xy80-square_3h",
+      "source_provenance": {
+        "run_id": "cloud-mid-high-carrier-20261021T154000Z",
+        "native_case_id": "mid-high-5000-5030-9030",
+        "source_commit": "9344c23db64258a0b5f8e5a44bbdf187d3d66655",
+        "configuration_sha256": "9b9581702f467092d2daed31f755067012b3fdca62ed107be26fc98ad5101080",
+        "circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "n_return_nodes": 1,
+          "source_Vpp_each": 1.0,
+          "source_peak_V": 0.5,
+          "source_resistance_ohm": 50.0,
+          "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "carrier_assignment_Hz": [
+            5000,
+            5030
+          ],
+          "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics",
+          "separate_sine_frequency_pairs_Hz": [
+            [
+              5000,
+              5030
+            ],
+            [
+              9000,
+              9030
+            ]
+          ],
+          "harmonics_Hz": [],
+          "drive_condition_scope": "Two separate sine pairs5000/5030 and9000/9030, cached9000reused; neverfour-carrierTIS"
+        }
+      },
+      "native_grid_SHA256": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365"
+    },
+    {
+      "id": "sine-9000-9030-beat30",
+      "label": "Sine 9k/9.03k; beat30Hz",
+      "waveform": "sine",
+      "actual_fundamental_Hz": [
+        9000,
+        9030
+      ],
+      "beat_frequency_Hz": 30,
+      "scales": {
+        "raw_1Vpp": 1.0,
+        "skin_contact_only": 0.756254044987268
+      },
+      "source_summary": "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/summary.json",
+      "source_condition_id": "sine-9000-9030-beat30",
+      "scalar_archive": "/workspace/ngg-tis-task1/data-native/cloud-mid-high-carrier-20261021T154000Z/postprocess/sine-9000-9030-beat30/volume.npz",
+      "canonical_cap_reference_id": "baseline-square15-xy80-square_3h",
+      "source_provenance": {
+        "run_id": "cloud-mid-high-carrier-20261021T154000Z",
+        "native_case_id": "mid-high-5000-5030-9030",
+        "source_commit": "9344c23db64258a0b5f8e5a44bbdf187d3d66655",
+        "configuration_sha256": "9b9581702f467092d2daed31f755067012b3fdca62ed107be26fc98ad5101080",
+        "circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "n_return_nodes": 1,
+          "source_Vpp_each": 1.0,
+          "source_peak_V": 0.5,
+          "source_resistance_ohm": 50.0,
+          "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "carrier_assignment_Hz": [
+            9000,
+            9030
+          ],
+          "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics",
+          "separate_sine_frequency_pairs_Hz": [
+            [
+              5000,
+              5030
+            ],
+            [
+              9000,
+              9030
+            ]
+          ],
+          "harmonics_Hz": [],
+          "drive_condition_scope": "Two separate sine pairs5000/5030 and9000/9030, cached9000reused; neverfour-carrierTIS"
+        }
+      },
+      "native_grid_SHA256": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365"
+    }
+  ],
+  "inputs_unchanged": true
+}
