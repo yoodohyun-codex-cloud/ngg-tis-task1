@@ -126,8 +126,15 @@ def check_case(case):
                 for cutoff in cutoffs.values():
                     for key in ('cutoff_V_m', 'volume_m3', 'region_volume_fraction'):
                         number(cutoff[key], key)
-                    require(cutoff['region_volume_fraction'] <= 1 and '>=' in cutoff['comparison'],
-                            'Native >= classification with fraction<=1 required')
+                    # Independently accumulated weighted sums may exceed unity by
+                    # a few ulps. Validate the stored pair without clamping either
+                    # value or changing any scientific threshold/classification.
+                    volume, fraction = cutoff['volume_m3'], cutoff['region_volume_fraction']
+                    region_volume = stats['volume_m3']
+                    require(fraction <= 1+1e-12 and volume <= region_volume*(1+1e-12)+1e-25 and
+                            math.isclose(volume, region_volume*fraction, rel_tol=1e-12, abs_tol=1e-25) and
+                            '>=' in cutoff['comparison'],
+                            'Native >= classification needs consistent volume/fraction within floating-point roundoff')
     probe = case['raw_probe_artifact_reference']
     require('unloaded' in probe['scope'].lower() and isinstance(probe['SHA256'], str), 'Unloaded native-probe reference required')
 

@@ -301,5 +301,33 @@ class VolumeAuditViewTests(unittest.TestCase):
         with self.assertRaises((ValueError,RuntimeError)):
             self.view.check_case(case)
 
+    def test_threshold_fraction_roundoff_overshoot_is_preserved(self):
+        case=copy.deepcopy(self.report['cases'][1])
+        stats_row=case['normalizations']['raw_1Vpp']['regions'][PRIMARY]['maxTIS']
+        cutoff=next(iter(stats_row['fixed_baseline_threshold_volume'].values()))
+        cutoff['region_volume_fraction']=1.+2e-16
+        cutoff['volume_m3']=stats_row['volume_m3']*cutoff['region_volume_fraction']
+        before=copy.deepcopy(case)
+        self.view.check_case(case)
+        self.assertEqual(case,before,'Viewer must preserve stored roundoff, not clip or recompute it')
+
+    def test_threshold_fraction_material_overshoot_is_rejected(self):
+        case=copy.deepcopy(self.report['cases'][1])
+        stats_row=case['normalizations']['raw_1Vpp']['regions'][PRIMARY]['maxTIS']
+        cutoff=next(iter(stats_row['fixed_baseline_threshold_volume'].values()))
+        cutoff['region_volume_fraction']=1.+2e-12
+        cutoff['volume_m3']=stats_row['volume_m3']*cutoff['region_volume_fraction']
+        with self.assertRaises((ValueError,RuntimeError)):
+            self.view.check_case(case)
+
+    def test_threshold_fraction_mismatched_stored_volume_is_rejected(self):
+        case=copy.deepcopy(self.report['cases'][1])
+        stats_row=case['normalizations']['raw_1Vpp']['regions'][PRIMARY]['maxTIS']
+        cutoff=next(iter(stats_row['fixed_baseline_threshold_volume'].values()))
+        cutoff['region_volume_fraction']=.75
+        cutoff['volume_m3']=stats_row['volume_m3']*.5
+        with self.assertRaises((ValueError,RuntimeError)):
+            self.view.check_case(case)
+
 
 if __name__=='__main__':unittest.main()
