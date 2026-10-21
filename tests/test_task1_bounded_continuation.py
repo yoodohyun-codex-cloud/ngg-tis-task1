@@ -181,6 +181,17 @@ class QueueFixture(unittest.TestCase):
             with self.subTest(flags=bad_flags), self.assertRaises(ValueError):
                 queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad_flags),self.root)
 
+    def test_adjacent_metadata_requires_feedback_decision_and_output(self):
+        tool=self.root/'tools/task1_adjacent_source_volume_registration.py'
+        output=self.root/'docs/adjacent-volume-plan.json'
+        flags=['--feedback',str(self.baseline),'--decision',str(self.baseline),'--output',str(output)]
+        stage=dict(id='adjacent-metadata',argv=[str(Path(sys.executable).resolve()),str(tool),*flags],
+            max_seconds=120,must_not_exist=str(output),completion=dict(path=str(output),statuses=['preregistered_not_executed']))
+        self.assertEqual(queue.validate_stage(stage,self.root),tool)
+        for bad in (flags[2:],flags[:2]+flags[4:],flags+flags[:2],flags+['--execute']):
+            with self.subTest(flags=bad),self.assertRaises(ValueError):
+                queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad),self.root)
+
     def test_success_keeps_history_and_does_not_double_charge_child_debit(self):
         result = self.run_queue(self.plan())
         self.assertEqual(result['status'], 'completed_preregistered_queue')
