@@ -1,5 +1,9 @@
 # 작업1 최신 연구 결과와 실행 경로
 
+20:40 UTC 원래4square 자유5gene 완료: 실제91.725초/72proxy·evaluation_cap부분종료/새final1/feedback큐exit0입니다. 새3f40b4b8948b의skin8목표mean/P10=4.011637922/3.595327067V/m은기준보다낮고표층P95=25.276747254도실패,비표적P95=23.406128941·고변조체적4개통과로5/8·미채택입니다. SC손실제한/actualsourceupper1.082631317·1.093400682Vpp입니다. 원래pure회귀오차0,old15actual−j구동sourceSHA확인을완료했습니다. 현재워커는없으며기존72cache재사용의한정국소refinement를8MiBcompact출력으로준비합니다. 새전체부피지표·40φ검증은유지하되새파생scalarNPZ사본은미생성하고원시기저·정확계수로재구성가능한출처를기록합니다. 기존NPZ/원시/실패는모두보존합니다. 실제후속등록/시작전입니다.
+
+- [완료 원래4square4행 GUI](CLOUD_ORIGINAL_CACHED_DRIVE_RESULTS_20261021.html) / [보고서](ORIGINAL_CACHED_DRIVE_RESULTS_20261021.md) / [실제결과](cloud-original-cached-drive-20261021T221000Z/summary.json)
+
 20:38 UTC 원래4square 자유5gene 배치를 실제시작했습니다. worker38890/startticks6158988와coordinator38838/6158647·두잠금held·21proxy진행을20:38:50확인했습니다. 최대72proxy/새final1/360초·GET포함480초·출력32MiB이며기존13800초/CPU1RSS3GiB/디스크2GiB를유지합니다. source0SW/1NE·GND2SE/3NW·4physical225each/2outputs/commonGND50Ω의원래기저이고old14실제−j구동+pure의같은위상/실제rho를보존해중복final을제외했습니다. 아래는시작스냅샷이며최신live를뜻하지않습니다.
 
 - [원래4square 실제 등록](cloud-original-cached-drive-context-20261021T221000Z/queue-plan.json) / [실제시작 PID·잠금](cloud-original-cached-drive-context-20261021T221000Z/started-live-proof.json)
