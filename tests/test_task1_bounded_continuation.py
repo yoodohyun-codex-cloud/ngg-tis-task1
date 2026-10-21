@@ -205,6 +205,22 @@ class QueueFixture(unittest.TestCase):
                 queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad),self.root)
         with self.assertRaises(ValueError):queue.validate_stage(dict(stage,max_seconds=601),self.root)
 
+    def test_return_current_and_single_pair_require_exact_frozen_plan(self):
+        for name in ('task1_return_current_drive_scout.py', 'task1_coherent_single_pair.py'):
+            tool = self.root/'tools'/name
+            output = self.root/'docs'/name.removesuffix('.py')
+            flags = ['--preregistration', str(self.baseline), '--output', str(output)]
+            stage = dict(id=name.removesuffix('.py'), argv=[str(Path(sys.executable).resolve()), str(tool), *flags],
+                max_seconds=120, must_not_exist=str(output/'heartbeat.json'),
+                completion=dict(path=str(output/'summary.json'), statuses=['calculated_unadopted']))
+            self.assertEqual(queue.validate_stage(stage, self.root), tool)
+            for bad in (flags[2:], flags+flags[:2], flags+['--prepare', str(self.baseline)],
+                        ['--preregistration', '/outside-repository', '--output', str(output)]):
+                with self.subTest(tool=name, flags=bad), self.assertRaises(ValueError):
+                    queue.validate_stage(dict(stage, argv=stage['argv'][:2]+bad), self.root)
+            with self.assertRaises(ValueError):
+                queue.validate_stage(dict(stage, max_seconds=601), self.root)
+
     def test_weak_coherent_drive_preserves_same_exact_execution_flags(self):
         tool=self.root/'tools/task1_coherent_drive_weak_scout.py'
         output=self.root/'docs/weak-coherent-result'
