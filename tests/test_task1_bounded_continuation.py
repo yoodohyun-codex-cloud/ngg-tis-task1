@@ -168,6 +168,19 @@ class QueueFixture(unittest.TestCase):
         bad = self.stage(seconds=601)
         with self.assertRaises(ValueError): queue.validate_stage(bad, self.root)
 
+    def test_fine_recovery_requires_exact_feedback_and_output(self):
+        tool = self.root/'tools/task1_grouped_fine_volume_recovery_registration.py'
+        output = self.root/'docs/volume-plan.json'
+        flags = ['--feedback', str(self.baseline), '--output', str(output)]
+        stage = dict(id='fine-recovery', argv=[str(Path(sys.executable).resolve()), str(tool), *flags],
+            max_seconds=120, must_not_exist=str(output),
+            completion=dict(path=str(output), statuses=['preregistered_not_executed']))
+        self.assertEqual(queue.validate_stage(stage, self.root), tool)
+        for bad_flags in (flags[2:], flags+flags[:2], flags+['--execute'],
+                          ['--feedback','/outside-repository','--output',str(output)]):
+            with self.subTest(flags=bad_flags), self.assertRaises(ValueError):
+                queue.validate_stage(dict(stage,argv=stage['argv'][:2]+bad_flags),self.root)
+
     def test_success_keeps_history_and_does_not_double_charge_child_debit(self):
         result = self.run_queue(self.plan())
         self.assertEqual(result['status'], 'completed_preregistered_queue')
