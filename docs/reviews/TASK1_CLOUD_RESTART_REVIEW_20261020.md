@@ -1,6 +1,49 @@
 # Task 1 클라우드 재시작 검토 — 최신 갱신 2026-10-21
 
-## 최신 검토 장부 — `4156cc0` 공개 근거
+## 최신 후속 검토 — `9f31d4f` 접촉 비교와 구동비 등록
+
+계산 PR2의 최신 공개 head `9f31d4fa1e2aeeb87415eefd7d27519be07d722f`를 재확인했다. README/AGENTS/연구 반복 계약은 앞선 검토와 같고, 기존 F001–F009 장부 및 [continuation 채택 기록][oct21b-adoption]을 읽었다. 아래 `4156cc0` 검토는 당시 이력으로 보존한다. 이미 확인한 결합/XY72 gate·종료·부피 보완 채택을 다시 완료 항목으로 세지 않는다. 이번 범위는 공개 접촉 쌍의 종료·모델별 비교, 패치 진단 보정, 두 출력 구동비 등록의 후속 기준이다.
+
+| 기존 ID/하위 단계 | 이번 공개 근거와 상태 변경 | 계속 남는 범위 |
+|---|---|---|
+| T1-F010-S1-GH6297472037: Rs-fit2000 접촉 쌍 | [terminal][oct21b-terminal]의 execute04:41:54.060086–04:45:06.453822 UTC exit0, 두 spatial audit가04:45:12.252441까지 exit0. source `4156cc0`, 새 PDE2조건 | 이전 **등록만 확인→실행·후처리·짝 모델 비교 완료 확인**. 전체 수치/접촉/실험 검증은false이며 현재 live PID 확인과 구분. |
+| T1-F001/F002: 접촉모델별 절대량/순위 | [volume-contact][oct21b-volume]·[ranking][oct21b-ranking]: 같은 모델 baseline으로 다섯 정규화, 동일 부담 mean비92.6332%→92.6759% | **제한된 두 모델에서 순위 유지 확인**. dry NGG/피부 접촉 교정, 폭넓은 불확실성 검증, 깊이 집중 성공은 아님. |
+| T1-F004: 접촉 패치 읽기/대조 | [10조건 감사][oct21b-patch]와 [추가 동일격자 대조][oct21b-ellipse]:11개 고유 조건×6항목=66개 대조 통과를 공개 JSON 산술로 확인 | 저장 접촉 scalar·작은 회로행렬 readback 일치의 하위 단계만 확인. 원 E/φ/grid/NPZ 재해석·독립 PDE 재현·격자 수렴은 아님. |
+| T1-F004: 타원 SC 비교 보정 | [보정 등록][oct21b-ellipse-plan]에 h1.25 SC2와h0.625 SC4의 혼합을 명시하고 h0.625 SC2 대조를 추가 | **SC-only 비교의 baseline 보정 완료**. 같은 h0.625/mask/bulk에서 Jmax+73.1508% 실패는 유지. |
+| T1-F010: 검토 댓글6308380231의 채택 | [feedback-refresh-final][oct21b-refresh]은04:46:55 snapshot이며 PR1 `8affb846`·원 댓글6297472037까지만 관측. 댓글6308380231은04:55:02 작성 | 해당 댓글/PR1 `2afedf325`의 **명시적 채택 미확인**. 이후 결과가 권고와 부합한다는 이유로 채택을 추정하지 않음. 기존6297472037 채택과 구분. |
+| T1-F001/F002/F004/F010: unequal-output 구동비 | [drive-ratio 등록][oct21b-drive-plan]:05:01:13, `[0.5,1]`/`[2,1]` Vpp 두 합성, 새PDE0, `[1,1]` 기존 comparator | 이 head에는 계획/구현만 있으며 **공개 결과·완료 확인 전**. 아래 권고의 채택/실행도 아직 미확인. |
+
+### 접촉 모델 변화는 순위를 뒤집지 않았다
+
+Rs2000은 **EIS Rs 추정 fit 창500→2000 Hz**이며 carrier3000/3030 Hz 및9000/9090 Hz나 전원50 Ω의 변경이 아니다. raw PBS3전극·10 nm·명목1 cm²에서 복소 Z를 보간하고 선택 Rs 차감/면적 변환을 각각 한 번 적용하는 모델 계약이다. 같은 XY80·SC2·bulk14/14/40·4패드/2출력/공통GND에서 각 접촉모델의 baseline과 십자 폭10을 짝지었다. 두 모델 모두 후보 활성 제한은 `contact_power_W`다.
+
+| 피부·접촉8개 상한 / V/cm | 기본 ROI mean | 기본 ROI P10 | 표층 mean | 표층 P95 | 기본 ROI 밖 P95 |
+|---|---:|---:|---:|---:|---:|
+| Rs500 baseline | 0.04061849 | 0.03645736 | 0.10448931 | 0.25259222 | 0.23435719 |
+| Rs500 십자 폭10 | 0.03762619 | 0.03377438 | 0.09475307 | 0.23505823 | 0.21968714 |
+| Rs2000 baseline | 0.04058650 | 0.03643007 | 0.10441817 | 0.25221896 | 0.23410808 |
+| Rs2000 십자 폭10 | 0.03761389 | 0.03376404 | 0.09473819 | 0.23491062 | 0.21953118 |
+
+모델별 목표 mean비는92.6332%→92.6759%, P10비는92.6408%→92.6818%다. 비율은 조금 높아졌지만 후보 절대 mean은0.03762619→0.03761389로 낮아졌다. baseline/cutoff도 바뀌므로 이를 목표 개선으로 세지 않는다. 원전압·전류 합 일치·전력 일치·피부/접촉 상한·기존 복합 상한을 분리하며 비표적 분포와 절대량을 함께 보존한다. [진행 보고][oct21b-report]의 부피 감사35조건에는 XY120이 제외된다. 해당 h0.4167의 적격 동일격자4패드 baseline 부재는 그대로이며, 원전압 지도 결과가 있어도 부담 정규화 비교가 생긴 것은 아니다.
+
+### 66개 readback 일치와 타원 SC 실패의 범위
+
+11조건의 대조는 조건마다 패치 기반 접촉Jmax/J95·contactVmax·접촉 손실4개와 작은 source/loss 행렬의 접촉/전원 전력2개다. 공개 `independent/published` 차이와 원 허용식 `abs(diff) <= 1e−14 + 1e−10*abs(published)`의66개 판정을 확인했다. 여기서 independent는 **생산자의 별도 readback 계산**이며 이 검토자가 native를 다시 읽었다는 뜻이 아니다. 접촉 밀도는 complex128(2,npatches) 기저 우선 저장이고 면적 가중 J95의 원 ECDF 정의를 유지한다. 접촉 법선J와 피부 내부 벡터J를 혼용하지 않는다.
+
+첫10조건의 타원 라벨은 h1.25 SC2→h0.625 SC4여서 SC-only가 아니었다. 추가 `free-ellipse24-r17-xy80`은 h0.625·SC2·bulk14/14/40이며 SC4와 mask SHA `26ef9fb2…`가 같다. 올바른 비교는 접촉Jmax **69.546056→120.419568 A/m², +73.150822%**다. 최대 패치의 전체 XY면 대비 면적 비율은2.132339%→0.867050%다. 작은 패치와 큰 J의 동반만으로 비물리적 artifact를 입증하거나 실패를 제거하지 않는다. 이전 작은 사각 XY5% 실패와 연속체/가장자리/SC/XY/bulk 보류도 유지한다.
+
+### 다음 두 구동비의 과학적 검토 기준 — 기존 ID의 미채택 제안
+
+[구현][oct21b-drive-code]은 원 baseline-square15-xy80의 복소 기저를 읽어 주파수별 출력 계수를 바꾸고, 전계·전류/손실·부피 통계·40개 무부하 probe를 다시 합성하는 구조다. 각 셀의2074개 방향 maxTIS도 다시 계산하며 단순 집계 envelope 배율을 사용하지 않는다. 다섯 모드의 원자료 이름은 `raw_declared_Vpp`이고 실제 출력 벡터를 저장하며, 기존 복합 상한의1 Vpp ceiling도 **각 실제 출력**에 적용하도록 구현됐다. 이 정적 확인과 native 실행 검증은 구분한다.
+
+1. **F004/F005/F008: 복소 합성과 회로/손실의 일관성을 실제 결과에서 확인한다.** 원 E/φ/contact density/source/loss 기저·동결 helper·설정 SHA, 네 주파수의 복소 계수, 0.5 Vpeak/1 Vpp 기저 및 `+jωt`/peak→RMS 관례를 연결한다. 다른 carrier에서의 비구동 출력0 V/50 Ω 종단과 공통GND를 유지한다. 전류를 출력별로 합성하고 실제 loaded metal voltage, 접촉 법선 전류 적분·보존, 접촉 패치 손실과 회로/층 손실의 이차형식(해당 교차항 포함), 전원→조직/접촉/50 Ω 손실 균형을 등록 기준과 대조해 수치·pass/fail을 게시한다. 구현의 conservation 검사를 새로 구현하라는 뜻이 아니라 **이번 두 벡터의 실행 근거**를 남기는 요청이다.
+2. **F001/F002: 원 `[1,1]`과 같은 격자/접촉/ROI/고정 cutoff에서 비교한다.** 새 `[0.5,1]`/`[2,1]` 복소장으로 maxTIS·fixedTIS·전체4주파수 RMS와 mean/P10을 구하고, 표층·비표적 mean/P95/max·hotspot·고정 cutoff 이상 부피를 함께 제시한다. 비균등 구동을 기존 envelope/방향 index의 단일 배율로 대체하지 않는다. **비율을 고정한 뒤** 공통 진폭 정규화에서는 장/전류가1차, 손실이2차로 변하는 검사를 구분한다. 기존 `[1,1]`은 캐시 비교이며 새 PDE/새 조건으로 세지 않는다.
+3. **F002/F010: 부담별 결과와 실제 소스 크기를 함께 보인다.** 원 출력벡터·각 출력 RMS 전류·loaded voltage·전원/SC/접촉 손실·8개 부담과 활성 cap을 저장한다. 전류 합 일치, 전력 일치, 피부·접촉만 상한, 전력/각 출력1 Vpp ceiling이 추가된 복합 상한의 목표/비표적 변화를 따로 판정한다. 원2 Vpp 조건의 크기 증가나 하나의 비율만으로 개선/최적점·깊이 집중을 채택하지 않는다. 이 수치는 연구용 모델 입력이며 인체 설정이 아니다.
+4. **F010: 유한 합성의 완료·부분·차단을 공개 상태로 구분한다.** 등록은 새PDE0·두 조건·180초/조건·총420초, 기존1CPU/RSS3GiB/예약2GiB/누적6600초 안의 후처리다. 결과가 이미 생성됐다면 기존 소유자가 해당 고유 output의 terminal/입력 불변/자원·원장 차감/실패 기록을 연결한다. 계획 파일만으로 실제 시작을 추정하거나 재실행하지 않는다. 이 검토는 계산·워커·추가 sweep·예산 확대를 실행/요청하지 않는다.
+
+전체 접촉 타당성·격자 수렴·깊이 집중·ETA5001 실제 부하·실험·외부 영속 백업 보류는 유지한다. 이번 확인은 공개 JSON 산술·출처 hash·코드 정적 검토와 문서 무결성 검사이며 연구 모듈 import/시험/계산/native decode를 수행하지 않았다.
+
+## 이전 검토 장부 — `4156cc0` 공개 근거
 
 검토 기준은 계산 PR2의 `4156cc0b9179e0f53171eefdd5935064fe6c6787`다. 요청 시점 `f4dca697` 뒤 공개된 결합/XY 종료 원표, 두 십자 패드 결과, 부피 화면 영수증 및 접촉 민감도 등록까지 반영했다. README/AGENTS/연구 반복 계약, 기존 F001–F009 장부와 T1-F010 채택 기록을 읽었다. 동결 bootstrap README의 “새 계산 미시작”, 이전 보고서의 “워커 없음”, PR2 본문의 “결합격자 실행 중”은 각각 당시 상태다. 최신 artifact를 우선한다. 이 checkout은 **검토용 Git 사본**이며 계산 환경의 runtime/data-native를 직접 확인하지 않았다.
 
@@ -314,3 +357,14 @@ F005/F009에는 해결해야 할 **실행 코드 출처 연결**이 남는다. �
 [oct21-contact-plan]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/next-contact-batch.json
 [oct21-contact-code]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/tools/task1_contact_sensitivity_registration.py
 [oct21-backups]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/tree/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/native-backups
+[oct21b-adoption]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/feedback-implementation-continuation.json
+[oct21b-terminal]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/contact-terminal.json
+[oct21b-volume]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/volume-contact.json
+[oct21b-ranking]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/contact-ranking-comparison.json
+[oct21b-patch]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/contact-patch-audit.json
+[oct21b-ellipse]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/contact-patch-ellipse-control.json
+[oct21b-ellipse-plan]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/contact-patch-ellipse-control-plan.json
+[oct21b-refresh]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/feedback-refresh-final.json
+[oct21b-drive-plan]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/drive-ratio-plan.json
+[oct21b-drive-code]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/tools/task1_drive_ratio_audit.py
+[oct21b-report]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/CLOUD_CONTINUATION_20261021.md
