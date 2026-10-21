@@ -1,0 +1,80 @@
+{
+  "schema": "task1-rotation-drive-ratio-root-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T17:28:18.559396+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "conditions": [
+    {
+      "id": "rotation-ratio-o0-half",
+      "source_Vpp_by_output": [
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "id": "rotation-ratio-o0-sqrt-half",
+      "source_Vpp_by_output": [
+        0.7071067811865476,
+        1.0
+      ]
+    },
+    {
+      "id": "rotation-ratio-o1-sqrt-half",
+      "source_Vpp_by_output": [
+        1.0,
+        0.7071067811865476
+      ]
+    },
+    {
+      "id": "rotation-ratio-o1-half",
+      "source_Vpp_by_output": [
+        1.0,
+        0.5
+      ]
+    }
+  ],
+  "source_run_id": "cloud-one-return-rotation-20261021T174000Z",
+  "source_case_id": "asym-return2-rot90-xy80",
+  "physical_pads": 4,
+  "independent_outputs": 2,
+  "physical_contact_areas_mm2": [
+    281.25,
+    281.25,
+    168.75,
+    168.75
+  ],
+  "return_topology": "unchanged one ideal commonGND node with both returnpads attached",
+  "source_resistance_ohm": 50,
+  "question": "At fixed one-return-rot90 geometry and original square3h waveform, can balancing the two independent output amplitudes reduce all off-target criteria while preserving absolute primaryROI mean/P10 under original-square eight skin/contact caps?",
+  "reason": "Equal-drive rotation raises target versus originalsquare but fails all6offtarget screens and does not improve parentasymmetric target. Examine amplitude ratio before spending any furtherPDE/mesh refinement.",
+  "waveform": "unchanged square3h with originalphase0/0; coefficients a1=3/(2sqrt2),a3=1/(2sqrt2); each output own fundamental+third only",
+  "available_and_active_frequencies_Hz": [
+    3000,
+    3030,
+    9000,
+    9090
+  ],
+  "initial_2000_2010_preserved_separately": true,
+  "source_Vpp_definition": "Full individual truncated-square maxminusmin before50ohm. Analytic normalized shape max=1 froma1,a3 and0.5Vpeakbasis; actual source waveform bracket must independently confirm vector. Not a per-tone Vpp or coherent bothcarrierperoutput command.",
+  "raw_ceiling": "BothactualsourceVpp<=1; fixedrawvector retained separately from common burden/current/power rescalings.",
+  "normalization_reference": "original4square1/1 only; equal-drive rotation1/1 is cached comparisoncontrol, not normalizationbaseline",
+  "new_PDE": 0,
+  "planned_conditions": 4,
+  "planned_max_seconds": 600,
+  "per_condition_max_seconds": 60,
+  "resource_policy_limit_seconds": 13800,
+  "observed_remaining_seconds": 5586.420615645002,
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "experimentally_validated": false,
+  "hardware_phase_source_sink_compliance": "unverified",
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/screen.json": "ba679d6406530219ace98c2749c00b40f006029681d2edd9f54c8e27d24670e8",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/feedback-after.json": "e1beaf647dc8c597838d0a669c5b695c9daa717e9070eaf5e4dd99d886ad4785",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json": "8de92edabdcdbe5a0ec7601882ce497e7d2a6c480fa478dbb71853f281041933",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/preregistration.json": "5fdd771477b8c7bcc5df6445f3eb8b8689335948ddad5c5b4cc45a030217a543",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1"
+  }
+}
