@@ -1,4 +1,79 @@
-# Task 1 클라우드 재시작 검토 — 2026-10-20 KST
+# Task 1 클라우드 재시작 검토 — 최신 갱신 2026-10-21
+
+## 최신 검토 장부 — `4156cc0` 공개 근거
+
+검토 기준은 계산 PR2의 `4156cc0b9179e0f53171eefdd5935064fe6c6787`다. 요청 시점 `f4dca697` 뒤 공개된 결합/XY 종료 원표, 두 십자 패드 결과, 부피 화면 영수증 및 접촉 민감도 등록까지 반영했다. README/AGENTS/연구 반복 계약, 기존 F001–F009 장부와 T1-F010 채택 기록을 읽었다. 동결 bootstrap README의 “새 계산 미시작”, 이전 보고서의 “워커 없음”, PR2 본문의 “결합격자 실행 중”은 각각 당시 상태다. 최신 artifact를 우선한다. 이 checkout은 **검토용 Git 사본**이며 계산 환경의 runtime/data-native를 직접 확인하지 않았다.
+
+**판정:** T1-F010의 부분 채택·실제 시작, 부피 보완 구현, 결합/XY 각36 gate의 공개 원수치와 종료, 추가 두 십자 패드 결과, 새 화면 생성까지 확인했다. 작은 사각패드와 넓은 십자 패드 모두 피부·접촉 상한에서 목표 절대 mean/P10이 해당 baseline 미만이다. 깊이 집중 성공·전체 수렴·실험 검증은 계속 열어 둔다. 다음 접촉 민감도는 이미 두 조건으로 등록됐으므로 같은 설계나 XY를 다시 제안/실행하지 않는다.
+
+### 채택·실행·검증 상태
+
+| 기존 ID/하위 단계 | 채택·실행 근거 | 닫는 범위 / 계속 열린 항목 |
+|---|---|---|
+| T1-F010: 유한 배치 인계 | [채택 기록][oct21-f010]: source `8affb846`, 구현 `b59c840`, partial_adoption. [10월20일 실제 시작][oct21-radial-start]: radial09:10:49 시작,09:11:24 소유 PID/startticks/잠금 | **부분 채택·구체적 후속 시작 확인.** 초기11조건과 후속 radial8조건 완료, renderer 오류/수정은 별개 이력. 무기한 자동 진행 검증을 뜻하지 않음. |
+| T1-F010-S1-GH6297472037: 부피 보완 | [원 댓글][oct21-comment] 및 [implementation delta][oct21-implementation]: `d9059c6e09938aca67fe53576794fc46af030be6` 채택, 기존 scalar7+6조건 후처리. 뒤의 [coarse][oct21-remaining-coarse]9행·[mesh][oct21-remaining-mesh]10행 추가 | 공식 새 ID 없이 보완 키 유지. 네 감사32행은 baseline 중복을 제외하면 **30개 고유 기존 TIS case**이며 이 후처리의 새PDE0만 확인. |
+| T1-F010-S1: 결합/XY 실행 | [actual-start][oct21-start]:04:10:57.338272 시작,04:11:25.341223 PID/startticks/잠금 관측. [terminal][oct21-terminal]: 결합04:16:57, XY04:26:23 complete·execute exit0 | 두 단일 PDE의 **공개 시작/종료·검증 기록 확인**. coupled volume의 `new_PDE_solves=0`은 이후 후처리 계수이며 앞선 PDE0이라는 뜻이 아님. 현재 PID 생존·live 예산은 미확인. |
+| T1-F001/F002: 절대 부피·부담 | [결합][oct21-volume] 및 [십자][oct21-cross-volume] 결과에 기존 중앙 ROI·보조 전체XY ROI·다섯 정규화·가중 분포·고정 cutoff 부피 | 저장 scalar 구현/후처리 확인. **동일 피부·접촉 부담에서 목표 절대 mean/P10 개선은 미충족.** 깊이 집중·활성화·안전은 미검증. |
+| T1-F004: 결합/XY gate | `f4dca697`에서는 결합 원표가 local path/hash뿐이었으나, `5a12912`의 [terminal][oct21-terminal]에 두 비교의36개 before/after·변화율·허용치·pass/fail이 공개됨 | **각36/36 공개 원수치의 산술/판정 대조 완료.** 이전 XY5% 실패, 독립축/연속체/전체3D 보류 유지. native 재계산에 의한 독립 재현은 아님. |
+| T1-F010-S1: 화면 | [새 HTML][oct21-view]·[영수증][oct21-view-receipt]:33개 고유 case/6cohort,04:39:31 생성 | 코드/HTML/6개 감사입력 hash 연결 및 생성 확인. 구현만 있고 렌더 근거 없음이라는 이전 하위 보류 해소. 브라우저 조작·native 지도 재생성 검증과 구분. |
+| T1-F005/F008/F009: 파형·probe·C1 | [결합 waveform][oct21-wave]·[영수증][oct21-wave-receipt]의 정확한 `76df6e…` 코드 SHA가 게시 코드와 일치 | successor 분석의 출처 연결/무부하 비교 확인. 과거 `c61f…` 코드 회수, 동일 footprint 대조, ETA5001 부하·실측·생리적 등가 검증은 계속 보류. |
+| T1-F006/F007: 소유·재사용·보관 | 시작/terminal 기록과 세 run의 [로컬 archive/restore][oct21-backups] | 기록된 실행·재사용 및 producer의 로컬 복구 검사 범위 확인. 현재 소유자 생존, 과거 전체 중복0, 독립 외부 영속 백업은 미검증. 완료 조건 재실행·별도 워커를 요청하지 않음. |
+
+`feedback-implementation.json`의 “13조건/다음PDE미등록/UI미연결”은03:53 snapshot이다. 새 후보 결합1개·십자2개를 더한 **33개 고유 case**가 새 부피 화면에 있다. XY120은 적격 동일격자 baseline이 없어서 이 부담 비교에 포함되지 않는다. 화면의 `holds=[]`는 전달된 감사입력 처리 상태이며 물리/수렴 보류가 모두 해소됐다는 뜻이 아니다. [최초 화면 실패 진단][oct21-view-failure]은 부피 분율 합산의 최대4.4408921e−16 초과를 기록하고 원 데이터·과학 gate 변경 없이 표시 검사를 고쳤다. 영수증상0.630639초·6,945,977바이트·새PDE0/새부피분석0이며 기존 지도 링크는 selector에 맞춰 재정규화되는 지도가 아니다.
+
+### 결합격자 후보: 동일 전력 개선과 접촉 J95 제한의 상충
+
+h0.5 mm·SC8·bulk18/18/56·786000셀에서 같은 격자의 원4패드 baseline과 작은 사각4패드를 비교한다. 물성·접촉·2출력/공통GND·50 Ω·기본파3000/3030 Hz 및square_3h 고조파를 유지한다. maxTIS는 **2074개 표본 방향의 기본파 최대**이며 연속 방향 최대의 증명이나 전체 고조파 파형 변조가 아니다. 기본 ROI는 중앙 r≤5 mm·z15–20 mm, 보조 ROI는 같은 깊이의 전체 modeled XY다. 아래 단위는V/cm이며 [공개 JSON][oct21-volume]의 단위/비율을 산술 대조했다.
+
+| 조건/정규화 | 기본 ROI mean | 기본 ROI P10 | 표층0–5 mm mean | 표층 P95 | 기본 ROI 밖 P95 |
+|---|---:|---:|---:|---:|---:|
+| 원4패드 baseline 원전압 | 0.04062999 | 0.03647122 | 0.10454499 | 0.25216051 | 0.23449781 |
+| 작은 사각패드 원전압 | 0.03331266 | 0.03033588 | 0.10967451 | 0.22929982 | 0.21678220 |
+| 작은 사각패드 동일 총전력 | 0.04460746 | 0.04062139 | 0.14686011 | 0.30704489 | 0.29028313 |
+| 작은 사각패드 피부·접촉만8개 상한 | 0.03284026 | 0.02990570 | 0.10811924 | 0.22604818 | 0.21370808 |
+
+동일 전력에서는 목표 mean **+9.7895%**, P10+11.3793%지만 표층 mean도+40.4755%다. 피부·접촉 상한에서는 목표 mean이 baseline의 **80.8276%**, P10은81.9981%, 표층 mean은 **103.4189%**다. 활성 제한은 `surface_J_RMS_p95_A_m2`, 즉 **면적 가중 접촉 법선 RMS J95**이며 피부 내부 벡터 J95와 다르다. 표층 P95·비표적 P95 또는 목표 CV 감소만으로 절대 목표 손실을 깊이 집중 성공으로 바꾸지 않는다. 같은 상한의 보조 전체XY mean도0.02040908로 baseline0.02403432의84.9164%다.
+
+다섯 모드는 원전압, **각 출력 RMS 전류의 합** 일치, 총전력 일치, 피부·접촉8개 상한, 기존 전력·1Vpp ceiling 추가 복합 상한이다. 전류 합은 공통 GND 합성전류 RMS가 아니다. 피부·접촉만의 모드에는 source power/1Vpp cap이 없으며 이 후보에서는 scale0.98581929로 복합 상한과 우연히 같아졌을 뿐이다. baseline 부담값과 고정 cutoff는 수치 대조값이며 인체 안전/활성화 역치가 아니다.
+
+### 공개된 결합36 gate와 XY36 gate
+
+[terminal 원표][oct21-terminal]의 두 비교는 각각3파형×12지표다. 모두 `100*(after/before−1)` 및 원 허용치와 판정이 일치했다. 결합은 같은 XY에서 SC2→8·bulk14/14/40→18/18/56을 함께 바꾼 민감도다. square_3h 목표 mean+0.0572033%, P10+0.0187924%, 접촉Jmax+0.7335784%, 접촉J95+0.3621303%, contactV+0.7336224%이며36/36 통과한다. 독립 SC/bulk 오차를 분리하거나 연속체 수렴을 입증한 것은 아니다.
+
+[XY 등록][oct21-xy-plan]의 새 h=50/120=0.4166667 mm·**SC2·bulk14/14/40·791280셀**은 기존 같은 후보의 **h0.5·SC2·bulk14/14/40**와 비교됐다. 앞 절의 SC8 결합 결과를 XY-only 기준으로 혼용하지 않는다. 정렬된100 mm² 패드는 각576면, 총2304면이며 면적 재정규화가 없다. 새 XY square_3h mean−0.0304156%, P10−0.1603234%, 접촉Jmax+3.9119562%, 접촉J95+1.0861269%, contactV+3.9121031%, SC/contact/source power+0.4639653/+0.6861396/+0.0611092%로36/36 통과했다.
+
+그러나 [기존 h0.625→0.5 실패][oct21-old-mesh]의 square_3h Jmax **+5.0946001%**, contactV **+5.0947951%**는5% gate를 넘는다. 간격비1.25와1.2의 서로 다른 유한 단계이며, 새 좁은 단계 통과가 이전 실패를 삭제하지 않는다. 새 비교도 `XY_convergence_hold_resolved=false`다. h0.4167에는 적격 동일격자 원4패드 부담 baseline이 없으므로 **후보 자체 XY 진단**까지만 인정한다. h0.5 baseline을 옮겨 정규화하거나 held 역사적 Best1을 baseline으로 쓰지 않는다.
+
+공개 controller 종료는 결합04:16:57.292667/360.459065초, XY04:26:23.252351이며 coordinator의 execute exit0·종료 시각도 각각 연결돼 있다. 이로써 `f4dca697` 당시 local path+SHA만 있던 공개 원표 및 종료 근거의 공백은 해소됐다. 원 native 배열을 여기서 다시 읽어 검증한 것은 아니며, 예산 원장 차감의 완전한 내역이나 현재 잔여까지 검증한 것으로 확대하지 않는다.
+
+### 이미 완료된 넓은 십자 패드와 다음 등록
+
+[십자 등록][oct21-cross-plan]은 고정 중심·4패드/2출력에서 길이17.5 mm, 폭10/12.5 mm인 직교 직사각형 합집합 두 조건이다. 각 패드 면적250/281.25 mm²는 baseline225 mm²보다 **11.1111%/25% 크다**. 따라서 같은 면적에서 형상만 바꾼 실험이 아니다. h0.625·SC2·bulk14/14/40·351680셀의 별도 cohort에서 [완료 부피 결과][oct21-cross-volume]와 [로컬 복구의 원 terminal complete][oct21-cross-backup]가 공개됐다. 등록 snapshot의 `preregistered_not_started`를 지금의 미실행으로 읽지 않는다.
+
+| 피부·접촉8개 상한 / V/cm | 기본 ROI mean | 기본 ROI P10 | 표층 mean | 표층 P95 | 기본 ROI 밖 P95 | 활성 제한 |
+|---|---:|---:|---:|---:|---:|---|
+| 같은 XY80 baseline | 0.04061849 | 0.03645736 | 0.10448931 | 0.25259222 | 0.23435719 | baseline 참조 |
+| 십자 폭10 | 0.03762619 | 0.03377438 | 0.09475307 | 0.23505823 | 0.21968714 | `contact_power_W` |
+| 십자 폭12.5 | 0.03597298 | 0.03225954 | 0.08788648 | 0.22789628 | 0.21072708 | `bulk_skin_J_vector_RMS_p95_A_m2` |
+
+원전압 목표 mean은 각각+0.4966%/+1.0788%지만 위 상한에서는 **92.6332%/88.5631%**로 낮아진다. P10도92.6408%/88.4857%다. 표층·비표적 감소와 목표 감소를 같이 보고해야 한다. 작은 패드의 **접촉 법선 J95**, 폭10의 **접촉 전력**, 폭12.5의 **피부 내부 벡터 J95**는 서로 다른 제한이다. 새 십자 조건에서 목표 상승이 없는 상태로 개선 후보를 채택하거나 shape 효과만으로 설명하지 않는다.
+
+[다음 접촉 등록][oct21-contact-plan]은 nominal Rs-fit window500 Hz에서2000 Hz로 바꾼 **baseline-square15와 cross17p5-arm10의 짝 두 조건**이다. 이는 carrier2 kHz 또는 발생기50 Ω 변경이 아니다. raw 초기10 nm PBS3전극1 cm²의 복소 Z를 log-frequency 보간한 뒤 선택 Rs를 한 번 빼고1e−4 m²를 한 번 곱하는 계약이며, dry NGG/피부 접촉의 검증된 보정이 아니다. [구현][oct21-contact-code]은 두 기존 mask 바이트·격자·source를 유지하고 같은 변경 접촉모델의 baseline에서 다섯 정규화를 계산하도록 준비한다. 기존6600초 예산의 등록 시점 잔여1559.1844초와 진입 최소1380초는 live 잔여가 아니다. 이 검토 head에서는 이 새 접촉 쌍의 공개 시작/결과는 없고 **등록·구현 확인**까지다.
+
+### 다음 권고 — 기존 ID의 미채택 후속 제안
+
+1. **F004/F010: 공개된72 gate/두 종료 기록은 다시 요구하지 않는다.** 이를 기존 장부에 연결하고 이전 XY 실패를 나란히 유지한다. 십자 및 다음 접촉 쌍에는 조건별 terminal/exit·종료 시각·소요/RSS·원장 차감, 자체 잔차/전류/면적/전력 gate 원수치·허용치·pass/fail·config/source/summary SHA를 작은 공개 기록으로 연결한다. 십자는 완료 결과/복구 영수증만으로 개별 실행 gate 원수치까지 독립 대조했다고 닫지 않는다. 계산 재실행 요청이 아니다.
+2. **F001/F002: 다음 접촉 쌍은 모델별 동일격자 baseline에서 절대량을 먼저 비교한다.** 각 Rs-fit 모델 안에서 목표 mean/P10·CV, 표층/비표적 mean/P95/max·hotspot·고정 cutoff 부피, 출력별 전류·전력·8개 부담·활성 cap을 함께 게시한다. 그 뒤 같은 형상의 두 접촉모델 차이를 비교한다. 모델마다 baseline/cutoff가 달라질 수 있으므로 정규화 비율 또는 cutoff 이상 부피의 변화만을 물리적 개선으로 읽지 말고 raw 절대값과 기준값을 병기한다. 이 모델 변경은 수치 불확실성 질문이며 실험 보정·깊이 집중 채택이 아니다.
+3. **F002/F004/F010: 형상·면적 질문의 분리를 유지한다.** 현재 두 십자 조건은 이미 접촉 J95 문제에 대한 제한적 면적 확대 질문을 수행했다. 같은 조건을 반복하지 않는다. 활성 제한이 접촉 전력/피부 벡터J95로 옮겨갔으므로 기존 native의 패드/조직별 분포에서 그 손실 원인을 먼저 평가한다. 이후 형상 자체의 효과를 묻는다면 총면적·중심·출력·접촉을 고정한 별도 한정 대조가 필요하다. **현재는 등록된 접촉 쌍의 결과/차단을 먼저 정리**하며 새 형상 큐나 자동 mesh 확장을 추가하지 않는다.
+4. **F010: 실행 소유자가 실제 진입/종료 또는 차단을 남긴다.** 최신 checkpoint/PID/startticks·잠금·남은 예산을 확인하고, 이미 끝난 coupled/XY/cross를 다시 시작하지 않는다. 새 접촉 쌍이 이미 실행됐으면 그 결과만 연결한다. `next_action`·등록/명령·`actual_started`/시각/소유자 또는 정확한 blocker/idle_reason/resume_condition을 기록한다. 검토자의 사본에서 실행하지 않으며 기존600초/조건·800000셀·CPU1·RSS3GiB·heap2GiB·예약2GiB·전체6600초 상한, 단일 소유자를 유지한다. 예산 부족은 확대 승인으로 대체하지 않는다.
+
+### C1·계측·보관과 검토의 한계
+
+[C1 영수증][oct21-wave-receipt]의 대조는 **225 mm² 두 패드/1출력**, 작은 후보 TIS는 **100 mm² 네 패드/2출력**이다. 같은 격자·물성·접촉모델의 RMS 맞춤 분석이지만 동일 footprint/총면적 대조는 아니다. 중심 RMS·ROI 에너지 RMS·local RMS 평균 기준도 분리한다. 무부하 native φ 차분 probe는 ETA5001 입력 R/C·두 tip/GND 회로가 부하를 건 장 예측, 실제 설정/대역폭/교정·계측 검증을 대신하지 않는다.
+
+세 [로컬 archive/byte/decode/clean-restore 영수증][oct21-backups]의 producer 검사 통과는 확인했다. 모두 독립 외부 영속 백업·과학 재현·실험 검증은false다. 검토자가 archive/native를 다시 복구한 것이 아니며 prior baseline의 외부 백업을 모든 새 run에 전이하지 않는다. 과거 전체 native E/φ 복구도 보류다.
+
+이번 변경은 검토 문서만이다. 공개 JSON 산술·상태·코드/HTML/감사입력 hash·Git 경로·원본 무변경을 확인했고 연구 모듈 import·시험/PDE/worker 실행·native 재해석·설치·데이터 삭제·예산 확대·main 병합은 하지 않았다. **위 새 권고 자체의 계산 담당자 채택/실행은 아직 미확인**이며 과거 F010 및 댓글 보완의 확인된 채택과 분리한다. 아래10월20일 기록은 당시 이력으로 보존하며 현재 상태에는 이 장부를 우선한다.
 
 ## 연속 실행 피드백 — 계산 PR #2 `be724b0`까지 재검토
 
@@ -217,3 +292,25 @@ F005/F009에는 해결해야 할 **실행 코드 출처 연결**이 남는다. �
 [resume-residual-audit]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-restart-20261020/RESIDUAL_3000_CAUSE_AUDIT.md
 [resume-adoption]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-resume-20261020/feedback-adoption-delta.json
 [resume-ledger]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/be724b0b314263f284fdbc5397bdaf019685fa29/docs/cloud-restart-20261020/feedback-ledger.json
+[oct21-f010]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-status-20261020/feedback-adoption-T1-F010.json
+[oct21-radial-start]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-status-20261020/continuation-start.json
+[oct21-comment]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6297472037
+[oct21-implementation]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-progress-20261021/feedback-implementation.json
+[oct21-start]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-continuation-20261021/actual-start.json
+[oct21-volume]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-continuation-20261021/volume-candidate-coupled.json
+[oct21-wave]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-continuation-20261021/waveform-candidate-coupled.json
+[oct21-wave-receipt]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-continuation-20261021/waveform-candidate-coupled.receipt.json
+[oct21-xy-plan]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-continuation-20261021/next-xy-batch.json
+[oct21-old-mesh]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-status-20261020/completed-loop/candidate-mesh-validation.json
+[oct21-remaining-coarse]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-continuation-20261021/volume-remaining-coarse.json
+[oct21-remaining-mesh]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/f4dca6973c5bbc5ad0905faf4bcae5ea1a440d0a/docs/cloud-continuation-20261021/volume-remaining-mesh.json
+[oct21-terminal]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/first-two-PDE-terminal.json
+[oct21-view]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/CLOUD_VOLUME_RESULTS_20261021_v2.html
+[oct21-view-receipt]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/CLOUD_VOLUME_RESULTS_20261021_v2.receipt.json
+[oct21-view-failure]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/view-failure-diagnosis.json
+[oct21-cross-plan]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/next-cross-batch.json
+[oct21-cross-volume]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/volume-cross.json
+[oct21-cross-backup]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/native-backups/cloud-cross-20261021T043000Z.json
+[oct21-contact-plan]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/next-contact-batch.json
+[oct21-contact-code]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/4156cc0b9179e0f53171eefdd5935064fe6c6787/tools/task1_contact_sensitivity_registration.py
+[oct21-backups]: https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/tree/4156cc0b9179e0f53171eefdd5935064fe6c6787/docs/cloud-continuation-20261021/native-backups
