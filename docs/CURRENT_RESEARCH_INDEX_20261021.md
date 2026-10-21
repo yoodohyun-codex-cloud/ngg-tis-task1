@@ -1,5 +1,9 @@
 # 작업1 최신 연구 결과와 실행 경로
 
+20:29 UTC 다음 배치 실제시작: 저장된 fine adjacent-square의 cosine 복소5gene 구동 탐색입니다. source37951/startticks6104851,coordinator37902/startticks6104483와 두잠금held를20:29:32에검사했습니다. 초기6proxy진행,새PDE0/최대96proxy·새최종2/540초·출력64MiB/기존13800초·CPU1RSS3GiB·디스크2GiB유지입니다. 기존tau0/0.5/1의동일cosine full결과는재사용하며새후보채택·완료를뜻하지않습니다. 아래는불변시작스냅샷이며현재live는heartbeat/PIDstartticks와대조해야합니다.
+
+- [adjacent 구동 실제 등록](cloud-adjacent-cached-drive-context-20261021T220000Z/queue-plan.json) / [단일워커 실제시작·잠금](cloud-adjacent-cached-drive-context-20261021T220000Z/started-live-proof.json) / [입력·3tau재사용 감사](ADJACENT_CACHED_INPUT_AUDIT_20261021.md)
+
 20:24 UTC 최신 상태: rounded 확장탐색은 실제165.518초에 완료했습니다. 기존118 proxy재사용+새124,새최종2 full검증이며 f35b4/8·2254 5/8로 둘 다 미채택입니다. 기존e7 6/8을 대체하지 않습니다. 계산/GET큐완료 후 두잠금free,잔여시간약3619초/free약2.107GiB입니다. 새native는저장gate차단이며 저장된 fine adjacent-square의 물성·필드·기존3개τ별칭을 감사해 새로운 제한구동질문을 준비합니다. 아직그다음계산을시작하지않았습니다.
 
 - [완료 확장탐색5행 GUI](CLOUD_ROUNDED_DRIVE_EXPANSION_RESULTS_20261021.html) / [보고서](ROUNDED_DRIVE_EXPANSION_RESULTS_20261021.md) / [실제242proxy·새2full](cloud-rounded-drive-expansion-20261021T214000Z/summary.json)
