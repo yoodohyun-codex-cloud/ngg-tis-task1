@@ -2,9 +2,10 @@
 
 최신 완료(19:29 UTC 게시): 고정 중심·225mm²×4 rounded fullface 형상과 signed weak 6조건에 이어, 좁은 진폭·위상 5gene 탐색의 고유118평가·최종4조건 전체검증을173.795초에 완료했습니다(`eb2b3bd`). 기준 sine의 목표 mean/P10 회귀 오차는0입니다. 가장 가까운 `rounded-opt-e7b3bf639935`의 같은8피부cap 목표mean/P10=4.064779/3.646953 V/m은 원래4square4.061849/3.645736를 조금 넘지만 표층P95=25.369751/비표적P95=23.648628이 원래25.259222/23.435719를 넘어6/8통과로 미채택입니다. 목표P10 여유는 약0.033%로 수렴 전 성공으로 판정하지 않습니다.
 
-현재 SC2→SC4 한 조건을19:34:08 UTC에 실제 시작했습니다. JavaPID33298/컨트롤러33296/큐33264의 startticks·잠금 snapshot을 연결합니다. 물리SC두께.1mm·동일패드 mask/900mm²·XY/bulk·접촉/회로를 고정하고 두께방향 셀수만2→4입니다. SC2 실제계수·기존진폭 비교와 SC4의 원SC2cap 재매칭을 별도로 평가합니다. 기존square SC4는 재사용하며 새PDE는1/8RHS입니다. 이번 native/fullskin/GET 큐상한840초, 승인13800초중 준비전 잔여4312.617초/CPU1/RSS3GiB/여유2GiB를 유지합니다. 이 문장의 PID는 확인시각 snapshot이며 live 여부는 heartbeat와 실제PID/startticks를 함께 확인해야 합니다. 후보채택·전체수렴·실험·인체안전·활성화 검증은 미완료입니다.
+SC2→SC4는native117.746초/선택후처리14.641초로완료했습니다. 같은기존SC2skin8진폭에서목표mean/P10=4.064792819/3.646963316,표층P95=25.370377983/비표적P95=23.648396398V/m이며점검지표최대변화0.021918%·8statusflip0으로사전등록1%/2%민감도를통과했습니다. 여전히두P95실패로6/8·미채택이고두SC격자가전체SC/XY/bulk/edge/contact수렴을뜻하지않습니다. 첫fullskin감사는root의SC2baseline인자오류로guard중단됐으나원실패보존후기존squareSC4로감사만복구했습니다(새PDE0). 과학적한도는원SC2를계속유지합니다. 다음은같은SC4물리형상과선택구동을고정한명목PBS complexspecificZ0.5배/2배 두조건의접촉민감도이며아직구현·등록중입니다. 완료SC4후처리시승인13800초중잔여4164.415초/CPU1/RSS3GiB/여유2GiB이고무기한daemon은없습니다.
 
-- [SC4 실제3단계 유한큐](cloud-rounded-sc4-context-20261021T204000Z/queue-native-plan.json) / [선택 근거·고정 SC2조건](cloud-rounded-sc4-context-20261021T204000Z/decision.json) / [실제시작 PID·잠금](cloud-rounded-sc4-context-20261021T204000Z/started-live-proof.json)
+- [완료SC4 고정진폭·별도재매칭 실제결과](cloud-rounded-sc4-sensitivity-20261021T204000Z/summary.json) / [첫감사중단·재계산없는복구](cloud-rounded-sc4-context-20261021T204000Z/audit-failure-disposition.json)
+- [SC4 최초큐·감사실패보존](cloud-rounded-sc4-context-20261021T204000Z/queue-native-plan.json) / [선택 근거·고정 SC2조건](cloud-rounded-sc4-context-20261021T204000Z/decision.json) / [실제시작 PID·잠금](cloud-rounded-sc4-context-20261021T204000Z/started-live-proof.json)
 - [118평가·최종4조건 실제 결과](cloud-rounded-drive-optimization-20261021T203000Z/summary.json) / [proxy/전체방향 회귀](cloud-rounded-drive-optimization-20261021T203000Z/proxy-search.json)
 - [rounded signed weak6 보고](ROUNDED_DRIVE_RESULTS_20261021.md) / [8행×5모드 GUI](CLOUD_ROUNDED_DRIVE_RESULTS_20261021.html)
 - [완료 rounded 형상 보고](ROUNDED_FULLFACE_RESULTS_20261021.md) / [2행×5모드 GUI](CLOUD_ROUNDED_FULLFACE_RESULTS_20261021.html) / [실제 TOP 윤곽·공통눈금 지도13장](cloud-rounded-fullface-native-maps-20261021T201000Z/index.html)
