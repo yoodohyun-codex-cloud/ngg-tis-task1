@@ -33,7 +33,7 @@ native_slices=base.native_slices
 def implementation_receipt():
     receipt=contours.implementation_receipt()
     commit=receipt['implementation_git_commit'];refs=dict(receipt['implementation_files_SHA256'])
-    for path in (Path(__file__).resolve(),ROOT/'tests/test_task1_rounded_contact_maps.py'):
+    for path in (Path(__file__).resolve(),ROOT/'tests/test_task1_rounded_contact_maps.py',ROOT/'tests/test_task1_rounded_contact_maps_sc4_schema.py'):
         require(path.read_bytes()==subprocess.check_output(['git','show',commit+':'+path.relative_to(ROOT).as_posix()],cwd=ROOT),
             'Commit new map helper/tests before guarded rendering: '+str(path))
         refs[str(path)]=base.sha(path)
@@ -128,6 +128,39 @@ def validate_config_contrast(before,after,factor):
         'Every real/imaginary specific contact impedance must receive declared factor')
 
 
+def validate_sc4_contact_shapes(case):
+    geometry=contours.geometry
+    require(case.get('id')in NATIVE_IDS and case.get('sc_cells')==4 and case.get('shape_only_contrast')is False,
+        'Genuine SC4 physical contact geometry required; no SC2 or shape-only identity alias')
+    design=case.get('design',{});pads=design.get('pads',[])
+    require(len(pads)==4 and all(case.get(k)==v and design.get(k)==v for k,v in geometry.COMMON.items() if k!='shape_only_contrast'),
+        'Rounded fixed-face/D4/cutoff/perimeter/unchanged-centre/area metadata must remain source-bound')
+    expected=geometry.rounded_faces();result=[]
+    for p,(pad,centre)in enumerate(zip(pads,geometry.CENTRES)):
+        require(pad.get('pad')==p and pad.get('role')==('signal'if p<2 else'common_gnd_return')and
+            pad.get('source_output')==(p if p<2 else None)and pad.get('rotation_deg')==0 and pad.get('center_mm')==list(centre)and
+            pad.get('centroid_mm')==list(centre)and pad.get('shape')=='masked_face_union'and
+            pad.get('geometry_primitive')=='fixed_union_of_native_full_face_rectangles'and
+            pad.get('native_face_h_mm')==.625 and pad.get('native_face_count')==576 and
+            pad.get('native_face_indices')==[list(ij)for ij in expected[p]]and
+            all(pad.get(k)==225 for k in('area_mm2','analytic_area_mm2','polygon_area_mm2'))and
+            pad.get('physical_outline_frozen')is True and pad.get('smooth_circle_claimed')is False and pad.get('convex_hull_used')is False and
+            pad.get('local_D4_symmetric')is True,'Exact576 faces, all16 radial ties, D4 symmetry, pad identity and physical area required')
+        cells={tuple(ij)for ij in pad['native_face_indices']};polygon=geometry.parent.boundary_loop(cells)
+        require(pad.get('polygon_mm')==polygon and pad.get('boundary_loops_mm')==[polygon],
+            'Draw the actual fixed native-face boundary, never a smooth circle, hull or bounding box')
+        coords=np.asarray(polygon,float);bbox=[float(coords[:,0].min()),float(coords[:,1].min()),float(coords[:,0].max()),float(coords[:,1].max())]
+        perimeter=math.fsum(math.hypot(x-u,y-v)for(x,y),(u,v)in zip(polygon,polygon[1:]+polygon[:1]))
+        area=abs(float(np.sum(coords[:,0]*np.roll(coords[:,1],-1)-np.roll(coords[:,0],-1)*coords[:,1])))/2
+        require(np.isfinite(coords).all()and np.all(np.sum(coords**2,axis=1)<625)and area==225 and perimeter==70 and
+            pad.get('physical_outline_perimeter_mm')==70 and pad.get('bounding_box_mm')==bbox and pad.get('bounding_box_center_mm')==list(centre)and
+            pad.get('width_mm')==pad.get('height_mm')==17.5,'Actual225mm2 stepped70mm contour and same-centre17.5mm bbox descriptors required')
+        role=pad.get('dimension_fields_role');require(isinstance(role,str)and role.strip(),'Honest bbox dimension role required')
+        result.append(dict(pad=p,shape='masked_face_union',role=pad['role'],source_output=pad['source_output'],area_mm2=225.,
+            centroid_mm=list(centre),bounding_box_center_mm=list(centre),polygon_mm=polygon,boundary_loops_mm=[polygon],dimension_fields_role=role,perimeter_mm=70.))
+    return result
+
+
 def load_model(summary_path):
     """Decode only three scalar NPZs and one same-grid CSV after metadata binding."""
     pins={};summary_path=Path(summary_path).resolve();summary=base.bound_json(summary_path,pins);entries=validate_summary(summary)
@@ -167,7 +200,7 @@ def load_model(summary_path):
         if mask_sha is None:mask_sha=native_case['mask_sha256']
         require(native_case['mask_sha256']==mask_sha,'Contact-only diagnostic must preserve exact physical mask bytes')
         validate_config_contrast(configs[0],props,FACTORS[index])
-        contact_shapes=contours.validate_contact_shapes({**native_case,'id':contours.IDS[1]})
+        contact_shapes=validate_sc4_contact_shapes(native_case)
         centres=contours.pad_centres_from_properties(Path(native_case['config_file']).read_text())
         require(np.allclose(centres,[p['centroid_mm']for p in contact_shapes],rtol=0,atol=1e-12),'Operative config centres differ from physical outline')
         refs=post['input_sha256'];meta_refs=[p for p in refs if Path(p).name=='mesh-metadata.json'];grid_refs=[p for p in refs if Path(p).name in('grid.csv','grid.csv.gz')]
