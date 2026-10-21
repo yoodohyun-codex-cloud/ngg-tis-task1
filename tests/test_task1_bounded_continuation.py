@@ -235,18 +235,20 @@ class QueueFixture(unittest.TestCase):
             with self.assertRaises(ValueError):
                 queue.validate_stage(dict(stage, max_seconds=601), self.root)
 
-    def test_tangential_volume_registration_requires_exact_context(self):
-        tool = self.root/'tools/task1_tangential_return_volume_registration.py'
-        output = self.root/'docs/tangential-volume-plan.json'
-        flags = ['--feedback', str(self.baseline), '--decision', str(self.baseline), '--output', str(output)]
-        stage = dict(id='tangential-volume-registration',
-            argv=[str(Path(sys.executable).resolve()), str(tool), *flags],
-            max_seconds=120, must_not_exist=str(output),
-            completion=dict(path=str(output), statuses=['preregistered_not_executed']))
-        self.assertEqual(queue.validate_stage(stage, self.root), tool)
-        for bad in (flags[2:], flags[:2]+flags[4:], flags+flags[:2], flags+['--execute']):
-            with self.subTest(flags=bad), self.assertRaises(ValueError):
-                queue.validate_stage(dict(stage, argv=stage['argv'][:2]+bad), self.root)
+    def test_new_geometry_volume_registrations_require_exact_context(self):
+        for name in ('task1_tangential_return_volume_registration.py',
+                     'task1_perimeter_shell_volume_registration.py'):
+            tool = self.root/'tools'/name
+            output = self.root/'docs'/name.replace('.py', '-plan.json')
+            flags = ['--feedback', str(self.baseline), '--decision', str(self.baseline), '--output', str(output)]
+            stage = dict(id='geometry-volume-registration',
+                argv=[str(Path(sys.executable).resolve()), str(tool), *flags],
+                max_seconds=120, must_not_exist=str(output),
+                completion=dict(path=str(output), statuses=['preregistered_not_executed']))
+            self.assertEqual(queue.validate_stage(stage, self.root), tool)
+            for bad in (flags[2:], flags[:2]+flags[4:], flags+flags[:2], flags+['--execute']):
+                with self.subTest(tool=name, flags=bad), self.assertRaises(ValueError):
+                    queue.validate_stage(dict(stage, argv=stage['argv'][:2]+bad), self.root)
 
     def test_weak_coherent_drive_preserves_same_exact_execution_flags(self):
         tool=self.root/'tools/task1_coherent_drive_weak_scout.py'
