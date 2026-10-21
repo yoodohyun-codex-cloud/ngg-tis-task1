@@ -4,6 +4,7 @@
 
 SC2→SC4는native117.746초/선택후처리14.641초로완료했습니다. 같은기존SC2skin8진폭에서목표mean/P10=4.064792819/3.646963316,표층P95=25.370377983/비표적P95=23.648396398V/m이며점검지표최대변화0.021918%·8statusflip0으로사전등록1%/2%민감도를통과했습니다. 여전히두P95실패로6/8·미채택이고두SC격자가전체SC/XY/bulk/edge/contact수렴을뜻하지않습니다. 첫fullskin감사는root의SC2baseline인자오류로guard중단됐으나원실패보존후기존squareSC4로감사만복구했습니다(새PDE0). 과학적한도는원SC2를계속유지합니다. peer6324462120에따른저장필드방향상·하한4cohort감사를30.492초에완료했습니다. selectedSC2/SC4의목표mean은조건부방향강건pass,목표P10·표층P95는inconclusive,전체비표적P95는baseline상한23.500215보다선택하한23.648628/23.648396이높아방향강건fail입니다. 원래2074screen두P95fail은별도보존합니다. 현재명목PBS complexspecificZ0.5/2배2조건·16RHS를19:50:50UTC에실제시작했고단일worker(Java35108/controller35106/queueheartbeat)로순차계산중입니다. 이는시작snapshot이며livePID/startticks를확인합니다. SC4grid·물리윤곽·면적·회로/기존SC2계수·5진폭과원SC2기준을유지하고Rs·면적변환은반복하지않습니다. native전체상한600초/fullskin2회/GET유한큐총960초이며후처리는별도유한등록입니다. 완료SC4후처리시승인13800초중잔여4164.415초/CPU1/RSS3GiB/여유2GiB이고무기한daemon은없습니다.
 
+- [완료rounded 4행×5모드 방향구간 GUI](CLOUD_ROUNDED_DIRECTION_BOUNDS_RESULTS_20261021.html) / [보고서](ROUNDED_DIRECTION_BOUNDS_RESULTS_20261021.md)
 - [완료rounded 방향상·하한 실제결과](cloud-rounded-direction-bounds-20261021T205000Z/summary.json) / [접촉2조건 실제시작·잠금](cloud-rounded-contact-context-20261021T210000Z/started-live-proof.json)
 - [완료SC4 고정진폭·보조재매칭 GUI](CLOUD_ROUNDED_SC4_SENSITIVITY_RESULTS_20261021.html) / [보고서](ROUNDED_SC4_SENSITIVITY_RESULTS_20261021.md)
 - [새peer 방향bounds권고·실제수신·적용보류](SC4_FEEDBACK_DISPOSITION_20261021.md)
