@@ -2,6 +2,8 @@
 
 루트 README와 PACKAGE_INDEX의478파일은 **초기 이관 패키지의 원본**이므로 그대로 보존한다. 그 문서의 “새 실행 전” 상태는 현재 실행 상태를 뜻하지 않는다. 원본 byte 검증, 새 수치 계산, 격자·접촉 수렴, 실험 검증은 별도다.
 
+- [같은4패드 coherent 두 톤8조건](COHERENT_DRIVE_RESULTS_20261021.md) / [10행 수치 GUI](CLOUD_COHERENT_DRIVE_RESULTS_20261021.html) / [공통 눈금 지도24장](cloud-coherent-drive-native-maps-20261021T170500Z/index.html)
+- [약한 coherent 후속6조건 완료 summary](cloud-next-coherent-weak-20261021T170000Z/summary.json) / [게시 오류의 재계산 없는 복구](cloud-coherent-weak-context-20261021T170000Z/publication-failure-disposition.json)
 - [4패드 square/cross × opposite/adjacent 배선 비교](ADJACENT_CROSS_RESULTS_20261021.md) / [4행 수치 GUI](CLOUD_ADJACENT_CROSS_RESULTS_20261021.html)
 - [완료된 gap·전류·접촉/피부 J 위치 진단](GROUPED_GAP_DIAGNOSTIC_20261021.md) / [피드백 적용 추적](FEEDBACK_APPLICATION_STATUS_20261021T164000Z.json)
 - [4·8·12·16패드 fine 결과](GROUPED_FINE_RESULTS_20261021.md) / [5행 수치 GUI](CLOUD_GROUPED_FINE_RESULTS_20261021_v2.html) / [공통 범위 지도12장](cloud-grouped-fine-native-maps-20261021T162000Z/index.html)
@@ -23,4 +25,8 @@
 
 16:33:57–16:36:23 UTC의 새4패드 배선 큐는7단계 모두 완료됐습니다. 기존3개 대조군을 재사용하고 adjacent-cross 한 조건의8RHS만 새로 계산했습니다. 같은 피부 부담에서 목표 mean/P10은3.244504/2.963020 V/m이고 고정8항목 모두 실패해 미채택입니다. 완료 source·원표·checkpoint·선택 산출물은 위 결과 문서에 있습니다.
 
-다음 root 선택은 기존4square 기저에서 두 출력 각각에3000/3030Hz 두 톤을 합성하는8조건의 **새 구동 조건**입니다. [선택 근거·예산·Vpp 정의](cloud-coherent-drive-context-20261021T165000Z/decision.json)와16:40 GitHub GET을 고정했습니다. 현재 소스·합성 테스트 준비 중이며 아직 계산을 시작하지 않았습니다. 새PDE·독립출력·절연방식 변경은0입니다. 각 출력의 실제 합성 Thevenin 파형 전체 Vpp를1µV 이하 구간으로 검증하고1Vpp 상한으로 정규화해야 하며, 장비의 다중 톤·위상 동기·전력 흡수 능력은 미검증입니다. 실행은 별도 유한 사전등록·잠금·잔여 예산 확인 후 기록합니다.
+16:48:34–16:50:02 UTC의 coherent8조건 큐는 저장된 원본4square의 두 출력 각각에3000/3030Hz를 합성해 완료했습니다. 실제 합성 Thevenin 파형의 전체 Vpp를 구간으로 검증하고 raw 상한1Vpp로 정규화했습니다. 동일8개 피부·접촉 한도에서는 quadrature 조건이 목표를 늘렸지만 여섯 비표적 screen을 모두 실패했습니다. r1/90°의 ROI mean/P10=4.386559/4.005458 V/m, 표층P95=66.996623 V/m(원본25.259222), 비표적P95=51.540062 V/m(원본23.435719)이며 source상한은각1.512948Vpp입니다. 고정전압 개선으로 해석하지 않고 미채택했습니다. 지도24장은17:04:30 UTC에 외부120초 단일잠금 guard 아래41.664초에 완료됐습니다. 저장 scalar의 표시이며 새 PDE/새 검증은 아닙니다.
+
+16:54:58 UTC에 시작한 weak mixing(r0.05/0.1/0.2,φ90/270°)6조건도 계산·nativeφ 프로브·피드백 GET은 완료했고, 모두 목표2항목 pass/비표적6항목 fail이었습니다. 최초 게시 단계만 존재하지 않는 feedback-before 경로 때문에 실패했습니다. 원 실패와 계산은 보존하고 실제 재사용한 feedback 경로를 고정한 새 metadata-only 게시로 `9ad428c`에서 복구했습니다. 계산 재실행은0입니다.
+
+다음 root 선택은 캐시된 adjacent-square/cross 각각에서 τ0/0.5/1의 주파수별 귀환 패드 NET 전류 조정을 보는6조건입니다. [선택·수식·전역 Vpp 정규화](cloud-return-current-context-20261021T172000Z/decision.json)와 [17:04:55 GitHub GET](cloud-return-current-context-20261021T172000Z-feedback-before.json)을 고정했습니다. 아직 이 다음6조건의 계산을 시작하지 않았습니다. 두 귀환 패드는 같은 GND에 붙어 있으며 net 전류 상쇄가 국소 J 소실이나 전원 절연을 뜻하지 않습니다. 별도로 같은 캐시의 단일 전극쌍에서 최신 미채택 coherent 조건의 중심20mm/목표ROI 에너지RMS를 각각 맞추는 후처리를 준비합니다. 새 PDE·독립출력·절연방식 변경은0입니다. 장비의 다중 톤·위상 동기·전력 흡수 능력과 실험·전체 수렴은 미검증입니다. 실제 시작과 이후 결과는 새 queue/PID/startticks/terminal receipt로 별도 연결합니다.

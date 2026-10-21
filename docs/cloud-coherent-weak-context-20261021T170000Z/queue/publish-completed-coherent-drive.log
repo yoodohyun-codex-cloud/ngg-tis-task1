@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 236, in <module>
+    if __name__ == '__main__': main()
+                               ^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 233, in main
+    args = parser.parse_args(); result = publish(args.spec, args.output); print(json.dumps(dict(status=result['status'], commit=result.get('published_commit'))))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 166, in publish
+    spec = bounded.read(spec_path); files, body_file, artifacts = verify_spec(spec, root)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 100, in verify_spec
+    files = [path(row['path'], root, docs=True) for row in spec['files']]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 39, in path
+    require(not p.is_symlink() and (not exists or p.is_file()), 'Regular nonsymlink file required: '+str(p))
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 33, in require
+    raise ValueError(message)
+ValueError: Regular nonsymlink file required: /workspace/ngg-tis-task1/docs/cloud-coherent-weak-context-20261021T170000Z/feedback-before.json
