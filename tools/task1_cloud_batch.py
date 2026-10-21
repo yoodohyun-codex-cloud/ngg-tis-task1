@@ -104,6 +104,7 @@ def source_pins():
     files += [REPO/name for name in ('tools/task1_producer_regression.py',
               'tools/task1_grouped_postprocess.py', 'tools/task1_grouped_registration.py',
               'tools/task1_reference_registration.py', 'tools/task1_coupled_registration.py',
+              'tools/task1_candidate_coupled_registration.py',
               'tools/task1_c1_coupled_registration.py', 'tools/task1_residual_registration.py',
               'tools/task1_residual_postprocess.py', 'tools/java/ResidualShapeBasis.java')
               if (REPO/name).is_file()]
@@ -382,6 +383,10 @@ def execute_locked(run, pre):
                 from task1_coupled_registration import compare_coupled
                 comparison = compare_coupled(run, case, result)
                 write(run/'coupled-comparison.json', comparison)
+            if case.get('requires_candidate_coupled_comparison_after_postprocess'):
+                from task1_candidate_coupled_registration import compare_candidate_coupled
+                comparison = compare_candidate_coupled(run, case, result)
+                write(run/'candidate-coupled-comparison.json', comparison)
             for path, expected in pre['source_and_input_sha256'].items():
                 require(sha(path) == expected, 'Pinned source/input changed during condition '+path)
             record = dict(id=active, status=result['status'], config_sha256=case['config_sha256'],
@@ -435,6 +440,7 @@ def main():
     p.add_argument('--validation-receipt', type=Path)
     p.add_argument('--reference-plan', action='store_true')
     p.add_argument('--coupled-plan', action='store_true')
+    p.add_argument('--candidate-coupled-plan', action='store_true')
     p.add_argument('--coupled-c1-plan', action='store_true')
     p.add_argument('--residual-plan', action='store_true')
     args = p.parse_args()
@@ -448,9 +454,15 @@ def main():
         with (REPO/'.task1-execution.lock').open('a+') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            require(sum((args.reference_plan, args.coupled_plan, args.coupled_c1_plan, args.residual_plan)) <= 1,
+            require(sum((args.reference_plan, args.coupled_plan, args.candidate_coupled_plan,
+                         args.coupled_c1_plan, args.residual_plan)) <= 1,
                     'Choose one fixed registration plan')
-            if args.residual_plan:
+            if args.candidate_coupled_plan:
+                require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
+                        'Candidate coupled plan has exactly its one predefined condition')
+                from task1_candidate_coupled_registration import prepare_candidate_coupled
+                prepare_candidate_coupled(run)
+            elif args.residual_plan:
                 require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
                         'Residual plan has exactly its predefined regression and fine diagnostic')
                 from task1_residual_registration import prepare_residual
@@ -483,6 +495,7 @@ def main():
     require(args.grouped_plan is None and args.validation_receipt is None, 'execute uses only frozen registration')
     require(not args.reference_plan, 'execute uses only frozen reference registration')
     require(not args.coupled_plan, 'execute uses only frozen coupled registration')
+    require(not args.candidate_coupled_plan, 'execute uses only frozen candidate coupled registration')
     require(not args.coupled_c1_plan, 'execute uses only frozen coupled C1 registration')
     require(not args.residual_plan, 'execute uses only frozen residual registration')
     return execute(run)

@@ -1,0 +1,72 @@
+{
+  "schema": "task1-next-finite-scientific-batch-v1",
+  "status": "preregistered_not_started",
+  "created_utc": "2026-10-21T04:10:21.827274+00:00",
+  "feedback_id": "T1-F010-S1-GH6297472037",
+  "selection_reason": "Prior smallsquare has the least target loss under registered skin/contact burdens; test its coupled SC/bulk sensitivity before more geometry. Remaining cached scalar audits now cover all30 eligible TIS cases; historical failed Best1 remains held.",
+  "question": "At fixed h0.5 and identical four100mm2pad footprints, how do coupled SC8/bulk18,18,56 affect target absolute mean/P10, skin burden and candidate matched to the existing same-grid four-pad baseline?",
+  "run_id": "cloud-candidate-coupled-20261021T041100Z",
+  "run_path": "/workspace/ngg-tis-task1/data-native/cloud-candidate-coupled-20261021T041100Z",
+  "case_id": "free-square10-r12p5xy-coupled-xy100-sc8-bulk",
+  "maximum_new_PDE_conditions": 1,
+  "mesh": {
+    "h_xy_mm": 0.5,
+    "SC_cells": 8,
+    "bulk_counts": [
+      18,
+      18,
+      56
+    ],
+    "cells": 786000
+  },
+  "pad_count": 4,
+  "independent_output_count": 2,
+  "return_topology": "all return pads ideal common GND; other-frequency sources0V through50ohm",
+  "source": "HighZ1Vpp=.5Vpeak,50ohm peroutput;3000/3030Hz plus9000/9090square harmonics; original2000/2010Hz benchmark remains separate",
+  "limits": {
+    "cpu": 1,
+    "simultaneous_solves": 1,
+    "PDE_condition_wall_seconds": 600,
+    "java_heap_bytes": 2147483648,
+    "aggregate_RSS_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648,
+    "maximum_batch_added_bytes": 2147483648,
+    "expected_raw_conservative_bound_bytes": 471600000,
+    "global_limit_seconds": 6600,
+    "observed_remaining_seconds": 2444.532200332984
+  },
+  "postprocessing_order": [
+    "same-candidate36fixedcoupledmeshgates",
+    "source-boundspatialandskinJlossaudit against existingcoupledbaseline",
+    "frozen5normalizations/primaryandsupplementalROI scalaraudit",
+    "actualwaveform/nativepotential40probeaudit",
+    "rawarchive/decode/localcleanrestore",
+    "updateviews/feedback/nextfinitequestion"
+  ],
+  "primary_ROI": "r<=5mm and15<=depth<=20mm;existingfractionalvolweightsunchanged",
+  "supplemental_ROI": "wholemodeledXY crosssection15<=depth<=20mm;separatefromprimary",
+  "non_target": [
+    "surface0..5mm",
+    "entirecomplementofeachROI"
+  ],
+  "gates": "samecandidate1%fieldROI/5%JcontactV/2%power; no posthoc relaxation; prior XY/edge/contact holds stay",
+  "experimentally_validated": false,
+  "adoption_status": "not_adopted",
+  "prepare_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--prepare",
+    "--candidate-coupled-plan",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-candidate-coupled-20261021T041100Z"
+  ],
+  "execute_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--execute",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-candidate-coupled-20261021T041100Z"
+  ],
+  "failure_policy": "Preserve terminal failure and all partial outputs; diagnose before any next preregistered action. Do not repeat operator blindly.",
+  "next_decision": "Use absolute target and active burden results plus all36fixedgates to select next finite validation/geometry question within remaining budget; a completed queue alone does not mean research goal achieved."
+}
