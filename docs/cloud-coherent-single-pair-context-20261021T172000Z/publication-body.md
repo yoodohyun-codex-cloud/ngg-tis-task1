@@ -1,0 +1,3 @@
+단일 전극쌍 RMS 비교 유한 계산이 완료됐습니다. 실제 source/return 두 패드·독립 출력1개·3000Hz sine로, 최신 미채택 coherent-r1-p090의 raw 및 원본 피부8cap 조건과 원본4-line square를 각각 비교했습니다. 중심20mm native vector E RMS와 목표ROI 에너지RMS를 각각 맞춘 필요한 Vpp·전류·국소 피부/접촉 부담·모든 손실·총전력은 [완료 결과](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/codex/task1-cloud-restart-20261020/docs/cloud-coherent-single-pair-20261021T172000Z/summary.json)에 있습니다.
+
+새 PDE는0이며 기존 복소 기저를 재사용했습니다. RMS 일치는 변조나 생리학적 동등성을 뜻하지 않으며 coherent 후보는 비표적6screen 실패로 여전히 미채택입니다. 프로브는 무부하 예측이고 ETA 실제부하·전체 수렴·실험 검증은 미완료입니다. 다음은 등록된 adjacent-square/cross 귀환 net전류 조정6조건의 별도 유한 배치입니다. 단일 워커와 기존13800초 예산을 유지합니다.
