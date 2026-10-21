@@ -106,6 +106,7 @@ def source_pins():
               'tools/task1_reference_registration.py', 'tools/task1_coupled_registration.py',
               'tools/task1_candidate_coupled_registration.py',
               'tools/task1_candidate_xy_registration.py',
+              'tools/task1_cross_registration.py',
               'tools/task1_c1_coupled_registration.py', 'tools/task1_residual_registration.py',
               'tools/task1_residual_postprocess.py', 'tools/java/ResidualShapeBasis.java')
               if (REPO/name).is_file()]
@@ -447,6 +448,7 @@ def main():
     p.add_argument('--coupled-plan', action='store_true')
     p.add_argument('--candidate-coupled-plan', action='store_true')
     p.add_argument('--candidate-xy-plan', action='store_true')
+    p.add_argument('--cross-plan', action='store_true')
     p.add_argument('--coupled-c1-plan', action='store_true')
     p.add_argument('--residual-plan', action='store_true')
     args = p.parse_args()
@@ -461,9 +463,15 @@ def main():
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             require(sum((args.reference_plan, args.coupled_plan, args.candidate_coupled_plan,
-                         args.candidate_xy_plan, args.coupled_c1_plan, args.residual_plan)) <= 1,
+                         args.candidate_xy_plan, args.cross_plan,
+                         args.coupled_c1_plan, args.residual_plan)) <= 1,
                     'Choose one fixed registration plan')
-            if args.candidate_xy_plan:
+            if args.cross_plan:
+                require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
+                        'Cross plan has exactly its two predefined contact geometries')
+                from task1_cross_registration import prepare_cross
+                prepare_cross(run)
+            elif args.candidate_xy_plan:
                 require(not args.case and args.grouped_plan is None and args.validation_receipt is None,
                         'Candidate XY plan has exactly its one predefined condition')
                 from task1_candidate_xy_registration import prepare_candidate_xy
@@ -508,6 +516,7 @@ def main():
     require(not args.coupled_plan, 'execute uses only frozen coupled registration')
     require(not args.candidate_coupled_plan, 'execute uses only frozen candidate coupled registration')
     require(not args.candidate_xy_plan, 'execute uses only frozen candidate XY registration')
+    require(not args.cross_plan, 'execute uses only frozen cross registration')
     require(not args.coupled_c1_plan, 'execute uses only frozen coupled C1 registration')
     require(not args.residual_plan, 'execute uses only frozen residual registration')
     return execute(run)
