@@ -142,6 +142,32 @@ class QueueFixture(unittest.TestCase):
             with self.subTest(flags=flags), self.assertRaises(ValueError):
                 queue.validate_stage(bad, self.root)
 
+    def test_long_grouped_stage_preserves_six_hundred_seconds_per_case(self):
+        run = self.root/'run/grouped-fine'; run.mkdir()
+        tool = self.root/'tools/task1_cloud_batch.py'
+        cases = [dict(n_pads=n, n_outputs=2, channels=2, java_class='GroupedPadBasis',
+            postprocessor='grouped', h_xy_mm=.625, sc_cells=2, bulk_counts=[14,14,40]) for n in (4,8,12,16)]
+        pre = dict(schema='task1-cloud-finite-v1', status='prepared', batch_kind='grouped_fine_physical_pads',
+                   limits=dict(per_condition_seconds=600), cases=cases)
+        stage = dict(id='four-grouped-cases', argv=[str(Path(sys.executable).resolve()), str(tool),
+            '--execute', '--output', str(run)], max_seconds=2400,
+            must_not_exist=str(run/'execution-attempt.json'),
+            completion=dict(path=str(run/'summary.json'), statuses=['complete']))
+        queue.write(run/'preregistration.json', pre)
+        self.assertEqual(queue.validate_stage(stage, self.root), tool)
+        for changed in (dict(pre, cases=cases[:3]), dict(pre, batch_kind='other'),
+                        dict(pre, limits=dict(per_condition_seconds=601)),
+                        dict(pre, cases=[dict(cases[0], n_outputs=4), *cases[1:]])):
+            queue.write(run/'preregistration.json', changed)
+            with self.assertRaises(ValueError): queue.validate_stage(stage, self.root)
+        queue.write(run/'preregistration.json', pre)
+        bad = dict(stage, max_seconds=2401)
+        with self.assertRaises(ValueError): queue.validate_stage(bad, self.root)
+        bad = copy.deepcopy(stage); bad['completion']['path']=str(self.root/'run/fake.json')
+        with self.assertRaises(ValueError): queue.validate_stage(bad, self.root)
+        bad = self.stage(seconds=601)
+        with self.assertRaises(ValueError): queue.validate_stage(bad, self.root)
+
     def test_success_keeps_history_and_does_not_double_charge_child_debit(self):
         result = self.run_queue(self.plan())
         self.assertEqual(result['status'], 'completed_preregistered_queue')

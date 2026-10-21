@@ -36,6 +36,7 @@ ALLOWED = {
     'task1_frequency_sc4_resynthesis.py': {'--baseline-summary', '--plan', '--output'},
     'task1_queue_feedback.py': {'--output'},
     'task1_cross_allocation_volume_registration.py': {'--output'},
+    'task1_grouped_fine_volume_registration.py': {'--output'},
     'task1_candidate_screen.py': {'--preregistration', '--report', '--output'},
     'task1_batch_publish.py': {'--spec', '--output'},
     'task1_lower_carrier.py': {'--execute', '--output'},
@@ -162,10 +163,27 @@ def validate_stage(stage, root=ROOT):
         require(seen == ['--execute', '--output'], 'Only frozen lower-carrier execution allowed')
     if tool.name == 'task1_spatial_audit.py':
         require(set(seen) == flags and len(seen) == len(flags), 'Exact spatial audit flags required')
-    if tool.name in ('task1_cross_allocation_volume_registration.py', 'task1_candidate_screen.py', 'task1_batch_publish.py'):
+    if tool.name in ('task1_cross_allocation_volume_registration.py', 'task1_grouped_fine_volume_registration.py', 'task1_candidate_screen.py', 'task1_batch_publish.py'):
         require(set(seen) == flags and len(seen) == len(flags), 'Exact new metadata/publication stage flags required')
     seconds = stage.get('max_seconds')
-    require(type(seconds) in (int, float) and math.isfinite(seconds) and 0 < seconds <= 600, 'Finite stage cap <=600s required')
+    require(type(seconds) in (int, float) and math.isfinite(seconds) and 0 < seconds <= 2400,
+            'Finite stage cap <=600s, or registered four-case grouped cap <=2400s, required')
+    if seconds > 600:
+        require(tool.name == 'task1_cloud_batch.py', 'Finite stage cap >600s reserved for exact four-case grouped core')
+        run = canonical(argv[-1], root)
+        pre = read(canonical(str(run/'preregistration.json'), root))
+        cases = pre.get('cases', [])
+        require(pre.get('schema') == 'task1-cloud-finite-v1' and pre.get('status') == 'prepared' and
+                pre.get('batch_kind') == 'grouped_fine_physical_pads' and
+                pre.get('limits', {}).get('per_condition_seconds') == 600 and
+                len(cases) == 4 and {c.get('n_pads') for c in cases} == {4, 8, 12, 16} and
+                all(c.get('n_outputs') == c.get('channels') == 2 and c.get('java_class') == 'GroupedPadBasis' and
+                    c.get('postprocessor') == 'grouped' and c.get('h_xy_mm') == .625 and
+                    c.get('sc_cells') == 2 and c.get('bulk_counts') == [14, 14, 40] for c in cases),
+                'Finite long stage requires exact four grouped fine cases and unchanged600s native limits')
+        require(stage.get('completion') == dict(path=str(run/'summary.json'), statuses=['complete']) and
+                stage.get('must_not_exist') == str(run/'execution-attempt.json'),
+                'Long grouped stage requires exact native completion and attempt paths')
     completion = stage.get('completion', {})
     canonical(completion.get('path', ''), root)
     require(isinstance(completion.get('statuses'), list) and completion['statuses'] and
