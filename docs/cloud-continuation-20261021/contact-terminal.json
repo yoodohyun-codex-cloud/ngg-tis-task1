@@ -1,0 +1,98 @@
+{
+  "schema": "task1-contact-pair-terminal-v1",
+  "checkpoint": {
+    "status": "completed_paired_contact_PDE_and_spatial_audits",
+    "pid": 4785,
+    "proc_start_ticks": 419797,
+    "started_utc": "2026-10-21T04:41:50.986275+00:00",
+    "run_path": "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z",
+    "maximum_new_PDE_conditions": 2,
+    "stages": [
+      {
+        "stage": "prepare",
+        "command": [
+          "python",
+          "tools/task1_contact_sensitivity_registration.py",
+          "--prepare",
+          "--output",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z"
+        ],
+        "log": "/workspace/ngg-tis-task1/runtime/contact-rs2000-20261021-prepare.log",
+        "started_utc": "2026-10-21T04:41:50.986432+00:00",
+        "pid": 4786,
+        "proc_start_ticks": 419799,
+        "exit_code": 0,
+        "finished_utc": "2026-10-21T04:41:54.059462+00:00"
+      },
+      {
+        "stage": "execute",
+        "command": [
+          "python",
+          "tools/task1_cloud_batch.py",
+          "--execute",
+          "--output",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z"
+        ],
+        "log": "/workspace/ngg-tis-task1/runtime/contact-rs2000-20261021-execute.log",
+        "started_utc": "2026-10-21T04:41:54.060086+00:00",
+        "pid": 4816,
+        "proc_start_ticks": 420106,
+        "exit_code": 0,
+        "finished_utc": "2026-10-21T04:45:06.453822+00:00"
+      },
+      {
+        "stage": "spatial-baseline-square15-rs2000-xy80",
+        "command": [
+          "python",
+          "tools/task1_spatial_audit.py",
+          "--run",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z",
+          "--case",
+          "baseline-square15-rs2000-xy80",
+          "--baseline-summary",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z/postprocess/baseline-square15-rs2000-xy80/summary.json",
+          "--output",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z/audit/spatial-full-skin-baseline-square15-rs2000-xy80.json"
+        ],
+        "log": "/workspace/ngg-tis-task1/runtime/contact-rs2000-20261021-spatial-baseline-square15-rs2000-xy80.log",
+        "started_utc": "2026-10-21T04:45:06.454260+00:00",
+        "pid": 4944,
+        "proc_start_ticks": 439346,
+        "exit_code": 0,
+        "finished_utc": "2026-10-21T04:45:09.528065+00:00"
+      },
+      {
+        "stage": "spatial-cross17p5-arm10-rs2000-xy80",
+        "command": [
+          "python",
+          "tools/task1_spatial_audit.py",
+          "--run",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z",
+          "--case",
+          "cross17p5-arm10-rs2000-xy80",
+          "--baseline-summary",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z/postprocess/baseline-square15-rs2000-xy80/summary.json",
+          "--output",
+          "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z/audit/spatial-full-skin-cross17p5-arm10-rs2000-xy80.json"
+        ],
+        "log": "/workspace/ngg-tis-task1/runtime/contact-rs2000-20261021-spatial-cross17p5-arm10-rs2000-xy80.log",
+        "started_utc": "2026-10-21T04:45:09.528621+00:00",
+        "pid": 4945,
+        "proc_start_ticks": 439653,
+        "exit_code": 0,
+        "finished_utc": "2026-10-21T04:45:12.252441+00:00"
+      }
+    ],
+    "updated_utc": "2026-10-21T04:45:12.256246+00:00",
+    "phase": "root_paired_volume_and_preservation",
+    "overhead_seconds": 0.006953052999051579,
+    "finished_utc": "2026-10-21T04:45:12.256236+00:00"
+  },
+  "source_snapshot_commit": "4156cc0b9179e0f53171eefdd5935064fe6c6787",
+  "new_PDE_conditions": 2,
+  "calculation_completed": true,
+  "numerical_validation_completed": false,
+  "experimental_validation_completed": false,
+  "candidate_adopted": false,
+  "next": "same-contact-cohort volume postprocessing; small contact-patch audit; no numerical threshold relaxed"
+}

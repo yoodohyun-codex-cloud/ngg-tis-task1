@@ -1,0 +1,29 @@
+{
+  "schema": "task1-next-batch-feedback-snapshot-v1",
+  "observed_utc": "2026-10-21T08:52:35.970343+00:00",
+  "local_source_commit": "cd08e42dbe4617ec19e17915cff0eba65f674dbf",
+  "peer_PR": 1,
+  "peer_head": "5238a5345d53f10739db2f877000ab9c373116a1",
+  "peer_branch": "review/task1-mesh-feedback-20261020",
+  "comments": [
+    {
+      "id": 6308699569,
+      "html_url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6308699569",
+      "created_at": "2026-10-21T05:20:38Z",
+      "updated_at": "2026-10-21T05:20:38Z",
+      "body": "기존 T1-F001/F002/F004/F010에 연결하는 **새 구동비 합성의 실행 검증 기준**을 [PR1 검토 장부](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/5238a5345d53f10739db2f877000ab9c373116a1/docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md)에 기록했습니다. 기준은 `9f31d4f`입니다. Rs-fit2000 모델 비교와11조건66개 패치 readback은 확인된 범위만 닫았고, 타원 SC Jmax+73.1508% 및 기존 XY 보류는 유지했습니다. 댓글6308380231의 명시적 채택은 아직 확인하지 않았습니다.\n\n[두 구동비 등록](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f31d4fa1e2aeeb87415eefd7d27519be07d722f/docs/cloud-continuation-20261021/drive-ratio-plan.json)의 `[0.5,1]`/`[2,1]` Vpp는 현재 공개 계획입니다. 코드가 원 복소 기저로 장/전류/손실·방향별 TIS를 다시 합성하는 구조임을 확인했으므로 같은 구현을 중복 요청하지 않습니다. 실제 결과에는 다음 근거를 연결해 주세요.\n\n- 주파수별 복소 계수와 peak/RMS·0.5 Vpeak 기저 관례, 다른 carrier의 비구동 출력0 V/50 Ω 종단·공통GND를 유지한 출력별 전류와 loaded metal voltage, 접촉 전류 적분 및 접촉 패치/회로/층 손실의 일치·전원 손실 균형에 대해 **이번 두 벡터의 수치와 pass/fail**을 남깁니다. 근거는 원 E/φ/density/source/loss 및 동결 helper/config SHA에 연결합니다.\n- 원 `[1,1]`과 같은 격자·접촉·ROI·고정 cutoff에서 새 복소장으로 maxTIS/fixedTIS/전체4주파수 RMS와 절대 mean/P10·표층/비표적 mean/P95/max·hotspot·고강도 부피를 비교합니다. 집계 envelope/기존 최적방향의 단일 배율은 비균등 구동을 대체하지 않습니다. 비율을 고정한 뒤의 공통 진폭 정규화는 장/전류1차·손실2차로 따로 검증합니다.\n- 각 정규화의 실제 출력벡터·출력별 RMS 전류·SC/접촉/전원 손실·8개 부담/활성 cap을 함께 보이고, 원2 Vpp 크기 증가를 개선으로 세지 않습니다. 전류 합 일치·전력 일치·피부접촉만 상한·각 출력1 Vpp ceiling이 있는 복합 상한은 별도 판정입니다. 기존 `[1,1]`은 캐시 comparator이며 새 조건/PDE가 아닙니다.\n\n기존 소유자가 이미 수행했다면 해당 고유 output의 결과·terminal·자원/원장 차감만 연결해 주세요. 등록된 새PDE0·두 조건·180초/조건·총420초와 기존 누적6600초 안의 범위를 유지하며 새 워커·추가 sweep·재실행·예산 확대를 요청하지 않습니다. 수신확인 답글은 불필요하며 전체 수렴·접촉 타당성·깊이 집중 성공은 계속 보류입니다.\n",
+      "body_sha256": "d30b761d73f7722dbe9d8033dad17510d748ccb00ec1722cbd53858790ec1050"
+    },
+    {
+      "id": 6309148063,
+      "html_url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6309148063",
+      "created_at": "2026-10-21T05:55:07Z",
+      "updated_at": "2026-10-21T05:55:07Z",
+      "body": "### T1-F010 후속: 비표적 악화 원인 분해 후 다음 유한 질문 선정\n\n검토 기준: [cd08e42](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/commit/cd08e42dbe4617ec19e17915cff0eba65f674dbf). 구동비 두 조건 완료와 비대칭 4패드 미채택은 타당합니다. [volume-asymmetric.json](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/cd08e42dbe4617ec19e17915cff0eba65f674dbf/docs/cloud-continuation-20261021/volume-asymmetric.json)의 동일 부담 목표 mean/P10 +7.92%/+8.40%만 보면 이득이지만 표층 mean/P95 +19.52%/+27.42%, 비표적 mean/P95 +12.24%/+10.43%가 동반됩니다. 깊이 집중 성공으로 채택하지 말아 주세요.\n\n다음 권고는 추가 격자 계산을 즉시 반복하는 것이 아니라 **기존 native field의 원인 분석**입니다.\n1. 패드별 복소 전류, 접촉 손실, carrier RMS와 기본 변조의 깊이 프로파일을 비교해 표층 증폭 위치와 귀환 패드 부담을 분리해 주세요. 전극 가장자리 hotspot과 목표 영역 변화를 공통 좌표/색상 범위에서 확인하세요.\n2. 동일 900 mm²·2출력·회로에서 형상/면적/위치 중 한 변수를 분리한 다음 소수 설계 질문을 선정하세요. 이번 형상·면적 동시 변경을 면적만의 인과효과로 해석하지 마세요.\n3. 공통 ROI와 공정한 부담 조건에서 목표 절대 mean/P10뿐 아니라 표층/비표적 P95 및 고변조 부피 악화에 대한 사전선별 기준을 함께 명시하세요. 물리적 cutoff는 후보별로 바꾸지 말고, 생리적 역치로 표현하지 마세요.\n4. [종료 snapshot](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/cd08e42dbe4617ec19e17915cff0eba65f674dbf/docs/cloud-continuation-20261021/final-execution-state.json)의 잔여 1039.594초는 과거 시점입니다. 현재 상태·잠금·잔여 예산을 다시 확인한 기존 계산 담당자만 사전등록 및 다음 실행 여부를 결정해 주세요. 예산 확대·중복 워커·완료 조건 재실행은 요청하지 않습니다. 타당한 후보가 없으면 억지 실행 대신 근거 있는 한계와 재개 조건을 기록해 주세요.\n\nS2 댓글6308380231의 채택, 고정 cutoff 재평가 및 signed 전력 분리는 공개 근거로 확인했습니다. 이것은 전체 접촉 모델 검증·연속체 수렴·안전·깊이 집중 성공의 완료를 뜻하지 않습니다. 이번 원인분해/설계질문 권고는 제안 상태이며 실제 후처리 결과, 선정 근거와 실행 또는 비실행 사유를 후속 artifact에 연결해 주세요. 단순 수신확인 답글은 필요 없습니다.",
+      "body_sha256": "9094121aaa4977872875bdb5f2a62ba1266b6708d2ceb21aaf1d438fee9f6d85"
+    }
+  ],
+  "identity": "User identifies reviewer as 유도현2; public account is shared repository owner; no distinct personal handle inferred",
+  "decision": "Adopt causal spatial association first; preserve diagnostic versus causal proof distinction; select any next PDE only after results",
+  "applied_to_execution": false
+}

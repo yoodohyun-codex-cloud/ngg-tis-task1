@@ -1,0 +1,53 @@
+{
+  "schema": "task1-sanitized-substantive-feedback-v1",
+  "feedback_id": "T1-F010-S1-GH6297472037",
+  "id_scope": "Local stable supplement key for T1-F010; source comment does not assign a new T1-FNNN ID, so F001-F010 are not renumbered or replaced.",
+  "parent_feedback_id": "T1-F010",
+  "source": {
+    "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+    "pull_request": 2,
+    "comment_id": 6297472037,
+    "url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6297472037",
+    "created_utc": "2026-10-20T17:53:03Z",
+    "updated_utc": "2026-10-20T17:53:03Z",
+    "reviewed_source_commit": "7daec6f99c04e1fed21119913e38d4d084fccc58",
+    "body_sha256_utf8": "5041b6cd0e507edb6cee630e70bc243674e7746c2b52b4c4fe6a3f9859a4d2e0"
+  },
+  "body": "## 사용자 요청: 15–20 mm 부피 선택성 평가를 반영해 기존 계산 계속 진행\n\n2026-10-20 17:51 UTC에 사용자가 이 평가 기준을 작업 1에 전달하고 시뮬레이션을 계속 진행하라고 명시적으로 요청했습니다. 기존 T1-F010의 연속 실행 요청을 보완합니다. 새 수치 검증 완료나 후보 채택을 뜻하지 않습니다.\n\n- 고정 팬텀(지름 50 mm, 층 0.1/5/5/15 mm)에서 목표 깊이 15–20 mm의 **부피 전체**와 표층 0–5 mm 및 나머지 비표적 조직을 함께 비교해 주세요. 깊이 원점, 목표 횡방향 범위, 각 ROI 마스크와 부피 가중 방식을 고정·공개해 주세요.\n- 목표 ROI의 절대 변조 세기(mean, P10 등), 균일도/분포, 비표적의 상위 분위수·hotspot·고강도 부피를 함께 보고해 주세요. 단일 중심점 최댓값이나 목표/표층 비율 하나로 성공을 판정하지 마세요. 비율 개선이 목표 절대 세기 저하만으로 생긴 경우도 구별해야 합니다. 활성화 역치가 검증되지 않았으므로 임의의 전기장 cutoff를 생리적 역치로 표시하지 마세요.\n- 4패드 baseline과 확장 설계는 같은 ROI·표시 범위에서 나란히 보존하고, pad 수/독립 출력 수/return topology를 명시해 주세요. 총전류 일치, 전력 일치, 피부 접촉 부담 일치 비교를 명확히 구분하고, 일반적으로 이들을 동시에 같게 만들 수 있다고 가정하지 마세요. 고정 전압 원자료도 보존하세요.\n- 기본 차이 주파수 변조, 전체 carrier RMS, 피부 국소 최대 전류밀도, native potential probe Vpp를 분리하세요. 큰 envelope나 깊은 근육 움직임만으로 공간 선택성·활성화·안전을 입증했다고 하지 마세요. 가장자리/SC/XY/bulk 및 접촉 불확실성 gate와 실패 근거를 유지하세요.\n\n기존 큐 소유자가 live PID/startticks·잠금·checkpoint·잔여 예산을 확인한 뒤, 중복 계산/워커 없이 기존 승인 예산 안에서 다음 유한 배치로 이어가 주세요. 완료 결과 → 부담 제한 원인/개선 근거 → 다음 후보 선택 → 실제 시작 또는 정확한 blocker/resume_condition을 기록하고 GitHub에 게시해 주세요. 필요한 지표가 없으면 기존 native field의 후처리 가능 여부부터 확인하고, 없는 필드나 검증을 만들어내지 마세요. 예산 소진 시 확대 없이 그 사실을 보고하세요.\n\n현재 공개 기준점은 [7daec6f99c04e1fed21119913e38d4d084fccc58](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/commit/7daec6f99c04e1fed21119913e38d4d084fccc58)입니다. 이 댓글의 상태는 **전달/제안**이며 채택 commit과 실제 결과 검증을 별도로 연결해 주세요. 단순 수신확인 반복은 필요 없습니다. 데이터 삭제·원 결과 덮어쓰기·설치·보안 변경·예산 확대·main 병합은 요청하지 않습니다.",
+  "status": {
+    "received": true,
+    "adopted": false,
+    "executed": false,
+    "numerically_validated": false,
+    "experimentally_validated": false,
+    "limit": "This receipt records source and interpretation only; root owns adoption and actual postprocess/compute."
+  },
+  "lateral_scope_clarification": {
+    "original_exact_quote": "목표 깊이 15–20 mm의 **부피 전체**와 표층 0–5 mm 및 나머지 비표적 조직을 함께 비교해 주세요. 깊이 원점, 목표 횡방향 범위, 각 ROI 마스크와 부피 가중 방식을 고정·공개해 주세요.",
+    "source_location": "First bullet in linked issuecomment-6297472037",
+    "explicit_radius_or_full_cross_section": false,
+    "interpretation": "The comment requires evaluating a volume rather than a center point, but does not explicitly replace the existing r<=5mm target with the entire D50 cross-section. Its separate requirement to fix/publish lateral extent confirms that extent must be declared.",
+    "preserved_primary_roi": "central radius<=5mm, depth15–20mm, per original user request and existing preregistration",
+    "existing_registration_source": {
+      "path": "docs/cloud-resume-20261020/fourpad-exploration-plan.md",
+      "source_commit": "7daec6f99c04e1fed21119913e38d4d084fccc58",
+      "line": 20,
+      "quote": "순위는 r≤5mm·깊이15–20mm 부피 ROI의 절대 mean/P10이다."
+    },
+    "additional_scope": "A separate all-XY D50 slab at depth15–20mm can be declared and evaluated alongside the unchanged primary ROI. Publish both masks, finite-volume weighting and non-target complements; do not silently exchange masks or ranks.",
+    "root_direction_received": "Retain original central-r5 default and, if feasible from existing native, add full-XY slab as an explicitly separate evaluation before new PDE."
+  },
+  "priority": "Inspect existing native fields and available volume metrics first; perform bounded new native postprocessing before selecting new PDE.",
+  "remaining_requirements": [
+    "Absolute target mean/P10 and distribution/uniformity",
+    "Superficial and remaining-nontarget quantiles/hotspot/high-intensity volumes",
+    "FixedV native plus distinct total-current/power/complete-skin-contact-burden comparisons with explicit normalizations",
+    "Fundamental-difference modulation distinct from complete carrier RMS, local skinJ and potential-probeVpp",
+    "Identical ROI/color ranges for baseline and pad extensions, explicit pads/outputs/return topology",
+    "Current live locks/process/startticks/checkpoint/budget check by existing owner, no duplicate worker",
+    "Next actual start or exact blocker/resume condition, preserving all old strict and convergence/experimental holds"
+  ],
+  "sanitization": "Only relevant public comment body, stable IDs, URLs, timestamps and scientific interpretation retained; no tokens, account/profile metadata, credential values, private messages, attachments or unrelated content.",
+  "remote_writes": false,
+  "worker_or_pde_started": false
+}

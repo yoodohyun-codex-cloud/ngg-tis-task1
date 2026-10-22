@@ -1,0 +1,69 @@
+{
+  "schema": "task1-next-finite-scientific-batch-v1",
+  "status": "preregistered_not_started",
+  "created_utc": "2026-10-21T04:18:51.631316+00:00",
+  "feedback_id": "T1-F010-S1-GH6297472037",
+  "selection_reason": "Coupled SC/bulk36gates passed, while prior XYedge Jmax/contactV5%failure remains. Isolate XY sensitivity before geometry expansion.",
+  "decision_evidence": {
+    "path": "/workspace/ngg-tis-task1/data-native/cloud-candidate-coupled-20261021T041100Z/candidate-coupled-comparison.json",
+    "SHA256": "7ea0bbba3122a4345b735b5bb49fca991054e7c031c6bbb27b9ca7dd5cfa11cf",
+    "candidate_adopted": false
+  },
+  "run_id": "cloud-candidate-xy-20261021T042000Z",
+  "run_path": "/workspace/ngg-tis-task1/data-native/cloud-candidate-xy-20261021T042000Z",
+  "case_id": "free-square10-r12p5xy-xy120",
+  "maximum_new_PDE_conditions": 1,
+  "mesh": {
+    "h_xy_mm": 0.4166666666666667,
+    "SC_cells": 2,
+    "bulk_counts": [
+      14,
+      14,
+      40
+    ],
+    "cells": 791280
+  },
+  "physical_geometry": "samefour10x10mmpadsat(+/-12.5,+/-12.5);samepadwiring/commonGND/2outputs/50ohm",
+  "mask": "Analyticalfullfacealigned2304totalfaces,576perpad,100mm2each; no slivers/area renormalization",
+  "comparison": "Samecandidateh.5SC2bulk14/14/40cached; preservealsoh.625precedingfailure; no across-mesh burden normalization",
+  "fixed_gates": "36gates;1%fieldROI,5%J/contactV,2%powers; no relaxation",
+  "grid_spacing_ratios": [
+    1.25,
+    1.2
+  ],
+  "hold": "NewnarrowerstepgatepassdoesnoteraseoldXYfailureorprovecontinuumconvergence. HistoricalXY120originalbaselineheld; no eligible same-grid burden baseline, do not promote heldBest1.",
+  "candidate_adopted": false,
+  "limits": {
+    "CPU": 1,
+    "PDE_condition_wall_seconds": 600,
+    "heap_bytes": 2147483648,
+    "RSS_bytes": 3221225472,
+    "disk_reserve_bytes": 2147483648,
+    "max_added_bytes": 2147483648,
+    "raw_bound_bytes": 474768000,
+    "global_limit_seconds": 6600,
+    "observed_remaining_seconds": 2073.3058855599847
+  },
+  "prepare_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--prepare",
+    "--candidate-xy-plan",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-candidate-xy-20261021T042000Z"
+  ],
+  "execute_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--execute",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-candidate-xy-20261021T042000Z"
+  ],
+  "postprocess": [
+    "preserve36pairgatesandprecedingfailure",
+    "nativeunloaded40probes/actualwaveformandrawvolumeonly",
+    "archive/decode/cleanrestore",
+    "reportnextfinitequestionandremainingbudget"
+  ],
+  "failure_policy": "Stopandpreservepartialnative/logs/checkpoint;rootinvestigatesbeforenextaction;noautomaticduplicateoperator"
+}

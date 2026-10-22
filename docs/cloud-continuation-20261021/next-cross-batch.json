@@ -1,0 +1,111 @@
+{
+  "schema": "task1-next-finite-scientific-batch-v1",
+  "status": "preregistered_not_started",
+  "created_utc": "2026-10-21T04:27:58.235888+00:00",
+  "feedback_id": "T1-F010-S1-GH6297472037",
+  "decision_evidence": "first-two-PDE-terminal.json and volume-candidate-coupled.json",
+  "selection_reason": "Small-square coupled candidate retains only80.83%primarymean under skin/contact constraints withcontactJ95active. Testlargercontactarea atfixed225baselinecentres instead ofrelabelingpower-onlygain or expandingphantom.",
+  "run_id": "cloud-cross-20261021T043000Z",
+  "run_path": "/workspace/ngg-tis-task1/data-native/cloud-cross-20261021T043000Z",
+  "case_ids": [
+    "cross17p5-arm10-xy80",
+    "cross17p5-arm12p5-xy80"
+  ],
+  "maximum_new_PDE_conditions": 2,
+  "geometry": {
+    "primitive": "unionofcentredaxis-alignedLxWandWxLrectangles",
+    "outer_length_mm": 17.5,
+    "arm_widths_mm": [
+      10.0,
+      12.5
+    ],
+    "pad_area_mm2": [
+      250.0,
+      281.25
+    ],
+    "physical_pad_count": 4,
+    "independent_output_count": 2,
+    "centres_mm": [
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        -10
+      ],
+      [
+        -10,
+        10
+      ]
+    ],
+    "minimum_gap_mm": 2.5,
+    "maximum_vertex_radius_mm": 24.81179155159901,
+    "phantom_radius_mm": 25.0,
+    "top_plane_z_mm": 0.0,
+    "area_policy": "11.111%/25%largerphysicalcontactarea;not equal-area comparison"
+  },
+  "mesh": {
+    "h_xy_mm": 0.625,
+    "SC_cells": 2,
+    "bulk_counts": [
+      14,
+      14,
+      40
+    ],
+    "cells_each": 351680,
+    "mask": "exactfullface640or720facesperpad; no slivers or renormalization"
+  },
+  "baseline": "Reuseexistingbaseline-square15-xy80;no newbaselinePDE",
+  "circuit": "4pads/2outputs/commonGND/50ohm;HighZ1Vpp=.5Vpeak;inactiveotherfrequency0V/50ohm;3000/3030+9000/9090Hz",
+  "ROIs": {
+    "primary": "r<=5mm,z15..20mm unchangedfractionalweights",
+    "supplemental": "wholemodeledXY,z15..20mm;separate",
+    "non_target": "surface0..5mm andtotalcomplements",
+    "coordinates": "z0top,+zdepth"
+  },
+  "postprocessing": [
+    "same-gridbaseline5normalizations,absoluteROImean/P10/CV/offtargetP95/hotspot/highvolumes",
+    "rawcontactandbulk-skinJmax/J95,Vcontact,skin/contact/sourcepower",
+    "actualwaveform40nativephiprobeVpp/RMS/spectrum",
+    "geometrySVG/source/version/cacheandbackupreceipts",
+    "nextfinitevalidationcandidateonlyifevidencejustifies"
+  ],
+  "limits": {
+    "CPU": 1,
+    "simultaneous_solves": 1,
+    "PDE_condition_seconds": 600,
+    "global_limit_seconds": 6600,
+    "observed_remaining_seconds": 1808.7061437329849,
+    "minimum_preparation_admission_seconds": 1320,
+    "expected_raw_bound_bytes": 422016000,
+    "max_added_bytes": 2147483648,
+    "disk_reserve_bytes": 2147483648,
+    "heap_bytes": 2147483648,
+    "aggregate_RSS_bytes": 3221225472
+  },
+  "prepare_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--prepare",
+    "--cross-plan",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-20261021T043000Z"
+  ],
+  "execute_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--execute",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-20261021T043000Z"
+  ],
+  "adoption": false,
+  "convergence_validation": false,
+  "experimentally_validated": false,
+  "holds": "AllSC/XY/bulk/edge/contact/PBS/strictcomponentandloadedprobeholdsretained;nohumanthresholds",
+  "next_decision": "CompareabsoluteROIunderseparateconstraints.SelectfiniteSC/XY/bulkorcontactvalidationonlyifpromisingandbudgetadmits;otherwiseselectdifferentfixed-conditionquestion.NeverreinterpretglobalSCpeakasdeepfocus."
+}

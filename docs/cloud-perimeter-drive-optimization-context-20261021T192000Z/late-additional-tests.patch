@@ -1,0 +1,41 @@
+diff --git a/tests/test_task1_perimeter_drive_optimization.py b/tests/test_task1_perimeter_drive_optimization.py
+index 1d49f64..c89a021 100644
+--- a/tests/test_task1_perimeter_drive_optimization.py
++++ b/tests/test_task1_perimeter_drive_optimization.py
+@@ -210,4 +210,36 @@ class PerimeterDriveOptimizationTests(unittest.TestCase):
+         self.assertEqual(expired['status'],'proxy_budget_exhausted_partial')
+ 
+ 
++    def test_final_selection_excludes_cached_exact_genes_and_non_improvements_and_can_be_empty(self):
++        def row(index,gene,objective):
++            return dict(evaluation_index=index,genes=gene,key=self.tool.gene_key(gene,'source','metric'),objective=objective)
++        seed=row(0,[0.,0.,0.,0.,1.],[1.,1.,-1.])
++        old=row(1,[.1,0.,0.,0.,1.],[.1,.1,-1.])
++        improved=row(2,[.2,0.,0.,0.,1.],[.2,.2,-1.])
++        equal=row(3,[.3,0.,0.,0.,1.],[1.,1.,-1.])
++        worse=row(4,[.4,0.,0.,0.,1.],[2.,2.,-1.])
++        search=dict(evaluations=[seed,old,improved,equal,worse],seed_evaluation_indices=[0])
++        self.assertEqual(self.tool.select_final_candidates(search,[{'genes':old['genes']}],'source','metric'),[improved])
++        search['evaluations']=[seed,old,equal,worse]
++        self.assertEqual(self.tool.select_final_candidates(search,[{'genes':old['genes']}],'source','metric'),[])
++
++    def test_target_lower_rejects_complex_directions_even_with_unit_norm(self):
++        first,second=self.fields()
++        for directions in(np.array([[1.+0j,0j,0j]]),np.array([[1j,0j,0j]])):
++            with self.assertRaises(ValueError):self.tool.target_lower(first,second,dirs=directions)
++
++    def test_outer_clock_timeout_preserves_completed_evaluations_without_retry(self):
++        checks=[];calls=[]
++        def clock():
++            checks.append(1)
++            if len(checks)==3:raise self.tool.ProxyDeadline('synthetic inter-evaluation clock interruption')
++            return 0.
++        def evaluate(gene):calls.append(gene);return dict(objective=(0.,0.,-1.))
++        result=self.tool.bounded_pattern_search(evaluate,deadline=100.,clock=clock)
++        self.assertEqual(result['status'],'proxy_budget_exhausted_partial')
++        self.assertEqual(result['completed_evaluations'],2);self.assertEqual(result['evaluation_attempts'],2)
++        self.assertEqual(len(calls),2);self.assertEqual(len(result['evaluations']),2)
++        self.assertIn('clock interruption',result['stop_reason'])
++
++
+ if __name__=='__main__':unittest.main()

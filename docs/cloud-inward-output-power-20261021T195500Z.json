@@ -1,0 +1,4038 @@
+{
+  "schema": "task1-inward-geometry-output-power-v1",
+  "status": "completed_saved_phasor_audit",
+  "cases": [
+    {
+      "case_id": "baseline-square15-xy80",
+      "run_id": "cloud-mesh-c1-20261019T190000Z",
+      "condition_id": "baseline-square15-xy80-square_3h",
+      "waveform": "square_3h",
+      "frequencies_Hz": [
+        3000,
+        3030,
+        9000,
+        9090
+      ],
+      "source_summary": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "SHA256": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1"
+      },
+      "source_volume_audit": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume.json",
+        "SHA256": "fb61399c2d81dc6c417de3b72adc42f50c05d79080d0857ca23b97e90f661306"
+      },
+      "source_commit": "38f005ecefc2c432cd6424a06f599f93682cc202",
+      "configuration_sha256": "f838aeab4f1729e3eb064318781e49ef72c99f28a90b4f416097cfbdec92b64b",
+      "configuration_sha256_scope": "Matched saved preregistration/case/post/volume JSON; configuration bytes not read/rehashed",
+      "mask_SHA256_declared_not_rehashed": "7cfc576d31e50dcf0621567cce225df3d2cc8e55eeff4aa5d6667c59bfc401b2",
+      "original_postprocessor_SHA256_declared": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "n_return_nodes": 1,
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+      },
+      "native_validation_saved": {
+        "max_residual": 7.793850404402165e-10,
+        "max_power_error": 5.695564046739923e-10,
+        "max_current_error": 5.810842786645832e-09,
+        "max_area_relative_error": 1.0880185641326534e-14,
+        "max_interface_normal_current_relative_error": 1.5768270062742985e-15,
+        "channels": 2,
+        "cells": 351680,
+        "h_xy_mm": 0.625,
+        "sc_cells": 2
+      },
+      "power_evidence": {
+        "normalizations": {
+          "raw_1Vpp": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_max_A_m2",
+                "surface_J_RMS_p95_A_m2",
+                "contact_voltage_RMS_max_V",
+                "SC_power_W",
+                "contact_power_W",
+                "bulk_skin_J_vector_RMS_max_A_m2",
+                "bulk_skin_J_vector_RMS_p95_A_m2",
+                "skin_SC_plus_dermis_power_W"
+              ],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005676740836346612,
+                  "metal_delivered_power_W": 0.0004585833003641038,
+                  "source_resistor_loss_W": 0.00010909078327055736,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.00039285122234330343,
+                        "imaginary": -0.0019131457843944517
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019642561117165173,
+                        "imaginary": -0.434672796670188
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.000507299384078915,
+                      "metal_delivered_power_W": 0.00041193791219784273,
+                      "source_resistor_loss_W": 9.536147188107223e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.885992396098233e-06,
+                        "imaginary": 0.000263307014839128
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019429961980491162,
+                        "imaginary": -0.013165350741956398
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7336421250098822e-06,
+                      "source_resistor_loss_W": 1.7336421250098826e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.671317350870645e-05,
+                        "imaginary": -0.0006830617514874968
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038356586754353223,
+                        "imaginary": -0.142623607722262
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.037469955574616e-05,
+                      "metal_delivered_power_W": 4.856324287237256e-05,
+                      "source_resistor_loss_W": 1.1811456683373595e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.5231222294798773e-06,
+                        "imaginary": 8.582647227248543e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.615611147399386e-05,
+                        "imaginary": -0.004291323613624272
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8421258110164117e-07,
+                      "source_resistor_loss_W": 1.8421258110164117e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014770970399439391,
+                  "current_RMS_mA": 1.4770970399439391
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.00056824147217112,
+                  "metal_delivered_power_W": 0.00045898573604989917,
+                  "source_resistor_loss_W": 0.00010925573612122086,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.9194438425745066e-06,
+                        "imaginary": 0.00026341354818960774
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019597219212872532,
+                        "imaginary": -0.013170677409480388
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7350514852468474e-06,
+                      "source_resistor_loss_W": 1.7350514852468474e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00039076858217451974,
+                        "imaginary": -0.0019152218518193001
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019538429108725986,
+                        "imaginary": -0.4345689932989456
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0005078498845867815,
+                      "metal_delivered_power_W": 0.0004123305139242607,
+                      "source_resistor_loss_W": 9.551937066252086e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.4861961281723468e-06,
+                        "imaginary": 8.582955310959268e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.430980640861734e-05,
+                        "imaginary": -0.004291477655479634
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8422302414809463e-07,
+                      "source_resistor_loss_W": 1.842230241480946e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.648022652770439e-05,
+                        "imaginary": -0.0006832528177201125
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038240113263852196,
+                        "imaginary": -0.14261405441063124
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.039158758433845e-05,
+                      "metal_delivered_power_W": 4.85744966350334e-05,
+                      "source_resistor_loss_W": 1.1817090949305057e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0014782133548390153,
+                  "current_RMS_mA": 1.4782133548390153
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001135915555805781,
+                "metal_delivered_power_W": 0.0009175690364140029,
+                "source_resistor_loss_W": 0.00021834651939177822
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.001135915555805781,
+                    "saved": 0.001135915555805781,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00021834651939177822,
+                    "saved": 0.00021834651939177824,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.4770970399439391,
+                    "saved": 1.477097039943939,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.4782133548390153,
+                    "saved": 1.4782133548390153,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "equal_total_source_output_RMS_sum": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_max_A_m2",
+                "surface_J_RMS_p95_A_m2",
+                "contact_voltage_RMS_max_V",
+                "SC_power_W",
+                "contact_power_W",
+                "bulk_skin_J_vector_RMS_max_A_m2",
+                "bulk_skin_J_vector_RMS_p95_A_m2",
+                "skin_SC_plus_dermis_power_W"
+              ],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005676740836346612,
+                  "metal_delivered_power_W": 0.0004585833003641038,
+                  "source_resistor_loss_W": 0.00010909078327055736,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.00039285122234330343,
+                        "imaginary": -0.0019131457843944517
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019642561117165173,
+                        "imaginary": -0.434672796670188
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.000507299384078915,
+                      "metal_delivered_power_W": 0.00041193791219784273,
+                      "source_resistor_loss_W": 9.536147188107223e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.885992396098233e-06,
+                        "imaginary": 0.000263307014839128
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019429961980491162,
+                        "imaginary": -0.013165350741956398
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7336421250098822e-06,
+                      "source_resistor_loss_W": 1.7336421250098826e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.671317350870645e-05,
+                        "imaginary": -0.0006830617514874968
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038356586754353223,
+                        "imaginary": -0.142623607722262
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.037469955574616e-05,
+                      "metal_delivered_power_W": 4.856324287237256e-05,
+                      "source_resistor_loss_W": 1.1811456683373595e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.5231222294798773e-06,
+                        "imaginary": 8.582647227248543e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.615611147399386e-05,
+                        "imaginary": -0.004291323613624272
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8421258110164117e-07,
+                      "source_resistor_loss_W": 1.8421258110164117e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014770970399439391,
+                  "current_RMS_mA": 1.4770970399439391
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.00056824147217112,
+                  "metal_delivered_power_W": 0.00045898573604989917,
+                  "source_resistor_loss_W": 0.00010925573612122086,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.9194438425745066e-06,
+                        "imaginary": 0.00026341354818960774
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019597219212872532,
+                        "imaginary": -0.013170677409480388
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7350514852468474e-06,
+                      "source_resistor_loss_W": 1.7350514852468474e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00039076858217451974,
+                        "imaginary": -0.0019152218518193001
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019538429108725986,
+                        "imaginary": -0.4345689932989456
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0005078498845867815,
+                      "metal_delivered_power_W": 0.0004123305139242607,
+                      "source_resistor_loss_W": 9.551937066252086e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.4861961281723468e-06,
+                        "imaginary": 8.582955310959268e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.430980640861734e-05,
+                        "imaginary": -0.004291477655479634
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8422302414809463e-07,
+                      "source_resistor_loss_W": 1.842230241480946e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.648022652770439e-05,
+                        "imaginary": -0.0006832528177201125
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038240113263852196,
+                        "imaginary": -0.14261405441063124
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.039158758433845e-05,
+                      "metal_delivered_power_W": 4.85744966350334e-05,
+                      "source_resistor_loss_W": 1.1817090949305057e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0014782133548390153,
+                  "current_RMS_mA": 1.4782133548390153
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001135915555805781,
+                "metal_delivered_power_W": 0.0009175690364140029,
+                "source_resistor_loss_W": 0.00021834651939177822
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.001135915555805781,
+                    "saved": 0.001135915555805781,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00021834651939177822,
+                    "saved": 0.00021834651939177824,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.4770970399439391,
+                    "saved": 1.477097039943939,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.4782133548390153,
+                    "saved": 1.4782133548390153,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "equal_total_power": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_max_A_m2",
+                "surface_J_RMS_p95_A_m2",
+                "contact_voltage_RMS_max_V",
+                "SC_power_W",
+                "contact_power_W",
+                "bulk_skin_J_vector_RMS_max_A_m2",
+                "bulk_skin_J_vector_RMS_p95_A_m2",
+                "skin_SC_plus_dermis_power_W"
+              ],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005676740836346612,
+                  "metal_delivered_power_W": 0.0004585833003641038,
+                  "source_resistor_loss_W": 0.00010909078327055736,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.00039285122234330343,
+                        "imaginary": -0.0019131457843944517
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019642561117165173,
+                        "imaginary": -0.434672796670188
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.000507299384078915,
+                      "metal_delivered_power_W": 0.00041193791219784273,
+                      "source_resistor_loss_W": 9.536147188107223e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.885992396098233e-06,
+                        "imaginary": 0.000263307014839128
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019429961980491162,
+                        "imaginary": -0.013165350741956398
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7336421250098822e-06,
+                      "source_resistor_loss_W": 1.7336421250098826e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.671317350870645e-05,
+                        "imaginary": -0.0006830617514874968
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038356586754353223,
+                        "imaginary": -0.142623607722262
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.037469955574616e-05,
+                      "metal_delivered_power_W": 4.856324287237256e-05,
+                      "source_resistor_loss_W": 1.1811456683373595e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.5231222294798773e-06,
+                        "imaginary": 8.582647227248543e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.615611147399386e-05,
+                        "imaginary": -0.004291323613624272
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8421258110164117e-07,
+                      "source_resistor_loss_W": 1.8421258110164117e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014770970399439391,
+                  "current_RMS_mA": 1.4770970399439391
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.00056824147217112,
+                  "metal_delivered_power_W": 0.00045898573604989917,
+                  "source_resistor_loss_W": 0.00010925573612122086,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.9194438425745066e-06,
+                        "imaginary": 0.00026341354818960774
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019597219212872532,
+                        "imaginary": -0.013170677409480388
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7350514852468474e-06,
+                      "source_resistor_loss_W": 1.7350514852468474e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00039076858217451974,
+                        "imaginary": -0.0019152218518193001
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019538429108725986,
+                        "imaginary": -0.4345689932989456
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0005078498845867815,
+                      "metal_delivered_power_W": 0.0004123305139242607,
+                      "source_resistor_loss_W": 9.551937066252086e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.4861961281723468e-06,
+                        "imaginary": 8.582955310959268e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.430980640861734e-05,
+                        "imaginary": -0.004291477655479634
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8422302414809463e-07,
+                      "source_resistor_loss_W": 1.842230241480946e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.648022652770439e-05,
+                        "imaginary": -0.0006832528177201125
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038240113263852196,
+                        "imaginary": -0.14261405441063124
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.039158758433845e-05,
+                      "metal_delivered_power_W": 4.85744966350334e-05,
+                      "source_resistor_loss_W": 1.1817090949305057e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0014782133548390153,
+                  "current_RMS_mA": 1.4782133548390153
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001135915555805781,
+                "metal_delivered_power_W": 0.0009175690364140029,
+                "source_resistor_loss_W": 0.00021834651939177822
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.001135915555805781,
+                    "saved": 0.001135915555805781,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00021834651939177822,
+                    "saved": 0.00021834651939177824,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.4770970399439391,
+                    "saved": 1.477097039943939,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.4782133548390153,
+                    "saved": 1.4782133548390153,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "skin_contact_only": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_max_A_m2",
+                "surface_J_RMS_p95_A_m2",
+                "contact_voltage_RMS_max_V",
+                "SC_power_W",
+                "contact_power_W",
+                "bulk_skin_J_vector_RMS_max_A_m2",
+                "bulk_skin_J_vector_RMS_p95_A_m2",
+                "skin_SC_plus_dermis_power_W"
+              ],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005676740836346612,
+                  "metal_delivered_power_W": 0.0004585833003641038,
+                  "source_resistor_loss_W": 0.00010909078327055736,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.00039285122234330343,
+                        "imaginary": -0.0019131457843944517
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019642561117165173,
+                        "imaginary": -0.434672796670188
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.000507299384078915,
+                      "metal_delivered_power_W": 0.00041193791219784273,
+                      "source_resistor_loss_W": 9.536147188107223e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.885992396098233e-06,
+                        "imaginary": 0.000263307014839128
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019429961980491162,
+                        "imaginary": -0.013165350741956398
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7336421250098822e-06,
+                      "source_resistor_loss_W": 1.7336421250098826e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.671317350870645e-05,
+                        "imaginary": -0.0006830617514874968
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038356586754353223,
+                        "imaginary": -0.142623607722262
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.037469955574616e-05,
+                      "metal_delivered_power_W": 4.856324287237256e-05,
+                      "source_resistor_loss_W": 1.1811456683373595e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.5231222294798773e-06,
+                        "imaginary": 8.582647227248543e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.615611147399386e-05,
+                        "imaginary": -0.004291323613624272
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8421258110164117e-07,
+                      "source_resistor_loss_W": 1.8421258110164117e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014770970399439391,
+                  "current_RMS_mA": 1.4770970399439391
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.00056824147217112,
+                  "metal_delivered_power_W": 0.00045898573604989917,
+                  "source_resistor_loss_W": 0.00010925573612122086,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.9194438425745066e-06,
+                        "imaginary": 0.00026341354818960774
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019597219212872532,
+                        "imaginary": -0.013170677409480388
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7350514852468474e-06,
+                      "source_resistor_loss_W": 1.7350514852468474e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00039076858217451974,
+                        "imaginary": -0.0019152218518193001
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019538429108725986,
+                        "imaginary": -0.4345689932989456
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0005078498845867815,
+                      "metal_delivered_power_W": 0.0004123305139242607,
+                      "source_resistor_loss_W": 9.551937066252086e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.4861961281723468e-06,
+                        "imaginary": 8.582955310959268e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.430980640861734e-05,
+                        "imaginary": -0.004291477655479634
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8422302414809463e-07,
+                      "source_resistor_loss_W": 1.842230241480946e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.648022652770439e-05,
+                        "imaginary": -0.0006832528177201125
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038240113263852196,
+                        "imaginary": -0.14261405441063124
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.039158758433845e-05,
+                      "metal_delivered_power_W": 4.85744966350334e-05,
+                      "source_resistor_loss_W": 1.1817090949305057e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0014782133548390153,
+                  "current_RMS_mA": 1.4782133548390153
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001135915555805781,
+                "metal_delivered_power_W": 0.0009175690364140029,
+                "source_resistor_loss_W": 0.00021834651939177822
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.001135915555805781,
+                    "saved": 0.001135915555805781,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00021834651939177822,
+                    "saved": 0.00021834651939177824,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.4770970399439391,
+                    "saved": 1.477097039943939,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.4782133548390153,
+                    "saved": 1.4782133548390153,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "legacy_composite_full_skin": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_max_A_m2",
+                "surface_J_RMS_p95_A_m2",
+                "contact_voltage_RMS_max_V",
+                "SC_power_W",
+                "contact_power_W",
+                "bulk_skin_J_vector_RMS_max_A_m2",
+                "bulk_skin_J_vector_RMS_p95_A_m2",
+                "skin_SC_plus_dermis_power_W"
+              ],
+              "includes_source_power_cap": true,
+              "includes_1Vpp_ceiling": true
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005676740836346612,
+                  "metal_delivered_power_W": 0.0004585833003641038,
+                  "source_resistor_loss_W": 0.00010909078327055736,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.00039285122234330343,
+                        "imaginary": -0.0019131457843944517
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019642561117165173,
+                        "imaginary": -0.434672796670188
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.000507299384078915,
+                      "metal_delivered_power_W": 0.00041193791219784273,
+                      "source_resistor_loss_W": 9.536147188107223e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.885992396098233e-06,
+                        "imaginary": 0.000263307014839128
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019429961980491162,
+                        "imaginary": -0.013165350741956398
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7336421250098822e-06,
+                      "source_resistor_loss_W": 1.7336421250098826e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.671317350870645e-05,
+                        "imaginary": -0.0006830617514874968
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038356586754353223,
+                        "imaginary": -0.142623607722262
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.037469955574616e-05,
+                      "metal_delivered_power_W": 4.856324287237256e-05,
+                      "source_resistor_loss_W": 1.1811456683373595e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.5231222294798773e-06,
+                        "imaginary": 8.582647227248543e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.615611147399386e-05,
+                        "imaginary": -0.004291323613624272
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8421258110164117e-07,
+                      "source_resistor_loss_W": 1.8421258110164117e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014770970399439391,
+                  "current_RMS_mA": 1.4770970399439391
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.00056824147217112,
+                  "metal_delivered_power_W": 0.00045898573604989917,
+                  "source_resistor_loss_W": 0.00010925573612122086,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.9194438425745066e-06,
+                        "imaginary": 0.00026341354818960774
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00019597219212872532,
+                        "imaginary": -0.013170677409480388
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7350514852468474e-06,
+                      "source_resistor_loss_W": 1.7350514852468474e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00039076858217451974,
+                        "imaginary": -0.0019152218518193001
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019538429108725986,
+                        "imaginary": -0.4345689932989456
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0005078498845867815,
+                      "metal_delivered_power_W": 0.0004123305139242607,
+                      "source_resistor_loss_W": 9.551937066252086e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.4861961281723468e-06,
+                        "imaginary": 8.582955310959268e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.430980640861734e-05,
+                        "imaginary": -0.004291477655479634
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8422302414809463e-07,
+                      "source_resistor_loss_W": 1.842230241480946e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.648022652770439e-05,
+                        "imaginary": -0.0006832528177201125
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0038240113263852196,
+                        "imaginary": -0.14261405441063124
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 6.039158758433845e-05,
+                      "metal_delivered_power_W": 4.85744966350334e-05,
+                      "source_resistor_loss_W": 1.1817090949305057e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0014782133548390153,
+                  "current_RMS_mA": 1.4782133548390153
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001135915555805781,
+                "metal_delivered_power_W": 0.0009175690364140029,
+                "source_resistor_loss_W": 0.00021834651939177822
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.001135915555805781,
+                    "saved": 0.001135915555805781,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00021834651939177822,
+                    "saved": 0.00021834651939177824,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.4770970399439391,
+                    "saved": 1.477097039943939,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.4782133548390153,
+                    "saved": 1.4782133548390153,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          }
+        },
+        "native_saved_conservation": {
+          "tissue_contact_plus_resistor_vs_source_relative_error": 4.521577515285033e-10,
+          "maximum_allowed_relative_error": 2e-07,
+          "driven_current_relative_error": 5.809655100145908e-09,
+          "maximum_allowed_current_relative_error": 2e-06,
+          "driven_power_relative_error": 5.138397887782272e-10,
+          "independent_native_recompute": false
+        }
+      },
+      "candidate_adopted": false
+    },
+    {
+      "case_id": "perimeter-shell225-notch-xy80",
+      "run_id": "cloud-perimeter-shell-20261021T185000Z",
+      "condition_id": "perimeter-shell225-notch-xy80-square_3h",
+      "waveform": "square_3h",
+      "frequencies_Hz": [
+        3000,
+        3030,
+        9000,
+        9090
+      ],
+      "source_summary": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/postprocess/perimeter-shell225-notch-xy80/summary.json",
+        "SHA256": "fbbe40074b2219d09607a588ca8b31b35337449459b2eeb19cbb0d74b7c35252"
+      },
+      "source_volume_audit": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume.json",
+        "SHA256": "fb61399c2d81dc6c417de3b72adc42f50c05d79080d0857ca23b97e90f661306"
+      },
+      "source_commit": "257d56bc7300efaf691d2f017369b29065a7edf0",
+      "configuration_sha256": "f447c99072d8460b11775add881fc84abaa528766bcab79766d3fbc042f7fec8",
+      "configuration_sha256_scope": "Matched saved preregistration/case/post/volume JSON; configuration bytes not read/rehashed",
+      "mask_SHA256_declared_not_rehashed": "875179a89b1f7f0f77d9c7973121363db89a49bad61c6f41fa4c4d8babca363e",
+      "original_postprocessor_SHA256_declared": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "n_return_nodes": 1,
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+      },
+      "native_validation_saved": {
+        "max_residual": 8.696916122800906e-10,
+        "max_power_error": 2.0211662763496873e-10,
+        "max_current_error": 6.148564951564299e-09,
+        "max_area_relative_error": 1.0880185641326534e-14,
+        "max_interface_normal_current_relative_error": 2.168258478543822e-15,
+        "channels": 2,
+        "cells": 351680,
+        "h_xy_mm": 0.625,
+        "sc_cells": 2
+      },
+      "power_evidence": {
+        "normalizations": {
+          "raw_1Vpp": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0004884958169413655,
+                  "metal_delivered_power_W": 0.00040784269969938584,
+                  "source_resistor_loss_W": 8.065311724197961e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0003237113534376378,
+                        "imaginary": -0.001646337056855352
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01618556767188189,
+                        "imaginary": -0.448013233047143
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0004365510363829207,
+                      "metal_delivered_power_W": 0.00036617066775493145,
+                      "source_resistor_loss_W": 7.038036862798923e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": -1.2431749413564495e-06,
+                        "imaginary": 0.00023513411572640086
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.215874706782248e-05,
+                        "imaginary": -0.011756705786320043
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.3822399465592822e-06,
+                      "source_resistor_loss_W": 1.3822399465592822e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 6.547878468469653e-05,
+                        "imaginary": -0.0005876881052819754
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0032739392342348264,
+                        "imaginary": -0.1473922900325381
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 5.19447805584448e-05,
+                      "metal_delivered_power_W": 4.320316105010222e-05,
+                      "source_resistor_loss_W": 8.741619508342574e-06
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -2.1633221657126536e-06,
+                        "imaginary": 7.714198857138817e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00010816610828563268,
+                        "imaginary": -0.003857099428569409
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.488891590885212e-07,
+                      "source_resistor_loss_W": 1.4888915908852116e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0012700639136829265,
+                  "current_RMS_mA": 1.2700639136829266
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0004889720992894486,
+                  "metal_delivered_power_W": 0.0004081966184927191,
+                  "source_resistor_loss_W": 8.077548079672941e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": -1.2465655480645854e-06,
+                        "imaginary": 0.000235198435043879
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.232827740322927e-05,
+                        "imaginary": -0.01175992175219395
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.382996444318885e-06,
+                      "source_resistor_loss_W": 1.382996444318885e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.0003220963417501798,
+                        "imaginary": -0.0016480768068245825
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01610481708750899,
+                        "imaginary": -0.4479262455486815
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0004370123572582252,
+                      "metal_delivered_power_W": 0.0003665147768941762,
+                      "source_resistor_loss_W": 7.049758036404901e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -2.1331321183779065e-06,
+                        "imaginary": 7.714334313214892e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00010665660591889533,
+                        "imaginary": -0.003857167156607446
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.4889114105597306e-07,
+                      "source_resistor_loss_W": 1.4889114105597306e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 6.530099939861623e-05,
+                        "imaginary": -0.0005878573750237075
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003265049969930812,
+                        "imaginary": -0.14738382654545149
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 5.195974203122337e-05,
+                      "metal_delivered_power_W": 4.321372918391781e-05,
+                      "source_resistor_loss_W": 8.74601284730555e-06
+                    }
+                  ],
+                  "current_RMS_A": 0.001271026992606604,
+                  "current_RMS_mA": 1.271026992606604
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.000977467916230814,
+                "metal_delivered_power_W": 0.000816039318192105,
+                "source_resistor_loss_W": 0.00016142859803870902
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.000977467916230814,
+                    "saved": 0.000977467916230814,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00016142859803870902,
+                    "saved": 0.00016142859803870905,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.2700639136829266,
+                    "saved": 1.2700639136829268,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.271026992606604,
+                    "saved": 1.271026992606604,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "equal_total_source_output_RMS_sum": {
+            "amplitude_scale": 1.163008528135761,
+            "source_Vpp_by_output": [
+              1.163008528135761,
+              1.163008528135761
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.163008528135761,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0006607339886799032,
+                  "metal_delivered_power_W": 0.0005516434826681443,
+                  "source_resistor_loss_W": 0.0001090905060117588,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0003764790647023422,
+                        "imaginary": -0.0019147040373087034
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01882395323511711,
+                        "imaginary": -0.5210432107515015
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.6167784126169366
+                      },
+                      "ideal_source_power_W": 0.0005904740583812509,
+                      "metal_delivered_power_W": 0.0004952783574651159,
+                      "source_resistor_loss_W": 9.519570091613497e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": -1.4458230587622252e-06,
+                        "imaginary": 0.00027346298184546515
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.229115293811126e-05,
+                        "imaginary": -0.013673149092273258
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8696023211032613e-06,
+                      "source_resistor_loss_W": 1.8696023211032613e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.615238500026732e-05,
+                        "imaginary": -0.0006834862783268843
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003807619250013366,
+                        "imaginary": -0.1714184902893013
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.20559280420564555
+                      },
+                      "ideal_source_power_W": 7.025993029865223e-05,
+                      "metal_delivered_power_W": 5.843611333859313e-05,
+                      "source_resistor_loss_W": 1.18238169600591e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -2.51596212782894e-06,
+                        "imaginary": 8.971679058587585e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.000125798106391447,
+                        "imaginary": -0.004485839529293793
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -2.013858144614643e-07,
+                      "source_resistor_loss_W": 2.0138581446146425e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014770951628907244,
+                  "current_RMS_mA": 1.4770951628907245
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0006613782028669502,
+                  "metal_delivered_power_W": 0.0005521221892770403,
+                  "source_resistor_loss_W": 0.00010925601358990986,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": -1.4497663632793417e-06,
+                        "imaginary": 0.0002735377857602161
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 7.248831816396708e-05,
+                        "imaginary": -0.013676889288010806
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.8706255515277496e-06,
+                      "source_resistor_loss_W": 1.8706255515277496e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00037460079233678966,
+                        "imaginary": -0.0019167273813597424
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.018730039616839483,
+                        "imaginary": -0.5209420435489495
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.6167784126169366
+                      },
+                      "ideal_source_power_W": 0.0005910980358472399,
+                      "metal_delivered_power_W": 0.0004957437956454017,
+                      "source_resistor_loss_W": 9.535424020183815e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -2.4808508453138068e-06,
+                        "imaginary": 8.971836595159247e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00012404254226569035,
+                        "imaginary": -0.004485918297579624
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -2.0138849524851404e-07,
+                      "source_resistor_loss_W": 2.0138849524851404e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.594561919637888e-05,
+                        "imaginary": -0.0006836831404800741
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003797280959818944,
+                        "imaginary": -0.17140864718164184
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.20559280420564555
+                      },
+                      "ideal_source_power_W": 7.028016701971037e-05,
+                      "metal_delivered_power_W": 5.84504076784149e-05,
+                      "source_resistor_loss_W": 1.1829759341295454e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0014782152318922293,
+                  "current_RMS_mA": 1.4782152318922293
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.0013221121915468533,
+                "metal_delivered_power_W": 0.0011037656719451844,
+                "source_resistor_loss_W": 0.00021834651960166867
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.000977467916230814,
+                    "saved": 0.000977467916230814,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00016142859803870902,
+                    "saved": 0.00016142859803870905,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.2700639136829266,
+                    "saved": 1.2700639136829268,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.271026992606604,
+                    "saved": 1.271026992606604,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "equal_total_power": {
+            "amplitude_scale": 1.078007463998624,
+            "source_Vpp_by_output": [
+              1.078007463998624,
+              1.078007463998624
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.078007463998624,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005676810340225238,
+                  "metal_delivered_power_W": 0.00047395403902030766,
+                  "source_resistor_loss_W": 9.372699500221608e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.00034896325518687016,
+                        "imaginary": -0.0017747636355475963
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.017448162759343504,
+                        "imaginary": -0.4829616091949751
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5716997909723549
+                      },
+                      "ideal_source_power_W": 0.0005073159997339487,
+                      "metal_delivered_power_W": 0.00042552696684563027,
+                      "source_resistor_loss_W": 8.178903288831844e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": -1.3401518658383041e-06,
+                        "imaginary": 0.00025347633179377636
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.700759329191521e-05,
+                        "imaginary": -0.012673816589688818
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.6063011696663025e-06,
+                      "source_resistor_loss_W": 1.6063011696663025e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.058661862366165e-05,
+                        "imaginary": -0.0006335321639971786
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003529330931183082,
+                        "imaginary": -0.15888998879092603
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.190566596990785
+                      },
+                      "ideal_source_power_W": 6.036503428857511e-05,
+                      "metal_delivered_power_W": 5.020639744988335e-05,
+                      "source_resistor_loss_W": 1.0158636838691754e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -2.3320774416719088e-06,
+                        "imaginary": 8.315963946765299e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00011660387208359542,
+                        "imaginary": -0.0041579819733826495
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7302410553959962e-07,
+                      "source_resistor_loss_W": 1.7302410553959957e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0013691383787054988,
+                  "current_RMS_mA": 1.3691383787054987
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0005682345217832572,
+                  "metal_delivered_power_W": 0.0004743653280827554,
+                  "source_resistor_loss_W": 9.386919370050173e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": -1.3438069651771585e-06,
+                        "imaginary": 0.0002535456684980971
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.719034825885792e-05,
+                        "imaginary": -0.012677283424904855
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.607180295782665e-06,
+                      "source_resistor_loss_W": 1.607180295782665e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00034722226053334544,
+                        "imaginary": -0.001776639098999918
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01736111302666727,
+                        "imaginary": -0.48286783602235905
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5716997909723549
+                      },
+                      "ideal_source_power_W": 0.000507852100765783,
+                      "metal_delivered_power_W": 0.0004259268561081549,
+                      "source_resistor_loss_W": 8.192524465762818e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -2.2995323453065794e-06,
+                        "imaginary": 8.316109969426352e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00011497661726532897,
+                        "imaginary": -0.004158054984713176
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.7302640878415865e-07,
+                      "source_resistor_loss_W": 1.7302640878415865e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.039496475827795e-05,
+                        "imaginary": -0.0006337146380421949
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003519748237913898,
+                        "imaginary": -0.15888086508867522
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.190566596990785
+                      },
+                      "ideal_source_power_W": 6.038242101747407e-05,
+                      "metal_delivered_power_W": 5.021867867916733e-05,
+                      "source_resistor_loss_W": 1.0163742338306733e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.001370176584973643,
+                  "current_RMS_mA": 1.370176584973643
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001135915555805781,
+                "metal_delivered_power_W": 0.000948319367103063,
+                "source_resistor_loss_W": 0.0001875961887027178
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.000977467916230814,
+                    "saved": 0.000977467916230814,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00016142859803870902,
+                    "saved": 0.00016142859803870905,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.2700639136829266,
+                    "saved": 1.2700639136829268,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.271026992606604,
+                    "saved": 1.271026992606604,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "skin_contact_only": {
+            "amplitude_scale": 1.0300423889810162,
+            "source_Vpp_by_output": [
+              1.0300423889810162,
+              1.0300423889810162
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_p95_A_m2"
+              ],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0300423889810162,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005182878691610528,
+                  "metal_delivered_power_W": 0.00043271593419899834,
+                  "source_resistor_loss_W": 8.557193496205444e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.00033343641583518253,
+                        "imaginary": -0.0016957969551112618
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.016671820791759124,
+                        "imaginary": -0.46147262086298796
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.546262468618551
+                      },
+                      "ideal_source_power_W": 0.00046317511548745003,
+                      "metal_delivered_power_W": 0.000388502436578209,
+                      "source_resistor_loss_W": 7.467267890924099e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": -1.280522886516132e-06,
+                        "imaginary": 0.0002421981062937607
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.40261443258066e-05,
+                        "imaginary": -0.012109905314688033
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.4665390607786673e-06,
+                      "source_resistor_loss_W": 1.4665390607786673e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 6.74459238041984e-05,
+                        "imaginary": -0.0006053436599403729
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0033722961902099193,
+                        "imaginary": -0.15182030654249837
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.182087489539517
+                      },
+                      "ideal_source_power_W": 5.511275367360279e-05,
+                      "metal_delivered_power_W": 4.58380061919076e-05,
+                      "source_resistor_loss_W": 9.274747481695187e-06
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -2.2283135317062476e-06,
+                        "imaginary": 7.945951819881892e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00011141567658531237,
+                        "imaginary": -0.0039729759099409465
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.5796951033960055e-07,
+                      "source_resistor_loss_W": 1.579695103396005e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0013082196678085407,
+                  "current_RMS_mA": 1.3082196678085407
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0005187931986945841,
+                  "metal_delivered_power_W": 0.00043309143755213095,
+                  "source_resistor_loss_W": 8.570176114245315e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": -1.2840153551498753e-06,
+                        "imaginary": 0.00024226435791719348
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.420076775749377e-05,
+                        "imaginary": -0.012113217895859675
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.4673416953115576e-06,
+                      "source_resistor_loss_W": 1.4673416953115576e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00033177288533840104,
+                        "imaginary": -0.0016975889713257977
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01658864426692005,
+                        "imaginary": -0.4613830200522612
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.546262468618551
+                      },
+                      "ideal_source_power_W": 0.00046366457108802845,
+                      "metal_delivered_power_W": 0.00038886753201270975,
+                      "source_resistor_loss_W": 7.479703907531869e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -2.1972165032261148e-06,
+                        "imaginary": 7.946091345382094e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00010986082516130573,
+                        "imaginary": -0.0039730456726910475
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.5797161318194176e-07,
+                      "source_resistor_loss_W": 1.5797161318194176e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 6.726279742339856e-05,
+                        "imaginary": -0.0006055180149495288
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0033631398711699285,
+                        "imaginary": -0.15181158879204057
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.182087489539517
+                      },
+                      "ideal_source_power_W": 5.5128627606555726e-05,
+                      "metal_delivered_power_W": 4.584921884791474e-05,
+                      "source_resistor_loss_W": 9.279408758640976e-06
+                    }
+                  ],
+                  "current_RMS_A": 0.0013092116799238629,
+                  "current_RMS_mA": 1.309211679923863
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001037081067855637,
+                "metal_delivered_power_W": 0.0008658073717511294,
+                "source_resistor_loss_W": 0.00017127369610450758
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.000977467916230814,
+                    "saved": 0.000977467916230814,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00016142859803870902,
+                    "saved": 0.00016142859803870905,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.2700639136829266,
+                    "saved": 1.2700639136829268,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.271026992606604,
+                    "saved": 1.271026992606604,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "legacy_composite_full_skin": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [],
+              "includes_source_power_cap": true,
+              "includes_1Vpp_ceiling": true
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0004884958169413655,
+                  "metal_delivered_power_W": 0.00040784269969938584,
+                  "source_resistor_loss_W": 8.065311724197961e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0003237113534376378,
+                        "imaginary": -0.001646337056855352
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01618556767188189,
+                        "imaginary": -0.448013233047143
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0004365510363829207,
+                      "metal_delivered_power_W": 0.00036617066775493145,
+                      "source_resistor_loss_W": 7.038036862798923e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": -1.2431749413564495e-06,
+                        "imaginary": 0.00023513411572640086
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.215874706782248e-05,
+                        "imaginary": -0.011756705786320043
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.3822399465592822e-06,
+                      "source_resistor_loss_W": 1.3822399465592822e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 6.547878468469653e-05,
+                        "imaginary": -0.0005876881052819754
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0032739392342348264,
+                        "imaginary": -0.1473922900325381
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 5.19447805584448e-05,
+                      "metal_delivered_power_W": 4.320316105010222e-05,
+                      "source_resistor_loss_W": 8.741619508342574e-06
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -2.1633221657126536e-06,
+                        "imaginary": 7.714198857138817e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00010816610828563268,
+                        "imaginary": -0.003857099428569409
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.488891590885212e-07,
+                      "source_resistor_loss_W": 1.4888915908852116e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0012700639136829265,
+                  "current_RMS_mA": 1.2700639136829266
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0004889720992894486,
+                  "metal_delivered_power_W": 0.0004081966184927191,
+                  "source_resistor_loss_W": 8.077548079672941e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": -1.2465655480645854e-06,
+                        "imaginary": 0.000235198435043879
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.232827740322927e-05,
+                        "imaginary": -0.01175992175219395
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.382996444318885e-06,
+                      "source_resistor_loss_W": 1.382996444318885e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.0003220963417501798,
+                        "imaginary": -0.0016480768068245825
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01610481708750899,
+                        "imaginary": -0.4479262455486815
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0004370123572582252,
+                      "metal_delivered_power_W": 0.0003665147768941762,
+                      "source_resistor_loss_W": 7.049758036404901e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -2.1331321183779065e-06,
+                        "imaginary": 7.714334313214892e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 0.00010665660591889533,
+                        "imaginary": -0.003857167156607446
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.4889114105597306e-07,
+                      "source_resistor_loss_W": 1.4889114105597306e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 6.530099939861623e-05,
+                        "imaginary": -0.0005878573750237075
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003265049969930812,
+                        "imaginary": -0.14738382654545149
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 5.195974203122337e-05,
+                      "metal_delivered_power_W": 4.321372918391781e-05,
+                      "source_resistor_loss_W": 8.74601284730555e-06
+                    }
+                  ],
+                  "current_RMS_A": 0.001271026992606604,
+                  "current_RMS_mA": 1.271026992606604
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.000977467916230814,
+                "metal_delivered_power_W": 0.000816039318192105,
+                "source_resistor_loss_W": 0.00016142859803870902
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.000977467916230814,
+                    "saved": 0.000977467916230814,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00016142859803870902,
+                    "saved": 0.00016142859803870905,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.2700639136829266,
+                    "saved": 1.2700639136829268,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.271026992606604,
+                    "saved": 1.271026992606604,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          }
+        },
+        "native_saved_conservation": {
+          "tissue_contact_plus_resistor_vs_source_relative_error": 1.730964785850268e-11,
+          "maximum_allowed_relative_error": 2e-07,
+          "driven_current_relative_error": 6.148302605142765e-09,
+          "maximum_allowed_current_relative_error": 2e-06,
+          "driven_power_relative_error": 2.0181485027227743e-10,
+          "independent_native_recompute": false
+        }
+      },
+      "candidate_adopted": false
+    },
+    {
+      "case_id": "perimeter-shell225-inward0p625-xy80",
+      "run_id": "cloud-perimeter-inward-20261021T194000Z",
+      "condition_id": "perimeter-shell225-inward0p625-xy80-square_3h",
+      "waveform": "square_3h",
+      "frequencies_Hz": [
+        3000,
+        3030,
+        9000,
+        9090
+      ],
+      "source_summary": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/postprocess/perimeter-shell225-inward0p625-xy80/summary.json",
+        "SHA256": "88c8fe5274085245d44aadc14566f74c2b3a396e4fd58fac5e9986c606d016d1"
+      },
+      "source_volume_audit": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume.json",
+        "SHA256": "fb61399c2d81dc6c417de3b72adc42f50c05d79080d0857ca23b97e90f661306"
+      },
+      "source_commit": "492af6b7a19b0af00552b8801e8305f2b63c968f",
+      "configuration_sha256": "a05416f839fbd903b98c3565e8d29198a9b89b585767a13e25a14b96c9e389db",
+      "configuration_sha256_scope": "Matched saved preregistration/case/post/volume JSON; configuration bytes not read/rehashed",
+      "mask_SHA256_declared_not_rehashed": "3ba272c235b9a2dc7c4d112c599f8b9fbcb7b650d3107e33ec3454688d035ae9",
+      "original_postprocessor_SHA256_declared": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "n_return_nodes": 1,
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+      },
+      "native_validation_saved": {
+        "max_residual": 9.515371323301114e-10,
+        "max_power_error": 3.509852955190856e-10,
+        "max_current_error": 1.8759851234389716e-09,
+        "max_area_relative_error": 1.0880185641326534e-14,
+        "max_interface_normal_current_relative_error": 2.0164648486620567e-15,
+        "channels": 2,
+        "cells": 351680,
+        "h_xy_mm": 0.625,
+        "sc_cells": 2
+      },
+      "power_evidence": {
+        "normalizations": {
+          "raw_1Vpp": {
+            "amplitude_scale": 1.0,
+            "source_Vpp_by_output": [
+              1.0,
+              1.0
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005306369360454886,
+                  "metal_delivered_power_W": 0.0004349551169876975,
+                  "source_resistor_loss_W": 9.568181905779105e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0003923217790622798,
+                        "imaginary": -0.001785590198734632
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.01961608895311399,
+                        "imaginary": -0.441050575953179
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.00047347610172955996,
+                      "metal_delivered_power_W": 0.00038991988332596556,
+                      "source_resistor_loss_W": 8.355621840359436e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.144611032566371e-06,
+                        "imaginary": 0.00023377296694230228
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00015723055162831856,
+                        "imaginary": -0.011688648347115114
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.3664922162888225e-06,
+                      "source_resistor_loss_W": 1.3664922162888222e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.9844417178168e-05,
+                        "imaginary": -0.0006467010170091818
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0039922208589084004,
+                        "imaginary": -0.14444164444617777
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 5.716083431592865e-05,
+                      "metal_delivered_power_W": 4.6545900907047865e-05,
+                      "source_resistor_loss_W": 1.0614933408880784e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.2618952861108616e-06,
+                        "imaginary": 7.593028895882387e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.309476430554308e-05,
+                        "imaginary": -0.0037965144479411937
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.4417502902708997e-07,
+                      "source_resistor_loss_W": 1.4417502902708997e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0013833424670542797,
+                  "current_RMS_mA": 1.3833424670542798
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0005312502724271888,
+                  "metal_delivered_power_W": 0.0004353966002429638,
+                  "source_resistor_loss_W": 9.58536721842251e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.156287120054529e-06,
+                        "imaginary": 0.00023386966329509053
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00015781435600272645,
+                        "imaginary": -0.011693483164754527
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.3676245389535811e-06,
+                      "source_resistor_loss_W": 1.3676245389535807e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00039050511721208127,
+                        "imaginary": -0.0017878266100645962
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.019525255860604062,
+                        "imaginary": -0.4409387553866808
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5303300858899106
+                      },
+                      "ideal_source_power_W": 0.0004740691198359125,
+                      "metal_delivered_power_W": 0.0003903486639803154,
+                      "source_resistor_loss_W": 8.372045585559718e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.2279141089875016e-06,
+                        "imaginary": 7.593501542312577e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.139570544937508e-05,
+                        "imaginary": -0.0037967507711562888
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.44190858509235e-07,
+                      "source_resistor_loss_W": 1.44190858509235e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.960187279989406e-05,
+                        "imaginary": -0.0006469308920536672
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003980093639994703,
+                        "imaginary": -0.1444301506939535
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.17677669529663687
+                      },
+                      "ideal_source_power_W": 5.7181152591276305e-05,
+                      "metal_delivered_power_W": 4.655975166011121e-05,
+                      "source_resistor_loss_W": 1.0621400931165104e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0013845842132873326,
+                  "current_RMS_mA": 1.3845842132873325
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.0010618872084726776,
+                "metal_delivered_power_W": 0.0008703517172306613,
+                "source_resistor_loss_W": 0.00019153549124201614
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.0010618872084726776,
+                    "saved": 0.0010618872084726776,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00019153549124201614,
+                    "saved": 0.00019153549124201617,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.3833424670542798,
+                    "saved": 1.38334246705428,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.3845842132873325,
+                    "saved": 1.3845842132873325,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "equal_total_source_output_RMS_sum": {
+            "amplitude_scale": 1.0676982218395377,
+            "source_Vpp_by_output": [
+              1.0676982218395377,
+              1.0676982218395377
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0676982218395377,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0006049152252773928,
+                  "metal_delivered_power_W": 0.0004958399137062949,
+                  "source_resistor_loss_W": 0.00010907531157109787,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0004188812658937201,
+                        "imaginary": -0.001906471480123073
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.020944063294686007,
+                        "imaginary": -0.47090891568651316
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5662324896926668
+                      },
+                      "ideal_source_power_W": 0.0005397530463590757,
+                      "metal_delivered_power_W": 0.00044450067087309093,
+                      "source_resistor_loss_W": 9.525237548598466e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.3574956078481064e-06,
+                        "imaginary": 0.00024959898111844914
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00016787478039240533,
+                        "imaginary": -0.012479949055922458
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.5577731038031167e-06,
+                      "source_resistor_loss_W": 1.5577731038031165e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 8.524974224494421e-05,
+                        "imaginary": -0.000690481525922524
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.004262487112247211,
+                        "imaginary": -0.15422008693476275
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.18874416323088894
+                      },
+                      "ideal_source_power_W": 6.516217891831706e-05,
+                      "metal_delivered_power_W": 5.30613725134889e-05,
+                      "source_resistor_loss_W": 1.2100806404828165e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.3473233531282614e-06,
+                        "imaginary": 8.107063450509852e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.736616765641308e-05,
+                        "imaginary": -0.004053531725254926
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.6435657648192892e-07,
+                      "source_resistor_loss_W": 1.6435657648192892e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014769922922689737,
+                  "current_RMS_mA": 1.4769922922689738
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0006056144161747923,
+                  "metal_delivered_power_W": 0.0004963431955637656,
+                  "source_resistor_loss_W": 0.00010927122061102675,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.369962145697256e-06,
+                        "imaginary": 0.00024970222364237955
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0001684981072848628,
+                        "imaginary": -0.012485111182118978
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.5590639284203092e-06,
+                      "source_resistor_loss_W": 1.5590639284203088e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.0004169416192665794,
+                        "imaginary": -0.0019088592925233779
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.02084708096332897,
+                        "imaginary": -0.47078952506649796
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5662324896926668
+                      },
+                      "ideal_source_power_W": 0.0005404290748392474,
+                      "metal_delivered_power_W": 0.00044498947202601026,
+                      "source_resistor_loss_W": 9.54396028132372e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.3110417107376356e-06,
+                        "imaginary": 8.107568094262926e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.555208553688179e-05,
+                        "imaginary": -0.004053784047131463
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.6437462176695778e-07,
+                      "source_resistor_loss_W": 1.6437462176695778e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 8.499077804354395e-05,
+                        "imaginary": -0.0006907269630987664
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.004249538902177197,
+                        "imaginary": -0.15420781507595063
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.18874416323088894
+                      },
+                      "ideal_source_power_W": 6.518534133554488e-05,
+                      "metal_delivered_power_W": 5.30771620879426e-05,
+                      "source_resistor_loss_W": 1.2108179247602289e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.0014783181025139801,
+                  "current_RMS_mA": 1.4783181025139802
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001210529641452185,
+                "metal_delivered_power_W": 0.0009921831092700604,
+                "source_resistor_loss_W": 0.0002183465321821246
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.0010618872084726776,
+                    "saved": 0.0010618872084726776,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00019153549124201614,
+                    "saved": 0.00019153549124201617,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.3833424670542798,
+                    "saved": 1.38334246705428,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.3845842132873325,
+                    "saved": 1.3845842132873325,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "equal_total_power": {
+            "amplitude_scale": 1.0342697645362318,
+            "source_Vpp_by_output": [
+              1.0342697645362318,
+              1.0342697645362318
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 1.0342697645362318,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0005676297306623946,
+                  "metal_delivered_power_W": 0.00046527755445352606,
+                  "source_resistor_loss_W": 0.00010235217620886845,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0004057665540531797,
+                        "imaginary": -0.001846781954403471
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.020288327702658985,
+                        "imaginary": -0.45616527533966383
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5485043730598373
+                      },
+                      "ideal_source_power_W": 0.0005064839890391486,
+                      "metal_delivered_power_W": 0.0004171027369516861,
+                      "source_resistor_loss_W": 8.93812520874624e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 3.252376112210457e-06,
+                        "imaginary": 0.00024178431147435126
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00016261880561052285,
+                        "imaginary": -0.012089215573717563
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.4617557806375348e-06,
+                      "source_resistor_loss_W": 1.4617557806375346e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 8.258066655439647e-05,
+                        "imaginary": -0.0006688633085874281
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.004129033327719824,
+                        "imaginary": -0.1493916255905744
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.1828347910199458
+                      },
+                      "ideal_source_power_W": 6.114574162324595e-05,
+                      "metal_delivered_power_W": 4.9790799321668726e-05,
+                      "source_resistor_loss_W": 1.1354942301577235e-05
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.3051401404352616e-06,
+                        "imaginary": 7.85324020826108e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.525700702176308e-05,
+                        "imaginary": -0.003926620104130541
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.542260391912757e-07,
+                      "source_resistor_loss_W": 1.542260391912757e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0014307492876731998,
+                  "current_RMS_mA": 1.4307492876731998
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0005682858251433865,
+                  "metal_delivered_power_W": 0.0004657498152485365,
+                  "source_resistor_loss_W": 0.00010253600989485008,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 3.264452336467539e-06,
+                        "imaginary": 0.00024188432158838108
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00016322261682337694,
+                        "imaginary": -0.012094216079419054
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.4629670419832108e-06,
+                      "source_resistor_loss_W": 1.4629670419832104e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.0004038876356291329,
+                        "imaginary": -0.0018490950070231193
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.020194381781456643,
+                        "imaginary": -0.45604962270868143
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.5485043730598373
+                      },
+                      "ideal_source_power_W": 0.0005071183487776458,
+                      "metal_delivered_power_W": 0.0004175614095973479,
+                      "source_resistor_loss_W": 8.955693918029803e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.2699944363732201e-06,
+                        "imaginary": 7.853729052173142e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 6.3499721818661e-05,
+                        "imaginary": -0.003926864526086571
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.5424297220908158e-07,
+                      "source_resistor_loss_W": 1.5424297220908158e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 8.23298102373895e-05,
+                        "imaginary": -0.0006691010613955608
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.004116490511869475,
+                        "imaginary": -0.14937973795016776
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.1828347910199458
+                      },
+                      "ideal_source_power_W": 6.116747636574064e-05,
+                      "metal_delivered_power_W": 4.980561566538088e-05,
+                      "source_resistor_loss_W": 1.1361860700359764e-05
+                    }
+                  ],
+                  "current_RMS_A": 0.001432033588257273,
+                  "current_RMS_mA": 1.432033588257273
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.001135915555805781,
+                "metal_delivered_power_W": 0.0009310273697020625,
+                "source_resistor_loss_W": 0.00020488818610371853
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.0010618872084726776,
+                    "saved": 0.0010618872084726776,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00019153549124201614,
+                    "saved": 0.00019153549124201617,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.3833424670542798,
+                    "saved": 1.38334246705428,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.3845842132873325,
+                    "saved": 1.3845842132873325,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "skin_contact_only": {
+            "amplitude_scale": 0.9119817726991314,
+            "source_Vpp_by_output": [
+              0.9119817726991314,
+              0.9119817726991314
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_p95_A_m2"
+              ],
+              "includes_source_power_cap": false,
+              "includes_1Vpp_ceiling": false
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 0.9119817726991314,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0004413364460382632,
+                  "metal_delivered_power_W": 0.0003617568481909288,
+                  "source_resistor_loss_W": 7.957959784733435e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0003577903115376949,
+                        "imaginary": -0.0016284257147562038
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.017889515576884747,
+                        "imaginary": -0.40223008610775307
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.4836513718455633
+                      },
+                      "ideal_source_power_W": 0.000393795165445215,
+                      "metal_delivered_power_W": 0.0003243005600574776,
+                      "source_resistor_loss_W": 6.949460538773736e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 2.867827943929125e-06,
+                        "imaginary": 0.00021319668480117626
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00014339139719645626,
+                        "imaginary": -0.010659834240058813
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.1365262711832022e-06,
+                      "source_resistor_loss_W": 1.1365262711832022e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.281665311827463e-05,
+                        "imaginary": -0.0005897795398983647
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003640832655913732,
+                        "imaginary": -0.13172814695360285
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.16121712394852108
+                      },
+                      "ideal_source_power_W": 4.75412805930482e-05,
+                      "metal_delivered_power_W": 3.871272632669635e-05,
+                      "source_resistor_loss_W": 8.828554266351848e-06
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.150825499988061e-06,
+                        "imaginary": 6.924703952622547e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 5.7541274999403054e-05,
+                        "imaginary": -0.003462351976311274
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.199119220619514e-07,
+                      "source_resistor_loss_W": 1.199119220619514e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0012615831153541517,
+                  "current_RMS_mA": 1.2615831153541517
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0004418465645025804,
+                  "metal_delivered_power_W": 0.0003621240345619279,
+                  "source_resistor_loss_W": 7.97225299406526e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 2.8784763228947657e-06,
+                        "imaginary": 0.00021328487011240566
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00014392381614473828,
+                        "imaginary": -0.010664243505620282
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.1374680361201804e-06,
+                      "source_resistor_loss_W": 1.13746803612018e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00035613354904315595,
+                        "imaginary": -0.0016304652811253892
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.017806677452157797,
+                        "imaginary": -0.40212810778929386
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.4836513718455633
+                      },
+                      "ideal_source_power_W": 0.0003942883849814282,
+                      "metal_delivered_power_W": 0.0003246571815386941,
+                      "source_resistor_loss_W": 6.963120344273421e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.119835285836696e-06,
+                        "imaginary": 6.925134997551812e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 5.599176429183481e-05,
+                        "imaginary": -0.003462567498775906
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.199250876124775e-07,
+                      "source_resistor_loss_W": 1.199250876124775e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.259545706621816e-05,
+                        "imaginary": -0.0005899891817489339
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0036297728533109075,
+                        "imaginary": -0.13171766486107442
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.16121712394852108
+                      },
+                      "ideal_source_power_W": 4.7558179521152204e-05,
+                      "metal_delivered_power_W": 3.872424614696647e-05,
+                      "source_resistor_loss_W": 8.833933374185741e-06
+                    }
+                  ],
+                  "current_RMS_A": 0.0012627155652850139,
+                  "current_RMS_mA": 1.262715565285014
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.0008831830105408436,
+                "metal_delivered_power_W": 0.0007238808827528567,
+                "source_resistor_loss_W": 0.00015930212778798695
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.0010618872084726776,
+                    "saved": 0.0010618872084726776,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00019153549124201614,
+                    "saved": 0.00019153549124201617,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.3833424670542798,
+                    "saved": 1.38334246705428,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.3845842132873325,
+                    "saved": 1.3845842132873325,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          },
+          "legacy_composite_full_skin": {
+            "amplitude_scale": 0.9119817726991314,
+            "source_Vpp_by_output": [
+              0.9119817726991314,
+              0.9119817726991314
+            ],
+            "source_Vpp_definition": "Whole square3h waveform before50ohm; not fundamental-tone Vpp or metal voltage",
+            "saved_normalization_contract": {
+              "baseline_derived_numerical_limits": {
+                "surface_J_RMS_max_A_m2": 25.49124012699599,
+                "surface_J_RMS_p95_A_m2": 13.553106044904386,
+                "contact_voltage_RMS_max_V": 0.0026848384569140493,
+                "SC_power_W": 2.166357019889475e-06,
+                "contact_power_W": 1.827275482305884e-06,
+                "source_power_W": 0.001135915555805781,
+                "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+                "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+                "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+              },
+              "active_skin_contact_caps": [
+                "surface_J_RMS_p95_A_m2"
+              ],
+              "includes_source_power_cap": true,
+              "includes_1Vpp_ceiling": true
+            },
+            "signed_per_output_power_evidence": {
+              "schema": "task1-output-power-evidence-v1",
+              "common_amplitude_scale": 0.9119817726991314,
+              "source_resistance_ohm": 50.0,
+              "outputs": [
+                {
+                  "output_index": 0,
+                  "ideal_source_power_W": 0.0004413364460382632,
+                  "metal_delivered_power_W": 0.0003617568481909288,
+                  "source_resistor_loss_W": 7.957959784733435e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 0.0003577903115376949,
+                        "imaginary": -0.0016284257147562038
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.017889515576884747,
+                        "imaginary": -0.40223008610775307
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.4836513718455633
+                      },
+                      "ideal_source_power_W": 0.000393795165445215,
+                      "metal_delivered_power_W": 0.0003243005600574776,
+                      "source_resistor_loss_W": 6.949460538773736e-05
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 2.867827943929125e-06,
+                        "imaginary": 0.00021319668480117626
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00014339139719645626,
+                        "imaginary": -0.010659834240058813
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.1365262711832022e-06,
+                      "source_resistor_loss_W": 1.1365262711832022e-06
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": 7.281665311827463e-05,
+                        "imaginary": -0.0005897795398983647
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.003640832655913732,
+                        "imaginary": -0.13172814695360285
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.16121712394852108
+                      },
+                      "ideal_source_power_W": 4.75412805930482e-05,
+                      "metal_delivered_power_W": 3.871272632669635e-05,
+                      "source_resistor_loss_W": 8.828554266351848e-06
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": -1.150825499988061e-06,
+                        "imaginary": 6.924703952622547e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 5.7541274999403054e-05,
+                        "imaginary": -0.003462351976311274
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.199119220619514e-07,
+                      "source_resistor_loss_W": 1.199119220619514e-07
+                    }
+                  ],
+                  "current_RMS_A": 0.0012615831153541517,
+                  "current_RMS_mA": 1.2615831153541517
+                },
+                {
+                  "output_index": 1,
+                  "ideal_source_power_W": 0.0004418465645025804,
+                  "metal_delivered_power_W": 0.0003621240345619279,
+                  "source_resistor_loss_W": 7.97225299406526e-05,
+                  "spectrum": [
+                    {
+                      "frequency_Hz": 3000,
+                      "current_peak_A": {
+                        "real": 2.8784763228947657e-06,
+                        "imaginary": 0.00021328487011240566
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.00014392381614473828,
+                        "imaginary": -0.010664243505620282
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.1374680361201804e-06,
+                      "source_resistor_loss_W": 1.13746803612018e-06
+                    },
+                    {
+                      "frequency_Hz": 3030,
+                      "current_peak_A": {
+                        "real": 0.00035613354904315595,
+                        "imaginary": -0.0016304652811253892
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.017806677452157797,
+                        "imaginary": -0.40212810778929386
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.4836513718455633
+                      },
+                      "ideal_source_power_W": 0.0003942883849814282,
+                      "metal_delivered_power_W": 0.0003246571815386941,
+                      "source_resistor_loss_W": 6.963120344273421e-05
+                    },
+                    {
+                      "frequency_Hz": 9000,
+                      "current_peak_A": {
+                        "real": -1.119835285836696e-06,
+                        "imaginary": 6.925134997551812e-05
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": 5.599176429183481e-05,
+                        "imaginary": -0.003462567498775906
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": 0.0
+                      },
+                      "ideal_source_power_W": 0.0,
+                      "metal_delivered_power_W": -1.199250876124775e-07,
+                      "source_resistor_loss_W": 1.199250876124775e-07
+                    },
+                    {
+                      "frequency_Hz": 9090,
+                      "current_peak_A": {
+                        "real": 7.259545706621816e-05,
+                        "imaginary": -0.0005899891817489339
+                      },
+                      "metal_voltage_peak_V": {
+                        "real": -0.0036297728533109075,
+                        "imaginary": -0.13171766486107442
+                      },
+                      "ideal_voltage_peak_V": {
+                        "real": 0.0,
+                        "imaginary": -0.16121712394852108
+                      },
+                      "ideal_source_power_W": 4.7558179521152204e-05,
+                      "metal_delivered_power_W": 3.872424614696647e-05,
+                      "source_resistor_loss_W": 8.833933374185741e-06
+                    }
+                  ],
+                  "current_RMS_A": 0.0012627155652850139,
+                  "current_RMS_mA": 1.262715565285014
+                }
+              ],
+              "totals": {
+                "ideal_source_power_W": 0.0008831830105408436,
+                "metal_delivered_power_W": 0.0007238808827528567,
+                "source_resistor_loss_W": 0.00015930212778798695
+              },
+              "unscaled_saved_metric_verification": {
+                "source_power_W": [
+                  {
+                    "recomputed": 0.0010618872084726776,
+                    "saved": 0.0010618872084726776,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ],
+                "source_resistor_power_W": [
+                  {
+                    "recomputed": 0.00019153549124201614,
+                    "saved": 0.00019153549124201617,
+                    "absolute_difference": 2.710505431213761e-20,
+                    "passed": true
+                  }
+                ],
+                "source_current_RMS_by_output_mA": [
+                  {
+                    "recomputed": 1.3833424670542798,
+                    "saved": 1.38334246705428,
+                    "absolute_difference": 2.220446049250313e-16,
+                    "passed": true
+                  },
+                  {
+                    "recomputed": 1.3845842132873325,
+                    "saved": 1.3845842132873325,
+                    "absolute_difference": 0.0,
+                    "passed": true
+                  }
+                ]
+              },
+              "verification_tolerance": {
+                "relative": 2e-12,
+                "absolute": 1e-15,
+                "units": "W for power and mA for stored output current vector"
+              },
+              "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+              "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+              "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+              "new_PDE": 0,
+              "numerical_or_experimental_validation_promoted": false,
+              "requires_source_power_absorption": false,
+              "has_negative_metal_delivered_power": false,
+              "requires_output_power_absorption": true,
+              "has_negative_per_frequency_ideal_source_power": false,
+              "hardware_absorption_and_compliance_validated": false
+            }
+          }
+        },
+        "native_saved_conservation": {
+          "tissue_contact_plus_resistor_vs_source_relative_error": 2.4773485943159995e-11,
+          "maximum_allowed_relative_error": 2e-07,
+          "driven_current_relative_error": 1.854546696645927e-09,
+          "maximum_allowed_current_relative_error": 2e-06,
+          "driven_power_relative_error": 3.508598724571127e-10,
+          "independent_native_recompute": false
+        }
+      },
+      "candidate_adopted": false
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_cached_geometry_output_power.py": "956b92502f68de749c4ed7e2fc8dbc7bf23f07ae04c69b6549d3f92f7a049ff4",
+    "/workspace/ngg-tis-task1/tests/test_task1_cached_geometry_output_power.py": "f3106d6e1f041adc6308b832562937f43aeedf90798b3655efba059215d6560a",
+    "/workspace/ngg-tis-task1/tools/task1_coherent_drive_scout.py": "859e37a8fb0c0cca4163b9ac40f7b8ca4e2af6a3e4bca2bb4ab8f6a8a10730b5",
+    "/workspace/ngg-tis-task1/tools/task1_output_power_evidence.py": "308c335e2db71f1e06d4934773b34a69f30ec13ff824430d91e419c31d6d50ea",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/tools/task1_results_view.py": "06d4016f1c330a0d6f556a30564f80c46f6298b194a1b58fbbdce128d2889082",
+    "/workspace/ngg-tis-task1/tools/task1_inward_geometry_output_power.py": "f0fb5b4a50a9cb75302190265f665406654c382d03a0922ee3f37c8b54a372ce",
+    "/workspace/ngg-tis-task1/tests/test_task1_inward_geometry_output_power.py": "cf8522ac0667a3f2e1d35375f2af4a3c4d599fc5c1e9c189c5a221145a7ac40a",
+    "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume.json": "fb61399c2d81dc6c417de3b72adc42f50c05d79080d0857ca23b97e90f661306",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/preregistration.json": "a5bff7509ba3e881f8885729453df4d0f88bbfc2e08908b93ee7c843d3f5b9b3",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/cases/baseline-square15-xy80.json": "93a714a9fb99c091d194827f9943ad22f1b586d818dc995098e5d58826a36b31",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/postprocess/perimeter-shell225-notch-xy80/summary.json": "fbbe40074b2219d09607a588ca8b31b35337449459b2eeb19cbb0d74b7c35252",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/preregistration.json": "1a4a6c81c59956d5d575001278b4dd2a5470c596033efe19777e65586e8c9218",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/cases/perimeter-shell225-notch-xy80.json": "de6b544220fc439813c4b37838a1a536a1e84ca4d2fd79039d595f8426f05664",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/postprocess/perimeter-shell225-inward0p625-xy80/summary.json": "88c8fe5274085245d44aadc14566f74c2b3a396e4fd58fac5e9986c606d016d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/preregistration.json": "70173e19e4bd5ea5fc092141d6347fa5ff56ed9d979f144604a387caa0e49eb3",
+    "/workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/cases/perimeter-shell225-inward0p625-xy80.json": "2bb76c328558637c1466f3778ecebd18c397a10012e88023dfe9aa8c4bb9b8d9"
+  },
+  "inputs_unchanged": true,
+  "implementation_git_commit": "10a70e9cfa19537825f2f5e829b7d1d14acbd35c",
+  "implementation_files_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_cached_geometry_output_power.py": "956b92502f68de749c4ed7e2fc8dbc7bf23f07ae04c69b6549d3f92f7a049ff4",
+    "/workspace/ngg-tis-task1/tests/test_task1_cached_geometry_output_power.py": "f3106d6e1f041adc6308b832562937f43aeedf90798b3655efba059215d6560a",
+    "/workspace/ngg-tis-task1/tools/task1_coherent_drive_scout.py": "859e37a8fb0c0cca4163b9ac40f7b8ca4e2af6a3e4bca2bb4ab8f6a8a10730b5",
+    "/workspace/ngg-tis-task1/tools/task1_output_power_evidence.py": "308c335e2db71f1e06d4934773b34a69f30ec13ff824430d91e419c31d6d50ea",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/tools/task1_results_view.py": "06d4016f1c330a0d6f556a30564f80c46f6298b194a1b58fbbdce128d2889082",
+    "/workspace/ngg-tis-task1/tools/task1_inward_geometry_output_power.py": "f0fb5b4a50a9cb75302190265f665406654c382d03a0922ee3f37c8b54a372ce",
+    "/workspace/ngg-tis-task1/tests/test_task1_inward_geometry_output_power.py": "cf8522ac0667a3f2e1d35375f2af4a3c4d599fc5c1e9c189c5a221145a7ac40a"
+  },
+  "canonical_reference": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+  "canonical_numerical_limits": {
+    "surface_J_RMS_max_A_m2": 25.49124012699599,
+    "surface_J_RMS_p95_A_m2": 13.553106044904386,
+    "contact_voltage_RMS_max_V": 0.0026848384569140493,
+    "SC_power_W": 2.166357019889475e-06,
+    "contact_power_W": 1.827275482305884e-06,
+    "source_power_W": 0.001135915555805781,
+    "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+    "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+    "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+  },
+  "source_review_not_independent_native_recompute": true,
+  "new_PDE": 0,
+  "new_native_RHS": 0,
+  "native_array_reads": 0,
+  "configuration_file_reads": 0,
+  "contact_mask_reads": 0,
+  "NPZ_reads": 0,
+  "new_normalization_or_gate_search": false,
+  "signed_power_scope": "Peak/+jwt saved spectra: Videal=Vmetal+50I; passive-frequency negative metal delivery preserved without clipping",
+  "hardware_power_absorption_compliance_validated": false,
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "experimentally_validated": false,
+  "resources": {
+    "CPU_count": 1,
+    "max_seconds": 60,
+    "wall_seconds": 0.06423416100005852,
+    "peak_RSS_bytes": 87068672,
+    "cumulative_budget_limit_seconds": 13800
+  }
+}

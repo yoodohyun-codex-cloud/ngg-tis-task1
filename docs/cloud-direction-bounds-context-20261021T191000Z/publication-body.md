@@ -1,0 +1,5 @@
+원래4square/외곽4패드square/실제완료외곽sine+negativecross6의총8조건을저장된fundamental복소E로추가검증했습니다. 각XYZ의2min(|축투영E3000|,|축투영E3030|)와실수연속단위방향최대변조의상한을계산하고기존2074방향하한L을변경하지않았습니다. 상한U=2sqrt(min9개lambda eigmax(lambda*A0+(1−lambda)*A1)), Ai=Re(Ei)Re(Ei)^T+Im(Ei)Im(Ei)^T이며정확한연속방향최적값이라고하지않습니다.
+
+원래5정규화배율/ROI/fractional체적가중/8개피부cap·oldscreen은고정입니다. [추가검증summary](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/codex/task1-cloud-restart-20261020/docs/cloud-direction-bounds-20261021T191000Z/summary.json)에mean/P10/P95·hotspot·고정cutoff체적구간과필요조건의conditional direction-robust failure 또는inconclusive를보존했습니다. UB지도최대는실제최대위치의증명이아닙니다. XYZ와LB/UB는carrierRMS/nativephiVpp/전체harmonic파형envelope와별개입니다. 임의cutoff는생리적역치가아닙니다.
+
+이검증은새PDE0/phi·harmonicE읽기0/새probe0/후보채택0입니다. 실제source계수/격자·물성·접촉·회로·oldLB회귀와SHA를검사했습니다. 부동소수outwardguard는정형IEEE인증이나solver/mesh오차인증이아닙니다. SC/XY/bulk/edge/contact·PBS피부외삽·hardware흡수/동기화·ETA부하·실험/활성화/안전검증은미완료입니다. 실제2출력/commonGND/50Ω/4패드/D50/층0.1,5,5,15mm는유지했습니다. 기존13800초예산/CPU1/RSS3GiB/여유2GiB 안의단일유한600초계산→GET→게시이며후속구동탐색은root의별도사전등록후실행합니다. 설치·삭제·main병합·예산확대없습니다.

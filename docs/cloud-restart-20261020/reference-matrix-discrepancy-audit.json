@@ -1,0 +1,446 @@
+{
+  "schema": "task1-reference-strict-matrix-discrepancy-audit-v1",
+  "observed_utc": "2026-10-19T19:35:25.222437+00:00",
+  "run_id": "cloud-reference-20261019T192000Z",
+  "source_commit": "66901b734d0fdcb3d04734b19fea8e16f55bca87",
+  "status": "investigated_registered_strict_failure_preserved",
+  "original_reference_comparison_status": "failed",
+  "scalar_comparisons_passed": 39,
+  "scalar_comparisons_total": 39,
+  "matrix_comparisons_registered_passed": 6,
+  "matrix_comparisons_total": 8,
+  "failed_real_components": 10,
+  "criterion": {
+    "pinned_source": "frozen-source/tools/task1_reference_registration.py compare_reference",
+    "registered_code_predicate": "all(abs(actual_i-expected_i)<=1e-14+1e-8*abs(expected_i)) for every interleaved Float64 real/imaginary component",
+    "reported_relative_max_error": "max_i abs(delta_i)/max_i abs(expected_i), a different diagnostic norm",
+    "preregistration_text": {
+      "relative_scalar_tolerance": 1e-07,
+      "source_loss_matrix_tolerance": 1e-08,
+      "allow_absolute_error_near_zero": 1e-14,
+      "gate": "Nominal exact-grid square_3h central20 must match historical scalar before same-grid C1 execution"
+    },
+    "assessment": "Preregistration prose leaves norm unnamed, but immutable preexecution comparator explicitly uses componentwise mixed tolerance. The recorded failed verdict is correct for that code. Diagnostic naming/reporting is ambiguous; it is not an index/layout comparator bug."
+  },
+  "matrices": [
+    {
+      "name": "source-3000.bin",
+      "registered_elementwise_pass": false,
+      "failed_float64_components": [
+        {
+          "float64_index": 3,
+          "complex_axis_indices": [
+            0,
+            1
+          ],
+          "component": "imaginary",
+          "expected": 3.877928367107218e-06,
+          "actual": 3.877928456950409e-06,
+          "delta": 8.98431905992569e-14,
+          "absolute_error": 8.98431905992569e-14,
+          "element_relative_error": 2.3167831402279457e-08,
+          "registered_element_mixed_tolerance": 4.877928367107218e-14,
+          "factor_over_registered_tolerance": 1.8418308724065386
+        },
+        {
+          "float64_index": 5,
+          "complex_axis_indices": [
+            1,
+            0
+          ],
+          "component": "imaginary",
+          "expected": 3.877928377512576e-06,
+          "actual": 3.877932620577072e-06,
+          "delta": 4.243064495880445e-12,
+          "absolute_error": 4.243064495880445e-12,
+          "element_relative_error": 1.0941575198977963e-06,
+          "registered_element_mixed_tolerance": 4.877928377512576e-14,
+          "factor_over_registered_tolerance": 86.9849691816125
+        }
+      ],
+      "diagnostic_max_abs_error": 4.243064495880445e-12,
+      "diagnostic_matrix_max_abs_scale": 0.0018072818965524718,
+      "diagnostic_relative_global_maxnorm_error": 2.3477601938991445e-09,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    },
+    {
+      "name": "loss-3000.bin",
+      "registered_elementwise_pass": false,
+      "failed_float64_components": [
+        {
+          "float64_index": 11,
+          "complex_axis_indices": [
+            1,
+            0,
+            1
+          ],
+          "component": "imaginary",
+          "expected": -1.095637166321855e-15,
+          "actual": 3.440864200881939e-13,
+          "delta": 3.4518205725451576e-13,
+          "absolute_error": 3.4518205725451576e-13,
+          "element_relative_error": 315.0514311351089,
+          "registered_element_mixed_tolerance": 1.0000000010956372e-14,
+          "factor_over_registered_tolerance": 34.51820568763215
+        },
+        {
+          "float64_index": 13,
+          "complex_axis_indices": [
+            1,
+            1,
+            0
+          ],
+          "component": "imaginary",
+          "expected": 1.095637166321855e-15,
+          "actual": -3.440864200881939e-13,
+          "delta": -3.4518205725451576e-13,
+          "absolute_error": 3.4518205725451576e-13,
+          "element_relative_error": 315.0514311351089,
+          "registered_element_mixed_tolerance": 1.0000000010956372e-14,
+          "factor_over_registered_tolerance": 34.51820568763215
+        },
+        {
+          "float64_index": 19,
+          "complex_axis_indices": [
+            2,
+            0,
+            1
+          ],
+          "component": "imaginary",
+          "expected": -7.026166489914194e-17,
+          "actual": 7.148839816018958e-14,
+          "delta": 7.155865982508873e-14,
+          "absolute_error": 7.155865982508873e-14,
+          "element_relative_error": 1018.459496053909,
+          "registered_element_mixed_tolerance": 1.0000000000702616e-14,
+          "factor_over_registered_tolerance": 7.15586598200609
+        },
+        {
+          "float64_index": 21,
+          "complex_axis_indices": [
+            2,
+            1,
+            0
+          ],
+          "component": "imaginary",
+          "expected": 7.026166489914194e-17,
+          "actual": -7.148839816018958e-14,
+          "delta": -7.155865982508873e-14,
+          "absolute_error": 7.155865982508873e-14,
+          "element_relative_error": 1018.459496053909,
+          "registered_element_mixed_tolerance": 1.0000000000702616e-14,
+          "factor_over_registered_tolerance": 7.15586598200609
+        },
+        {
+          "float64_index": 27,
+          "complex_axis_indices": [
+            3,
+            0,
+            1
+          ],
+          "component": "imaginary",
+          "expected": -9.344692043032099e-17,
+          "actual": 3.509669185762772e-14,
+          "delta": 3.519013877805804e-14,
+          "absolute_error": 3.519013877805804e-14,
+          "element_relative_error": 376.5789029323624,
+          "registered_element_mixed_tolerance": 1.0000000000934469e-14,
+          "factor_over_registered_tolerance": 3.5190138774769633
+        },
+        {
+          "float64_index": 29,
+          "complex_axis_indices": [
+            3,
+            1,
+            0
+          ],
+          "component": "imaginary",
+          "expected": 9.344692043032099e-17,
+          "actual": -3.509669185762772e-14,
+          "delta": -3.519013877805804e-14,
+          "absolute_error": 3.519013877805804e-14,
+          "element_relative_error": 376.5789029323624,
+          "registered_element_mixed_tolerance": 1.0000000000934469e-14,
+          "factor_over_registered_tolerance": 3.5190138774769633
+        },
+        {
+          "float64_index": 43,
+          "complex_axis_indices": [
+            5,
+            0,
+            1
+          ],
+          "component": "imaginary",
+          "expected": -7.245634180261164e-16,
+          "actual": -1.9022645050074927e-13,
+          "delta": -1.8950188708272316e-13,
+          "absolute_error": 1.8950188708272316e-13,
+          "element_relative_error": 261.5394075496821,
+          "registered_element_mixed_tolerance": 1.0000000007245634e-14,
+          "factor_over_registered_tolerance": 18.9501886945417
+        },
+        {
+          "float64_index": 45,
+          "complex_axis_indices": [
+            5,
+            1,
+            0
+          ],
+          "component": "imaginary",
+          "expected": 7.245634180261164e-16,
+          "actual": 1.9022645050074927e-13,
+          "delta": 1.8950188708272316e-13,
+          "absolute_error": 1.8950188708272316e-13,
+          "element_relative_error": 261.5394075496821,
+          "registered_element_mixed_tolerance": 1.0000000007245634e-14,
+          "factor_over_registered_tolerance": 18.9501886945417
+        }
+      ],
+      "diagnostic_max_abs_error": 3.4518205725451576e-13,
+      "diagnostic_matrix_max_abs_scale": 0.00029152141845669127,
+      "diagnostic_relative_global_maxnorm_error": 1.1840709992490531e-09,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    },
+    {
+      "name": "source-3030.bin",
+      "registered_elementwise_pass": true,
+      "failed_float64_components": [],
+      "diagnostic_max_abs_error": 3.4884584370481475e-13,
+      "diagnostic_matrix_max_abs_scale": 0.0018092745238164698,
+      "diagnostic_relative_global_maxnorm_error": 1.9280979150082875e-10,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    },
+    {
+      "name": "loss-3030.bin",
+      "registered_elementwise_pass": true,
+      "failed_float64_components": [],
+      "diagnostic_max_abs_error": 2.698897691704588e-14,
+      "diagnostic_matrix_max_abs_scale": 0.0002918924398587888,
+      "diagnostic_relative_global_maxnorm_error": 9.246206215584946e-11,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    },
+    {
+      "name": "source-9000.bin",
+      "registered_elementwise_pass": true,
+      "failed_float64_components": [],
+      "diagnostic_max_abs_error": 1.6040000341941037e-14,
+      "diagnostic_matrix_max_abs_scale": 0.0019410502730350544,
+      "diagnostic_relative_global_maxnorm_error": 8.263567700830674e-12,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    },
+    {
+      "name": "loss-9000.bin",
+      "registered_elementwise_pass": true,
+      "failed_float64_components": [],
+      "diagnostic_max_abs_error": 1.4866135496823928e-15,
+      "diagnostic_matrix_max_abs_scale": 0.0003153214716983862,
+      "diagnostic_relative_global_maxnorm_error": 4.714596635856058e-12,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    },
+    {
+      "name": "source-9090.bin",
+      "registered_elementwise_pass": true,
+      "failed_float64_components": [],
+      "diagnostic_max_abs_error": 1.5730325096424864e-14,
+      "diagnostic_matrix_max_abs_scale": 0.0019416444252722453,
+      "diagnostic_relative_global_maxnorm_error": 8.101547786855596e-12,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    },
+    {
+      "name": "loss-9090.bin",
+      "registered_elementwise_pass": true,
+      "failed_float64_components": [],
+      "diagnostic_max_abs_error": 1.5088384236689248e-15,
+      "diagnostic_matrix_max_abs_scale": 0.0003154163292466674,
+      "diagnostic_relative_global_maxnorm_error": 4.783640806652583e-12,
+      "diagnostic_global_1e_8_plus_abs_1e_14_pass": true,
+      "global_diagnostic_does_not_change_registered_verdict": true
+    }
+  ],
+  "source_reciprocity_diagnostics": [
+    {
+      "frequency_Hz": 3000,
+      "expected_abs_source01_minus_source10_A": 3.3206516437367906e-14,
+      "actual_abs_source01_minus_source10_A": 4.163852013669081e-12,
+      "actual_relative_to_largest_complex_source_entry": 2.2556689393472273e-09
+    },
+    {
+      "frequency_Hz": 3030,
+      "expected_abs_source01_minus_source10_A": 4.981934883324326e-15,
+      "actual_abs_source01_minus_source10_A": 4.34025318318899e-15,
+      "actual_relative_to_largest_complex_source_entry": 2.349246095706871e-12
+    },
+    {
+      "frequency_Hz": 9000,
+      "expected_abs_source01_minus_source10_A": 1.4810806179986276e-14,
+      "actual_abs_source01_minus_source10_A": 1.8192106883621508e-14,
+      "actual_relative_to_largest_complex_source_entry": 9.310044671363031e-12
+    },
+    {
+      "frequency_Hz": 9090,
+      "expected_abs_source01_minus_source10_A": 2.0099001567569557e-14,
+      "actual_abs_source01_minus_source10_A": 1.1909386604642667e-14,
+      "actual_relative_to_largest_complex_source_entry": 6.093175049217869e-12
+    }
+  ],
+  "power_operator_diagnostics": [
+    {
+      "frequency_Hz": 3000,
+      "definition": "sum six Hermitian loss matrices minus0.25*HermitianPart(source); diagnostic only",
+      "max_complex_entry_absolute_defect_W": 1.125743955468667e-12,
+      "relative_global_maxnorm_defect": 2.4915735779303827e-09
+    },
+    {
+      "frequency_Hz": 3030,
+      "definition": "sum six Hermitian loss matrices minus0.25*HermitianPart(source); diagnostic only",
+      "max_complex_entry_absolute_defect_W": 6.088567094585909e-13,
+      "relative_global_maxnorm_defect": 1.3460792186772416e-09
+    },
+    {
+      "frequency_Hz": 9000,
+      "definition": "sum six Hermitian loss matrices minus0.25*HermitianPart(source); diagnostic only",
+      "max_complex_entry_absolute_defect_W": 3.6857636428059265e-13,
+      "relative_global_maxnorm_defect": 7.595400683864398e-10
+    },
+    {
+      "frequency_Hz": 9090,
+      "definition": "sum six Hermitian loss matrices minus0.25*HermitianPart(source); diagnostic only",
+      "max_complex_entry_absolute_defect_W": 2.611188001752518e-13,
+      "relative_global_maxnorm_defect": 5.379333039078718e-10
+    }
+  ],
+  "contact_mapping_audit": {
+    "method": "Independent standard-library reconstruction of frozen ExploreBasis.GNet rectangular overlap and1e-15m2 cutoff; no research import or PDE",
+    "same_physical_pad_i_j_keys": true,
+    "old_GNet_patch_count": 5184,
+    "new_canonical_patch_count": 5184,
+    "largest_area_absolute_difference_m2": 2.1969917069408415e-21,
+    "largest_area_relative_difference": 1.2656542480726785e-14,
+    "old_total_area_m2": 0.0008999999999999986,
+    "new_total_area_m2": 0.0009000000000000002,
+    "new_audit_discarded_patch_count": 0,
+    "node_mapping": "pad0->out0,pad1->out1,pads2/3->commonGND unchanged",
+    "remaining_numerical_differences": [
+      "Frozen GNet interleaves top contact edges with bulk edge construction; ShapeNet builds all bulk then pad-major contacts, changing floating addition/reduction order.",
+      "Full-face area canonicalization changes contact coefficients by roundoff up to1.27e-14 relative.",
+      "COCG terminates at relative residual below1e-9; its forward/source-element error is not certified by residual alone."
+    ]
+  },
+  "interpretation": {
+    "most_supported": "Tiny3000Hz numerical residual/roundoff sensitivity, amplified in weak/near-zero imaginary cross terms; no evidence of a physical pad mapping/contact model discrepancy.",
+    "evidence": "Only3000Hz fails; source reciprocity defect rises to4.16e-12A, comparable to approximately9.32e-12A residual-vector norm from0.01A RHS and9.32e-10 reported relative residual. All39 physical scalars pass and all accepted conservation gates pass.",
+    "limits": "This diagnostic does not prove the exact source of every difference or certify historical elementwise reproduction. Old full native fields are unavailable, so no independent old-phi residual or full-field difference can be calculated."
+  },
+  "next_step": {
+    "preserve": "Keep reference-comparison.json, failure.json, native arrays and stopped run unchanged; no automatic retry or retrospective regrading.",
+    "forward_protocol": "A future protocol may report both elementwise and normwise metrics with numerical uncertainty rationale, fixed before new results. Do not replace this run failed criterion after observing values.",
+    "strict_resolution_option": "If exact componentwise reproduction is scientifically required, preregister a limited3000Hz old/new operator residual and numerical-refinement diagnostic with a new ID and explicit cost; no PDE was run by this audit.",
+    "standalone_C1_option": "After reviewing this documented discrepancy, a separately preregistered one-case trueC1 can be compared to the current newly computed TIS candidate, while carrying its unresolved strict historical-matrix flag. This is a control measurement prediction, not a new optimization or a claim that historical strict reproduction passed."
+  },
+  "prepared_C1": {
+    "id": "best1-square15-C1pair0-xy120",
+    "status": "not_run",
+    "basis_exists": false,
+    "case_record_exists": false,
+    "postprocess_exists": false,
+    "config_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/best1-square15-C1pair0-xy120.properties",
+    "config_sha256": "233e7ea08747bb3178402126294ec31f8d243e25304026a06b7eaf398dfc747f",
+    "registered_config_hash_matches": true,
+    "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/best1-square15-C1pair0-xy120.csv",
+    "mask_sha256": "c6a82a13b4ea085b2aa411201a4a298b56aadf1bfdfa68b69305c2c33ef6ee93",
+    "registered_mask_hash_matches": true,
+    "h_xy_mm": 0.4166666666666667,
+    "sc_cells": 2,
+    "bulk_counts": [
+      14,
+      14,
+      40
+    ],
+    "cells": 791280,
+    "n_pads": 2,
+    "n_outputs": 1,
+    "pad_centres_mm": [
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        -10
+      ]
+    ],
+    "tip_gap_mm": 5,
+    "probe_centres": "depth5/10/15/20mm x center/(+-5,0)/(0,+-5); X/Y tips",
+    "raw_bound_bytes": 269035200,
+    "future_new_run_rule": "Copy existing config/mask preserving mask bytes and change only portable mask.path; update path/config hashes, source_run_id and circuit metadata; do not restart stopped three-case run or recompute completed C2.",
+    "same_operator_cache_signature": "d3232c836fa3b2eaac287feede2cca2c716af48845e8e0fe3b5c77fa0a0b1af5",
+    "source_circuit": {
+      "n_pads": 2,
+      "n_outputs": 1,
+      "n_signal_pads": 1,
+      "n_return_pads": 1,
+      "n_return_nodes": 1,
+      "return_topology": "all_actual_return_pads_ideal_common_GND",
+      "source_Vpp_each": 1.0,
+      "source_peak_V": 0.5,
+      "source_resistance_ohm": 50.0,
+      "source_phase_deg": [
+        0.0
+      ],
+      "carrier_assignment_Hz": [
+        3000
+      ],
+      "C1_separate_actual_carriers_Hz": [
+        3000,
+        3030
+      ],
+      "pad_to_node": {
+        "0": "out0",
+        "1": "GND"
+      },
+      "inactive_source_at_other_frequencies": "0 V through50 ohm for every actual inactive output",
+      "phantom_extra_pads_or_outputs_retained": false,
+      "note": "C1 has one physical signal pad and one return; separately driven at each carrier, no two-carrier TIS"
+    }
+  },
+  "input_sha256": {
+    "data-native/cloud-reference-20261019T192000Z/preregistration.json": "678fe5ec33666cbe62dde9ab82ac673672267ac5158e99aa7e938dd89d82a8cc",
+    "data-native/cloud-reference-20261019T192000Z/reference-comparison.json": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+    "data-native/cloud-reference-20261019T192000Z/failure.json": "dfc59419125a2a7f5eb71334b662fbc201bf48678ad2219600618c40a968227f",
+    "data-native/cloud-reference-20261019T192000Z/frozen-source/tools/task1_reference_registration.py": "81b53f45022ac0461596df74e31bef6fbac26e79bcd57affba44096329cc2dd2",
+    "data-native/cloud-reference-20261019T192000Z/frozen-source/tools/task1_cloud_batch.py": "eae726053bd0b5fa9dfc5e201369648773651ee384cf45c39797df1636c60ed1",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/validation.json": "c28f6e350a7fa67f3620247d4a765221a6c3b012a81ed89b3cb8bf2aed9e9747",
+    "data-native/cloud-reference-20261019T192000Z/logs/best1-square15-xy120.log": "cded02c0481cc43543cacfd4a24be1cb4320e5d6af2d08cacefe9078cbe475c0",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-3000.bin": "c638b92e846bb41c3d764d25b67f0f6ed5ea858c7ce72c104fa3dac9f52c3af9",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/source-3000.bin": "c32236128ed5b68eeae59b715a2c7f91dae5b2002533ee2cf2e0f61bfd5fe603",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-3000.bin": "4334116a1c27209d93027a3bba26d7d83b532928c63dfb52114086e46f0ecd52",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/loss-3000.bin": "45c2891e94d09ffff5ea9c09e0b10acde1470fbbc625b1623a765dee57a68596",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-3030.bin": "624ce0a147c2eb8ed4d436f303cab54fcbd83ce74e418de9a329885514acac91",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/source-3030.bin": "c6fedb508f69d7a14afd33a1426b5ed1e3a3c88348663cfc593fc3d0478bf731",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-3030.bin": "e4a1509d0b9840f5b6698b3329a6afbf2524ed7db7b5f6793a7a8ac93216c24e",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/loss-3030.bin": "6d9875ec93599d320e0b672f3ceff655d8cf25546a34cc3bab64bf84306ec51c",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-9000.bin": "d6aed35ef01883c29ca6a6d0d03dac3461fd54d3b0e845441144b2de2fd08828",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/source-9000.bin": "355d0ccc4e0cba11192db52fcc85df1b7b012c0d4b646aa5aa9edfe036abb810",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-9000.bin": "c624083827591950e637f77b247c1c8cf53aef278f59a1f2a52b14abc21fe15b",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/loss-9000.bin": "7f3887b6fd364d23ee1eef7ebaba324b0ca0ee60f5efbc10b6a2c5f908b81cd0",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-9090.bin": "94c70b85d2d10ef01698535c7a51502fb766ec49277c055ec794d3bf7df35772",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/source-9090.bin": "8656da1e28a564c74e87b00bc90161c6606d367d54802db5841cb85a4223bb58",
+    "tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-9090.bin": "551c3cb02fafae87b389da3a300b3dde4ab1506217786cb1e597ac808e3bfcce",
+    "data-native/cloud-reference-20261019T192000Z/bases/best1-square15-xy120/loss-9090.bin": "a47dfd0f03cf5121355e6d7c498b403e1373e5670568d701f3637a62e841bda2",
+    "data-native/cloud-reference-20261019T192000Z/masks/best1-square15-xy120.csv": "698660e260878325670ed85fc0ef0ff5cb0920b2d6e9a2466bc19655050788ce",
+    "data-native/cloud-reference-20261019T192000Z/configs/best1-square15-C1pair0-xy120.properties": "233e7ea08747bb3178402126294ec31f8d243e25304026a06b7eaf398dfc747f",
+    "data-native/cloud-reference-20261019T192000Z/masks/best1-square15-C1pair0-xy120.csv": "c6a82a13b4ea085b2aa411201a4a298b56aadf1bfdfa68b69305c2c33ef6ee93",
+    "data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-xy120-full-face.json": "fbd8708a2c0a090f94aed01eff977ea453742353d3a248995bed4ddb59494fee",
+    "data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-C1pair0-xy120-full-face.json": "61a3d396c3c5a9ba587a58699392dd34f2e8b0c25f3f0d2398fa56c41a5f3884"
+  },
+  "read_only_numerical_analysis": true,
+  "new_PDE": 0,
+  "originals_or_receipts_modified": false
+}

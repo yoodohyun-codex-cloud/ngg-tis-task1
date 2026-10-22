@@ -1,0 +1,285 @@
+{
+  "schema": "task1-resume-feedback-adoption-delta-v1",
+  "created_utc": "2026-10-20T00:15:31.370348+00:00",
+  "purpose": "Append-only F004 resumption mapping; existing feedback ledger and old terminal checkpoint unchanged",
+  "feedback_source": {
+    "peer_PR": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/1",
+    "review_commit": "8053270779400652da95bd2bca01b7f276b64b8e",
+    "review_path": "docs/reviews/TASK1_CLOUD_RESTART_REVIEW_20261020.md",
+    "review_sha256": "762898c0df92b35decf1aa1db36ce231caa6306120a1e6fa5b64796fc2d2b8e3",
+    "stable_feedback_id": "T1-F004",
+    "refresh": {
+      "path": "docs/cloud-resume-20261020/feedback-refresh.json",
+      "sha256": "642c134c93ca01b64fdb6e47a3d95f58d8825f8062e027402c4fa5226b12b7ef",
+      "bytes": 12359
+    }
+  },
+  "decision": {
+    "feedback_id": "T1-F004",
+    "status": "partially_adopted_executed_residual_mesh_separation; overall_validation_hold_preserved",
+    "adopted_scope": "Separate solver stopping/error-floor sensitivity from spatial contact-edge/XY convergence before candidate adoption. Honest single3000Hz residual producer plus default-producer regression executed. Retain old strict failed criterion and exact physical source model.",
+    "implementation_commits": {
+      "initial_residual_adoption": "90b38ca9f19337724bb458f5a3d73ce4d40e9a06",
+      "mask_digest_fix": "a2b6bda9c2b50c8cd4f2ffd05e150718b54ad078",
+      "lumped_fixture_threshold_fix": "9c7cc5c3d6eb0ed23122f86e7ebf36ad5ed344e1",
+      "finite_Krylov_fixture_fix_and_actual_source": "7bfc39cef2f0d3d17bd7ba12d68a8805f23bbaf5",
+      "preregistration_publication": "e34ab4abdf97205dac975a08c3c8c4158481da3b",
+      "residual_results_publication": "f5482060cce97f050f8a164c50e26d9a451df8f7",
+      "six_shape_plan_publication": "f84abb804aa19f42d81d34f535ba31b9edea1942"
+    },
+    "unchanged_feedback_ids": [
+      "T1-F001",
+      "T1-F002",
+      "T1-F003",
+      "T1-F005",
+      "T1-F006",
+      "T1-F007",
+      "T1-F008",
+      "T1-F009"
+    ],
+    "unchanged_ID_meaning": "This delta updates only F004; scientific definitions and prior per-ID decisions are not silently rewritten",
+    "formal_new_delta_publication_commit": null,
+    "publication_commit_note": "To be linked only after coordinator creates a real commit; implementation and result publication commits above already exist"
+  },
+  "residual_execution": {
+    "run_id": "cloud-residual-20261020T001300Z",
+    "status": "complete",
+    "source_commit": "7bfc39cef2f0d3d17bd7ba12d68a8805f23bbaf5",
+    "wall_seconds": 67.23515382400001,
+    "new_PDE_conditions": 2,
+    "source_RHS_solves": 4,
+    "single_frequency_Hz": 3000,
+    "preregistration": {
+      "path": "docs/cloud-resume-20261020/residual-preregistration.json",
+      "sha256": "43c86702796281a8c7ee61b27214bfc8e559d032ca1e8c3de23a0b3478d7b920",
+      "bytes": 48156
+    },
+    "preregistration_publication_commit": "e34ab4abdf97205dac975a08c3c8c4158481da3b",
+    "run_summary": {
+      "path": "docs/cloud-resume-20261020/residual-results/summary.json",
+      "sha256": "e65bde24a1d881ccd5e89ac886ebfcdc3d6aae1cea67279f032b042824c021df",
+      "bytes": 8343
+    },
+    "controller": {
+      "path": "docs/cloud-resume-20261020/residual-results/controller.json",
+      "sha256": "586b198699dbb62b4c117d4d55d4841009771a5cda220165d95503bf14486e2e",
+      "bytes": 373
+    },
+    "source_manifest": {
+      "path": "docs/cloud-resume-20261020/residual-frozen-source-manifest.json",
+      "sha256": "592f8675116f5b9c55e9fdae1306738b116aac1f6e4786d74ffc8cb12dc34f8d",
+      "bytes": 11423
+    },
+    "frozen_code": [
+      {
+        "original_path": "/workspace/ngg-tis-task1/tools/task1_residual_registration.py",
+        "frozen_source": {
+          "path": "data-native/cloud-residual-20261020T001300Z/frozen-source/tools/task1_residual_registration.py",
+          "sha256": "4cd48fd74c794930e1eea3eb106570e621ee7ee15036ec9be8cd999baa5c85da",
+          "bytes": 18993
+        },
+        "registered_sha256": "4cd48fd74c794930e1eea3eb106570e621ee7ee15036ec9be8cd999baa5c85da",
+        "byte_hash_verified": true
+      },
+      {
+        "original_path": "/workspace/ngg-tis-task1/tools/task1_residual_postprocess.py",
+        "frozen_source": {
+          "path": "data-native/cloud-residual-20261020T001300Z/frozen-source/tools/task1_residual_postprocess.py",
+          "sha256": "ae4e403dfb0ff38fe0e13577ca88049bd3200e8f31ce240c30f85828cda5d463",
+          "bytes": 22983
+        },
+        "registered_sha256": "ae4e403dfb0ff38fe0e13577ca88049bd3200e8f31ce240c30f85828cda5d463",
+        "byte_hash_verified": true
+      },
+      {
+        "original_path": "/workspace/ngg-tis-task1/tools/java/ResidualShapeBasis.java",
+        "frozen_source": {
+          "path": "data-native/cloud-residual-20261020T001300Z/frozen-source/tools/java/ResidualShapeBasis.java",
+          "sha256": "50a201ea485e4948976debbe7284c9db3e208e4cdcc301a18450802f69a8d924",
+          "bytes": 15651
+        },
+        "registered_sha256": "50a201ea485e4948976debbe7284c9db3e208e4cdcc301a18450802f69a8d924",
+        "byte_hash_verified": true
+      }
+    ],
+    "test_logs": [
+      {
+        "artifact": {
+          "path": "docs/cloud-resume-20261020/resume-registration-tests-v2.log",
+          "sha256": "88050142d098c1bb48c7c4bb4a4bee25438c30ee6aa52dc08919f658ca7e522a",
+          "bytes": 107
+        },
+        "test_count_if_reported": 9,
+        "reader_reran_tests": false,
+        "scope": "Stored explicit guard/storage/registration or analytic lumped fixture evidence; no human/mesh/physical validation"
+      },
+      {
+        "artifact": {
+          "path": "docs/cloud-resume-20261020/resume-residual-tests.log",
+          "sha256": "c0d1dabab08c40b28e59f0fef0aacdd7dc3495e55f56d0ce1714e789fdadf3f6",
+          "bytes": 122
+        },
+        "test_count_if_reported": 23,
+        "reader_reran_tests": false,
+        "scope": "Stored explicit guard/storage/registration or analytic lumped fixture evidence; no human/mesh/physical validation"
+      },
+      {
+        "artifact": {
+          "path": "docs/cloud-resume-20261020/controller-resume-tests-java.log",
+          "sha256": "7b405d0d1e366bd5ed0d4993123888475ef33939b6c9910ee2466b8a3fbce78b",
+          "bytes": 112
+        },
+        "test_count_if_reported": 13,
+        "reader_reran_tests": false,
+        "scope": "Stored explicit guard/storage/registration or analytic lumped fixture evidence; no human/mesh/physical validation"
+      },
+      {
+        "artifact": {
+          "path": "docs/cloud-resume-20261020/resume-archive-tests.log",
+          "sha256": "6811a6474d699fb4472f289f26ecfd8fc83e3d8f4c2a2b56fb50863a4ce500c6",
+          "bytes": 123
+        },
+        "test_count_if_reported": 24,
+        "reader_reran_tests": false,
+        "scope": "Stored explicit guard/storage/registration or analytic lumped fixture evidence; no human/mesh/physical validation"
+      },
+      {
+        "artifact": {
+          "path": "docs/cloud-resume-20261020/residual-compile-selftest.log",
+          "sha256": "5216c580c597f4ccad53231922b85c215af50b4be53ce0bd2c69d80c054e8ea3",
+          "bytes": 428
+        },
+        "test_count_if_reported": null,
+        "reader_reran_tests": false,
+        "scope": "Stored explicit guard/storage/registration or analytic lumped fixture evidence; no human/mesh/physical validation"
+      }
+    ],
+    "prepared_failures": {
+      "path": "docs/cloud-resume-20261020/preparation-attempts.json",
+      "sha256": "76588b76bf0a3c24d3023d47cf633b31d1405c225d51f3f30e7edac7cab66ef0",
+      "bytes": 878
+    },
+    "original_failure_and_partial_evidence_preserved": true
+  },
+  "bounded_validation": {
+    "default_regression": {
+      "status": "passed",
+      "requested_tolerance": 1e-09,
+      "reference_case": "baseline-square15-coarse",
+      "decoded_array_byte_equality": {
+        "field": true,
+        "potential": true,
+        "density": true,
+        "source": true,
+        "loss": true
+      },
+      "grid_decoded_byte_equal": true,
+      "contact_decoded_byte_equal": true,
+      "artifact": {
+        "path": "docs/cloud-resume-20261020/residual-results/residual-producer-regression.json",
+        "sha256": "5787987221a034f32d33f56512c36cb04a2e7e6236007fbc085502c8a0bbc8c9",
+        "bytes": 3413
+      },
+      "meaning": "New diagnostic producer reproduces original default-arithmetic five native arrays at the specified coarse3000Hz condition only"
+    },
+    "tight_fine": {
+      "case_id": "residual-tight-square15-xy120-3000",
+      "requested_tolerance": 1e-11,
+      "actual_recomputed_relative_residuals": [
+        3.6453043971430534e-12,
+        3.6447294155660225e-12
+      ],
+      "iterations": [
+        979,
+        979
+      ],
+      "stronger_true_residual_gate": 1e-09,
+      "strict_historical_status": "failed",
+      "failed_component_counts": {
+        "source": 4,
+        "loss": 2
+      },
+      "matrix_results": [
+        {
+          "array_kind": "source",
+          "componentwise_passed": false,
+          "failed_component_count": 4,
+          "relative_global_maxnorm_error": 2.5348847265438033e-09,
+          "max_abs_error": 4.5812512761299784e-12
+        },
+        {
+          "array_kind": "loss",
+          "componentwise_passed": false,
+          "failed_component_count": 2,
+          "relative_global_maxnorm_error": 9.477708407927134e-10,
+          "max_abs_error": 2.762954998797827e-13
+        }
+      ],
+      "artifact": {
+        "path": "docs/cloud-resume-20261020/residual-results/residual-tight-square15-xy120-3000-summary.json",
+        "sha256": "71c0ca2570e85ae0c55ad558013aa31943d6cb4371b882da88a00ad4ce776ec7",
+        "bytes": 45496
+      },
+      "solver_receipt": {
+        "path": "docs/cloud-resume-20261020/residual-results/residual-tight-square15-xy120-3000-solver.json",
+        "sha256": "4ea62b5060ac27e822408d067c270ab1dd0306a7f11a52e8c65a908d91c70d41",
+        "bytes": 867
+      },
+      "interpretation": "Tighter stopping improves the recomputed residual but does not clear strict historical nearzero source/loss mismatch. Normwise diagnostics never replace componentwise gates."
+    },
+    "old_D_hold": {
+      "artifact": {
+        "path": "data-native/cloud-reference-20261019T192000Z/reference-comparison.json",
+        "sha256": "7bcbe54e18322063235e46044b926f0a5c61012f3c56c54e3a6eb40c556a0db3",
+        "bytes": 16265
+      },
+      "status": "failed",
+      "promoted": false,
+      "old_fine_C1_not_run_preserved": true
+    },
+    "overall_XY_contact_edge_convergence_validated": false,
+    "experimental_validation": false,
+    "full_TIS_ROI_or_probe_result_claimed_by_single_frequency_diagnostic": false,
+    "deep_focus_success": false,
+    "new_candidate_adopted": false
+  },
+  "active_followup_observation": {
+    "observed_utc": "2026-10-20T00:15:31.370348+00:00",
+    "run_id": "cloud-fourpad-20261020T001400Z",
+    "status": "running",
+    "phase": "postprocessing",
+    "pid": 7035,
+    "recorded_start_ticks": 1943447,
+    "observed_start_ticks": 1943447,
+    "observed_process_state": "R",
+    "matching_identity_alive": true,
+    "source_commit": "f5482060cce97f050f8a164c50e26d9a451df8f7",
+    "registered_case_count": 6,
+    "completed_case_ledger_count_at_observation": 2,
+    "started_conditions_at_observation": 3,
+    "current_case": "equal-rectangle17p5-coarse",
+    "preregistration": {
+      "path": "docs/cloud-resume-20261020/fourpad-coarse-preregistration.json",
+      "sha256": "1c407f7e7aeb52fb9ea0375c27814e54b26a4f02214bd261405e761f7345018b",
+      "bytes": 5169358
+    },
+    "plan": {
+      "path": "docs/cloud-resume-20261020/fourpad-exploration-plan.json",
+      "sha256": "30854436d716c5bf8cce57142971e7ee8fc1732c4151d9e0402daedfbab92755",
+      "bytes": 28996
+    },
+    "plan_publication_commit": "f84abb804aa19f42d81d34f535ba31b9edea1942",
+    "scope": "Six four-pad shape controls are reconstruction/exploration, with a practical improvement screen; this running snapshot is not batch completion or converged candidate adoption"
+  },
+  "budget_policy": "Existing6600seconds cumulative budget continues; no reset or budget/worker expansion",
+  "author_actions": {
+    "PDE_executed": false,
+    "prepare_executed": false,
+    "test_suite_rerun": false,
+    "pinned_source_modified": false,
+    "old_ledger_or_checkpoint_modified": false,
+    "git_commit_created": false,
+    "github_comments_or_remote_messages": 0,
+    "remote_writes": 0
+  }
+}

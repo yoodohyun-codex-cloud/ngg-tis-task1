@@ -1,0 +1,63 @@
+{
+  "schema": "task1-post-queue-status-v1",
+  "observed_utc": "2026-10-20T09:08:51.979263+00:00",
+  "observed_KST": "2026-10-20T18:08:51.979263+09:00",
+  "source_PDE_commit": "be724b0b314263f284fdbc5397bdaf019685fa29",
+  "completed_geometry_conditions": 11,
+  "counts": {
+    "coarse": 6,
+    "fine": 2,
+    "confirm": 3
+  },
+  "numerical_execution_status": "complete",
+  "candidate_adopted": false,
+  "latest_baseline_unchanged": true,
+  "mesh": {
+    "registered_pair_wave_passed": 8,
+    "total": 12,
+    "whole_3D_convergence": false,
+    "XY_fine_Jmax_change_percent": 5.094600092863066,
+    "XY_fine_contactV_change_percent": 5.094795086078885,
+    "threshold_percent": 5
+  },
+  "previous_queue_checkpoint": {
+    "path": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/checkpoint.json",
+    "SHA256": "1cd12adeb0ede88b74a73a9565ed98b8d38858975e250f0a192d033cb6a904ee",
+    "status": "error_render_final_preserved"
+  },
+  "viewer_repair": {
+    "status": "passed",
+    "manifest": "/workspace/ngg-tis-task1/docs/cloud-results-20261020T090600Z/asset-manifest.json",
+    "SHA256": "e4f8f48e2914e5b972944ebb0199d40a8176f7a68220236269a7cd725259267a",
+    "bundle_bytes": 40707017,
+    "limit_bytes": 52428800
+  },
+  "completed_missing_baseline_skin_audits": [
+    "baseline-square15-sc4",
+    "baseline-square15-bulk"
+  ],
+  "updated_ranking": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-status-20261020/rank-final-with-complete-baselines-v2.json",
+    "SHA256": "af95578bdfde3979e8ceaa902009a5b367621fefedf8fd3bf3d63b7625cc35d2",
+    "held_missing_full_skin_rows": 0
+  },
+  "execution_blocker": null,
+  "source_preserved": true,
+  "compute_budget": {
+    "limit_seconds": 6600,
+    "spent_seconds": 3109.2587808970147,
+    "remaining_seconds": 3490.7412191029853
+  },
+  "next_action": "Prepare the three remaining frozen4pad radial/area reconstruction controls without repeating baseline or completed solves",
+  "decision_basis": "No accepted improvement; complete missing spatial/native evidence for old controls, then separately isolate placement as a single changed factor",
+  "next_registration": "data-native/cloud-radial-20261020T090600Z/preregistration.json",
+  "actual_started": false,
+  "owner": "root",
+  "feedback": {
+    "id": "T1-F010",
+    "source_commit": "8affb846ea24f153afcc31651d6c2cdb040e5d37",
+    "decision": "partial_adoption",
+    "implemented": "Truthful actual PDE owner, next registration/command, remaining budget and separate UI/numerical terminal status",
+    "remaining": "Single-factor new placement designs require a separate explicit geometry registration; current three old controls are reconstruction and cannot identify causal area/position effects"
+  }
+}

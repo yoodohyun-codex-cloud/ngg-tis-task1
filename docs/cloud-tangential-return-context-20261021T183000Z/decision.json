@@ -1,0 +1,125 @@
+{
+  "schema": "task1-tangential-return-root-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T18:00:03.681399+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "case_id": "asym-return-tangent4p375-xy80",
+  "source_run_id": "cloud-asymmetric-20261021T051000Z",
+  "source_case_id": "asym-cross281p25-return168p75-xy80",
+  "question": "Does moving only the two grounded returns tangentially toward opposite source-associated sides reduce near-skin cross-carrier overlap while retaining absolute modulation throughout the fixed deep primary ROI, compared with the original asymmetric parent and canonical square?",
+  "completed_results_rationale": "Rotated coherent control+4mixes alltarget2PASS/offtarget6FAIL despite targetgain; same-geometry positive exclusive-square amplitudes excluded only in fixed discrete model. Avoid more drive-weight variants; change relative source-return accessibility physically while preserving source positions and electrode areas. Retain exact parent as causal geometry control and originalsquare as canonicalcap/ROI reference.",
+  "physical_pads": 4,
+  "independent_outputs": 2,
+  "n_return_nodes": 1,
+  "return_topology": "all_return_pads_ideal_common_GND",
+  "source_resistance_ohm": 50,
+  "source_peak_V": 0.5,
+  "new_PDE": 1,
+  "new_native_RHS": 8,
+  "fixed_total_area_mm2": 900.0,
+  "areas_by_pad_mm2": [
+    281.25,
+    281.25,
+    168.75,
+    168.75
+  ],
+  "unchanged_physical_pads": [
+    0,
+    1
+  ],
+  "moved_physical_pads": [
+    2,
+    3
+  ],
+  "translation_by_pad_mm": {
+    "2": [
+      4.375,
+      4.375
+    ],
+    "3": [
+      -4.375,
+      -4.375
+    ]
+  },
+  "new_centres_mm": {
+    "2": [
+      14.375,
+      -5.625
+    ],
+    "3": [
+      -14.375,
+      5.625
+    ]
+  },
+  "mask_index_translation": {
+    "2": [
+      7,
+      7
+    ],
+    "3": [
+      -7,
+      -7
+    ]
+  },
+  "physical_rotation_deg": 0.0,
+  "fixed_conditions": "D50mm/layersSC0.1,dermis5,fat5,muscle15mm/top-only;nominal PBS Rs500 fitwindow500Hz (Rs236.5717747232937ohm subtracted once,1cm2 area once;not skinvalidated);hXY.625mm/SC2/bulk14,14,40;originalsquare3h3000,3030,9000,9090phase0/0;1Vpp fullwave before50ohm, offcommand0Vthrough50ohm;commonGND not isolatedprivatepairs",
+  "expected_minimum_gap_mm": 1.25,
+  "expected_minimum_gap_XY_cells": 2,
+  "expected_maximum_return_vertex_radius_squared_mm2": 605.078125,
+  "geometry_preflight": "Every moved native full face stays in fixed circle; allpad overlap/gaps and area counts require exact registrar checks; no clipping or renormalization",
+  "evaluation": "Same originalsquare8skin/contactcaps/5separatenormalizations/2074directions/nativefractionalr<=5mmdepth15to20mm weights; targetmean/P10/uniformity/max and wholeXYsupplement; surface0to5/complementP95/hotvol/globalmax; carrierRMS/basicdifferenceTIS/nativephi40probes separate. Reject if any8screen fails; passing is still not adoption before convergence/contact gates.",
+  "resource_limit_seconds": 13800,
+  "observed_remaining_seconds": 5432.182584597998,
+  "max_queue_seconds": 1320,
+  "max_native_case_seconds": 600,
+  "CPU_count": 1,
+  "RSS_bytes": 3221225472,
+  "disk_reserve_bytes": 2147483648,
+  "feedback": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/feedback-after.json",
+    "SHA256": "b8666c8969e265465560fb3edb241a9e2986d0f65b2071528b581d105faaa48f"
+  },
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-context-20261021T182000Z/feedback-after.json": "494e3312ab47ec27fd93a466bc11b5b35fe95e296646af790cac0309c38627da",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json": "abe8f354a53ea7a58abeb62743c5a206b4ecd435056b45deda8b87d45c8bdf43",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-20261021T181000Z/summary.json": "70046bad98db81e9ab1ee324d408f56dc68fd035f75dc60bd6825048ee9cc77f",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/summary.json": "33c7e69904b10f8a73fc33e5b743240f9387da2f6aeb9d9b0cb5973821e599b0",
+    "/workspace/ngg-tis-task1/docs/cloud-return-rotation-operator-20261021T180000Z/summary.json": "4c1681f866afd39d7591b754a9ca06607b1f6f007fc3ee984e72c24ad4e7704c",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/screen.json": "ba679d6406530219ace98c2749c00b40f006029681d2edd9f54c8e27d24670e8",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/feedback-after.json": "b8666c8969e265465560fb3edb241a9e2986d0f65b2071528b581d105faaa48f"
+  },
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "experimentally_validated": false,
+  "holds": [
+    "Minimum1.25mm gap represented by2XYcells; no edge/SC/bulk/contact convergence claim",
+    "No private return isolation or changedpowerground; still one ideal commonGND",
+    "No wholegeometryfeasibility/activation/safety/hardwarevalidation",
+    "Original fullhistorical rawnotrestored; packagehash and newPDE validation separate",
+    "COMSOL5.3a planned5.3.1.201 stillunverified; noinstallation"
+  ],
+  "return_shift_grid_indices": {
+    "2": [
+      7,
+      7
+    ],
+    "3": [
+      -7,
+      -7
+    ]
+  },
+  "return_shift_mm": {
+    "2": [
+      4.375,
+      4.375
+    ],
+    "3": [
+      -4.375,
+      -4.375
+    ]
+  },
+  "pre_registration_context_updated_utc": "2026-10-21T18:04:24.706770+00:00",
+  "feedback_update_reason": "Use actual18:03:43 publicGET after completed latestC1batch; original17:57 snapshot also retained among immutable evidence; no newer peer scientific reply in that snapshot"
+}

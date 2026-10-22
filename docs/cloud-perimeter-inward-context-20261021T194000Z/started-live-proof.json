@@ -1,0 +1,65 @@
+{
+  "checked_utc": "2026-10-21T18:57:00.798301+00:00",
+  "queue": {
+    "schema": "task1-bounded-continuation-v1",
+    "status": "running",
+    "pid": 29947,
+    "proc_start_ticks": 5549707,
+    "created_utc": "2026-10-21T18:56:50.305475+00:00",
+    "phase": "inward-perimeter-native",
+    "stages": [],
+    "current_child": {
+      "pid": 29994,
+      "proc_start_ticks": 5549735,
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py",
+        "--execute",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z"
+      ]
+    },
+    "plan_path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/queue-plan.json",
+    "plan_sha256": "3a34eddd8e15f5ec1ff8893bafc60694b102434a100c083fed3cc3fdfc501dd9",
+    "background_daemon": false,
+    "candidate_adopted": false,
+    "updated_utc": "2026-10-21T18:57:00.472632+00:00",
+    "elapsed_seconds": 10.167241185998137,
+    "coordinator_overhead_seconds": 0.034526604002167005,
+    "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z",
+    "aggregate_rss_bytes": 443109376,
+    "current_child_members": {
+      "29994": 5549735,
+      "29996": 5549749
+    }
+  },
+  "native_controller": {
+    "status": "running",
+    "pid": 29994,
+    "proc_start_ticks": 5549735,
+    "started_utc": "2026-10-21T18:56:50.476897+00:00",
+    "current_case": "perimeter-shell225-inward0p625-xy80",
+    "current_config_sha256": "a05416f839fbd903b98c3565e8d29198a9b89b585767a13e25a14b96c9e389db",
+    "phase": "solving",
+    "updated_utc": "2026-10-21T18:56:50.490284+00:00",
+    "java_pid": 29996
+  },
+  "live_owned_processes": [
+    {
+      "pid": 29947,
+      "proc_start_ticks": 5549707,
+      "command": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/queue-plan.json "
+    },
+    {
+      "pid": 29994,
+      "proc_start_ticks": 5549735,
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z "
+    },
+    {
+      "pid": 29996,
+      "proc_start_ticks": 5549749,
+      "command": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java -Xmx2g -XX:+UseSerialGC -XX:ActiveProcessorCount=1 -cp /workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/classes CloudShapeBasis --execute-parent 29994 5549735 /workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/configs/perimeter-shell225-inward0p625-xy80.properties /workspace/ngg-tis-task1/data-native/cloud-perimeter-inward-20261021T194000Z/bases/perimeter-shell225-inward0p625-xy80 "
+    }
+  ],
+  "kernel_locks": "1: FLOCK  ADVISORY  WRITE 29996 00:21:92118 0 EOF\n2: POSIX  ADVISORY  WRITE 29994 00:1b:262185 0 EOF\n3: FLOCK  ADVISORY  WRITE 29994 00:1b:262185 0 EOF\n4: FLOCK  ADVISORY  WRITE 443 00:1b:786894 0 EOF\n5: FLOCK  ADVISORY  WRITE 171 00:1b:9223372036855850032 0 EOF\n6: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849987 0 EOF\n7: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849976 0 EOF\n8: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849990 0 EOF\n9: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849993 0 EOF\n10: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849979 0 EOF\n11: POSIX  ADVISORY  WRITE 29947 00:1b:264792 0 EOF\n12: FLOCK  ADVISORY  WRITE 29947 00:1b:264792 0 EOF\n13: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850079 0 EOF\n14: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850085 0 EOF\n"
+}

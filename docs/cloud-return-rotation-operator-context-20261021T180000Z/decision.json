@@ -1,0 +1,49 @@
+{
+  "schema": "task1-return-rotation-operator-root-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T17:28:58.067402+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "new_PDE": 0,
+  "source_cases": [
+    {
+      "geometry": "opposite-square",
+      "run_id": "cloud-mesh-c1-20261019T190000Z",
+      "case_id": "baseline-square15-xy80"
+    },
+    {
+      "geometry": "opposite-asymmetric",
+      "run_id": "cloud-asymmetric-20261021T051000Z",
+      "case_id": "asym-cross281p25-return168p75-xy80"
+    },
+    {
+      "geometry": "one-return-rot90",
+      "run_id": "cloud-one-return-rotation-20261021T174000Z",
+      "case_id": "asym-return2-rot90-xy80"
+    }
+  ],
+  "question": "How many independent common-GND integrated return-current patterns can the two fixed voltage outputs control before/after unilateral return rotation, measured from actual frequency-dependent native pad-response SVD?",
+  "hypothesis_not_result": "The new mixed return orientations might restore reflection x=y that fixes the opposite signal pads and exchanges the two ground pads, forcing equal return response rows/rank1. Must measure actual operators before claiming symmetry rank.",
+  "frequencies_Hz": [
+    3000,
+    3030
+  ],
+  "relative_response_resolution": 2e-06,
+  "feedback": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/feedback-after.json",
+    "SHA256": "e1beaf647dc8c597838d0a669c5b695c9daa717e9070eaf5e4dd99d886ad4785"
+  },
+  "allowed_arrays": "Only small channel-major density and2x2source matrices pluscontactsCSV; no nativeE/phi/grid/scalarNPZ reads or field/waveform recomposition.",
+  "interpretation": "Rank deficiency is valid scientific result. No inverse/q/driveweights constructed; commonGND currents remain responses, never extra independentoutputs. Rank is not spatial selectivity, localJ cancellation, isolation or hardware/convergence proof.",
+  "candidate_adopted": false,
+  "max_seconds": 60,
+  "resource_policy_limit_seconds": 13800,
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/feedback-after.json": "e1beaf647dc8c597838d0a669c5b695c9daa717e9070eaf5e4dd99d886ad4785",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/screen.json": "ba679d6406530219ace98c2749c00b40f006029681d2edd9f54c8e27d24670e8",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/postprocess/asym-cross281p25-return168p75-xy80/summary.json": "34fc758cd915fc8b926117c1ccf8762a460c9890a4be3c3294d6a6cf747fc199",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json": "8de92edabdcdbe5a0ec7601882ce497e7d2a6c480fa478dbb71853f281041933"
+  }
+}

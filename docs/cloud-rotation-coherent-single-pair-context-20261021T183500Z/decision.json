@@ -1,0 +1,37 @@
+{
+  "schema": "task1-rotation-coherent-single-pair-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T18:01:25.206233+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "reference_ids": [
+    "rotation-square-control",
+    "rotation-sine-control",
+    "rotation-coherent-r1-p090"
+  ],
+  "modes": [
+    "raw",
+    "skin_contact_only"
+  ],
+  "single_case_id": "baseline-square15-C1pair0-xy80",
+  "single_frequency_Hz": 3000,
+  "new_PDE": 0,
+  "candidate_adopted": false,
+  "source_summary_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json",
+  "source_summary_sha256": "abe8f354a53ea7a58abeb62743c5a206b4ecd435056b45deda8b87d45c8bdf43",
+  "question": "Connect latest completed unadopted rotated coherent and sine/square controls to the original single source-return pair at matched centre20 field RMS or volume-weighted ROI energy RMS, with all required source Vpp, RMS currents, powers and skin/contact burdens preserved separately.",
+  "comparison_definitions": [
+    "Centre native electricfield vector RMS at (0,0,20)mm fromtop",
+    "ROI energyRMS sqrt(sum(w E_RMS^2)/sum(w)), not meanE_RMS"
+  ],
+  "matched_quantities_not_equivalent": "Matching fieldRMS is neither matching TIS modulation, biologicalactivation, current, power, skinburden nor electrodefootprint. 2pads225mm2each total450/1output forC1 vs4pads900/2outputs forrotation.",
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json": "abe8f354a53ea7a58abeb62743c5a206b4ecd435056b45deda8b87d45c8bdf43",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-context-20261021T182000Z/feedback-after.json": "494e3312ab47ec27fd93a466bc11b5b35fe95e296646af790cac0309c38627da"
+  },
+  "holds": [
+    "Native40probe unloaded only; ETA5001 RC load not modeled",
+    "No new PDE/mesh convergence/physiology/hardwarevalidation",
+    "Do not overwrite prior C1cohorts;12matches separate IDs link exactsourcecondition/normalization/run"
+  ]
+}

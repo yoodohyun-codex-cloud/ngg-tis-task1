@@ -1,0 +1,39 @@
+{
+  "status": "actual_started_snapshot",
+  "observed_utc": "2026-10-21T17:22:00.950054+00:00",
+  "processes": [
+    {
+      "role": "queue",
+      "pid": 22550,
+      "proc_start_ticks": 4978959,
+      "live": true,
+      "phase": "one-return-rotation-native",
+      "updated_utc": "2026-10-21T17:21:57.811884+00:00"
+    },
+    {
+      "role": "native",
+      "pid": 22573,
+      "proc_start_ticks": 4978969,
+      "live": true,
+      "phase": "solving",
+      "updated_utc": null
+    },
+    {
+      "role": "Java",
+      "pid": 22575,
+      "proc_start_ticks": 4978980,
+      "command": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java -Xmx2g -XX:+UseSerialGC -XX:ActiveProcessorCount=1 -cp /workspace/ngg-tis-task1/data-native/cloud-one-return-"
+    }
+  ],
+  "actual_owned_lock_lines": [
+    "1: FLOCK  ADVISORY  WRITE 22575 00:21:81894 0 EOF",
+    "2: POSIX  ADVISORY  WRITE 22573 00:1b:262185 0 EOF",
+    "3: FLOCK  ADVISORY  WRITE 22573 00:1b:262185 0 EOF",
+    "11: POSIX  ADVISORY  WRITE 22550 00:1b:264792 0 EOF",
+    "12: FLOCK  ADVISORY  WRITE 22550 00:1b:264792 0 EOF"
+  ],
+  "source_commit": "08228976abb68041dd53af2988a53ebd5ff4eb80",
+  "new_PDE": 1,
+  "new_native_RHS_max": 8,
+  "no_duplicate_worker": true
+}

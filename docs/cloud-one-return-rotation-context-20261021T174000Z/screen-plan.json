@@ -1,0 +1,125 @@
+{
+  "schema": "task1-candidate-screen-preregistration-v1",
+  "status": "preregistered_not_executed",
+  "created_utc": "2026-10-21T17:21:33.156707+00:00",
+  "baseline_case_id": "baseline-square15-xy80",
+  "baseline_summary_path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+  "candidate_case_ids": [
+    "asym-return2-rot90-xy80"
+  ],
+  "run_path": "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z",
+  "run_registration_sha256": "5fdd771477b8c7bcc5df6445f3eb8b8689335948ddad5c5b4cc45a030217a543",
+  "gate_definition_source": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-next-20261021T085200Z/return-role-screen.json",
+    "SHA256": "996819168810f7f3bde9a85615653e11c1ec4baf2220632c66b2506a0dfd1970"
+  },
+  "eight_gates": [
+    {
+      "name": "primary_maxTIS_mean",
+      "unit": "V/m",
+      "required_direction": "greater",
+      "baseline": 4.061848941601601
+    },
+    {
+      "name": "primary_maxTIS_p10",
+      "unit": "V/m",
+      "required_direction": "greater",
+      "baseline": 3.6457357391300533
+    },
+    {
+      "name": "surface_0_5_maxTIS_p95",
+      "unit": "V/m",
+      "required_direction": "less",
+      "baseline": 25.25922183168775
+    },
+    {
+      "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+      "unit": "m3",
+      "required_direction": "less",
+      "baseline": 7.766529017857144e-06
+    },
+    {
+      "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+      "unit": "m3",
+      "required_direction": "less",
+      "baseline": 8.209453125000001e-06
+    },
+    {
+      "name": "primary_complement_maxTIS_p95",
+      "unit": "V/m",
+      "required_direction": "less",
+      "baseline": 23.43571858123385
+    },
+    {
+      "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+      "unit": "m3",
+      "required_direction": "less",
+      "baseline": 1.9399655254908982e-05
+    },
+    {
+      "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+      "unit": "m3",
+      "required_direction": "less",
+      "baseline": 2.1155655660629288e-05
+    }
+  ],
+  "fixed_baseline_cutoffs_V_m": {
+    "maxTIS": {
+      "primary_r5_depth15_20_mean": 4.061848941601601,
+      "primary_r5_depth15_20_p10": 3.6457357391300533,
+      "supplemental_wholeXY_depth15_20_mean": 2.401291663750621,
+      "supplemental_wholeXY_depth15_20_p10": 1.434883322330378
+    },
+    "fixedTIS": {
+      "primary_r5_depth15_20_mean": 4.023709021949991,
+      "primary_r5_depth15_20_p10": 3.6018169687464905,
+      "supplemental_wholeXY_depth15_20_mean": 1.9116124549976508,
+      "supplemental_wholeXY_depth15_20_p10": 0.5467893133322058
+    },
+    "RMS": {
+      "primary_r5_depth15_20_mean": 2.306949462834824,
+      "primary_r5_depth15_20_p10": 2.104669371240444,
+      "supplemental_wholeXY_depth15_20_mean": 1.8166989673887375,
+      "supplemental_wholeXY_depth15_20_p10": 1.3960655291307387
+    }
+  },
+  "primary_ROI": "primary_r5_depth15_20",
+  "normalization": "skin_contact_only",
+  "native_gate_limits": {
+    "max_residual": 2e-07,
+    "max_power_error": 2e-07,
+    "max_current_error": 2e-06,
+    "max_area_relative_error": 1e-10,
+    "max_interface_normal_current_relative_error": 2e-07
+  },
+  "resource_policy_refs": {
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d"
+  },
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-next-20261021T085200Z/return-role-screen.json": "996819168810f7f3bde9a85615653e11c1ec4baf2220632c66b2506a0dfd1970",
+    "/workspace/ngg-tis-task1/docs/cloud-next-20261021T085200Z/return-role-volume.json": "7d53bfb0c55167050bfc420d7fa3b53e0e9e58ecdef77ba26d69bbe827e2bc3c",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/preregistration.json": "5fdd771477b8c7bcc5df6445f3eb8b8689335948ddad5c5b4cc45a030217a543",
+    "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py": "180c2133342614f6f0ab3cac327532e5f0e2e8589d8a59614679134d7615fac7",
+    "/workspace/ngg-tis-task1/tests/test_task1_candidate_screen.py": "e342e33b06cc91a832c01d311546d0ef39fdffdf4177ef0831557d0a7554ccb0",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d"
+  },
+  "resources": {
+    "CPU_count": 1,
+    "max_seconds": 120,
+    "RSS_bytes": 3221225472,
+    "disk_reserve_bytes": 2147483648,
+    "cumulative_seconds": 13800
+  },
+  "no_adoption": true,
+  "no_new_PDE": true,
+  "source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+  "implementation_files_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py": "180c2133342614f6f0ab3cac327532e5f0e2e8589d8a59614679134d7615fac7",
+    "/workspace/ngg-tis-task1/tests/test_task1_candidate_screen.py": "e342e33b06cc91a832c01d311546d0ef39fdffdf4177ef0831557d0a7554ccb0",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  }
+}

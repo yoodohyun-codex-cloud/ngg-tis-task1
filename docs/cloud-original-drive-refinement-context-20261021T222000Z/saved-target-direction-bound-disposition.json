@@ -1,0 +1,49 @@
+{
+  "schema": "task1-saved-direction-bound-disposition-v1",
+  "status": "derived_from_saved_metadata_no_new_field_computation",
+  "observed_utc": "2026-10-21T20:54:32.650248+00:00",
+  "candidate_id": "original-refine-3e018f8a317a",
+  "source_run_id": "cloud-mesh-c1-20261019T190000Z",
+  "source_case_id": "baseline-square15-xy80",
+  "proxy_row_key": "3e018f8a317a89d05d0deaa3f73661c860b83b3d27f63b753110bfd0b7da29e4",
+  "source_identity": "412bf4b45c38d5db725f96a666f59f0a8186906b315d686c81f825f73c239113",
+  "metric_identity": "bcfba4d1e33c3e817c623c35671c6e54b1807460f5c5a627ffaace6a50039f8f",
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-20261021T222000Z/summary.json": "a7d89ab643aa5be6cb476685b13cd99228d890a1125b6c4856849e79ff68349b",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-20261021T222000Z/proxy-search.json": "3dca3c101b9f344a7fdee0746829c6617588749f5644dada0772f515f353b062",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-20261021T222000Z/original-refine-3e018f8a317a/condition.json": "1e6b9dc90d1032d76d247567f71c62cf2d3fe4d6b28ad746e3b2cc102b61f366",
+    "/workspace/ngg-tis-task1/tools/task1_rounded_drive_optimization.py": "398d5b3a08febd6f7972337874540ed9de7a89f24e379da637d316332d15f761"
+  },
+  "inputs_unchanged": true,
+  "checks": [
+    {
+      "metric": "primary_maxTIS_mean",
+      "candidate_sampled2074_LB_V_m": 4.011539371036533,
+      "candidate_guarded_three_lambda_spectral_UB_V_m": 4.013348656731899,
+      "baseline_sampled2074_LB_V_m": 4.061848941601601,
+      "full_condition_matches_cached_proxy": true,
+      "conditional_directional_result": "target_deficit_robust_within_frozen_native_model",
+      "margin_baseline_LB_minus_candidate_UB_V_m": 0.048500284869701815
+    },
+    {
+      "metric": "primary_maxTIS_p10",
+      "candidate_sampled2074_LB_V_m": 3.595322017410421,
+      "candidate_guarded_three_lambda_spectral_UB_V_m": 3.5966254055131754,
+      "baseline_sampled2074_LB_V_m": 3.6457357391300533,
+      "full_condition_matches_cached_proxy": true,
+      "conditional_directional_result": "target_deficit_robust_within_frozen_native_model",
+      "margin_baseline_LB_minus_candidate_UB_V_m": 0.04911033361687789
+    }
+  ],
+  "new_PDE": 0,
+  "new_direction_search": 0,
+  "raw_arrays_decoded": 0,
+  "source_burden_mode": "same original8caps,sourcepowerand1Vppceilingexcluded",
+  "proof_scope": "Monotonic volume-weighted mean/P10: per-nativecell continuous-real-direction upper bound from min(PSD spectral bounds at lambda0,.5,1) implies candidateROIUB<baseline sampled2074LB. Applies to fixed cachedfields/weights/commands/model only; guarded floatingpoint diagnostic, not formal interval certificate, mesh convergence or global physical impossibility.",
+  "not_verified": [
+    "independent_scalar_export_reproduction",
+    "SC_XY_bulk_edge_contact_convergence",
+    "experimental_activation_or_safety"
+  ],
+  "next_question": "Check identical saved commands and fine amplitudes on compatible cached SC4 and XYcoarse meshes; retain historical failedXYconvergence."
+}

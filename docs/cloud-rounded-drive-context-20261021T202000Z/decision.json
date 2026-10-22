@@ -1,0 +1,78 @@
+{
+  "schema": "task1-rounded-drive-scout-root-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T19:13:24.001071+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "candidate_adopted": false,
+  "new_PDE": 0,
+  "source_run_id": "cloud-rounded-fullface-20261021T200000Z",
+  "source_case_id": "rounded-fullface225-xy80",
+  "conditions": [
+    {
+      "id": "rounded-sine-control",
+      "waveform": "sine"
+    },
+    {
+      "id": "rounded-cross-gain-p0p01",
+      "waveform": "signed_symmetric_cross_sine",
+      "cross_gain": 0.01
+    },
+    {
+      "id": "rounded-cross-gain-p0p025",
+      "waveform": "signed_symmetric_cross_sine",
+      "cross_gain": 0.025
+    },
+    {
+      "id": "rounded-cross-gain-p0p05",
+      "waveform": "signed_symmetric_cross_sine",
+      "cross_gain": 0.05
+    },
+    {
+      "id": "rounded-cross-gain-m0p01",
+      "waveform": "signed_symmetric_cross_sine",
+      "cross_gain": -0.01
+    },
+    {
+      "id": "rounded-cross-gain-m0p025",
+      "waveform": "signed_symmetric_cross_sine",
+      "cross_gain": -0.025
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-fullface-context-20261021T200000Z/volume.json": "95b1593cf23d2a539c57007f3909b56ba59692148768514fcae9b13dc65fd590",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-fullface-context-20261021T200000Z/screen.json": "9fef9cc219d97f2c63fca8af4d02394983d0869b07e6b8183bf4b7cf52f49df9",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-fullface-context-20261021T200000Z/feedback-after.json": "93074ddd60fbbe81783b121866c31f141a573493e8b08a088b879d2b1cf609c5",
+    "/workspace/ngg-tis-task1/docs/cloud-perimeter-drive-optimization-20261021T192000Z/summary.json": "759a4184903751a8f2ba01a79e60eb43d55df2ed9299fa6c85b26009872346c5",
+    "/workspace/ngg-tis-task1/docs/cloud-perimeter-inward-context-20261021T194000Z/volume.json": "fb61399c2d81dc6c417de3b72adc42f50c05d79080d0857ca23b97e90f661306"
+  },
+  "question": "At fixed same-centre225mm² rounded576face geometry that passes6off-target screens butmissesbothprimarygates~2%, can pure3k/3030sine orfiveSIGNEDweak symmetriccross gains restoreabsoluteprimarymean/P10 whilepreservingALLsixofftargetscreens atoriginal8skin/contactcaps? Actualfull2074/5modes/40phi, notproxy.",
+  "feedback": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-rounded-fullface-context-20261021T200000Z/feedback-after.json",
+    "SHA256": "93074ddd60fbbe81783b121866c31f141a573493e8b08a088b879d2b1cf609c5"
+  },
+  "previous_evidence": "Rounded rawmean4.0524909597/P103.6388008921 (slightlybeloworiginal4.0618489416/3.6457357391), rawcompP9523.537593>baseline23.435719. Skin8A.98237254 yieldsmean3.98105585/P103.57465808/compP9523.122685 andALLsixoffscreenPASS; uniformamplitudereduction contributes, notdeepspatialfocusproof. LimiterbulkSC+dermisJRMSP95.",
+  "selection_rationale": "Remove9k/9090harmonics innewfullROIpuresinecontrol; compareweakpositivecross(commonenriched)andnegativecross(differenceenriched), ratherrepeatbroadstrongmix knownlargeofftargetpenalties onothergeometries. All6fixed inadvance, no guarantee.",
+  "coefficient_contract": "c3000=-j[1,c],c3030=-j[c,1],9kcoeffzero; positivec common1+c/difference1-c,negativec enrichdifference. K=c²positive versusunitary−c², all|c|<1 commandrank2. Physicaloutputs2/commonGND1/4pads unchanged.",
+  "source_voltage": "MixeddrivesuseONEpositiveglobalg=1/maxactualwholewaveVppupper acrossoutputs, bothcarrierssameg. Eachrawupper≤1/maxupper1/bracketwidth≤1µV; pureexact1Vpp coefficient−j units. Noindividualcolumnnormalization orsum-toneVpp.",
+  "comparison": "Originalsquare solecanonical8caps/cutoffs; cachedrounded squarecontrol;6newactualfullnativeROI2074/5modes/signedperfreqoutputpower/GNDnetandlocalJ/40complexphidifferenceunloadedpredictions. Exact5modesraw1Vpp/currentRMSsum/power/skin8/legacy keptseparate.",
+  "fixed_geometry": "D50/.1,5,5,15mm/top4pads900/2outputsGND50ohm/XY.625SC2bulk14,14,40;576fullfaceD4/560+ALL16ties/centres±10/perimeter70>square60/gap2.5/rim2.002038;actualfrozenpolygonnotcircle;futuremesh noreradialrerank.",
+  "resources": {
+    "approved_total_seconds": 13800,
+    "observed_remaining_seconds": 4588.395980166024,
+    "CPU_count": 1,
+    "max_scout_seconds": 600,
+    "max_condition_seconds": 60,
+    "max_queue_seconds": 900,
+    "RSS_bytes": 3221225472,
+    "disk_reserve_bytes": 2147483648,
+    "max_added_bytes": 2147483648
+  },
+  "holds": [
+    "No adopt/physiologicalthreshold/safety/activation inference; evenall8passrequiresSC/XY/bulk/edge/contactgates",
+    "Oldcircle225andoldrounded18-r3aredifferenthistoricalgeometries, neitherthisnewfixedoutline",
+    "PBSspecificZnominalnotvalidatedskin; ETAloadingandactualhardwarepowerabsorption/sync/complianceunverified",
+    "FullcomplexEφlocalpreserved/independentpersistentbackupunverified; no deletedoriginals/failures",
+    "No install/security/mainmerge/budgetexpansion/paidresource orindefinitedaemon"
+  ]
+}

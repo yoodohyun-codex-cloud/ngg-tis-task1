@@ -1,0 +1,113 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "preregistered_not_executed",
+  "created_utc": "2026-10-21T17:50:10.210012+00:00",
+  "output_directory": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/queue",
+  "max_total_seconds": 300,
+  "stages": [
+    {
+      "id": "cached-positive-amplitude-bounds",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_rotation_amplitude_bounds.py",
+        "--preregistration",
+        "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/preregistration.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-20261021T181000Z"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-20261021T181000Z/heartbeat.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-20261021T181000Z/summary.json",
+        "statuses": [
+          "completed_bounds_diagnostic"
+        ]
+      }
+    },
+    {
+      "id": "feedback-after-amplitude-bounds",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/feedback-after.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/feedback-after.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/feedback-after.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      }
+    },
+    {
+      "id": "publish-completed-amplitude-bounds",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_batch_publish.py",
+        "--spec",
+        "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/publication-spec.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/bounds-publication-20261021T181000Z.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/bounds-publication-20261021T181000Z.attempt.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/bounds-publication-20261021T181000Z.json",
+        "statuses": [
+          "published_completed_batch"
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/decision.json": "7b329e55b6a88d1070bec372493dbc7125249531c880db3739af4709da128c82",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-context-20261021T180500Z/feedback-after.json": "4810fac2e8b779184d91557673542353741e72ddfc973b11ff678977daba0bf5",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/summary.json": "33c7e69904b10f8a73fc33e5b743240f9387da2f6aeb9d9b0cb5973821e599b0",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/screen.json": "ba679d6406530219ace98c2749c00b40f006029681d2edd9f54c8e27d24670e8",
+    "/workspace/ngg-tis-task1/docs/cloud-return-rotation-operator-20261021T180000Z/summary.json": "4c1681f866afd39d7591b754a9ca06607b1f6f007fc3ee984e72c24ad4e7704c",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json": "8de92edabdcdbe5a0ec7601882ce497e7d2a6c480fa478dbb71853f281041933",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/preregistration.json": "5fdd771477b8c7bcc5df6445f3eb8b8689335948ddad5c5b4cc45a030217a543",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/audit/asym-return2-rot90-xy80.json": "47716139b7f1239cc89581ce302d4f20c5022d8fa30604209fcd35031ebc2022",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o0-half/condition.json": "d8274dce2250f362fd431a102aefc9c01f6de0756638d9777c4db50ba557c1d8",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o0-sqrt-half/condition.json": "1e49449b7697228484973d6aae6017e0e00732b669715ca682fa1119fb0c5ba2",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o1-sqrt-half/condition.json": "8c3001ffbc24e579a2afced0081130a131b7fdff1b57e9f55cbdc6fe10cf6246",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o1-half/condition.json": "c303f1fe2b16a3784526c8cceb6cf0b2dc113b3006d89e6e40121724cacf9cdb",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source-manifest.json": "0534e3266378214e79ea910b01d6d49ddab385691b502a5100e632ea17901f75",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-task1/tools/task1_rotation_amplitude_bounds.py": "25e4f5ab1fca13d1245d699cb5ba31ac5fece12f9744f8bc16804a695a3f9af3",
+    "/workspace/ngg-tis-task1/tests/test_task1_rotation_amplitude_bounds.py": "9fe53d2bc6d0afd9b79b9f065b4f5331b3560b2c7580ab554c90ebc335a8240d",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py": "180c2133342614f6f0ab3cac327532e5f0e2e8589d8a59614679134d7615fac7",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/preregistration.json": "a88b55e7963f4fd39a7c9453a891bf34b2eda3855869d7dcaebcc084c3a29e86",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/publication-spec.json": "dec72a55b44473de9036c0bd61ef5fcf177ab86468dad80119339734d98cfb2c",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/publication-body.md": "84d9af85577d27c249e5c4fdda00459857ed2b6b11681ff191af9d83235398d1",
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "f9c366f340dfc28008f292d0762e28fb1d89c45a292cb50961e8f504a82ef150",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "8297ec0b4089e43341cde9335743d760e6c949f9c24e889b66590e4079eda734",
+    "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py": "d4e6a1c978b58f6496e961000ce9d4d14a3e4c0a9fec0ec5ef386801bb86f9d5",
+    "/workspace/ngg-tis-task1/tools/task1_batch_publish.py": "df84c754e5d89d971991ce36279871c2b4eb74069d9df0a21e2e615809383edb"
+  },
+  "resource_policy_limit_seconds": 13800,
+  "caps": {
+    "CPU_count": 1,
+    "concurrent_children": 1,
+    "aggregate_RSS_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648
+  },
+  "candidate_adopted": false,
+  "background_daemon": false,
+  "automatic_retries": false,
+  "implementation_git_commit": "85fb9c4e08c12174cb76452785e8f2f3e54d68c3",
+  "implementation_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "f9c366f340dfc28008f292d0762e28fb1d89c45a292cb50961e8f504a82ef150",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "8297ec0b4089e43341cde9335743d760e6c949f9c24e889b66590e4079eda734",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  }
+}

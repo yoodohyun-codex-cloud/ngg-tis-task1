@@ -1,0 +1,65 @@
+{
+  "checked_utc": "2026-10-21T19:06:57.426633+00:00",
+  "queue": {
+    "schema": "task1-bounded-continuation-v1",
+    "status": "running",
+    "pid": 31063,
+    "proc_start_ticks": 5608286,
+    "created_utc": "2026-10-21T19:06:36.091505+00:00",
+    "phase": "rounded-fullface-native",
+    "stages": [],
+    "current_child": {
+      "pid": 31110,
+      "proc_start_ticks": 5608313,
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py",
+        "--execute",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z"
+      ]
+    },
+    "plan_path": "/workspace/ngg-tis-task1/docs/cloud-rounded-fullface-context-20261021T200000Z/queue-plan.json",
+    "plan_sha256": "6e92db3bd25155e06f37141b3fa675f9bd233f4b5e6d190bc0002f02a7a24920",
+    "background_daemon": false,
+    "candidate_adopted": false,
+    "updated_utc": "2026-10-21T19:06:56.352364+00:00",
+    "elapsed_seconds": 20.260939583997242,
+    "coordinator_overhead_seconds": 0.025774900997930672,
+    "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z",
+    "aggregate_rss_bytes": 391974912,
+    "current_child_members": {
+      "31110": 5608313,
+      "31112": 5608326
+    }
+  },
+  "native_controller": {
+    "status": "running",
+    "pid": 31110,
+    "proc_start_ticks": 5608313,
+    "started_utc": "2026-10-21T19:06:36.248252+00:00",
+    "current_case": "rounded-fullface225-xy80",
+    "current_config_sha256": "cd9053286100f9ecb03180c1313f3fbca51d225a072594b97567f84aa4275ed0",
+    "phase": "solving",
+    "updated_utc": "2026-10-21T19:06:36.257888+00:00",
+    "java_pid": 31112
+  },
+  "live_owned_processes": [
+    {
+      "pid": 31063,
+      "proc_start_ticks": 5608286,
+      "command": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-rounded-fullface-context-20261021T200000Z/queue-plan.json "
+    },
+    {
+      "pid": 31110,
+      "proc_start_ticks": 5608313,
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z "
+    },
+    {
+      "pid": 31112,
+      "proc_start_ticks": 5608326,
+      "command": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java -Xmx2g -XX:+UseSerialGC -XX:ActiveProcessorCount=1 -cp /workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/classes CloudShapeBasis --execute-parent 31110 5608313 /workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/configs/rounded-fullface225-xy80.properties /workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/bases/rounded-fullface225-xy80 "
+    }
+  ],
+  "kernel_locks": "1: FLOCK  ADVISORY  WRITE 31112 00:21:92499 0 EOF\n2: POSIX  ADVISORY  WRITE 31110 00:1b:262185 0 EOF\n3: FLOCK  ADVISORY  WRITE 31110 00:1b:262185 0 EOF\n4: FLOCK  ADVISORY  WRITE 443 00:1b:786894 0 EOF\n5: FLOCK  ADVISORY  WRITE 171 00:1b:9223372036855850032 0 EOF\n6: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849987 0 EOF\n7: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849976 0 EOF\n8: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849990 0 EOF\n9: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849993 0 EOF\n10: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849979 0 EOF\n11: POSIX  ADVISORY  WRITE 31063 00:1b:264792 0 EOF\n12: FLOCK  ADVISORY  WRITE 31063 00:1b:264792 0 EOF\n13: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850079 0 EOF\n14: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850085 0 EOF\n"
+}

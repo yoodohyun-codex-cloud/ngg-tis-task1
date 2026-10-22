@@ -1,0 +1,65 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "failed_preserved",
+  "pid": 33264,
+  "proc_start_ticks": 5773541,
+  "created_utc": "2026-10-21T19:34:08.523762+00:00",
+  "phase": "finished",
+  "stages": [
+    {
+      "id": "rounded-SC4-native",
+      "elapsed_seconds": 118.03615258399805,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/summary.json",
+        "statuses": [
+          "complete"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 118.03615258399805,
+        "child_ledger_delta_seconds": 117.90892011600226,
+        "excluded_already_recorded_seconds": 117.90892011600226,
+        "unrecorded_child_wall_seconds": 0.12723246799578192
+      }
+    },
+    {
+      "id": "rounded-SC4-fullskin",
+      "elapsed_seconds": 0.11447715999383945,
+      "exit_code": 1,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 0.11447715999383945,
+        "child_ledger_delta_seconds": 0.0052433220043894835,
+        "excluded_already_recorded_seconds": 0.0052433220043894835,
+        "unrecorded_child_wall_seconds": 0.10923383798944997
+      }
+    }
+  ],
+  "current_child": null,
+  "plan_path": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/queue-native-plan.json",
+  "plan_sha256": "f2915d6beef5dcc6bbaf745b584ed571f1ab364747350de3cc0f9c6ff5363354",
+  "background_daemon": false,
+  "candidate_adopted": false,
+  "updated_utc": "2026-10-21T19:36:06.780086+00:00",
+  "elapsed_seconds": 118.25639539200347,
+  "coordinator_overhead_seconds": 0.3363986349941115,
+  "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_spatial_audit.py --run /workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z --case rounded-fullface225-sc4-xy80 --baseline-summary /workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json --output /workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80.json",
+  "aggregate_rss_bytes": 21893120,
+  "current_child_members": {
+    "33439": 5785365
+  },
+  "failure": "ValueError: Child exit failure: 1",
+  "stopped_utc": "2026-10-21T19:36:06.780060+00:00",
+  "stop_reason": "ValueError: Child exit failure: 1",
+  "next_step_owner": "root",
+  "resume_condition": "Do not rerun attempted queue; inspect evidence and preregister a new unique output",
+  "resume_command": null,
+  "next_inspection_command": "cat /workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/queue-native/heartbeat.json",
+  "numerical_validation_promoted": false
+}

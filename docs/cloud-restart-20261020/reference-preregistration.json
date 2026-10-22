@@ -1,0 +1,1051 @@
+{
+  "schema": "task1-cloud-finite-v1",
+  "batch_kind": "exact_nominal_reference_and_C1",
+  "status": "prepared",
+  "created_utc": "2026-10-19T19:21:43.901169+00:00",
+  "source_commit": "66901b734d0fdcb3d04734b19fea8e16f55bca87",
+  "historical_source_commit": "8c3a30a778cc9bf19ccb52ca523598bff0a84650",
+  "package_integrity": {
+    "status": "passed",
+    "files": 478,
+    "bytes": 33360627,
+    "scope": "All original indexed bytes; explicitly allows new files. No numerical claim."
+  },
+  "limits": {
+    "cpu": 1,
+    "concurrent_solves": 1,
+    "max_cells": 800000,
+    "per_condition_seconds": 600,
+    "cumulative_seconds": 6600,
+    "java_heap_bytes": 2147483648,
+    "aggregate_rss_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648,
+    "max_batch_added_bytes": 2147483648
+  },
+  "gates": {
+    "max_residual": 2e-07,
+    "max_power_error": 2e-07,
+    "max_current_error": 2e-06,
+    "max_area_relative_error": 1e-10,
+    "max_interface_normal_current_relative_error": 2e-07
+  },
+  "cases": [
+    {
+      "id": "baseline-square15-xy100",
+      "design_id": "baseline-square15",
+      "mesh_id": "xy100",
+      "config_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties",
+      "config_sha256": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+      "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/baseline-square15-xy100.csv",
+      "mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+      "expected_pad_areas_m2": [
+        0.000225,
+        0.000225,
+        0.000225,
+        0.000225
+      ],
+      "channels": 2,
+      "h_xy_mm": 0.5,
+      "sc_cells": 2,
+      "bulk_counts": [
+        14,
+        14,
+        40
+      ],
+      "cells": 550200,
+      "nx": 100,
+      "volume_metadata": {
+        "h_xy_mm": 0.5,
+        "sc_cells": 2,
+        "bulk_layer_counts": [
+          14,
+          14,
+          40
+        ],
+        "layer_counts": [
+          2,
+          14,
+          14,
+          40
+        ],
+        "radius_mm": 25.0,
+        "geometry_volume_tolerance_relative": 0.002,
+        "target_volume_tolerance_relative": 0.001
+      },
+      "template_case_id": "baseline-square15-xy100",
+      "java_class": "CloudShapeBasis",
+      "postprocessor": "legacy_native",
+      "exporter_class": "SelectivityShapeBasis",
+      "n_outputs": 2,
+      "n_pads": 4,
+      "design": {
+        "id": "baseline-square15",
+        "group": "equal_area_225mm2",
+        "pads": [
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                -17.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 0,
+            "role": "signal",
+            "source_output": 0,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                2.5
+              ],
+              [
+                17.5,
+                2.5
+              ],
+              [
+                17.5,
+                17.5
+              ],
+              [
+                2.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 1,
+            "role": "signal",
+            "source_output": 1,
+            "indexed_pair": 1
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 2,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                2.5
+              ],
+              [
+                -2.5,
+                2.5
+              ],
+              [
+                -2.5,
+                17.5
+              ],
+              [
+                -17.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 3,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 1
+          }
+        ],
+        "phantom_diameter_mm": 50.0,
+        "contact_plane_z_mm": 0.0,
+        "source_outputs": 2,
+        "total_pads": 4,
+        "return_connection": "all_return_pads_ideal_common_GND",
+        "minimum_gap_mm": 1.0,
+        "minimum_gap_status": "unvalidated_manufacturing_assumption_not_safety",
+        "geometry_revision": "feasibility_revised_before_registration",
+        "channels": 2,
+        "xy_mm": [
+          [
+            -10.0,
+            -10.0
+          ],
+          [
+            10.0,
+            10.0
+          ],
+          [
+            10.0,
+            -10.0
+          ],
+          [
+            -10.0,
+            10.0
+          ]
+        ]
+      },
+      "historical_nominal_candidate_alias": "coat010-f0500-minusRs-square_3h",
+      "nominal_reference_role": "XY_convergence_reference",
+      "source_run_id": "cloud-reference-20261019T192000Z",
+      "source_coating_nm": 10,
+      "source_Rs_fit_window_Hz": 500,
+      "status": "preregistered_not_executed",
+      "cache_signature": "b80564e37ed0268ab2e9f061de3c8c393145aded54d69b0b8a31ba2c7dc7dd37",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_actual_return_pads_ideal_common_GND",
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "C1_separate_actual_carriers_Hz": null,
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "inactive_source_at_other_frequencies": "0 V through50 ohm for every actual inactive output",
+        "phantom_extra_pads_or_outputs_retained": false,
+        "note": "C1 has one physical signal pad and one return; separately driven at each carrier, no two-carrier TIS"
+      }
+    },
+    {
+      "id": "best1-square15-xy120",
+      "design_id": "baseline-square15",
+      "mesh_id": "xy120_exact_best1",
+      "config_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/best1-square15-xy120.properties",
+      "config_sha256": "3f3b8e52c82936572f31f2de9387aeb2defecde4fd77007e7f6e866b0dfdf989",
+      "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/best1-square15-xy120.csv",
+      "mask_sha256": "698660e260878325670ed85fc0ef0ff5cb0920b2d6e9a2466bc19655050788ce",
+      "expected_pad_areas_m2": [
+        0.00022500000000000005,
+        0.00022500000000000005,
+        0.00022500000000000005,
+        0.00022500000000000005
+      ],
+      "channels": 2,
+      "h_xy_mm": 0.4166666666666667,
+      "sc_cells": 2,
+      "bulk_counts": [
+        14,
+        14,
+        40
+      ],
+      "cells": 791280,
+      "nx": 120,
+      "volume_metadata": {
+        "h_xy_mm": 0.4166666666666667,
+        "sc_cells": 2,
+        "bulk_layer_counts": [
+          14,
+          14,
+          40
+        ],
+        "layer_counts": [
+          2,
+          14,
+          14,
+          40
+        ],
+        "radius_mm": 25.0,
+        "geometry_volume_tolerance_relative": 0.002,
+        "target_volume_tolerance_relative": 0.001
+      },
+      "template_case_id": "baseline-square15-xy80",
+      "java_class": "CloudShapeBasis",
+      "postprocessor": "legacy_native",
+      "exporter_class": "SelectivityShapeBasis",
+      "n_outputs": 2,
+      "n_pads": 4,
+      "design": {
+        "id": "baseline-square15",
+        "group": "equal_area_225mm2",
+        "pads": [
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                -17.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 0,
+            "role": "signal",
+            "source_output": 0,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                2.5
+              ],
+              [
+                17.5,
+                2.5
+              ],
+              [
+                17.5,
+                17.5
+              ],
+              [
+                2.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 1,
+            "role": "signal",
+            "source_output": 1,
+            "indexed_pair": 1
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 2,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                2.5
+              ],
+              [
+                -2.5,
+                2.5
+              ],
+              [
+                -2.5,
+                17.5
+              ],
+              [
+                -17.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 3,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 1
+          }
+        ],
+        "phantom_diameter_mm": 50.0,
+        "contact_plane_z_mm": 0.0,
+        "source_outputs": 2,
+        "total_pads": 4,
+        "return_connection": "all_return_pads_ideal_common_GND",
+        "minimum_gap_mm": 1.0,
+        "minimum_gap_status": "unvalidated_manufacturing_assumption_not_safety",
+        "geometry_revision": "feasibility_revised_before_registration",
+        "channels": 2,
+        "xy_mm": [
+          [
+            -10.0,
+            -10.0
+          ],
+          [
+            10.0,
+            10.0
+          ],
+          [
+            10.0,
+            -10.0
+          ],
+          [
+            -10.0,
+            10.0
+          ]
+        ]
+      },
+      "historical_nominal_candidate_alias": "coat010-f0500-minusRs-square_3h",
+      "nominal_reference_role": "exact_historical_nominal_Best1",
+      "requires_historical_nominal_center_gate_before_next": true,
+      "historical_nominal_center_expected_V_m": 3.97673338723,
+      "historical_nominal_center_tolerance_relative": 1e-07,
+      "historical_nominal_center_waveform": "square_3h",
+      "requires_full_reference_comparison_before_next": true,
+      "historical_scalar_alias_case_id": "reference-best1-final",
+      "source_run_id": "cloud-reference-20261019T192000Z",
+      "source_coating_nm": 10,
+      "source_Rs_fit_window_Hz": 500,
+      "status": "preregistered_not_executed",
+      "cache_signature": "c7638ce2203853c837e7e6a3056a382fb1a84f29a82a8f13cfd5edb443cdd4ac",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_actual_return_pads_ideal_common_GND",
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "C1_separate_actual_carriers_Hz": null,
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "inactive_source_at_other_frequencies": "0 V through50 ohm for every actual inactive output",
+        "phantom_extra_pads_or_outputs_retained": false,
+        "note": "C1 has one physical signal pad and one return; separately driven at each carrier, no two-carrier TIS"
+      }
+    },
+    {
+      "id": "best1-square15-C1pair0-xy120",
+      "design_id": "baseline-square15",
+      "control_design": {
+        "id": "baseline-square15-C1pair0",
+        "group": "equal_area_225mm2",
+        "pads": [
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                -17.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 0,
+            "role": "signal",
+            "source_output": 0,
+            "indexed_pair": 0,
+            "original_source_pad": 0,
+            "original_source_output": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 1,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 0,
+            "original_source_pad": 2,
+            "original_source_output": null
+          }
+        ],
+        "phantom_diameter_mm": 50.0,
+        "contact_plane_z_mm": 0.0,
+        "source_outputs": 1,
+        "total_pads": 2,
+        "return_connection": "all_return_pads_ideal_common_GND",
+        "minimum_gap_mm": 1.0,
+        "minimum_gap_status": "unvalidated_manufacturing_assumption_not_safety",
+        "geometry_revision": "feasibility_revised_before_registration",
+        "control_for_design": "baseline-square15",
+        "indexed_pair": 0
+      },
+      "indexed_pair": 0,
+      "mesh_id": "xy120_exact_best1",
+      "channels": 1,
+      "config_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/best1-square15-C1pair0-xy120.properties",
+      "config_sha256": "233e7ea08747bb3178402126294ec31f8d243e25304026a06b7eaf398dfc747f",
+      "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/best1-square15-C1pair0-xy120.csv",
+      "mask_sha256": "c6a82a13b4ea085b2aa411201a4a298b56aadf1bfdfa68b69305c2c33ef6ee93",
+      "expected_pad_areas_m2": [
+        0.00022500000000000005,
+        0.00022500000000000005
+      ],
+      "h_xy_mm": 0.4166666666666667,
+      "sc_cells": 2,
+      "bulk_counts": [
+        14,
+        14,
+        40
+      ],
+      "cells": 791280,
+      "nx": 120,
+      "volume_metadata": {
+        "h_xy_mm": 0.4166666666666667,
+        "sc_cells": 2,
+        "bulk_layer_counts": [
+          14,
+          14,
+          40
+        ],
+        "layer_counts": [
+          2,
+          14,
+          14,
+          40
+        ],
+        "radius_mm": 25.0,
+        "geometry_volume_tolerance_relative": 0.002,
+        "target_volume_tolerance_relative": 0.001
+      },
+      "template_case_id": "baseline-square15-C1pair0-xy80",
+      "java_class": "CloudShapeBasis",
+      "postprocessor": "legacy_native",
+      "exporter_class": "SelectivityShapeBasis",
+      "n_outputs": 1,
+      "n_pads": 2,
+      "design": {
+        "id": "baseline-square15-C1pair0",
+        "group": "equal_area_225mm2",
+        "pads": [
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                -17.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 0,
+            "role": "signal",
+            "source_output": 0,
+            "indexed_pair": 0,
+            "original_source_pad": 0,
+            "original_source_output": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 1,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 0,
+            "original_source_pad": 2,
+            "original_source_output": null
+          }
+        ],
+        "phantom_diameter_mm": 50.0,
+        "contact_plane_z_mm": 0.0,
+        "source_outputs": 1,
+        "total_pads": 2,
+        "return_connection": "all_return_pads_ideal_common_GND",
+        "minimum_gap_mm": 1.0,
+        "minimum_gap_status": "unvalidated_manufacturing_assumption_not_safety",
+        "geometry_revision": "feasibility_revised_before_registration",
+        "control_for_design": "baseline-square15",
+        "indexed_pair": 0,
+        "channels": 1,
+        "xy_mm": [
+          [
+            -10.0,
+            -10.0
+          ],
+          [
+            10.0,
+            -10.0
+          ]
+        ]
+      },
+      "historical_nominal_candidate_alias": "coat010-f0500-minusRs-square_3h",
+      "nominal_reference_role": "same_grid_true_single_pair_control",
+      "source_run_id": "cloud-reference-20261019T192000Z",
+      "source_coating_nm": 10,
+      "source_Rs_fit_window_Hz": 500,
+      "status": "preregistered_not_executed",
+      "cache_signature": "d3232c836fa3b2eaac287feede2cca2c716af48845e8e0fe3b5c77fa0a0b1af5",
+      "circuit": {
+        "n_pads": 2,
+        "n_outputs": 1,
+        "n_signal_pads": 1,
+        "n_return_pads": 1,
+        "n_return_nodes": 1,
+        "return_topology": "all_actual_return_pads_ideal_common_GND",
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000
+        ],
+        "C1_separate_actual_carriers_Hz": [
+          3000,
+          3030
+        ],
+        "pad_to_node": {
+          "0": "out0",
+          "1": "GND"
+        },
+        "inactive_source_at_other_frequencies": "0 V through50 ohm for every actual inactive output",
+        "phantom_extra_pads_or_outputs_retained": false,
+        "note": "C1 has one physical signal pad and one return; separately driven at each carrier, no two-carrier TIS"
+      }
+    }
+  ],
+  "new_PDE_conditions_maximum": 3,
+  "expected_raw_bound_bytes": 1073923200,
+  "java": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+  "source_and_input_sha256": {
+    "/workspace/ngg-tis-task1/tis-java/analyze_selectivity_design.py": "81a79f923418e576093ddf2dccce7159591b71a71dddab20ed3fa3684d3b9673",
+    "/workspace/ngg-tis-task1/tis-java/analyze_selectivity_matched_power.py": "60e372712b648d39850eb57cc6be682d5f175641f149a11f231fc90d2dc648aa",
+    "/workspace/ngg-tis-task1/tis-java/audit_selectivity_saved_results.py": "d041e7f25baf91e00121d47bda3c4f83dde8b40d0a7a2434af26eb932db45919",
+    "/workspace/ngg-tis-task1/tis-java/c4_phase_allocation.py": "976ba07dcaee9e4658acb6459eea059ed5f58b123c7810fe5b76f49b1178208d",
+    "/workspace/ngg-tis-task1/tis-java/coating_rs_validation.py": "11a51310daf674bfe08ac246ad35736d8b7d5859dde749ae8232c3e022b063a2",
+    "/workspace/ngg-tis-task1/tis-java/depth_probe_comparison.py": "d657c55fdcdd01c229830b6f58451873dbf381ace963a8e3fe13c006cdba5293",
+    "/workspace/ngg-tis-task1/tis-java/eis_rs_window_analysis.py": "2c67d92ad2e4f85908d82a2b92c50999d57bb3543793875f1bcb2c519934e350",
+    "/workspace/ngg-tis-task1/tis-java/explore_amplitude.py": "40183baae6665a327dfd663d81d5becfd90560d3e22df0689bf8bb6293426e7c",
+    "/workspace/ngg-tis-task1/tis-java/explore_inputs.py": "a1ef002509b872aa0164140981daab9f5f65efeb22a2821ea79c4612f50c9888",
+    "/workspace/ngg-tis-task1/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-task1/tis-java/fit_ngg_eis.py": "ceba0a811d0c48630e38cbf99d988551cc6de1d86bdf2dbc72392257473aba90",
+    "/workspace/ngg-tis-task1/tis-java/layered_probe_analysis.py": "cda32e600af3e9d3d2cca153d29eaac146c40eb01c3c0d114e046dcc7ea134ea",
+    "/workspace/ngg-tis-task1/tis-java/leader_spatial_diagnostics.py": "f07eaea8249408fb176ebe9c361e43b29597f80643a9a3a3672b786086266e1a",
+    "/workspace/ngg-tis-task1/tis-java/measurement_waveforms.py": "e151d651872aac6f0e17ff27a7d18cc78b406f7d891efa56ed75de272ed13588",
+    "/workspace/ngg-tis-task1/tis-java/mesh_validation.py": "61ca26fb44f85a7a6e0d808d6762b87edddafdc643017cf627374e2eb2164c96",
+    "/workspace/ngg-tis-task1/tis-java/mesh_validation_3k.py": "9782acb67129c6d366e0315798eef9ceab530107578724eca431396ec22a581c",
+    "/workspace/ngg-tis-task1/tis-java/native_probe_followup.py": "8007366e54b47a639da2c6bc6f73a24218564e5838ef0d274826293ead1b48aa",
+    "/workspace/ngg-tis-task1/tis-java/rs_window_tis_validation.py": "ba05156b42a4781124530c1befe933533d90ab53828ecabf242f5204f4a298b7",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_design.py": "7bb8dd79ed8d2e4d80fde1ebf6ef8eb3ec8dc932ca6d0e078b51990056a25a9f",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_geometry.py": "0a33f50ef6db1a4bec4d89f5a1485d17cfb395af91a61742f1a5540338153764",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_postprocess.py": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+    "/workspace/ngg-tis-task1/tis-java/single_vs_tis.py": "f59c5a9015175198355a7e0fa92ea0f91d45b9a6b1b1b3e79dc07d6b3f519f08",
+    "/workspace/ngg-tis-task1/tis-java/update_ngg_eis.py": "0ddca1dcd0f13ba620e378a79d94ed005dccc392b6f33f9c57bbf5049c7b448c",
+    "/workspace/ngg-tis-task1/tis-java/validation_3k_postprocess.py": "9acca0b8cab3d402e38d98cbdfa1d99ec503540440bafc8f8e57ca1361d78629",
+    "/workspace/ngg-tis-task1/tis-java/TisSweep.java": "c3f80a160374213f49da0281274270badff47b955de486ab6dc17ef5278e228b",
+    "/workspace/ngg-tis-task1/tis-java/ExploreBasis.java": "a21d7bc31f688192908de3a9b9dd842c73fe6cbcc667376d22fb4067f4aff276",
+    "/workspace/ngg-tis-task1/tis-java/SelectivityShapeBasis.java": "e1cdf19aec6a56d0df7775cd6b8091206b4c64aa9c318aea96a84174d9b73573",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "eae726053bd0b5fa9dfc5e201369648773651ee384cf45c39797df1636c60ed1",
+    "/workspace/ngg-tis-task1/tools/java/CloudShapeBasis.java": "f9febd65278f90bbea15341afdb72eae29d412208a3332d0ca7294afa5a3b45f",
+    "/workspace/ngg-tis-task1/tools/task1_producer_regression.py": "e3cf870e073b94b9fbe773313001638c56b30ceb3da62db33eed096648198284",
+    "/workspace/ngg-tis-task1/tools/task1_grouped_postprocess.py": "8940ad863dbfd9452fb55e305bd12fb0c4708b4e776790436bd69a7709421149",
+    "/workspace/ngg-tis-task1/tools/task1_grouped_registration.py": "40557c20e55694a2d0cf0fa14be209b1eae383524fbdae3f09d80bc837fc9a20",
+    "/workspace/ngg-tis-task1/tools/task1_reference_registration.py": "81b53f45022ac0461596df74e31bef6fbac26e79bcd57affba44096329cc2dd2",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/preregistration.json": "7c832c3a0d5bc0b470547ce53b1151460eda2e1e27e0e270635d9a4ec0c69b52",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/inputs/designs.json": "cb0416a2066c30ba3276f0908b7ef0c88b21e2b4c6c54bc983894970df14834e",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/analysis-rows-cm.csv": "4baacfad81e12e445d3109cf351bc867b719607ffd6b33132e5bad9fd657ce59",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-3000.bin": "4334116a1c27209d93027a3bba26d7d83b532928c63dfb52114086e46f0ecd52",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-3030.bin": "e4a1509d0b9840f5b6698b3329a6afbf2524ed7db7b5f6793a7a8ac93216c24e",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-9000.bin": "c624083827591950e637f77b247c1c8cf53aef278f59a1f2a52b14abc21fe15b",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/loss-9090.bin": "551c3cb02fafae87b389da3a300b3dde4ab1506217786cb1e597ac808e3bfcce",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-3000.bin": "c638b92e846bb41c3d764d25b67f0f6ed5ea858c7ce72c104fa3dac9f52c3af9",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-3030.bin": "624ce0a147c2eb8ed4d436f303cab54fcbd83ce74e418de9a329885514acac91",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-9000.bin": "d6aed35ef01883c29ca6a6d0d03dac3461fd54d3b0e845441144b2de2fd08828",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/released-circuits/reference-best1-final/source-9090.bin": "94c70b85d2d10ef01698535c7a51502fb766ec49277c055ec794d3bf7df35772",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-xy100.properties": "e82461198edb6c8d7a2bc05ba246190d0858e3cba929c4c41790bb6d6dac75c6",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-h0.5.csv": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-xy80.properties": "578812946b79762b63931e85dc201ee673a8c370ec01f9767098f5b6476206d8",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-h0.625.csv": "7cfc576d31e50dcf0621567cce225df3d2cc8e55eeff4aa5d6667c59bfc401b2",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-xy120-original-clip.json": "da28dcbd97f4f094e48163896138ab5a574a3313089be5d794c27c7ead2095fe",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-xy120-full-face.json": "fbd8708a2c0a090f94aed01eff977ea453742353d3a248995bed4ddb59494fee",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-C1pair0-xy80.properties": "242b1bf1571ac2989277b69651fccf73f80ea143958e28615d77152b9948d312",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-C1pair0-xy80.csv": "8e20c20d73d8c69a70772c43a7f6607dfb25b9ad2fbd66eee3b1ee0ed3d521c4",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-C1pair0-xy120-original-clip.json": "8ac09d68627260d289fd708d3e946ce4026c2160fafe6b2611f89b1b0062d6ae",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-C1pair0-xy120-full-face.json": "61a3d396c3c5a9ba587a58699392dd34f2e8b0c25f3f0d2398fa56c41a5f3884",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/best1-square15-C1pair0-xy120.properties": "233e7ea08747bb3178402126294ec31f8d243e25304026a06b7eaf398dfc747f",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/best1-square15-xy120.properties": "3f3b8e52c82936572f31f2de9387aeb2defecde4fd77007e7f6e866b0dfdf989",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/best1-square15-C1pair0-xy120.csv": "c6a82a13b4ea085b2aa411201a4a298b56aadf1bfdfa68b69305c2c33ef6ee93",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/best1-square15-xy120.csv": "698660e260878325670ed85fc0ef0ff5cb0920b2d6e9a2466bc19655050788ce",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/baseline-square15-xy100.csv": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep.class": "b8160809788fa0898e2fba1412b94e6d0fe741b43523e545875e978781cda655",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep$Scenario.class": "a10c18daee31728bc2722af4cf5a1a2c35c9a0da8ac517bf2109b59b76fdc8c6",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/SelectivityShapeBasis$ValidationMesh.class": "4997fe6facf2794fe037a970ad7ad7277ec5ac37c0c24071109c94d4229ca628",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/CloudShapeBasis.class": "a7bba70b9a9d299bdbbf425c4efaf728ddd8bae814eb303a6dccc34968a4abcb",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/ExploreBasis$Boundary.class": "71f22ac2f8ceb24992a9903c9c60439ed467450838618a8c793610808738ebbc",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/ExploreBasis.class": "018bc5a38cd7680306376cd2d656bb2269d3e6d4b14c02277d8fa0d938124023",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep$Layout.class": "fcc62f4d4c9ffcb065fdb52d0f41e68bac17bd9bf1ab7080c9b5cf5d8d0123cd",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/SelectivityShapeBasis.class": "4b47dc35c5354f0e6c573b3c2aeec7b680cc73349846de08c273333c0db25fe3",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep$Mesh.class": "2e31446a0e6884eb8058eda41c910e97d9c5d9f731a2281aa27eb70e926d8f32",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/SelectivityShapeBasis$ControllerJson.class": "2d0ec768ab5f739adb1e623ad9c6d5a6d786c72dcd99e4d9f4992815da2b00cf",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep$Edge.class": "30326b9bfe586d631ab88be8f2aa9a375dc9ae6e3d13a3df64fbe550525a8ebd",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep$Net.class": "d66d9319f0b986095ae1d4a74c1b272c843ca22f5d90f335ed2f8a49f970dbb5",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/SelectivityShapeBasis$ShapeNet.class": "437f9cf77dcee523c9671443e6ace140c3ca2bbcdb2bbce32d1c7cd6af7d3222",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/ExploreBasis$Contact.class": "06b1c8646d4b742a40f6ac93e7f5684afabf97e8a7e8ed962702959256c5a613",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/ExploreBasis$GNet.class": "c37acfa242d4559f4063b66dd1abe471ac942a54d3291f2fa78d2113af932177",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep$C.class": "60064d9c27b0509f5c0528694db4b47710944723b457dc4b4fabecbede49c0fa",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/classes/TisSweep$Result.class": "9a76da3a1aec32c5a78ebff18fcc65e8cf700c04ee0f4f081a0e34e6e5ce5500"
+  },
+  "preparation_seconds": 3.1710476000000654,
+  "path_mapping": [
+    {
+      "original_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-xy100.properties",
+      "original_sha256": "e82461198edb6c8d7a2bc05ba246190d0858e3cba929c4c41790bb6d6dac75c6",
+      "new_config": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties",
+      "new_sha256": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+      "changed_fields": [
+        "mask.path"
+      ],
+      "original_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-h0.5.csv",
+      "original_mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+      "new_mask": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/baseline-square15-xy100.csv",
+      "new_mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+      "geometry_audit_files": [],
+      "phantom_material_contact_circuit_changed": false,
+      "grid_changed": false
+    },
+    {
+      "original_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-xy80.properties",
+      "original_sha256": "578812946b79762b63931e85dc201ee673a8c370ec01f9767098f5b6476206d8",
+      "new_config": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/best1-square15-xy120.properties",
+      "new_sha256": "3f3b8e52c82936572f31f2de9387aeb2defecde4fd77007e7f6e866b0dfdf989",
+      "changed_fields": [
+        "mask.path",
+        "h_mm",
+        "mask.sha256"
+      ],
+      "original_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-h0.625.csv",
+      "original_mask_sha256": "7cfc576d31e50dcf0621567cce225df3d2cc8e55eeff4aa5d6667c59bfc401b2",
+      "new_mask": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/best1-square15-xy120.csv",
+      "new_mask_sha256": "698660e260878325670ed85fc0ef0ff5cb0920b2d6e9a2466bc19655050788ce",
+      "geometry_audit_files": [
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-xy120-original-clip.json",
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-xy120-full-face.json"
+      ],
+      "phantom_material_contact_circuit_changed": false,
+      "grid_changed": true
+    },
+    {
+      "original_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-C1pair0-xy80.properties",
+      "original_sha256": "242b1bf1571ac2989277b69651fccf73f80ea143958e28615d77152b9948d312",
+      "new_config": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/best1-square15-C1pair0-xy120.properties",
+      "new_sha256": "233e7ea08747bb3178402126294ec31f8d243e25304026a06b7eaf398dfc747f",
+      "changed_fields": [
+        "mask.path",
+        "h_mm",
+        "mask.sha256"
+      ],
+      "original_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-C1pair0-xy80.csv",
+      "original_mask_sha256": "8e20c20d73d8c69a70772c43a7f6607dfb25b9ad2fbd66eee3b1ee0ed3d521c4",
+      "new_mask": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/best1-square15-C1pair0-xy120.csv",
+      "new_mask_sha256": "c6a82a13b4ea085b2aa411201a4a298b56aadf1bfdfa68b69305c2c33ef6ee93",
+      "geometry_audit_files": [
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-C1pair0-xy120-original-clip.json",
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/geometry-audit/best1-square15-C1pair0-xy120-full-face.json"
+      ],
+      "phantom_material_contact_circuit_changed": false,
+      "grid_changed": true
+    }
+  ],
+  "scientific_scope": "Later3kHz10nmRs500 nominal Best1 exact-grid reproduction and genuine same-grid one-pair RMS/probe control",
+  "historical_nominal_reference": {
+    "candidate_alias": "coat010-f0500-minusRs-square_3h",
+    "source_result_commit": "947c984f9a154d750acf36379fc859b25b56ac4f",
+    "h_xy_mm": 0.4166666666666667,
+    "target20_TIS_V_m": 3.97673338723,
+    "relative_gate": 1e-07,
+    "reproduction_kind": "fresh PDE; missing historical native arrays were not restored",
+    "validated_deep_focus": false,
+    "experimental_validation": false
+  },
+  "metric_definition_mapping": {
+    "historical_center": "explore_tis.load_basis weights20 trilinear nativeE; summarize twofundamental2074 directions",
+    "current_center": "selectivity_postprocess._electrical layered stencil times stored nativeE; within muscle reduces identical trilinear interpolation",
+    "display_maps": "Separate _phi_gradient finite differences of nativephi; never used for central20 or nativeROI score",
+    "historical_native_ROI_alias": "reference-best1-final; oldmean4.059343651347457/P10 3.6383960923394285V/m square_3h",
+    "differential_probe": "phi(plus)-phi(minus),gap5mm; actual4 frequencies; full33.333ms Vpp bounds and spectrum"
+  },
+  "mask_roundoff_contract": {
+    "relative_tolerance": 1e-10,
+    "rule": "canonicalize mathematically full aligned square faces; preserve original clipping audit; reject finite partial faces"
+  },
+  "historical_comparison": {
+    "relative_scalar_tolerance": 1e-07,
+    "source_loss_matrix_tolerance": 1e-08,
+    "allow_absolute_error_near_zero": 1e-14,
+    "gate": "Nominal exact-grid square_3h central20 must match historical scalar before same-grid C1 execution"
+  },
+  "convergence": {
+    "field_ROI_percent": 1,
+    "J_contact_voltage_percent": 5,
+    "power_percent": 2,
+    "mesh_convergence_validated": false,
+    "experimental_validation": false
+  },
+  "storage": {
+    "native_location": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z",
+    "persistent_backup_verified": false,
+    "retirement_of_old_environment_allowed": false
+  },
+  "next_decision": "Compare XY convergence, historical scalar, full ROI and matched-C1 point/ROI RMS; retain unresolved contact-edge/SC gates"
+}

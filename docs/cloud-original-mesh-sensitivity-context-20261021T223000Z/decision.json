@@ -1,0 +1,64 @@
+{
+  "schema": "task1-original-mesh-sensitivity-root-decision-v1",
+  "status": "selected_not_executed",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "new_PDE": 0,
+  "selected_condition_id": "original-refine-3e018f8a317a",
+  "observed_utc": "2026-10-21T20:56:10.161591+00:00",
+  "conditions": [
+    {
+      "id": "sc4",
+      "axis": "SC",
+      "run_id": "cloud-mesh-c1-20261019T190000Z",
+      "case_id": "baseline-square15-sc4",
+      "h_xy_mm": 0.625,
+      "sc_cells": 4,
+      "cells": 361728
+    },
+    {
+      "id": "xy_coarse",
+      "axis": "XY",
+      "run_id": "cloud-baseline-20261019T185900Z",
+      "case_id": "baseline-square15-coarse",
+      "h_xy_mm": 1.25,
+      "sc_cells": 2,
+      "cells": 88480
+    }
+  ],
+  "resource_contract": {
+    "total_seconds": 360,
+    "source_load_seconds_each": 30,
+    "per_condition_seconds": 120,
+    "finalization_seconds": 30,
+    "CPU_count": 1,
+    "RSS_bytes": 3221225472,
+    "disk_reserve_bytes": 2147483648,
+    "max_added_bytes": 8388608,
+    "conditions": 2,
+    "new_PDE": 0,
+    "derivative_export": "compact_float64_metrics_and_probes_no_new_scalar_NPZ"
+  },
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-original-mesh-sensitivity-context-20261021T223000Z/feedback-before.json": "0534171b403279cbd726c7d6b25f9b5366226691a51ed507d7e7324ab7e2daf2",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-20261021T222000Z/summary.json": "a7d89ab643aa5be6cb476685b13cd99228d890a1125b6c4856849e79ff68349b",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-20261021T222000Z/original-refine-3e018f8a317a/condition.json": "1e6b9dc90d1032d76d247567f71c62cf2d3fe4d6b28ad746e3b2cc102b61f366",
+    "/workspace/ngg-tis-task1/docs/cloud-restart-20261020/mesh-convergence.json": "1577604f09923f30a998608d5b65fe8bc28f1fc7817164ae06e11316672c4f69",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-context-20261021T222000Z/saved-target-direction-bound-disposition.json": "d10a47c99768808c38ba19d2e0d5d0974982edaa4798b9d0d2a9efd3412215c4",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-context-20261021T222000Z/refinement-final-publication-20261021T222500Z.json": "a1569805f276c4a873a2d58ddac2202f21498b3aa8bba6ca7daa66676cea0d58"
+  },
+  "question": "At the EXACT completed fine command/globalg and ALL5fine source amplitude scales, how do SC2to4 and XY.625to1.25 change full-volume target/off-target metrics and actual skin burdens, without any reoptimization/rematching?",
+  "motivation": "Completedlocalrefinement6/8 passes all6offmetrics but targetmean/P10 fail. Saved3lambdaPSD targetUBmean4.013348656731899/P103.5966254055131754 is beloworiginalsampledLB4.061848941601601/3.6457357391300533, so moredirectionsalone cannotfix this fixednativecandidate. Nextpriority is numericaluncertainty, not anotherunlimitedgenesweep.",
+  "fixed_scales": "All5amplitudes copied from actualfinecondition; names equalI/equalP/skin8 identify FINE historical comparisons ONLY. Newmesh current/power/burden equality is NOTasserted. Report actualvalues/capratios atfixedA, no rematch.",
+  "physical_identity": "D50/.1,5,5,15mm;15mmrectangles225each900total;source0SW/1NE,GND2SE/3NW;2actualoutputs/commonGND50ohm/otherfreq0Vthrough50ohm;PBS10nmRsfit500HzprofileonceRs/area;bulk14,14,40;half_face_flux andfrozenhelpersidentical.",
+  "ROI_policy": "Centralr5depth15-20mm,surface0-5,wholecomplement andwholeXYdepthsupplemental;depth0top,+zinward;actualnewnativefractionalvolumesretained,neveranalyticrenormalized toforcecoarseequalsfine;originalfinecaps/cutoffs.",
+  "validation": "Preregisteredtwo-levelsensitivity:mean/P101percent,offP95/J95/loss2percent,8screenstatusnoflip atfine rawandfine skin8 fixedA. Allnativealgebraic5gates separate frommeshaccuracy; oldthreewaveXYFAIL retained; nofullconvergence/adoption/experiment/activation/safetyclaim.",
+  "compact": "Allactual2074/nativephi40/signedpower/burdens/fivemodescomputed;threeJSONartifacts/8MiB;noNEWNPZornewmaps;oldraw/archive/failurepreserved;sourcecoeff/scales/ROI/codeSHArecipewithindependentscalarexportunverified.",
+  "resources_snapshot": {
+    "free_bytes": 2175426560,
+    "remaining_approved_seconds": 3257.6175425389956,
+    "approval_limit_seconds": 13800
+  },
+  "next_if_mesh_failed": "A finerXYnative solve and remainingbulk/edge/contact gates need a newstorage/resourceadmission; do not delete data, enlarge budget or claimgateclosure fromnewtwogriddiagnostic."
+}

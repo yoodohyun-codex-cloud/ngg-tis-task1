@@ -1,0 +1,83 @@
+{
+  "schema": "task1-return-current-drive-root-decision-v1",
+  "status": "selected_not_executed",
+  "created_utc": "2026-10-21T17:06:00.857113+00:00",
+  "root_selected": true,
+  "peer_endorsed": false,
+  "conditions": [
+    {
+      "id": "return-net-square-tau0",
+      "geometry": "adjacent-square",
+      "tau": 0.0
+    },
+    {
+      "id": "return-net-square-tau0p5",
+      "geometry": "adjacent-square",
+      "tau": 0.5
+    },
+    {
+      "id": "return-net-square-tau1",
+      "geometry": "adjacent-square",
+      "tau": 1.0
+    },
+    {
+      "id": "return-net-cross-tau0",
+      "geometry": "adjacent-cross",
+      "tau": 0.0
+    },
+    {
+      "id": "return-net-cross-tau0p5",
+      "geometry": "adjacent-cross",
+      "tau": 0.5
+    },
+    {
+      "id": "return-net-cross-tau1",
+      "geometry": "adjacent-cross",
+      "tau": 1.0
+    }
+  ],
+  "question": "Can frequency-dependent cancellation of wrong common-GND-pad NET current reduce shallow and complementary TIS modulation while preserving absolute deep primary ROI mean/P10 at original square eight skin/contact caps?",
+  "reason": "Strong8 and weak6 coherent opposite-square mixes all failed all six off-target criteria; adjacent-square and adjacent-cross exclusive allocations previously failed. Test spatial return routing using actual integrated complex pad responses before spending on new PDE geometry.",
+  "fixed_phantom": "D50mm/layers0.1,5,5,15mm/+zfromskin/top-only/hXY0.625mmSC2bulk14,14,40",
+  "physical_pads": 4,
+  "independent_outputs": 2,
+  "return_topology": "Both pads2/3 stay on the same grounded electrical node; no isolation or topology change",
+  "source_resistance_ohm": 50,
+  "actual_fundamental_Hz": [
+    3000,
+    3030
+  ],
+  "beat_frequency_Hz": 30,
+  "coefficient_formula": {
+    "3000": "q0=-R[pad2,output0]/R[pad2,output1]; c=[1,tau*q0]",
+    "3030": "q1=-R[pad3,output1]/R[pad3,output0]; c=[tau*q1,1]"
+  },
+  "phase_definition": "Cosine complexpeak basis; no extra -j. tau0 shares exclusive allocation and RMS/TIS, not byte-identical historical sine traces.",
+  "source_normalization": "ONE common factor1/max(full-source Vppupper0,Vppupper1); preserve cancellation ratios. Actual two-output Vppvector <=1V with maxupper1V, not eachoutput necessarily1V. Rawcertifiedintervalwidth<=1uV; scaledintervals scale too.",
+  "cancellation_gate_relative": 2e-06,
+  "local_current_warning": "Zero integrated return-pad current does not imply zero local normal density or detached pad; preserve all contact and full-skin burden caps.",
+  "comparisons": [
+    "fixed voltage raw sourcevector",
+    "equal total RMS outputcurrent",
+    "equal total sourcepower",
+    "same eight skin/contact caps",
+    "legacy caps including sourcepower+1Vpp"
+  ],
+  "candidate_adoption_allowed": false,
+  "planned_new_PDE_solves": 0,
+  "planned_conditions": 6,
+  "planned_max_seconds": 600,
+  "per_condition_seconds": 60,
+  "resource_policy_limit_seconds": 13800,
+  "observed_remaining_seconds": 5798.940106482012,
+  "hardware_multitone_phase_sync_sink_compliance": "unverified",
+  "feedback_context": "Root-selected scientific follow-up; no peer endorsement inferred. Incoming6319669306/6320375305 are handled separately in correction and grouped gap diagnostics.",
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-next-coherent-drive-20261021T165000Z/summary.json": "0d39a5fede92c683d02970556ad227b8941195f536fe76c7abb4e2da949229bb",
+    "/workspace/ngg-tis-task1/docs/cloud-next-coherent-weak-20261021T170000Z/summary.json": "0a40f07ebc77c25951ad987258d1df4b34ef7d648798b104a87e8c31d1c75746",
+    "/workspace/ngg-tis-task1/docs/cloud-return-current-context-20261021T172000Z-feedback-before.json": "58c35fc277bef301dff99b808ace65a7895fce19da7d8d3bbf1e45e9bc602259",
+    "/workspace/ngg-tis-task1/docs/cloud-adjacent-cross-20261021T164000Z/volume.json": "5ae3c3bc95021024109e6b3c0f4985b978b8a4262c4a7cd3441aca819d6bb725",
+    "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine/cases/adjacent-square15-xy80.json": "fd2e4b0d55a4c12d5f4350f65925e0dd7a0b54afd07432aa379eef8fda79aa82",
+    "/workspace/ngg-tis-task1/data-native/cloud-adjacent-cross-20261021T164000Z/cases/balancedcross225-adjacent-sources-xy80.json": "c093a0b9345eb037596a1b90efe0a79f3251f5b0ea9ac3b6efdb24d072634f23"
+  }
+}

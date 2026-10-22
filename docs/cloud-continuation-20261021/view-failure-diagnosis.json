@@ -1,0 +1,38 @@
+{
+  "status": "display_guard_roundoff_diagnosed",
+  "maximum_excess": 4.440892098500626e-16,
+  "affected_entries": 590,
+  "examples": [
+    {
+      "case_id": "baseline-square15-xy80",
+      "normalization": "raw_1Vpp",
+      "region": "primary_r5_depth15_20",
+      "metric": "maxTIS",
+      "cutoff": "supplemental_wholeXY_depth15_20_mean",
+      "stored_fraction": 1.0000000000000002,
+      "excess": 2.220446049250313e-16
+    },
+    {
+      "case_id": "baseline-square15-xy80",
+      "normalization": "raw_1Vpp",
+      "region": "primary_r5_depth15_20",
+      "metric": "RMS",
+      "cutoff": "supplemental_wholeXY_depth15_20_mean",
+      "stored_fraction": 1.0000000000000002,
+      "excess": 2.220446049250313e-16
+    },
+    {
+      "case_id": "baseline-square15-xy80",
+      "normalization": "raw_1Vpp",
+      "region": "primary_r5_depth15_20",
+      "metric": "RMS",
+      "cutoff": "supplemental_wholeXY_depth15_20_p10",
+      "stored_fraction": 1.0000000000000002,
+      "excess": 2.220446049250313e-16
+    }
+  ],
+  "source_data_changed": false,
+  "scientific_gate_changed": false,
+  "fix": "Tolerate representable summation roundoff, validate stored volume/fraction consistency, do not clamp stored results",
+  "preserved_failure": "docs/CLOUD_VOLUME_RESULTS_20261021.failure.json"
+}

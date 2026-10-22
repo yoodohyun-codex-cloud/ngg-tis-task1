@@ -1,0 +1,33 @@
+{
+  "schema": "task1-burden-analysis-contract-v1",
+  "registered_before_grouped_PDE": true,
+  "reference": "cloud-baseline-20261019T185900Z/baseline-square15-coarse-square_3h",
+  "same_grid_required": true,
+  "legacy_composite_contact": {
+    "linear_caps": [
+      "contact_normal_J_RMS_max",
+      "contact_area_weighted_J_RMS_P95",
+      "contact_voltage_RMS_max"
+    ],
+    "quadratic_caps": [
+      "SC_power",
+      "contact_power",
+      "source_total_power"
+    ]
+  },
+  "composite_full_skin": {
+    "extends_legacy_composite_contact": true,
+    "additional_linear_caps": [
+      "SC_plus_dermis_volume_total_J_vector_RMS_max",
+      "SC_plus_dermis_volume_total_J_vector_RMS_P95"
+    ],
+    "additional_quadratic_caps": [
+      "skin_SC_plus_dermis_power"
+    ]
+  },
+  "amplitude_scale": "min(1, all positive baseline/candidate linear ratios, sqrt(all positive baseline/candidate quadratic ratios)); all outputs scaled together",
+  "missing_skin_audit": "unavailable; never assume passes",
+  "equal_total_power": "sqrt(reference source power / candidate source power), explicitly allow mathematical Vpp>1 with hardware cap flag; separate from clipped caps",
+  "safety_limit": false,
+  "decision": "No candidate adopted while XY/contact-edge convergence incomplete"
+}

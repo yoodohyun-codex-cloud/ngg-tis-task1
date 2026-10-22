@@ -1,0 +1,1166 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "geometry": {
+    "domain_definition": "source FVM whole-square centre-inside-cylinder mask; no outer-wall clipping",
+    "field_integration": "native cell-constant E; fractional target XY area and exact z overlap",
+    "target_definition": "r<=5mm and surface-depth 15<=z<=20mm",
+    "region_definitions": {
+      "surface_0_5": "0<=z<5mm",
+      "subsurface_5_10": "5<=z<10mm",
+      "remaining": "10<=z<=25.1mm excluding target",
+      "off_target": "all cells excluding target"
+    },
+    "coordinate_system": {
+      "surface_z_mm": 0,
+      "depth_axis": "+z",
+      "xy": "local phantom axes, no anatomical registration"
+    },
+    "layer_faces_mm": [
+      0.0,
+      0.1,
+      5.1,
+      10.1,
+      25.1
+    ],
+    "layer_counts": [
+      2,
+      14,
+      14,
+      40
+    ],
+    "cells": 351680,
+    "xy_cells": 5024,
+    "h_xy_mm": 0.625,
+    "target_xy_boundary_cells": 60,
+    "target_boundary_subdivisions": 128,
+    "analytic_cylinder_volume_m3": 4.9283734753189886e-05,
+    "represented_domain_volume_m3": 4.925875000000001e-05,
+    "domain_relative_volume_deviation": -0.0005069573828972995,
+    "domain_relative_volume_tolerance": 0.002,
+    "analytic_target_volume_m3": 3.926990816987242e-07,
+    "represented_target_volume_m3": 3.927097320556641e-07,
+    "target_relative_volume_deviation": 2.712091124279503e-05,
+    "target_relative_volume_tolerance": 0.001,
+    "max_relative_partition_roundoff": 1.7646519734464589e-16,
+    "source_csv_volume_relative_rounding": -1.2239098623467726e-12,
+    "renormalized_to_analytic_volume": false,
+    "target_boundary_cell_centres_can_be_outside_ROI": true,
+    "region_volumes_m3": {
+      "total": 4.925875000000001e-05,
+      "target": 3.927097320556641e-07,
+      "surface_0_5": 9.812500000000001e-06,
+      "subsurface_5_10": 9.812500000000001e-06,
+      "remaining": 2.924104026794434e-05,
+      "off_target": 4.886604026794434e-05
+    }
+  },
+  "units": {
+    "E": "V/m",
+    "volume": "m3",
+    "GUI_E": "V/cm = V/m\u00d70.01"
+  },
+  "conventions": {
+    "phasor": "peak, +jomega_t",
+    "same_frequency": "input spectra already coherently summed",
+    "actual_RMS": "sqrt(sum_f ||complex E_f||\u00b2/2), including actual harmonics",
+    "maxTIS": "max over finite sampled n of 2min(|n\u00b7E_f0|,|n\u00b7E_f1|)",
+    "finite_direction_scope": "lower bound on angular maximum at each native cell; not one axon path",
+    "fixedTIS": "2min(|n_fixed\u00b7E_f0|,|n_fixed\u00b7E_f1|)",
+    "fixed_modulation_depth": "min(carrier projection magnitudes)/max; undefined for two zero projections",
+    "weighted_quantile": "first ascending value reaching requested cumulative volume (inverse ECDF)",
+    "biological_status": "electrical proxies only, no recruitment/force/safety inference"
+  },
+  "frequencies_Hz": [
+    3000,
+    3030
+  ],
+  "fundamental_frequencies_Hz": [
+    3000,
+    3030
+  ],
+  "fixed_direction": [
+    0.7071067811865475,
+    0.7071067811865475,
+    0.0
+  ],
+  "fibonacci_count": 2048,
+  "total_sampled_directions": 2074,
+  "chunk_cells": 256,
+  "thresholds": {},
+  "regions": {
+    "total": {
+      "statistics": {
+        "maxTIS": {
+          "min": 0.022123403413388507,
+          "max": 724.7821262004096,
+          "mean": 5.558189016819437,
+          "volume_m3": 4.925875000000001e-05,
+          "positive_weight_cells": 351680,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.924601663957771,
+          "p50": 2.299947899278497,
+          "p95": 17.836201948743437
+        },
+        "fixedTIS": {
+          "min": 0.0009866546365496227,
+          "max": 64.04348147145411,
+          "mean": 1.9258585807374269,
+          "volume_m3": 4.925875000000001e-05,
+          "positive_weight_cells": 351680,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.2763903171576016,
+          "p50": 1.4032686899091138,
+          "p95": 6.191075494721851
+        },
+        "RMS": {
+          "min": 0.039134262881335626,
+          "max": 872.9776443405598,
+          "mean": 6.320069026009345,
+          "volume_m3": 4.925875000000001e-05,
+          "positive_weight_cells": 351680,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.9713486977452943,
+          "p50": 1.9204294846110188,
+          "p95": 20.673244864379026
+        },
+        "X_TIS": {
+          "min": 0.0001660326859341743,
+          "max": 71.87116267753888,
+          "mean": 1.516206348750843,
+          "volume_m3": 4.925875000000001e-05,
+          "positive_weight_cells": 351680,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.18829682598961556,
+          "p50": 0.9226380081157828,
+          "p95": 5.568937655233788
+        },
+        "Y_TIS": {
+          "min": 0.00016603268590681243,
+          "max": 71.87116267753896,
+          "mean": 1.5162063487508464,
+          "volume_m3": 4.925875000000001e-05,
+          "positive_weight_cells": 351680,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.18829682598957426,
+          "p50": 0.9226380081157995,
+          "p95": 5.568937655233999
+        },
+        "Z_TIS": {
+          "min": 2.53501965090234e-06,
+          "max": 721.3171038297502,
+          "mean": 3.6235904950882607,
+          "volume_m3": 4.925875000000001e-05,
+          "positive_weight_cells": 351680,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.10168618963275115,
+          "p50": 0.9179484815184203,
+          "p95": 16.217956142608788
+        }
+      },
+      "high_modulation_volume": {},
+      "tissue_volumes_m3": {
+        "0": 1.9624999999999997e-07,
+        "1": 9.812499999999998e-06,
+        "2": 9.812500000000012e-06,
+        "3": 2.9437499999999997e-05
+      },
+      "tissue_statistics": {
+        "0": {
+          "maxTIS": {
+            "min": 0.20367706993998336,
+            "max": 724.7821262004096,
+            "mean": 64.82794361269015,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.095392274399164,
+            "p50": 14.898197665805524,
+            "p95": 262.2151348035822
+          },
+          "fixedTIS": {
+            "min": 0.0045492880014636515,
+            "max": 64.04348147145411,
+            "mean": 4.533172737915802,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.12886404783441485,
+            "p50": 2.9289682076682313,
+            "p95": 14.720143701873562
+          },
+          "RMS": {
+            "min": 2.94468921279303,
+            "max": 872.9776443405598,
+            "mean": 107.64971371875433,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 7.121873341053043,
+            "p50": 40.07156358471636,
+            "p95": 421.93816815722397
+          }
+        },
+        "1": {
+          "maxTIS": {
+            "min": 0.1789358947923009,
+            "max": 68.00160359480378,
+            "mean": 8.273696979845987,
+            "volume_m3": 9.812499999999998e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 2.512175636074159,
+            "p50": 7.297695190706607,
+            "p95": 17.879365475059426
+          },
+          "fixedTIS": {
+            "min": 0.0032608965545993123,
+            "max": 32.29834366292669,
+            "mean": 3.5540265037822087,
+            "volume_m3": 9.812499999999998e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.31382376940525747,
+            "p50": 2.748822954021897,
+            "p95": 9.009351661319311
+          },
+          "RMS": {
+            "min": 1.8330787135499211,
+            "max": 83.54747816158203,
+            "mean": 12.106087270861078,
+            "volume_m3": 9.812499999999998e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.863638243134552,
+            "p50": 9.906216938306068,
+            "p95": 26.68958453250472
+          }
+        },
+        "2": {
+          "maxTIS": {
+            "min": 3.1264004767847404,
+            "max": 29.821112877487415,
+            "mean": 13.29854118975595,
+            "volume_m3": 9.812500000000012e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 7.015061186676322,
+            "p50": 13.428530681621027,
+            "p95": 21.480045903399986
+          },
+          "fixedTIS": {
+            "min": 0.0009866546365496227,
+            "max": 10.267752568316373,
+            "mean": 2.2124210206919397,
+            "volume_m3": 9.812500000000012e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.2856106953659593,
+            "p50": 1.7252436585653894,
+            "p95": 5.84105263182866
+          },
+          "RMS": {
+            "min": 2.1003935107335643,
+            "max": 29.272473922659668,
+            "mean": 13.191165089951628,
+            "volume_m3": 9.812500000000012e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.741270204252572,
+            "p50": 12.557737941960358,
+            "p95": 25.228478978428114
+          }
+        },
+        "3": {
+          "maxTIS": {
+            "min": 0.022123403413388507,
+            "max": 3.851322856590705,
+            "mean": 1.6777706075259515,
+            "volume_m3": 2.9437499999999997e-05,
+            "positive_weight_cells": 200960,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.7448738473014412,
+            "p50": 1.6910833348430343,
+            "p95": 2.827563990708226
+          },
+          "fixedTIS": {
+            "min": 0.00451061245063699,
+            "max": 3.841325508743112,
+            "mean": 1.2702330320231383,
+            "volume_m3": 2.9437499999999997e-05,
+            "positive_weight_cells": 200960,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.2652735687514436,
+            "p50": 1.2305486766441038,
+            "p95": 2.582893611434287
+          },
+          "RMS": {
+            "min": 0.039134262881335626,
+            "max": 3.3620155905645177,
+            "mean": 1.425499958459716,
+            "volume_m3": 2.9437499999999997e-05,
+            "positive_weight_cells": 200960,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.8596025589065451,
+            "p50": 1.3301650922264254,
+            "p95": 2.3847235374937767
+          }
+        }
+      }
+    },
+    "target": {
+      "statistics": {
+        "maxTIS": {
+          "min": 2.155721956766454,
+          "max": 3.141231715934284,
+          "mean": 2.6547139959268526,
+          "volume_m3": 3.9270973205566415e-07,
+          "positive_weight_cells": 3136,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 2.407536614037246,
+          "p50": 2.650775429220715,
+          "p95": 2.9798295847820513
+        },
+        "fixedTIS": {
+          "min": 2.140402772938603,
+          "max": 3.1392905830155176,
+          "mean": 2.635925071369954,
+          "volume_m3": 3.9270973205566415e-07,
+          "positive_weight_cells": 3136,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 2.3877391739739764,
+          "p50": 2.6301202047835726,
+          "p95": 2.959637045487442
+        },
+        "RMS": {
+          "min": 1.2741264058666983,
+          "max": 1.7195657131911501,
+          "mean": 1.4642732268958933,
+          "volume_m3": 3.9270973205566415e-07,
+          "positive_weight_cells": 3136,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 1.3599432315914737,
+          "p50": 1.456785203802161,
+          "p95": 1.610010206097604
+        },
+        "X_TIS": {
+          "min": 1.4417867167664449,
+          "max": 2.1879224287197054,
+          "mean": 1.798489487898249,
+          "volume_m3": 3.9270973205566415e-07,
+          "positive_weight_cells": 3136,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 1.598126201786729,
+          "p50": 1.795612707935064,
+          "p95": 2.059005793626016
+        },
+        "Y_TIS": {
+          "min": 1.441786716766179,
+          "max": 2.1879224287198373,
+          "mean": 1.7984894878982502,
+          "volume_m3": 3.9270973205566415e-07,
+          "positive_weight_cells": 3136,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 1.5981262017867583,
+          "p50": 1.7956127079350963,
+          "p95": 2.059005793625994
+        },
+        "Z_TIS": {
+          "min": 0.00044544433394296575,
+          "max": 0.5217899061820167,
+          "mean": 0.17385972014669046,
+          "volume_m3": 3.9270973205566415e-07,
+          "positive_weight_cells": 3136,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.025917386646024193,
+          "p50": 0.164010486231163,
+          "p95": 0.3836927999407465
+        }
+      },
+      "high_modulation_volume": {},
+      "tissue_volumes_m3": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 3.9270973205566415e-07
+      },
+      "tissue_statistics": {
+        "3": {
+          "maxTIS": {
+            "min": 2.155721956766454,
+            "max": 3.141231715934284,
+            "mean": 2.6547139959268526,
+            "volume_m3": 3.9270973205566415e-07,
+            "positive_weight_cells": 3136,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 2.407536614037246,
+            "p50": 2.650775429220715,
+            "p95": 2.9798295847820513
+          },
+          "fixedTIS": {
+            "min": 2.140402772938603,
+            "max": 3.1392905830155176,
+            "mean": 2.635925071369954,
+            "volume_m3": 3.9270973205566415e-07,
+            "positive_weight_cells": 3136,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 2.3877391739739764,
+            "p50": 2.6301202047835726,
+            "p95": 2.959637045487442
+          },
+          "RMS": {
+            "min": 1.2741264058666983,
+            "max": 1.7195657131911501,
+            "mean": 1.4642732268958933,
+            "volume_m3": 3.9270973205566415e-07,
+            "positive_weight_cells": 3136,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 1.3599432315914737,
+            "p50": 1.456785203802161,
+            "p95": 1.610010206097604
+          }
+        }
+      }
+    },
+    "surface_0_5": {
+      "statistics": {
+        "maxTIS": {
+          "min": 0.1789358947923009,
+          "max": 724.7821262004096,
+          "mean": 9.437017019836844,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 80384,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 2.5499186873035034,
+          "p50": 7.375141112427183,
+          "p95": 18.923574527857483
+        },
+        "fixedTIS": {
+          "min": 0.0032608965545993123,
+          "max": 64.04348147145411,
+          "mean": 3.581532495552556,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 80384,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.3075850163275802,
+          "p50": 2.759118813427244,
+          "p95": 9.075224513160524
+        },
+        "RMS": {
+          "min": 1.8330787135499211,
+          "max": 872.9776443405598,
+          "mean": 14.079595192565534,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 80384,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 5.893701118451599,
+          "p50": 10.029649417254204,
+          "p95": 28.673547947740396
+        },
+        "X_TIS": {
+          "min": 0.0007733820971563104,
+          "max": 71.87116267753888,
+          "mean": 3.4625098779427588,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 80384,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.31040194348725475,
+          "p50": 2.327650521340744,
+          "p95": 10.075399488636837
+        },
+        "Y_TIS": {
+          "min": 0.0007733820972756102,
+          "max": 71.87116267753896,
+          "mean": 3.4625098779427588,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 80384,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.31040194348722705,
+          "p50": 2.327650521340647,
+          "p95": 10.075399488636851
+        },
+        "Z_TIS": {
+          "min": 2.53501965090234e-06,
+          "max": 721.3171038297502,
+          "mean": 4.949765897472332,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 80384,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.2441339217694453,
+          "p50": 2.3547649574369243,
+          "p95": 12.994097691586658
+        }
+      },
+      "high_modulation_volume": {},
+      "tissue_volumes_m3": {
+        "0": 1.9624999999999997e-07,
+        "1": 9.616250000000001e-06,
+        "2": 0.0,
+        "3": 0.0
+      },
+      "tissue_statistics": {
+        "0": {
+          "maxTIS": {
+            "min": 0.20367706993998336,
+            "max": 724.7821262004096,
+            "mean": 64.82794361269015,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.095392274399164,
+            "p50": 14.898197665805524,
+            "p95": 262.2151348035822
+          },
+          "fixedTIS": {
+            "min": 0.0045492880014636515,
+            "max": 64.04348147145411,
+            "mean": 4.533172737915802,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.12886404783441485,
+            "p50": 2.9289682076682313,
+            "p95": 14.720143701873562
+          },
+          "RMS": {
+            "min": 2.94468921279303,
+            "max": 872.9776443405598,
+            "mean": 107.64971371875433,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 7.121873341053043,
+            "p50": 40.07156358471636,
+            "p95": 421.93816815722397
+          }
+        },
+        "1": {
+          "maxTIS": {
+            "min": 0.1789358947923009,
+            "max": 68.00160359480378,
+            "mean": 8.306589946513306,
+            "volume_m3": 9.616250000000001e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 2.5019787318233195,
+            "p50": 7.3198406944168335,
+            "p95": 17.99509466352887
+          },
+          "fixedTIS": {
+            "min": 0.0032608965545993123,
+            "max": 32.29834366292669,
+            "mean": 3.5621112661165713,
+            "volume_m3": 9.616250000000001e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.3128277701315039,
+            "p50": 2.75664663392696,
+            "p95": 9.035816224284867
+          },
+          "RMS": {
+            "min": 1.8330787135499211,
+            "max": 83.54747816158203,
+            "mean": 12.170000936929034,
+            "volume_m3": 9.616250000000001e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.881328205066911,
+            "p50": 9.957290135053967,
+            "p95": 26.878633370440713
+          }
+        }
+      }
+    },
+    "subsurface_5_10": {
+      "statistics": {
+        "maxTIS": {
+          "min": 1.2539496567244728,
+          "max": 29.821112877487415,
+          "mean": 13.201233247682131,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 75360,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 6.951697450519087,
+          "p50": 13.276745845840836,
+          "p95": 21.480045903399986
+        },
+        "fixedTIS": {
+          "min": 0.0009866546365496227,
+          "max": 10.531790687664087,
+          "mean": 2.2463483907057453,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 75360,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.28791307038368336,
+          "p50": 1.7473472808361723,
+          "p95": 5.931489345028894
+        },
+        "RMS": {
+          "min": 2.1003935107335643,
+          "max": 29.272473922659668,
+          "mean": 13.1488359513409,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 75360,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 5.7397465660932365,
+          "p50": 12.513752757485097,
+          "p95": 25.20584253375749
+        },
+        "X_TIS": {
+          "min": 0.0017474868729197765,
+          "max": 11.905253388030756,
+          "mean": 1.716294048261283,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 75360,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.23163762140314928,
+          "p50": 1.1188928499011581,
+          "p95": 5.135660521517062
+        },
+        "Y_TIS": {
+          "min": 0.001747486872913304,
+          "max": 11.90525338803054,
+          "mean": 1.7162940482612847,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 75360,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.23163762140324037,
+          "p50": 1.1188928499011273,
+          "p95": 5.135660521517061
+        },
+        "Z_TIS": {
+          "min": 0.0021938590771631685,
+          "max": 25.769075901045156,
+          "mean": 11.096911093842165,
+          "volume_m3": 9.812500000000001e-06,
+          "positive_weight_cells": 75360,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 3.1661484636709183,
+          "p50": 10.612662279279272,
+          "p95": 20.675220744071304
+        }
+      },
+      "high_modulation_volume": {},
+      "tissue_volumes_m3": {
+        "0": 0.0,
+        "1": 1.9624999999999934e-07,
+        "2": 9.616250000000001e-06,
+        "3": 0.0
+      },
+      "tissue_statistics": {
+        "1": {
+          "maxTIS": {
+            "min": 1.2539496567244728,
+            "max": 14.100248764078303,
+            "mean": 6.661941613147207,
+            "volume_m3": 1.962499999999994e-07,
+            "positive_weight_cells": 5024,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 2.9421892963335643,
+            "p50": 6.258192668345932,
+            "p95": 12.540290957394081
+          },
+          "fixedTIS": {
+            "min": 0.005959830667608813,
+            "max": 10.531790687664087,
+            "mean": 3.1578731493983847,
+            "volume_m3": 1.962499999999994e-07,
+            "positive_weight_cells": 5024,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.35096228565140336,
+            "p50": 2.5415208403339267,
+            "p95": 7.843425157721191
+          },
+          "RMS": {
+            "min": 3.1541836945766684,
+            "max": 20.10582632208723,
+            "mean": 8.974317633530978,
+            "volume_m3": 1.962499999999994e-07,
+            "positive_weight_cells": 5024,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 4.859361694482857,
+            "p50": 8.100522576044465,
+            "p95": 16.26660655735569
+          }
+        },
+        "2": {
+          "maxTIS": {
+            "min": 3.1264004767847404,
+            "max": 29.821112877487415,
+            "mean": 13.334688178999171,
+            "volume_m3": 9.616250000000001e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 7.030091738415781,
+            "p50": 13.479809460381576,
+            "p95": 21.524716073626262
+          },
+          "fixedTIS": {
+            "min": 0.0009866546365496227,
+            "max": 10.267752568316373,
+            "mean": 2.227745844609978,
+            "volume_m3": 9.616250000000001e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.28676167553453347,
+            "p50": 1.7377075040988132,
+            "p95": 5.872029710105421
+          },
+          "RMS": {
+            "min": 2.1003935107335643,
+            "max": 29.272473922659668,
+            "mean": 13.234030202724774,
+            "volume_m3": 9.616250000000001e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.771446992683835,
+            "p50": 12.603878153741585,
+            "p95": 25.279910592087926
+          }
+        }
+      }
+    },
+    "remaining": {
+      "statistics": {
+        "maxTIS": {
+          "min": 0.022123403413388507,
+          "max": 20.410488257866913,
+          "mean": 1.7307551303392068,
+          "volume_m3": 2.924104026794434e-05,
+          "positive_weight_cells": 204016,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.7423281820306766,
+          "p50": 1.685061840149152,
+          "p95": 2.861788422176711
+        },
+        "fixedTIS": {
+          "min": 0.0029482266103750057,
+          "max": 4.11581325061474,
+          "mean": 1.2531753796449225,
+          "volume_m3": 2.924104026794434e-05,
+          "positive_weight_cells": 204016,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.26167626886397904,
+          "p50": 1.2153578130741944,
+          "p95": 2.5302581509362283
+        },
+        "RMS": {
+          "min": 0.039134262881335626,
+          "max": 25.595476143900363,
+          "mean": 1.489847310135669,
+          "volume_m3": 2.924104026794434e-05,
+          "positive_weight_cells": 204016,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.8583573753710695,
+          "p50": 1.3267949411689548,
+          "p95": 2.436569683687407
+        },
+        "X_TIS": {
+          "min": 0.0001660326859341743,
+          "max": 2.910319459607031,
+          "mean": 0.7921445823577183,
+          "volume_m3": 2.924104026794434e-05,
+          "positive_weight_cells": 204016,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.14541272286864965,
+          "p50": 0.8014121890145116,
+          "p95": 1.6372034267118838
+        },
+        "Y_TIS": {
+          "min": 0.00016603268590681243,
+          "max": 2.9103194596072295,
+          "mean": 0.7921445823577234,
+          "volume_m3": 2.924104026794434e-05,
+          "positive_weight_cells": 204016,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.14541272286854984,
+          "p50": 0.8014121890147905,
+          "p95": 1.6372034267118176
+        },
+        "Z_TIS": {
+          "min": 1.5895029101970856e-05,
+          "max": 20.36396423373541,
+          "mean": 0.7170484950744707,
+          "volume_m3": 2.924104026794434e-05,
+          "positive_weight_cells": 204016,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.06406867145914193,
+          "p50": 0.5318338023779879,
+          "p95": 1.7867662414503063
+        }
+      },
+      "high_modulation_volume": {},
+      "tissue_volumes_m3": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 1.962500000000098e-07,
+        "3": 2.9044790267944334e-05
+      },
+      "tissue_statistics": {
+        "2": {
+          "maxTIS": {
+            "min": 3.1264004767847404,
+            "max": 20.410488257866913,
+            "mean": 11.527338716838413,
+            "volume_m3": 1.962500000000098e-07,
+            "positive_weight_cells": 5024,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 6.053945472447002,
+            "p50": 11.14945003269729,
+            "p95": 19.224105396880095
+          },
+          "fixedTIS": {
+            "min": 0.0029482266103750057,
+            "max": 4.11581325061474,
+            "mean": 1.4615046487081074,
+            "volume_m3": 1.962500000000098e-07,
+            "positive_weight_cells": 5024,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.21561337354095594,
+            "p50": 1.3212737462084878,
+            "p95": 3.400256314357437
+          },
+          "RMS": {
+            "min": 2.1003935107335643,
+            "max": 25.595476143900363,
+            "mean": 11.090774564067557,
+            "volume_m3": 1.962500000000098e-07,
+            "positive_weight_cells": 5024,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 4.238246243617907,
+            "p50": 10.24276608145648,
+            "p95": 22.815039534796004
+          }
+        },
+        "3": {
+          "maxTIS": {
+            "min": 0.022123403413388507,
+            "max": 3.851322856590705,
+            "mean": 1.664561520018238,
+            "volume_m3": 2.904479026794433e-05,
+            "positive_weight_cells": 198992,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.7401466566017117,
+            "p50": 1.6792115607939595,
+            "p95": 2.8138867207023686
+          },
+          "fixedTIS": {
+            "min": 0.00451061245063699,
+            "max": 3.841325508743112,
+            "mean": 1.2517677392840698,
+            "volume_m3": 2.904479026794433e-05,
+            "positive_weight_cells": 198992,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.2618801056187207,
+            "p50": 1.2148357137236163,
+            "p95": 2.524078284648555
+          },
+          "RMS": {
+            "min": 0.039134262881335626,
+            "max": 3.3620155905645177,
+            "mean": 1.4249757116079391,
+            "volume_m3": 2.904479026794433e-05,
+            "positive_weight_cells": 198992,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.8570813528796364,
+            "p50": 1.3228007034476,
+            "p95": 2.3891881717849257
+          }
+        }
+      }
+    },
+    "off_target": {
+      "statistics": {
+        "maxTIS": {
+          "min": 0.022123403413388507,
+          "max": 724.7821262004096,
+          "mean": 5.581522663074238,
+          "volume_m3": 4.886604026794435e-05,
+          "positive_weight_cells": 349712,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.9211400568986309,
+          "p50": 2.2840226957953385,
+          "p95": 17.878287080867224
+        },
+        "fixedTIS": {
+          "min": 0.0009866546365496227,
+          "max": 64.04348147145411,
+          "mean": 1.9201521633614937,
+          "volume_m3": 4.886604026794435e-05,
+          "positive_weight_cells": 349712,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.27398575558516236,
+          "p50": 1.3920742779958255,
+          "p95": 6.204832954365826
+        },
+        "RMS": {
+          "min": 0.039134262881335626,
+          "max": 872.9776443405598,
+          "mean": 6.359092410280522,
+          "volume_m3": 4.886604026794435e-05,
+          "positive_weight_cells": 349712,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.9691801773069215,
+          "p50": 1.935786541277452,
+          "p95": 20.72229662028348
+        },
+        "X_TIS": {
+          "min": 0.0001660326859341743,
+          "max": 71.87116267753888,
+          "mean": 1.513937793014987,
+          "volume_m3": 4.886604026794435e-05,
+          "positive_weight_cells": 349712,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.18673081122002622,
+          "p50": 0.9170440268417432,
+          "p95": 5.586991495581643
+        },
+        "Y_TIS": {
+          "min": 0.00016603268590681243,
+          "max": 71.87116267753896,
+          "mean": 1.5139377930149902,
+          "volume_m3": 4.886604026794435e-05,
+          "positive_weight_cells": 349712,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.18673081121982088,
+          "p50": 0.9170440268417932,
+          "p95": 5.586991495581557
+        },
+        "Z_TIS": {
+          "min": 2.53501965090234e-06,
+          "max": 721.3171038297502,
+          "mean": 3.6513141011112378,
+          "volume_m3": 4.886604026794435e-05,
+          "positive_weight_cells": 349712,
+          "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+          "p10": 0.10397584986927341,
+          "p50": 0.9288985460566538,
+          "p95": 16.23832628439209
+        }
+      },
+      "high_modulation_volume": {},
+      "tissue_volumes_m3": {
+        "0": 1.9624999999999997e-07,
+        "1": 9.812499999999998e-06,
+        "2": 9.812500000000012e-06,
+        "3": 2.9044790267944334e-05
+      },
+      "tissue_statistics": {
+        "0": {
+          "maxTIS": {
+            "min": 0.20367706993998336,
+            "max": 724.7821262004096,
+            "mean": 64.82794361269015,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.095392274399164,
+            "p50": 14.898197665805524,
+            "p95": 262.2151348035822
+          },
+          "fixedTIS": {
+            "min": 0.0045492880014636515,
+            "max": 64.04348147145411,
+            "mean": 4.533172737915802,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.12886404783441485,
+            "p50": 2.9289682076682313,
+            "p95": 14.720143701873562
+          },
+          "RMS": {
+            "min": 2.94468921279303,
+            "max": 872.9776443405598,
+            "mean": 107.64971371875433,
+            "volume_m3": 1.9624999999999997e-07,
+            "positive_weight_cells": 10048,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 7.121873341053043,
+            "p50": 40.07156358471636,
+            "p95": 421.93816815722397
+          }
+        },
+        "1": {
+          "maxTIS": {
+            "min": 0.1789358947923009,
+            "max": 68.00160359480378,
+            "mean": 8.273696979845987,
+            "volume_m3": 9.812499999999998e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 2.512175636074159,
+            "p50": 7.297695190706607,
+            "p95": 17.879365475059426
+          },
+          "fixedTIS": {
+            "min": 0.0032608965545993123,
+            "max": 32.29834366292669,
+            "mean": 3.5540265037822087,
+            "volume_m3": 9.812499999999998e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.31382376940525747,
+            "p50": 2.748822954021897,
+            "p95": 9.009351661319311
+          },
+          "RMS": {
+            "min": 1.8330787135499211,
+            "max": 83.54747816158203,
+            "mean": 12.106087270861078,
+            "volume_m3": 9.812499999999998e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.863638243134552,
+            "p50": 9.906216938306068,
+            "p95": 26.68958453250472
+          }
+        },
+        "2": {
+          "maxTIS": {
+            "min": 3.1264004767847404,
+            "max": 29.821112877487415,
+            "mean": 13.29854118975595,
+            "volume_m3": 9.812500000000012e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 7.015061186676322,
+            "p50": 13.428530681621027,
+            "p95": 21.480045903399986
+          },
+          "fixedTIS": {
+            "min": 0.0009866546365496227,
+            "max": 10.267752568316373,
+            "mean": 2.2124210206919397,
+            "volume_m3": 9.812500000000012e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.2856106953659593,
+            "p50": 1.7252436585653894,
+            "p95": 5.84105263182866
+          },
+          "RMS": {
+            "min": 2.1003935107335643,
+            "max": 29.272473922659668,
+            "mean": 13.191165089951628,
+            "volume_m3": 9.812500000000012e-06,
+            "positive_weight_cells": 70336,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 5.741270204252572,
+            "p50": 12.557737941960358,
+            "p95": 25.228478978428114
+          }
+        },
+        "3": {
+          "maxTIS": {
+            "min": 0.022123403413388507,
+            "max": 3.851322856590705,
+            "mean": 1.664561520018238,
+            "volume_m3": 2.904479026794433e-05,
+            "positive_weight_cells": 198992,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.7401466566017117,
+            "p50": 1.6792115607939595,
+            "p95": 2.8138867207023686
+          },
+          "fixedTIS": {
+            "min": 0.00451061245063699,
+            "max": 3.841325508743112,
+            "mean": 1.2517677392840698,
+            "volume_m3": 2.904479026794433e-05,
+            "positive_weight_cells": 198992,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.2618801056187207,
+            "p50": 1.2148357137236163,
+            "p95": 2.524078284648555
+          },
+          "RMS": {
+            "min": 0.039134262881335626,
+            "max": 3.3620155905645177,
+            "mean": 1.4249757116079391,
+            "volume_m3": 2.904479026794433e-05,
+            "positive_weight_cells": 198992,
+            "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+            "p10": 0.8570813528796364,
+            "p50": 1.3228007034476,
+            "p95": 2.3891881717849257
+          }
+        }
+      }
+    }
+  },
+  "ratios": {
+    "maxTIS": {
+      "surface_0_5": {
+        "target_mean_over_off_p95": 0.1402860750234495,
+        "target_p10_over_off_p95": 0.12722419913283825,
+        "target_mean_over_off_max": 0.0036627751981742405
+      },
+      "subsurface_5_10": {
+        "target_mean_over_off_p95": 0.12358977293929568,
+        "target_p10_over_off_p95": 0.1120824706271306,
+        "target_mean_over_off_max": 0.08902129195624192
+      },
+      "remaining": {
+        "target_mean_over_off_p95": 0.927641601788173,
+        "target_p10_over_off_p95": 0.8412699539143582,
+        "target_mean_over_off_max": 0.13006616805963148
+      },
+      "off_target": {
+        "target_mean_over_off_p95": 0.1484881624240078,
+        "target_p10_over_off_p95": 0.13466259956266813,
+        "target_mean_over_off_max": 0.0036627751981742405
+      }
+    },
+    "fixedTIS": {
+      "surface_0_5": {
+        "target_mean_over_off_p95": 0.2904528772315706,
+        "target_p10_over_off_p95": 0.26310524555192805,
+        "target_mean_over_off_max": 0.04115836632873957
+      },
+      "subsurface_5_10": {
+        "target_mean_over_off_p95": 0.4443951456440007,
+        "target_p10_over_off_p95": 0.40255305793899976,
+        "target_mean_over_off_max": 0.25028270590844726
+      },
+      "remaining": {
+        "target_mean_over_off_p95": 1.0417613200434221,
+        "target_p10_over_off_p95": 0.9436741358151467,
+        "target_mean_over_off_max": 0.640438453075161
+      },
+      "off_target": {
+        "target_mean_over_off_p95": 0.4248180556601886,
+        "target_p10_over_off_p95": 0.3848192516277046,
+        "target_mean_over_off_max": 0.04115836632873957
+      }
+    },
+    "RMS": {
+      "surface_0_5": {
+        "target_mean_over_off_p95": 0.051067040240874155,
+        "target_p10_over_off_p95": 0.04742849521343044,
+        "target_mean_over_off_max": 0.0016773318725727432
+      },
+      "subsurface_5_10": {
+        "target_mean_over_off_p95": 0.05809261185912879,
+        "target_p10_over_off_p95": 0.05395349232108148,
+        "target_mean_over_off_max": 0.05002218913114847
+      },
+      "remaining": {
+        "target_mean_over_off_p95": 0.6009568438362579,
+        "target_p10_over_off_p95": 0.5581384520607635,
+        "target_mean_over_off_max": 0.05720828238019878
+      },
+      "off_target": {
+        "target_mean_over_off_p95": 0.07066172508420845,
+        "target_p10_over_off_p95": 0.06562705169755792,
+        "target_mean_over_off_max": 0.0016773318725727432
+      }
+    }
+  },
+  "normal_current_interface_validation": "separate source face-flux/phi-E gate, not inferred from volume E",
+  "runtime_seconds": 5.213222735997988,
+  "source_provenance": {
+    "case_id": "perimeter-shell225-notch-xy80",
+    "config_sha256": "f447c99072d8460b11775add881fc84abaa528766bcab79766d3fbc042f7fec8"
+  }
+}

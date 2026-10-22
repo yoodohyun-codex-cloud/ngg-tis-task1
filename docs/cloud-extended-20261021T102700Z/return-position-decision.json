@@ -1,0 +1,48 @@
+{
+  "schema": "task1-root-next-batch-decision-v1",
+  "status": "selected_preregistered_not_executed",
+  "source_commit": "5e73e46",
+  "feedback_id": "T1-F010-frequency-GH6312627319",
+  "parent_feedback_id": "T1-F010",
+  "question": "Hold areas/shapes/source positions/wiring fixed; move only return pad centres one XY cell outward/inward; test target absolute retention versus surface and whole off-target burden.",
+  "baseline": "cloud-mesh-c1-20261019T190000Z/baseline-square15-xy80",
+  "parent_control": "cloud-asymmetric-20261021T051000Z/asym-cross281p25-return168p75-xy80",
+  "reason": "Asymmetric parent increased target8percent and surfaceP95by27percent atmatchedskinburden; rolepermutation reducedsurfaceP95by27percent butlosttarget15percent. Testposition-inducedoverlap without shape/area/role confounds.",
+  "cases": [
+    "asym-return-out0p625-xy80",
+    "asym-return-in0p625-xy80"
+  ],
+  "new_PDE_conditions": 2,
+  "coordinate_shifts_mm": [
+    0.625,
+    -0.625
+  ],
+  "physical_pads": 4,
+  "independent_outputs": 2,
+  "return_topology": "two shared commonGND return pads",
+  "fixed_source": "HighZ1Vpp=0.5Vpeak,50ohm,otherfrequency0Vthrough50ohm",
+  "fixed_grid": "351680cells;XY0.625mm;SC2;bulk14/14/40",
+  "normalizations": [
+    "raw_1Vpp",
+    "equal_total_source_output_RMS_sum",
+    "equal_total_power",
+    "skin_contact_only",
+    "legacy_composite_full_skin"
+  ],
+  "numerical_screen": "same established frozen gates; targetmean/P10 retention and surface/offtargetP95/highvolume all required, numerical comparison not human safety",
+  "cutoffs_V_m": {
+    "baseline_mean": 4.061848941601601,
+    "baseline_p10": 3.6457357391300533
+  },
+  "max_batch_seconds": 1800,
+  "per_PDE_seconds": 600,
+  "authorized_cumulative_seconds": 13800,
+  "CPU": 1,
+  "concurrent_PDE": 1,
+  "holds": [
+    "No candidate adoption before mesh/SC/edge/contact convergence",
+    "No physiological equivalence",
+    "No instrument-loaded prediction validation",
+    "No externalpaidresources,installations,deletions,mainmerge"
+  ]
+}

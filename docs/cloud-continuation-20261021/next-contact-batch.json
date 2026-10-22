@@ -1,0 +1,68 @@
+{
+  "schema": "task1-next-finite-scientific-batch-v1",
+  "status": "preregistered_not_started",
+  "created_utc": "2026-10-21T04:41:24.937414+00:00",
+  "feedback_id": "T1-F010-S1-GH6297472037",
+  "run_path": "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z",
+  "run_id": "cloud-contact-rs2000-20261021T044000Z",
+  "case_ids": [
+    "baseline-square15-rs2000-xy80",
+    "cross17p5-arm10-rs2000-xy80"
+  ],
+  "maximum_new_PDE_conditions": 2,
+  "question": "Doescontact-loss-limitedcrossarm10rankingremainwhenbothgeometriesusesamealternativeRs2000fit?",
+  "decision_evidence": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-continuation-20261021/volume-cross.json",
+    "SHA256": "43bc33f3689a47fc34060e76d2ea34c27231e64183a5b2c9366e17002d5408dd",
+    "nominal_baseline_mean_V_cm": 0.04061848941601601,
+    "nominal_cross_skin_cap_mean_V_cm": 0.03762619161048584,
+    "nominal_cross_active_cap": "contact_power_W",
+    "larger_cross_rejected": "281.25mm2rawgainvanishesunderskinJ95; no geometryrefinementselected"
+  },
+  "fixed": "sameD50/layers0.1/5/5/15;top4pads/2outputs/commonGND/50ohm;h.625SC2bulk14/14/40;3000/3030+9000/9090Hz;maskbytesunchanged",
+  "changed": "Only selectedEISRsfitwindow500->2000, bothbaselineandcross. Notcarrierfrequency2kHz.Notgenerator50ohm.",
+  "contact_contract": "zA=(Zraw-logfrequency-interpolated - selectedRs2000)*1e-4m2 once;solverusesApatch/zA;nootherRs subtraction/area multiplication",
+  "provenance": "initial10nmPBS3electrode,nominal1cm2;rawprofile+fits+XLSXSHApinnedbyregistration;notvalidatedskincontact",
+  "ROIs": "centralr5depth15..20primary;wholemodeledXYsame-depthsupplement;surface0..5andbothcomplements;exactfractionalweights",
+  "comparisons": "5distinctnormalizationswithinsamecontact-modelcohort.Thenpairedmodeldifferencesofsamegeometry.Nocross-meshorcontactmixedreference.",
+  "limits": {
+    "CPU": 1,
+    "concurrentPDE": 1,
+    "per_condition_seconds": 600,
+    "preparation_seconds": 120,
+    "postprocess_reserved_seconds": 60,
+    "global_limit_seconds": 6600,
+    "observed_remaining_seconds": 1559.1843870959856,
+    "minimum_admission_seconds": 1380,
+    "raw_bound_bytes": 422016000,
+    "disk_reserve_bytes": 2147483648,
+    "max_added_bytes": 2147483648,
+    "java_heap_bytes": 2147483648,
+    "aggregate_RSS_bytes": 3221225472
+  },
+  "prepare_command_argv": [
+    "python",
+    "tools/task1_contact_sensitivity_registration.py",
+    "--prepare",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z"
+  ],
+  "execute_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--execute",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-contact-rs2000-20261021T044000Z"
+  ],
+  "postprocess": [
+    "same-modelbaselinefullskinloss/Jspatialaudits",
+    "preregister2casevolumeaudit",
+    "actualnativephasorwaveform/probes",
+    "archive/restore/newviews",
+    "feedbackandnextfinitequestionwithremainingbudget"
+  ],
+  "candidate_adopted": false,
+  "mesh_convergence_validated": false,
+  "experimentally_validated": false,
+  "failure_policy": "preservepartialrawandlogs;noautomaticoperatorretry,nobudgetexpansion"
+}

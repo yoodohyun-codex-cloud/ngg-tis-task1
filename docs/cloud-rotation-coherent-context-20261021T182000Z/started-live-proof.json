@@ -1,0 +1,32 @@
+{
+  "schema": "task1-started-live-proof-v1",
+  "observed_utc": "2026-10-21T17:56:11.830672+00:00",
+  "owners": [
+    {
+      "role": "queue",
+      "heartbeat_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-context-20261021T182000Z/queue/heartbeat.json",
+      "status": "running",
+      "phase": "rotated-sine-and-four-coherent-drives",
+      "pid": 24754,
+      "proc_start_ticks": 5184740,
+      "live": true,
+      "proc_cmdline": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-rotation-coherent-context-20261021T182000Z/queue-plan.json "
+    },
+    {
+      "role": "scout",
+      "heartbeat_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/heartbeat.json",
+      "status": "running",
+      "phase": "volume_projection",
+      "pid": 24781,
+      "proc_start_ticks": 5184814,
+      "live": true,
+      "proc_cmdline": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_rotation_coherent_scout.py --preregistration /workspace/ngg-tis-task1/docs/cloud-rotation-coherent-context-20261021T182000Z/preregistration.json --output /workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z "
+    }
+  ],
+  "linux_proc_locks": "1: POSIX  ADVISORY  WRITE 24781 00:1b:262185 0 EOF\n2: FLOCK  ADVISORY  WRITE 24781 00:1b:262185 0 EOF\n3: FLOCK  ADVISORY  WRITE 443 00:1b:786894 0 EOF\n4: FLOCK  ADVISORY  WRITE 171 00:1b:9223372036855850032 0 EOF\n5: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849987 0 EOF\n6: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849976 0 EOF\n7: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849990 0 EOF\n8: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849993 0 EOF\n9: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849979 0 EOF\n10: POSIX  ADVISORY  WRITE 24754 00:1b:264792 0 EOF\n11: FLOCK  ADVISORY  WRITE 24754 00:1b:264792 0 EOF\n12: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850079 0 EOF\n13: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850085 0 EOF\n",
+  "budget_limit_seconds": 13800,
+  "spent_seconds": 8298.834639970002,
+  "remaining_seconds": 5501.165360029998,
+  "no_parallel_numerical_workers": true,
+  "context": "PID+startticks+cmdline and actual FLOCK/POSIX kernel entries, not heartbeat-only"
+}
