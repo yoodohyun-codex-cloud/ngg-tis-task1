@@ -52,7 +52,11 @@ f35의 signed complex coefficient vector는 3000 Hz: Re[0,−0.00966986335842917
 
 [CloudShapeBasis](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe/tools/java/CloudShapeBasis.java#L89)은 config의 모든 σ/εr을 읽고, [TisSweep.Net](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe/tis-java/TisSweep.java#L51)은 `γ=σ+j2πf ε0 εr`, ε0=8.8541878128e−12 F/m를 사용한다. **εr은 실제 연산에 적용된다.** 하지만 σ·εr 자체는 네 주파수에 같은 상수다. 용량성 항의 ω 의존성만 있고, 조직별 주파수 분산 모델·이방성 tensor·phantom 측정 교정은 없다. 소스 header도 물성을 “uncalibrated hypotheses, NOT measured phantom data”라고 명시한다. 이 상수의 실측/논문 추정 근거는 검토된 config/header에서 확인되지 않았다. 출처 없는 숫자를 검증된 생체 fat 특성으로 인증하지 않는다.
 
-NGG의 nominal PBS-derived contact impedance는 별도 주파수별 면적 임피던스(Ω m²)이며 fat σ나 skin의 실측 근거가 아니다. Rs-fit 창과 carrier/전원50 Ω도 구분한다. 새 batch는 이 물성을 먼저 그대로 재현하고, 이후 문헌 기반 시나리오가 필요하면 출처·주파수 범위·온도/조직 상태·불확실성을 등록한 별도 비교로 제안한다. 원하는 gradient를 만들기 위한 임의 조정은 금지한다.
+NGG의 nominal PBS-derived contact impedance는 별도 주파수별 면적 임피던스(Ω m²)이며 fat σ나 skin의 실측 근거가 아니다. Rs-fit 창과 carrier/전원50 Ω도 구분한다. 새 batch의 준비 단계에서 **실제 사용한 팬텀 제작 레퍼런스 논문과 배합**을 먼저 식별하고 현재 상수와 대조한다. 사용자는 이전 팬텀 논문을 물성 근거로 지정했다. 일반 생체 지방의 표준값을 대신 넣어 이 요구를 충족했다고 하지 않는다. 논문 제목/DOI·해당 표/그림/쪽, 실제 fat 모사층 배합·농도/단위·제작 조건, 측정 주파수와 온도·측정법/불확실성을 실행 config에 연결한다. 논문이 전도도만 보고하면 εr은 ‘미보고/별도 가정’으로 남기며 측정된 값으로 꾸미지 않는다. 보간·외삽이나 다른 배합의 값을 쓰면 그 범위와 이유를 별도 표시한다.
+
+2026-10-24 사용자 추가 지시를 반영했다. 지정된 원 Windows 작업 폴더·기존 담당자·진행 작업·원데이터·참고 논문은 부모 작업의 별도 읽기 전용 사전확인 대상이다. 이 클라우드 검토 환경이 그 경로에 접근할 수 있다고 추정하지 않는다. **정확한 논문 및 실제 배합의 식별·대조는 아직 미완료**이며, 부모가 전달할 근거와 원 계산 담당자의 확인으로 채워야 한다. 이 추가사항 자체는 접근 승인·새 계산 시작·물성 수정의 근거가 아니다.
+
+기존 물성 그대로의 baseline 재현은 기존 결과의 재현성 검사로 명확히 표시한다. 팬텀 논문 대조에서 차이가 확인되면 원 config를 보존하고, 근거·주파수/온도 조건·변경량을 고정한 별도 검증 config를 기존 예산 안의 유한 등록에 반영한다. 문헌값을 확인하지 않은 채 임의로 고치거나, 원하는 gradient를 만들기 위해 물성을 조정하지 않는다. 팬텀 근거 검증과 기존 수치 재현을 각각 판정한다.
 
 전체 전류는 전도+변위 성분이다([공식 electroquasistatics 설명](https://www.comsol.com/multiphysics/electromagnetics)). 이상적 계면에서 검증할 양은 접선 E와 법선 **Jtotal=γE**이며, σE만의 법선 연속이나 서로 다른 물질의 법선 E 연속을 강제하지 않는다. COMSOL 문헌은 물리식 참고일 뿐 이 Java 계산을 COMSOL 실행으로 보고하는 근거가 아니다.
 
