@@ -1,8 +1,31 @@
-# Task 1 fat층 검증 요청 — 2026-10-24
+# Task 1 SC·dermis·fat·muscle 재계산 검증 요청 — 2026-10-24
 
-**새 fat 검증 계산은 아직 시작되지 않았다.** 이 문서는 기존 계산 담당자에게 전달하는 실행 명세와 검토 기록이다. 검토 환경에서 solver/worker를 실행하거나 계산 브랜치를 변경하지 않았다. 기존 ID **T1-F004**(수치·물성/경계 검증), **T1-F001/F002**(부피·방향·부담 정의), **T1-F006/F007/F010**(단일 소유·중복 방지·실제 실행 인계)의 `FAT-20261024` 하위 요청으로 추적한다. 새 공식 ID를 만들거나 기존 실패를 닫지 않는다.
+**현재 지시는 네 층 전체의 물성 근거를 재검토한 뒤 별도 신규 PDE로 검증하는 것이다.** 기존 미교정 baseline·원자료·실패·GUI는 보존한다. 이번 전 층 확대 요청의 계산측 채택/새 실행 근거는 아직 없으며 이 검토 환경에서는 PDE/worker를 시작하지 않았다.
 
-사용자 지시: “아니 새 시뮬레이션 하라고 지시해 … fat 레이어의 전기적 특성도 제대로 세팅되었는지 다시 점검해.” 따라서 기존 그림 재색칠이나 캐시 후처리만으로 이 요청을 완료 처리할 수 없다. 다만 skin/muscle과 같은 매끄러운 기울기가 반드시 있어야 한다는 가설에 맞춰 물성·장을 바꾸지 않는다.
+기존 **T1-F004/F001/F002/F006/F007/F010 — FAT-20261024** ID와 댓글6390505397을 계속 사용한다. 추적 이름은 유지하지만 범위는 SC·dermis·fat·muscle 전체로 확대됐다. 아래 예전 fat 중심 기록은 이력이며 현재 실행 범위에는 이 절과 개정 §5가 우선한다. 공개 내용은 기존 가정값·논문 대비 불일치·서지 출처·미확인 항목·재계산 지시로 한정한다.
+
+## 0. 전 층 물성 근거표와 현재 실행 지시
+
+| 층 | 기존 σ (S/m) / εr (무차원) | 근거 감사와 불일치 | 새 config 전에 확정할 것 |
+|---|---|---|---|
+| SC | .0002 /110000 | 이전 전체 Skin 값 일부를 SC 가정에 재사용. Goyal2022는 해당 층의3kHz bulk σ/εr를 제공하지 않음 | 실제 SC 모사체·공극/수화·두께·주파수별 σ/εr 근거. 미확보 값은 sensitivity assumption으로 표시 |
+| dermis 모사체 | .2 /10000 | 원 README의 가정. Goyal의 PVA 아래층은 나머지 epidermis/dermis/hypodermis를 합친 deeper-tissue 등가층이며 독립 dermis가 아님 | 5mm 독립 dermis 모사체로 대응시킬 근거와 bulk 물성. 전체 두층5mm를 dermis5mm의 근거로 쓰지 않음 |
+| fat 모사체 | .04 /1000 | Anand Fig10의 제작 fat σ 전체 표시범위 약.013–.025 S/m는.04를 지지하지 않음. εr1000의 carrier 근거 없음 | 겹친 저주파 점으로2k/2010/3k/3030Hz 정확값을 만들지 않음. 원시표/재료 fit 또는 명시적 가정 필요 |
+| muscle 모사체 | .3 /100000 | Anand Fig11b의 그림 근사 εr는2kHz 부근 약3.7–4×10⁵,3kHz 부근 약3.2–3.6×10⁵로 현재10⁵와 불일치. σ=.3의 carrier별 일치도 미확인 | 위 εr 범위를 정밀 입력/통계 불확도 구간으로 쓰지 않음. 실제 주파수 자료와 배합·온도·원 fit 필요 |
+
+기존 수치의 출처는 [원 tis-java README의 가정 물성 절](https://github.com/yoodohyun-codex-cloud/ngg-tis-simulation/blob/8c3a30a778cc9bf19ccb52ca523598bff0a84650/tis-java/README.md#가정-물성-측정값으로-오해하지-말-것)과 [model-inputs의 legacy60Hz 기록](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/d6167f21e3d533952025571234f5a8751cdda557/tis-java/model-inputs.json)이다. README는 전체 Skin 값 일부의 SC 재사용과 **모든 εr의 탐색 가정**을 명시한다. legacy60Hz 전도도 이력을 현재 carrier의 실측 근거로 바꾸지 않는다. 원 파일의 null/legacy 상태도 보존한다.
+
+[ Goyal, Borkholder, Day (2022), *A biomimetic skin phantom for characterizing wearable electrodes in the low-frequency regime*](https://doi.org/10.1016/j.sna.2022.113513), *Sensors and Actuators A: Physical*340,113513: §2.1–2.2/PDF2–4쪽과 Fig2/PDF4쪽은 SC와 deeper-tissue PVA 등가층을 구분한다. 전체 phantom 두께0.5cm는 §3.1/PDF4쪽의 **전체 두층5mm**다. 검증 주파수1–1000Hz의 측정 Z에는 전극–팬텀 계면과 phantom이 함께 포함되며 층별 σ/εr 표가 없다. 이를 SC/독립 dermis의2–3kHz bulk값으로 역지정하지 않는다. 로컬8쪽 PDF SHA256 `6d6bd13017e1674f041dccac19ec5f37bee34b50b791c11caa9b8cf09936eaf8`와 Fig2/§3.1 렌더·본문을 직접 확인했다. PDF/그림은 게시하지 않는다.
+
+Anand2019의 전체 서지·SHA·방법·Fig10/11 근거는 §3에 있다. 개별 재료는 E4980A/coaxial1kHz–2MHz50점이고, 완성 전완만 Quadra1–349kHz15점 후 Cole fit2MHz 확장이다. 원시 주파수 물성표/개별 재료 fit 계수 없이 정확한 carrier값을 조작하지 않는다. **NGG의 PBS EIS는 전극 계면 자료이며 네 층의 bulk σ/εr가 아니다.**
+
+현재 감사에서 단위·`γ=σ+j2πfε0εr`·mm→m·층 순서에 명백한 오류는 발견되지 않았다. 이 결과는 재료값의 검증을 뜻하지 않는다. 기존 SC 값에서3kHz의 Imγ/Reγ=`2π·3000·ε0·110000/.0002`≈**91.7936**이므로 εr 가정의 영향은 따로 검사해야 한다. 이 비율은 입력값의 산술 점검이며 새 PDE 결과가 아니다.
+
+**물성 감사와 복소 envelope 계산식 감사는 별개 검증 행으로 제출한다.** 고정방향의 두 순수 carrier는 peak phasor 투영 후 `2 min(|n·E1|,|n·E2|)`의 max−min convention을 확인한다. 같은 주파수의 두 출력은 complex 합산한 뒤 크기/전력을 구한다. 단일 carrier·한 tone0·같은 투영 진폭·직교/위상차 벡터 등의 해석 가능한 예제와 복소 시간파형을 대조하고, 최대방향 표본2074개와 고정방향·RMS·harmonic 포함량을 분리한다. 다주파수 합성 파형에 두 tone 공식을 무조건 확장하지 않는다. 수식 검사 통과를 물성/격자 검증 통과로 쓰거나 그 반대로 쓰지 않는다.
+
+**실행 요구:** 현재 담당자가 아래 §5의 단일 소유/자원 admission을 확인하고 네 층의 σ·εr·주파수·단위·물성 출처/미확인 가정을 모두 포함한 reset 근거표와 config diff를 작성한 후, 새 고유 run에서 네 층 PDE를 다시 푼다. 원물성이 없으면 가정 민감도 결과와 원자료 확보 과제를 나누며 “논문 재현”으로 표시하지 않는다. GUI 재생성·기존 native 재사용은 새 시뮬레이션 수행으로 인정하지 않는다.
+
+이전 fat 요청의 담당자 수신은 별도 확인됐고 [담당자의 공개 댓글6390625143](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6390625143)도 해당 요청을 별도 미실행으로 유지한다. **이번 전 층 확대 지시의 수신·채택·실행은 별도 확인 대상**이다. 현재 검토 환경에는 원 task로 직접 전달하는 도구가 없으므로 기존 GitHub 요청을 갱신한다. credential/보안/연결 설정을 변경하거나 중복 worker를 만들지 않는다.
 
 검토 snapshot: PR2 `b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe`; 직전 `8eb12d1` 대비 centered C1 결과 79개 경로가 추가됐다. README, AGENTS, RESEARCH_LOOP 및 기존 검토 장부를 읽었다. 이 checkout은 검토 패키지이며 원 계산 환경이 아니다.
 
@@ -85,15 +108,16 @@ NGG의 nominal PBS-derived contact impedance는 별도 주파수별 면적 임�
 
 기존 [mesh-convergence](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe/docs/cloud-restart-20261020/mesh-convergence.json)의 coarse→XY80 square 비교는 surface_J_RMS_max +23.068646%, contactV +23.070630%로5% gate **failed**다. 목표 ROI mean/P10의 작은 변화와 [실행 보존/잔차 pass](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe/docs/cloud-restart-20261020/mesh-c1-execution.json)는 이를 없애지 않는다. fat 전체 min/계면 E의 수렴은 **not-run/not-established**다. baseline 원 volume.npz가 공개 tree에 없으므로 compact 그림이 이를 대체하지 못한다.
 
-## 5. 기존 계산 소유자에게 요청하는 유한 실행 순서
+## 5. 기존 계산 소유자에게 요청하는 유한 실행 순서 — 전 층 확대
 
-이는 실행 명령/등록 완료본이 아닌 **채택·사전등록 요청**이다. 기존 소유자가 현재 환경에서 실행 가능한 entrypoint와 정확한 명령을 확정해야 한다. 검토자가 새 worker나 옛 명령을 자동 실행하지 않는다.
+기존 fat-only baseline→bulk 순서보다 **SC/dermis/fat/muscle 전체의 물성 재설정 근거표와 새 PDE 검증**을 우선한다. 기존 원자료·미교정 baseline은 comparator로 보존한다. 이 문서는 계산 담당자에게 주는 실행 지시이며 실제 소유 환경에서의 등록·시작 완료를 대신하지 않는다.
 
-1. **소유권·중복·자원 admission.** 원 Task1 task/environment 식별자, 현재 PID/startticks·자식·두 lock·현 queue/등록·최신 remote와 local source를 확인한다. centered C1 후처리/게시나 fat 관련 작업이 이미 있으면 그 소유자가 안전한 단계 경계에서 이어가며 중복 solve를 만들지 않는다. 존재하는 cache를 새로운 계산으로 세지 않는다.
-2. **재료/격자/경계 준비.** 위 논문의 원문 근거와 미확보 carrier 물성을 구분하여 기존 상수 재현인지 별도 가정 민감도인지 먼저 표시한다. 원물성표 없이 논문 재현으로 사전등록하지 않는다. 위 case/config/mask SHA와 runtime effective material 표(각 f의 실제 complex γ), 길이 단위 변환, z-face/center/layer index를 보관한다. fat는5.1≤z<10.1 mm; 부동소수점 face10.100000000000005 등의 허용 처리와 실제 mask를 검사한다. material ID와 GUI 색상 이름을 따로 확인한다.
-3. **최소 새 재현 1조건.** canonical baseline h0.625/SC2/bulk14/14/40, 원4주파수×2 RHS를 고유 run에 새로 풀어 기존 정의를 재현한다. 원 코드/config/mask/계수·입력 hash를 고정하고 원본/기존 GUI/current pointer를 보존한다. 실제 새 solve가 불가능하면 `not_run`과 원인을 명시한다. cached postprocess만 수행한 경우 이 단계의 대체 성공으로 세지 않는다.
-4. **첫 단계 통과 후 최대1조건 추가.** 같은 baseline h0.625/SC2에서 현재 구현이 지원하는 bulk18/18/56을 사용하여 fat 내부와 두 경계의 민감도를 비교한다. 이는 dermis/fat/muscle을 함께 세분화한 **coupled bulk 비교**이며 fat-only가 아니다. 첫 admission은 최대2개 새 native 조건이다. 원 config 재현 실패나 자원 gate 실패면 중단하여 실패를 보존한다.
-5. **기존 native의 제한된 비교 및 다음 결정.** 이미 완료된 baseline coarse/XY80/bulk와 best1 f35 native가 원 환경에 있고 SHA/format이 맞으면 추가 solve 없이 새 fat 통계를 얻어 재사용으로 표시한다. 새로운 두 수준에서도 fat/경계가 미수렴이면 다음 XY h0.5 비교를 별도 유한 등록으로 제안한다. 정확한 best1 새 solve가 필요하면 남은 예산/보존 공간과 함께 다음 등록에 명시한다. 이 최초2조건 요청에는 자동 XY sweep·best1 재계산·새 물성 탐색을 붙이지 않는다. 재사용 best1만으로 best1의 새 계산/수렴을 주장하지 않는다.
+1. **소유권·중복·자원 admission.** 현재 담당자가 PID/startticks·자식·두 lock·진행 phase·등록/remote/local source·이미 수행 중인 전 층/물성 작업을 확인한다. 실행 중이면 같은 소유자가 안전한 단계 경계에서 이어간다. 공개 게시 또는 오래된 종료 기록을 live lock 확인으로 대체하지 않는다. 예산·영속보존 peak·RAM/tmpfs 한도를 실제 원장에서 확인한다.
+2. **전 층 material reset 근거표.** 각 층/각 실제 carrier와 harmonic에 `old_sigma_S_m, old_epsilon_r, proposed_sigma_S_m, proposed_epsilon_r, frequency_Hz, source_DOI/page/figure, measured_or_fit_or_assumed, temperature, recipe, unit_conversion, interpolation_or_extrapolation, uncertainty_or_missing`를 채운다. 단순히 fat만 바꾸거나 다른 세 층을 확인 없이 검증 완료로 두지 않는다. 값이 없으면 null/필요 자료와 명시적 sensitivity assumption을 구분하고 선택 근거를 기록한다. 정확값처럼 표시할 새 숫자를 꾸미지 않는다.
+3. **별도 code/config diff와 두 감사.** 형상·회로·원 출력 convention을 고정하고 새 σ/εr/frequency 적용을 기존 baseline과 비교한다. material lookup→γ·단위·층 mask와 복소 envelope 공식/합성/peak↔RMS 감사를 별도 gate로 등록한다. 주파수별 물성 지원을 바꾸어야 한다면 기존 코드 지원 범위와 새 구현·검증을 명시하며 old producer/결과를 덮어쓰지 않는다.
+4. **새 native PDE, 최초1조건부터.** D50mm,SC/dermis/fat/muscle .1/5/5/15mm,4패드/2출력/commonGND/각50Ω를 고정한다. canonical baseline geometry/source와 새 등록 material config로 첫 실제 새 solve를 고유 run에 수행한다. 현재 baseline의 실제4주파수×2RHS 및 f35의 정확한 복소 계수/활성 주파수를 구분한다. 기존 native를 재색칠/합성하거나 GUI만 갱신하여 이 단계를 완료 처리하지 않는다. 실제 데이터 확보 전이라면 결과를 **네 층의 명시적 가정 민감도**로 표시하고 논문 재현/실제 팬텀 교정은 보류한다.
+5. **첫 결과 후 한정 확인.** 기존 승인 원장 안에서 다음 최대1조건을 추가할 수 있다. 첫 결과가 드러낸 가장 큰 불확실성에 대해 동일격자의 한 material scenario 또는 지원되는 coupled-bulk/XY 중 하나를 사전등록하며 동시에 여러 요인을 무통제 변경하지 않는다. 최초 admission은 최대2개 새 native 조건이고 자동 sweep은 없다. 현재 best1 f35의 새 material solve가 이 조건에 선택되지 않으면 `not_run`으로 남긴다. 기존 best1 native 비교는 comparator/reuse로만 표시한다.
+6. **완료/실패와 후속 전달.** 실행 run ID·소유 환경·source/config/mask/물성표 SHA·config diff·명령·시작/종료·PID/startticks·exit·예산 전후를 게시한다. raw complex φ/E/J·grid·source current·contact/층/50Ω loss와 아래 §6–7의 네 층 통계/계면/수렴 결과를 보존한다. 제출한 각 검사에 passed/failed/not-run과 이유를 붙인다. 원자료·담당 연결·자원 부족이면 정확한 blocker를 보고하며 GUI 작업으로 완료를 대신하지 않는다. 전 층 물성 확인과 새 시뮬레이션 검증의 미완료 하위단계를 그대로 남긴다.
 
 기존 상한 CPU1, 동시PDE1, heap2 GiB, RSS 및 소유 tmpfs 합3 GiB,800000cells, 원2 GiB disk reserve, 총 승인13800초를 유지한다. 조건당600초 및 필요한 준비·후처리·게시·보존 peak를 실제 원장 안에서 사전 예약한다. “남은 시간 전부 새 배치 예산”으로 계산하지 않는다.
 
@@ -107,14 +131,14 @@ centered C1의 작은1주파수/1RHS tmpfs 처리·공개 성공이4주파수/2R
 
 - 실제 φ의 실수/허수와 complex E/J의 부호·축·SI 단위·peak/RMS를 확인한다. z5.1/10.1 mm에서 인접 **셀 중심 E**를 face의 한쪽 극한값으로 바로 비교하지 않는다.
 - 평면1D layered-slab 분석해(직렬 complex impedance, 일정 Jtotal, 층별 E=Jtotal/γ)와 균질 affine potential 검사로 conductance·경계 재구성을 확인한다. 이는 원통의 전역 정확도 검증이나 실제 새 baseline solve의 대체가 아니다.
-- 두 인터페이스에서 양쪽 potential 기반의 독립적인 one-sided gradient/외삽을 정의해 접선 Ex/Ey의 차이, face potential 차이, 법선 γE의 차이를 complex 값과 정규화 분모/작은 값 처리까지 기록한다. 계단 측벽 근처와 내부를 사전 정의한 거리로 분리하되 전체 결과를 숨기지 않는다.
+- SC/dermis z0.1mm를 포함한 세 인터페이스에서 양쪽 potential 기반의 독립적인 one-sided gradient/외삽을 정의해 접선 Ex/Ey의 차이, face potential 차이, 법선 γE의 차이를 complex 값과 정규화 분모/작은 값 처리까지 기록한다. 계단 측벽 근처와 내부를 사전 정의한 거리로 분리하되 전체 결과를 숨기지 않는다.
 - 기존 `interfaceContinuity`는 같은 shared face flux로 face φ와 양쪽 J를 재구성하므로 거의 기계 정밀도의 일치는 **조립식 자기 정합**이다. 이를 독립 계면 정확도/접선 E/격자 수렴으로 확대하지 않는다. shared-flux check와 위 독립 진단을 별도 행에 둔다.
 - 기존 residual≤2e−7, power≤2e−7, current≤2e−6, area≤1e−10, interface-normal≤2e−7 gate를 유지하고 실제 max·threshold·pass/fail을 게시한다. 새로운 analytic/gradient/fat-stat 비교의 정확한 norm·허용치·좌표 대응은 결과를 보기 전에 계산 담당자가 사전등록한다. 독립 검사에 등록 기준이 없으면 “diagnostic/not-gated”로 남기며 pass를 사후 발명하지 않는다.
 - XY 비교는 원통 mask 체적·계단 측벽과 패드 교차 면적·경계 거리의 변화를 함께 보고한다. 서로 다른 위치의 극값을 같은 점 오차처럼 쓰지 않는다. 두 수준 변화만으로 완전 수렴을 인증하지 않는다.
 
 ## 7. 필수 결과와 상태 장부
 
-전체3D fat에 대해 volume-weighted min/P10/median/P90/max, 각 extrema의 좌표·cell ID, quantile의 ECDF/가중치/대표 cell 선택·동률 처리, 실제 체적·셀수·NaN/Inf 수를 저장한다. P10/P90 등이 단일 좌표의 고유값은 아니므로 대표 좌표와 통계 정의를 함께 둔다. 동일 정의의 깊이별 분포와 지정 XZ/XY/YZ 단면은 별도 결과다.
+**SC·dermis·fat·muscle 각각의 전체3D 부피**에 대해 volume-weighted min/P10/median/P90/max, 각 extrema의 좌표·cell ID, quantile의 ECDF/가중치/대표 cell 선택·동률 처리, 실제 체적·셀수·NaN/Inf 수를 저장한다. P10/P90 등이 단일 좌표의 고유값은 아니므로 대표 좌표와 통계 정의를 함께 둔다. 동일 정의의 깊이별 분포와 지정 XZ/XY/YZ 단면은 별도 결과다.
 
 주파수별 complex vector E와 Jtotal 및 conduction J, carrier별 RMS, 전체 RMS, 고정방향 x/y/z TIS, 기존2074방향 maxTIS/최대방향 index를 구분한다. 같은 주파수의 두 출력은 **complex 합산 후** RMS/전력을 계산한다. 두 tone 고정방향 변조의 정의(예: peak phasor 투영의2 min 진폭), fundamental와 harmonic 포함 RMS, directional sampling 한계를 명시한다. 전원 전류·loaded/contact voltage·전력/층별/접촉/50 Ω 손실 및 표층·목표 ROI·비표적 분포도 같은 합성·정규화로 보존한다.
 
@@ -122,11 +146,11 @@ centered C1의 작은1주파수/1RHS tmpfs 처리·공개 성공이4주파수/2R
 
 | 기존 ID / 하위 요청 | 현재 판정 | 완료에 필요한 직접 근거 |
 |---|---|---|
-| F004/F010 FAT-20261024 인계 | requested; 계산측 채택/담당 연결 미확인 | adoption source/commit, 기존 소유 task/environment·lock 확인 |
+| F004/F010 FAT-20261024 인계 | 이전 fat 수신 확인; 전 층 확대 requested, 채택/시작 미확인 | adoption source/commit, 기존 소유 task/environment·lock 확인 |
 | F004 config→γ 정적 감사 | passed, 공개 코드·바이트/hash 연결 범위 | 새 실행 effective material/config hash는 별도 필요 |
-| F004 팬텀 물성 근거 | 논문/방법/배합·그림 확인; 현재 fat σ=.04·εr1000의 논문 근거는 **unsupported** | exact carrier σ/εr·원시표/재료 fit 미확보; 논문 재현·실험 교정 보류 |
+| F004 네 층 팬텀 물성 근거 | 출처·가정·불일치 표 작성; SC/dermis 독립 bulk 근거와 fat/muscle carrier 수치 미검증 | exact σ/εr·원시표/재료 fit 미확보; 논문 재현·실험 교정 보류 |
 | F001/F004 전체 fat min8 주장 | failed, 인계된 compact XY 반례 | 원 Float64 전체3D extrema는 아직 미검증 |
-| F004 새 fat baseline·bulk 배치 | **not_run** | 고유 run ID, 시작/종료/PID/startticks/명령/환경/exit와 직접 artifact URL |
+| F004 네 층 material reset·새 native 배치 | **not_run** | 고유 run ID, 시작/종료/PID/startticks/명령/환경/exit와 직접 artifact URL |
 | F004 기존 baseline 이산 보존 | 공개 기록 passed | 이 검사만으로 fat 경계/극값 수렴을 닫지 않음 |
 | F004 XY surface/contact 수렴 | failed 유지 | 동일 정의·새 격자 근거; 임계값 변경 불가 |
 | F004 fat extrema/독립 경계 E 수렴 | not-run/not-established | raw φ/complex fields, analytic/gradient/mesh 수치·gate |
