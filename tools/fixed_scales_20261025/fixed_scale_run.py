@@ -6,10 +6,10 @@ import argparse,base64,gzip,hashlib,json,os,re,shutil,signal,subprocess,tempfile
 from pathlib import Path
 for key in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'):os.environ[key]='1'
 ROOT=Path('/workspace/ngg-tis-task1')
-RUN=Path('/dev/shm/task1-fixed-scales-20261025')
+RUN=Path('/dev/shm/task1-fixed-scales-20261025-r2')
 SRC=RUN/'source';OUT=RUN/'results'
 REPO='yoodohyun-codex-cloud/ngg-tis-task1';BRANCH='codex/task1-cloud-restart-20261020'
-PARENT='d0047b2f6f2e1caaead2407982e5991b32be9e6d'
+PARENT='cdf34835dcb79c95fe4d74c1e0f63e9c29112ab0'
 PUBLIC='docs/TASK1_FIXED_SCALES_20261025';PUBLIC_SRC='tools/fixed_scales_20261025'
 BASE=Path('/dev/shm/task1-paper-figure-20261025/results/index.html')
 LEDGER=ROOT/'runtime/task1-budget.json';GIB=1024**3
@@ -55,7 +55,7 @@ def browser_check(html,guard,state):
                             for direction in ('x','y','z'):
                                 for color in ('linear','log'):
                                     for window in ('100','2'):
-                                        page.evaluate('(v)=>{for(const [id,value]of Object.entries(v))document.getElementById(id).value=value;document.getElementById("paper-window").dispatchEvent(new Event("change",{bubbles:true}));}',{'paper-plane':plane,'paper-direction':direction,'paper-color':color,'paper-window':window})
+                                        page.evaluate('(v)=>{for(const [id,value]of Object.entries(v))document.getElementById(id).value=value;document.getElementById("paper-color").dispatchEvent(new Event("change",{bubbles:true}));}',{'paper-plane':plane,'paper-direction':direction,'paper-color':color,'paper-window':window})
                                         check();counts['paper']+=1
                         for plane in page.locator('#shape-plane option').evaluate_all('(a)=>a.map(x=>x.value)'):
                             for frequency in ('all','3000','3030'):
@@ -96,7 +96,7 @@ def main():
         receipt=dict(schema='task1-field-shape-stage-v1',stage=stage,status='failed_preserved',started_utc=bounded.now(),pid=pid,proc_start_ticks=ticks,new_PDE=0,remaining_before=policy.remaining_seconds(ledger))
         def guard():
             known=bounded.owned_descendants(pid,ticks,state['owned']);live={p:t for p,t in known.items()if bounded.live(p,t)}
-            rss=sum(bounded.rss(p)for p in live);used=total_size(RUN)+total_size('/dev/shm/task1-paper-figure-20261025')+total_size('/dev/shm/task1-field-shape-export-20261025')+sum(total_size(p)if p.is_dir()else p.stat().st_size for p in Path('/dev/shm').glob('task1-centered-c1-y0-20261025-*'))
+            rss=sum(bounded.rss(p)for p in live);used=total_size(RUN)+total_size('/dev/shm/task1-fixed-scales-20261025')+total_size('/dev/shm/task1-paper-figure-20261025')+total_size('/dev/shm/task1-field-shape-export-20261025')+sum(total_size(p)if p.is_dir()else p.stat().st_size for p in Path('/dev/shm').glob('task1-centered-c1-y0-20261025-*'))
             if state.get('scratch')is not None and state['scratch'].exists():used+=total_size(state['scratch'])
             state.update(owned=live,peak_RSS=max(state['peak_RSS'],rss),peak_tmpfs=max(state['peak_tmpfs'],used),peak_accounted=max(state['peak_accounted'],rss+used))
             require(time.monotonic()-start<cap and rss+used<3*GIB and total_size(RUN)<128*1024**2,'Finite RSS+tmpfs/time/output gate')
@@ -182,6 +182,8 @@ def main():
                     elif stage=='publish-results':
                         require(read(OUT/'validation.json')['status']=='cached_fields_GUI_verified_unadopted','Actual GUI validation prerequisite')
                         files={PUBLIC+'/'+p.name:p for p in OUT.iterdir()if p.is_file()}
+                        files[PUBLIC+'/evidence/axis-only-v1-build-receipt.json']=Path('/dev/shm/task1-fixed-scales-20261025/build-receipt.json')
+                        files[PUBLIC+'/evidence/axis-only-v1-preregistration.json']=Path('/dev/shm/task1-fixed-scales-20261025/preregistration.json')
                         for name in ('prepare-receipt.json','prepare-tests.log','build-receipt.json'):files[PUBLIC+'/evidence/'+name]=RUN/name
                         result=publish(files,source['commit'],'Publish globally fixed E/J scales and plot axes across all GUI selections; preserve scientific data')
                         write_new(RUN/'result-publication.json',result);receipt.update(status='GUI_published_readback_verified',result_commit=result['commit'])
