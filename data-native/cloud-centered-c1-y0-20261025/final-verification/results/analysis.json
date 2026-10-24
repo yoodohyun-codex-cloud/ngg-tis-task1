@@ -1,0 +1,2423 @@
+{
+  "schema": "task1-best1-single-pair-comparison-v1",
+  "status": "calculated_unadopted",
+  "reference": {
+    "candidate_id": "rounded-expand-f35b23a22166",
+    "source_case_id": "rounded-fullface225-xy80",
+    "source_run_id": "cloud-rounded-fullface-20261021T200000Z",
+    "source_commit": "10a70e9cfa19537825f2f5e829b7d1d14acbd35c",
+    "configuration_sha256": "cd9053286100f9ecb03180c1313f3fbca51d225a072594b97567f84aa4275ed0"
+  },
+  "single_pair": {
+    "case_id": "centered-square15-C1-y0-xy80-f3000",
+    "source_run_id": "task1-centered-c1-y0-20261025-run-r2",
+    "circuit": {
+      "n_pads": 2,
+      "n_outputs": 1,
+      "n_signal_pads": 1,
+      "n_return_pads": 1,
+      "n_return_nodes": 1,
+      "pad_to_node": {
+        "0": "out0",
+        "1": "GND"
+      },
+      "return_topology": "one_actual_return_pad_at_GND",
+      "source_Vpp_each": 1.0,
+      "source_peak_V": 0.5,
+      "source_resistance_ohm": 50.0,
+      "carrier_assignment_Hz": [
+        3000
+      ],
+      "basis_phase": "cosine peak0.5+0j; pure-sine postprocessing coefficient-j",
+      "inactive_impedance_keys_Hz": [
+        3030,
+        9000,
+        9090
+      ],
+      "other_TIS_pads_physically_present": false,
+      "other_TIS_output_present": false
+    },
+    "frequency_Hz": 3000,
+    "raw_source_Vpp": 1.0,
+    "unit_centre20_E_RMS_V_m": 1.5139312574479629,
+    "unit_ROI_energy_RMS_V_m": 1.684855498674556,
+    "physical_pad_centres_mm": [
+      [
+        -10,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "source_commit": "2339c6b4d638294cb615d1eafa7d806b9a838f74"
+  },
+  "geometry_comparison": {
+    "TIS_pads": 4,
+    "C1_pads": 2,
+    "TIS_outputs": 2,
+    "C1_outputs": 1,
+    "TIS_total_contact_area_mm2": 900.0,
+    "C1_total_contact_area_mm2": 450.0,
+    "same_pad_shape": false,
+    "TIS_shape": "Rounded stepped native full-face union,225mm2 per pad",
+    "C1_shape": "Two15x15mm square pads,225mm2 per pad including return",
+    "hold": "Shape, pad count, return geometry and total contact footprint differ; this is not a shape-matched two-rounded-pad control",
+    "C1_centres_mm": [
+      [
+        -10,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "old_offcenter_control_centres_mm": [
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        -10
+      ]
+    ]
+  },
+  "ROI_definition": {
+    "primary_radius_mm": 5.0,
+    "depth_from_surface_mm": [
+      15.0,
+      20.0
+    ],
+    "coordinate_system": "Surface z=0; +z is depth; x/y horizontal",
+    "energy_RMS": "sqrt(weighted mean(E_RMS squared)) = hypot(weighted mean(E_RMS),weighted population std(E_RMS)); not mean(E_RMS)"
+  },
+  "burden_definitions": {
+    "surface_J_RMS_max_A_m2": "Contact-normal patch current-density RMS maximum; not bulk vector J",
+    "surface_J_RMS_p95_A_m2": "Contact-area weighted contact-normal patch current-density RMS P95",
+    "contact_voltage_RMS_max_V": "Maximum electrode-interface voltage RMS",
+    "SC_power_W": "Stratum-corneum tissue loss only",
+    "contact_power_W": "Electrode-interface real loss only",
+    "source_power_W": "Ideal-source average real power including tissue, contact and source-resistor losses",
+    "bulk_skin_J_vector_RMS_max_A_m2": "SC plus dermis volume vector-current-density RMS maximum",
+    "bulk_skin_J_vector_RMS_p95_A_m2": "SC plus dermis volume-weighted vector-current-density RMS P95",
+    "skin_SC_plus_dermis_power_W": "SC plus dermis tissue loss; excludes electrode-interface loss"
+  },
+  "modes": {
+    "raw_1Vpp": {
+      "reference_amplitude_scale": 1.0,
+      "reference_source_Vpp_intervals_V": [
+        [
+          0.988605383369711,
+          0.9886061134362394
+        ],
+        [
+          0.9999992472108359,
+          1.0
+        ]
+      ],
+      "reference_burdens": {
+        "surface_J_RMS_max_A_m2": 16.273860458328592,
+        "surface_J_RMS_p95_A_m2": 10.968432214824261,
+        "contact_voltage_RMS_max_V": 0.0017137358374759225,
+        "SC_power_W": 1.7738659258423273e-06,
+        "contact_power_W": 1.3295598773879826e-06,
+        "source_power_W": 0.0008481980950080163,
+        "bulk_skin_J_vector_RMS_max_A_m2": 17.085254144459785,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.196293683956744,
+        "skin_SC_plus_dermis_power_W": 0.0005516134492131069
+      },
+      "reference_output_RMS_by_output_mA": [
+        1.2520108115975819,
+        1.2772033200535202
+      ],
+      "reference_output_RMS_sum_bookkeeping_mA": 2.529214131651102,
+      "reference_signed_output_power_evidence": {
+        "schema": "task1-output-power-evidence-v1",
+        "common_amplitude_scale": 1.0,
+        "source_resistance_ohm": 50.0,
+        "outputs": [
+          {
+            "output_index": 0,
+            "ideal_source_power_W": 0.0004155053472665727,
+            "metal_delivered_power_W": 0.0003371287936487109,
+            "source_resistor_loss_W": 7.837655361786181e-05,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "current_peak_A": {
+                  "real": 0.0003541546674485455,
+                  "imaginary": -0.0017227808882228075
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.017707733372427276,
+                  "imaginary": -0.3973541235103184
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": -0.4834931679214588
+                },
+                "ideal_source_power_W": 0.0004164763946406949,
+                "metal_delivered_power_W": 0.000339141406708161,
+                "source_resistor_loss_W": 7.733498793253389e-05
+              },
+              {
+                "frequency_Hz": 3030,
+                "current_peak_A": {
+                  "real": -6.350970722584961e-06,
+                  "imaginary": 0.00020401542241702602
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.004517383143085339,
+                  "imaginary": -0.019870634479280475
+                },
+                "ideal_voltage_peak_V": {
+                  "real": -0.004834931679214587,
+                  "imaginary": -0.009669863358429174
+                },
+                "ideal_source_power_W": -9.710473741222298e-07,
+                "metal_delivered_power_W": -2.0126130594501472e-06,
+                "source_resistor_loss_W": 1.0415656853279174e-06
+              },
+              {
+                "frequency_Hz": 9000,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              },
+              {
+                "frequency_Hz": 9090,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              }
+            ],
+            "current_RMS_A": 0.0012520108115975821,
+            "current_RMS_mA": 1.252010811597582
+          },
+          {
+            "output_index": 1,
+            "ideal_source_power_W": 0.0004326927477414437,
+            "metal_delivered_power_W": 0.000351130331703657,
+            "source_resistor_loss_W": 8.156241603778676e-05,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "current_peak_A": {
+                  "real": -9.859106813000912e-06,
+                  "imaginary": 0.00021663492611501283
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.004341976338564542,
+                  "imaginary": -0.015666677984965228
+                },
+                "ideal_voltage_peak_V": {
+                  "real": -0.004834931679214587,
+                  "imaginary": -0.004834931679214586
+                },
+                "ideal_source_power_W": -4.998734796194242e-07,
+                "metal_delivered_power_W": -1.6755708096196048e-06,
+                "source_resistor_loss_W": 1.1756973300001807e-06
+              },
+              {
+                "frequency_Hz": 3030,
+                "current_peak_A": {
+                  "real": 0.0003593716038369934,
+                  "imaginary": -0.0017567927591685623
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.01796858019184967,
+                  "imaginary": -0.40532339332145984
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": -0.4931630312798879
+                },
+                "ideal_source_power_W": 0.00043319262122106314,
+                "metal_delivered_power_W": 0.0003528059025132766,
+                "source_resistor_loss_W": 8.038671870778658e-05
+              },
+              {
+                "frequency_Hz": 9000,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              },
+              {
+                "frequency_Hz": 9090,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              }
+            ],
+            "current_RMS_A": 0.0012772033200535203,
+            "current_RMS_mA": 1.2772033200535204
+          }
+        ],
+        "totals": {
+          "ideal_source_power_W": 0.0008481980950080164,
+          "metal_delivered_power_W": 0.0006882591253523679,
+          "source_resistor_loss_W": 0.00015993896965564857
+        },
+        "unscaled_saved_metric_verification": {
+          "source_power_W": [
+            {
+              "recomputed": 0.0008481980950080164,
+              "saved": 0.0008481980950080163,
+              "absolute_difference": 1.0842021724855044e-19,
+              "passed": true
+            }
+          ],
+          "source_resistor_power_W": [
+            {
+              "recomputed": 0.00015993896965564857,
+              "saved": 0.00015993896965564857,
+              "absolute_difference": 0.0,
+              "passed": true
+            }
+          ],
+          "source_current_RMS_by_output_mA": [
+            {
+              "recomputed": 1.252010811597582,
+              "saved": 1.2520108115975819,
+              "absolute_difference": 2.220446049250313e-16,
+              "passed": true
+            },
+            {
+              "recomputed": 1.2772033200535204,
+              "saved": 1.2772033200535202,
+              "absolute_difference": 2.220446049250313e-16,
+              "passed": true
+            }
+          ]
+        },
+        "verification_tolerance": {
+          "relative": 2e-12,
+          "absolute": 1e-15,
+          "units": "W for power and mA for stored output current vector"
+        },
+        "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+        "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+        "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+        "new_PDE": 0,
+        "numerical_or_experimental_validation_promoted": false,
+        "requires_source_power_absorption": true,
+        "has_negative_metal_delivered_power": false,
+        "requires_output_power_absorption": true,
+        "has_negative_per_frequency_ideal_source_power": true,
+        "hardware_absorption_and_compliance_validated": false
+      },
+      "reference_layer_contact_source_losses_W": {
+        "SC_power_W": 1.7738659258423273e-06,
+        "dermis_power_W": 0.0005498395832872645,
+        "fat_power_W": 0.0001072492478829416,
+        "muscle_power_W": 2.806686829255259e-05,
+        "contact_power_W": 1.3295598773879826e-06,
+        "source_resistor_power_W": 0.00015993896965564857,
+        "source_power_W": 0.0008481980950080163,
+        "skin_SC_plus_dermis_power_W": 0.0005516134492131069,
+        "skin_and_contact_power_W": 0.0005529430090904948,
+        "skin_power_W": 3.10342580323031e-06,
+        "tissue_contact_power_W": 0.0006882591252659891
+      },
+      "reference_primary_RMS_statistics": {
+        "min": 1.7288535429998224,
+        "max": 2.2576273153775697,
+        "mean": 1.9842571585393987,
+        "volume_m3": 3.9270973205566415e-07,
+        "positive_weight_cells": 3136,
+        "std": 0.13876130633063163,
+        "CV": 0.06993111035707343,
+        "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+        "p10": 1.8099440683230164,
+        "p50": 1.966714984834383,
+        "p90": 2.1920415843781904,
+        "p95": 2.2273410118499,
+        "p99": 2.2496081412897024,
+        "p10_over_mean": 0.9121519660563083,
+        "hotspot": {
+          "native_cell_index": 218989,
+          "center_xyz_mm": [
+            3.4375,
+            3.4375,
+            15.1625
+          ],
+          "layer_index": 3,
+          "layer": "muscle",
+          "tied_native_cell_count": 1,
+          "position_scope": "center of a cell with positive fractional region overlap; may lie outside ROI boundary"
+        },
+        "fixed_baseline_threshold_volume": {
+          "primary_r5_depth15_20_mean": {
+            "cutoff_V_m": 2.306949462834824,
+            "volume_m3": 0.0,
+            "region_volume_fraction": 0.0,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "primary_r5_depth15_20_p10": {
+            "cutoff_V_m": 2.104669371240444,
+            "volume_m3": 9.335888743400648e-08,
+            "region_volume_fraction": 0.23773000721248602,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_mean": {
+            "cutoff_V_m": 1.8166989673887375,
+            "volume_m3": 3.452463340759288e-07,
+            "region_volume_fraction": 0.879138727397243,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_p10": {
+            "cutoff_V_m": 1.3960655291307387,
+            "volume_m3": 3.9270973205566405e-07,
+            "region_volume_fraction": 0.9999999999999999,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          }
+        }
+      },
+      "reference_primary_maxTIS_statistics": {
+        "min": 2.910743720111759,
+        "max": 4.4729393595295655,
+        "mean": 3.6677168883600157,
+        "volume_m3": 3.9270973205566415e-07,
+        "positive_weight_cells": 3136,
+        "std": 0.2978957573809829,
+        "CV": 0.08122103380617911,
+        "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+        "p10": 3.2888716620094804,
+        "p50": 3.6436159000081756,
+        "p90": 4.089072384341882,
+        "p95": 4.200728966554804,
+        "p99": 4.356654414895986,
+        "p10_over_mean": 0.8967081599038217,
+        "hotspot": {
+          "native_cell_index": 218504,
+          "center_xyz_mm": [
+            0.3125,
+            -0.3125,
+            15.1625
+          ],
+          "layer_index": 3,
+          "layer": "muscle",
+          "tied_native_cell_count": 1,
+          "position_scope": "center of a cell with positive fractional region overlap; may lie outside ROI boundary"
+        },
+        "fixed_baseline_threshold_volume": {
+          "primary_r5_depth15_20_mean": {
+            "cutoff_V_m": 4.061848941601601,
+            "volume_m3": 4.514086365699813e-08,
+            "region_volume_fraction": 0.11494714791178054,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "primary_r5_depth15_20_p10": {
+            "cutoff_V_m": 3.6457357391300533,
+            "volume_m3": 1.953253507614145e-07,
+            "region_volume_fraction": 0.4973784320010902,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_mean": {
+            "cutoff_V_m": 2.401291663750621,
+            "volume_m3": 3.927097320556641e-07,
+            "region_volume_fraction": 1.0,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_p10": {
+            "cutoff_V_m": 1.434883322330378,
+            "volume_m3": 3.927097320556641e-07,
+            "region_volume_fraction": 1.0,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          }
+        }
+      },
+      "target_ROI_energy_RMS_V_m": 1.9891031072695633,
+      "target_centre20_E_RMS_V_m": 1.8019688436530694,
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.1902580350250858,
+          "amplitude_scale": 1.1902580350250858,
+          "source_peak_V": 0.5951290175125429,
+          "achieved_centre20_E_RMS_V_m": 1.8019688436530694,
+          "achieved_ROI_energy_RMS_V_m": 2.005412795153588,
+          "burdens": {
+            "surface_J_RMS_max_A_m2": 17.61434830567245,
+            "surface_J_RMS_p95_A_m2": 12.896436384235988,
+            "contact_voltage_RMS_max_V": 0.001861992054288802,
+            "SC_power_W": 1.0324335510484809e-06,
+            "contact_power_W": 7.693595062014165e-07,
+            "source_power_W": 0.0004828944835664811,
+            "bulk_skin_J_vector_RMS_max_A_m2": 17.551289821159738,
+            "bulk_skin_J_vector_RMS_p95_A_m2": 5.270391794005527,
+            "skin_SC_plus_dermis_power_W": 0.00032294494148204855
+          },
+          "additional_burdens": {
+            "source_current_RMS_mA": 1.172142598462851,
+            "source_current_peak_mA": 1.657659959781405,
+            "contact_J_RMS_max_A_m2": 17.61434830567245,
+            "contact_J_RMS_p95_A_m2": 12.896436384235988,
+            "contact_voltage_RMS_max_V": 0.001861992054288802,
+            "bulk_skin_J_RMS_max_A_m2": 17.551289821159738,
+            "bulk_skin_J_RMS_p95_A_m2": 5.270391794005527,
+            "SC_power_W": 1.0324335510484809e-06,
+            "dermis_power_W": 0.00032191250793100004,
+            "skin_SC_plus_dermis_power_W": 0.00032294494148204855,
+            "fat_power_W": 6.906240121859873e-05,
+            "muscle_power_W": 2.1421868230745908e-05,
+            "contact_power_W": 7.693595062014165e-07,
+            "tissue_contact_power_W": 0.00041419857043759463,
+            "source_resistor_power_W": 6.869591355656225e-05,
+            "source_power_W": 0.0004828944835664811,
+            "loaded_metal_Vpp": 1.0285314620910817
+          },
+          "source_current_RMS_mA": 1.172142598462851,
+          "source_current_peak_mA": 1.657659959781405,
+          "loaded_metal_Vpp": 1.0285314620910817,
+          "signed_output_power_evidence": {
+            "physical_outputs": 1,
+            "source_resistance_ohm": 50.0,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "ideal_source_power_W": 0.0004828944835664811,
+                "metal_delivered_power_W": 0.00041419857000991883,
+                "source_resistor_loss_W": 6.869591355656225e-05
+              }
+            ],
+            "amplitude_scale": 1.1902580350250858,
+            "ideal_source_power_W": 0.0004828944835664811,
+            "metal_delivered_power_W": 0.00041419857000991883,
+            "source_resistor_loss_W": 6.869591355656225e-05,
+            "output_current_RMS_mA": 1.172142598462851,
+            "negative_frequency_power_preserved": true,
+            "hardware_absorption_and_compliance_validated": false
+          },
+          "ratios_vs_reference": {
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 1.0823706121099144,
+              "surface_J_RMS_p95_A_m2": 1.1757775524934142,
+              "contact_voltage_RMS_max_V": 1.0865105423897996,
+              "SC_power_W": 0.5820245690542963,
+              "contact_power_W": 0.5786572829746331,
+              "source_power_W": 0.5693180477632613,
+              "bulk_skin_J_vector_RMS_max_A_m2": 1.0272770702009764,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 0.8505716582884807,
+              "skin_SC_plus_dermis_power_W": 0.5854551623836206
+            },
+            "source_Vpp_to_max_TIS_output_interval": {
+              "lower": 1.1902580350250858,
+              "upper": 1.1902589310391116
+            },
+            "source_Vpp_to_each_TIS_output_interval": [
+              {
+                "lower": 1.2039760010060387,
+                "upper": 1.2039768901197276
+              },
+              {
+                "lower": 1.1902580350250858,
+                "upper": 1.1902589310391116
+              }
+            ],
+            "current_RMS_to_each_TIS_output": [
+              0.9362080483691527,
+              0.9177415843342259
+            ],
+            "current_RMS_to_sum_output_RMS_bookkeeping": 0.46344142387725074,
+            "output_current_sum_is_physical_common_return_current": false,
+            "source_Vpp_reference": "Maximum individual physical-output whole-waveform Vpp, not the sum of source Vpp"
+          },
+          "fundamental_envelope_variation_V_m": 0.0,
+          "single_frequency_modulation_definition": "For one frequency, each fixed real-direction analytic envelope has zero variation; electric-field RMS is nonzero and activation equivalence is not implied",
+          "probe_scope": "Unloaded native-phi probe evidence only; actual instrument loading unverified",
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.11366238610065678,
+              "Vpp_lower_V": 0.32144777321561746,
+              "Vpp_upper_V": 0.3214857759104743,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 8.061857031006044e-17,
+              "Vpp_lower_V": 2.2797818526174976e-16,
+              "Vpp_upper_V": 2.2802375102323446e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06860136868949075,
+              "Vpp_lower_V": 0.19401955440834184,
+              "Vpp_upper_V": 0.19403397199607103,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 1.4684555001310384e-16,
+              "Vpp_lower_V": 4.1532742091451383e-16,
+              "Vpp_upper_V": 4.15341936805339e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.0686013690723142,
+              "Vpp_lower_V": 0.19401955545006822,
+              "Vpp_upper_V": 0.19403397307885928,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 2.336201450203339e-16,
+              "Vpp_lower_V": 6.607259378649731e-16,
+              "Vpp_upper_V": 6.607775550626556e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.10138480875940063,
+              "Vpp_lower_V": 0.2867578540257883,
+              "Vpp_upper_V": 0.2867595431322959,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 7.226420126097655e-10,
+              "Vpp_lower_V": 2.043715434697408e-09,
+              "Vpp_upper_V": 2.0439402699466535e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.10138480875940069,
+              "Vpp_lower_V": 0.2867578540257884,
+              "Vpp_upper_V": 0.28675954313229607,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 7.226420185735382e-10,
+              "Vpp_lower_V": 2.0437154529267952e-09,
+              "Vpp_upper_V": 2.04394028681475e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.019696349888051055,
+              "Vpp_lower_V": 0.05570940800941204,
+              "Vpp_upper_V": 0.05570969028185559,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 7.320834842688955e-17,
+              "Vpp_lower_V": 2.0706433978342323e-16,
+              "Vpp_upper_V": 2.0706447844848596e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01612558900986359,
+              "Vpp_lower_V": 0.04560069022622753,
+              "Vpp_upper_V": 0.04561005335800755,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 9.782079377625307e-17,
+              "Vpp_lower_V": 2.766789864809575e-16,
+              "Vpp_upper_V": 2.7667898648095947e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.016125589793612175,
+              "Vpp_lower_V": 0.04560069249926021,
+              "Vpp_upper_V": 0.04561005557478332,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 2.3360189558508196e-16,
+              "Vpp_lower_V": 6.607164286179724e-16,
+              "Vpp_upper_V": 6.607259378649778e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.01835275373696061,
+              "Vpp_lower_V": 0.05190807543355037,
+              "Vpp_upper_V": 0.05190942648340677,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 3.4027220047505327e-10,
+              "Vpp_lower_V": 9.623566474540054e-10,
+              "Vpp_upper_V": 9.62435121620721e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.018352753736960693,
+              "Vpp_lower_V": 0.051908075433550596,
+              "Vpp_upper_V": 0.051909426483407,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 3.4027224892976456e-10,
+              "Vpp_lower_V": 9.623567924121328e-10,
+              "Vpp_upper_V": 9.62435258671341e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.011740851606721711,
+              "Vpp_lower_V": 0.033206052262862544,
+              "Vpp_upper_V": 0.03320814315207181,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 1.4821097967770251e-16,
+              "Vpp_lower_V": 4.191711233256276e-16,
+              "Vpp_upper_V": 4.192039551056231e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.010542127011225894,
+              "Vpp_lower_V": 0.02981372533365022,
+              "Vpp_upper_V": 0.029817637991071014,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 4.89485166710346e-17,
+              "Vpp_lower_V": 1.384424736381713e-16,
+              "Vpp_upper_V": 1.3844731226844635e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.01054212752650549,
+              "Vpp_lower_V": 0.029813726826511726,
+              "Vpp_upper_V": 0.0298176394485018,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 6.659078664012239e-17,
+              "Vpp_lower_V": 1.8834152831547233e-16,
+              "Vpp_upper_V": 1.8834718719110976e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.01126065589335416,
+              "Vpp_lower_V": 0.03184839341825059,
+              "Vpp_upper_V": 0.03184994457119618,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 4.98098479472097e-10,
+              "Vpp_lower_V": 1.4084603466594346e-09,
+              "Vpp_upper_V": 1.4088352501337226e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.011260655893354348,
+              "Vpp_lower_V": 0.031848393418251124,
+              "Vpp_upper_V": 0.031849944571196706,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.980983122408182e-10,
+              "Vpp_lower_V": 1.408459873937413e-09,
+              "Vpp_upper_V": 1.4088347771322374e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.008956127822391637,
+              "Vpp_lower_V": 0.025329426837464655,
+              "Vpp_upper_V": 0.02533175486554672,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 1.000534305495842e-16,
+              "Vpp_lower_V": 2.8292541343072727e-16,
+              "Vpp_upper_V": 2.8299383689035507e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.008305157335782203,
+              "Vpp_lower_V": 0.023487871609934145,
+              "Vpp_upper_V": 0.02349053228381135,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 1.1948036190028307e-16,
+              "Vpp_lower_V": 3.3790650383830597e-16,
+              "Vpp_upper_V": 3.379414964732543e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.008305158023335563,
+              "Vpp_lower_V": 0.023487873560252687,
+              "Vpp_upper_V": 0.023490534228505923,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 3.408431976788767e-17,
+              "Vpp_lower_V": 9.638798991859464e-17,
+              "Vpp_upper_V": 9.640501456001693e-17,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.008700966309558298,
+              "Vpp_lower_V": 0.0246079913789099,
+              "Vpp_upper_V": 0.02461004912145762,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 5.923855951287941e-10,
+              "Vpp_lower_V": 1.6751019611007342e-09,
+              "Vpp_upper_V": 1.6755194855712076e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.008700966309558057,
+              "Vpp_lower_V": 0.024607991378909216,
+              "Vpp_upper_V": 0.024610049121456937,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.923855665265928e-10,
+              "Vpp_lower_V": 1.675101885594045e-09,
+              "Vpp_upper_V": 1.6755194046719656e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ]
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.1805778648877325,
+          "amplitude_scale": 1.1805778648877325,
+          "source_peak_V": 0.5902889324438663,
+          "achieved_centre20_E_RMS_V_m": 1.787313731504716,
+          "achieved_ROI_energy_RMS_V_m": 1.9891031072695633,
+          "burdens": {
+            "surface_J_RMS_max_A_m2": 17.471093747887494,
+            "surface_J_RMS_p95_A_m2": 12.791551817451841,
+            "contact_voltage_RMS_max_V": 0.0018468487833765113,
+            "SC_power_W": 1.0157086194278714e-06,
+            "contact_power_W": 7.568962487648317e-07,
+            "source_power_W": 0.000475071823009376,
+            "bulk_skin_J_vector_RMS_max_A_m2": 17.408548107515067,
+            "bulk_skin_J_vector_RMS_p95_A_m2": 5.227528576320625,
+            "skin_SC_plus_dermis_power_W": 0.00031771338729822356
+          },
+          "additional_burdens": {
+            "source_current_RMS_mA": 1.1626097581505228,
+            "source_current_peak_mA": 1.6441784877237735,
+            "contact_J_RMS_max_A_m2": 17.471093747887494,
+            "contact_J_RMS_p95_A_m2": 12.791551817451841,
+            "contact_voltage_RMS_max_V": 0.0018468487833765113,
+            "bulk_skin_J_RMS_max_A_m2": 17.408548107515067,
+            "bulk_skin_J_RMS_p95_A_m2": 5.227528576320625,
+            "SC_power_W": 1.0157086194278714e-06,
+            "dermis_power_W": 0.0003166976786787957,
+            "skin_SC_plus_dermis_power_W": 0.00031771338729822356,
+            "fat_power_W": 6.794362322386663e-05,
+            "muscle_power_W": 2.1074844171927706e-05,
+            "contact_power_W": 7.568962487648317e-07,
+            "tissue_contact_power_W": 0.0004074887509427828,
+            "source_resistor_power_W": 6.758307248734088e-05,
+            "source_power_W": 0.000475071823009376,
+            "loaded_metal_Vpp": 1.0201665872054
+          },
+          "source_current_RMS_mA": 1.1626097581505228,
+          "source_current_peak_mA": 1.6441784877237735,
+          "loaded_metal_Vpp": 1.0201665872054,
+          "signed_output_power_evidence": {
+            "physical_outputs": 1,
+            "source_resistance_ohm": 50.0,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "ideal_source_power_W": 0.000475071823009376,
+                "metal_delivered_power_W": 0.0004074887505220351,
+                "source_resistor_loss_W": 6.758307248734088e-05
+              }
+            ],
+            "amplitude_scale": 1.1805778648877325,
+            "ideal_source_power_W": 0.000475071823009376,
+            "metal_delivered_power_W": 0.0004074887505220351,
+            "source_resistor_loss_W": 6.758307248734088e-05,
+            "output_current_RMS_mA": 1.1626097581505228,
+            "negative_frequency_power_preserved": true,
+            "hardware_absorption_and_compliance_validated": false
+          },
+          "ratios_vs_reference": {
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 1.0735678723941733,
+              "surface_J_RMS_p95_A_m2": 1.1662151497060411,
+              "contact_voltage_RMS_max_V": 1.0776741333113768,
+              "SC_power_W": 0.5725960483431453,
+              "contact_power_W": 0.5692833106936181,
+              "source_power_W": 0.5600953666429611,
+              "bulk_skin_J_vector_RMS_max_A_m2": 1.0189223970753818,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 0.8436541008144246,
+              "skin_SC_plus_dermis_power_W": 0.5759710676950521
+            },
+            "source_Vpp_to_max_TIS_output_interval": {
+              "lower": 1.1805778648877325,
+              "upper": 1.1805787536146257
+            },
+            "source_Vpp_to_each_TIS_output_interval": [
+              {
+                "lower": 1.1941842649386716,
+                "upper": 1.1941851468213471
+              },
+              {
+                "lower": 1.1805778648877325,
+                "upper": 1.1805787536146257
+              }
+            ],
+            "current_RMS_to_each_TIS_output": [
+              0.9285940244134296,
+              0.9102777450514336
+            ],
+            "current_RMS_to_sum_output_RMS_bookkeeping": 0.45967233205025504,
+            "output_current_sum_is_physical_common_return_current": false,
+            "source_Vpp_reference": "Maximum individual physical-output whole-waveform Vpp, not the sum of source Vpp"
+          },
+          "fundamental_envelope_variation_V_m": 0.0,
+          "single_frequency_modulation_definition": "For one frequency, each fixed real-direction analytic envelope has zero variation; electric-field RMS is nonzero and activation equivalence is not implied",
+          "probe_scope": "Unloaded native-phi probe evidence only; actual instrument loading unverified",
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.11273798886636405,
+              "Vpp_lower_V": 0.31883349207368433,
+              "Vpp_upper_V": 0.31887118569896034,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 7.996291291992561e-17,
+              "Vpp_lower_V": 2.261240766936927e-16,
+              "Vpp_upper_V": 2.261692718764368e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.0680434451964092,
+              "Vpp_lower_V": 0.1924416257228139,
+              "Vpp_upper_V": 0.19245592605470604,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 1.4565127963961284e-16,
+              "Vpp_lower_V": 4.1194963225117087e-16,
+              "Vpp_upper_V": 4.119640300866763e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06804344557611922,
+              "Vpp_lower_V": 0.1924416267560681,
+              "Vpp_upper_V": 0.19245592712868814,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 2.317201513342906e-16,
+              "Vpp_lower_V": 6.553523639805839e-16,
+              "Vpp_upper_V": 6.554035613842042e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.10056026301448295,
+              "Vpp_lower_V": 0.28442570021249064,
+              "Vpp_upper_V": 0.28442737558177666,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 7.167648856132531e-10,
+              "Vpp_lower_V": 2.027094237832487e-09,
+              "Vpp_upper_V": 2.0273172445341393e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.100560263014483,
+              "Vpp_lower_V": 0.28442570021249075,
+              "Vpp_upper_V": 0.28442737558177683,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 7.167648915285234e-10,
+              "Vpp_lower_V": 2.027094255913618e-09,
+              "Vpp_upper_V": 2.0273172612650505e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.01953616275854585,
+              "Vpp_lower_V": 0.055256332682959014,
+              "Vpp_upper_V": 0.05525661265972783,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 7.261295713576334e-17,
+              "Vpp_lower_V": 2.0538032003350402e-16,
+              "Vpp_upper_V": 2.0538045757082693e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.015994442283198372,
+              "Vpp_lower_V": 0.04522982741599552,
+              "Vpp_upper_V": 0.04523911439898597,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 9.702523357093581e-17,
+              "Vpp_lower_V": 2.744288024168695e-16,
+              "Vpp_upper_V": 2.744288024168715e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.015994443060572863,
+              "Vpp_lower_V": 0.04522982967054201,
+              "Vpp_upper_V": 0.045239116597733074,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 2.317020503186527e-16,
+              "Vpp_lower_V": 6.553429320707035e-16,
+              "Vpp_upper_V": 6.553523639805885e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.018203493850923395,
+              "Vpp_lower_V": 0.051485915711109394,
+              "Vpp_upper_V": 0.05148725577310258,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 3.375048234049706e-10,
+              "Vpp_lower_V": 9.54529961301896e-10,
+              "Vpp_upper_V": 9.546077972512985e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.018203493850923475,
+              "Vpp_lower_V": 0.051485915711109616,
+              "Vpp_upper_V": 0.05148725577310281,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 3.375048714656078e-10,
+              "Vpp_lower_V": 9.545301050811032e-10,
+              "Vpp_upper_V": 9.546079331873084e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.01164536521825294,
+              "Vpp_lower_V": 0.032935992976526725,
+              "Vpp_upper_V": 0.03293806686088268,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 1.4700560449241867e-16,
+              "Vpp_lower_V": 4.1576207447146713e-16,
+              "Vpp_upper_V": 4.1579463923607026e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.010456389650019084,
+              "Vpp_lower_V": 0.02957125527659913,
+              "Vpp_upper_V": 0.02957513611302951,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 4.855042654653761e-17,
+              "Vpp_lower_V": 1.3731654408372365e-16,
+              "Vpp_upper_V": 1.3732134336222545e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.010456390161107998,
+              "Vpp_lower_V": 0.02957125675731944,
+              "Vpp_upper_V": 0.029575137558607256,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 6.60492148756075e-17,
+              "Vpp_lower_V": 1.8680977806941374e-16,
+              "Vpp_upper_V": 1.8681539092235916e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.011169074856555227,
+              "Vpp_lower_V": 0.03158937574492438,
+              "Vpp_upper_V": 0.0315909142826017,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 4.940475275906042e-10,
+              "Vpp_lower_V": 1.3970055735042243e-09,
+              "Vpp_upper_V": 1.3973774279510665e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.011169074856555413,
+              "Vpp_lower_V": 0.03158937574492491,
+              "Vpp_upper_V": 0.03159091428260222,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.940473617193894e-10,
+              "Vpp_lower_V": 1.3970051046267721e-09,
+              "Vpp_upper_V": 1.3973769587964236e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.008883289128140936,
+              "Vpp_lower_V": 0.025123426832379094,
+              "Vpp_upper_V": 0.025125735926996934,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 9.923971268165533e-17,
+              "Vpp_lower_V": 2.8062442821777493e-16,
+              "Vpp_upper_V": 2.8069229520081437e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.008237612875957435,
+              "Vpp_lower_V": 0.023296848666456448,
+              "Vpp_upper_V": 0.023299487701516648,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 1.185086480388909e-16,
+              "Vpp_lower_V": 3.3515836658451795e-16,
+              "Vpp_upper_V": 3.351930746302008e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.008237613557919037,
+              "Vpp_lower_V": 0.023296850600913376,
+              "Vpp_upper_V": 0.023299489630395343,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 3.380711767837424e-17,
+              "Vpp_lower_V": 9.560408246814855e-17,
+              "Vpp_upper_V": 9.562096865100082e-17,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.008630202801346293,
+              "Vpp_lower_V": 0.0244078586881179,
+              "Vpp_upper_V": 0.024409899695388586,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 5.875678218569311e-10,
+              "Vpp_lower_V": 1.6614786361546208e-09,
+              "Vpp_upper_V": 1.661892764968193e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.008630202801346054,
+              "Vpp_lower_V": 0.02440785868811722,
+              "Vpp_upper_V": 0.024409899695387906,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.875677934873468e-10,
+              "Vpp_lower_V": 1.661478561262015e-09,
+              "Vpp_upper_V": 1.6618926847268912e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "skin_contact_only": {
+      "reference_amplitude_scale": 1.1051077374853904,
+      "reference_source_Vpp_intervals_V": [
+        [
+          1.0925154584815784,
+          1.0925162652837477
+        ],
+        [
+          1.1051069055722604,
+          1.1051077374853904
+        ]
+      ],
+      "reference_burdens": {
+        "surface_J_RMS_max_A_m2": 17.98436911125647,
+        "surface_J_RMS_p95_A_m2": 12.121299308686309,
+        "contact_voltage_RMS_max_V": 0.0018938627340006474,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.6237424327180324e-06,
+        "source_power_W": 0.0010358730446355193,
+        "bulk_skin_J_vector_RMS_max_A_m2": 18.88104655194684,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.8475720938724525,
+        "skin_SC_plus_dermis_power_W": 0.0006736651573037087
+      },
+      "reference_output_RMS_by_output_mA": [
+        1.3836068353118511,
+        1.4114472713331747
+      ],
+      "reference_output_RMS_sum_bookkeeping_mA": 2.7950541066450256,
+      "reference_signed_output_power_evidence": {
+        "schema": "task1-output-power-evidence-v1",
+        "common_amplitude_scale": 1.1051077374853904,
+        "source_resistance_ohm": 50.0,
+        "outputs": [
+          {
+            "output_index": 0,
+            "ideal_source_power_W": 0.0005074413532269199,
+            "metal_delivered_power_W": 0.0004117229594908361,
+            "source_resistor_loss_W": 9.571839373608382e-05,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "current_peak_A": {
+                  "real": 0.00039137906326395296,
+                  "imaginary": -0.0019038584895669781
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.01956895316319765,
+                  "imaginary": -0.43911911641297835
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": -0.5343120408913272
+                },
+                "ideal_source_power_W": 0.0005086272575644059,
+                "metal_delivered_power_W": 0.00041418088957796527,
+                "source_resistor_loss_W": 9.444636798644062e-05
+              },
+              {
+                "frequency_Hz": 3030,
+                "current_peak_A": {
+                  "real": -7.018506886071821e-06,
+                  "imaginary": 0.00022545902187940582
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.004992195064609681,
+                  "imaginary": -0.021959191911796832
+                },
+                "ideal_voltage_peak_V": {
+                  "real": -0.005343120408913272,
+                  "imaginary": -0.010686240817826544
+                },
+                "ideal_source_power_W": -1.185904337485943e-06,
+                "metal_delivered_power_W": -2.4579300871291486e-06,
+                "source_resistor_loss_W": 1.2720257496432059e-06
+              },
+              {
+                "frequency_Hz": 9000,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              },
+              {
+                "frequency_Hz": 9090,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              }
+            ],
+            "current_RMS_A": 0.0013836068353118513,
+            "current_RMS_mA": 1.3836068353118514
+          },
+          {
+            "output_index": 1,
+            "ideal_source_power_W": 0.0005284316914085995,
+            "metal_delivered_power_W": 0.00042882252142090627,
+            "source_resistor_loss_W": 9.960916998769323e-05,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "current_peak_A": {
+                  "real": -1.0895375223742236e-05,
+                  "imaginary": 0.00023940493305927654
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.00479835164772616,
+                  "imaginary": -0.017313367061877097
+                },
+                "ideal_voltage_peak_V": {
+                  "real": -0.005343120408913272,
+                  "imaginary": -0.00534312040891327
+                },
+                "ideal_source_power_W": -6.104770410513954e-07,
+                "metal_delivered_power_W": -2.0463128204109657e-06,
+                "source_resistor_loss_W": 1.4358357793595703e-06
+              },
+              {
+                "frequency_Hz": 3030,
+                "current_peak_A": {
+                  "real": 0.0003971443400327958,
+                  "imaginary": -0.0019414452713154861
+                },
+                "metal_voltage_peak_V": {
+                  "real": -0.01985721700163979,
+                  "imaginary": -0.44792601814337946
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": -0.5449982817091538
+                },
+                "ideal_source_power_W": 0.0005290421684496509,
+                "metal_delivered_power_W": 0.00043086883424131724,
+                "source_resistor_loss_W": 9.817333420833367e-05
+              },
+              {
+                "frequency_Hz": 9000,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              },
+              {
+                "frequency_Hz": 9090,
+                "current_peak_A": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "metal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_voltage_peak_V": {
+                  "real": 0.0,
+                  "imaginary": 0.0
+                },
+                "ideal_source_power_W": 0.0,
+                "metal_delivered_power_W": 0.0,
+                "source_resistor_loss_W": 0.0
+              }
+            ],
+            "current_RMS_A": 0.0014114472713331748,
+            "current_RMS_mA": 1.4114472713331747
+          }
+        ],
+        "totals": {
+          "ideal_source_power_W": 0.0010358730446355193,
+          "metal_delivered_power_W": 0.0008405454809117423,
+          "source_resistor_loss_W": 0.00019532756372377704
+        },
+        "unscaled_saved_metric_verification": {
+          "source_power_W": [
+            {
+              "recomputed": 0.0008481980950080164,
+              "saved": 0.0008481980950080163,
+              "absolute_difference": 1.0842021724855044e-19,
+              "passed": true
+            }
+          ],
+          "source_resistor_power_W": [
+            {
+              "recomputed": 0.00015993896965564857,
+              "saved": 0.00015993896965564857,
+              "absolute_difference": 0.0,
+              "passed": true
+            }
+          ],
+          "source_current_RMS_by_output_mA": [
+            {
+              "recomputed": 1.252010811597582,
+              "saved": 1.2520108115975819,
+              "absolute_difference": 2.220446049250313e-16,
+              "passed": true
+            },
+            {
+              "recomputed": 1.2772033200535204,
+              "saved": 1.2772033200535202,
+              "absolute_difference": 2.220446049250313e-16,
+              "passed": true
+            }
+          ]
+        },
+        "verification_tolerance": {
+          "relative": 2e-12,
+          "absolute": 1e-15,
+          "units": "W for power and mA for stored output current vector"
+        },
+        "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+        "signed_power_scope": "Metal delivered power includes passive-output absorption; no negative value clamped",
+        "current_scope": "Each physical source output RMS over distinct frequencies; not common-GND return current",
+        "new_PDE": 0,
+        "numerical_or_experimental_validation_promoted": false,
+        "requires_source_power_absorption": true,
+        "has_negative_metal_delivered_power": false,
+        "requires_output_power_absorption": true,
+        "has_negative_per_frequency_ideal_source_power": true,
+        "hardware_absorption_and_compliance_validated": false
+      },
+      "reference_layer_contact_source_losses_W": {
+        "SC_power_W": 2.166357019889475e-06,
+        "dermis_power_W": 0.0006714988002838192,
+        "fat_power_W": 0.00013097955017020202,
+        "muscle_power_W": 3.427703089962233e-05,
+        "contact_power_W": 1.6237424327180324e-06,
+        "source_resistor_power_W": 0.00019532756372377704,
+        "source_power_W": 0.0010358730446355193,
+        "skin_SC_plus_dermis_power_W": 0.0006736651573037087,
+        "skin_and_contact_power_W": 0.0006752888997364268,
+        "skin_power_W": 3.7900994526075073e-06,
+        "tissue_contact_power_W": 0.0008405454808062512
+      },
+      "reference_primary_RMS_statistics": {
+        "min": 1.9105694273481348,
+        "max": 2.4949214145821217,
+        "mean": 2.1928179390626643,
+        "volume_m3": 3.9270973205566415e-07,
+        "positive_weight_cells": 3136,
+        "std": 0.15334619328956153,
+        "CV": 0.06993111035707344,
+        "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+        "p10": 2.0001831943195514,
+        "p50": 2.1734319471689387,
+        "p90": 2.4224421157860725,
+        "p95": 2.461451786213863,
+        "p99": 2.4860593632493773,
+        "p10_over_mean": 0.9121519660563083,
+        "hotspot": {
+          "native_cell_index": 218989,
+          "center_xyz_mm": [
+            3.4375,
+            3.4375,
+            15.1625
+          ],
+          "layer_index": 3,
+          "layer": "muscle",
+          "tied_native_cell_count": 1,
+          "position_scope": "center of a cell with positive fractional region overlap; may lie outside ROI boundary"
+        },
+        "fixed_baseline_threshold_volume": {
+          "primary_r5_depth15_20_mean": {
+            "cutoff_V_m": 2.306949462834824,
+            "volume_m3": 1.0708952665329068e-07,
+            "region_volume_fraction": 0.2726938446183234,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "primary_r5_depth15_20_p10": {
+            "cutoff_V_m": 2.104669371240444,
+            "volume_m3": 2.519728374481211e-07,
+            "region_volume_fraction": 0.6416261601900041,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_mean": {
+            "cutoff_V_m": 1.8166989673887375,
+            "volume_m3": 3.927097320556641e-07,
+            "region_volume_fraction": 1.0,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_p10": {
+            "cutoff_V_m": 1.3960655291307387,
+            "volume_m3": 3.927097320556641e-07,
+            "region_volume_fraction": 1.0,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_field_RMS",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          }
+        }
+      },
+      "reference_primary_maxTIS_statistics": {
+        "min": 3.2166854069325144,
+        "max": 4.94307989551907,
+        "mean": 4.053222312232493,
+        "volume_m3": 3.9270973205566415e-07,
+        "positive_weight_cells": 3136,
+        "std": 0.32920690644579476,
+        "CV": 0.08122103380617911,
+        "maximum_scope": "native cell-constant represented samples; not continuum maximum",
+        "p10": 3.6345575212831123,
+        "p50": 4.02658812352383,
+        "p90": 4.518865531074048,
+        "p95": 4.642258084018722,
+        "p99": 4.81457250345144,
+        "p10_over_mean": 0.8967081599038217,
+        "hotspot": {
+          "native_cell_index": 218504,
+          "center_xyz_mm": [
+            0.3125,
+            -0.3125,
+            15.1625
+          ],
+          "layer_index": 3,
+          "layer": "muscle",
+          "tied_native_cell_count": 1,
+          "position_scope": "center of a cell with positive fractional region overlap; may lie outside ROI boundary"
+        },
+        "fixed_baseline_threshold_volume": {
+          "primary_r5_depth15_20_mean": {
+            "cutoff_V_m": 4.061848941601601,
+            "volume_m3": 1.7939388275146573e-07,
+            "region_volume_fraction": 0.4568103820916712,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "primary_r5_depth15_20_p10": {
+            "cutoff_V_m": 3.6457357391300533,
+            "volume_m3": 3.505083489418034e-07,
+            "region_volume_fraction": 0.8925379748218745,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_mean": {
+            "cutoff_V_m": 2.401291663750621,
+            "volume_m3": 3.9270973205566415e-07,
+            "region_volume_fraction": 1.0000000000000002,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          },
+          "supplemental_wholeXY_depth15_20_p10": {
+            "cutoff_V_m": 1.434883322330378,
+            "volume_m3": 3.927097320556641e-07,
+            "region_volume_fraction": 1.0,
+            "comparison": "scaled native scalar >= frozen raw same-grid baseline cutoff",
+            "quantity": "high_fundamental_TIS_modulation",
+            "interpretation": "electrical numerical comparison; not biological activation or safety"
+          }
+        }
+      },
+      "target_ROI_energy_RMS_V_m": 2.198173234499827,
+      "target_centre20_E_RMS_V_m": 1.9913697118286087,
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.315363364110379,
+          "amplitude_scale": 1.315363364110379,
+          "source_peak_V": 0.6576816820551895,
+          "achieved_centre20_E_RMS_V_m": 1.9913697118286087,
+          "achieved_ROI_energy_RMS_V_m": 2.2161971967764345,
+          "burdens": {
+            "surface_J_RMS_max_A_m2": 19.4657526033613,
+            "surface_J_RMS_p95_A_m2": 14.251951634207302,
+            "contact_voltage_RMS_max_V": 0.002057701826330872,
+            "SC_power_W": 1.260873010918921e-06,
+            "contact_power_W": 9.395903843672377e-07,
+            "source_power_W": 0.0005897412195024795,
+            "bulk_skin_J_vector_RMS_max_A_m2": 19.3960661842122,
+            "bulk_skin_J_vector_RMS_p95_A_m2": 5.824350751135015,
+            "skin_SC_plus_dermis_power_W": 0.00039440074406143014
+          },
+          "additional_burdens": {
+            "source_current_RMS_mA": 1.2953438549975276,
+            "source_current_peak_mA": 1.8318928476741516,
+            "contact_J_RMS_max_A_m2": 19.4657526033613,
+            "contact_J_RMS_p95_A_m2": 14.251951634207302,
+            "contact_voltage_RMS_max_V": 0.002057701826330872,
+            "bulk_skin_J_RMS_max_A_m2": 19.3960661842122,
+            "bulk_skin_J_RMS_p95_A_m2": 5.824350751135015,
+            "SC_power_W": 1.260873010918921e-06,
+            "dermis_power_W": 0.00039313987105051116,
+            "skin_SC_plus_dermis_power_W": 0.00039440074406143014,
+            "fat_power_W": 8.434336299643958e-05,
+            "muscle_power_W": 2.6161737448554332e-05,
+            "contact_power_W": 9.395903843672377e-07,
+            "tissue_contact_power_W": 0.0005058454348907913,
+            "source_resistor_power_W": 8.389578513399284e-05,
+            "source_power_W": 0.0005897412195024795,
+            "loaded_metal_Vpp": 1.1366380770040159
+          },
+          "source_current_RMS_mA": 1.2953438549975276,
+          "source_current_peak_mA": 1.8318928476741516,
+          "loaded_metal_Vpp": 1.1366380770040159,
+          "signed_output_power_evidence": {
+            "physical_outputs": 1,
+            "source_resistance_ohm": 50.0,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "ideal_source_power_W": 0.0005897412195024795,
+                "metal_delivered_power_W": 0.0005058454343684866,
+                "source_resistor_loss_W": 8.389578513399282e-05
+              }
+            ],
+            "amplitude_scale": 1.315363364110379,
+            "ideal_source_power_W": 0.0005897412195024795,
+            "metal_delivered_power_W": 0.0005058454343684866,
+            "source_resistor_loss_W": 8.389578513399282e-05,
+            "output_current_RMS_mA": 1.2953438549975276,
+            "negative_frequency_power_preserved": true,
+            "hardware_absorption_and_compliance_validated": false
+          },
+          "ratios_vs_reference": {
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 1.0823706121099141,
+              "surface_J_RMS_p95_A_m2": 1.1757775524934142,
+              "contact_voltage_RMS_max_V": 1.0865105423897996,
+              "SC_power_W": 0.5820245690542962,
+              "contact_power_W": 0.5786572829746331,
+              "source_power_W": 0.5693180477632613,
+              "bulk_skin_J_vector_RMS_max_A_m2": 1.0272770702009764,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 0.8505716582884806,
+              "skin_SC_plus_dermis_power_W": 0.5854551623836206
+            },
+            "source_Vpp_to_max_TIS_output_interval": {
+              "lower": 1.1902580350250858,
+              "upper": 1.1902589310391114
+            },
+            "source_Vpp_to_each_TIS_output_interval": [
+              {
+                "lower": 1.2039760010060387,
+                "upper": 1.2039768901197274
+              },
+              {
+                "lower": 1.1902580350250858,
+                "upper": 1.1902589310391114
+              }
+            ],
+            "current_RMS_to_each_TIS_output": [
+              0.9362080483691525,
+              0.9177415843342257
+            ],
+            "current_RMS_to_sum_output_RMS_bookkeeping": 0.4634414238772507,
+            "output_current_sum_is_physical_common_return_current": false,
+            "source_Vpp_reference": "Maximum individual physical-output whole-waveform Vpp, not the sum of source Vpp"
+          },
+          "fundamental_envelope_variation_V_m": 0.0,
+          "single_frequency_modulation_definition": "For one frequency, each fixed real-direction analytic envelope has zero variation; electric-field RMS is nonzero and activation equivalence is not implied",
+          "probe_scope": "Unloaded native-phi probe evidence only; actual instrument loading unverified",
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.1256091823408877,
+              "Vpp_lower_V": 0.3552344213780279,
+              "Vpp_upper_V": 0.35527641845015945,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 8.909220583465776e-17,
+              "Vpp_lower_V": 2.5194045651063745e-16,
+              "Vpp_upper_V": 2.5199081158621856e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.07581190334084421,
+              "Vpp_lower_V": 0.21441251080012624,
+              "Vpp_upper_V": 0.21442844378788165,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 1.622801535347789e-16,
+              "Vpp_lower_V": 4.589815464424808e-16,
+              "Vpp_upper_V": 4.589975880657482e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.07581190376390538,
+              "Vpp_lower_V": 0.21441251195134614,
+              "Vpp_upper_V": 0.2144284449844793,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 2.581754298944299e-16,
+              "Vpp_lower_V": 7.30173346291873e-16,
+              "Vpp_upper_V": 7.302303888564193e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.11204113662349022,
+              "Vpp_lower_V": 0.31689832326860473,
+              "Vpp_upper_V": 0.31690018991327573,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 7.985972795670669e-10,
+              "Vpp_lower_V": 2.2585257401024233e-09,
+              "Vpp_upper_V": 2.2587742072760243e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.11204113662349027,
+              "Vpp_lower_V": 0.31689832326860484,
+              "Vpp_upper_V": 0.3169001899132759,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 7.985972861576783e-10,
+              "Vpp_lower_V": 2.2585257602478603e-09,
+              "Vpp_upper_V": 2.2587742259170883e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.021766588661504722,
+              "Vpp_lower_V": 0.06156489784193183,
+              "Vpp_upper_V": 0.06156520978339326,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 8.090311229508204e-17,
+              "Vpp_lower_V": 2.288284040519649e-16,
+              "Vpp_upper_V": 2.288285572917987e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.017820513186309624,
+              "Vpp_lower_V": 0.05039367560367845,
+              "Vpp_upper_V": 0.050404022873055655,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 1.0810251608909998e-16,
+              "Vpp_lower_V": 3.057600887597218e-16,
+              "Vpp_upper_V": 3.0576008875972404e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.017820514052436256,
+              "Vpp_lower_V": 0.05039367811562446,
+              "Vpp_upper_V": 0.05040402532283171,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 2.581552623023283e-16,
+              "Vpp_lower_V": 7.301628375494349e-16,
+              "Vpp_upper_V": 7.301733462918782e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.02028177015887908,
+              "Vpp_lower_V": 0.05736401579959182,
+              "Vpp_upper_V": 0.05736550885524185,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 3.760374415961613e-10,
+              "Vpp_lower_V": 1.0635077773219213e-09,
+              "Vpp_upper_V": 1.0635944997307515e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.02028177015887917,
+              "Vpp_lower_V": 0.05736401579959207,
+              "Vpp_upper_V": 0.05736550885524211,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 3.7603749514383764e-10,
+              "Vpp_lower_V": 1.0635079375162696e-09,
+              "Vpp_upper_V": 1.063594651186452e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.01297490595525594,
+              "Vpp_lower_V": 0.03669626528703365,
+              "Vpp_upper_V": 0.036698575944877035,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 1.63789100422119e-16,
+              "Vpp_lower_V": 4.632292517175938e-16,
+              "Vpp_upper_V": 4.632655343717023e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.011650186129659469,
+              "Vpp_lower_V": 0.03294737854948106,
+              "Vpp_upper_V": 0.03295170245747091,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 5.409338451159296e-17,
+              "Vpp_lower_V": 1.529938488141603e-16,
+              "Vpp_upper_V": 1.5299919602191607e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.011650186699098937,
+              "Vpp_lower_V": 0.032947380199253855,
+              "Vpp_upper_V": 0.03295170406808895,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 7.358999356123803e-17,
+              "Vpp_lower_V": 2.0813768023125222e-16,
+              "Vpp_upper_V": 2.0814393389850462e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.012444237956906143,
+              "Vpp_lower_V": 0.035195905992987504,
+              "Vpp_upper_V": 0.0351976201841097,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 5.504524836943223e-10,
+              "Vpp_lower_V": 1.5565004270346965e-09,
+              "Vpp_upper_V": 1.5569147357649422e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.01244423795690635,
+              "Vpp_lower_V": 0.035195905992988094,
+              "Vpp_upper_V": 0.03519762018411028,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 5.504522988857421e-10,
+              "Vpp_lower_V": 1.5564999046259326e-09,
+              "Vpp_upper_V": 1.5569142130473411e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.009897486154433179,
+              "Vpp_lower_V": 0.02799174558415229,
+              "Vpp_upper_V": 0.027994318305998862,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 1.1056982026230263e-16,
+              "Vpp_lower_V": 3.1266306351354967e-16,
+              "Vpp_upper_V": 3.127386788082099e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.009178093632806463,
+              "Vpp_lower_V": 0.025956628653201655,
+              "Vpp_upper_V": 0.025959568984490283,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 1.3203867241355745e-16,
+              "Vpp_lower_V": 3.734230919383487e-16,
+              "Vpp_upper_V": 3.7346176256998506e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.009178094392627,
+              "Vpp_lower_V": 0.025956630808513768,
+              "Vpp_upper_V": 0.025959571133587298,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 3.766684550241891e-17,
+              "Vpp_lower_V": 1.0651911345970274e-16,
+              "Vpp_upper_V": 1.0653792752266643e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.009615505192292578,
+              "Vpp_lower_V": 0.02719448167680711,
+              "Vpp_upper_V": 0.02719675570401835,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 6.546499047517181e-10,
+              "Vpp_lower_V": 1.8511681382893728e-09,
+              "Vpp_upper_V": 1.8516295478122822e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.00961550519229231,
+              "Vpp_lower_V": 0.027194481676806354,
+              "Vpp_upper_V": 0.027196755704017594,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 6.546498731432042e-10,
+              "Vpp_lower_V": 1.8511680548463463e-09,
+              "Vpp_upper_V": 1.8516294584099041e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ]
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.3046657331914149,
+          "amplitude_scale": 1.3046657331914149,
+          "source_peak_V": 0.6523328665957074,
+          "achieved_centre20_E_RMS_V_m": 1.9751742339997471,
+          "achieved_ROI_energy_RMS_V_m": 2.198173234499827,
+          "burdens": {
+            "surface_J_RMS_max_A_m2": 19.307440883123096,
+            "surface_J_RMS_p95_A_m2": 14.136042887911335,
+            "contact_voltage_RMS_max_V": 0.0020409668804748623,
+            "SC_power_W": 1.2404474688891456e-06,
+            "contact_power_W": 9.243694678114309e-07,
+            "source_power_W": 0.0005801876927306914,
+            "bulk_skin_J_vector_RMS_max_A_m2": 19.238321212001548,
+            "bulk_skin_J_vector_RMS_p95_A_m2": 5.776982277617909,
+            "skin_SC_plus_dermis_power_W": 0.00038801163992117227
+          },
+          "additional_burdens": {
+            "source_current_RMS_mA": 1.284809039408161,
+            "source_current_peak_mA": 1.8169943685905698,
+            "contact_J_RMS_max_A_m2": 19.307440883123096,
+            "contact_J_RMS_p95_A_m2": 14.136042887911335,
+            "contact_voltage_RMS_max_V": 0.0020409668804748623,
+            "bulk_skin_J_RMS_max_A_m2": 19.238321212001548,
+            "bulk_skin_J_RMS_p95_A_m2": 5.776982277617909,
+            "SC_power_W": 1.2404474688891456e-06,
+            "dermis_power_W": 0.0003867711924522831,
+            "skin_SC_plus_dermis_power_W": 0.00038801163992117227,
+            "fat_power_W": 8.297704070157117e-05,
+            "muscle_power_W": 2.573792976673398e-05,
+            "contact_power_W": 9.243694678114309e-07,
+            "tissue_contact_power_W": 0.0004976509798572889,
+            "source_resistor_power_W": 8.253671338724611e-05,
+            "source_power_W": 0.0005801876927306914,
+            "loaded_metal_Vpp": 1.1273939890447517
+          },
+          "source_current_RMS_mA": 1.284809039408161,
+          "source_current_peak_mA": 1.8169943685905698,
+          "loaded_metal_Vpp": 1.1273939890447517,
+          "signed_output_power_evidence": {
+            "physical_outputs": 1,
+            "source_resistance_ohm": 50.0,
+            "spectrum": [
+              {
+                "frequency_Hz": 3000,
+                "ideal_source_power_W": 0.0005801876927306914,
+                "metal_delivered_power_W": 0.0004976509793434453,
+                "source_resistor_loss_W": 8.25367133872461e-05
+              }
+            ],
+            "amplitude_scale": 1.3046657331914149,
+            "ideal_source_power_W": 0.0005801876927306914,
+            "metal_delivered_power_W": 0.0004976509793434453,
+            "source_resistor_loss_W": 8.25367133872461e-05,
+            "output_current_RMS_mA": 1.284809039408161,
+            "negative_frequency_power_preserved": true,
+            "hardware_absorption_and_compliance_validated": false
+          },
+          "ratios_vs_reference": {
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 1.0735678723941733,
+              "surface_J_RMS_p95_A_m2": 1.1662151497060411,
+              "contact_voltage_RMS_max_V": 1.0776741333113768,
+              "SC_power_W": 0.5725960483431451,
+              "contact_power_W": 0.569283310693618,
+              "source_power_W": 0.5600953666429609,
+              "bulk_skin_J_vector_RMS_max_A_m2": 1.0189223970753818,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 0.8436541008144244,
+              "skin_SC_plus_dermis_power_W": 0.575971067695052
+            },
+            "source_Vpp_to_max_TIS_output_interval": {
+              "lower": 1.1805778648877325,
+              "upper": 1.1805787536146255
+            },
+            "source_Vpp_to_each_TIS_output_interval": [
+              {
+                "lower": 1.1941842649386716,
+                "upper": 1.194185146821347
+              },
+              {
+                "lower": 1.1805778648877325,
+                "upper": 1.1805787536146255
+              }
+            ],
+            "current_RMS_to_each_TIS_output": [
+              0.9285940244134295,
+              0.9102777450514334
+            ],
+            "current_RMS_to_sum_output_RMS_bookkeeping": 0.459672332050255,
+            "output_current_sum_is_physical_common_return_current": false,
+            "source_Vpp_reference": "Maximum individual physical-output whole-waveform Vpp, not the sum of source Vpp"
+          },
+          "fundamental_envelope_variation_V_m": 0.0,
+          "single_frequency_modulation_definition": "For one frequency, each fixed real-direction analytic envelope has zero variation; electric-field RMS is nonzero and activation equivalence is not implied",
+          "probe_scope": "Unloaded native-phi probe evidence only; actual instrument loading unverified",
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.12458762380476068,
+              "Vpp_lower_V": 0.3523453590601154,
+              "Vpp_upper_V": 0.3523870145770618,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 8.836763377968028e-17,
+              "Vpp_lower_V": 2.498914667859396e-16,
+              "Vpp_upper_V": 2.499414123320872e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.07519533777171493,
+              "Vpp_lower_V": 0.21266872960054914,
+              "Vpp_upper_V": 0.21268453300797177,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 1.6096035610438443e-16,
+              "Vpp_lower_V": 4.552487260550301e-16,
+              "Vpp_upper_V": 4.552646372144501e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.0751953381913354,
+              "Vpp_lower_V": 0.21266873074240636,
+              "Vpp_upper_V": 0.2126845341948377,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 2.560757321708101e-16,
+              "Vpp_lower_V": 7.242349682142851e-16,
+              "Vpp_upper_V": 7.24291546861165e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.11112992474087102,
+              "Vpp_lower_V": 0.3143210420445234,
+              "Vpp_upper_V": 0.31432289350808457,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 7.921024210490366e-10,
+              "Vpp_lower_V": 2.2401575268407315e-09,
+              "Vpp_upper_V": 2.2404039732722383e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.11112992474087108,
+              "Vpp_lower_V": 0.31432104204452355,
+              "Vpp_upper_V": 0.31432289350808473,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 7.921024275860476e-10,
+              "Vpp_lower_V": 2.240157546822329e-09,
+              "Vpp_upper_V": 2.240403991761698e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.021589564625242946,
+              "Vpp_lower_V": 0.061064200793004855,
+              "Vpp_upper_V": 0.0610645101974984,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 8.024514077242706e-17,
+              "Vpp_lower_V": 2.26967380796251e-16,
+              "Vpp_upper_V": 2.2696753278981075e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01767558192392601,
+              "Vpp_lower_V": 0.04998383224254549,
+              "Vpp_upper_V": 0.049994095359306136,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 1.0722333635056841e-16,
+              "Vpp_lower_V": 3.0327339293973185e-16,
+              "Vpp_upper_V": 3.0327339293973407e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.017675582783008577,
+              "Vpp_lower_V": 0.04998383473406226,
+              "Vpp_upper_V": 0.049994097789158566,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 2.5605572859837235e-16,
+              "Vpp_lower_V": 7.242245449376969e-16,
+              "Vpp_upper_V": 7.242349682142902e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.020116821903923165,
+              "Vpp_lower_V": 0.05689748382386761,
+              "Vpp_upper_V": 0.05689896473674499,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 3.7297919178347326e-10,
+              "Vpp_lower_V": 1.0548584458963557e-09,
+              "Vpp_upper_V": 1.0549444630062948e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.020116821903923256,
+              "Vpp_lower_V": 0.056897483823867855,
+              "Vpp_upper_V": 0.056898964736745244,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 3.729792448956553e-10,
+              "Vpp_lower_V": 1.0548586047878698e-09,
+              "Vpp_upper_V": 1.0549446132302312e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.012869383208534563,
+              "Vpp_lower_V": 0.036397820680124156,
+              "Vpp_upper_V": 0.03640011254577257,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 1.6245703097828891e-16,
+              "Vpp_lower_V": 4.594618854513954e-16,
+              "Vpp_upper_V": 4.594978730247278e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.011555437108398242,
+              "Vpp_lower_V": 0.032679423013325375,
+              "Vpp_upper_V": 0.032683711755692506,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 5.365345203479481e-17,
+              "Vpp_lower_V": 1.5174957535167668e-16,
+              "Vpp_upper_V": 1.5175487907148339e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.011555437673206555,
+              "Vpp_lower_V": 0.03267942464968084,
+              "Vpp_upper_V": 0.03268371335321165,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 7.299149841386899e-17,
+              "Vpp_lower_V": 2.064449311824377e-16,
+              "Vpp_upper_V": 2.0645113398965705e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.012343031044532706,
+              "Vpp_lower_V": 0.034909663558049246,
+              "Vpp_upper_V": 0.03491136380794086,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 5.459757454259035e-10,
+              "Vpp_lower_V": 1.5438416685897335e-09,
+              "Vpp_upper_V": 1.5442526078161571e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.012343031044532913,
+              "Vpp_lower_V": 0.03490966355804983,
+              "Vpp_upper_V": 0.03491136380794144,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 5.459755621203407e-10,
+              "Vpp_lower_V": 1.543841150429633e-09,
+              "Vpp_upper_V": 1.5442520893497311e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.009816991549828393,
+              "Vpp_lower_V": 0.027764093384610205,
+              "Vpp_upper_V": 0.02776664518293897,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 1.096705743503243e-16,
+              "Vpp_lower_V": 3.1012022695087654e-16,
+              "Vpp_upper_V": 3.1019522727895325e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.00910344972762984,
+              "Vpp_lower_V": 0.02574552772032722,
+              "Vpp_upper_V": 0.025748444138391738,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 1.3096482390671117e-16,
+              "Vpp_lower_V": 3.7038610419551566e-16,
+              "Vpp_upper_V": 3.704244603253528e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.009103450481270883,
+              "Vpp_lower_V": 0.025745529858110537,
+              "Vpp_upper_V": 0.025748446270010508,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 3.73605073284505e-17,
+              "Vpp_lower_V": 1.0565281127074232e-16,
+              "Vpp_upper_V": 1.0567147232206894e-16,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.00953730389183588,
+              "Vpp_lower_V": 0.026973313491689098,
+              "Vpp_upper_V": 0.026975569024616196,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 6.493257462315321e-10,
+              "Vpp_lower_V": 1.836112896481145e-09,
+              "Vpp_upper_V": 1.8365705534373393e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.009537303891835614,
+              "Vpp_lower_V": 0.026973313491688345,
+              "Vpp_upper_V": 0.026975569024615446,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 6.493257148800849e-10,
+              "Vpp_lower_V": 1.8361128137167467e-09,
+              "Vpp_upper_V": 1.8365704647620558e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "input_verification_scope": "Caller must bind source JSON/config/grid/model/probe hashes; this pure function performs metadata and algebra checks only",
+  "native_array_reads": 0,
+  "new_PDE": 1,
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "instrument_loading_validated": false,
+  "experimentally_validated": false,
+  "holds": [
+    "Centre20 and ROIenergy RMS are separate matching criteria; other burdens are not simultaneously matched",
+    "Single-frequency zero envelope variation is not zero field or equivalent physiological activation",
+    "Ideal-source Vpp is before50ohm; loaded metal Vpp and contact voltage are distinct",
+    "Output RMS sums are bookkeeping, not the common-GND physical return current",
+    "PBS-to-skin contact, shape/edge/SC/XY/bulk convergence, source compliance and instrument loading remain unverified"
+  ],
+  "new_native_RHS": 1
+}
