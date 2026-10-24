@@ -1,3 +1,21 @@
+# Task 1 클라우드 재시작 검토 — 최신 갱신 2026-10-24
+
+## 최신 후속: 사용자 요청에 따른 fat 물성·층 경계 새 검증
+
+[fat 검증 실행 명세](TASK1_FAT_VALIDATION_REQUEST_20261024.md)를 추가했다. 아래 10월21일 문서는 당시 snapshot으로 보존하며 이후 구동비/전체 연구 상태를 현재 미실행으로 단정하는 근거로 쓰지 않는다. 이번 검토는 새 fat 요청에 집중하며 10월21일 이후 모든 연구 배치의 포괄 재감사가 아니다.
+
+| 기존 ID / FAT-20261024 하위 단계 | 이번 확인 | 상태와 보류 |
+|---|---|---|
+| F004: case/config/물성 적용 | canonical `baseline-square15-xy80`와 현재 best1 `rounded-expand-f35b23a22166`를 식별. baseline 경로 매핑 후 runtime config SHA 일치, best1 공개 config SHA 일치. fat σ=.04 S/m, εr=1000이 `σ+jωε`에 적용됨 | 정적/바이트 연결 **passed**. σ·εr은 주파수별 상수/미교정 가설이며 실제 fat 특성·새 실행 검증은 미완료 |
+| F001/F004: 전체 fat 최소8 V/m 주장 | 부모의 compact GUI 감사: XY z9.92142857143 mm min4.04296875,182/5024셀<8 | 주장 **failed**. 해당 반례는 Float16 단면 감사; 이 검토가 독립 decode하거나 전체3D Float64 min을 얻은 것은 아님 |
+| F004: 새 baseline/계면/격자 검증 | 새 baseline 1조건, 통과 후 최대1 coupled-bulk 비교의 유한 요청; 전체3D 통계·독립 계면·복소장 보존 명세 | **not_run**, 계산측 채택·현재 실행 소유자 확인 전. 기존 XY contact 약23% 실패 및 fat 경계/극값 수렴 보류 유지 |
+| F006/F007/F010: 기존 계산 작업과 중복 방지 | PR2 `b7ef9aae`에 centered C1 native1회 완료/후처리 실패 보존/복구·실제 결과 게시 확인 | centered C1은 fat 요청이 아님. 최신 전역 worker/lock 미확인; 기존 소유자가 안전한 경계에서 인계하도록 요청 |
+| F010: 연결/자원 | 검토 환경에 원 계산 경로·Task1 task 실행 연결 없음. 최신 공개 공간 관측은2GiB reserve 위196608B; 최종 게시 이후 live 예산 미확인 | GitHub 조정만 가능. 새 solver/worker·설치·삭제·자원확대·main 변경 없음. 원 담당자의 실제 admission 전 실행 주장 금지 |
+
+전체 상세 source/config/condition hashes, 신규 C1와 fat 요청의 구분, 원 계산 연결 blocker, 제출해야 할 실행·검증 artifact는 위 명세에 있다. 요청 게시를 채택·실행으로 세지 않고 F004/F010 전체를 닫지 않는다.
+
+---
+
 # Task 1 클라우드 재시작 검토 — 최신 갱신 2026-10-21
 
 ## 최신 후속 검토 — `9f31d4f` 접촉 비교와 구동비 등록
