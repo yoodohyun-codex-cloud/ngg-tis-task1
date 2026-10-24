@@ -10,7 +10,7 @@ class WindowsExportContract(unittest.TestCase):
         text=w.render([self.row('docs/전기장 모양/ShapeNet$Edge.class')])
         self.assertIn('EscapeDataString',text)
         self.assertIn('OneDrive_sync_verified=$false',text)
-        self.assertNotIn('lijil',text)
+        self.assertNotIn("C:"+chr(92)+"Users"+chr(92),text)
         self.assertNotIn('__MANIFEST__',text)
 
     def test_traversal_ads_devices_rejected(self):
