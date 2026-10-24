@@ -52,11 +52,28 @@ f35의 signed complex coefficient vector는 3000 Hz: Re[0,−0.00966986335842917
 
 [CloudShapeBasis](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe/tools/java/CloudShapeBasis.java#L89)은 config의 모든 σ/εr을 읽고, [TisSweep.Net](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe/tis-java/TisSweep.java#L51)은 `γ=σ+j2πf ε0 εr`, ε0=8.8541878128e−12 F/m를 사용한다. **εr은 실제 연산에 적용된다.** 하지만 σ·εr 자체는 네 주파수에 같은 상수다. 용량성 항의 ω 의존성만 있고, 조직별 주파수 분산 모델·이방성 tensor·phantom 측정 교정은 없다. 소스 header도 물성을 “uncalibrated hypotheses, NOT measured phantom data”라고 명시한다. 이 상수의 실측/논문 추정 근거는 검토된 config/header에서 확인되지 않았다. 출처 없는 숫자를 검증된 생체 fat 특성으로 인증하지 않는다.
 
-NGG의 nominal PBS-derived contact impedance는 별도 주파수별 면적 임피던스(Ω m²)이며 fat σ나 skin의 실측 근거가 아니다. Rs-fit 창과 carrier/전원50 Ω도 구분한다. 새 batch의 준비 단계에서 **실제 사용한 팬텀 제작 레퍼런스 논문과 배합**을 먼저 식별하고 현재 상수와 대조한다. 사용자는 이전 팬텀 논문을 물성 근거로 지정했다. 일반 생체 지방의 표준값을 대신 넣어 이 요구를 충족했다고 하지 않는다. 논문 제목/DOI·해당 표/그림/쪽, 실제 fat 모사층 배합·농도/단위·제작 조건, 측정 주파수와 온도·측정법/불확실성을 실행 config에 연결한다. 논문이 전도도만 보고하면 εr은 ‘미보고/별도 가정’으로 남기며 측정된 값으로 꾸미지 않는다. 보간·외삽이나 다른 배합의 값을 쓰면 그 범위와 이유를 별도 표시한다.
+NGG의 nominal PBS-derived contact impedance는 별도 주파수별 면적 임피던스(Ω m²)이며 fat σ나 skin의 실측 근거가 아니다. Rs-fit 창과 carrier/전원50 Ω도 구분한다.
 
-2026-10-24 사용자 추가 지시를 반영했다. 지정된 원 Windows 작업 폴더·기존 담당자·진행 작업·원데이터·참고 논문은 부모 작업의 별도 읽기 전용 사전확인 대상이다. 이 클라우드 검토 환경이 그 경로에 접근할 수 있다고 추정하지 않는다. **정확한 논문 및 실제 배합의 식별·대조는 아직 미완료**이며, 부모가 전달할 근거와 원 계산 담당자의 확인으로 채워야 한다. 이 추가사항 자체는 접근 승인·새 계산 시작·물성 수정의 근거가 아니다.
+### 2026-10-24 원문 확인에 따른 물성 전제 정정
 
-기존 물성 그대로의 baseline 재현은 기존 결과의 재현성 검사로 명확히 표시한다. 팬텀 논문 대조에서 차이가 확인되면 원 config를 보존하고, 근거·주파수/온도 조건·변경량을 고정한 별도 검증 config를 기존 예산 안의 유한 등록에 반영한다. 문헌값을 확인하지 않은 채 임의로 고치거나, 원하는 gradient를 만들기 위해 물성을 조정하지 않는다. 팬텀 근거 검증과 기존 수치 재현을 각각 판정한다.
+사용자가 지정한 논문은 Gautam Anand, Andrew Lowe, Ahmed Al-Jumaily, **Tissue phantoms to mimic the dielectric properties of human forearm section for multi-frequency bioimpedance analysis at low frequencies**, *Materials Science & Engineering C* **96** (2019),496–508, [DOI10.1016/j.msec.2018.11.080](https://doi.org/10.1016/j.msec.2018.11.080)이다. 별도 논문 검토 작업의 원문 검증을 인계받았으며, 이 검토에서도 기존 로컬 PDF의 SHA256 `dd042f66b74a5d42cf335238e6801409364fa20704520293e2971b1fe10cbe60`와13쪽을 확인하고 관련 본문·Table3 및 Fig10/11 렌더를 직접 대조했다. 아래 PDF 쪽은1부터 세며 인쇄 쪽과 구분한다. PDF 원문/그림 자체는 이 공개 문서 변경에 포함하지 않는다.
+
+**현재 fat σ=.04 S/m·εr=1000은 이 논문의 제작 팬텀 물성으로 뒷받침되지 않는다.** config가 코드에 제대로 전달된다는 정적 검증과 물성 선택의 실험 근거는 별개다. Fig10a의 제작 fat σ는 표시 주파수 전체에 걸쳐 대략.013–.025 S/m인 그림 근사이며 .04 S/m은 그 상단보다 높다. 이 범위를2–3 kHz의 정확한 값이나 불확도 구간으로 쓰지 않는다. Fig10의0–2 MHz 선형 주파수 축에서는 저주파 점들이 겹쳐2k/2010/3k/3030 Hz별 σ·εr를 정확히 추출할 수 없고, **εr=1000도 원문의 해당 저주파 값으로 확인되지 않는다.** 범위 중간값·원하는 경향·임의 보간으로 새 수치를 만들지 않는다.
+
+| 근거 위치 | 확인한 내용 | 적용 한계/정정 |
+|---|---|---|
+| §2.1.1–2.2, 인쇄498–499쪽 / PDF3–4쪽; Fig3(B,C) | Keysight E4980A LCR와 coaxial sensor, 침지 깊이를 바꾸며 fat/muscle 혼합물의 σ·εr를 산출.1 kHz–2 MHz 로그 간격50점. room temperature에서 안정화한 시료; 최소6 h 또는 overnight | 정확한 실온 °C는 미보고. 계기 자체의20 Hz 하한과 실제1 kHz 시작 sweep을 구분한다. |
+| §3.2, 인쇄502쪽 / PDF7쪽 | fat 제작에0.05% NaCl 용액과5% agar를 사용 | 최종 fat 질량분율 표가 아니다. 과거 레시피 기록의 water94.95%를 논문 표값으로 확정하지 않는다. |
+| Table3, 인쇄503쪽 / PDF8쪽 | muscle wt%: water75.4,NaCl.03,agar3.77,gelatine1.88,propylene glycol18.72 | 표기값의 합은99.80.100으로 임의 재정규화하지 않는다. 사용자의 실제 제조 배합 일치 여부는 별도 확인한다. |
+| Fig10(a,b), 인쇄504쪽 / PDF9쪽 | fat conductivity/relative permittivity 비교. blue는 제작 simulant의 계산 물성, red는 Gabriel 모델의 목표 조직값 | red를 이번 연구의 새 사람 측정으로 쓰지 않는다. 제작 팬텀과 생체 목표값을 서로 대체하지 않는다. 그림 전체 범위와 특정 carrier 값을 구분한다. |
+| Fig11(a,b), 인쇄505쪽 / PDF10쪽 | muscle 제작 simulant와 Gabriel 목표값의 비교 | Table3 배합과 주파수·측정 조건을 함께 연결한다. 그림만으로 임의의 정확한 carrier 표를 생성하지 않는다. |
+| §2.3, 인쇄501쪽 / PDF6쪽; Discussion504쪽 / PDF9쪽 | **완성 전완 phantom**은 Quadra로1–349 kHz의15점을 측정하고 Cole fit으로2 MHz까지 확장 | 개별 fat/muscle 재료의 LCR1 kHz–2 MHz/50점 실험과 별개다. 과거 인계 기록의 “개별 물성도1–349 kHz 실측 후 확장” 해석은 정정한다. |
+
+원문에는 carrier별로 바로 재사용할 제작 fat/muscle의 원시 주파수–σ–εr 표나 해당 재료의 fit 계수 집합이 제시되지 않는다. 전완 전체 임피던스의 Cole fit을 개별 fat 재료의 fit으로 대체하지 않는다. 따라서 논문 identity·배합/측정법/그림의 확인은 완료했지만 **정확한2k/2010/3k/3030 Hz 및 사용 고조파의 제작 팬텀 물성 확보는 미완료**다. 숫자 확보의 다음 단계는 적법하게 가용한 원시 측정표/재료 fit 자료와 실제 제조 조건의 확인이다. 그림에서 분해되지 않는 점을 정밀 수치로 게시하지 않는다.
+
+원래 고정 D50/층0.1·5·5·15 mm 모델은 보존한다. 논문의 전완 형상 전체를 재현했다고 부르지 않는다. 이전 상수 그대로의 새 baseline·mesh 검사는 **기존 가정의 수치 재현/민감도 검사**로 표시하고, 팬텀 물성 근거 확보 단계와 별도 판정한다. 원물성표 없이 새 계산을 “논문 재현” 또는 “논문 검증 물성 적용”으로 표시하지 않는다. 이후 자료가 확보되면 원 config를 보존하고 적용 주파수·온도·배합·단위·보간/외삽·불확실성을 명시한 별도 config/유한 등록을 기존 예산 안에서 검토한다. 원하는 gradient를 만들기 위한 물성 조정은 금지한다.
+
+지정된 원 Windows 작업 경로와 실제 제조 자료는 부모의 별도 읽기 전용 확인 대상이다. 부모가 전달한 최신 상태는 연결된 로컬 TIS 폴더가 비어 있고 기존 실행 담당 연결은 여전히 미확인이라는 것이다. 이 클라우드의 검토용 PDF 존재가 그 원 Windows 경로·native 결과·계산 task의 접근을 증명하지 않는다. 새 PDE/worker를 여기서 시작하지 않는다.
 
 전체 전류는 전도+변위 성분이다([공식 electroquasistatics 설명](https://www.comsol.com/multiphysics/electromagnetics)). 이상적 계면에서 검증할 양은 접선 E와 법선 **Jtotal=γE**이며, σE만의 법선 연속이나 서로 다른 물질의 법선 E 연속을 강제하지 않는다. COMSOL 문헌은 물리식 참고일 뿐 이 Java 계산을 COMSOL 실행으로 보고하는 근거가 아니다.
 
@@ -73,7 +90,7 @@ NGG의 nominal PBS-derived contact impedance는 별도 주파수별 면적 임�
 이는 실행 명령/등록 완료본이 아닌 **채택·사전등록 요청**이다. 기존 소유자가 현재 환경에서 실행 가능한 entrypoint와 정확한 명령을 확정해야 한다. 검토자가 새 worker나 옛 명령을 자동 실행하지 않는다.
 
 1. **소유권·중복·자원 admission.** 원 Task1 task/environment 식별자, 현재 PID/startticks·자식·두 lock·현 queue/등록·최신 remote와 local source를 확인한다. centered C1 후처리/게시나 fat 관련 작업이 이미 있으면 그 소유자가 안전한 단계 경계에서 이어가며 중복 solve를 만들지 않는다. 존재하는 cache를 새로운 계산으로 세지 않는다.
-2. **재료/격자/경계 준비.** 위 case/config/mask SHA와 runtime effective material 표(각 f의 실제 complex γ), 길이 단위 변환, z-face/center/layer index를 보관한다. fat는5.1≤z<10.1 mm; 부동소수점 face10.100000000000005 등의 허용 처리와 실제 mask를 검사한다. material ID와 GUI 색상 이름을 따로 확인한다.
+2. **재료/격자/경계 준비.** 위 논문의 원문 근거와 미확보 carrier 물성을 구분하여 기존 상수 재현인지 별도 가정 민감도인지 먼저 표시한다. 원물성표 없이 논문 재현으로 사전등록하지 않는다. 위 case/config/mask SHA와 runtime effective material 표(각 f의 실제 complex γ), 길이 단위 변환, z-face/center/layer index를 보관한다. fat는5.1≤z<10.1 mm; 부동소수점 face10.100000000000005 등의 허용 처리와 실제 mask를 검사한다. material ID와 GUI 색상 이름을 따로 확인한다.
 3. **최소 새 재현 1조건.** canonical baseline h0.625/SC2/bulk14/14/40, 원4주파수×2 RHS를 고유 run에 새로 풀어 기존 정의를 재현한다. 원 코드/config/mask/계수·입력 hash를 고정하고 원본/기존 GUI/current pointer를 보존한다. 실제 새 solve가 불가능하면 `not_run`과 원인을 명시한다. cached postprocess만 수행한 경우 이 단계의 대체 성공으로 세지 않는다.
 4. **첫 단계 통과 후 최대1조건 추가.** 같은 baseline h0.625/SC2에서 현재 구현이 지원하는 bulk18/18/56을 사용하여 fat 내부와 두 경계의 민감도를 비교한다. 이는 dermis/fat/muscle을 함께 세분화한 **coupled bulk 비교**이며 fat-only가 아니다. 첫 admission은 최대2개 새 native 조건이다. 원 config 재현 실패나 자원 gate 실패면 중단하여 실패를 보존한다.
 5. **기존 native의 제한된 비교 및 다음 결정.** 이미 완료된 baseline coarse/XY80/bulk와 best1 f35 native가 원 환경에 있고 SHA/format이 맞으면 추가 solve 없이 새 fat 통계를 얻어 재사용으로 표시한다. 새로운 두 수준에서도 fat/경계가 미수렴이면 다음 XY h0.5 비교를 별도 유한 등록으로 제안한다. 정확한 best1 새 solve가 필요하면 남은 예산/보존 공간과 함께 다음 등록에 명시한다. 이 최초2조건 요청에는 자동 XY sweep·best1 재계산·새 물성 탐색을 붙이지 않는다. 재사용 best1만으로 best1의 새 계산/수렴을 주장하지 않는다.
@@ -107,6 +124,7 @@ centered C1의 작은1주파수/1RHS tmpfs 처리·공개 성공이4주파수/2R
 |---|---|---|
 | F004/F010 FAT-20261024 인계 | requested; 계산측 채택/담당 연결 미확인 | adoption source/commit, 기존 소유 task/environment·lock 확인 |
 | F004 config→γ 정적 감사 | passed, 공개 코드·바이트/hash 연결 범위 | 새 실행 effective material/config hash는 별도 필요 |
+| F004 팬텀 물성 근거 | 논문/방법/배합·그림 확인; 현재 fat σ=.04·εr1000의 논문 근거는 **unsupported** | exact carrier σ/εr·원시표/재료 fit 미확보; 논문 재현·실험 교정 보류 |
 | F001/F004 전체 fat min8 주장 | failed, 인계된 compact XY 반례 | 원 Float64 전체3D extrema는 아직 미검증 |
 | F004 새 fat baseline·bulk 배치 | **not_run** | 고유 run ID, 시작/종료/PID/startticks/명령/환경/exit와 직접 artifact URL |
 | F004 기존 baseline 이산 보존 | 공개 기록 passed | 이 검사만으로 fat 경계/극값 수렴을 닫지 않음 |
