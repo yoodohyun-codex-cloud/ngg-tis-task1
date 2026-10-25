@@ -1,0 +1,100 @@
+{
+  "schema": "task1-proposed-peripheral-fourpad-family-v2",
+  "conditions": [
+    {
+      "candidate_id": "B0-square15-c10-diagonal",
+      "recipe": "square",
+      "side_mm": 15,
+      "center_abs_mm": 10,
+      "expected_pad_area_mm2": 225,
+      "reuse_first8_case_id": "B0-square15-c10-diagonal"
+    },
+    {
+      "candidate_id": "G1-square12-c10-diagonal",
+      "recipe": "square",
+      "side_mm": 12,
+      "center_abs_mm": 10,
+      "expected_pad_area_mm2": 144,
+      "reuse_first8_case_id": "G1-square12-c10-diagonal"
+    },
+    {
+      "candidate_id": "P24-peripheral-polyomino225",
+      "recipe": "radial_orbit_prefix",
+      "outer_radius_mm": 24,
+      "minimum_axis_face_mm": 1,
+      "target_full_cells_per_pad": 900,
+      "expected_pad_area_mm2": 225,
+      "reuse_first8_case_id": null
+    },
+    {
+      "candidate_id": "P23p5-peripheral-polyomino225",
+      "recipe": "radial_orbit_prefix",
+      "outer_radius_mm": 23.5,
+      "minimum_axis_face_mm": 1,
+      "target_full_cells_per_pad": 900,
+      "expected_pad_area_mm2": 225,
+      "reuse_first8_case_id": null
+    },
+    {
+      "candidate_id": "P12-square-c11p5-diagonal",
+      "recipe": "square",
+      "side_mm": 12,
+      "center_abs_mm": 11.5,
+      "expected_pad_area_mm2": 144,
+      "reuse_first8_case_id": null
+    }
+  ],
+  "fixed": {
+    "h_mm": 0.5,
+    "nx": 100,
+    "body_diameter_mm": 50,
+    "physical_pads": 4,
+    "independent_outputs": 2,
+    "pad_to_node": [
+      0,
+      1,
+      -1,
+      -1
+    ],
+    "pad_quadrants": [
+      [
+        -1,
+        -1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        -1,
+        1
+      ]
+    ],
+    "frequencies_Hz": [
+      2000,
+      2010
+    ],
+    "active_outputs": [
+      0,
+      1
+    ],
+    "source_Vpp": 1,
+    "source_resistance_ohm": 50,
+    "return_topology": "pads2and3 hardcommon0V; otheridealoutput0Vbehindits50ohm"
+  },
+  "radial_selection": "Everyfullcell fourcorners insideouterradius/lowerx,yfaces>=1mm. Orderwhole(i,j)<->(j,i)orbits by descendingexactcentre r²,thenascendingabs(x-y),thenmin(x,y); no all-same-radius-group constraint.",
+  "tie_policy": "Takeeachwholeorbitinthatfixedorder. If exactlyone slotremains andnextorbit hastwo cells, skipandrecordit; takefirstlaterdiagonalsingleton. Noorbitsplit, arbitraryfiller, afterdatarepair, radiuschange orrenormalization; finalexact900and4-neighborconnectivitymandatory.",
+  "shape_scope": "Union of actual0.5mm squares, a grid-defined physicalpolyomino; NOT an exactsmooth annularsector or manufacturabilityclaim.",
+  "maximum_conditions": 5,
+  "maximum_new_RHS_with_B0_G1_verified_reuse": 6,
+  "scope": "Source-only nextfamily, no automaticselection/execution/adoption; rootverifiesactualfirst8controls before reuse.",
+  "excluded_local_side_mm": [
+    14,
+    16
+  ],
+  "local_PC_allocation_or_reservation": false
+}
