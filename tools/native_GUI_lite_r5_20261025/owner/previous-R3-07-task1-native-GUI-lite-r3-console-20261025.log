@@ -1,0 +1,14 @@
+{"schema": "task1-native-GUI-lite-owner-v1", "status": "failed_preserved", "started_utc": "2026-10-25T16:59:08.637250+00:00", "pid": 213715, "proc_start_ticks": 7917545, "new_PDE_RHS": 0, "new_Q_loads": 0, "new_angular_evaluations": 0, "GUI_generated": false, "Windows_saved_verified": false, "candidate_adopted": false, "error_type": "ValueError", "error": "All actual unpublished failure/control bytes included in R3 source", "failed_phase": "preparing", "finished_utc": "2026-10-25T16:59:08.741778+00:00", "elapsed_seconds": 0.09264479699777439, "nonduplicated_ledger_seconds": 0.09264479699777439, "resources": {"peak_RSS": 0, "peak_owned_tmpfs": 0, "peak_accounted": 0}, "remaining_approved_seconds": null}
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-GUI-lite-r3-owner-20261025/source/guardian.py", line 249, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/dev/shm/task1-native-GUI-lite-r3-owner-20261025/source/guardian.py", line 156, in main
+    R2history,R2refs,R2absences=verify_R2_history(admission,sources);original_absences.extend(R2absences);new(OUT/'previous-R2-postS-failure-proof.json',R2history)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-GUI-lite-r3-owner-20261025/source/recovery_R2_history.py", line 43, in verify_history
+    require(copy.read_bytes()==p.read_bytes()and registered_sources.get(str(copy))==row['SHA256'],'All actual unpublished failure/control bytes included in R3 source')
+  File "/dev/shm/task1-native-GUI-lite-r3-owner-20261025/source/recovery_R2_history.py", line 12, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: All actual unpublished failure/control bytes included in R3 source

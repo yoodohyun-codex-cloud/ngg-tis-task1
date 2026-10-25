@@ -1,0 +1,47 @@
+{
+  "schema": "task1-GUI-lite-R3-provisional-owner-RSS-estimate-v1",
+  "root_authorized_revised_provisional_owner_forecast_bytes": 300000000,
+  "original_model_informational_forecast_bytes": 340000000,
+  "original_model_source_or_forecast_changed": false,
+  "measured_child_peak": false,
+  "formal_upper_bound": false,
+  "physical_cap_bytes": 8000000000,
+  "output_allowance_bytes": 12000000,
+  "selected_native_inputs_bytes": {
+    "maximum_N": 793860,
+    "grid_N_by5_float64": 31754400,
+    "two_float64_scalars": 12701760,
+    "one_E2000_complex128_N_by3": 38105280,
+    "total_selected": 82561440
+  },
+  "source_lifetime_phase_estimates": {
+    "lateral_layout_unique_transient_approx_bytes": 25000000,
+    "actual_metadata_only_prepare_peak_RSS_bytes": 144855040,
+    "assumed_incremental_existing_NumPy_runtime_approx_bytes": 50000000,
+    "metadata_prepare_stage_approx_bytes": 195000000,
+    "field_stage_with_retained_context_and_base_approx_range_bytes": [
+      200000000,
+      230000000
+    ],
+    "compact_serialization_transients_approx_bytes": 25000000
+  },
+  "non_simultaneous_stage_estimates_not_summed_as_one_measured_peak": true,
+  "excludes_decoding": [
+    "Q",
+    "phi",
+    "second_carrier_E",
+    "ROI_weight_arrays"
+  ],
+  "one_geometry_frame_at_a_time_and_GC": true,
+  "source_allocation_review_basis": "Frozen gui_build/lite_extract selects only grid+two scalar arrays+one2000HzE; native_layout transient estimate, actual root metadata-only RSS profiles, and explicitly approximate NumPy/base/context/serialization margins.300MB is a root-revised provisional forecast, not an observation or numerical/safety threshold.",
+  "hard_actual_guard_unchanged": true,
+  "partial_failure_preserved_if_actual_peak_exceeds_available_headroom": true,
+  "science_display_or_fixture_thresholds_changed": false,
+  "new_output_storage": "existing_workspace_disk",
+  "new_TMPFS_output_forecast_bytes": 0,
+  "total_output_estimate_bytes": 12000000,
+  "publisher_outputs_still_dev_shm_and_counted_actual_before_stages": true,
+  "storage_capacity_guards_enabled": false,
+  "no_old_files_moved_or_deleted": true,
+  "no_new_mount_or_capacity_claim": true
+}
