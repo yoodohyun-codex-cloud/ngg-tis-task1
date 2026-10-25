@@ -1,0 +1,94 @@
+{
+  "schema": "task1-contact-edge-Galerkin-preregistration-v1",
+  "question": "Does a boundary-aligned Fourier-Galerkin partial contact solution pass full-contact1Danalytic checks and stabilize independently in panel and harmonic truncation, with physical E/J and signed power?",
+  "source_sha256": {
+    "/dev/shm/task1-contact-edge-equipotential-20261025/source/test_contact_edge_equipotential.py": "e740e457110c3d49e273e15d0bd1fac2a96c84d9b9dc6f150fac2918c74910ef",
+    "/dev/shm/task1-contact-edge-equipotential-20261025/source/contact_edge_equipotential.py": "5c84ed110897959bbf3336d7c0e3042fc10c7c1f3d5500512be25c6e10b1a61a",
+    "/dev/shm/task1-contact-continuation-20261025/bem-owner-source/worker.py": "2195376a273b9afa87eef95a88e8fb1fbc95ade7068cdb940efcb93eea656206",
+    "/dev/shm/task1-contact-continuation-20261025/bem-owner-source/guardian.py": "f98b62f9b53b27438ead36587ec94d0394c73ad45011722886d02dde50f6e854"
+  },
+  "input_sha256": {
+    "/dev/shm/task1-contact-edge-equipotential-20261025/source/contact_edge_equipotential.py": "5c84ed110897959bbf3336d7c0e3042fc10c7c1f3d5500512be25c6e10b1a61a",
+    "/workspace/ngg-tis-task1/runtime/task1-execution-resource-policy.json": "3f1cf1bced28489b85f0f8795b81c0a20aab2950ab70c91c8ac2018034256804",
+    "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/approval.json": "2bf9de71a70a1c7a3e054372a51d0f40e34c74077446784b6bcba58578f725a8",
+    "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/environment-snapshot.json": "76ee85eb5776408782edfa0091ea91543765e8bda881009c78d8d4dc090b0fd4",
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "10fbbfaefa4437d598046758b15008b6fe34d350dd0adc16dc0622b86cbd84bc",
+    "/workspace/ngg-tis-task1/tools/task1_execution_policy.py": "e89a611a3768bb6b3cccb9a7226d611f68bd91dab11a3ffd5a68c50779e2e3e1",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "84ac97fbdecc00e1cc1b9d1bbfc9fb1d94baaaed392a3d6a0f8956647b08b89e"
+  },
+  "spec_SHA256": "9cad3960e516e2caea95faaf8bc8a3e35dbd3582094c23fd024fd537fd673ad3",
+  "limits": {
+    "schema": "task1-resolved-execution-limits-v2",
+    "cpu_limit": 4,
+    "effective_cpu_limit": 4,
+    "affinity_cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "total_memory_bytes": 8000000000,
+    "effective_total_memory_bytes": 8000000000,
+    "requested_cpu_limit": 4,
+    "requested_total_memory_bytes": 8000000000,
+    "requested_total_memory_GiB": 7.450580596923828,
+    "java_heap_bytes": 2147483648,
+    "java_heap_fits_effective_total_cap": true,
+    "java_active_processor_count": 4,
+    "blas_threads": 4,
+    "max_cells": 800000,
+    "concurrent_solves": 1,
+    "numerical_owners": 1,
+    "cumulative_time_unlimited": true,
+    "finite_batch_timeouts_required": true,
+    "memory_accounting_scope": "Aggregate owned process RSS plus all task1-owned tmpfs bytes; caller must enforce",
+    "visible_cgroup_memory_headroom_bytes": 6267183104,
+    "host_MemAvailable_bytes": 13847666688,
+    "environment": {
+      "schema": "task1-execution-environment-snapshot-v1",
+      "helper_version": "task1-execution-policy-2.0",
+      "python_version": "3.12.14",
+      "cgroup_version": 2,
+      "affinity_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "affinity_status": "observed",
+      "visible_cpuset_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "visible_cpu_quota_us": 400000,
+      "visible_cpu_period_us": 100000,
+      "visible_cpu_quota_cores": 4.0,
+      "visible_cpu_quota_status": "visible_finite",
+      "visible_cgroup_memory_limit_bytes": 17179869184,
+      "visible_cgroup_memory_limit_status": "visible_finite",
+      "visible_cgroup_memory_current_bytes": 10912686080,
+      "visible_cgroup_memory_headroom_bytes": 6267183104,
+      "host_MemAvailable_bytes": 13847666688,
+      "hidden_ancestor_limits_verified": false,
+      "capacity_guaranteed": false,
+      "measurement_scope": "Current process affinity and visible cgroup v2 mount only; host availability is informational"
+    },
+    "immutable_policy_refs": {
+      "/workspace/ngg-tis-task1/runtime/task1-execution-resource-policy.json": "3f1cf1bced28489b85f0f8795b81c0a20aab2950ab70c91c8ac2018034256804",
+      "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/approval.json": "2bf9de71a70a1c7a3e054372a51d0f40e34c74077446784b6bcba58578f725a8",
+      "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/environment-snapshot.json": "76ee85eb5776408782edfa0091ea91543765e8bda881009c78d8d4dc090b0fd4"
+    },
+    "hidden_ancestor_limits_verified": false,
+    "capacity_guaranteed": false
+  },
+  "hard_child_seconds": 600,
+  "new_full_phantom_CEM": 0,
+  "new_TIS": 0,
+  "prior_failed_model_commit": "d2456af62d0686e06555d9e6664ee5d3504d8c64",
+  "old_failed_flags_preserved": true,
+  "criteria_relaxed": false
+}
