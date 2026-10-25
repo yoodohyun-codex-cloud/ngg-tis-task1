@@ -1,0 +1,29 @@
+{
+  "aggregate_cap_bytes": 8000000000,
+  "observed_owned_tmpfs_bytes": 6783312898,
+  "parent_RSS_bytes": 23375872,
+  "predicted_child_peak_RSS_bytes": 800000000,
+  "predicted_new_output_bytes": 200000000,
+  "physical_forecast_bytes": 7806688770,
+  "child_RLIMIT_AS_bytes": 1600000000,
+  "minimum_RLIMIT_AS_bytes": 1000000000,
+  "virtual_cap_is_not_RAM_allocation": true,
+  "virtual_mapping_explanation": "Finite1.6GBAS includesuncommittedmappings; only actualRSS+allownedtmpfs is8e9 physicalbudget. Independent250msaggregatewatchdog remains active.",
+  "resource_forecast": {
+    "prior_measured_raw_VmPeak_bytes": 1162010624,
+    "prior_measured_raw_owned_RSS_bytes": 713867264,
+    "prior_measured_descendant_RSS_bytes": 741543936,
+    "expected_new_raw_and_scalar_output_bytes": 200000000,
+    "predicted_child_RSS_bytes": 800000000,
+    "fixed_child_RLIMIT_AS_bytes": 1600000000,
+    "publication_and_miscellaneous_virtual_reserve_bytes": 250000000,
+    "historical_receipt_SHA256": {
+      "/dev/shm/task1-mixed-fourpad-r2-20261025-run/worker-receipt.json": "e7705c28b761d2f39f70b6ecaa7d896601022abf44b28626f65ddf782bf8427c",
+      "/dev/shm/task1-mixed-fourpad-r2-20261025-run/receipt.json": "25ffea2d157638f2d63db2d9048317bcc5bf81d8c63ecb2ff72f3f0fda4302a4"
+    },
+    "aggregate_RSS_plus_all_task_tmpfs_cap_bytes": 8000000000,
+    "aggregate_guard_unchanged": true,
+    "CPU_cap_unchanged": 4,
+    "interpretation": "Fixed finite1.6GB virtual-address cap is not a RAM allocation or Javaheap. Admit only measured alltmpfs+parentRSS+predicted800MBchildRSS+200MBnewoutput<=8e9; actual250msaggregateRSS+alltmpfsguard unchanged. Uncommitted virtual mappings may exceed physicalRSS headroom. No resource-budget expansion."
+  }
+}
