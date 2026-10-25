@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/workspace/ngg-tis-task1/tools/task1_lower_carrier.py", line 457, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_lower_carrier.py", line 453, in main
+    result=prepare(run)if args.prepare else execute(run)
+                                            ^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_lower_carrier.py", line 388, in execute
+    basis=native.load_basis(basis_dir,case,phase_deadline[0])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_lower_carrier_native.py", line 241, in load_basis
+    return _load(folder,case,deadline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_lower_carrier_native.py", line 193, in _load
+    _require(set(mask_rows.dtype.names) == {'pad','i','j','area_m2'} and len(mask_rows) == 2304 and
+  File "/workspace/ngg-tis-task1/tools/task1_lower_carrier_native.py", line 33, in _require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Exact original full-face square mask required

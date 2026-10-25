@@ -1,0 +1,85 @@
+{
+  "schema": "task1-hershkovich-human-waist-band-exclusion-v1",
+  "reviewed_utc": "2026-10-25T01:18:29.089522+00:00",
+  "purpose": "Record new region-specific human reference separately; do not change the currently pinned/PDE-running material inputs or claim kHz validity",
+  "paper_2019": {
+    "DOI": "10.1088/1361-6560/ab33c6",
+    "PMID": "31323651",
+    "title": "The dielectric properties of skin and their influence on the delivery of tumor treating fields to the torso: a study combining in vivo measurements with numerical simulations",
+    "journal": "Physics in Medicine & Biology64(18):185014",
+    "year": 2019,
+    "primary_abstract_URL": "https://pubmed.ncbi.nlm.nih.gov/31323651/",
+    "publisher_URL": "https://iopscience.iop.org/article/10.1088/1361-6560/ab33c6",
+    "read_scope": "Original PubMed abstract and metadata read through indexed primary page; direct PubMed page intermittently reduced to HHS footer. Original IOP full text/PDF could not be inspected: web access denied by robots/URL fetch.",
+    "primary_abstract_verified": true,
+    "original_fulltext_verified": false,
+    "species": "human",
+    "measurement_condition": "in_vivo_volunteers",
+    "site_independently_verified_in_2019_abstract": "Volunteer skin; torso/abdomen is the computational delivery/model region. Measurement waist location is not stated in the inspected2019abstract.",
+    "measurement_frequency_band_Hz_independently_verified_from_2019_fulltext": null,
+    "TTFields_frequency_context_Hz_in_abstract": [
+      100000,
+      500000
+    ],
+    "TTFields_context_is_not_a_complete_measurement_band": true,
+    "temperature_C": null,
+    "temperature_status": "No value verified from original methods; no37C orroomtemperature assumption inserted",
+    "separate_SC_bulk_material_identified": false,
+    "uncertainty_verified_from_original_fulltext": null,
+    "numeric_values_admitted_to_current_PDE": false
+  },
+  "related_primary_2017_poster": {
+    "DOI": "10.1016/j.ijrobp.2017.06.2147",
+    "year": 2017,
+    "title": "Measuring the Dielectric Properties of Human Skin in Order to Understand How Tumor Treating Fields Distribute Within the Body",
+    "primary_URL": "https://www.redjournal.org/article/S0360-3016%2817%2933201-7/fulltext",
+    "journal_location": "International Journal of Radiation Oncology Biology Physics99(2)supplement E640",
+    "read_scope": "Original publisher abstract full Purpose/MaterialsMethods/Results/Conclusion available in indexed primary page; full2019methods are not inferred to be identical",
+    "species": "human",
+    "condition": "in_vivo",
+    "site": "Waist skinfolds",
+    "measurement_frequency_band_Hz": [
+      100000,
+      1000000
+    ],
+    "locations_per_volunteer": "5–6aroundwaist",
+    "number_of_volunteers_verified": null,
+    "electrodes": "Ceramicdisks and conductive medicalgel matching TTFields transducer components, oneoneachside of foldedskin",
+    "geometry": "Foldthicknessmeasured at eachlocation; folded epidermis/dermis/SAT path analyzed",
+    "model_layers": [
+      "epidermis",
+      "dermis",
+      "subcutaneous_adipose_tissue"
+    ],
+    "electrical_partition": "Epidermis represented capacitively; dermis/SAT resistively in the reported band",
+    "epidermis_is_not_identical_to_separate_stratum_corneum": true,
+    "temperature_C": null,
+    "uncertainty_interpretation": "Abstractreported ranges are not certified confidence intervals; no kHz uncertainty distribution inferred",
+    "numeric_values_admitted_to_current_PDE": false
+  },
+  "admission_decision": {
+    "status": "excluded_from_current_carrier_material_assignment",
+    "current_actual_fundamentals_Hz": [
+      3000,
+      3030
+    ],
+    "current_actual_harmonics_Hz": [
+      9000,
+      9090
+    ],
+    "historical_experimental_frequencies_Hz": [
+      2000,
+      2010
+    ],
+    "reason": "The directly verified related primary measurement band is100kHz–1MHz. No original evidence inspected establishes layer material validity at2/2.01/3/3.03/9/9.09kHz, and no separateSC input is identified. No downward extrapolation or copying epidermis/whole-skin values into SC/dermis is admitted.",
+    "regional_relevance": "Important direct human waist evidence; keep for future regional context or appropriately matched100kHz–1MHz comparison, not a forearm proxy",
+    "all_current_carrier_sigma_S_m": null,
+    "all_current_carrier_epsilon_r": null,
+    "required_to_reconsider": "Inspect original2019methods/tables, establish an applicable dispersion model and validfrequency range, independent SC/dermis mapping and uncertainty; use a new preregistered run if model inputs change"
+  },
+  "existing_source_or_evidence_changed": false,
+  "new_PDE_or_parameter_evaluation": 0,
+  "article_PDFs_or_images_for_publication": false,
+  "own_summary_JSON_may_be_published": true,
+  "clinical_effects_or_safety_inferred_from_TTFields": false
+}

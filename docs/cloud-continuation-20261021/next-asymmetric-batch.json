@@ -1,0 +1,59 @@
+{
+  "schema": "task1-next-finite-scientific-batch-v1",
+  "status": "preregistered_not_started",
+  "feedback_id": "T1-F010-S1-GH6297472037",
+  "run_path": "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z",
+  "case_ids": [
+    "asym-cross281p25-return168p75-xy80"
+  ],
+  "maximum_new_PDE_conditions": 1,
+  "question": "Joint shape/area-allocation at fixed900mm2: source281.25cross x2,return168.75rectangle x2. Does absolute ROI modulation retained under eight skin/contact caps improve?",
+  "fixed": "D50/layers0.1/5/5/15;centres\u00b110;top4pads/2common-GNDoutputs50ohm;HighZ1Vpp;inactive0V/50ohm;nominalRs500;h.625SC2bulk14/14/40;3000/3030+9000/9090",
+  "geometry": "Exact full720/720/432/432 faces; sourcecross17.5arm12.5;returnrectangle15X\u00d711.25Y; allD50;nominalminimumgap3.75mm; no slivers dropped or area renormalization",
+  "decision_evidence": [
+    "volume-cross.json",
+    "drive-ratio-20261021T050400Z/comparison.json"
+  ],
+  "decision": "Uniform larger pads and amplitude extremes lose absolute target mean under matched burden; test one allocation alternative, without refining a losing uniform geometry",
+  "limits": {
+    "CPU": 1,
+    "concurrent_PDE": 1,
+    "cells": 351680,
+    "raw_bound_bytes": 211008000,
+    "global_seconds": 6600,
+    "remaining_seconds_at_registration": 1197.537181349986,
+    "minimum_admission_seconds": 1020,
+    "preparation_seconds": 120,
+    "PDE_and_primary_postprocess_seconds": 600,
+    "further_validation_seconds": 180,
+    "UI_seconds": 120,
+    "aggregate_RSS_bytes": 3221225472,
+    "disk_reserve_bytes": 2147483648
+  },
+  "prepare_command_argv": [
+    "python",
+    "tools/task1_asymmetric_registration.py",
+    "--prepare",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z"
+  ],
+  "execute_command_argv": [
+    "python",
+    "tools/task1_cloud_batch.py",
+    "--execute",
+    "--output",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z"
+  ],
+  "postprocessing": [
+    "samecohortfullskin",
+    "sourceboundvolume5norms",
+    "nativephi40probesandtimewaveform",
+    "physicalpadcurrents/Jmax/contactloss",
+    "localnativearchive/cleanrestore",
+    "incrementalmapswith4/8/12/16references"
+  ],
+  "adopted": false,
+  "full_convergence_validated": false,
+  "experimentally_validated": false,
+  "stop_policy": "OnePDEonly. Preservefailure/partialraw. Noautomaticretry,secondPDE,budgetexpansion ormainmerge. Nextselectionrequiresactualresults andfreshadmission."
+}

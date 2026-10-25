@@ -1,0 +1,1988 @@
+{
+  "schema": "task1-graded-log-kernel-result-v1",
+  "status": "computed_with_diagnostic_holds",
+  "stage": "verification",
+  "spec": {
+    "schema": "task1-graded-log-kernel-spec-v1",
+    "stage": "verification",
+    "plan": {
+      "period_width_m": 0.002,
+      "thickness_m": 0.0001,
+      "partial_contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "boundary_panels": [
+        128,
+        256,
+        512
+      ],
+      "Gauss_orders": [
+        8,
+        16,
+        32
+      ],
+      "unique_operator_cases": [
+        [
+          128,
+          32
+        ],
+        [
+          256,
+          32
+        ],
+        [
+          512,
+          8
+        ],
+        [
+          512,
+          16
+        ],
+        [
+          512,
+          32
+        ]
+      ],
+      "correction_positive_modes": 64,
+      "pair_block": 64,
+      "base_panels": 128,
+      "base_edge_width_over_Robin_length": 0.25,
+      "nested_bisection_levels": [
+        0,
+        1,
+        2
+      ],
+      "near_gap_over_max_width": 2.0,
+      "maximum_panel_width_over_period": 0.25,
+      "log_F_fallback_cancellation_condition": 10000.0,
+      "Decimal_precision": 50,
+      "Decimal_check_precision": 70,
+      "maximum_boundary_unknowns": 512,
+      "actual_3D_cells": 0,
+      "actual_3D_RHS": 0,
+      "physical_cell_cap_unchanged": 800000,
+      "CPU_limit": 4,
+      "total_RSS_plus_ALL_task1_tmpfs_bytes": 8000000000,
+      "root_admission_required": true,
+      "spatial_E_reconstruction": false,
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed"
+    },
+    "contracts": {
+      "linear_residual": 1e-10,
+      "complex_symmetry": 1e-10,
+      "constant_relative": 1e-10,
+      "complex_power_balance": 1e-10,
+      "passivity_relative": 1e-12,
+      "MMS_panel_nonregression_absolute_allowance": 1e-10
+    },
+    "diagnostic_limits": {
+      "contact_current_complex_relative": 0.01,
+      "source_real_power_relative": 0.02,
+      "contact_J_RMS_P95_relative": 0.05,
+      "conditional_operator_slab_RMS_L2_relative": 0.01
+    },
+    "operator_accuracy_gate_before_first_execution": {
+      "declared_before_first_execution": true,
+      "actual_outputs_observed_when_declared": false,
+      "finest_panels": 512,
+      "finest_Gauss_order": 32,
+      "MMS_forcings": [
+        "MMS-mode1",
+        "MMS-mode4"
+      ],
+      "projected_q_nonconstant_relative_L2_limit": 0.005,
+      "metric": "sqrt(sum_i l_i*abs(q_num_i-exact_panel_average_q_i)^2) / sqrt(integral_period abs(q_exact-q0)^2 dx)",
+      "scope": "Engineering operator-fixture accuracy only; not independent E/skin/physiological/safety validity"
+    },
+    "material": {
+      "gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      },
+      "zA_ohm_m2": {
+        "real": 5.5504758759767015e-05,
+        "imaginary": -0.00012307933145190832
+      },
+      "frequency_Hz": 2000,
+      "HREF_spec_SHA256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+      "original_CEM_spec_SHA256": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+      "scope": "HREF-MIX declared surrogate SC and PBS-derived uncertain contact coefficients from the actual CEM input; not direct human thoracoabdominal measurements or validated skin contact"
+    },
+    "voltage_peak_V": {
+      "real": 1.0,
+      "imaginary": 0.0
+    },
+    "MMS_modes": [
+      1,
+      4
+    ],
+    "MMS_coefficients": {
+      "q0": {
+        "real": 1.0,
+        "imaginary": 0.2
+      },
+      "qc": {
+        "real": 0.3,
+        "imaginary": -0.1
+      },
+      "qs": {
+        "real": 0.2,
+        "imaginary": 0.4
+      }
+    },
+    "partial_contact_admission": null,
+    "forcing": "Entire period prescribed U(x): constant or analytic non-equipotential Fourier MMS ONLY",
+    "registered_synthetic_RHS": 15,
+    "kernel": "gamma*K=t/L-log(2|sin(pi*s/L)|)/pi-(2/pi)sum cos(2pi*n*s/L)/(n(exp(4pi*n*t/L)+1))",
+    "quadrature_scope": "Total quadrature operations and peak temporary nodes are separate from boundary panels and actual3D physical cells; no800kcap reinterpretation",
+    "energy_scope": "q^H G q/|gamma|^2 is conditional quadrature-operator bulk energy, not independent spatial field validation; previous spatial E2percent gate N/A",
+    "source_scope": "Separate2D transferred-surrogate slab; no actual4pad/50ohm/human anatomy/skin-contact/activation/safety validation",
+    "originals_preserved": true,
+    "candidate_adopted": false
+  },
+  "verification_passed": false,
+  "operator_accuracy_passed": false,
+  "operator_accuracy_gate_before_first_execution": {
+    "declared_before_first_execution": true,
+    "actual_outputs_observed_when_declared": false,
+    "finest_panels": 512,
+    "finest_Gauss_order": 32,
+    "MMS_forcings": [
+      "MMS-mode1",
+      "MMS-mode4"
+    ],
+    "projected_q_nonconstant_relative_L2_limit": 0.005,
+    "metric": "sqrt(sum_i l_i*abs(q_num_i-exact_panel_average_q_i)^2) / sqrt(integral_period abs(q_exact-q0)^2 dx)",
+    "scope": "Engineering operator-fixture accuracy only; not independent E/skin/physiological/safety validity"
+  },
+  "operator_accuracy_review": {
+    "rows": [
+      {
+        "case_id": "verification-P512-Q32",
+        "forcing": "MMS-mode1",
+        "projected_q_nonconstant_relative_L2": 0.0012227917205691445,
+        "limit": 0.005,
+        "passed": true,
+        "true_continuous_q_relative_L2": 0.009181915771561215,
+        "projection_variance_relative_L2": 0.009171646753895563
+      },
+      {
+        "case_id": "verification-P512-Q32",
+        "forcing": "MMS-mode4",
+        "projected_q_nonconstant_relative_L2": 0.01292211642584719,
+        "limit": 0.005,
+        "passed": false,
+        "true_continuous_q_relative_L2": 0.035938853259219465,
+        "projection_variance_relative_L2": 0.03564481921211866
+      }
+    ],
+    "all_passed": false,
+    "gate": {
+      "declared_before_first_execution": true,
+      "actual_outputs_observed_when_declared": false,
+      "finest_panels": 512,
+      "finest_Gauss_order": 32,
+      "MMS_forcings": [
+        "MMS-mode1",
+        "MMS-mode4"
+      ],
+      "projected_q_nonconstant_relative_L2_limit": 0.005,
+      "metric": "sqrt(sum_i l_i*abs(q_num_i-exact_panel_average_q_i)^2) / sqrt(integral_period abs(q_exact-q0)^2 dx)",
+      "scope": "Engineering operator-fixture accuracy only; not independent E/skin/physiological/safety validity"
+    },
+    "interpretation": "Predeclared before any graded-kernel numerical outputs; operator fixture only, never a safety or spatial E-field gate"
+  },
+  "all_algebraic_analytic_contracts_passed": false,
+  "all_delta_flags_passed": true,
+  "MMS_true_error_review": {
+    "rows": [
+      {
+        "coarse_case": "verification-P128-Q32",
+        "fine_case": "verification-P256-Q32",
+        "forcing": "MMS-mode1",
+        "coarse_true_q_L2": 0.03691622434556997,
+        "fine_true_q_L2": 0.018389231656795936,
+        "absolute_allowance": 1e-10,
+        "passed": true
+      },
+      {
+        "coarse_case": "verification-P128-Q32",
+        "fine_case": "verification-P256-Q32",
+        "forcing": "MMS-mode4",
+        "coarse_true_q_L2": 0.14080105942610285,
+        "fine_true_q_L2": 0.07232870013248369,
+        "absolute_allowance": 1e-10,
+        "passed": true
+      },
+      {
+        "coarse_case": "verification-P256-Q32",
+        "fine_case": "verification-P512-Q32",
+        "forcing": "MMS-mode1",
+        "coarse_true_q_L2": 0.018389231656795936,
+        "fine_true_q_L2": 0.009181915771561215,
+        "absolute_allowance": 1e-10,
+        "passed": true
+      },
+      {
+        "coarse_case": "verification-P256-Q32",
+        "fine_case": "verification-P512-Q32",
+        "forcing": "MMS-mode4",
+        "coarse_true_q_L2": 0.07232870013248369,
+        "fine_true_q_L2": 0.035938853259219465,
+        "absolute_allowance": 1e-10,
+        "passed": true
+      }
+    ],
+    "all_passed": true,
+    "scope": "Independent exact manufactured flux; full-period top U is non-equipotential ONLY in MMS. Projection variance is retained; no convergence order is forced."
+  },
+  "cases": {
+    "verification-P128-Q32": {
+      "case_id": "verification-P128-Q32",
+      "stage": "verification",
+      "panels": 128,
+      "Gauss_order": 32,
+      "mesh": {
+        "base_minimum_requested_m": 8.693169409988327e-10,
+        "base_log_geometric_ratio": 0.19396970065134955,
+        "base_centre_closure_m": 8.673617379884035e-19,
+        "physical_width_m": 0.002,
+        "panels": 128,
+        "minimum_width_m": 8.693169409150492e-10,
+        "maximum_width_m": 0.00017631785509679486,
+        "total_width_m": 0.002,
+        "nested": true
+      },
+      "kernel": {
+        "total_panel_pairs": 16384,
+        "near_pairs": 894,
+        "far_pairs": 15490,
+        "Decimal_F_fallback_pairs": 12,
+        "total_Gauss_pair_node_evaluations": 16777216,
+        "peak_temporary_pair_node_count": 65536,
+        "relative_real_symmetry": 2.661172247766307e-16,
+        "symmetry_passed": true,
+        "scaled_G_smallest_eigenvalue_m": 2.758607687421488e-10,
+        "scaled_G_largest_eigenvalue_m": 0.0001000000000000002,
+        "PSD_passed": true,
+        "eigenvalues_clipped": false,
+        "correction_modes": 64,
+        "uniform_kernel_tail_bound": 3.847790620770527e-20,
+        "maximum_entry_tail_bound_m2": 1.196200610492354e-27,
+        "constant_and_correction_added_once": true,
+        "matrix_entries": 16384,
+        "boundary_unknowns": 128,
+        "actual_3D_cells": 0,
+        "quadrature_operations_are_not_physical_cells": true,
+        "physical_cell_cap_unchanged": 800000
+      },
+      "forcing_rows": [
+        {
+          "forcing": {
+            "name": "constant",
+            "equipotential": true,
+            "top_peak_V": {
+              "real": 1.0,
+              "imaginary": 0.0
+            },
+            "analytic_q_peak_A_m2": {
+              "real": 0.05959417763241303,
+              "imaginary": 0.2505462750392628
+            },
+            "full_period": true,
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00013264980388746702,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 5.9590496284730864e-05,
+              "imaginary": -0.0002505381118146729
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 2.2846850592789657e-16,
+          "normalized_basis_relative_residual": 2.719610414424888e-16,
+          "complex_power_relative_error": 2.6311886205109533e-17,
+          "real_geometric_energy_relative_imaginary": 1.8707467066926791e-16,
+          "geometric_energy_peak": {
+            "real": 1.3264980388746681e-08,
+            "imaginary": -2.481541837659083e-24
+          },
+          "source_complex_power_W_per_m": {
+            "real": 5.959417763241289e-05,
+            "imaginary": -0.0002505462750392624
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 3.681347682152114e-09,
+            "imaginary": -8.163224589848059e-09
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 5.959049628473073e-05,
+            "imaginary": -0.00025053811181467256
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 7070.82637162054,
+          "contact_current_peak_A_per_m": {
+            "real": 0.00011918835526482577,
+            "imaginary": 0.0005010925500785248
+          },
+          "contact_J_RMS_P95_A_m2": 0.18210560390022926,
+          "contact_J_RMS_mean_A_m2": 0.18210560390022762,
+          "contact_J_RMS_max_panel_A_m2": 0.1821056039745663,
+          "maximum_panel_width_m": 1.555600431888543e-09,
+          "maximum_panel_edge_distance_m": 3.983841059341034e-09,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": false,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": null,
+          "true_continuous_q_relative_L2": 1.4315763416107608e-08,
+          "exact_panel_mean_q_relative_L2": 9.949813325099058e-13,
+          "projection_variance_relative_L2": 1.4315763381530764e-08,
+          "exact_bulk_power_relative_error": 1.3682648018031234e-15,
+          "constant_q_max_relative_error": 4.1207587205903576e-10,
+          "constant_q_passed": false
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode1",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 1,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010649060092129646,
+              "imaginary": -0.004477216291898512
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 3.4850737461829116e-16,
+          "normalized_basis_relative_residual": 2.7763623162987375e-16,
+          "complex_power_relative_error": 3.886244108468888e-16,
+          "real_geometric_energy_relative_imaginary": 0.0,
+          "geometric_energy_peak": {
+            "real": 2.3699155835268021e-07,
+            "imaginary": 0.0
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010647073022559328,
+            "imaginary": -0.0044762495161720164
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.610689399313877e-08,
+            "imaginary": -1.465890943198804e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.0010646411953619392,
+            "imaginary": -0.0044761029270776985
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29887.06755562472,
+          "contact_current_peak_A_per_m": {
+            "real": 0.001999999999999995,
+            "imaginary": 0.0003999999999999995
+          },
+          "contact_J_RMS_P95_A_m2": 1.00275433653159,
+          "contact_J_RMS_mean_A_m2": 0.7476298916702476,
+          "contact_J_RMS_max_panel_A_m2": 1.00275433653159,
+          "maximum_panel_width_m": 0.00014522999532175544,
+          "maximum_panel_edge_distance_m": 0.0007510671472423275,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.01322919970233165,
+          "true_continuous_q_relative_L2": 0.03691622434556997,
+          "exact_panel_mean_q_relative_L2": 0.004696839516191925,
+          "projection_variance_relative_L2": 0.03661621660537297,
+          "exact_bulk_power_relative_error": 0.00024867344980149237
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode4",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 4,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010255755742522483,
+              "imaginary": -0.004311858163903989
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 3.0340086460609e-16,
+          "normalized_basis_relative_residual": 2.8061006014294517e-16,
+          "complex_power_relative_error": 9.941531149168066e-16,
+          "real_geometric_energy_relative_imaginary": 5.825110690225338e-17,
+          "geometric_energy_peak": {
+            "real": 2.2720409112666093e-07,
+            "imaginary": -1.3234889800848443e-23
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010207392551973948,
+            "imaginary": -0.004291392625379053
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.646478416029896e-08,
+            "imaginary": -1.4738269983212012e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.0010206727904132351,
+            "imaginary": -0.004291245242679226
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29263.410564421152,
+          "contact_current_peak_A_per_m": {
+            "real": 0.001999999999999994,
+            "imaginary": 0.0003999999999999994
+          },
+          "contact_J_RMS_P95_A_m2": 0.9999093255090047,
+          "contact_J_RMS_mean_A_m2": 0.7490442881945907,
+          "contact_J_RMS_max_panel_A_m2": 1.0103156119778844,
+          "maximum_panel_width_m": 8.115894845689799e-05,
+          "maximum_panel_edge_distance_m": 0.0004197174251555924,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.12231325360398777,
+          "true_continuous_q_relative_L2": 0.14080105942610285,
+          "exact_panel_mean_q_relative_L2": 0.04342558399658604,
+          "projection_variance_relative_L2": 0.13393713820321979,
+          "exact_bulk_power_relative_error": 0.004780519312374771
+        }
+      ],
+      "all_algebraic_analytic_contracts_pass": false,
+      "fullperiod_kernel_row_sum_max_relative_error": 4.5638139310027515e-15,
+      "fullperiod_row_sum_expected": "G*1=t*panel_length; never repaired",
+      "normalized_operator_condition_estimate": 26678.11212275162,
+      "condition_scope": "Eigenvalue shift of real symmetric length-normalized G; conditional on the separately tested symmetry",
+      "scaled_operator_correction_tail_norm_bound_m": 7.695581241541054e-23,
+      "synthetic_RHS_completed": 3,
+      "actual_3D_cells": 0,
+      "actual_3D_RHS": 0,
+      "physical_cell_cap_unchanged": 800000,
+      "spatial_E_reconstructed": false,
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed",
+      "wall_seconds": 0.24419929400028195,
+      "candidate_adopted": false,
+      "spec_SHA256": "70190e1a2f37999685bce54d2e3dda9a070793086573a6cdd66f15ca1e4fcd88",
+      "source_method_SHA256": "3c2a7a8837856f5a7b76ff4b53c97a20fbda7374e95144f59cf5ed203e732d98",
+      "arrays_SHA256": "63af161b9be073ae0c9b1d8038212e7514fd08c573e42da4339e46118aa829bd"
+    },
+    "verification-P256-Q32": {
+      "case_id": "verification-P256-Q32",
+      "stage": "verification",
+      "panels": 256,
+      "Gauss_order": 32,
+      "mesh": {
+        "base_minimum_requested_m": 8.693169409988327e-10,
+        "base_log_geometric_ratio": 0.19396970065134955,
+        "base_centre_closure_m": 8.673617379884035e-19,
+        "physical_width_m": 0.002,
+        "panels": 256,
+        "minimum_width_m": 4.346584704575246e-10,
+        "maximum_width_m": 8.815892754839743e-05,
+        "total_width_m": 0.002,
+        "nested": true
+      },
+      "kernel": {
+        "total_panel_pairs": 65536,
+        "near_pairs": 1788,
+        "far_pairs": 63748,
+        "Decimal_F_fallback_pairs": 12,
+        "total_Gauss_pair_node_evaluations": 67108864,
+        "peak_temporary_pair_node_count": 65536,
+        "relative_real_symmetry": 2.0051623176015109e-16,
+        "symmetry_passed": true,
+        "scaled_G_smallest_eigenvalue_m": 1.269815648982054e-10,
+        "scaled_G_largest_eigenvalue_m": 0.00010000000000000018,
+        "PSD_passed": true,
+        "eigenvalues_clipped": false,
+        "correction_modes": 64,
+        "uniform_kernel_tail_bound": 3.847790620770527e-20,
+        "maximum_entry_tail_bound_m2": 2.990501526230885e-28,
+        "constant_and_correction_added_once": true,
+        "matrix_entries": 65536,
+        "boundary_unknowns": 256,
+        "actual_3D_cells": 0,
+        "quadrature_operations_are_not_physical_cells": true,
+        "physical_cell_cap_unchanged": 800000
+      },
+      "forcing_rows": [
+        {
+          "forcing": {
+            "name": "constant",
+            "equipotential": true,
+            "top_peak_V": {
+              "real": 1.0,
+              "imaginary": 0.0
+            },
+            "analytic_q_peak_A_m2": {
+              "real": 0.05959417763241303,
+              "imaginary": 0.2505462750392628
+            },
+            "full_period": true,
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00013264980388746705,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 5.9590496284730864e-05,
+              "imaginary": -0.0002505381118146729
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 3.3509032185434484e-16,
+          "normalized_basis_relative_residual": 3.313382585386634e-16,
+          "complex_power_relative_error": 4.706813293669108e-16,
+          "real_geometric_energy_relative_imaginary": 9.353733533463382e-17,
+          "geometric_energy_peak": {
+            "real": 1.3264980388746701e-08,
+            "imaginary": 1.2407709188295415e-24
+          },
+          "source_complex_power_W_per_m": {
+            "real": 5.959417763241298e-05,
+            "imaginary": -0.0002505462750392626
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 3.6813476821521287e-09,
+            "imaginary": -8.16322458984809e-09
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 5.9590496284730885e-05,
+            "imaginary": -0.0002505381118146729
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 7070.826371620545,
+          "contact_current_peak_A_per_m": {
+            "real": 0.00011918835526482596,
+            "imaginary": 0.0005010925500785252
+          },
+          "contact_J_RMS_P95_A_m2": 0.18210560390022937,
+          "contact_J_RMS_mean_A_m2": 0.182105603900228,
+          "contact_J_RMS_max_panel_A_m2": 0.1821056039929675,
+          "maximum_panel_width_m": 1.3918356985605923e-09,
+          "maximum_panel_edge_distance_m": 9.63901302308487e-09,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": false,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": null,
+          "true_continuous_q_relative_L2": 1.4107340337935804e-08,
+          "exact_panel_mean_q_relative_L2": 1.2050866136480028e-12,
+          "projection_variance_relative_L2": 1.410734028646495e-08,
+          "exact_bulk_power_relative_error": 7.89383539501802e-17,
+          "constant_q_max_relative_error": 5.09266663199419e-10,
+          "constant_q_passed": false
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode1",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 1,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010649060092129646,
+              "imaginary": -0.004477216291898512
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.153866438057906e-16,
+          "normalized_basis_relative_residual": 3.3767178733554025e-16,
+          "complex_power_relative_error": 7.597442527292939e-16,
+          "real_geometric_energy_relative_imaginary": 2.7916603254245314e-17,
+          "geometric_energy_peak": {
+            "real": 2.3704334084476767e-07,
+            "imaginary": 6.617444900424222e-24
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010649398876220392,
+            "imaginary": -0.004477227457309701
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.606889301504034e-08,
+            "imaginary": -1.465048288427685e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.0010648738187290247,
+            "imaginary": -0.004477080952480861
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29890.332529112296,
+          "contact_current_peak_A_per_m": {
+            "real": 0.002,
+            "imaginary": 0.0004000000000000003
+          },
+          "contact_J_RMS_P95_A_m2": 0.9974380667940194,
+          "contact_J_RMS_mean_A_m2": 0.7475103890520756,
+          "contact_J_RMS_max_panel_A_m2": 1.002135597504311,
+          "maximum_panel_width_m": 7.261499766087772e-05,
+          "maximum_panel_edge_distance_m": 0.0007147596484118886,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.0039349570275503155,
+          "true_continuous_q_relative_L2": 0.018389231656795936,
+          "exact_panel_mean_q_relative_L2": 0.0013970506211542035,
+          "projection_variance_relative_L2": 0.018336087109556348,
+          "exact_bulk_power_relative_error": 3.0228474308030913e-05
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode4",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 4,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010255755742522483,
+              "imaginary": -0.004311858163903989
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.084128942646004e-16,
+          "normalized_basis_relative_residual": 3.498607362070704e-16,
+          "complex_power_relative_error": 6.566955728435022e-16,
+          "real_geometric_energy_relative_imaginary": 0.0,
+          "geometric_energy_peak": {
+            "real": 2.2818129459552896e-07,
+            "imaginary": 0.0
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010251290006876796,
+            "imaginary": -0.004309848886388344
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.630256448683551e-08,
+            "imaginary": -1.4702298492831081e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.001025062698123194,
+            "imaginary": -0.004309701863403418
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29326.273922168726,
+          "contact_current_peak_A_per_m": {
+            "real": 0.0019999999999999966,
+            "imaginary": 0.0003999999999999999
+          },
+          "contact_J_RMS_P95_A_m2": 0.9994641684875825,
+          "contact_J_RMS_mean_A_m2": 0.7482544327268376,
+          "contact_J_RMS_max_panel_A_m2": 1.0044256193965178,
+          "maximum_panel_width_m": 4.057947422844905e-05,
+          "maximum_panel_edge_distance_m": 0.0004400071622698169,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.045940426928958715,
+          "true_continuous_q_relative_L2": 0.07232870013248369,
+          "exact_panel_mean_q_relative_L2": 0.016310496284414736,
+          "projection_variance_relative_L2": 0.07046565527837542,
+          "exact_bulk_power_relative_error": 0.00050008613887681
+        }
+      ],
+      "all_algebraic_analytic_contracts_pass": false,
+      "fullperiod_kernel_row_sum_max_relative_error": 2.7222411019814794e-15,
+      "fullperiod_row_sum_expected": "G*1=t*panel_length; never repaired",
+      "normalized_operator_condition_estimate": 27762.989075324298,
+      "condition_scope": "Eigenvalue shift of real symmetric length-normalized G; conditional on the separately tested symmetry",
+      "scaled_operator_correction_tail_norm_bound_m": 7.695581241541054e-23,
+      "synthetic_RHS_completed": 3,
+      "actual_3D_cells": 0,
+      "actual_3D_RHS": 0,
+      "physical_cell_cap_unchanged": 800000,
+      "spatial_E_reconstructed": false,
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed",
+      "wall_seconds": 0.9634737160013174,
+      "candidate_adopted": false,
+      "spec_SHA256": "70190e1a2f37999685bce54d2e3dda9a070793086573a6cdd66f15ca1e4fcd88",
+      "source_method_SHA256": "3c2a7a8837856f5a7b76ff4b53c97a20fbda7374e95144f59cf5ed203e732d98",
+      "arrays_SHA256": "01f8a28f5284f9547c24ec43bc4cf827768b9329343d731ba1956095f59b9ef1"
+    },
+    "verification-P512-Q8": {
+      "case_id": "verification-P512-Q8",
+      "stage": "verification",
+      "panels": 512,
+      "Gauss_order": 8,
+      "mesh": {
+        "base_minimum_requested_m": 8.693169409988327e-10,
+        "base_log_geometric_ratio": 0.19396970065134955,
+        "base_centre_closure_m": 8.673617379884035e-19,
+        "physical_width_m": 0.002,
+        "panels": 512,
+        "minimum_width_m": 2.1732923512034208e-10,
+        "maximum_width_m": 4.4079463774198714e-05,
+        "total_width_m": 0.002,
+        "nested": true
+      },
+      "kernel": {
+        "total_panel_pairs": 262144,
+        "near_pairs": 3382,
+        "far_pairs": 258762,
+        "Decimal_F_fallback_pairs": 10,
+        "total_Gauss_pair_node_evaluations": 16777216,
+        "peak_temporary_pair_node_count": 4096,
+        "relative_real_symmetry": 1.690520581291173e-16,
+        "symmetry_passed": true,
+        "scaled_G_smallest_eigenvalue_m": 6.071941150760663e-11,
+        "scaled_G_largest_eigenvalue_m": 9.999999999999984e-05,
+        "PSD_passed": true,
+        "eigenvalues_clipped": false,
+        "correction_modes": 64,
+        "uniform_kernel_tail_bound": 3.847790620770527e-20,
+        "maximum_entry_tail_bound_m2": 7.476253815577213e-29,
+        "constant_and_correction_added_once": true,
+        "matrix_entries": 262144,
+        "boundary_unknowns": 512,
+        "actual_3D_cells": 0,
+        "quadrature_operations_are_not_physical_cells": true,
+        "physical_cell_cap_unchanged": 800000
+      },
+      "forcing_rows": [
+        {
+          "forcing": {
+            "name": "constant",
+            "equipotential": true,
+            "top_peak_V": {
+              "real": 1.0,
+              "imaginary": 0.0
+            },
+            "analytic_q_peak_A_m2": {
+              "real": 0.05959417763241303,
+              "imaginary": 0.2505462750392628
+            },
+            "full_period": true,
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00013264980388746705,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 5.9590496284730864e-05,
+              "imaginary": -0.0002505381118146729
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.609691323072116e-16,
+          "normalized_basis_relative_residual": 5.191236491500008e-16,
+          "complex_power_relative_error": 1.8960995865190186e-15,
+          "real_geometric_energy_relative_imaginary": 2.806120060039011e-16,
+          "geometric_energy_peak": {
+            "real": 1.3264980388746718e-08,
+            "imaginary": -3.7223127564886245e-24
+          },
+          "source_complex_power_W_per_m": {
+            "real": 5.959417763241304e-05,
+            "imaginary": -0.0002505462750392626
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 3.6813476821521315e-09,
+            "imaginary": -8.163224589848097e-09
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 5.959049628473087e-05,
+            "imaginary": -0.00025053811181467326
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 7070.826371620549,
+          "contact_current_peak_A_per_m": {
+            "real": 0.00011918835526482609,
+            "imaginary": 0.0005010925500785252
+          },
+          "contact_J_RMS_P95_A_m2": 0.18210560390023045,
+          "contact_J_RMS_mean_A_m2": 0.18210560390022806,
+          "contact_J_RMS_max_panel_A_m2": 0.1821056040856688,
+          "maximum_panel_width_m": 3.8890010808055597e-10,
+          "maximum_panel_edge_distance_m": 4.178291113272892e-09,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": false,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": null,
+          "true_continuous_q_relative_L2": 1.4358639244278004e-08,
+          "exact_panel_mean_q_relative_L2": 2.8982820324492934e-12,
+          "projection_variance_relative_L2": 1.4358638951769827e-08,
+          "exact_bulk_power_relative_error": 1.4737508572546615e-15,
+          "constant_q_max_relative_error": 1.0397714735163712e-09,
+          "constant_q_passed": false
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode1",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 1,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010649060092129646,
+              "imaginary": -0.004477216291898512
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.822644297509779e-16,
+          "normalized_basis_relative_residual": 4.3838492775735526e-16,
+          "complex_power_relative_error": 4.214191242728514e-16,
+          "real_geometric_energy_relative_imaginary": 1.11663454610164e-16,
+          "geometric_energy_peak": {
+            "real": 2.3704962106095823e-07,
+            "imaginary": -2.6469779601696886e-23
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010649680871750227,
+            "imaginary": -0.004477346043701079
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.605572433508638e-08,
+            "imaginary": -1.4647562788124637e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.0010649020314506868,
+            "imaginary": -0.0044771995680732
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29890.72848308909,
+          "contact_current_peak_A_per_m": {
+            "real": 0.002000000000000002,
+            "imaginary": 0.00039999999999999996
+          },
+          "contact_J_RMS_P95_A_m2": 0.9990522624573289,
+          "contact_J_RMS_mean_A_m2": 0.7474687356567259,
+          "contact_J_RMS_max_panel_A_m2": 1.001670748884497,
+          "maximum_panel_width_m": 3.6307498830438886e-05,
+          "maximum_panel_edge_distance_m": 0.000732913397827108,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.0012227917205690716,
+          "true_continuous_q_relative_L2": 0.009181915771561213,
+          "exact_panel_mean_q_relative_L2": 0.0004341348382721049,
+          "projection_variance_relative_L2": 0.009171646753895563,
+          "exact_bulk_power_relative_error": 3.7353177113322623e-06
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode4",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 4,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010255755742522483,
+              "imaginary": -0.004311858163903989
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 3.845330860117291e-16,
+          "normalized_basis_relative_residual": 5.099510645336664e-16,
+          "complex_power_relative_error": 4.892554909534414e-16,
+          "real_geometric_energy_relative_imaginary": 2.0291593720714108e-16,
+          "geometric_energy_peak": {
+            "real": 2.2828228743651077e-07,
+            "imaginary": 4.632211430296955e-23
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010255825151479223,
+            "imaginary": -0.004311755963297877
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.612517303055225e-08,
+            "imaginary": -1.4662962727155348e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.001025516389974893,
+            "imaginary": -0.004311609333670607
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29332.763095788916,
+          "contact_current_peak_A_per_m": {
+            "real": 0.0020000000000000018,
+            "imaginary": 0.0004000000000000001
+          },
+          "contact_J_RMS_P95_A_m2": 1.0016927605518555,
+          "contact_J_RMS_mean_A_m2": 0.7476910331379691,
+          "contact_J_RMS_max_panel_A_m2": 1.0044394790326667,
+          "maximum_panel_width_m": 4.4079463774198714e-05,
+          "maximum_panel_edge_distance_m": 0.000933880804338702,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.012922116425847266,
+          "true_continuous_q_relative_L2": 0.035938853259219465,
+          "exact_panel_mean_q_relative_L2": 0.004587813959075319,
+          "projection_variance_relative_L2": 0.03564481921211866,
+          "exact_bulk_power_relative_error": 5.7708353086689386e-05
+        }
+      ],
+      "all_algebraic_analytic_contracts_pass": false,
+      "fullperiod_kernel_row_sum_max_relative_error": 1.822611062064237e-15,
+      "fullperiod_row_sum_expected": "G*1=t*panel_length; never repaired",
+      "normalized_operator_condition_estimate": 28274.220879777025,
+      "condition_scope": "Eigenvalue shift of real symmetric length-normalized G; conditional on the separately tested symmetry",
+      "scaled_operator_correction_tail_norm_bound_m": 7.695581241541054e-23,
+      "synthetic_RHS_completed": 3,
+      "actual_3D_cells": 0,
+      "actual_3D_RHS": 0,
+      "physical_cell_cap_unchanged": 800000,
+      "spatial_E_reconstructed": false,
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed",
+      "wall_seconds": 0.5438616199971875,
+      "candidate_adopted": false,
+      "spec_SHA256": "70190e1a2f37999685bce54d2e3dda9a070793086573a6cdd66f15ca1e4fcd88",
+      "source_method_SHA256": "3c2a7a8837856f5a7b76ff4b53c97a20fbda7374e95144f59cf5ed203e732d98",
+      "arrays_SHA256": "0562b1c4b68e5f540aafbd8513f76fbcc6491b3d354fed6c30a8f699023d2912"
+    },
+    "verification-P512-Q16": {
+      "case_id": "verification-P512-Q16",
+      "stage": "verification",
+      "panels": 512,
+      "Gauss_order": 16,
+      "mesh": {
+        "base_minimum_requested_m": 8.693169409988327e-10,
+        "base_log_geometric_ratio": 0.19396970065134955,
+        "base_centre_closure_m": 8.673617379884035e-19,
+        "physical_width_m": 0.002,
+        "panels": 512,
+        "minimum_width_m": 2.1732923512034208e-10,
+        "maximum_width_m": 4.4079463774198714e-05,
+        "total_width_m": 0.002,
+        "nested": true
+      },
+      "kernel": {
+        "total_panel_pairs": 262144,
+        "near_pairs": 3382,
+        "far_pairs": 258762,
+        "Decimal_F_fallback_pairs": 10,
+        "total_Gauss_pair_node_evaluations": 67108864,
+        "peak_temporary_pair_node_count": 16384,
+        "relative_real_symmetry": 1.755589080046588e-16,
+        "symmetry_passed": true,
+        "scaled_G_smallest_eigenvalue_m": 6.071941150505379e-11,
+        "scaled_G_largest_eigenvalue_m": 9.99999999999999e-05,
+        "PSD_passed": true,
+        "eigenvalues_clipped": false,
+        "correction_modes": 64,
+        "uniform_kernel_tail_bound": 3.847790620770527e-20,
+        "maximum_entry_tail_bound_m2": 7.476253815577213e-29,
+        "constant_and_correction_added_once": true,
+        "matrix_entries": 262144,
+        "boundary_unknowns": 512,
+        "actual_3D_cells": 0,
+        "quadrature_operations_are_not_physical_cells": true,
+        "physical_cell_cap_unchanged": 800000
+      },
+      "forcing_rows": [
+        {
+          "forcing": {
+            "name": "constant",
+            "equipotential": true,
+            "top_peak_V": {
+              "real": 1.0,
+              "imaginary": 0.0
+            },
+            "analytic_q_peak_A_m2": {
+              "real": 0.05959417763241303,
+              "imaginary": 0.2505462750392628
+            },
+            "full_period": true,
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00013264980388746705,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 5.9590496284730864e-05,
+              "imaginary": -0.0002505381118146729
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.889785848416065e-16,
+          "normalized_basis_relative_residual": 5.583138620498814e-16,
+          "complex_power_relative_error": 1.0733185695942895e-15,
+          "real_geometric_energy_relative_imaginary": 3.1179111778211257e-16,
+          "geometric_energy_peak": {
+            "real": 1.3264980388746708e-08,
+            "imaginary": -4.1359030627651384e-24
+          },
+          "source_complex_power_W_per_m": {
+            "real": 5.959417763241302e-05,
+            "imaginary": -0.0002505462750392626
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 3.68134768215213e-09,
+            "imaginary": -8.163224589848094e-09
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 5.959049628473082e-05,
+            "imaginary": -0.00025053811181467305
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 7070.8263716205465,
+          "contact_current_peak_A_per_m": {
+            "real": 0.00011918835526482605,
+            "imaginary": 0.0005010925500785252
+          },
+          "contact_J_RMS_P95_A_m2": 0.18210560390023006,
+          "contact_J_RMS_mean_A_m2": 0.18210560390022804,
+          "contact_J_RMS_max_panel_A_m2": 0.18210560409941978,
+          "maximum_panel_width_m": 1.2453111816485701e-09,
+          "maximum_panel_edge_distance_m": 2.232255312930101e-08,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": false,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": null,
+          "true_continuous_q_relative_L2": 1.4358639385057377e-08,
+          "exact_panel_mean_q_relative_L2": 3.5274408770966386e-12,
+          "projection_variance_relative_L2": 1.4358638951769827e-08,
+          "exact_bulk_power_relative_error": 6.578196162515017e-16,
+          "constant_q_max_relative_error": 1.2947734674317725e-09,
+          "constant_q_passed": false
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode1",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 1,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010649060092129646,
+              "imaginary": -0.004477216291898512
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.366434575267505e-16,
+          "normalized_basis_relative_residual": 4.204830063427781e-16,
+          "complex_power_relative_error": 6.795179199899969e-16,
+          "real_geometric_energy_relative_imaginary": 0.0,
+          "geometric_energy_peak": {
+            "real": 2.3704962106095828e-07,
+            "imaginary": 0.0
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010649680871750245,
+            "imaginary": -0.004477346043701079
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.605572433508635e-08,
+            "imaginary": -1.464756278812463e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.0010649020314506877,
+            "imaginary": -0.004477199568073201
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29890.728483089097,
+          "contact_current_peak_A_per_m": {
+            "real": 0.0020000000000000005,
+            "imaginary": 0.0004000000000000003
+          },
+          "contact_J_RMS_P95_A_m2": 0.9990522624573294,
+          "contact_J_RMS_mean_A_m2": 0.7474687356567257,
+          "contact_J_RMS_max_panel_A_m2": 1.0016707488844951,
+          "maximum_panel_width_m": 3.6307498830438886e-05,
+          "maximum_panel_edge_distance_m": 0.000732913397827108,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.0012227917205689957,
+          "true_continuous_q_relative_L2": 0.009181915771561213,
+          "exact_panel_mean_q_relative_L2": 0.000434134838272078,
+          "projection_variance_relative_L2": 0.009171646753895563,
+          "exact_bulk_power_relative_error": 3.735317711105296e-06
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode4",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 4,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010255755742522483,
+              "imaginary": -0.004311858163903989
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 3.7700053707326793e-16,
+          "normalized_basis_relative_residual": 5.000241339940737e-16,
+          "complex_power_relative_error": 2.767647003087456e-16,
+          "real_geometric_energy_relative_imaginary": 1.4493995514795801e-16,
+          "geometric_energy_peak": {
+            "real": 2.282822874365106e-07,
+            "imaginary": 3.3087224502121107e-23
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010255825151479219,
+            "imaginary": -0.004311755963297877
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.612517303055221e-08,
+            "imaginary": -1.466296272715534e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.0010255163899748922,
+            "imaginary": -0.004311609333670604
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29332.76309578891,
+          "contact_current_peak_A_per_m": {
+            "real": 0.0020000000000000005,
+            "imaginary": 0.00040000000000000034
+          },
+          "contact_J_RMS_P95_A_m2": 1.0016927605518515,
+          "contact_J_RMS_mean_A_m2": 0.7476910331379691,
+          "contact_J_RMS_max_panel_A_m2": 1.0044394790326658,
+          "maximum_panel_width_m": 4.4079463774198714e-05,
+          "maximum_panel_edge_distance_m": 0.000933880804338702,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.012922116425847204,
+          "true_continuous_q_relative_L2": 0.035938853259219465,
+          "exact_panel_mean_q_relative_L2": 0.004587813959075296,
+          "projection_variance_relative_L2": 0.03564481921211866,
+          "exact_bulk_power_relative_error": 5.770835308730583e-05
+        }
+      ],
+      "all_algebraic_analytic_contracts_pass": false,
+      "fullperiod_kernel_row_sum_max_relative_error": 1.693504071672811e-15,
+      "fullperiod_row_sum_expected": "G*1=t*panel_length; never repaired",
+      "normalized_operator_condition_estimate": 28274.220879797092,
+      "condition_scope": "Eigenvalue shift of real symmetric length-normalized G; conditional on the separately tested symmetry",
+      "scaled_operator_correction_tail_norm_bound_m": 7.695581241541054e-23,
+      "synthetic_RHS_completed": 3,
+      "actual_3D_cells": 0,
+      "actual_3D_RHS": 0,
+      "physical_cell_cap_unchanged": 800000,
+      "spatial_E_reconstructed": false,
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed",
+      "wall_seconds": 1.1697643250008696,
+      "candidate_adopted": false,
+      "spec_SHA256": "70190e1a2f37999685bce54d2e3dda9a070793086573a6cdd66f15ca1e4fcd88",
+      "source_method_SHA256": "3c2a7a8837856f5a7b76ff4b53c97a20fbda7374e95144f59cf5ed203e732d98",
+      "arrays_SHA256": "b96d91fa2e547f1156e3766f272ab599c83cc40cd1f5f61a34fd0607c668e6e4"
+    },
+    "verification-P512-Q32": {
+      "case_id": "verification-P512-Q32",
+      "stage": "verification",
+      "panels": 512,
+      "Gauss_order": 32,
+      "mesh": {
+        "base_minimum_requested_m": 8.693169409988327e-10,
+        "base_log_geometric_ratio": 0.19396970065134955,
+        "base_centre_closure_m": 8.673617379884035e-19,
+        "physical_width_m": 0.002,
+        "panels": 512,
+        "minimum_width_m": 2.1732923512034208e-10,
+        "maximum_width_m": 4.4079463774198714e-05,
+        "total_width_m": 0.002,
+        "nested": true
+      },
+      "kernel": {
+        "total_panel_pairs": 262144,
+        "near_pairs": 3382,
+        "far_pairs": 258762,
+        "Decimal_F_fallback_pairs": 10,
+        "total_Gauss_pair_node_evaluations": 268435456,
+        "peak_temporary_pair_node_count": 65536,
+        "relative_real_symmetry": 2.0135560113612217e-16,
+        "symmetry_passed": true,
+        "scaled_G_smallest_eigenvalue_m": 6.071941150786165e-11,
+        "scaled_G_largest_eigenvalue_m": 9.99999999999999e-05,
+        "PSD_passed": true,
+        "eigenvalues_clipped": false,
+        "correction_modes": 64,
+        "uniform_kernel_tail_bound": 3.847790620770527e-20,
+        "maximum_entry_tail_bound_m2": 7.476253815577213e-29,
+        "constant_and_correction_added_once": true,
+        "matrix_entries": 262144,
+        "boundary_unknowns": 512,
+        "actual_3D_cells": 0,
+        "quadrature_operations_are_not_physical_cells": true,
+        "physical_cell_cap_unchanged": 800000
+      },
+      "forcing_rows": [
+        {
+          "forcing": {
+            "name": "constant",
+            "equipotential": true,
+            "top_peak_V": {
+              "real": 1.0,
+              "imaginary": 0.0
+            },
+            "analytic_q_peak_A_m2": {
+              "real": 0.05959417763241303,
+              "imaginary": 0.2505462750392628
+            },
+            "full_period": true,
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00013264980388746705,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 5.9590496284730864e-05,
+              "imaginary": -0.0002505381118146729
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.514245871227712e-16,
+          "normalized_basis_relative_residual": 5.480081710359791e-16,
+          "complex_power_relative_error": 1.4818988859524968e-15,
+          "real_geometric_energy_relative_imaginary": 9.353733533463387e-17,
+          "geometric_energy_peak": {
+            "real": 1.3264980388746695e-08,
+            "imaginary": -1.2407709188295415e-24
+          },
+          "source_complex_power_W_per_m": {
+            "real": 5.9594177632413e-05,
+            "imaginary": -0.00025054627503926224
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 3.6813476821521287e-09,
+            "imaginary": -8.16322458984809e-09
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 5.959049628473081e-05,
+            "imaginary": -0.0002505381118146728
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 7070.826371620544,
+          "contact_current_peak_A_per_m": {
+            "real": 0.000119188355264826,
+            "imaginary": 0.0005010925500785245
+          },
+          "contact_J_RMS_P95_A_m2": 0.18210560390023017,
+          "contact_J_RMS_mean_A_m2": 0.18210560390022798,
+          "contact_J_RMS_max_panel_A_m2": 0.18210560410004958,
+          "maximum_panel_width_m": 2.6385062212343213e-10,
+          "maximum_panel_edge_distance_m": 1.792794118021801e-09,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": false,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": null,
+          "true_continuous_q_relative_L2": 1.4358639240053467e-08,
+          "exact_panel_mean_q_relative_L2": 2.877276749744814e-12,
+          "projection_variance_relative_L2": 1.4358638951769827e-08,
+          "exact_bulk_power_relative_error": 4.706974012387787e-16,
+          "constant_q_max_relative_error": 1.2480646280946102e-09,
+          "constant_q_passed": false
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode1",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 1,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010649060092129646,
+              "imaginary": -0.004477216291898512
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 4.49536573115794e-16,
+          "normalized_basis_relative_residual": 4.1083730482228776e-16,
+          "complex_power_relative_error": 6.125091757801428e-16,
+          "real_geometric_energy_relative_imaginary": 3.0707450017795125e-16,
+          "geometric_energy_peak": {
+            "real": 2.3704962106095802e-07,
+            "imaginary": -7.279189390466644e-23
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.001064968087175023,
+            "imaginary": -0.004477346043701078
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.605572433508634e-08,
+            "imaginary": -1.4647562788124627e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.001064902031450685,
+            "imaginary": -0.004477199568073196
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29890.72848308908,
+          "contact_current_peak_A_per_m": {
+            "real": 0.002000000000000002,
+            "imaginary": 0.0004000000000000003
+          },
+          "contact_J_RMS_P95_A_m2": 0.9990522624573289,
+          "contact_J_RMS_mean_A_m2": 0.7474687356567256,
+          "contact_J_RMS_max_panel_A_m2": 1.0016707488844947,
+          "maximum_panel_width_m": 3.6307498830438886e-05,
+          "maximum_panel_edge_distance_m": 0.000732913397827108,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.0012227917205691445,
+          "true_continuous_q_relative_L2": 0.009181915771561215,
+          "exact_panel_mean_q_relative_L2": 0.0004341348382721308,
+          "projection_variance_relative_L2": 0.009171646753895563,
+          "exact_bulk_power_relative_error": 3.7353177121529046e-06
+        },
+        {
+          "forcing": {
+            "name": "MMS-mode4",
+            "equipotential": false,
+            "manufactured_non_equipotential_forcing_only": true,
+            "mode": 4,
+            "full_period": true,
+            "coefficients": {
+              "q0": {
+                "real": 1.0,
+                "imaginary": 0.2
+              },
+              "qc": {
+                "real": 0.3,
+                "imaginary": -0.1
+              },
+              "qs": {
+                "real": 0.2,
+                "imaginary": 0.4
+              }
+            },
+            "formula": "U=(zA+t/gamma)q0+(zA+Tm)(qc*cos(km*x)+qs*sin(km*x)); no nonzero flux outside a partial patch is used",
+            "exact_continuous_q_squared_integral_A2_per_m3": 0.00238,
+            "exact_nonconstant_q_squared_integral_A2_per_m3": 0.0003,
+            "exact_bulk_complex_power_W_per_m": {
+              "real": 0.0010255755742522483,
+              "imaginary": -0.004311858163903989
+            },
+            "projection_variance_roundoff_bound_applied": true,
+            "projection_variance_roundoff_clipped_panels": 0
+          },
+          "algebraic_relative_residual": 3.875294014757448e-16,
+          "normalized_basis_relative_residual": 5.069048116180308e-16,
+          "complex_power_relative_error": 1.0538885806319152e-15,
+          "real_geometric_energy_relative_imaginary": 1.449399551479582e-16,
+          "geometric_energy_peak": {
+            "real": 2.2828228743651032e-07,
+            "imaginary": -3.3087224502121107e-23
+          },
+          "source_complex_power_W_per_m": {
+            "real": 0.0010255825151479216,
+            "imaginary": -0.004311755963297874
+          },
+          "contact_complex_power_W_per_m": {
+            "real": 6.61251730305522e-08,
+            "imaginary": -1.4662962727155334e-07
+          },
+          "bulk_complex_power_W_per_m": {
+            "real": 0.0010255163899748894,
+            "imaginary": -0.004311609333670598
+          },
+          "bulk_energy_scope": "Conditional quadrature-operator q^H*G*q only; not independent spatial E validation",
+          "conditional_operator_slab_RMS_L2_V_m": 29332.76309578889,
+          "contact_current_peak_A_per_m": {
+            "real": 0.002000000000000001,
+            "imaginary": 0.0003999999999999999
+          },
+          "contact_J_RMS_P95_A_m2": 1.0016927605518546,
+          "contact_J_RMS_mean_A_m2": 0.747691033137969,
+          "contact_J_RMS_max_panel_A_m2": 1.004439479032666,
+          "maximum_panel_width_m": 4.4079463774198714e-05,
+          "maximum_panel_edge_distance_m": 0.000933880804338702,
+          "peak_scope": "Native panel average and sample dependent; no continuum edge maximum",
+          "physical_contact_edge_present": false,
+          "contracts_passed": true,
+          "passive_real_powers": true,
+          "projected_q_nonconstant_relative_L2": 0.01292211642584719,
+          "true_continuous_q_relative_L2": 0.035938853259219465,
+          "exact_panel_mean_q_relative_L2": 0.004587813959075291,
+          "projection_variance_relative_L2": 0.03564481921211866,
+          "exact_bulk_power_relative_error": 5.770835308878571e-05
+        }
+      ],
+      "all_algebraic_analytic_contracts_pass": false,
+      "fullperiod_kernel_row_sum_max_relative_error": 1.693504071672811e-15,
+      "fullperiod_row_sum_expected": "G*1=t*panel_length; never repaired",
+      "normalized_operator_condition_estimate": 28274.220879775035,
+      "condition_scope": "Eigenvalue shift of real symmetric length-normalized G; conditional on the separately tested symmetry",
+      "scaled_operator_correction_tail_norm_bound_m": 7.695581241541054e-23,
+      "synthetic_RHS_completed": 3,
+      "actual_3D_cells": 0,
+      "actual_3D_RHS": 0,
+      "physical_cell_cap_unchanged": 800000,
+      "spatial_E_reconstructed": false,
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed",
+      "wall_seconds": 3.8111407329997746,
+      "candidate_adopted": false,
+      "spec_SHA256": "70190e1a2f37999685bce54d2e3dda9a070793086573a6cdd66f15ca1e4fcd88",
+      "source_method_SHA256": "3c2a7a8837856f5a7b76ff4b53c97a20fbda7374e95144f59cf5ed203e732d98",
+      "arrays_SHA256": "6df47c9f8a58097e6864b294fb61b779189344a54044405799ec177c64b2c5da"
+    }
+  },
+  "adjacent_diagnostics": [
+    {
+      "axis": "panel_at_Q32",
+      "coarse_case": "verification-P128-Q32",
+      "fine_case": "verification-P256-Q32",
+      "rows": [
+        {
+          "forcing": "constant",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 9.190346750358068e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "source_real_power_relative",
+          "relative_difference": 1.5918952800664802e-15,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 6.096589016741171e-16,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 6.431318306890369e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 2.582513562742843e-15,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "source_real_power_relative",
+          "relative_difference": 0.00021840234252640985,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 0.005329924648513112,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 0.00010923175526393612,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 1.2980092992934923e-15,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "source_real_power_relative",
+          "relative_difference": 0.0042821396012989975,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 0.0004453956784622413,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 0.002143584893001131,
+          "limit": 0.01,
+          "passed": true
+        }
+      ],
+      "all_flags_pass": true,
+      "interpretation": "Finite panel/quadrature diagnostic changes, nonaborting; no continuum or safety inference. Conditional operator energy is not a spatial E field test.",
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed"
+    },
+    {
+      "axis": "panel_at_Q32",
+      "coarse_case": "verification-P256-Q32",
+      "fine_case": "verification-P512-Q32",
+      "rows": [
+        {
+          "forcing": "constant",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 1.4755784606669155e-15,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "source_real_power_relative",
+          "relative_difference": 3.411204171571028e-16,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 4.420027037137329e-15,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 1.2862636613780738e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 1.0631476988813983e-15,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "source_real_power_relative",
+          "relative_difference": 2.647924695897675e-05,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 0.0016157269483972603,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 1.324671551601872e-05,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 2.1262953977627983e-15,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "source_real_power_relative",
+          "relative_difference": 0.0004422018253466999,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 0.0022248259666411007,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 0.00022122612857756904,
+          "limit": 0.01,
+          "passed": true
+        }
+      ],
+      "all_flags_pass": true,
+      "interpretation": "Finite panel/quadrature diagnostic changes, nonaborting; no continuum or safety inference. Conditional operator energy is not a spatial E field test.",
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed"
+    },
+    {
+      "axis": "quadrature_at_P512",
+      "coarse_case": "verification-P512-Q8",
+      "fine_case": "verification-P512-Q16",
+      "rows": [
+        {
+          "forcing": "constant",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 7.893565861532854e-17,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "source_real_power_relative",
+          "relative_difference": 3.4112041715710266e-16,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 2.1338061558594018e-15,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 3.8587909841342203e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 8.653395328623266e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "source_real_power_relative",
+          "relative_difference": 1.628897144306363e-15,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 4.445104891287208e-16,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 2.43418544258627e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 6.515846552884195e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "source_real_power_relative",
+          "relative_difference": 4.2286297064225115e-16,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 3.990048691625414e-15,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 2.4804883162295684e-16,
+          "limit": 0.01,
+          "passed": true
+        }
+      ],
+      "all_flags_pass": true,
+      "interpretation": "Finite panel/quadrature diagnostic changes, nonaborting; no continuum or safety inference. Conditional operator energy is not a spatial E field test.",
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed"
+    },
+    {
+      "axis": "quadrature_at_P512",
+      "coarse_case": "verification-P512-Q16",
+      "fine_case": "verification-P512-Q32",
+      "rows": [
+        {
+          "forcing": "constant",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 1.4755784606669155e-15,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "source_real_power_relative",
+          "relative_difference": 3.411204171571028e-16,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 6.096589016741144e-16,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "constant",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 3.858790984134222e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 8.505181591051188e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "source_real_power_relative",
+          "relative_difference": 1.4252850012680695e-15,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 4.44510489128721e-16,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode1",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 6.085463606465679e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 3.007035789127644e-16,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "source_real_power_relative",
+          "relative_difference": 2.1143148532112562e-16,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 3.103371204597534e-15,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "forcing": "MMS-mode4",
+          "metric": "conditional_operator_slab_RMS_L2_relative",
+          "relative_difference": 6.201220790573925e-16,
+          "limit": 0.01,
+          "passed": true
+        }
+      ],
+      "all_flags_pass": true,
+      "interpretation": "Finite panel/quadrature diagnostic changes, nonaborting; no continuum or safety inference. Conditional operator energy is not a spatial E field test.",
+      "old_spatial_E_2percent_gate": "not_applicable_not_passed"
+    }
+  ],
+  "edge_maximum_review": null,
+  "total_synthetic_RHS_completed": 15,
+  "actual_new_synthetic_RHS_this_call": 15,
+  "synthetic_RHS_reused": 0,
+  "source_method_SHA256": "3c2a7a8837856f5a7b76ff4b53c97a20fbda7374e95144f59cf5ed203e732d98",
+  "input_SHA256": {
+    "/dev/shm/task1-contact-edge-surrogate-20261025-run/benchmark-spec.json": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+    "/dev/shm/task1-contact-graded-kernel-20261025/source/grade_kernel.py": "3c2a7a8837856f5a7b76ff4b53c97a20fbda7374e95144f59cf5ed203e732d98"
+  },
+  "resume_index_SHA256": "5ef9487422e43b9d5807bc6605d76c2376028acc1e52d9b6e0efeaf21353538d",
+  "actual_3D_cells": 0,
+  "actual_3D_RHS": 0,
+  "physical_cell_cap_unchanged": 800000,
+  "boundary_unknowns_max": 512,
+  "quadrature_operations_total": 436207616,
+  "peak_temporary_pair_node_count": 65536,
+  "quadrature_nodes_are_not_physical_mesh_cells": true,
+  "spatial_E_reconstructed": false,
+  "old_spatial_E_2percent_gate": "not_applicable_not_passed",
+  "bulk_energy_scope": "Conditional G-quadrature operator energy, not independent physical field validation",
+  "holds": {
+    "edge_continuum_Jmax_converged": false,
+    "actual_four_pad_model_validated": false,
+    "human_or_skin_contact_validated": false,
+    "experimental_activation_or_safety_validated": false,
+    "candidate_adopted": false
+  },
+  "next_step": "Root reviews actual published verification before explicitly admitting any partial-contact stage"
+}

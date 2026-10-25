@@ -1,0 +1,233 @@
+"""One source-published manufactured stage then finite stored-native postprocessing."""
+import ast,hashlib,json,os,re,shutil,signal,subprocess,sys,threading,time
+from pathlib import Path
+sys.dont_write_bytecode=True
+ROOT=Path('/workspace/ngg-tis-task1')
+OWNER=Path('/dev/shm/task1-native-light-post-r2-owner-20261025/source')
+SRC=Path('/dev/shm/task1-native-light-post-r2-20261025/source')
+ADMISSION=SRC/'root-admission.json'
+OUT=Path('/dev/shm/task1-native-light-post-r2-20261025-run')
+PUB=Path('/dev/shm/task1-git-verified-20261025-r3/source/git_publish_verified.py')
+LEDGER=ROOT/'runtime/task1-budget.json'
+CAP=2400;NUMERIC_CAP=1200;PUB_CAP=330;MAX_FILE=80*1024**2
+FIXED_CHILD_AS=1200000000
+PREDICTED_CHILD_RSS=300000000
+EXPECTED_OUTPUT_BYTES=20000000
+REMOTE='data-native/native-light-post-r2-20261025/'
+sys.path[:0]=[str(ROOT/'tools'),str(OWNER),str(SRC)]
+import task1_bounded_continuation as b,task1_execution_policy as ep,task1_resource_policy as budget
+import resource_scope
+from owner_contracts import validate_summary,validate_MFG
+
+def req(ok,message):
+ if not ok:raise ValueError(message)
+def read(path):return json.loads(Path(path).read_text())
+def sha(path):
+ h=hashlib.sha256()
+ with Path(path).open('rb')as stream:
+  for block in iter(lambda:stream.read(1024**2),b''):h.update(block)
+ return h.hexdigest()
+def new(path,value):
+ raw=(json.dumps(value,ensure_ascii=False,allow_nan=False,indent=2)+'\n').encode()
+ with Path(path).open('xb')as stream:stream.write(raw)
+def identity(path):
+ p=Path(path);req(p.is_file()and not p.is_symlink(),'Canonical immutable input '+str(p));s=p.stat()
+ return(s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns)
+def size(path):
+ try:return path.stat().st_size if path.is_file()else sum(p.stat().st_size for p in path.rglob('*')if p.is_file())
+ except FileNotFoundError:return 0
+def source_inventory():
+ paths={'model':[p for p in sorted(SRC.iterdir())if p.is_file()and p.suffix in('.py','.json','.md')],
+  'owner':[p for p in sorted(OWNER.iterdir())if p.is_file()and p.suffix in('.py','.json','.md')]}
+ req(all(p.is_file()and not p.is_symlink()for group in paths.values()for p in group),'All canonical byte-pinned source files')
+ return paths,{str(p):sha(p)for group in paths.values()for p in group}
+def test_inventory():
+ groups={}
+ for namespace,root in(('model',SRC),('owner',OWNER)):
+  rows={}
+  for path in sorted(root.glob('test_*.py')):
+   tree=ast.parse(path.read_text(),filename=str(path));rows[path.name]=sum(1 for cls in tree.body if isinstance(cls,ast.ClassDef)for item in cls.body if isinstance(item,ast.FunctionDef)and item.name.startswith('test_'))
+  groups[namespace+'_counts']=rows;groups[namespace+'_total']=sum(rows.values())
+ req(groups['model_total']>0 and groups['owner_total']>0,'Prospective dynamic model and owner test inventory')
+ return dict(groups,total=groups['model_total']+groups['owner_total'],tests_before_actual_native_reads=True,no_external_test_result_assumed=True)
+def prior_failure_proof(admission):
+ descriptor=admission['previous_failed_postbatch'];oldrun=Path('/dev/shm/task1-native-light-post-20261025-run');req(descriptor['run']==str(oldrun),'Exact first failed postbatch remains preserved')
+ witness=descriptor['publication'];pubpath=Path(witness['path']);req(pubpath==oldrun/'result-publication/result-publication.json'and pubpath.is_file()and not pubpath.is_symlink()and sha(pubpath)==witness['SHA256'],'Actual first failure full result-publication receipt')
+ pub=read(pubpath);req(pub['status']=='published_readback_verified'and pub['commit']==witness['commit']and re.fullmatch('[0-9a-f]{40}',pub['commit']),'Actual immutable first failure result readback, not source/prepared state')
+ refs={str(pubpath):witness['SHA256']};observed={}
+ for name in('synthetic-test-receipt.json','worker-receipt.json','tests.log'):
+  path=oldrun/name;target='data-native/native-light-post-20261025/'+name;row=pub['files'][target]
+  req(row['readback_passed']is True and path.is_file()and not path.is_symlink()and path.stat().st_size==row['bytes']and sha(path)==row['SHA256'],'First actual failure evidence direct publication '+name);refs[str(path)]=row['SHA256'];observed[name]=dict(path=str(path),SHA256=row['SHA256'],bytes=row['bytes'],publication_target=target)
+ old=read(oldrun/'synthetic-test-receipt.json');req(old['status']=='failed'and old['tests_run']==29 and old['tests_failed']==0 and old['tests_errors']==10 and old['tests_skipped']==0 and old['scientific_API_spy_calls']==[]and old['native_RHS']==0 and old['native_Q_loaded']is False and old['native_field_reads']==0,'Exact prior wrapper/dependency MFG failure, not field/PDE failure')
+ req(old['source_publication_commit']=='cd86ab1b27eac7261caa3b9efe31c9c3bb4f4c04','Exact previous source publication')
+ bridgepath=OWNER/'model-namespace-bridge.json';bridge=read(bridgepath);req(bridge['schema']=='task1-native-light-post-r2-source-namespace-map-v1'and bridge['numerical_algorithms_changed']is False and bridge['scientific_criteria_changed']is False and bridge['model_test_count']==24 and bridge['old_sources_unchanged']is True,'Namespace-only model clone with unchanged24manufactured contracts')
+ oldsource=Path('/dev/shm/task1-native-light-post-20261025/source');req(bridge['original_SOURCE']==str(oldsource)and bridge['new_SOURCE']==str(SRC),'Exact old/new canonical model namespaces')
+ for row in bridge['files']:
+  previous=Path(row['original_path']);current=Path(row['new_path']);req(previous==oldsource/row['name']and current==SRC/row['name']and sha(previous)==row['original_SHA256']and sha(current)==row['new_SHA256'],'Original/current model source SHA bridge')
+  raw=previous.read_bytes()
+  for pair in bridge['exact_substitutions']:raw=raw.replace(pair['original'].encode(),pair['replacement'].encode())
+  req(raw==current.read_bytes(),'Namespace-only exact byte substitutions, no numerical/criteria edits');refs[str(previous)]=row['original_SHA256'];refs[str(current)]=row['new_SHA256']
+ req(old['model_source_sha256']=={row['original_path']:row['original_SHA256']for row in bridge['files']},'Previous actual MFG receipt binds all unchanged original scientific sources')
+ refs[str(bridgepath)]=sha(bridgepath)
+ return dict(schema='task1-native-light-post-r2-authenticated-prior-failure-v1',publication=witness,actual_source_commit=old['source_publication_commit'],prior_tests=29,prior_test_errors=10,prior_test_failures=0,prior_native_field_reads=0,prior_native_Q_loaded=False,prior_new_RHS=0,evidence=observed,model_namespace_bridge=dict(path=str(bridgepath),SHA256=sha(bridgepath)),fix='Initialize existing NumPy.ma/fft/testing before constructor patches; unchanged criteria/bounds/source algorithms',new_native_PDE_RHS=0),refs
+def main():
+ head=os.environ.get('TASK1_NATIVE_LIGHT_POST_R2_EXPECTED_PARENT','')
+ req(re.fullmatch('[0-9a-f]{40}',head)is not None,'Set TASK1_NATIVE_LIGHT_POST_R2_EXPECTED_PARENT to the actual public40hex branch parent')
+ req(ADMISSION.is_file()and not ADMISSION.is_symlink(),'New positive actual fine/ellipse-publication-bound postprocess admission required')
+ with b.dual_lock(ROOT/'.task1-queue-owner.lock'):
+  req(not OUT.exists(),'Unique run required; preserve all earlier attempts');OUT.mkdir()
+  for name in('logs','source-publication','result-publication','source'):(OUT/name).mkdir()
+  limits=ep.resolve_limits();configured=ep.configure_process(limits);ledger=budget.load_ledger()
+  req(ledger.get('cumulative_time_unlimited')is True,'Actual unlimited-time authorization required');budget.require_time_budget(ledger,CAP)
+  pid=os.getpid();ticks=b.ticks(pid);start=time.monotonic();owned={pid:ticks};stop=threading.Event();mutex=threading.RLock()
+  state=dict(phase='preparing',peak_RSS=0,peak_owned_tmpfs=0,peak_accounted=0);research_known={};counter=0;git_wall=0.
+  packs,sources=source_inventory()
+  helpers={str(ROOT/'tools'/name):sha(ROOT/'tools'/name)for name in('task1_bounded_continuation.py','task1_execution_policy.py','task1_resource_policy.py')}
+  reg=dict(schema='task1-finite-native-continuation-registration-v1',supervisor_pid=pid,proc_start_ticks=ticks,
+   controller_path=str(Path(__file__).resolve()),controller_sha256=sha(__file__),publisher_path=str(PUB),publisher_sha256=sha(PUB),
+   source_sha256=sources,helper_sha256=helpers,outer_deadline_seconds=CAP,numerical_child_deadline_seconds=NUMERIC_CAP,
+   resource_limits=limits,execution_policy_refs=ep.execution_policy_refs(),configured=configured,
+   new_PDE_RHS=0,new_Q_loads=0,new_angular_evaluations=0,new_eigen_solves=0,source_fields_only=True,scenario='cached_native_scalar_highvolume_and_phi_probe_postprocess_only')
+  new(OUT/'registration.json',reg)
+  receipt=dict(schema='task1-native-light-post-owner-v1',status='failed_preserved',started_utc=b.now(),pid=pid,proc_start_ticks=ticks,
+   new_PDE_RHS=0,new_Q_loads=0,new_angular_evaluations=0,GUI_generated=False,Windows_saved_verified=False,candidate_adopted=False)
+  fast={};large={}
+  def bind(refs,full=True):
+   for path,expected in refs.items():
+    ident=identity(path)
+    if full:req(sha(path)==expected,'Immutable input SHA mismatch '+path)
+    with mutex:
+     if ident[2]<=1024**2:fast[path]=expected
+     else:large[path]=(expected,ident)
+  bind({**sources,**helpers,**reg['execution_policy_refs'],str(PUB):reg['publisher_sha256'],str(OUT/'registration.json'):sha(OUT/'registration.json')})
+  def checkpoint(phase,**extra):
+   nonlocal counter
+   with mutex:
+    counter+=1;item=dict(schema='task1-native-light-post-live-v1',updated_utc=b.now(),queue_pid=pid,queue_start_ticks=ticks,phase=phase,
+     elapsed_seconds=time.monotonic()-start,**extra);new(OUT/('checkpoint-'+str(counter).zfill(5)+'.json'),item)
+    for target in(OUT/'current.json',ROOT/'runtime/task1-native-light-post-r2-live-20261025.json'):
+     tmp=target.with_name(target.name+'.'+str(pid)+'.'+str(counter)+'.tmp');new(tmp,item);os.replace(tmp,target)
+    state['phase']=phase
+  def guard():
+   with mutex:
+    live=b.owned_descendants(pid,ticks,dict(owned));owned.update(live);fast_now=dict(fast);large_now=dict(large);known_now=dict(research_known)
+   observation=resource_scope.observe(live,b.ticks,known_now);rss=observation['research_RSS_bytes'];tmp=sum(size(p)for p in Path('/dev/shm').glob('task1-*'))
+   with mutex:research_known.update(observation['members']);state['latest_process_audit']=observation
+   with mutex:state.update(peak_RSS=max(state['peak_RSS'],rss),peak_owned_tmpfs=max(state['peak_owned_tmpfs'],tmp),peak_accounted=max(state['peak_accounted'],rss+tmp))
+   req(rss+tmp<=limits['total_memory_bytes'],'Actual ALL research-owned-family RSS plus ALL task1-ownedtmpfs cap')
+   req(time.monotonic()-start<CAP,'Finite2400s stored-native postprocess owner watchdog');req(not(OUT/'STOP').exists(),'Explicit STOP marker')
+   for path,expected in fast_now.items():req(sha(path)==expected,'Frozen small source/input/policy changed '+path)
+   for path,(_,ident)in large_now.items():req(identity(path)==ident,'Large immutable input stat identity changed '+path)
+  def interrupt(signum,frame):raise InterruptedError(state.get('error','Finite watchdog or external signal'))
+  def monitor():
+   last=0.
+   while not stop.wait(.25):
+    try:
+     guard()
+     if time.monotonic()-last>=5:checkpoint(state['phase'],observed_peak_RSS=state['peak_RSS'],observed_peak_owned_tmpfs=state['peak_owned_tmpfs']);last=time.monotonic()
+    except BaseException as error:state['error']=str(error);os.kill(pid,signal.SIGTERM);return
+  handlers={sig:signal.getsignal(sig)for sig in(signal.SIGALRM,signal.SIGINT,signal.SIGTERM)}
+  for sig in handlers:signal.signal(sig,interrupt)
+  signal.setitimer(signal.ITIMER_REAL,CAP);thread=threading.Thread(target=monitor,daemon=True);thread.start()
+  def command(argv,label,seconds,is_git=False,allow_failure=False):
+   nonlocal git_wall
+   guard();checkpoint(label);log=OUT/'logs'/(str(counter)+'-'+label+'.log');before=time.monotonic();rows_before=len(budget.load_ledger()['runs'])
+   with log.open('xb')as stream:
+    child=subprocess.Popen(argv,stdout=stream,stderr=subprocess.STDOUT,start_new_session=True)
+    with mutex:owned[child.pid]=b.ticks(child.pid)
+    checkpoint(label,child_pid=child.pid,child_start_ticks=owned[child.pid],child_timeout_seconds=seconds)
+    try:code=child.wait(timeout=max(.01,min(seconds,CAP-(time.monotonic()-start))))
+    except subprocess.TimeoutExpired:
+     if not allow_failure:raise
+     try:os.killpg(child.pid,signal.SIGKILL)
+     except ProcessLookupError:pass
+     child.wait(timeout=5);code=124;new(OUT/(label+'-timeout.json'),dict(status='finite_child_timeout_partial_preserved',child_pid=child.pid,seconds=seconds,no_automatic_recalculation=True))
+    finally:
+     if child.poll()is None:os.killpg(child.pid,signal.SIGKILL);child.wait(timeout=5)
+     if is_git:
+      child_run=Path(argv[argv.index('--output')+1]).name
+      recorded=sum(row.get('seconds',0.)for row in budget.load_ledger()['runs'][rows_before:]if row.get('run_id')==child_run)
+      git_wall+=min(time.monotonic()-before,recorded)
+   if not allow_failure:req(code==0,'Finite child failed '+label+'; preserve log '+str(log))
+   return code
+  def plan(files,parent,message,destination,comment=None):
+   for path in files.values():req(path.is_file()and not path.is_symlink()and path.stat().st_size<MAX_FILE,'Preserve file and report publication bound '+str(path))
+   return dict(schema='task1-supported-Git-transport-plan-v1',repository='yoodohyun-codex-cloud/ngg-tis-task1',branch='codex/task1-cloud-restart-20261020',expected_parent=parent,message=message,
+    files={target:dict(local_path=str(path),SHA256=sha(path),bytes=path.stat().st_size)for target,path in files.items()},required_result_receipt=str(destination),required_receipt_status='published_readback_verified',new_PDE_required=False,comment_body=comment)
+  try:
+   with b.dual_lock(ROOT/'.task1-loop.lock'),b.dual_lock(ROOT/'.task1-execution.lock'):
+    import native_light_post as model
+    admission=read(ADMISSION);new(OUT/'root-admission.json',admission)
+    spec=model.make_spec(admission);refs=model.required_inputs(admission);prior,prior_refs=prior_failure_proof(admission);refs.update(prior_refs);new(OUT/'previous-failure-proof.json',prior);refs[str(OUT/'previous-failure-proof.json')]=sha(OUT/'previous-failure-proof.json');refs[str(ADMISSION)]=sha(ADMISSION);refs[str(OUT/'root-admission.json')]=sha(OUT/'root-admission.json')
+    req(spec['max_physical_evaluation_cells']==limits['max_cells']==800000 and all(spec[k]==0 for k in('maximum_new_PDE_RHS','maximum_new_Q_loads','maximum_new_eigen_solves','maximum_new_angular_evaluations'))and spec['expected_native_geometries']in(2,3),'Zero new PDE/Q/eigen/angles and actual2or3native geometry scope')
+    tests=test_inventory();new(OUT/'test-source-inventory.json',tests);new(OUT/'spec.json',spec);frozen={}
+    for namespace,paths in packs.items():
+     directory=OUT/'source'/namespace;directory.mkdir()
+     for path in paths:
+      target=directory/path.name
+      with target.open('xb')as stream:stream.write(path.read_bytes())
+      req(sha(target)==sources[str(path)],'Exact canonical-to-published snapshot');frozen[str(target)]=sha(target)
+    small=OUT/'source-inputs';small.mkdir()
+    context=spec['inputs']
+    seen=set()
+    for descriptor in(context['original_baseline']['ROI_receipt'],)+tuple(d['ROI_receipt']for d in context['datasets']):
+     oldpath=descriptor['path']
+     if oldpath in seen:continue
+     seen.add(oldpath);target=small/Path(oldpath).name
+     with target.open('xb')as stream:stream.write(Path(oldpath).read_bytes())
+     req(sha(target)==refs[oldpath],'Exact approved original ROI receipt snapshot');refs[str(target)]=sha(target)
+    new(OUT/'preregistration.json',dict(schema='task1-native-light-post-preregistration-v1',question='Postprocess only actual published fineB0/P23 and optional complete E13: existing nativeAM scalar classification under2originalB0relativecutoffs×4separatenormalizations×6fixedROIs;40unloadedpotentialdifferenceprobespergeometry. No new PDE/Q/eigen/fieldreconstruction/angularmaximum. Originalstats/caps/failures/600probespreserved; strictsame-layeravailability separatelyfromexplicit≤1spacingextrapolation. Source-bound boundedmanufacturedtests mustpassbeforeactualnativearrayreads.',source_sha256=sources,frozen_source_sha256=frozen,input_sha256=refs,helper_sha256=helpers,execution_policy_refs=reg['execution_policy_refs'],limits=limits,spec_SHA256=sha(OUT/'spec.json'),root_admission_SHA256=sha(OUT/'root-admission.json'),root_decision=admission,previous_failure_proof_SHA256=sha(OUT/'previous-failure-proof.json'),expected_synthetic_tests=tests['total'],expected_model_tests=tests['model_total'],expected_owner_tests=tests['owner_total'],test_inventory_SHA256=sha(OUT/'test-source-inventory.json'),tests_before_actual_native_reads=True,expected_native_geometries=spec['expected_native_geometries'],expected_probes_per_geometry=40,maximum_new_PDE_RHS=0,maximum_new_Q_loads=0,maximum_new_eigen_solves=0,maximum_new_angular_evaluations=0,hard_child_seconds=NUMERIC_CAP,resource_forecast=dict(fixed_child_RLIMIT_AS_bytes=FIXED_CHILD_AS,virtual_AS_justification='Finite1.2GBvirtualaddresslimit accommodates numerical libraries/uncommitted mappings; this is not RAMallocation. Actual300Mchild+20Moutput forecast and unchanged8e9ALLresearchRSS+ALLtasktmpfs250msguard remain decisive.',predicted_child_RSS_bytes=PREDICTED_CHILD_RSS,expected_output_bytes=EXPECTED_OUTPUT_BYTES,model_child_RSS_forecast_bytes=spec['child_RSS_forecast_bytes'],model_output_forecast_bytes=spec['new_output_forecast_bytes'],provisional_forecasts_not_measured_bounds=True,actual_total_research_RSS_plus_all_task_tmpfs_cap_bytes=8000000000),actual_hardware_wiring_changed=False,candidate_adopted=False))
+    bind({**sources,**frozen,**refs,**helpers,**reg['execution_policy_refs'],**{str(OUT/name):sha(OUT/name)for name in('spec.json','test-source-inventory.json','preregistration.json')}})
+   files={}
+   for path in(OUT/'source').rglob('*'):
+    if path.is_file():files['tools/native_light_post_r2_20261025/'+path.relative_to(OUT/'source').as_posix()]=path
+   for name in('registration.json','preregistration.json','test-source-inventory.json','spec.json','root-admission.json','previous-failure-proof.json'):files[REMOTE+name]=OUT/name
+   for path in(OUT/'source-inputs').iterdir():files[REMOTE+'source-inputs/'+path.name]=path
+   spath=OUT/'source-plan.json';new(spath,plan(files,head,'Preregister source-bound manufactured gates and finite stored-native scalar/probe postprocess',OUT/'source-publication/result-publication.json'))
+   command([sys.executable,'-B',str(PUB),'--plan',str(spath),'--output','/dev/shm/task1-git-native-light-post-r2-source-20261025','--queue-registration',str(OUT/'registration.json')],'source-publication',PUB_CAP,True)
+   published=read(OUT/'source-publication/result-publication.json');req(published['status']=='published_readback_verified','Actual immutable source/input readback before bounded manufactured tests and stored-native array reads')
+   with b.dual_lock(ROOT/'.task1-loop.lock'),b.dual_lock(ROOT/'.task1-execution.lock'):
+    guard();tmp=sum(size(p)for p in Path('/dev/shm').glob('task1-*'))
+    with mutex:authenticated_now=dict(owned);known_now=dict(research_known)
+    observation=resource_scope.observe(authenticated_now,b.ticks,known_now)
+    with mutex:research_known.update(observation['members']);state['latest_process_audit']=observation
+    physical_forecast=tmp+observation['research_RSS_bytes']+PREDICTED_CHILD_RSS+EXPECTED_OUTPUT_BYTES
+    req(physical_forecast<=limits['total_memory_bytes']==8000000000 and limits['cpu_limit']==4 and limits['max_cells']==800000,'Unchanged actual researchRSS+alltmpfs budget before manufactured tests and native postprocessing')
+    new(OUT/'numeric-admission.json',dict(kind='manufactured_gates_then_finite_stored_native_postprocess',all_owned_tmpfs_bytes=tmp,all_research_RSS_bytes=observation['research_RSS_bytes'],research_scope=observation['scope'],forecast_child_RSS_bytes=PREDICTED_CHILD_RSS,forecast_new_output_bytes=EXPECTED_OUTPUT_BYTES,physical_forecast_bytes=physical_forecast,physical_cap_bytes=limits['total_memory_bytes'],child_RLIMIT_AS_bytes=FIXED_CHILD_AS,actual_hardware_wiring_changed=False))
+    bind({str(OUT/'numeric-admission.json'):sha(OUT/'numeric-admission.json')})
+    code=command(['setpriv','--pdeathsig','KILL',sys.executable,'-B',str(OUT/'source/owner/worker.py'),'--output',str(OUT),'--source',str(SRC),'--as-limit',str(FIXED_CHILD_AS),
+     '--registration-sha',sha(OUT/'registration.json'),'--preregistration-sha',sha(OUT/'preregistration.json'),'--publication-sha',sha(OUT/'source-publication/result-publication.json'),'--publication-plan-sha',sha(spath)],'native-light-post-child',NUMERIC_CAP,allow_failure=True)
+   summary=read(OUT/'summary.json')if(OUT/'summary.json').is_file()else None;passed=False
+   if code==0 and summary is not None:accounting=validate_summary(summary,spec['expected_native_geometries']);passed=True
+   else:accounting=dict(passed=False,worker_exit_code=code,summary_present=summary is not None,partial_results_preserved=True,actual_hardware_wiring_changed=False)
+   with mutex:all_pins={**fast,**{path:value[0]for path,value in large.items()}}
+   for path,expected in all_pins.items():guard();req(sha(path)==expected,'Complete source/input/policy SHA after native scalar/probe postprocessing')
+   new(OUT/'research-process-accounting.json',state.get('latest_process_audit',{}))
+   new(OUT/'execution-stage.json',dict(status='native_light_post_computed'if passed else'native_light_post_failed_or_partial_preserved',worker_exit_code=code,accounting=accounting,actual_new_PDE_RHS=0,new_Q_loads=0,new_angular_evaluations=0,actual_hardware_wiring_changed=False,source_commit=published['commit']))
+   files={}
+   for path in OUT.rglob('*'):
+    rel=path.relative_to(OUT)
+    if path.is_file()and(rel.parts[0]in('logs','rhs','candidates','prepared','source-inputs')or(len(rel.parts)==1 and path.name not in('current.json','source-plan.json','result-plan.json'))):files[REMOTE+rel.as_posix()]=path
+   files[REMOTE+'source-publication-receipt.json']=OUT/'source-publication/result-publication.json'
+   rp=OUT/'result-plan.json';new(rp,plan(files,published['commit'],'Preserve stored-native highvolume/probe postprocessing, honest availability and prior failures',OUT/'result-publication/result-publication.json',
+    comment='실제공개fineB0/P23와실제완료E13만기존저장AM스칼라·복소전위로후처리합니다. 새PDE/Q/고유분해/전기장재구성/각도최대값계산은0입니다. 원래coarse101B0에서복사한수치cutoff2개×서로다른정규화4개×고정ROI6개로고변조부피를분류하며생리적역치가아닙니다. 깊이5/10/15/20mm십자중심과5mm팁간격X/Y차동40개를각형상에서계산하고,엄격한동일층괄호가능/명시적한격자이내외삽/불가를구분합니다. ETA5001부하검증없는무부하예측이며원래600개예측과기존통계/13of14/SC/접촉/가장자리실패를보존합니다. 채택·수렴·실험·활성화·안전검증을주장하지않습니다. 실제상태:'+('computed_unadopted'if passed else'failed_or_partial_preserved')))
+   command([sys.executable,'-B',str(PUB),'--plan',str(rp),'--output','/dev/shm/task1-git-native-light-post-r2-result-20261025','--queue-registration',str(OUT/'registration.json')],'result-publication',PUB_CAP,True)
+   result=read(OUT/'result-publication/result-publication.json');req(result['status']=='published_readback_verified','Full result/error publication readback')
+   receipt.update(status='native_light_post_computed_published'if passed else'native_light_post_failed_or_partial_published',source_commit=published['commit'],result_commit=result['commit'],postprocess_accounting=accounting)
+   checkpoint('native_light_post_result_review_next_finite_batch',result_commit=result['commit'],calculation_passed=passed)
+  except BaseException as error:
+   failed=state['phase'];receipt.update(error_type=type(error).__name__,error=str(error),failed_phase=failed)
+   checkpoint('failed_preserved',failed_phase=failed,error=str(error));raise
+  finally:
+   signal.setitimer(signal.ITIMER_REAL,0);stop.set();thread.join(timeout=2)
+   for child,tick in b.owned_descendants(pid,ticks,dict(owned)).items():
+    if child!=pid and b.live(child,tick):
+     try:os.kill(child,signal.SIGKILL)
+     except ProcessLookupError:pass
+   elapsed=time.monotonic()-start;ledger=budget.load_ledger();debit=max(0.,elapsed-git_wall);ledger['spent_seconds']+=debit
+   ledger['runs'].append(dict(run_id=OUT.name,stage='native_light_post_and_supervision',seconds=debit,status=receipt['status'],Git_children_debited_separately=True))
+   temp=LEDGER.with_name('task1-budget-native-light-post-r2-'+str(pid)+'.tmp');new(temp,ledger);os.replace(temp,LEDGER)
+   receipt.update(finished_utc=b.now(),elapsed_seconds=elapsed,nonduplicated_ledger_seconds=debit,resources={k:v for k,v in state.items()if k.startswith('peak_')},remaining_approved_seconds=budget.remaining_seconds(ledger));new(OUT/'receipt.json',receipt)
+   for sig,handler in handlers.items():signal.signal(sig,handler)
+   print(json.dumps(receipt,ensure_ascii=False))
+if __name__=='__main__':main()

@@ -1,0 +1,80 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "preregistered_not_executed",
+  "created_utc": "2026-10-21T19:36:51.052726+00:00",
+  "output_directory": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/queue-audit-recovery",
+  "max_total_seconds": 300,
+  "stages": [
+    {
+      "id": "SC4-fullskin-same-grid-control",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z",
+        "--case",
+        "rounded-fullface225-sc4-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80-same-grid-control.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80-same-grid-control.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80-same-grid-control.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      }
+    },
+    {
+      "id": "feedback-after-SC4-native",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-native.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-native.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-native.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/preregistration.json": "e8397f27483d6b5c5abb8fa7bbfe125d62bd2870de55e44d44bb5c0a8409413b",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/summary.json": "5b7ae9b94aaf5a5d194876a61c895b5cb6ba8cc6159d4c42e5d940b77dc84e88",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json": "7d17d268324fc81544a545058b7482c17dbd458b71bde6036645c23ccc252b4d",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/queue-native/summary.json": "39f4ab0f24e239682260f9794ca28a5d9e62f19926b36f9922c533ac9dea4304",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/decision.json": "7fffabb7057f841a08e47ca71c4f3846f70c9aae658084d1958c168ef72a9ab4",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/audit-failure-disposition.json": "55e2c82d4297c00a135da34bb1f3096c406ed600aa4170f8c92388ff4f0183e4",
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "89bf821666fedde2484b927641b063effaf01fc71d5749084af5f385aac24dce",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "bf00ce049763482acdb9d7cbc09904a0a2f13b1213b7ad885e255a5c803bf4ce",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d",
+    "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py": "a76eb5ebf1443032909546eba64b585d984077e2e0ba82c7599a22ee80f7bbf5",
+    "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py": "d4e6a1c978b58f6496e961000ce9d4d14a3e4c0a9fec0ec5ef386801bb86f9d5"
+  },
+  "resource_policy_limit_seconds": 13800,
+  "caps": {
+    "CPU_count": 1,
+    "concurrent_children": 1,
+    "aggregate_RSS_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648
+  },
+  "candidate_adopted": false,
+  "background_daemon": false,
+  "automatic_retries": false,
+  "implementation_git_commit": "6cac5ac0fc58f591b51d90a9c267efdf1698dec9",
+  "implementation_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "89bf821666fedde2484b927641b063effaf01fc71d5749084af5f385aac24dce",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "bf00ce049763482acdb9d7cbc09904a0a2f13b1213b7ad885e255a5c803bf4ce",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  }
+}

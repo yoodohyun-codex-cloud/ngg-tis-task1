@@ -1,0 +1,171 @@
+{
+  "schema": "task1-VS-native-source-feasibility-audit-v1",
+  "status": "source_review_complete_native_implementation_not_yet_present",
+  "audit_scope": {
+    "source_only": true,
+    "research_modules_imported": false,
+    "tests_or_compilation_run": false,
+    "native_arrays_read": false,
+    "native_or_manufactured_calculation_run": false,
+    "network_or_lock_or_ledger_operations": false,
+    "existing_files_edited": false,
+    "new_file_written": "/dev/shm/task1-resume-20261025/audit/VS-native-feasibility.json",
+    "source_hashes_or_native_hashes_computed": false,
+    "result_claim": "Feasibility and source-contract review only. No numerical accuracy, resource measurement, native admission or candidate adoption is certified."
+  },
+  "fixed_physical_and_circuit_contract": {
+    "diameter_mm": 50,
+    "layer_thickness_mm": [0.1, 5, 5, 15],
+    "layer_names": ["stratum_corneum", "dermis_or_VS", "fat", "muscle"],
+    "depth_origin": "top surface z=0; positive z into phantom",
+    "physical_layer_faces_mm": [0, 0.1, 5.1, 10.1, 25.1],
+    "XY_h_mm": 0.5,
+    "SC_cells": 8,
+    "physical_pads": 4,
+    "independent_outputs": 2,
+    "pad_centres_mm": [[-10, -10], [10, 10], [10, -10], [-10, 10]],
+    "pad_shape_and_area": "Each original 15x15 mm square, 225 mm2; same unchanged 3600 full-face mask patches, total900 mm2",
+    "pad_to_node": {"0": "out0", "1": "out1", "2": "GND", "3": "GND"},
+    "source_definition": "Each transfer RHS is +0.5+0j V peak, 1 Vpp open/high-impedance source, through50ohm; other output is0V through50ohm; shared GND returns retained",
+    "minimal_followup_frequency_Hz": [2000],
+    "minimal_followup_RHS": 2,
+    "interpretation": "One-carrier native diagnostic. Not a two-frequency TIS result, directional modulation comparison or hardware validation.",
+    "material_and_contact": "Reuse exact completed SC8 source-verified2000Hz material receipt and nominal measured-minus-effectiveRs contact receipt; keep declared surrogate/PBS uncertainty and no recalibration or repeated Rs subtraction.",
+    "native_cell_limit": 800000
+  },
+  "reviewed_sources": [
+    {"path": "/workspace/ngg-tis-task1/tis-java/TisSweep.java", "anchors": ["Mesh:19-34", "Net conductance assembly:54-61", "solve:72-83", "field:85-92", "power/loss:94-108"]},
+    {"path": "/workspace/ngg-tis-task1/tis-java/ExploreBasis.java", "anchors": ["GNet:17-43", "resistance/lossMatrices:45-71"]},
+    {"path": "/workspace/ngg-tis-task1/tis-java/SelectivityShapeBasis.java", "anchors": ["MAX_CELLS:14", "ValidationMesh:160-184", "ShapeNet:188-263", "metadata:279-284"]},
+    {"path": "/dev/shm/task1-sc8-2000-20261025/source/SC8SingleCarrierBasis.java", "anchors": ["source/class/parent/path guards:18-112", "configuration:117-132", "canonicalMask:134-139", "metadata:141-146", "fixed native mesh:176", "exports and five gates:188-225"]},
+    {"path": "/dev/shm/task1-sc8-2000-20261025/source/sc8_math.py", "anchors": ["weighted_statistics:7-29", "reconstruct_native_field:31-50", "native_geometry:51-76"]},
+    {"path": "/dev/shm/task1-sc8-2000-20261025/source/sc8_interfaces.py", "anchors": ["nonuniform Lagrange weights:21-33", "actual-face interface fits:95-159", "scope and limitations:160-185"]},
+    {"path": "/workspace/ngg-tis-task1/tis-java/selectivity_volume.py", "anchors": ["native_region_weights:69-180"]},
+    {"path": "/dev/shm/task1-sc8-2000-20261025/source/sc8_inputs.py", "anchors": ["fixed cell counter:37-45", "fixed allowed config delta:47-65"]},
+    {"path": "/dev/shm/task1-sc8-2000-20261025/source/sc8_post.py", "anchors": ["fixed constants:13-21", "SC4 selection predicate:33-54", "SC4-to-SC8 adjacency and interpretation:72-116", "fixed bulk metadata/config and unchanged-bulk-face assertions:139-158", "SC-specific output labels:216-232"]},
+    {"path": "/dev/shm/task1-vs-estimator-20261025/source/vs_estimator.py", "anchors": ["three proposed grids and screens:15-22", "explicit graded faces:43-55", "geometry receipt and equivalent native count:57-70", "frozen spec:72-78", "no automatic native admission:159-173"]}
+  ],
+  "candidate_geometry_capacity": [
+    {
+      "id": "U18",
+      "meaning": "Existing SC8/VS18uniform/fat18/muscle56 reference",
+      "layer_counts": [8, 18, 18, 56],
+      "vertical_cells": 100,
+      "native_cells": 786000,
+      "native_support_now": true,
+      "count_evidence": "Actual reference count supplied by root; this audit did not enumerate a mesh or inspect arrays."
+    },
+    {
+      "id": "U19",
+      "meaning": "VS19uniform, same SC8/fat18/muscle56 and XY0.5",
+      "layer_counts": [8, 19, 18, 56],
+      "vertical_cells": 101,
+      "native_cells": 793860,
+      "within_800000_proposed": true,
+      "native_support_now": false,
+      "count_evidence": "Proposed count supplied by root; MMS geometry_receipt independently defines the exact-cylinder-column enumeration needed before registration. No count was calculated in this audit."
+    },
+    {
+      "id": "G18",
+      "meaning": "VS18 symmetric geometric widths, ratio1.15; other layer counts and physical thicknesses preserved",
+      "layer_counts": [8, 18, 18, 56],
+      "vertical_cells": 100,
+      "native_cells": 786000,
+      "within_800000_proposed": true,
+      "native_support_now": false,
+      "face_recipe": "Only layer1 uses w_j=1.15^min(j,17-j), j=0..17, normalized to5mm; all other layers uniform. Use the preregistered explicit face table, not a separately rederived runtime recipe.",
+      "count_evidence": "Same layer counts/XY mask as root-provided existing U18; no enumeration was executed in this audit."
+    }
+  ],
+  "supported_extensibility": [
+    {
+      "component": "Mesh data model and ShapeNet operator",
+      "finding": "Mesh stores separate z,dz,layer arrays. ShapeNet accepts Mesh, not ValidationMesh, and uses actual dz[k] for XY conductance/side-face area, half distances for Z harmonic conductance and top-contact series depth. No algebraic uniform-dz assumption was found in the inherited network, resistance, loss, field or shared-flux interface formulas.",
+      "implication": "A separately registered explicit-face Mesh subclass can reuse unchanged ShapeNet and COCG. This is source feasibility, not proof of stability or convergence on the proposed meshes."
+    },
+    {
+      "component": "Python geometry and scalar integration",
+      "finding": "sc8_math.native_geometry accepts metadata-driven counts and strictly increasing explicit faces, checks physical tissue interfaces, centers, repeated columns and actual h^2*dz volumes. selectivity_volume.native_region_weights also checks the exact finite-cylinder XY mask and derives fractional target XY/exact-depth-overlap weights from actual faces, without analytical volume renormalization.",
+      "implication": "These pure kernels support U19/G18 without changing ROI or statistic definitions. Retain both geometry checks; native_geometry alone does not independently enumerate the true cylinder XY membership."
+    },
+    {
+      "component": "Potential-only diagnostics",
+      "finding": "sc8_interfaces uses actual sample depths with two/three-node Lagrange extrapolation and a conditioning guard. It does not assume uniform z spacing or use stored E/shared currents.",
+      "implication": "Retain fixed2/2 and3/3 fits on both reference and candidate, all three interfaces and identical physical interior/periphery scopes. Add graded-node analytic and conditioning fixtures before native execution."
+    },
+    {
+      "component": "Native field reconstruction and weighted statistics",
+      "finding": "sc8_math.reconstruct_native_field derives each half-face distance from actual dz and weighted_statistics uses actual volume weights.",
+      "implication": "Reusable as ABI self-consistency and integration; reconstructed gamma*E or phi-to-E agreement is not independent physical accuracy validation."
+    }
+  ],
+  "exact_current_blockers": [
+    {
+      "id": "VS-NATIVE-B01",
+      "source": "SelectivityShapeBasis.java:160-176",
+      "problem": "ValidationMesh only allows bulk14,14,40 or18,18,56, then constructs every layer with uniform dz. It rejects19,18,56 and has no explicit-face input/constructor.",
+      "required_resolution": "New reviewed mesh adapter with explicit frozen faces. Preserve the original constructor and historical allowlist."
+    },
+    {
+      "id": "VS-NATIVE-B02",
+      "source": "SC8SingleCarrierBasis.java:15-16,26-46,56-75,117-146,176,223",
+      "problem": "Current identity, parent command/path, grid guard, mesh instantiation, metadata and validation are registered specifically to uniform18,18,56 SC8. Changing only bulk.counts or a JSON label cannot instantiate U19 or graded G18 and would mislabel provenance.",
+      "required_resolution": "New class/controller/schema/case/run registration, exact mesh-file SHA and truthful dynamic metadata; no edits of frozen wrapper/source/results."
+    },
+    {
+      "id": "VS-NATIVE-B03",
+      "source": "sc8_inputs.py:37-65",
+      "problem": "Current builder computes only8+18+18+56 and allows only SC4-to-SC8/config storage mappings. It cannot honestly declare a new bulk count or face table.",
+      "required_resolution": "New input builder with exact allowed differences for the selected VS mesh plus expected count/face hash; byte-identical material/contact/mask inputs."
+    },
+    {
+      "id": "VS-NATIVE-B04",
+      "source": "sc8_post.py:13-21,33-54,139-158,216-232",
+      "problem": "Current full postprocessor is fixed to SC4-versus-SC8 with identical bulk faces and a SC4-specific selection predicate. The unchanged-bulk-face assertion and labels are invalid for U19/G18, even though its pure geometry/math kernels are general.",
+      "required_resolution": "New postprocessor comparing actual completed SC8-U18 to selected VS mesh at fixed SC8, with exact intended VS-only face/count differences and regenerated native weights. Retain old SC4/SC8 summaries and all failed flags."
+    },
+    {
+      "id": "VS-NATIVE-B05",
+      "source": "vs_estimator.py:15-22,57-78,159-173",
+      "problem": "The upcoming MMS is planar periodic top-Dirichlet and explicitly declares native implementation absent and automatic native admission false. Its outcome cannot clear cylinder/CEM/contact errors or automatically select a native winner.",
+      "required_resolution": "Root reviews actual fixed-screen MMS evidence before selecting one finite native diagnostic, and records whether its purpose is true-operator-error improvement or estimator-localization investigation."
+    }
+  ],
+  "minimal_honest_next_implementation_after_MMS": {
+    "recommendation": "Implement one new native wrapper with a nested explicit-face VSNativeMesh extends Mesh, calling super(2.5) only for a small temporary parent initialization and then constructing the new mesh/index arrays from the frozen table. Reuse unchanged ShapeNet/Boundary/COCG/loss/field and the existing source-current/50ohm convention. Do not widen the historical ValidationMesh allowlist or mutate the completed U18 mesh/fields.",
+    "metadata_signature": "Use an own writer accepting Mesh plus registered counts and stored input faces; do not call the old ValidationMesh-only metadata writer. Emit actual face table/counts/cells, new exporter class/schema/config/face SHA, actual frequencies[2000],2RHS, one condition, unchanged circuit, and preserved field/phasor/storage definitions.",
+    "mesh_input": "A bounded run-local explicit full-face table in metres or millimetres with declared units and canonical raw-byte SHA. Preserve its mapping to the MMS face_table_sha256 separately: the MMS hashes compact JSON of faces in metres. Do not equate a different file encoding/hash or numerical tolerance with byte identity.",
+    "face_and_rounding_contract": "Require finite strictly increasing faces, correct length/counts, exact registered physical layer interfaces within a predeclared tight tolerance, z=(face_lo+face_hi)/2 and dz=face_hi-face_lo. Record intended VS-only changes and checks on unaffected faces. Existing Java accumulates uniform widths and exports z-dz/2, while MMS constructs normalized faces; decimal/binary roundoff may prevent bytewise equality. Freeze one exact input table and verify actual mesh/export against it; do not claim bit-identical unaffected coordinates unless checked.",
+    "minimum_source_tests_before_native": [
+      "Reject changed diameter, layer boundaries, nonmonotone/nonfinite/zero-width faces, mismatched layer counts, wrong units/hash and count above800000.",
+      "Uniform explicit-face operator/geometry parity with the frozen uniform kernel on a small registered fixture; exact unchanged contact/50ohm/0.5Vpeak convention.",
+      "Graded layered complex series slab with nonzero normal current and independent analytic voltage/current, power and sign checks; fixed two-point and three-point analytic fits plus conditioning guard.",
+      "Java and Python consume the same frozen face table and match actual center/dz/layer/volume/index conventions; no reshaping, interpolation or matching of cells across different meshes.",
+      "Exact new parent PID/startticks/preregistration/config/mask/material/contact/source/class/face pins, correct lock owner, absent new basis, and rejection of old parent/schema/run aliases."
+    ],
+    "native_gates_unchanged": {
+      "residual": 2e-7,
+      "power_relative_error": 2e-7,
+      "current_relative_error": 2e-6,
+      "pad_area_relative_error": 1e-10,
+      "shared_interface_selfconsistency_relative_error": 2e-7,
+      "independent_potential_gradient_screen": 0.05,
+      "independent_screen_interpretation": "Keep the5percent flag and all failures; a pass is a numerical screen, not independent continuum accuracy, full convergence or human safety."
+    },
+    "comparison_contract": "Reference actual U18 SC8 and selected native VS mesh; same voltage raw result, ROI and physical mask definitions, fixed2/2 and3/3 interface fits. Preserve absolute target statistics and off-target/burden statistics. Use actual new weights, not old arrays by index. Preregister any adjacency tolerances and name this VS-grid diagnostic rather than SC4-to-SC8 convergence.",
+    "completion_contract": "One selected registered case, two2000Hz RHS, finite stage watchdog, checkpoint/failure evidence and resource monitor. Verify source/class/input pins before and after; keep old raw data and failed evidence. Every new native artifact remains volatile while only in tmpfs and requires the owner's established immutable publication/readback receipt before durable-storage claims."
+  },
+  "admission_and_holds": {
+    "numerical_capacity": "Both proposed counts are within800000 by supplied proposed geometry. This alone is not runtime/RAM admission; actual registered geometry must independently verify the count.",
+    "resource_policy": "Use the active SHA-bound policy at the next safe batch boundary. Current AGENTS documents unlimited cumulative time, disabled storage-capacity stopping guards, CPU maximum4 and RSS plus all task-owned tmpfs maximum8,000,000,000bytes subject to smaller effective visible limits. Java heap remains2GiB, one numerical owner/solve and dual locks remain. No limits were queried, changed or exercised by this audit.",
+    "runtime_risk": "The inherited COCG is sequential and retains the original convergence behavior. ShapeNet first calls Net's constructor before clearing/rebuilding edges, so transient allocation and conditioning must remain monitored. No measured RAM, solve time, multi-core acceleration or guaranteed completion is claimed.",
+    "MMS_selection_pending": true,
+    "native_followup_prepared": false,
+    "native_followup_started": false,
+    "real_5percent_flags_cleared": false,
+    "full_SC_XY_bulk_edge_contact_convergence": false,
+    "candidate_adopted": false,
+    "experimental_or_material_calibration": false,
+    "next_owner_action": "Finish the registered15-case U18/U19/G18 MMS, review true-continuum-error and exact-sample-fit components with unchanged screens, then freeze/review the new native mesh/input/post/controller contract for the selected finite diagnostic. No current source supports executing U19/G18 merely by changing configuration."
+  }
+}

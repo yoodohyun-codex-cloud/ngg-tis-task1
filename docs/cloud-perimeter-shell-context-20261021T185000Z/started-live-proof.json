@@ -1,0 +1,50 @@
+{
+  "schema": "task1-started-live-proof-v1",
+  "observed_utc": "2026-10-21T18:19:43.592470+00:00",
+  "owners": [
+    {
+      "role": "queue",
+      "path": "/workspace/ngg-tis-task1/docs/cloud-perimeter-shell-context-20261021T185000Z/queue/heartbeat.json",
+      "pid": 27074,
+      "proc_start_ticks": 5325976,
+      "phase": "perimeter-shell-native",
+      "live": true,
+      "cmdline": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-perimeter-shell-context-20261021T185000Z/queue-plan.json "
+    },
+    {
+      "role": "native-controller",
+      "path": "/workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/controller.json",
+      "pid": 27119,
+      "proc_start_ticks": 5326002,
+      "phase": "solving",
+      "live": true,
+      "cmdline": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z "
+    }
+  ],
+  "children": [
+    {
+      "pid": 27074,
+      "proc_start_ticks": 5325976,
+      "live": true,
+      "cmdline": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-perimeter-shell-context-20261021T185000Z/queue-plan.json "
+    },
+    {
+      "pid": 27119,
+      "proc_start_ticks": 5326002,
+      "live": true,
+      "cmdline": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z "
+    },
+    {
+      "pid": 27121,
+      "proc_start_ticks": 5326014,
+      "live": true,
+      "cmdline": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java -Xmx2g -XX:+UseSerialGC -XX:ActiveProcessorCount=1 -cp /workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/classes CloudShapeBasis --execute-parent 27119 5326002 /workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/configs/perimeter-shell225-notch-xy80.properties /workspace/ngg-tis-task1/data-native/cloud-perimeter-shell-20261021T185000Z/bases/perimeter-shell225-notch-xy80 "
+    }
+  ],
+  "linux_proc_locks": "1: FLOCK  ADVISORY  WRITE 27121 00:21:91093 0 EOF\n2: POSIX  ADVISORY  WRITE 27119 00:1b:262185 0 EOF\n3: FLOCK  ADVISORY  WRITE 27119 00:1b:262185 0 EOF\n4: FLOCK  ADVISORY  WRITE 443 00:1b:786894 0 EOF\n5: FLOCK  ADVISORY  WRITE 171 00:1b:9223372036855850032 0 EOF\n6: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849987 0 EOF\n7: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849976 0 EOF\n8: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849990 0 EOF\n9: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849993 0 EOF\n10: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849979 0 EOF\n11: POSIX  ADVISORY  WRITE 27074 00:1b:264792 0 EOF\n12: FLOCK  ADVISORY  WRITE 27074 00:1b:264792 0 EOF\n13: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850079 0 EOF\n14: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850085 0 EOF\n",
+  "budget_limit_seconds": 13800,
+  "spent_seconds": 8535.648500850999,
+  "remaining_seconds": 5264.351499149001,
+  "numerical_workers": 1,
+  "active_time_charged_at_completion": true
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "task1-next-batch-terminal-state-v1",
+  "observed_utc": "2026-10-21T09:20:48.367974+00:00",
+  "status": "completed_registered_finite_batch_no_live_worker",
+  "current_PDE_worker": null,
+  "current_cached_worker": null,
+  "queued_auto_worker": null,
+  "last_PDE_run": "cloud-return-role-20261021T090200Z",
+  "native_causal_status": "complete_diagnostic_only",
+  "carrier_status": "complete_diagnostic_only",
+  "new_PDE_conditions": 1,
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "experimental_validation": false,
+  "stop_cause": "Registered finite calculations and validation completed. Candidate failed absolute target mean/P10 screen, so no coupled nomination. Current remaining budget is below the900s reserved admission for another PDE.",
+  "budget": {
+    "limit_seconds": 6600,
+    "spent_seconds": 5733.718985509018,
+    "remaining_seconds": 866.2810144909818,
+    "expanded": false,
+    "new_PDE_registration_minimum_seconds": 900,
+    "shortfall_for_same_PDE_admission_seconds": 33.71898550901824
+  },
+  "locks_verified_available": true,
+  "live_PID_startticks_matches": [],
+  "last_checkpoints": [
+    "data-native/cloud-return-role-20261021T090200Z/controller.json",
+    "docs/cloud-next-20261021T085200Z/carrier-balance-20261021T091500Z/heartbeat.json"
+  ],
+  "next_PDE_command": null,
+  "next_registered_batch": null,
+  "next_scientific_question": {
+    "status": "proposed_not_registered_not_executed",
+    "question": "Assess explicit pure9000/9090Hz native re-synthesis against current3000/3030Hz at the same ROI and burden definitions.",
+    "new_PDE_proposed": 0,
+    "beat_difference_Hz": 90,
+    "baseline_beat_difference_Hz": 30,
+    "software_blocker": "Current frozen postprocessor assumes3000/3030 fundamentals and9000/9090 third harmonics. A tested frequency-specific adapter and actual waveform/probe/current/skin/loss checks are needed; no re-labelled/interpolated result exists.",
+    "resume_condition": "Implement and verify the explicit frequency adapter, freeze actual inputs/coefficient/circuit/metric definitions and admit a finite cached batch within the original remaining budget. A new PDE still requires900s admission and a justified candidate; no retry or budget expansion."
+  },
+  "feedback": {
+    "source_comment_id": 6309148063,
+    "request_comment_ids": [
+      6312010304,
+      6312175700
+    ],
+    "latest_reply_observed": false,
+    "not_equivalent_to_peer_approval": true
+  },
+  "environment_transition": "Starting/ready UI transition observed after successful terminal records; saved outputs and budget rechecked intact.",
+  "COMSOL": "5.3a/planned5.3.1.201 installation/runtime unverified",
+  "preservation": "Original478files unchanged; new120file local native archive+restore verified. Independent external backup/old missing raw recovery not established."
+}

@@ -1,0 +1,250 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "preregistered_not_executed",
+  "created_utc": "2026-10-21T14:54:17.804059+00:00",
+  "output_directory": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-queue",
+  "max_total_seconds": 2000,
+  "stages": [
+    {
+      "id": "cross-allocation-three-PDE",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py",
+        "--execute",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z"
+      ],
+      "max_seconds": 600,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/execution-attempt.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/summary.json",
+        "statuses": [
+          "complete"
+        ]
+      }
+    },
+    {
+      "id": "full-skin-crossalloc-source200-return250-xy80",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z",
+        "--case",
+        "crossalloc-source200-return250-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source200-return250-xy80.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source200-return250-xy80.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source200-return250-xy80.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      }
+    },
+    {
+      "id": "full-skin-crossalloc-source225-return225-xy80",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z",
+        "--case",
+        "crossalloc-source225-return225-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source225-return225-xy80.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source225-return225-xy80.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source225-return225-xy80.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      }
+    },
+    {
+      "id": "full-skin-crossalloc-source250-return200-xy80",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z",
+        "--case",
+        "crossalloc-source250-return200-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source250-return200-xy80.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source250-return200-xy80.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/audit/spatial-full-skin-crossalloc-source250-return200-xy80.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      }
+    },
+    {
+      "id": "register-source-bound-volume",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_cross_allocation_volume_registration.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation-plan.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation-plan.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation-plan.json",
+        "statuses": [
+          "preregistered_not_executed"
+        ]
+      }
+    },
+    {
+      "id": "fixed-ROI-volume-audit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_volume_selectivity.py",
+        "--preregistration",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation-plan.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/postprocess/crossalloc-source200-return250-xy80/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/postprocess/crossalloc-source225-return225-xy80/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/postprocess/crossalloc-source250-return200-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json"
+      ],
+      "max_seconds": 600,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json",
+        "statuses": [
+          "calculated_unadopted"
+        ]
+      }
+    },
+    {
+      "id": "fixed-eight-metric-screen",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py",
+        "--preregistration",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen-plan.json",
+        "--report",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen.attempt.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen.json",
+        "statuses": [
+          "screen_complete_not_adopted"
+        ]
+      }
+    },
+    {
+      "id": "read-public-peer-feedback",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/feedback-after-cross-allocation.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/feedback-after-cross-allocation.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/feedback-after-cross-allocation.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      }
+    },
+    {
+      "id": "publish-completed-results",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_batch_publish.py",
+        "--spec",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication-spec.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication.attempt.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication.json",
+        "statuses": [
+          "published_completed_batch"
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication-spec.json": "b8fe5620427479e1d5178b431b1490d3d2452966d1fa82f3325ae9ecc2b698d3",
+    "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-publication-template.md": "bbb611b911ea5c69b8f7d12006e0652eef1d96bb45f1d49b106396d93832f54f",
+    "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-screen-plan.json": "7c170b18174e498f2ab44a150ad7480c04f199cf2af1289a62e01a1164eb4766",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/preregistration.json": "443d51945944bd43e5e93ecf42d2ec965f48683e606f657cb0c5c3f426508b6f",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/frozen-source-manifest.json": "cb9af38d8a88a018d27535015955fee0d05e7a5d1660d28357ec2da00bc7dd4a",
+    "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/cross-allocation-decision.json": "e6be6aee94056e587de117d2e4256ce22e10df0b709aa448692081e62c85fae4",
+    "/workspace/ngg-tis-task1/docs/cloud-autonomous-20261021T144000Z/feedback-before.json": "0f04394b5a5520a72451625da370bf8e899bd53d669fe09e88942025576c144b",
+    "/workspace/ngg-tis-task1/docs/cloud-next-20261021T085200Z/return-role-screen.json": "996819168810f7f3bde9a85615653e11c1ec4baf2220632c66b2506a0dfd1970",
+    "/workspace/ngg-tis-task1/docs/cloud-next-20261021T085200Z/return-role-volume.json": "7d53bfb0c55167050bfc420d7fa3b53e0e9e58ecdef77ba26d69bbe827e2bc3c",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py": "180c2133342614f6f0ab3cac327532e5f0e2e8589d8a59614679134d7615fac7",
+    "/workspace/ngg-tis-task1/tests/test_task1_candidate_screen.py": "e342e33b06cc91a832c01d311546d0ef39fdffdf4177ef0831557d0a7554ccb0",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py": "a76eb5ebf1443032909546eba64b585d984077e2e0ba82c7599a22ee80f7bbf5",
+    "/workspace/ngg-tis-task1/tools/task1_volume_selectivity.py": "b85a640c095120f02216d784ffc3886856b3ad05c186e049f061f23638cdd0dc",
+    "/workspace/ngg-tis-task1/tools/task1_cross_allocation_volume_registration.py": "49d63cb729b4e6cb9030f08bd9603a17361a4749b980bd07ce7b2a8f9d886f44",
+    "/workspace/ngg-tis-task1/tools/task1_return_position_volume_registration.py": "a4dd0903e014da1b75402339f1f7627555000f0dd6e3a4ece82d66e166c54970",
+    "/workspace/ngg-tis-task1/tools/task1_results_view.py": "06d4016f1c330a0d6f556a30564f80c46f6298b194a1b58fbbdce128d2889082",
+    "/workspace/ngg-tis-task1/tools/task1_candidate_ranking.py": "b68924ac7307979736be6f84de23b6e17bb7583e8b439d9075ed765d8be49377",
+    "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py": "d4e6a1c978b58f6496e961000ce9d4d14a3e4c0a9fec0ec5ef386801bb86f9d5",
+    "/workspace/ngg-tis-task1/tools/task1_finite_loop.py": "ceb6bb28deaa0ceffe8ade440cd8ea35a659d8d5aae584fb87f50cafc58dc7ea",
+    "/workspace/ngg-tis-task1/tools/task1_batch_publish.py": "df84c754e5d89d971991ce36279871c2b4eb74069d9df0a21e2e615809383edb",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/configs/crossalloc-source250-return200-xy80.properties": "efbaa88b0e5fd51a7455fbe2be4d4a67085795277af8a0521c1ad84fa9308d42",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/configs/crossalloc-source225-return225-xy80.properties": "ded48bebdd76dfee528796764995756e66091bc647174c5a040181e1c568a07c",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/configs/crossalloc-source200-return250-xy80.properties": "ab56d49c75a53637155afc4df9eb5a77c63a0ebe3f5c0dc30c9dd29893a46650",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/masks/crossalloc-source225-return225-xy80.csv": "ba64c4fda0e1567c2704c202a38cc968dd0bb44a9269ce4d3c1e927851805ce8",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/masks/crossalloc-source250-return200-xy80.csv": "adef8b8db18c553c4ca909d3cb4a0796e80db519adc53322a1b5897819c835d5",
+    "/workspace/ngg-tis-task1/data-native/cloud-cross-allocation-20261021T150000Z/masks/crossalloc-source200-return250-xy80.csv": "837b8a08fa6aad66bb54d142beb5ee95dcc9f7366eef18c07a2591dff78f9f7b",
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "19132a2c00d60cd91e6d4666f85ee9663676653d193b4b8d9aa88f0c52eefe14",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "db90f71a1c95aa56dade5f6bec765bd3040ea3ce2c56d885a50dbea4a801993b"
+  },
+  "resource_policy_limit_seconds": 13800,
+  "caps": {
+    "CPU_count": 1,
+    "concurrent_children": 1,
+    "aggregate_RSS_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648
+  },
+  "candidate_adopted": false,
+  "background_daemon": false,
+  "automatic_retries": false,
+  "implementation_git_commit": "fc7e3afdc6d9478e0a53002e407eff93523aecfa",
+  "implementation_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "19132a2c00d60cd91e6d4666f85ee9663676653d193b4b8d9aa88f0c52eefe14",
+    "/workspace/ngg-tis-task1/tests/test_task1_bounded_continuation.py": "db90f71a1c95aa56dade5f6bec765bd3040ea3ce2c56d885a50dbea4a801993b",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  }
+}

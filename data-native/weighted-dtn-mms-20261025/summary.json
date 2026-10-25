@@ -1,0 +1,1084 @@
+{
+  "schema": "task1-weighted-DtN-Fourier-MMS-result-v1",
+  "status": "six_weighted_MMS_conditions_calculated_unadopted",
+  "spec": {
+    "schema": "task1-weighted-DtN-Fourier-MMS-spec-v1",
+    "plan": {
+      "period_width_m": 0.05,
+      "SC_thickness_m": 0.0001,
+      "grids": [
+        16,
+        32,
+        64
+      ],
+      "bottoms": [
+        "Dirichlet0",
+        "Neumann0"
+      ],
+      "moved_faces_m": [
+        -0.0175,
+        -0.0025,
+        0.0025,
+        0.0175
+      ],
+      "spatial_top_forcing": "cos(kappa*x)+0.3*sin(2*kappa*y), kappa=2pi/L; exact physical cell averages",
+      "depth_quadrature_points": 5,
+      "energy_quadrature_points": 8,
+      "maximum_physical_samples": 800000,
+      "MMS_conditions": 6,
+      "one_dimensional_eigensystems": 3,
+      "new_actual_circle_eigensystems": 0,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "CPU_limit": 4,
+      "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+      "numerical_child_timeout_seconds": 600
+    },
+    "gates": {
+      "eigen_relative_residual": 1e-10,
+      "orthogonality_absolute": 1e-10,
+      "weighted_null_alignment": 1e-10,
+      "uniform_limit_relative": 1e-12,
+      "full_contact_relative": 1e-10,
+      "parseval_relative": 1e-10,
+      "complex_power_relative": 1e-10,
+      "finest_relative_phi": 0.02,
+      "finest_relative_qtop": 0.02,
+      "finest_relative_Ez": 0.02,
+      "finest_relative_Ex": 0.05,
+      "finest_relative_Ey": 0.05,
+      "minimum_observed_order": 1.0
+    },
+    "absolute_error_floors": {
+      "phi": 1e-12,
+      "qtop": 1e-12,
+      "Ex": 1e-10,
+      "Ey": 1e-10,
+      "Ez": 1e-10
+    },
+    "gamma_SC_S_m": {
+      "real": 5.959456590514033e-06,
+      "imaginary": 2.5055522184188793e-05
+    },
+    "gamma_config_SHA256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+    "material_receipt_SHA256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+    "material_scope": "Original2kHz HREF-MIX declared SC surrogate; no new human/phantom calibration",
+    "coordinate_system": "Periodic50mm by50mm rectangle, SCslab0.1mm, depth0top; not a circle or actual phantom. Peak exp(+jomega*t).",
+    "top_boundary": "Prescribed spatially variable Dirichlet cell-average Fourier forcing; no equipotential pads/metals/50ohm",
+    "zero_modes": "Dirichlet bottom: F0=1-z/t,Y0=gamma/t; Neumann bottom:F0=1,Y0=0. Actual four-pad insulated bottom is unchanged.",
+    "field_ABI": "phi and Ez use analytic modal depth; Ex/Ey are explicitly conservative nonuniform opposite-face gradient averages; J=gammaE derived, not independent verification",
+    "norm": "Area-mass weighted cell-average spatialRMS of PEAK phasor errors; temporalRMS is separately divided bysqrt2; five fixed Gauss depth points for volume metrics, exact physical lateral Fourier cell averages. Not continuous 3D truth.",
+    "energy": "VI*/2 signed complex power; independent8point depth quadrature of (G²+lambdaF²), discrete horizontal eigenvalue retained, no continuum error conflation.",
+    "rate": "Observed pairwise order of absolute weighted RMS errors vs nominalh=L/n. >=1 is a predeclared engineering screening hypothesis, not a theorem for abrupt moved-face TPFA. Failures/inconclusivefloors remain.",
+    "quadrature": "Five physical Gauss depth points fixed acrossallgrids; eight-point energy quadrature independent from analytic modal boundarypower",
+    "no_fourier_as_discrete_eigenvector_assumption": true,
+    "no_fitted_curves_or_criteria_relaxation": true,
+    "candidate_adopted": false
+  },
+  "cases": [
+    {
+      "case_id": "N16-Dirichlet0",
+      "n": 16,
+      "bottom": "Dirichlet0",
+      "XY_cells": 256,
+      "physical_depth_samples": 5,
+      "physical_evaluation_samples": 1280,
+      "basis_contracts": {
+        "n": 16,
+        "weighted_eigen_relative_residual": 3.487969609840584e-16,
+        "orthogonality_max_error": 1.887379141862766e-15,
+        "weighted_null_alignment_error": -2.220446049250313e-16,
+        "raw_zero_eigenvalue": 9.003973781839799e-13,
+        "only_proven_zero_clipped": true,
+        "uniform_stencil_reduction_relative": 2.8421709430404013e-16,
+        "all_passed": true
+      },
+      "constant_full_contact_contract": {
+        "bottom": "Dirichlet0",
+        "peak_current_A": {
+          "real": 0.00014898641476285095,
+          "imaginary": 0.0006263880546047205
+        },
+        "expected_peak_current_A": {
+          "real": 0.00014898641476285084,
+          "imaginary": 0.0006263880546047198
+        },
+        "q_relative_error": 3.980285604506707e-15,
+        "current_relative_error": 1.0242783402830852e-15,
+        "passed": true,
+        "scope": "Synthetic prescribed full top, no actual pad/source circuit"
+      },
+      "weighted_parseval_relative": 3.236999926568326e-16,
+      "uniform_area_DtN_h2_ABI_relative": 4.895743654344483e-16,
+      "source_complex_power_W": {
+        "real": 3.99237919572765e-05,
+        "imaginary": -0.00016785279662154528
+      },
+      "modal_complex_power_W": {
+        "real": 3.9923791957276495e-05,
+        "imaginary": -0.00016785279662154528
+      },
+      "independent_depth_quadrature_complex_power_W": {
+        "real": 3.99237919572765e-05,
+        "imaginary": -0.00016785279662154525
+      },
+      "boundary_to_modal_power_relative": 3.9274623452809215e-17,
+      "boundary_to_quadrature_power_relative": 1.5709849381123686e-16,
+      "errors": {
+        "phi": {
+          "absolute_spatial_peak_RMS_L2": 2.187031744212906e-06,
+          "reference_spatial_peak_RMS_L2": 0.42264670440601737,
+          "absolute_temporal_RMS_L2": 1.5464649770031885e-06,
+          "reference_temporal_RMS_L2": 0.29885635073164113,
+          "relative_L2": 5.174609718740228e-06,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        },
+        "Ex": {
+          "absolute_spatial_peak_RMS_L2": 1.777450536945512,
+          "reference_spatial_peak_RMS_L2": 50.90368478323702,
+          "absolute_temporal_RMS_L2": 1.2568473278978416,
+          "reference_temporal_RMS_L2": 35.99434069760937,
+          "relative_L2": 0.03491791497048639,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ey": {
+          "absolute_spatial_peak_RMS_L2": 3.4339629016541418,
+          "reference_spatial_peak_RMS_L2": 29.72353806573934,
+          "absolute_temporal_RMS_L2": 2.4281784541026767,
+          "reference_temporal_RMS_L2": 21.017715327140763,
+          "relative_L2": 0.11553008575423525,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ez": {
+          "absolute_spatial_peak_RMS_L2": 0.07086951589628024,
+          "reference_spatial_peak_RMS_L2": 7320.551216231516,
+          "absolute_temporal_RMS_L2": 0.05011231526966758,
+          "reference_temporal_RMS_L2": 5176.411407020732,
+          "relative_L2": 9.680898856242488e-06,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "qtop": {
+          "absolute_spatial_peak_RMS_L2": 4.081839931435104e-06,
+          "reference_spatial_peak_RMS_L2": 0.18854944771625265,
+          "absolute_temporal_RMS_L2": 2.886296695235794e-06,
+          "reference_temporal_RMS_L2": 0.13332459306914063,
+          "relative_L2": 2.1648644325799614e-05,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        }
+      },
+      "absolute_vector_E_spatial_peak_RMS_error_V_m": 3.867357509916583,
+      "absolute_vector_E_temporal_RMS_error_V_m": 2.734634720534736,
+      "derived_vector_J_spatial_peak_RMS_error_A_m2": 9.960186233225696e-05,
+      "derived_vector_J_temporal_RMS_error_A_m2": 7.042915227394784e-05,
+      "J_error_is_gamma_times_E_not_independent": true,
+      "interpretation": "Physical cell-average Fourier comparison; nonuniform discrete modes are NOT continuum Fourier eigenvectors. Ex/Ey reconstruction error and analytic-modal Ez are separate.",
+      "wall_seconds": 0.006069504997867625,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "ccdcacffc92513773f012c52c14422c6895b363c86612612e50024e368135c4a",
+      "method_sha256": "d68583f3f91e23cbe4374a164d61dc67be1b9b4c72ac6cdfb55996ca2f3ef860",
+      "arrays_SHA256": "5b2f49488c91df5c2b47deb9b8e6b65380618b525a4e15ca5688c3adb42b05ac"
+    },
+    {
+      "case_id": "N16-Neumann0",
+      "n": 16,
+      "bottom": "Neumann0",
+      "XY_cells": 256,
+      "physical_depth_samples": 5,
+      "physical_evaluation_samples": 1280,
+      "basis_contracts": {
+        "n": 16,
+        "weighted_eigen_relative_residual": 3.487969609840584e-16,
+        "orthogonality_max_error": 1.887379141862766e-15,
+        "weighted_null_alignment_error": -2.220446049250313e-16,
+        "raw_zero_eigenvalue": 9.003973781839799e-13,
+        "only_proven_zero_clipped": true,
+        "uniform_stencil_reduction_relative": 2.8421709430404013e-16,
+        "all_passed": true
+      },
+      "constant_full_contact_contract": {
+        "bottom": "Neumann0",
+        "peak_current_A": {
+          "real": 5.466048731323637e-37,
+          "imaginary": 2.3274788146281293e-36
+        },
+        "expected_peak_current_A": {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        "q_relative_error": 9.551640424772033e-18,
+        "current_relative_error": 3.713218250760459e-33,
+        "passed": true,
+        "scope": "Synthetic prescribed full top, no actual pad/source circuit"
+      },
+      "weighted_parseval_relative": 3.236999926568326e-16,
+      "uniform_area_DtN_h2_ABI_relative": 6.482208231509411e-16,
+      "source_complex_power_W": {
+        "real": 7.595336359470702e-09,
+        "imaginary": -3.1933300588851033e-08
+      },
+      "modal_complex_power_W": {
+        "real": 7.595336359470702e-09,
+        "imaginary": -3.193330058885103e-08
+      },
+      "independent_depth_quadrature_complex_power_W": {
+        "real": 7.595336359470704e-09,
+        "imaginary": -3.193330058885104e-08
+      },
+      "boundary_to_modal_power_relative": 2.0160293282602805e-16,
+      "boundary_to_quadrature_power_relative": 2.0780754661900385e-16,
+      "errors": {
+        "phi": {
+          "absolute_spatial_peak_RMS_L2": 1.7334188261727825e-05,
+          "reference_spatial_peak_RMS_L2": 0.7320073485757386,
+          "absolute_temporal_RMS_L2": 1.2257122066231997e-05,
+          "reference_temporal_RMS_L2": 0.5176073600562896,
+          "relative_L2": 2.368034732910104e-05,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        },
+        "Ex": {
+          "absolute_spatial_peak_RMS_L2": 3.077704664155435,
+          "reference_spatial_peak_RMS_L2": 88.16405582721528,
+          "absolute_temporal_RMS_L2": 2.176265838513774,
+          "reference_temporal_RMS_L2": 62.34140173233327,
+          "relative_L2": 0.03490883711370026,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ey": {
+          "absolute_spatial_peak_RMS_L2": 5.946479355048887,
+          "reference_spatial_peak_RMS_L2": 51.474008755229306,
+          "absolute_temporal_RMS_L2": 4.204795876140875,
+          "reference_temporal_RMS_L2": 36.39762064567836,
+          "relative_L2": 0.11552392166162456,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ez": {
+          "absolute_spatial_peak_RMS_L2": 0.27408372487683463,
+          "reference_spatial_peak_RMS_L2": 0.9896963265207757,
+          "absolute_temporal_RMS_L2": 0.1938064604732778,
+          "reference_temporal_RMS_L2": 0.699820983798256,
+          "relative_L2": 0.2769371953115773,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "qtop": {
+          "absolute_spatial_peak_RMS_L2": 1.2230188405894896e-05,
+          "reference_spatial_peak_RMS_L2": 4.414975243637625e-05,
+          "absolute_temporal_RMS_L2": 8.648049156997372e-06,
+          "reference_temporal_RMS_L2": 3.121858933546894e-05,
+          "relative_L2": 0.2770160132498975,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        }
+      },
+      "absolute_vector_E_spatial_peak_RMS_error_V_m": 6.701343492765395,
+      "absolute_vector_E_temporal_RMS_error_V_m": 4.738565426794754,
+      "derived_vector_J_spatial_peak_RMS_error_A_m2": 0.00017258975677735618,
+      "derived_vector_J_temporal_RMS_error_A_m2": 0.00012203938738060545,
+      "J_error_is_gamma_times_E_not_independent": true,
+      "interpretation": "Physical cell-average Fourier comparison; nonuniform discrete modes are NOT continuum Fourier eigenvectors. Ex/Ey reconstruction error and analytic-modal Ez are separate.",
+      "wall_seconds": 0.00587731600535335,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "ccdcacffc92513773f012c52c14422c6895b363c86612612e50024e368135c4a",
+      "method_sha256": "d68583f3f91e23cbe4374a164d61dc67be1b9b4c72ac6cdfb55996ca2f3ef860",
+      "arrays_SHA256": "500da291e8259c0000388cc71d2b86a3fb033a3985cdf9173be57ecbdc27ccc4"
+    },
+    {
+      "case_id": "N32-Dirichlet0",
+      "n": 32,
+      "bottom": "Dirichlet0",
+      "XY_cells": 1024,
+      "physical_depth_samples": 5,
+      "physical_evaluation_samples": 5120,
+      "basis_contracts": {
+        "n": 32,
+        "weighted_eigen_relative_residual": 3.090643920649693e-16,
+        "orthogonality_max_error": 1.2212453270876722e-15,
+        "weighted_null_alignment_error": -4.440892098500626e-16,
+        "raw_zero_eigenvalue": 5.613838797383625e-11,
+        "only_proven_zero_clipped": true,
+        "uniform_stencil_reduction_relative": 1.4210854715202006e-16,
+        "all_passed": true
+      },
+      "constant_full_contact_contract": {
+        "bottom": "Dirichlet0",
+        "peak_current_A": {
+          "real": 0.00014898641476285106,
+          "imaginary": 0.0006263880546047208
+        },
+        "expected_peak_current_A": {
+          "real": 0.00014898641476285084,
+          "imaginary": 0.0006263880546047198
+        },
+        "q_relative_error": 5.751314191166104e-15,
+        "current_relative_error": 1.5524820585785874e-15,
+        "passed": true,
+        "scope": "Synthetic prescribed full top, no actual pad/source circuit"
+      },
+      "weighted_parseval_relative": 7.991146631854408e-16,
+      "uniform_area_DtN_h2_ABI_relative": 7.143546633409162e-16,
+      "source_complex_power_W": {
+        "real": 4.043022343521639e-05,
+        "imaginary": -0.00016998200168203553
+      },
+      "modal_complex_power_W": {
+        "real": 4.0430223435216405e-05,
+        "imaginary": -0.00016998200168203553
+      },
+      "independent_depth_quadrature_complex_power_W": {
+        "real": 4.0430223435216405e-05,
+        "imaginary": -0.0001699820016820356
+      },
+      "boundary_to_modal_power_relative": 7.756533418336451e-17,
+      "boundary_to_quadrature_power_relative": 3.198100657243439e-16,
+      "errors": {
+        "phi": {
+          "absolute_spatial_peak_RMS_L2": 1.5538947098220491e-06,
+          "reference_spatial_peak_RMS_L2": 0.4253184876689848,
+          "absolute_temporal_RMS_L2": 1.0987694865650733e-06,
+          "reference_temporal_RMS_L2": 0.3007455867947461,
+          "relative_L2": 3.653484988010698e-06,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        },
+        "Ex": {
+          "absolute_spatial_peak_RMS_L2": 0.5577657834954562,
+          "reference_spatial_peak_RMS_L2": 51.2115567783248,
+          "absolute_temporal_RMS_L2": 0.3943999678234648,
+          "reference_temporal_RMS_L2": 36.21203907307336,
+          "relative_L2": 0.010891404569281315,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ey": {
+          "absolute_spatial_peak_RMS_L2": 0.9174395250325629,
+          "reference_spatial_peak_RMS_L2": 30.561881994603993,
+          "absolute_temporal_RMS_L2": 0.6487277094790905,
+          "reference_temporal_RMS_L2": 21.61051400420753,
+          "relative_L2": 0.030019078183553816,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ez": {
+          "absolute_spatial_peak_RMS_L2": 0.050356238971573604,
+          "reference_spatial_peak_RMS_L2": 7366.828891263693,
+          "absolute_temporal_RMS_L2": 0.03560723805184999,
+          "reference_temporal_RMS_L2": 5209.134664853532,
+          "relative_L2": 6.835538019797224e-06,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "qtop": {
+          "absolute_spatial_peak_RMS_L2": 2.9014393988925905e-06,
+          "reference_spatial_peak_RMS_L2": 0.18974143895563367,
+          "absolute_temporal_RMS_L2": 2.0516274741587707e-06,
+          "reference_temporal_RMS_L2": 0.1341674581576219,
+          "relative_L2": 1.5291543138191442e-05,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        }
+      },
+      "absolute_vector_E_spatial_peak_RMS_error_V_m": 1.0748645040811595,
+      "absolute_vector_E_temporal_RMS_error_V_m": 0.7600439796925034,
+      "derived_vector_J_spatial_peak_RMS_error_A_m2": 2.7682598799517373e-05,
+      "derived_vector_J_temporal_RMS_error_A_m2": 1.9574553332005313e-05,
+      "J_error_is_gamma_times_E_not_independent": true,
+      "interpretation": "Physical cell-average Fourier comparison; nonuniform discrete modes are NOT continuum Fourier eigenvectors. Ex/Ey reconstruction error and analytic-modal Ez are separate.",
+      "wall_seconds": 0.017252978002943564,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "ccdcacffc92513773f012c52c14422c6895b363c86612612e50024e368135c4a",
+      "method_sha256": "d68583f3f91e23cbe4374a164d61dc67be1b9b4c72ac6cdfb55996ca2f3ef860",
+      "arrays_SHA256": "086ccd2f887fa4b30bedc7d6cc1eeda3976ffe3a4c435a2813d6819e593926b3"
+    },
+    {
+      "case_id": "N32-Neumann0",
+      "n": 32,
+      "bottom": "Neumann0",
+      "XY_cells": 1024,
+      "physical_depth_samples": 5,
+      "physical_evaluation_samples": 5120,
+      "basis_contracts": {
+        "n": 32,
+        "weighted_eigen_relative_residual": 3.090643920649693e-16,
+        "orthogonality_max_error": 1.2212453270876722e-15,
+        "weighted_null_alignment_error": -4.440892098500626e-16,
+        "raw_zero_eigenvalue": 5.613838797383625e-11,
+        "only_proven_zero_clipped": true,
+        "uniform_stencil_reduction_relative": 1.4210854715202006e-16,
+        "all_passed": true
+      },
+      "constant_full_contact_contract": {
+        "bottom": "Neumann0",
+        "peak_current_A": {
+          "real": 8.081523661903227e-36,
+          "imaginary": 3.3830727416665434e-35
+        },
+        "expected_peak_current_A": {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        "q_relative_error": 3.813736936733223e-17,
+        "current_relative_error": 5.402177809708737e-32,
+        "passed": true,
+        "scope": "Synthetic prescribed full top, no actual pad/source circuit"
+      },
+      "weighted_parseval_relative": 7.991146631854408e-16,
+      "uniform_area_DtN_h2_ABI_relative": 1.1011929511581674e-15,
+      "source_complex_power_W": {
+        "real": 7.903655816063821e-09,
+        "imaginary": -3.322957733273778e-08
+      },
+      "modal_complex_power_W": {
+        "real": 7.903655816063821e-09,
+        "imaginary": -3.322957733273778e-08
+      },
+      "independent_depth_quadrature_complex_power_W": {
+        "real": 7.903655816063821e-09,
+        "imaginary": -3.322957733273778e-08
+      },
+      "boundary_to_modal_power_relative": 0.0,
+      "boundary_to_quadrature_power_relative": 0.0,
+      "errors": {
+        "phi": {
+          "absolute_spatial_peak_RMS_L2": 1.226685824166906e-05,
+          "reference_spatial_peak_RMS_L2": 0.736634600484702,
+          "absolute_temporal_RMS_L2": 8.67397864653828e-06,
+          "reference_temporal_RMS_L2": 0.520879321259376,
+          "relative_L2": 1.665256863253169e-05,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        },
+        "Ex": {
+          "absolute_spatial_peak_RMS_L2": 0.9634686567990206,
+          "reference_spatial_peak_RMS_L2": 88.69728331120075,
+          "absolute_temporal_RMS_L2": 0.6812752206832818,
+          "reference_temporal_RMS_L2": 62.718450502174434,
+          "relative_L2": 0.010862437053665129,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ey": {
+          "absolute_spatial_peak_RMS_L2": 1.587869918635337,
+          "reference_spatial_peak_RMS_L2": 52.92581851754063,
+          "absolute_temporal_RMS_L2": 1.1227935871091783,
+          "reference_temporal_RMS_L2": 37.42420517360152,
+          "relative_L2": 0.030001801825872313,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ez": {
+          "absolute_spatial_peak_RMS_L2": 0.1939726343444009,
+          "reference_spatial_peak_RMS_L2": 1.0021696166638747,
+          "absolute_temporal_RMS_L2": 0.13715936510954446,
+          "reference_temporal_RMS_L2": 0.7086409318421486,
+          "relative_L2": 0.1935526991829157,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "qtop": {
+          "absolute_spatial_peak_RMS_L2": 8.663068241034768e-06,
+          "reference_spatial_peak_RMS_L2": 4.4706186809072675e-05,
+          "absolute_temporal_RMS_L2": 6.1257142991175e-06,
+          "reference_temporal_RMS_L2": 3.1612047853687865e-05,
+          "relative_L2": 0.19377783835674137,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        }
+      },
+      "absolute_vector_E_spatial_peak_RMS_error_V_m": 1.867412143586843,
+      "absolute_vector_E_temporal_RMS_error_V_m": 1.3204597900003634,
+      "derived_vector_J_spatial_peak_RMS_error_A_m2": 4.8094267666278794e-05,
+      "derived_vector_J_temporal_RMS_error_A_m2": 3.4007782803026645e-05,
+      "J_error_is_gamma_times_E_not_independent": true,
+      "interpretation": "Physical cell-average Fourier comparison; nonuniform discrete modes are NOT continuum Fourier eigenvectors. Ex/Ey reconstruction error and analytic-modal Ez are separate.",
+      "wall_seconds": 0.013753422994341236,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "ccdcacffc92513773f012c52c14422c6895b363c86612612e50024e368135c4a",
+      "method_sha256": "d68583f3f91e23cbe4374a164d61dc67be1b9b4c72ac6cdfb55996ca2f3ef860",
+      "arrays_SHA256": "d330d26e8120e5c6262dcfed6508a441e1ee7b994f5a7b690a98ffbc625deef3"
+    },
+    {
+      "case_id": "N64-Dirichlet0",
+      "n": 64,
+      "bottom": "Dirichlet0",
+      "XY_cells": 4096,
+      "physical_depth_samples": 5,
+      "physical_evaluation_samples": 20480,
+      "basis_contracts": {
+        "n": 64,
+        "weighted_eigen_relative_residual": 3.600631707582796e-16,
+        "orthogonality_max_error": 1.7763568394002505e-15,
+        "weighted_null_alignment_error": -2.220446049250313e-16,
+        "raw_zero_eigenvalue": -9.288846435104758e-10,
+        "only_proven_zero_clipped": true,
+        "uniform_stencil_reduction_relative": 2.8421709430404013e-16,
+        "all_passed": true
+      },
+      "constant_full_contact_contract": {
+        "bottom": "Dirichlet0",
+        "peak_current_A": {
+          "real": 0.0001489864147628511,
+          "imaginary": 0.0006263880546047212
+        },
+        "expected_peak_current_A": {
+          "real": 0.00014898641476285084,
+          "imaginary": 0.0006263880546047198
+        },
+        "q_relative_error": 5.319343390111299e-15,
+        "current_relative_error": 2.2291851452994673e-15,
+        "passed": true,
+        "scope": "Synthetic prescribed full top, no actual pad/source circuit"
+      },
+      "weighted_parseval_relative": 1.4338353817186738e-15,
+      "uniform_area_DtN_h2_ABI_relative": 8.412583966445277e-16,
+      "source_complex_power_W": {
+        "real": 4.055912889010291e-05,
+        "imaginary": -0.0001705239627544113
+      },
+      "modal_complex_power_W": {
+        "real": 4.055912889010291e-05,
+        "imaginary": -0.00017052396275441133
+      },
+      "independent_depth_quadrature_complex_power_W": {
+        "real": 4.055912889010291e-05,
+        "imaginary": -0.00017052396275441133
+      },
+      "boundary_to_modal_power_relative": 1.5463763042632241e-16,
+      "boundary_to_quadrature_power_relative": 1.5463763042632241e-16,
+      "errors": {
+        "phi": {
+          "absolute_spatial_peak_RMS_L2": 1.1357611798638138e-06,
+          "reference_spatial_peak_RMS_L2": 0.4259958900225193,
+          "absolute_temporal_RMS_L2": 8.031044320901368e-07,
+          "reference_temporal_RMS_L2": 0.3012245825925221,
+          "relative_L2": 2.6661317784163934e-06,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        },
+        "Ex": {
+          "absolute_spatial_peak_RMS_L2": 0.14822421946358325,
+          "reference_spatial_peak_RMS_L2": 51.28024074731435,
+          "absolute_temporal_RMS_L2": 0.10481035071878275,
+          "reference_temporal_RMS_L2": 36.260605973304685,
+          "relative_L2": 0.0028904743289713602,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ey": {
+          "absolute_spatial_peak_RMS_L2": 0.27424734002162227,
+          "reference_spatial_peak_RMS_L2": 30.728221626148645,
+          "absolute_temporal_RMS_L2": 0.19392215385166195,
+          "reference_temporal_RMS_L2": 21.728133885652827,
+          "relative_L2": 0.008924933676872707,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ez": {
+          "absolute_spatial_peak_RMS_L2": 0.03681572834121128,
+          "reference_spatial_peak_RMS_L2": 7378.562130937897,
+          "absolute_temporal_RMS_L2": 0.02603265116439226,
+          "reference_temporal_RMS_L2": 5217.431318192449,
+          "relative_L2": 4.98955320669389e-06,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "qtop": {
+          "absolute_spatial_peak_RMS_L2": 2.1246059753030257e-06,
+          "reference_spatial_peak_RMS_L2": 0.19004365960979835,
+          "absolute_temporal_RMS_L2": 1.5023232924862278e-06,
+          "reference_temporal_RMS_L2": 0.1343811604315964,
+          "relative_L2": 1.1179567788082546e-05,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        }
+      },
+      "absolute_vector_E_spatial_peak_RMS_error_V_m": 0.3139067068379038,
+      "absolute_vector_E_temporal_RMS_error_V_m": 0.22196556106501933,
+      "derived_vector_J_spatial_peak_RMS_error_A_m2": 8.084510552611265e-06,
+      "derived_vector_J_temporal_RMS_error_A_m2": 5.716612234325628e-06,
+      "J_error_is_gamma_times_E_not_independent": true,
+      "interpretation": "Physical cell-average Fourier comparison; nonuniform discrete modes are NOT continuum Fourier eigenvectors. Ex/Ey reconstruction error and analytic-modal Ez are separate.",
+      "wall_seconds": 0.056792145005601924,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "ccdcacffc92513773f012c52c14422c6895b363c86612612e50024e368135c4a",
+      "method_sha256": "d68583f3f91e23cbe4374a164d61dc67be1b9b4c72ac6cdfb55996ca2f3ef860",
+      "arrays_SHA256": "2a3e49462249cf1599a06dbd70b7e66b3c6b50e154cb3ab9008b06e6ccd9e884"
+    },
+    {
+      "case_id": "N64-Neumann0",
+      "n": 64,
+      "bottom": "Neumann0",
+      "XY_cells": 4096,
+      "physical_depth_samples": 5,
+      "physical_evaluation_samples": 20480,
+      "basis_contracts": {
+        "n": 64,
+        "weighted_eigen_relative_residual": 3.600631707582796e-16,
+        "orthogonality_max_error": 1.7763568394002505e-15,
+        "weighted_null_alignment_error": -2.220446049250313e-16,
+        "raw_zero_eigenvalue": -9.288846435104758e-10,
+        "only_proven_zero_clipped": true,
+        "uniform_stencil_reduction_relative": 2.8421709430404013e-16,
+        "all_passed": true
+      },
+      "constant_full_contact_contract": {
+        "bottom": "Neumann0",
+        "peak_current_A": {
+          "real": 9.359286021247053e-35,
+          "imaginary": 3.927091527227098e-34
+        },
+        "expected_peak_current_A": {
+          "real": 0.0,
+          "imaginary": 0.0
+        },
+        "q_relative_error": 1.8681385256091334e-16,
+        "current_relative_error": 6.270095370589855e-31,
+        "passed": true,
+        "scope": "Synthetic prescribed full top, no actual pad/source circuit"
+      },
+      "weighted_parseval_relative": 1.4338353817186738e-15,
+      "uniform_area_DtN_h2_ABI_relative": 1.7068571900590052e-15,
+      "source_complex_power_W": {
+        "real": 7.975228013781354e-09,
+        "imaginary": -3.3530490471452014e-08
+      },
+      "modal_complex_power_W": {
+        "real": 7.975228013781352e-09,
+        "imaginary": -3.353049047145201e-08
+      },
+      "independent_depth_quadrature_complex_power_W": {
+        "real": 7.975228013781354e-09,
+        "imaginary": -3.353049047145201e-08
+      },
+      "boundary_to_modal_power_relative": 1.9790885124290758e-16,
+      "boundary_to_quadrature_power_relative": 1.9199978774568491e-16,
+      "errors": {
+        "phi": {
+          "absolute_spatial_peak_RMS_L2": 8.819710633789938e-06,
+          "reference_spatial_peak_RMS_L2": 0.7378077811207518,
+          "absolute_temporal_RMS_L2": 6.236477197255968e-06,
+          "reference_temporal_RMS_L2": 0.5217088852426836,
+          "relative_L2": 1.1953940930783539e-05,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        },
+        "Ex": {
+          "absolute_spatial_peak_RMS_L2": 0.2542510476222476,
+          "reference_spatial_peak_RMS_L2": 88.81624242589383,
+          "absolute_temporal_RMS_L2": 0.1797826398974751,
+          "reference_temporal_RMS_L2": 62.802567298857866,
+          "relative_L2": 0.0028626638627995173,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ey": {
+          "absolute_spatial_peak_RMS_L2": 0.47154731949623524,
+          "reference_spatial_peak_RMS_L2": 53.213878695017954,
+          "absolute_temporal_RMS_L2": 0.3334343072661274,
+          "reference_temporal_RMS_L2": 37.627894478485544,
+          "relative_L2": 0.008861359687738435,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "Ez": {
+          "absolute_spatial_peak_RMS_L2": 0.13950094119878298,
+          "reference_spatial_peak_RMS_L2": 1.0056912092318626,
+          "absolute_temporal_RMS_L2": 0.09864206150356526,
+          "reference_temporal_RMS_L2": 0.711131073827549,
+          "relative_L2": 0.13871150500095597,
+          "absolute_denominator_floor": 1e-10,
+          "denominator_floor_used": false
+        },
+        "qtop": {
+          "absolute_spatial_peak_RMS_L2": 6.253105405718587e-06,
+          "reference_spatial_peak_RMS_L2": 4.4863285542276124e-05,
+          "absolute_temporal_RMS_L2": 4.42161323585787e-06,
+          "reference_temporal_RMS_L2": 3.172313343325184e-05,
+          "relative_L2": 0.13938135226021472,
+          "absolute_denominator_floor": 1e-12,
+          "denominator_floor_used": false
+        }
+      },
+      "absolute_vector_E_spatial_peak_RMS_error_V_m": 0.55358918191782,
+      "absolute_vector_E_temporal_RMS_error_V_m": 0.3914466645256038,
+      "derived_vector_J_spatial_peak_RMS_error_A_m2": 1.4257413064248817e-05,
+      "derived_vector_J_temporal_RMS_error_A_m2": 1.0081513459908011e-05,
+      "J_error_is_gamma_times_E_not_independent": true,
+      "interpretation": "Physical cell-average Fourier comparison; nonuniform discrete modes are NOT continuum Fourier eigenvectors. Ex/Ey reconstruction error and analytic-modal Ez are separate.",
+      "wall_seconds": 0.05520618399896193,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "ccdcacffc92513773f012c52c14422c6895b363c86612612e50024e368135c4a",
+      "method_sha256": "d68583f3f91e23cbe4374a164d61dc67be1b9b4c72ac6cdfb55996ca2f3ef860",
+      "arrays_SHA256": "7c8aef6380c40adbc1e04d5dac9f7e56fb73b6bede3aaacb8dac27dcf296dd34"
+    }
+  ],
+  "predeclared_review": {
+    "finest_error_flags": [
+      {
+        "bottom": "Dirichlet0",
+        "metric": "phi",
+        "value": 2.6661317784163934e-06,
+        "limit": 0.02,
+        "passed": true
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "qtop",
+        "value": 1.1179567788082546e-05,
+        "limit": 0.02,
+        "passed": true
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ex",
+        "value": 0.0028904743289713602,
+        "limit": 0.05,
+        "passed": true
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ey",
+        "value": 0.008924933676872707,
+        "limit": 0.05,
+        "passed": true
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ez",
+        "value": 4.98955320669389e-06,
+        "limit": 0.02,
+        "passed": true
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "phi",
+        "value": 1.1953940930783539e-05,
+        "limit": 0.02,
+        "passed": true
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "qtop",
+        "value": 0.13938135226021472,
+        "limit": 0.02,
+        "passed": false
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ex",
+        "value": 0.0028626638627995173,
+        "limit": 0.05,
+        "passed": true
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ey",
+        "value": 0.008861359687738435,
+        "limit": 0.05,
+        "passed": true
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ez",
+        "value": 0.13871150500095597,
+        "limit": 0.02,
+        "passed": false
+      }
+    ],
+    "observed_order_flags": [
+      {
+        "bottom": "Dirichlet0",
+        "metric": "phi",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 2.187031744212906e-06,
+        "fine_absolute_spatial_peak_RMS_error": 1.5538947098220491e-06,
+        "observed_order": 0.4930854092464392,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "phi",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 1.5538947098220491e-06,
+        "fine_absolute_spatial_peak_RMS_error": 1.1357611798638138e-06,
+        "observed_order": 0.4522292450139012,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "qtop",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 4.081839931435104e-06,
+        "fine_absolute_spatial_peak_RMS_error": 2.9014393988925905e-06,
+        "observed_order": 0.4924508122125704,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "qtop",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 2.9014393988925905e-06,
+        "fine_absolute_spatial_peak_RMS_error": 2.1246059753030257e-06,
+        "observed_order": 0.44957348921440515,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ex",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 1.777450536945512,
+        "fine_absolute_spatial_peak_RMS_error": 0.5577657834954562,
+        "observed_order": 1.6720780738267254,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ex",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 0.5577657834954562,
+        "fine_absolute_spatial_peak_RMS_error": 0.14822421946358325,
+        "observed_order": 1.911878234380124,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ey",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 3.4339629016541418,
+        "fine_absolute_spatial_peak_RMS_error": 0.9174395250325629,
+        "observed_order": 1.904189485560271,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ey",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 0.9174395250325629,
+        "fine_absolute_spatial_peak_RMS_error": 0.27424734002162227,
+        "observed_order": 1.7421354350778289,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ez",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 0.07086951589628024,
+        "fine_absolute_spatial_peak_RMS_error": 0.050356238971573604,
+        "observed_order": 0.49299465968837725,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Dirichlet0",
+        "metric": "Ez",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 0.050356238971573604,
+        "fine_absolute_spatial_peak_RMS_error": 0.03681572834121128,
+        "observed_order": 0.45184829121077974,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "phi",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 1.7334188261727825e-05,
+        "fine_absolute_spatial_peak_RMS_error": 1.226685824166906e-05,
+        "observed_order": 0.49885448181071035,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "phi",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 1.226685824166906e-05,
+        "fine_absolute_spatial_peak_RMS_error": 8.819710633789938e-06,
+        "observed_order": 0.47596256847715473,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "qtop",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 1.2230188405894896e-05,
+        "fine_absolute_spatial_peak_RMS_error": 8.663068241034768e-06,
+        "observed_order": 0.4974966418402793,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "qtop",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 8.663068241034768e-06,
+        "fine_absolute_spatial_peak_RMS_error": 6.253105405718587e-06,
+        "observed_order": 0.4703052454820645,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ex",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 3.077704664155435,
+        "fine_absolute_spatial_peak_RMS_error": 0.9634686567990206,
+        "observed_order": 1.6755451584346737,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ex",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 0.9634686567990206,
+        "fine_absolute_spatial_peak_RMS_error": 0.2542510476222476,
+        "observed_order": 1.921984015459396,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ey",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 5.946479355048887,
+        "fine_absolute_spatial_peak_RMS_error": 1.587869918635337,
+        "observed_order": 1.9049430368856117,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ey",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 1.587869918635337,
+        "fine_absolute_spatial_peak_RMS_error": 0.47154731949623524,
+        "observed_order": 1.7516182720863933,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": true,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ez",
+        "coarse": 16,
+        "fine": 32,
+        "coarse_absolute_spatial_peak_RMS_error": 0.27408372487683463,
+        "fine_absolute_spatial_peak_RMS_error": 0.1939726343444009,
+        "observed_order": 0.49876353193004297,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      },
+      {
+        "bottom": "Neumann0",
+        "metric": "Ez",
+        "coarse": 32,
+        "fine": 64,
+        "coarse_absolute_spatial_peak_RMS_error": 0.1939726343444009,
+        "fine_absolute_spatial_peak_RMS_error": 0.13950094119878298,
+        "observed_order": 0.47557827557398863,
+        "minimum": 1.0,
+        "status": "evaluated",
+        "passed": false,
+        "scope": "Engineering screening hypothesis, not guaranteed order on abrupt TPFA relocation; no curve fit or threshold relaxation"
+      }
+    ],
+    "all_finest_flags_pass": false,
+    "all_order_flags_pass": false,
+    "criteria_changed": false
+  },
+  "completed_MMS_conditions": 6,
+  "new_1D_eigensystems_this_invocation": 3,
+  "all_physical_evaluation_samples": 53760,
+  "new_actual_circle_eigen_runs": 0,
+  "new_actual_phantom_PDE": 0,
+  "new_actual_four_pad_CEM_RHS": 0,
+  "original_four_pad_failures_preserved": true,
+  "actual_geometry_material_circuit_unchanged": true,
+  "actual_four_pad_admission": false,
+  "candidate_adopted": false,
+  "resume_index_SHA256": "266cce8a11fce865a56e5102aa4671d568ce5bdc1195362b161b43b108527d9d"
+}

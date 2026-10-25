@@ -1,0 +1,210 @@
+{
+  "schema": "task1-prior-browser-r3-memory-failure-evidence-v1",
+  "previous_run": "/dev/shm/task1-results-gui-browser-r3-20261025-run",
+  "previous_source_publication_commit": "63edee1f6c64a57e953e38a4ebff88218345fb3b",
+  "old_owner_pid": 178648,
+  "old_owner_start_ticks": 6084967,
+  "root_reported_owner_dead": true,
+  "failure_stage": "Actual browser child; unchanged aggregate memory watchdog terminated the attempt",
+  "observed_peak_resources": {
+    "peak_RSS": 1290231808,
+    "peak_owned_tmpfs": 6850884860,
+    "peak_accounted": 8141116668
+  },
+  "observed_aggregate_excess_bytes": 141116668,
+  "actual_browser_PASS": false,
+  "GUI_checks_completed": "Unverified; missing supervisor-killed worker/browser receipts",
+  "worker_receipt_missing": true,
+  "missing_artifacts": [
+    {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/worker-receipt.json",
+      "status": "absent_after_supervisor_kill; no receipt fabricated"
+    },
+    {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/browser-receipt.json",
+      "status": "absent_after_supervisor_kill; no receipt fabricated"
+    },
+    {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/browser-failure.json",
+      "status": "absent_after_supervisor_kill; no receipt fabricated"
+    }
+  ],
+  "new_PDE_RHS": 0,
+  "original_HTML_modified": false,
+  "old_source_modified": false,
+  "original_scratch_preserved": true,
+  "recovery_scope": "Replace large Playwright route.fulfill(path) body copies with finite worker-owned exact-path loopback HTTP streaming. All original HTML/SHA/semantic/DOM/resource gates remain. Actual memory saving unmeasured.",
+  "evidence": {
+    "owner_receipt": {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/receipt.json",
+      "SHA256": "ae51679c057b13236a5df38a9d6cf08f5a4ba70adfb279f5f26f54c9736864dd",
+      "bytes": 761,
+      "format": "JSON",
+      "record": {
+        "schema": "task1-results-gui-browser-owner-v1",
+        "status": "failed_preserved",
+        "started_utc": "2026-10-25T11:53:42.879495+00:00",
+        "pid": 178648,
+        "proc_start_ticks": 6084967,
+        "maximum_new_driven_RHS": 0,
+        "new_PDE_RHS": 0,
+        "Windows_saved_verified": false,
+        "candidate_adopted": false,
+        "error_type": "InterruptedError",
+        "error": "Actual aggregate descendantRSS plus ALL task1-ownedtmpfs cap",
+        "failed_phase": "actual-browser-child",
+        "finished_utc": "2026-10-25T11:54:11.586221+00:00",
+        "elapsed_seconds": 28.690013870997063,
+        "nonduplicated_ledger_seconds": 3.6362128330001724,
+        "resources": {
+          "peak_RSS": 1290231808,
+          "peak_owned_tmpfs": 6850884860,
+          "peak_accounted": 8141116668
+        },
+        "remaining_approved_seconds": null
+      }
+    },
+    "current_checkpoint": {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/current.json",
+      "SHA256": "9eff5ff49f34e81c8b2bfb2f206a7235c02dfa13e97b323b5c4eb455bca0fc0e",
+      "bytes": 348,
+      "format": "JSON",
+      "record": {
+        "schema": "task1-results-gui-browser-live-v1",
+        "updated_utc": "2026-10-25T11:54:11.525086+00:00",
+        "queue_pid": 178648,
+        "queue_start_ticks": 6084967,
+        "phase": "failed_preserved",
+        "elapsed_seconds": 28.64644953199604,
+        "failed_phase": "actual-browser-child",
+        "error": "Actual aggregate descendantRSS plus ALL task1-ownedtmpfs cap"
+      }
+    },
+    "browser_scratch": {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/browser-scratch.json",
+      "SHA256": "3bea17f8f6a73c8d50ff9913be6763ddb67d8b39634c80d83dd002d98432bcc9",
+      "bytes": 434,
+      "format": "JSON",
+      "record": {
+        "schema": "task1-browser-short-scratch-v1",
+        "path": "/dev/shm/task1-gbr3-178862",
+        "user_data_dir": "/dev/shm/task1-gbr3-178862/p",
+        "temporary_dir": "/dev/shm/task1-gbr3-178862/t",
+        "config_cache_dir": "/dev/shm/task1-gbr3-178862/c",
+        "conservative_singleton_path_bytes": 83,
+        "actual_all_task_tmpfs_guard_covers_path": true,
+        "original_long_scratch_preserved": true,
+        "scratch_will_not_be_deleted_by_controller": true
+      }
+    },
+    "browser_log": {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/logs/8-actual-browser-child.log",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "format": "UTF-8 text",
+      "text": ""
+    },
+    "source_publication": {
+      "path": "/dev/shm/task1-results-gui-browser-r3-20261025-run/source-publication/result-publication.json",
+      "SHA256": "379a52cec52f8569142c47025bba5e9c651b3a3917c1d8ef278c6831cbd4bf71",
+      "bytes": 4785,
+      "format": "JSON",
+      "record": {
+        "status": "published_readback_verified",
+        "commit": "63edee1f6c64a57e953e38a4ebff88218345fb3b",
+        "files": {
+          "tools/results_gui_browser_r3_20261025/model/guardian.py": {
+            "SHA256": "36e2d7cf0522f34a2a7b9a27ce145d44ef14ffe3c7854e22aa7af22a8fbc3467",
+            "bytes": 16677,
+            "Git_blob_SHA": "9acd58d17f83152f4d6526a89a1a6556455633b0",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_r3_20261025/model/worker.py": {
+            "SHA256": "a77e0266fd2bb848946939cfc974e309ce855bf4ca3fd8df380e4fa251021b9c",
+            "bytes": 9663,
+            "Git_blob_SHA": "dfac6e01ed82f1fd5ebcbc19bfd5bd9cd68d2a50",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_r3_20261025/model/browser_inputs.py": {
+            "SHA256": "277b6d465336558d03403372e4aa2feb0355a19c8a45dcaa9192ee468557d4f5",
+            "bytes": 7143,
+            "Git_blob_SHA": "15fb8ca32b4d5c4f5c3a5452c9876c495d538f6c",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_r3_20261025/model/browser_checks.py": {
+            "SHA256": "d3a1fa7dc20e3161d136b6b3c584df6995a8d83bbc4dfb33ce8bda094d0aff87",
+            "bytes": 17267,
+            "Git_blob_SHA": "561af30392f62624ede70a15563538db1d42c47e",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_r3_20261025/model/CONTROLLER_CONTRACT.md": {
+            "SHA256": "19e15be1e566ad52fb53f16f4a138cedf083386806b8847976da53d53e0d8c00",
+            "bytes": 5502,
+            "Git_blob_SHA": "891e31c36a6e4ca0cd29c9f1aff0bd465ec7de82",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_r3_20261025/model/prior-browser-launch-failure-evidence.json": {
+            "SHA256": "347ddd8cca8accefa5fd4924458648cbaba011834f865de2af753ae0461562e9",
+            "bytes": 22130,
+            "Git_blob_SHA": "d0826a71dc2190932eabb9dbb442f7aee78d9dcc",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_r3_20261025/model/prior-browser-r2-memory-failure-evidence.json": {
+            "SHA256": "905d7a5b009309fa4ce196a3901c13c831ef8d83e63f7468d23c7b1b7f98289d",
+            "bytes": 9918,
+            "Git_blob_SHA": "0b45edafb709a88acf5110e250e2ecc395cb96ab",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_r3_20261025/model/root-admission.json": {
+            "SHA256": "22c1baf3621068045fd8212217c91546673163a938a5b4af7e1c3f2542c14b89",
+            "bytes": 1107,
+            "Git_blob_SHA": "056beed5b5de4ab8dec2e49b84ce8428ea9aaa33",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-r3-20261025/preregistration.json": {
+            "SHA256": "4bd5d823cf3b92bf12c5a12da1bdb76ae81b9c724de91fa8a52bbb352cc65df5",
+            "bytes": 11870,
+            "Git_blob_SHA": "537fcc468557d62d469b4b6b13dbadc19024670a",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-r3-20261025/spec.json": {
+            "SHA256": "fa8093f6d20c2fd481bbe5c94dfbe3ff2168683fbddf3585d9677a0f54817a2b",
+            "bytes": 6916,
+            "Git_blob_SHA": "7920f0a56efc7942ec852e2cc0653b238e274389",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-r3-20261025/root-admission.json": {
+            "SHA256": "22c1baf3621068045fd8212217c91546673163a938a5b4af7e1c3f2542c14b89",
+            "bytes": 1107,
+            "Git_blob_SHA": "056beed5b5de4ab8dec2e49b84ce8428ea9aaa33",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-r3-20261025/registration.json": {
+            "SHA256": "69dc96d309fccfc21762119f7701df551771350bc81c0d4233f7008bb59d4610",
+            "bytes": 6069,
+            "Git_blob_SHA": "4903c60563370027b05ffbe4172d1672d3d711bd",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          }
+        },
+        "transport": "supported_Git_HTTPS_only",
+        "verification": "fresh_separate_remote_blobless_fetch_then_ls_tree_and_cat_file; no REST",
+        "expected_parent": "de3289c4f3d873990807bd2e0ffa01e381d00857",
+        "tree": "35a65340b7c964b4b7b741b31a257986733214a3",
+        "remote_branch_head_verified": "63edee1f6c64a57e953e38a4ebff88218345fb3b",
+        "new_PDE": 0
+      }
+    }
+  }
+}

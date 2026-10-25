@@ -1,0 +1,97 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'"><title>Task1 C1 RMS matching</title><style>body{font:14px/1.5 system-ui;color:#193047;background:#f7fafc;margin:24px}h1{font-size:25px}p{max-width:1450px}.scroll{overflow:auto;background:white;margin:18px 0}table{border-collapse:collapse;white-space:nowrap;font-size:12px}td,th{border-bottom:1px solid #d9e3ec;padding:8px;text-align:right}td:first-child,th:first-child{text-align:left}th{background:#e7eef5}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#165d96}</style><body><h1>Coherent TIS와 단일 전극쌍의 RMS matching</h1><p><b>계산 완료·미채택.</b> 세 reference × 중심점/true ROI energy RMS의 여섯 행입니다. 최신 coherent 진단 후보는 목표2개 gate 통과·비표적6개 실패 상태를 유지합니다. 단일주파수 RMS를 TIS 변조나 생리적 활성화와 동일시하지 않습니다.</p><p>C1은 귀환 포함2패드·1출력·3000Hz 순수 정현파, TIS는4패드·2출력·공통GND·50Ω입니다. C1source/return 중심은(-10,-10)/(10,-10)mm, 윗면 부착입니다. Coherent reference의 양출력에는3000/3030Hz가 함께 인가됩니다. 원본 square는4개 스펙트럼 선의 역사적 명목source 정의를 유지합니다.</p><p><b>Point:</b> native complex E의(0,0,20mm) 보간 후 주파수별 벡터 RMS. <b>ROI:</b> r≤5mm,깊이15–20mm의 sqrt(부피가중 평균(E_RMS²)); mean(E_RMS)가 아닙니다. 별도의 무부하 φ-gradient 값은 matching에 사용하지 않았습니다.</p><h2>세 reference × 두 matching 정의</h2><div class="scroll"><table><thead><tr><th>Reference</th><th>RMS matching 정의</th><th>Target centre E RMS,V/m</th><th>Target ROI energy RMS,V/m</th><th>C1 source Vpp</th><th>Achieved centre,V/m</th><th>Achieved ROI,V/m</th><th>Reference TIS source Vpp intervals [out0,out1]</th></tr></thead><tbody><tr><td>Coherent r1/90° raw actual1Vpp</td><td>중심(0,0,20mm) E RMS</td><td>1.32658551</td><td>1.46425758</td><td>1.0425129841463132</td><td>1.32658551</td><td>1.46176388</td><td>[[0.9999992544051025,1.0],[0.9999992543822719,1.0]]</td></tr><tr><td>Coherent r1/90° raw actual1Vpp</td><td>True ROI energy RMS</td><td>1.32658551</td><td>1.46425758</td><td>1.044291456594175</td><td>1.32884859</td><td>1.46425758</td><td>[[0.9999992544051025,1.0],[0.9999992543822719,1.0]]</td></tr><tr><td>Coherent r1/90° original skin8</td><td>중심(0,0,20mm) E RMS</td><td>2.00705446</td><td>2.2153451</td><td>1.5772675970590195</td><td>2.00705446</td><td>2.21157227</td><td>[[1.5129465484287756,1.5129476764748433],[1.512946548394234,1.5129476764748433]]</td></tr><tr><td>Coherent r1/90° original skin8</td><td>True ROI energy RMS</td><td>2.00705446</td><td>2.2153451</td><td>1.5799583328166869</td><td>2.01047839</td><td>2.2153451</td><td>[[1.5129465484287756,1.5129476764748433],[1.512946548394234,1.5129476764748433]]</td></tr><tr><td>원본4-line square 명목1Vpp</td><td>중심(0,0,20mm) E RMS</td><td>2.09503782</td><td>2.31263459</td><td>1.6464103626295805</td><td>2.09503782</td><td>2.30852109</td><td>[[1.0,1.0],[1.0,1.0]]</td></tr><tr><td>원본4-line square 명목1Vpp</td><td>True ROI energy RMS</td><td>2.09503782</td><td>2.31263459</td><td>1.6493440663383405</td><td>2.09877092</td><td>2.31263459</td><td>[[1.0,1.0],[1.0,1.0]]</td></tr></tbody></table></div><p>C1 필요source Vpp와 TISsource interval vector는 저장 JSON의 정밀도를 그대로 표시합니다. Canonical square의[1,1]은 원 기록의 명목source 정의이며 새 실제파형 bracket/실측 주장이 아닙니다. Centre matching과 ROI matching에서 매칭하지 않은 다른 RMS 값은 달라질 수 있습니다.</p><p>These rows match field RMS, not skin/contact burden. Surface burdens and power are separate results and are not assumed equal to the reference.</p><h2>필요한 C1 전류·부담·손실·전력</h2><div class="scroll"><table><thead><tr><th>Reference</th><th>Matching</th><th>source_current_RMS_mA</th><th>source_current_peak_mA</th><th>contact_J_RMS_max_A_m2</th><th>contact_J_RMS_p95_A_m2</th><th>bulk_skin_J_RMS_max_A_m2</th><th>bulk_skin_J_RMS_p95_A_m2</th><th>contact_voltage_RMS_max_V</th><th>SC_power_W</th><th>dermis_power_W</th><th>skin_SC_plus_dermis_power_W</th><th>contact_power_W</th><th>source_power_W</th><th>source_resistor_power_W</th><th>loaded_metal_Vpp</th></tr></thead><tbody><tr><td>Coherent r1/90° raw actual1Vpp</td><td>중심(0,0,20mm) E RMS</td><td>0.975795258</td><td>1.37998289</td><td>15.6085717</td><td>11.3634311</td><td>15.5526301</td><td>4.59243642</td><td>0.00164996376</td><td>7.48088321e-07</td><td>0.000237803032</td><td>0.00023855112</td><td>5.57416677e-07</td><td>0.000352204607</td><td>4.76088192e-05</td><td>0.907806788</td></tr><tr><td>Coherent r1/90° raw actual1Vpp</td><td>True ROI energy RMS</td><td>0.977459913</td><td>1.38233707</td><td>15.6351991</td><td>11.3828165</td><td>15.5791621</td><td>4.60027088</td><td>0.00165277851</td><td>7.50642897e-07</td><td>0.000238615083</td><td>0.000239365725</td><td>5.59320147e-07</td><td>0.000353407317</td><td>4.77713941e-05</td><td>0.909355459</td></tr><tr><td>Coherent r1/90° original skin8</td><td>중심(0,0,20mm) E RMS</td><td>1.47632717</td><td>2.0878419</td><td>23.6149522</td><td>17.1922766</td><td>23.5303156</td><td>6.94811601</td><td>0.00249630884</td><td>1.71238215e-06</td><td>0.000544333677</td><td>0.000546046059</td><td>1.27593272e-06</td><td>0.000806200105</td><td>0.000108977095</td><td>1.37346417</td></tr><tr><td>Coherent r1/90° original skin8</td><td>True ROI energy RMS</td><td>1.4788457</td><td>2.09140365</td><td>23.6552381</td><td>17.2216057</td><td>23.5704571</td><td>6.95996914</td><td>0.00250056741</td><td>1.7182296e-06</td><td>0.00054619247</td><td>0.0005479107</td><td>1.28028978e-06</td><td>0.000808953121</td><td>0.000109349231</td><td>1.37580723</td></tr><tr><td>원본4-line square 명목1Vpp</td><td>중심(0,0,20mm) E RMS</td><td>1.541045</td><td>2.17936674</td><td>24.6501622</td><td>17.9459354</td><td>24.5618153</td><td>7.25270095</td><td>0.00260573967</td><td>1.86580439e-06</td><td>0.000593103686</td><td>0.000594969491</td><td>1.39025093e-06</td><td>0.000878432245</td><td>0.000118740985</td><td>1.43367279</td></tr><tr><td>원본4-line square 명목1Vpp</td><td>True ROI energy RMS</td><td>1.54379096</td><td>2.18325011</td><td>24.6940858</td><td>17.9779129</td><td>24.6055815</td><td>7.26562439</td><td>0.00261038278</td><td>1.87245959e-06</td><td>0.000595219247</td><td>0.000597091707</td><td>1.39520986e-06</td><td>0.000881565554</td><td>0.000119164526</td><td>1.43622743</td></tr></tbody></table></div><p>J는RMS의max/부피 또는 접촉면적 가중P95이며, bulk skin은SC+dermis입니다. loaded_metal_Vpp는50Ω 소스 회로의 전극금속 단자값으로 측정기 입력부하를 적용한 프로브 예측이 아닙니다. 아래 숫자 표시만9자리 유효숫자로 줄였고 완전한 값은 brief/원 JSON에 있습니다.</p><h2>원래 TIS reference 부담(별도2출력)</h2><div class="scroll"><table><thead><tr><th>Reference</th><th>TIS output RMS mA [0,1]</th><th>Contact Jmax A/m²</th><th>Contact J95 A/m²</th><th>Contact RMS V</th><th>SC W</th><th>Contact W</th><th>Source W</th></tr></thead><tbody><tr><td>Coherent r1/90° raw actual1Vpp</td><td>[0.9293463665496856,0.9295283156127454]</td><td>15.014964</td><td>8.26723532</td><td>0.00158419765</td><td>9.46416304e-07</td><td>7.08716174e-07</td><td>0.000451218228</td></tr><tr><td>Coherent r1/90° original skin8</td><td>[1.4060524259116849,1.4063277053238779]</td><td>22.716855</td><td>12.5078945</td><td>0.00239680816</td><td>2.16635702e-06</td><td>1.62225889e-06</td><td>0.00103284334</td></tr><tr><td>원본4-line square 명목1Vpp</td><td>[1.477097039943939,1.4782133548390153]</td><td>25.4912401</td><td>13.553106</td><td>0.00268483846</td><td>2.16635702e-06</td><td>1.82727548e-06</td><td>0.00113591556</td></tr></tbody></table></div><p>40개 native complex-φ 프로브는 깊이5/10/15/20mm ×십자중심5개 ×X/Y축, 팁 간격5mm의 무부하 예측입니다. 팁 간격과 중심 위치 간격은 다릅니다. 각 matching의 저장 amplitude_scale로 기존 C1 sine 예측을 스케일하는 참조만 제공하며 새 probe 파형이나 실제 장비부하를 계산하지 않았습니다.</p><p><a href="../data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json">C1 무부하 프로브 JSON(local native artifact)</a></p><p>PBS 계면·mesh/contact 수렴성, hardware phase/sink/compliance, ETA5001/DSOX1202A 입력부하·대역폭·감쇠율과 실험·생리 검증은 보류입니다. 어떤 부담 값도 인체 안전 한계로 판정하지 않습니다.</p><h2>출처·실행 영수증</h2><ul><li><a href="cloud-coherent-single-pair-20261021T172000Z/summary.json">summary</a> SHA256 48c8b2058ccdb03eb1ad94539df7d12afe86a762160bdd22bd0116476d77fecf</li><li><a href="cloud-coherent-single-pair-context-20261021T172000Z/preregistration.json">preregistration</a> SHA256 9dc0e49edbbc631d0c725b8e76f5eb4f915df4344077d6f66af98f9076b59ad9</li><li><a href="cloud-next-coherent-drive-20261021T165000Z/coherent-r1-p090/condition.json">candidate_source_condition</a> SHA256 50098844553a37135f963dca6bd288ef0ccba9d5cb4e3d65a809055cbd90c9fc</li><li><a href="../data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json">C1_unloaded_probes</a> SHA256 7ac08215db1ec71a6880d8eded01fcec203e2992e191f91d42ebf780484da83b</li><li><a href="cloud-coherent-single-pair-context-20261021T172000Z/queue/summary.json">queue</a> SHA256 3f3f4b01831e9839a5cbe04ae44ef99e862ded63932e63bfaf4a979e29f12c9a</li><li><a href="cloud-coherent-single-pair-context-20261021T172000Z/single-pair-publication-20261021T172000Z.json">publication</a> SHA256 b07322bd4b825262d333aa87cb67ebdefaa8906160e5079fa5096753d2890bd1</li></ul><p><a href="COHERENT_SINGLE_PAIR_RESULTS_20261021.md">Markdown</a> · <a href="COHERENT_SINGLE_PAIR_RESULTS_20261021.result-brief.json">Full precision brief</a> · <a href="CLOUD_COHERENT_DRIVE_RESULTS_20261021.html">Strong GUI</a> · <a href="COHERENT_WEAK_RESULTS_20261021.md">Weak report</a></p><details><summary>Reference/C1 배선 및 정의 metadata</summary><pre>{
+  &quot;point&quot;: &quot;Native complex E trilinear interpolation at(0,0,20)mm, sqrt(sum_f dot(E*,E)/2); same original electrical metric&quot;,
+  &quot;ROI&quot;: &quot;Central r&lt;=5mm, depth15..20; full-precision fractional volume; sqrt(weighted mean of native E_RMS squared), NOT mean(E_RMS)&quot;,
+  &quot;single_stimulation&quot;: {
+    &quot;case_id&quot;: &quot;baseline-square15-C1pair0-xy80&quot;,
+    &quot;source_run_id&quot;: &quot;cloud-mesh-c1-20261019T190000Z&quot;,
+    &quot;circuit&quot;: {
+      &quot;n_pads&quot;: 2,
+      &quot;n_outputs&quot;: 1,
+      &quot;return_topology&quot;: &quot;all_return_pads_ideal_common_GND&quot;,
+      &quot;n_return_nodes&quot;: 1,
+      &quot;source_Vpp_each&quot;: 1.0,
+      &quot;source_peak_V&quot;: 0.5,
+      &quot;source_resistance_ohm&quot;: 50.0,
+      &quot;inactive_source_at_other_frequencies&quot;: &quot;0 V through 50 ohm&quot;,
+      &quot;pad_to_node&quot;: {
+        &quot;0&quot;: &quot;out0&quot;,
+        &quot;1&quot;: &quot;GND&quot;
+      },
+      &quot;carrier_assignment_Hz&quot;: [
+        3000
+      ],
+      &quot;note&quot;: &quot;C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics&quot;
+    },
+    &quot;physical_pad_centres_mm&quot;: [
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        -10
+      ]
+    ],
+    &quot;waveform&quot;: &quot;pure sine&quot;,
+    &quot;frequency_Hz&quot;: 3000,
+    &quot;raw_source_Vpp&quot;: 1.0,
+    &quot;raw_centre20_E_RMS_V_m&quot;: 1.2724882373084518,
+    &quot;raw_ROI_energy_RMS_V_m&quot;: 1.4021541287436026,
+    &quot;raw_burdens&quot;: {
+      &quot;source_current_RMS_mA&quot;: 0.9360029778823712,
+      &quot;source_current_peak_mA&quot;: 1.3237081057428535,
+      &quot;contact_J_RMS_max_A_m2&quot;: 14.97206451280276,
+      &quot;contact_J_RMS_p95_A_m2&quot;: 10.90003792235967,
+      &quot;contact_voltage_RMS_max_V&quot;: 0.001582679340464751,
+      &quot;bulk_skin_J_RMS_max_A_m2&quot;: 14.918404227425533,
+      &quot;bulk_skin_J_RMS_p95_A_m2&quot;: 4.405159927967392,
+      &quot;SC_power_W&quot;: 6.883192716270774e-07,
+      &quot;dermis_power_W&quot;: 0.00021880358900579235,
+      &quot;skin_SC_plus_dermis_power_W&quot;: 0.00021949190827741944,
+      &quot;fat_power_W&quot;: 4.7105612550053544e-05,
+      &quot;muscle_power_W&quot;: 1.3149488224415134e-05,
+      &quot;contact_power_W&quot;: 5.128814748537565e-07,
+      &quot;tissue_contact_power_W&quot;: 0.00028025989052674185,
+      &quot;source_resistor_power_W&quot;: 4.3805078730233336e-05,
+      &quot;source_power_W&quot;: 0.0003240649693418138,
+      &quot;loaded_metal_Vpp&quot;: 0.8707870325278405
+    },
+    &quot;unloaded_probe_reference&quot;: {
+      &quot;path&quot;: &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json&quot;,
+      &quot;condition_id&quot;: &quot;baseline-square15-C1pair0-xy80-C1-3000Hz-sine&quot;,
+      &quot;scaling&quot;: &quot;Existing sine phi-derived Vpp/RMS multiply by each matching amplitude_scale; instrument loading not established&quot;
+    }
+  },
+  &quot;input_sha256&quot;: {
+    &quot;/workspace/ngg-tis-task1/tools/task1_coherent_single_pair.py&quot;: &quot;acaf89ca75851347d7d174f71e9ec998014457b21b3d836b705b76f82deab0fa&quot;,
+    &quot;/workspace/ngg-tis-task1/tests/test_task1_coherent_single_pair.py&quot;: &quot;f1c678b97906554b001ea81bf501de8a93eac824513d683718282f14ab0f692d&quot;,
+    &quot;/workspace/ngg-tis-task1/tools/task1_resource_policy.py&quot;: &quot;c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/preregistration.json&quot;: &quot;a5bff7509ba3e881f8885729453df4d0f88bbfc2e08908b93ee7c843d3f5b9b3&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/summary.json&quot;: &quot;96b798cf85cdf0218a918a584caba4d01b489c2614f954bd215af17285945950&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/cases/baseline-square15-C1pair0-xy80.json&quot;: &quot;265b058a0274fb7dff43e8c1101eaec730d44eb2731e6106e9e1ef149e2a3c88&quot;,
+    &quot;/workspace/ngg-tis-task1/docs/cloud-next-coherent-drive-20261021T165000Z/summary.json&quot;: &quot;0d39a5fede92c683d02970556ad227b8941195f536fe76c7abb4e2da949229bb&quot;,
+    &quot;/workspace/ngg-tis-task1/docs/cloud-next-coherent-drive-20261021T165000Z/coherent-r1-p090/condition.json&quot;: &quot;50098844553a37135f963dca6bd288ef0ccba9d5cb4e3d65a809055cbd90c9fc&quot;,
+    &quot;/workspace/ngg-tis-task1/docs/cloud-coherent-single-pair-context-20261021T172000Z/decision.json&quot;: &quot;df9c99cd947de19fab85bc4d302678bf460f2fdcbda875e84126804a39cc3fbe&quot;,
+    &quot;/workspace/ngg-tis-task1/docs/cloud-return-current-context-20261021T172000Z-feedback-before.json&quot;: &quot;58c35fc277bef301dff99b808ace65a7895fce19da7d8d3bbf1e45e9bc602259&quot;,
+    &quot;/workspace/ngg-tis-task1/docs/cloud-next-coherent-drive-20261021T165000Z/coherent-r1-p090/volume.npz&quot;: &quot;9a1e33ac011366347a43aa53400230664178862421ffe362dd2e0e2903cfefc6&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/volume-C1-3000Hz.npz&quot;: &quot;545fecec4766e25afdaba4199f9a72fe25371e0027bb11d20f6628c8f1b23ffc&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/configs/baseline-square15-C1pair0-xy80.properties&quot;: &quot;326ca4c1bb380de90f1d794c6d0acca0d61a90a54c0f95e2168f6e55ae1706e3&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/masks/baseline-square15-C1pair0-xy80.csv&quot;: &quot;8e20c20d73d8c69a70772c43a7f6607dfb25b9ad2fbd66eee3b1ee0ed3d521c4&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/BASIS_COMPLETE&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/validation.json&quot;: &quot;21d4c07e3e45466160e15967484aaca423017f74c738dda508604a84cc2ac45b&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/mesh-metadata.json&quot;: &quot;60429b2da097a8b71803f4648200620c3369dc593982bd879229c7299c3b1800&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/grid.csv.gz&quot;: &quot;70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/field-3000.bin.gz&quot;: &quot;33957273ffe52f8d276128ee8d9c728defe411b9b6d7f1e14a966af51ed731f1&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/potential-3000.bin.gz&quot;: &quot;166c61eb4e7f66db97679da9c1908d05b4a0f2c3dc84185018b68f1d0725ed9f&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/density-3000.bin&quot;: &quot;4d78352506a3a8d444c5a081651af29185cfaa3aecb8045d1bb87c24c7c9efa4&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/loss-3000.bin&quot;: &quot;97f812dd1768a555307f1a695af7981625cfb699b003575f67ffd3d0a54d0ef7&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/source-3000.bin&quot;: &quot;953f539b306fc633b28b0ab357b6ec0d9e5699b040a645ccec72604a34e2f6d9&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/contacts-3000.csv&quot;: &quot;7884821fdaaebd34199523534f1fee9dccd5a6eca55f88e77093a0c1de5fdae6&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json&quot;: &quot;f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/cases/baseline-square15-xy80.json&quot;: &quot;93a714a9fb99c091d194827f9943ad22f1b586d818dc995098e5d58826a36b31&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/volume.npz&quot;: &quot;4a255ba0b586c799d5ded6c4cd8c8a8553600f85ea17b4170e87b71e60479f53&quot;,
+    &quot;/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json&quot;: &quot;7ac08215db1ec71a6880d8eded01fcec203e2992e191f91d42ebf780484da83b&quot;,
+    &quot;/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json&quot;: &quot;640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a&quot;,
+    &quot;/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json&quot;: &quot;6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d&quot;
+  }
+}</pre></details><footer>Static offline HTML; no JavaScript or external requests. Stored JSON only; no new numerical calculation or native-array reads.</footer></body></html>

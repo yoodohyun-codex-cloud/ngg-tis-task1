@@ -1,0 +1,121 @@
+{
+  "schema": "task1-layer-dtn-phase1-spec-v1",
+  "plan": {
+    "phase": "graph_full_eigen_and_analytic_manufactured_only",
+    "h_m": 0.0005,
+    "radius_m": 0.025,
+    "nx": 100,
+    "physical_layers_m": [
+      0.0001,
+      0.005,
+      0.005,
+      0.015
+    ],
+    "evaluation_SC_cells": 8,
+    "evaluation_bulk_counts": [
+      19,
+      18,
+      56
+    ],
+    "max_evaluation_cells": 800000,
+    "expected_XY_columns": 7860,
+    "expected_evaluation_cells": 793860,
+    "eigensolver": "scipy.linalg.eigh",
+    "driver": "evr",
+    "overwrite_a": true,
+    "check_finite": false,
+    "real_dtype": "float64",
+    "dense_order": "F",
+    "eigen_residual_block_columns": 128,
+    "orthogonality_selected_columns": 64,
+    "orthogonality_scope": "all columns against 64 deterministic selected columns; NOT exhaustive all-pairs",
+    "complex_roundtrip_probe_count": 3,
+    "cache_raw_chunk_max_bytes": 33554432,
+    "local_cache_durability": "local recomputable cache only; NOT remote verified scientific raw output",
+    "outer_numerical_child_watchdog_seconds": 600,
+    "max_effective_CPU": 4,
+    "total_RSS_plus_all_owned_tmpfs_limit_bytes": 8000000000,
+    "new_CEM_conditions": 0,
+    "new_CEM_RHS": 0,
+    "candidate_adopted": false
+  },
+  "tolerances": {
+    "eigenvalue_roundoff_relative": 1e-12,
+    "eigen_residual_spectral_relative": 1e-11,
+    "unit_norm_absolute": 2e-10,
+    "selected_orthogonality_absolute": 2e-10,
+    "transform_relative": 2e-10,
+    "constant_mode_alignment_error": 2e-10,
+    "analytic_absolute": 1e-10,
+    "analytic_relative": 1e-10,
+    "passive_admittance_relative": 1e-12
+  },
+  "frequency_Hz": 2000,
+  "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+  "actual_U19_config_sha256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+  "material_rows": [
+    {
+      "layer": "sc",
+      "sigma_S_m": 5.959456590514033e-06,
+      "epsilon_r": 225.18780331254555,
+      "gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      }
+    },
+    {
+      "layer": "dermis",
+      "sigma_S_m": 0.29312219368408116,
+      "epsilon_r": 870716.5653512729,
+      "gamma_S_m": {
+        "real": 0.29312219368408116,
+        "imaginary": 0.0968802834717473
+      }
+    },
+    {
+      "layer": "fat",
+      "sigma_S_m": 0.1968291518398069,
+      "epsilon_r": 10307.859184332388,
+      "gamma_S_m": {
+        "real": 0.1968291518398069,
+        "imaginary": 0.001146904009299627
+      }
+    },
+    {
+      "layer": "muscle",
+      "sigma_S_m": 0.2516252154881487,
+      "epsilon_r": 168024.57464128954,
+      "gamma_S_m": {
+        "real": 0.2516252154881487,
+        "imaginary": 0.01869525522912356
+      }
+    }
+  ],
+  "physical_model": "same staircase XY Neumann graph and scalar piecewise-constant gamma; continuous analytic z, insulated bottom",
+  "graph_source": "SelectivityShapeBasis.ValidationMesh/ShapeNet XY edges, original j-then-i order and strict center-inside radius test",
+  "mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+  "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+  "reference_commit": "cebb04aa2074e848e34ffd7aede4bc0476aa16c6",
+  "local_eigen_cache_directory": "/dev/shm/task1-layer-dtn-20261025-run/eigen-cache",
+  "independent_normal_current_QA_limit": 0.05,
+  "inherited_material_scope": "HREF-MIX declared surrogates; no actual anatomical/phantom/skin-contact calibration",
+  "source_and_hardware_scope": "Phase1 does not solve electrodes or outputs. Future two-output50ohm common-return CEM is a separately registered NEW PDE, actual hardware unverified.",
+  "cell_semantics": {
+    "physical_evaluation_cells": 793860,
+    "physical_evaluation_cell_limit": 800000,
+    "surface_graph_nodes": 7860,
+    "future_surface_CEM_unknowns": 7862,
+    "dense_real_matrix_entries": 61779600,
+    "dense_entries_are_not_physical_cells": true
+  },
+  "resource_estimate": {
+    "status": "unmeasured theoretical allocation plan, not guaranteed peak or runtime",
+    "dense_input_real_bytes": 494236800,
+    "returned_real_Q_bytes": 494236800,
+    "workspace_conservative_allowance_bytes": 536870912,
+    "vector_library_diagnostic_allowance_bytes": 268435456,
+    "additional_local_Q_cache_bytes": 494236800,
+    "allocation_lifetime": "Dense Fortran input and returned Q may coexist through EVR; input released before blocked diagnostics; Q remains RSS while cache adds task tmpfs. Parent accounts RSS plus ALL task tmpfs throughout.",
+    "caveat": "Implicit backend copies/workspaces and real resident peak must be measured; hard parent process watchdog is mandatory during blocking LAPACK. No600s fit promise."
+  }
+}

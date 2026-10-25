@@ -1,0 +1,195 @@
+{
+  "schema": "task1-next-bounded-batch-selection-v1",
+  "status": "cache_diagnostic_v2_completed_next_PDE_blocked_on_implementation",
+  "scientific_priority": "Diagnose four-pad contact-edge growth and near-zero circuit-matrix sensitivity before further shape or pad-count exploration.",
+  "selection_evidence": {
+    "coarse_baseline": "39 scalar and 8 circuit checks passed; numerical package/reproduction checks remain separate",
+    "XY_0p625_to_0p5_square": "Jmax +5.2841846274%, contactV +5.2846221970%; both fail unchanged5% gate",
+    "coupled_grid": "h0.5mm SC8 bulk18/18/56 has786000 cells and passes36 registered coupled comparisons; does not clear XY/contact-edge hold",
+    "exact_Best1": "h50/120mm SC2 bulk14/14/40 native arrays complete,39 scalars pass,2/8 strict matrix comparisons fail; failed result preserved",
+    "grouped_pad_screen": "4/8/12/16 pads with two outputs are available at coarse grid; expanded counts are worse under matched surface burden and are not adopted"
+  },
+  "one_next_batch": {
+    "batch_id": "residual-error-floor-adapter-then-one3000Hz-diagnostic",
+    "status": "implementation_required_before_preregistration",
+    "conditional_frequency_operator_count": 1,
+    "diagnostic_frequency_Hz": 3000,
+    "next_PDE_command": null,
+    "implementation_blocker": "TisSweep.Net.solve hardcodes COCG residual1e-9 and max12000 iterations; current CLI/properties expose no tolerance switch. The existing cloud/reference/grouped adapters retain four frequencies. A residual/error-floor diagnostic adapter and unique finite3000Hz-only registration with explicit tolerance/version pins must be implemented before the one-frequency PDE diagnostic; adding an unknown flag/property would not change the solver.",
+    "approval_required": false,
+    "new_worker": false,
+    "new_budget_expansion": false
+  },
+  "exact_existing_commands_in_order": [
+    "cd /workspace/ngg-tis-task1",
+    "python tools/task1_cloud_batch.py --verify-originals",
+    "cat runtime/task1-budget.json"
+  ],
+  "execution_conditions": [
+    "No current executor is active; dual lock and exact PID/startticks observations are in checkpoint.json",
+    "Do not rerun completed/failed command output paths in completed_batch_history",
+    "Implement and test the honest residual/error-floor adapter first; fixed1e-9 solver has no tightening flag",
+    "Preregister one3000Hz-only operator with exact code/input/tolerance pins and unchanged original gates before a new unique execution"
+  ],
+  "resource_budget": {
+    "cpu": 1,
+    "max_wall_seconds": 180,
+    "max_RSS_GiB": 3,
+    "minimum_free_disk_GiB": 2,
+    "additional_output_allowance_MiB": 16,
+    "global_seconds_limit": 6600,
+    "spent_seconds_snapshot": 1871.0959264469986,
+    "active_C1_expected_seconds_not_yet_booked": 0,
+    "accounting": "All finite PDE jobs ended; exact current live ledger copied into docs/resource-ledger.json. Re-read live ledger before future implementation/diagnostic.",
+    "per_new_PDE_condition_limit_seconds_unchanged": 600,
+    "new_PDE": 0,
+    "new_workers": 0,
+    "remaining_seconds_snapshot": 4728.904073553002
+  },
+  "implementation_support_and_exact_blockers_for_later_PDE": {
+    "solver": "TisSweep.Net.solve hardcodes COCG stopping residual1e-9,max12000 iterations,and final residual gate2e-7; no properties or current CLI flags configure tolerance. Adding an unknown tolerance key would not tighten the solver.",
+    "CLI": "Current root preparation registers historical case_pool IDs or fixed reference/coupled/grouped/C1 plans; there is no residual-only or stricter-tolerance PDE registration. No nonexistent command is proposed.",
+    "geometry": "ShapeNet consumes frozen pad/i/j/area masks, checks pad IDs,positive area,per-face coverage and registered pad areas. A geometry property alone does not change contacts. Full square geometry and complete h² faces are explicitly checked by this audit.",
+    "mesh": "Fixed cap800000; h50/120 with SC4 already813888 cells and is rejected; SC8 bulk18/18/56 at that XY exceeds cap. Keep phantom fixed and do not silently expand cap.",
+    "needed_before_any_new_tolerance_PDE": "A separate reviewed numerical adapter/registration must expose actual solver stopping criteria,include those criteria in cache signature and metadata,retain default regression and all original gates,and preregister one finite3000Hz diagnostic only if this cache audit warrants it. Do not modify frozen TisSweep or automatically retry held runs."
+  },
+  "contact_uncertainty_future_separate": "PBS-derived area-specific interface impedance remains an uncertain skin-contact model. After numerical contact-edge sensitivity is characterized, preregister a distinct Rs-subtraction/contact-area-once sensitivity study with no duplicate subtraction or area scaling; current audit does not validate that physical assumption.",
+  "calculation_completed": true,
+  "numerically_validated": false,
+  "experimentally_validated": false,
+  "created_by_planning_only": false,
+  "completed_batch_history": [
+    {
+      "status": "executed_and_diagnostic_successor_completed",
+      "selection_before_update": {
+        "schema": "task1-next-bounded-batch-selection-v1",
+        "status": "selected_cache_only_audit_awaiting_root_serial_execution",
+        "scientific_priority": "Diagnose four-pad contact-edge growth and near-zero circuit-matrix sensitivity before further shape or pad-count exploration.",
+        "selection_evidence": {
+          "coarse_baseline": "39 scalar and 8 circuit checks passed; numerical package/reproduction checks remain separate",
+          "XY_0p625_to_0p5_square": "Jmax +5.2841846274%, contactV +5.2846221970%; both fail unchanged5% gate",
+          "coupled_grid": "h0.5mm SC8 bulk18/18/56 has786000 cells and passes36 registered coupled comparisons; does not clear XY/contact-edge hold",
+          "exact_Best1": "h50/120mm SC2 bulk14/14/40 native arrays complete,39 scalars pass,2/8 strict matrix comparisons fail; failed result preserved",
+          "grouped_pad_screen": "4/8/12/16 pads with two outputs are available at coarse grid; expanded counts are worse under matched surface burden and are not adopted"
+        },
+        "one_next_batch": {
+          "batch_id": "fourpad-contact-edge-cache-audit-v1",
+          "new_PDE_conditions": 0,
+          "native_cases_reused": [
+            {
+              "run_id": "cloud-mesh-c1-20261019T190000Z",
+              "candidate_id": "baseline-square15-xy80",
+              "h_xy_mm": 0.625,
+              "cells": 351680
+            },
+            {
+              "run_id": "cloud-reference-20261019T192000Z",
+              "candidate_id": "baseline-square15-xy100",
+              "h_xy_mm": 0.5,
+              "cells": 550200
+            },
+            {
+              "run_id": "cloud-reference-20261019T192000Z",
+              "candidate_id": "best1-square15-xy120",
+              "h_xy_mm": 0.4166666666666667,
+              "cells": 791280,
+              "use": "diagnostic_only; strict_reference_hold_preserved"
+            }
+          ],
+          "physics": "Same D50,0.1/5/5/15mm layers, top four square15mm pads, two outputs/commonGND,1Vpp HighZ/50ohm,3000/3030Hz square_3h with9000/9090Hz harmonics; only h and mask path/hash differ",
+          "inputs": "Small contacts,density,source,loss,config,metadata,validation and existing postprocess summaries; frozen waveform source read via AST; no E,phi or grid array decoding",
+          "verification": "Verify required small raw/config SHA against completed postprocess input_sha256 and registration pins; normal summary SHA against complete case receipt; held exact-reference summary captured and remains explicitly held; verify used inputs again afterward",
+          "outputs": [
+            "Independent actual four-frequency contact-normal J RMS,Jmax,area-weighted J95 and contact-voltage RMS; compare to published square_3h metrics at relative1e-10 plus absolute1e-14",
+            "Jmax patch pad/xy and distance to physical square boundary, normalized distance/h, nearest-corner distance",
+            "Fixed physical edge-distance bins [0,.25,.5,1,2,4,7.5]mm; positive-area weighted mean/P95/max; empty bins explicitly null",
+            "3000Hz source reciprocity,loss-Hermitian and sum(loss)-0.25Hermitian(source) defects",
+            "Native residual/conservation values as reported; no independently recomputed residual or rigorous forward-error bound"
+          ],
+          "interpretation": "Finite-grid edge sensitivity; no success promotion, no Jmax replacement, no relaxation of5% or historical componentwise matrix gates"
+        },
+        "exact_existing_commands_in_order": [
+          "python /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --verify-originals",
+          "python /workspace/ngg-tis-task1/tools/task1_contact_edge_audit.py --output /workspace/ngg-tis-task1/docs/cloud-restart-20261020/contact-edge-audit.json"
+        ],
+        "execution_conditions": [
+          "Root runs after the active true-C1 batch exits; helper takes the same global flock and POSIX lock and never waits or starts a worker",
+          "Output must be absent; preserve existing failures and completed native caches",
+          "Do not rerun completed historical operators, including held Best1 native cache merely because its successful-case receipt is absent"
+        ],
+        "resource_budget": {
+          "cpu": 1,
+          "max_wall_seconds": 180,
+          "max_RSS_GiB": 3,
+          "minimum_free_disk_GiB": 2,
+          "additional_output_allowance_MiB": 16,
+          "global_seconds_limit": 6600,
+          "spent_seconds_snapshot": 1559.9273241249982,
+          "active_C1_expected_seconds_not_yet_booked": 200,
+          "accounting": "Read live runtime/task1-budget.json under lock and debit elapsed time for success or failure; do not infer live budget from snapshot",
+          "per_new_PDE_condition_limit_seconds_unchanged": 600,
+          "new_PDE": 0,
+          "new_workers": 0
+        },
+        "implementation_support_and_exact_blockers_for_later_PDE": {
+          "solver": "TisSweep.Net.solve hardcodes COCG stopping residual1e-9,max12000 iterations,and final residual gate2e-7; no properties or current CLI flags configure tolerance. Adding an unknown tolerance key would not tighten the solver.",
+          "CLI": "Current root preparation registers historical case_pool IDs or fixed reference/coupled/grouped/C1 plans; there is no residual-only or stricter-tolerance PDE registration. No nonexistent command is proposed.",
+          "geometry": "ShapeNet consumes frozen pad/i/j/area masks, checks pad IDs,positive area,per-face coverage and registered pad areas. A geometry property alone does not change contacts. Full square geometry and complete h² faces are explicitly checked by this audit.",
+          "mesh": "Fixed cap800000; h50/120 with SC4 already813888 cells and is rejected; SC8 bulk18/18/56 at that XY exceeds cap. Keep phantom fixed and do not silently expand cap.",
+          "needed_before_any_new_tolerance_PDE": "A separate reviewed numerical adapter/registration must expose actual solver stopping criteria,include those criteria in cache signature and metadata,retain default regression and all original gates,and preregister one finite3000Hz diagnostic only if this cache audit warrants it. Do not modify frozen TisSweep or automatically retry held runs."
+        },
+        "contact_uncertainty_future_separate": "PBS-derived area-specific interface impedance remains an uncertain skin-contact model. After numerical contact-edge sensitivity is characterized, preregister a distinct Rs-subtraction/contact-area-once sensitivity study with no duplicate subtraction or area scaling; current audit does not validate that physical assumption.",
+        "calculation_completed": false,
+        "numerically_validated": false,
+        "experimentally_validated": false,
+        "created_by_planning_only": true
+      },
+      "original_commands_status": "Executed as history only; first target contact-edge-audit.json failed and stays immutable; do not rerun it",
+      "first_failed_artifact": {
+        "path": "docs/cloud-restart-20261020/contact-edge-audit.json",
+        "sha256": "41a98bf7fb5677ee432263bd809ba37efdd0798a587e074ef0bc0c928861ca03",
+        "bytes": 10261
+      },
+      "definition_diagnosis_v1": {
+        "path": "docs/cloud-restart-20261020/contact-edge-metric-diagnosis-v1.json",
+        "sha256": "454f0b0b37eef48d1a65da0c9914814eb78c40d4d5bee0767485d20bde3c49a7",
+        "bytes": 3528
+      },
+      "completed_successor_v2": {
+        "path": "docs/cloud-restart-20261020/contact-edge-audit-v2.json",
+        "sha256": "3710ec2b540cddaef5772e90486fa2bcaf3230a607fa6b1dd7605a83ddd377a4",
+        "bytes": 39671
+      },
+      "successor_status": "complete_diagnostic_only",
+      "new_PDE": 0
+    }
+  ],
+  "checkpoint": {
+    "path": "docs/cloud-restart-20261020/checkpoint.json",
+    "sha256": "1c45b9e5054282892700ce298758332ff4eaaf81fb42b4e68b568e2bcb9f3d82",
+    "bytes": 25018
+  },
+  "completed_diagnostic_v2": {
+    "executed": true,
+    "status": "complete_diagnostic_only",
+    "passed_diagnostic_checks": true,
+    "inputs_unchanged": true,
+    "source": {
+      "path": "docs/cloud-restart-20261020/contact-edge-audit-v2.json",
+      "sha256": "3710ec2b540cddaef5772e90486fa2bcaf3230a607fa6b1dd7605a83ddd377a4",
+      "bytes": 39671
+    },
+    "first_failure_preserved": {
+      "path": "docs/cloud-restart-20261020/contact-edge-audit.json",
+      "sha256": "41a98bf7fb5677ee432263bd809ba37efdd0798a587e074ef0bc0c928861ca03",
+      "bytes": 10261
+    },
+    "definition_correction_diagnosis": {
+      "path": "docs/cloud-restart-20261020/contact-edge-metric-diagnosis-v1.json",
+      "sha256": "454f0b0b37eef48d1a65da0c9914814eb78c40d4d5bee0767485d20bde3c49a7",
+      "bytes": 3528
+    },
+    "new_PDE": 0,
+    "convergence_or_physical_validation_promoted": false
+  }
+}

@@ -1,0 +1,3332 @@
+{
+  "schema": "task1-explicit-feedback-application-status-v1",
+  "status": "explicit_requirements_adopted_for_reporting_after_receipt_not_new_execution",
+  "created_utc": "2026-10-21T17:16:12.125730+00:00",
+  "feedback_id": "T1-F010-circuit-C1-GH6321929825",
+  "feedback": {
+    "id": 6321929825,
+    "updated_at": "2026-10-21T17:10:52Z",
+    "author": "yoodohyun-codex-cloud",
+    "body_sha256": "4362c45b25961dd7a3976d21a1cc4826763a3c00178dbccd90f0fe17bbed7aa7",
+    "body": "### T1-F010 — coherent 14조건 검토 / 귀환 재분배 회로 명세\n\n[9ad428c weak summary](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9ad428cbda7bcde7d6a38604841b01a8567f87a2/docs/cloud-next-coherent-weak-20261021T170000Z/summary.json) 및 [cc30621 strong summary](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/cc306218619a3c7d929a19ac4763d238fabfef96/docs/cloud-next-coherent-drive-20261021T165000Z/summary.json)를 검토했습니다. 14조건 모두 전체8항목 미통과입니다. 피부상한 단독 정규화의 목표 이득은 1Vpp 초과와 표층/비표적 증가를 동반하므로 strict source-ceiling 결과와 분리한 미채택 판단을 유지합니다. full-period Vpp bracket 및 KCL 감사는 게시 증거가 있으나 장비의 흡수·compliance는 미검증입니다. 특히 작은 혼합비의 주파수별 음의 metal-delivered power를 총전력 양수로 숨기지 않아야 합니다.\n\n다음 귀환 패드 전류 재분배 검토에서는 공통GND의 귀환전류를 독립 자유변수로 두지 마세요. 전류 분배 변경이 수동 임피던스 변경인지 독립 출력/귀환 topology 변경인지 회로 명세에 먼저 연결하고, 해당 회로의 주파수별 KCL·signed power·출력수와 전체 파형 Vpp를 확인해야 합니다. 기존 고정 회로의 장·전위를 재사용할 수 있는 범위와 새 회로 풀이가 필요한 범위를 구분해 주세요.\n\ncenter20 또는 ROI RMS를 맞춘 두 패드 대조는 각각 별도 정규화 cohort로 유지하고, footprint/접촉면적/귀환 topology를 명시해 주세요. 이러한 대조가 공통 전류·전력·피부상한 비교나 목표부피/비표적 검증을 대체하지는 않습니다.\n\n상태: 이 회로 명세 요구는 proposed, 채택·실행 검증 전입니다. 이미 준비 중인 계획에 대한 검토이며 새 실행·워커·예산 변경 지시가 아닙니다.",
+    "html_url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6321929825",
+    "source_path": "docs/cloud-return-current-context-20261021T172000Z/feedback-after.json",
+    "source_SHA256": "6033fbdc198791400ad2c79feec0bc4802aa4774b55563c4660409c02a5e7772",
+    "json_pointer": "/receipts/3/evidence/16",
+    "observed_utc": "2026-10-21T17:11:46.746061+00:00"
+  },
+  "observed_source_commit": "87235086555b4464bd3595c5ec30e00b0aabf99c",
+  "formal_adoption": {
+    "requirements_adopted_for_reporting": true,
+    "adoption_record_created_utc": "2026-10-21T17:16:12.125730+00:00",
+    "adoption_commit": null,
+    "adoption_commit_state": "pending root commit of these new documents",
+    "retroactive_causal_credit": false,
+    "peer_agreement_inferred": false,
+    "peer_review_of_return_results_claimed": false
+  },
+  "chronology": {
+    "code_implementation_commit": "9f3f68767ba3fa27e447ecd5d588e5631327d980",
+    "code_commit_utc": "2026-10-21T17:09:50Z",
+    "preregistration_commit": "f5b2757564efa68b31fdc01bab54ccafac6309ff",
+    "preregistration_commit_utc": "2026-10-21T17:10:32Z",
+    "return_queue_started_utc": "2026-10-21T17:10:33.105801+00:00",
+    "incoming_comment_updated_at": "2026-10-21T17:10:52Z",
+    "incoming_comment_arrived_during_already_registered_computation": true,
+    "return_result_completed_before_feedback_GET": true,
+    "first_observed_feedback_utc": "2026-10-21T17:11:46.746061+00:00",
+    "return_result_publication_commit": "87235086555b4464bd3595c5ec30e00b0aabf99c",
+    "return_publication_started_utc": "2026-10-21T17:11:47.876756+00:00",
+    "return_publication_finished_utc": "2026-10-21T17:11:52.381201+00:00",
+    "return_queue_finished_utc": "2026-10-21T17:11:52.898540+00:00",
+    "C1_finished_utc": "2026-10-21T17:09:06.994905+00:00",
+    "C1_publication_commit": "121bed2da204e99237f1d3e1876140703c2595a3",
+    "causal_statement": "Code, preregistration and numerical execution start preceded the comment timestamp. The comment was posted while the already-registered return scout ran; it was first observed by the stored GET after that calculation. This new document explicitly adopts the reporting/circuit requirements after receipt; it does not relabel the prior implementation as caused by this comment."
+  },
+  "dispositions": [
+    {
+      "requirement": "Keep coherent14 unadopted and skin-only/source-ceiling normalizations separate",
+      "decision": "adopted requirement; pre-existing calculations consistent",
+      "prior_evidence": [
+        "docs/cloud-next-coherent-drive-20261021T165000Z/summary.json",
+        "docs/cloud-next-coherent-weak-20261021T170000Z/summary.json"
+      ],
+      "execution": "strong8 and weak6 completed before comment; all14 fail full eight-screen; no new run by this document",
+      "limits": "No new peer validation or feasibility claim"
+    },
+    {
+      "requirement": "Do not treat common-GND return currents as independent degrees of freedom; identify circuit and cache validity",
+      "decision": "adopted and explicitly linked after receipt",
+      "implementation_commit": "9f3f68767ba3fa27e447ecd5d588e5631327d980",
+      "execution_commit": "f5b2757564efa68b31fdc01bab54ccafac6309ff",
+      "result_commit": "87235086555b4464bd3595c5ec30e00b0aabf99c",
+      "operation": "Only the existing two ideal-source command spectra change. At3000 c=[1,tau*q0], at3030 c=[tau*q1,1]; q is derived from actual fixed-network complex physical-pad response. No independent return command, passive impedance change, source port addition or GND topology change.",
+      "cached_basis_valid_scope": "Same linear material/contact/geometry, same two50ohm source branches/commonGND and noncommanded0V/50ohm terminations; coherent superposition changes commands within those fixed operators.",
+      "new_network_required_for": [
+        "Changed pad/contact/material/geometry",
+        "Changed source/output resistance or uncommanded termination",
+        "Finite/unequal GND-return impedances instead of the fixed ideal common node",
+        "Independent output or isolated-return topology changes"
+      ],
+      "validation": "Saved per-frequency physical-pad KCL/source response, signed source/metal/resistor power, actual full-period source Vpp and field/40probe waveform checks; metadata readback only here.",
+      "limits": "Canceling a pad NET current does not cancel local current density or make it an isolated pair. Actual hardware synchronization/sink/compliance and full mesh/contact convergence remain unverified."
+    },
+    {
+      "requirement": "Preserve weak small-mix negative per-frequency metal-delivered power despite positive totals",
+      "decision": "adopted reporting requirement; original signed arrays of scalar metadata retained",
+      "evidence": [
+        {
+          "condition_id": "coherent-weak-r0p05-p090",
+          "condition_path": "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p05-p090/condition.json",
+          "condition_SHA256": "2e679dd64f2ecf34351eaf758ee75f13b589fbf81cce39899f4a9163a570d0f1",
+          "normalization": "raw actual1Vpp command, before50ohm",
+          "negative_per_frequency_metal_power": [
+            {
+              "output_index": 0,
+              "frequency_Hz": 3030,
+              "ideal_source_power_W": 1.0651826426483672e-06,
+              "metal_delivered_power_W": -7.47521842065402e-07,
+              "source_resistor_loss_W": 1.812704484713769e-06
+            },
+            {
+              "output_index": 1,
+              "frequency_Hz": 3000,
+              "ideal_source_power_W": 1.0644420576992426e-06,
+              "metal_delivered_power_W": -7.5036939803777e-07,
+              "source_resistor_loss_W": 1.814811455737012e-06
+            }
+          ],
+          "positive_or_signed_totals_preserved": {
+            "ideal_source_power_W": 0.0008205212483027176,
+            "metal_delivered_power_W": 0.0006634330947005048,
+            "source_resistor_loss_W": 0.00015708815360221284
+          },
+          "aggregate_flags": {
+            "has_negative_metal_delivered_power": false,
+            "requires_output_power_absorption": true,
+            "requires_source_power_absorption": false,
+            "has_negative_per_frequency_ideal_source_power": false
+          },
+          "interpretation": "Per-output total metal power can be positive while an individual spectral line absorbs power; ideal-source sign, metal-terminal sign and resistor loss are distinct. No hardware absorption/compliance claim."
+        },
+        {
+          "condition_id": "coherent-weak-r0p05-p270",
+          "condition_path": "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p05-p270/condition.json",
+          "condition_SHA256": "3ba346d5b4e86c5631ff19a2fa523229117e888274c46a63d3438073a35226d2",
+          "normalization": "raw actual1Vpp command, before50ohm",
+          "negative_per_frequency_metal_power": [
+            {
+              "output_index": 0,
+              "frequency_Hz": 3030,
+              "ideal_source_power_W": 9.821031645348288e-07,
+              "metal_delivered_power_W": -3.858088204489767e-07,
+              "source_resistor_loss_W": 1.3679119849838058e-06
+            },
+            {
+              "output_index": 1,
+              "frequency_Hz": 3000,
+              "ideal_source_power_W": 9.806474138231078e-07,
+              "metal_delivered_power_W": -3.867666933316831e-07,
+              "source_resistor_loss_W": 1.3674141071547909e-06
+            }
+          ],
+          "positive_or_signed_totals_preserved": {
+            "ideal_source_power_W": 0.0008205212483033636,
+            "metal_delivered_power_W": 0.0006634330947007594,
+            "source_resistor_loss_W": 0.00015708815360260413
+          },
+          "aggregate_flags": {
+            "has_negative_metal_delivered_power": false,
+            "requires_output_power_absorption": true,
+            "requires_source_power_absorption": false,
+            "has_negative_per_frequency_ideal_source_power": false
+          },
+          "interpretation": "Per-output total metal power can be positive while an individual spectral line absorbs power; ideal-source sign, metal-terminal sign and resistor loss are distinct. No hardware absorption/compliance claim."
+        }
+      ],
+      "limits": "No negative clipping; net total positivity does not establish per-frequency passivity of a source terminal. Numerical load/metal absorption is not proof that hardware can sink it."
+    },
+    {
+      "requirement": "Keep center20 and ROI RMS C1 as separate cohorts with footprint/contact/topology",
+      "decision": "adopted reporting requirement; six distinct existing matches linked",
+      "implementation_commit": "a1724f684ade02a76741a762ebccb1dd6c054061",
+      "result_commit": "121bed2da204e99237f1d3e1876140703c2595a3",
+      "reference_pads": {
+        "TIS_n_physical_pads": 4,
+        "TIS_area_mm2_each": 225,
+        "TIS_total_area_mm2": 900,
+        "TIS_n_outputs": 2,
+        "TIS_common_GND_return_pads": 2,
+        "C1_n_physical_pads": 2,
+        "C1_area_mm2_each": 225,
+        "C1_total_area_mm2": 450,
+        "C1_n_outputs": 1,
+        "C1_common_GND_return_pads": 1
+      },
+      "C1": {
+        "case_id": "baseline-square15-C1pair0-xy80",
+        "source_run_id": "cloud-mesh-c1-20261019T190000Z",
+        "circuit": {
+          "n_pads": 2,
+          "n_outputs": 1,
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "n_return_nodes": 1,
+          "source_Vpp_each": 1.0,
+          "source_peak_V": 0.5,
+          "source_resistance_ohm": 50.0,
+          "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+          "pad_to_node": {
+            "0": "out0",
+            "1": "GND"
+          },
+          "carrier_assignment_Hz": [
+            3000
+          ],
+          "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+        },
+        "physical_pad_centres_mm": [
+          [
+            -10,
+            -10
+          ],
+          [
+            10,
+            -10
+          ]
+        ],
+        "waveform": "pure sine",
+        "frequency_Hz": 3000,
+        "raw_source_Vpp": 1.0,
+        "raw_centre20_E_RMS_V_m": 1.2724882373084518,
+        "raw_ROI_energy_RMS_V_m": 1.4021541287436026,
+        "raw_burdens": {
+          "source_current_RMS_mA": 0.9360029778823712,
+          "source_current_peak_mA": 1.3237081057428535,
+          "contact_J_RMS_max_A_m2": 14.97206451280276,
+          "contact_J_RMS_p95_A_m2": 10.90003792235967,
+          "contact_voltage_RMS_max_V": 0.001582679340464751,
+          "bulk_skin_J_RMS_max_A_m2": 14.918404227425533,
+          "bulk_skin_J_RMS_p95_A_m2": 4.405159927967392,
+          "SC_power_W": 6.883192716270774e-07,
+          "dermis_power_W": 0.00021880358900579235,
+          "skin_SC_plus_dermis_power_W": 0.00021949190827741944,
+          "fat_power_W": 4.7105612550053544e-05,
+          "muscle_power_W": 1.3149488224415134e-05,
+          "contact_power_W": 5.128814748537565e-07,
+          "tissue_contact_power_W": 0.00028025989052674185,
+          "source_resistor_power_W": 4.3805078730233336e-05,
+          "source_power_W": 0.0003240649693418138,
+          "loaded_metal_Vpp": 0.8707870325278405
+        },
+        "unloaded_probe_reference": {
+          "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json",
+          "condition_id": "baseline-square15-C1pair0-xy80-C1-3000Hz-sine",
+          "scaling": "Existing sine phi-derived Vpp/RMS multiply by each matching amplitude_scale; instrument loading not established"
+        }
+      },
+      "cohorts": [
+        {
+          "id": "latest_coherent_raw_1Vpp",
+          "target_centre20_E_RMS_V_m": 1.326585509567516,
+          "target_ROI_energy_RMS_V_m": 1.4642575774751931,
+          "reference_circuit": {
+            "n_pads": 4,
+            "n_outputs": 2,
+            "n_return_nodes": 1,
+            "pad_to_node": {
+              "0": "out0",
+              "1": "out1",
+              "2": "GND",
+              "3": "GND"
+            },
+            "return_topology": "all_return_pads_ideal_common_GND",
+            "source_resistance_ohm": 50,
+            "active_frequencies_by_output_Hz": {
+              "0": [
+                3000,
+                3030
+              ],
+              "1": [
+                3000,
+                3030
+              ]
+            },
+            "uncommanded_frequency_termination": "0V through50ohm",
+            "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+          },
+          "reference_source_Vpp_intervals_V": [
+            [
+              0.9999992544051025,
+              1.0
+            ],
+            [
+              0.9999992543822719,
+              1.0
+            ]
+          ],
+          "matches": {
+            "centre20_E_RMS": {
+              "required_source_Vpp": 1.0425129841463132,
+              "amplitude_scale": 1.0425129841463132,
+              "burdens": {
+                "source_current_RMS_mA": 0.9757952576419864,
+                "source_current_peak_mA": 1.3799828874566458,
+                "contact_J_RMS_max_A_m2": 15.608571654073122,
+                "contact_J_RMS_p95_A_m2": 11.36343106174716,
+                "contact_voltage_RMS_max_V": 0.0016499637621746265,
+                "bulk_skin_J_RMS_max_A_m2": 15.552630109834366,
+                "bulk_skin_J_RMS_p95_A_m2": 4.592436422147044,
+                "SC_power_W": 7.48088320657305e-07,
+                "dermis_power_W": 0.00023780303152955523,
+                "skin_SC_plus_dermis_power_W": 0.00023855111985021256,
+                "fat_power_W": 5.119594937797319e-05,
+                "muscle_power_W": 1.4291301971035434e-05,
+                "contact_power_W": 5.574166771658572e-07,
+                "tissue_contact_power_W": 0.000304595787876387,
+                "source_resistor_power_W": 4.760881924182953e-05,
+                "source_power_W": 0.0003522046072104219,
+                "loaded_metal_Vpp": 0.9078067878365117
+              },
+              "achieved_centre20_E_RMS_V_m": 1.326585509567516,
+              "achieved_ROI_energy_RMS_V_m": 1.4617638849895669
+            },
+            "ROI_energy_RMS": {
+              "required_source_Vpp": 1.044291456594175,
+              "amplitude_scale": 1.044291456594175,
+              "burdens": {
+                "source_current_RMS_mA": 0.9774599131492667,
+                "source_current_peak_mA": 1.3823370658517207,
+                "contact_J_RMS_max_A_m2": 15.63519905829675,
+                "contact_J_RMS_p95_A_m2": 11.382816478872725,
+                "contact_voltage_RMS_max_V": 0.0016527785137754431,
+                "bulk_skin_J_RMS_max_A_m2": 15.579162080718907,
+                "bulk_skin_J_RMS_p95_A_m2": 4.600270877707359,
+                "SC_power_W": 7.506428966287513e-07,
+                "dermis_power_W": 0.00023861508258490215,
+                "skin_SC_plus_dermis_power_W": 0.00023936572548153093,
+                "fat_power_W": 5.137077357787706e-05,
+                "muscle_power_W": 1.4340103984925735e-05,
+                "contact_power_W": 5.593201465962048e-07,
+                "tissue_contact_power_W": 0.0003056359231909299,
+                "source_resistor_power_W": 4.777139409068861e-05,
+                "source_power_W": 0.00035340731737413877,
+                "loaded_metal_Vpp": 0.9093554585818178
+              },
+              "achieved_centre20_E_RMS_V_m": 1.3288485948377975,
+              "achieved_ROI_energy_RMS_V_m": 1.4642575774751931
+            }
+          }
+        },
+        {
+          "id": "latest_coherent_original_skin8",
+          "target_centre20_E_RMS_V_m": 2.0070544643453694,
+          "target_ROI_energy_RMS_V_m": 2.2153450996017763,
+          "reference_circuit": {
+            "n_pads": 4,
+            "n_outputs": 2,
+            "n_return_nodes": 1,
+            "pad_to_node": {
+              "0": "out0",
+              "1": "out1",
+              "2": "GND",
+              "3": "GND"
+            },
+            "return_topology": "all_return_pads_ideal_common_GND",
+            "source_resistance_ohm": 50,
+            "active_frequencies_by_output_Hz": {
+              "0": [
+                3000,
+                3030
+              ],
+              "1": [
+                3000,
+                3030
+              ]
+            },
+            "uncommanded_frequency_termination": "0V through50ohm",
+            "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+          },
+          "reference_source_Vpp_intervals_V": [
+            [
+              1.5129465484287756,
+              1.5129476764748433
+            ],
+            [
+              1.512946548394234,
+              1.5129476764748433
+            ]
+          ],
+          "matches": {
+            "centre20_E_RMS": {
+              "required_source_Vpp": 1.5772675970590195,
+              "amplitude_scale": 1.5772675970590195,
+              "burdens": {
+                "source_current_RMS_mA": 1.4763271677646141,
+                "source_current_peak_mA": 2.0878419031525772,
+                "contact_J_RMS_max_A_m2": 23.61495221712103,
+                "contact_J_RMS_p95_A_m2": 17.192276621652425,
+                "contact_voltage_RMS_max_V": 0.0024963088402497917,
+                "bulk_skin_J_RMS_max_A_m2": 23.53031558774659,
+                "bulk_skin_J_RMS_p95_A_m2": 6.948116014245812,
+                "SC_power_W": 1.7123821493965762e-06,
+                "dermis_power_W": 0.0005443336769458027,
+                "skin_SC_plus_dermis_power_W": 0.0005460460590951993,
+                "fat_power_W": 0.00011718807447658549,
+                "muscle_power_W": 3.271294272491088e-05,
+                "contact_power_W": 1.275932722644421e-06,
+                "tissue_contact_power_W": 0.00069722300901934,
+                "source_resistor_power_W": 0.00010897709531399438,
+                "source_power_W": 0.0008062001045443936,
+                "loaded_metal_Vpp": 1.3734641703453412
+              },
+              "achieved_centre20_E_RMS_V_m": 2.0070544643453694,
+              "achieved_ROI_energy_RMS_V_m": 2.2115722733498053
+            },
+            "ROI_energy_RMS": {
+              "required_source_Vpp": 1.5799583328166869,
+              "amplitude_scale": 1.5799583328166869,
+              "burdens": {
+                "source_current_RMS_mA": 1.4788457044464853,
+                "source_current_peak_mA": 2.0914036518854133,
+                "contact_J_RMS_max_A_m2": 23.65523808647173,
+                "contact_J_RMS_p95_A_m2": 17.22160574345005,
+                "contact_voltage_RMS_max_V": 0.0025005674121441014,
+                "bulk_skin_J_RMS_max_A_m2": 23.570457071448658,
+                "bulk_skin_J_RMS_p95_A_m2": 6.959969135582237,
+                "SC_power_W": 1.7182296010570147e-06,
+                "dermis_power_W": 0.0005461924704774982,
+                "skin_SC_plus_dermis_power_W": 0.0005479107000785553,
+                "fat_power_W": 0.00011758824893584575,
+                "muscle_power_W": 3.28246510555087e-05,
+                "contact_power_W": 1.2802897844838382e-06,
+                "tissue_contact_power_W": 0.0006996038898543935,
+                "source_resistor_power_W": 0.00010934923087799108,
+                "source_power_W": 0.0008089531209441646,
+                "loaded_metal_Vpp": 1.375807228151077
+              },
+              "achieved_centre20_E_RMS_V_m": 2.0104783939467064,
+              "achieved_ROI_energy_RMS_V_m": 2.2153450996017763
+            }
+          }
+        },
+        {
+          "id": "canonical_four_line_square_1Vpp",
+          "target_centre20_E_RMS_V_m": 2.095037820228884,
+          "target_ROI_energy_RMS_V_m": 2.3126345923350664,
+          "reference_circuit": {
+            "n_pads": 4,
+            "n_outputs": 2,
+            "return_topology": "all_return_pads_ideal_common_GND",
+            "n_return_nodes": 1,
+            "source_Vpp_each": 1.0,
+            "source_peak_V": 0.5,
+            "source_resistance_ohm": 50.0,
+            "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+            "pad_to_node": {
+              "0": "out0",
+              "1": "out1",
+              "2": "GND",
+              "3": "GND"
+            },
+            "carrier_assignment_Hz": [
+              3000,
+              3030
+            ],
+            "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+          },
+          "reference_source_Vpp_intervals_V": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "matches": {
+            "centre20_E_RMS": {
+              "required_source_Vpp": 1.6464103626295805,
+              "amplitude_scale": 1.6464103626295805,
+              "burdens": {
+                "source_current_RMS_mA": 1.541045002237682,
+                "source_current_peak_mA": 2.1793667423918066,
+                "contact_J_RMS_max_A_m2": 24.650162163837066,
+                "contact_J_RMS_p95_A_m2": 17.945935388428364,
+                "contact_voltage_RMS_max_V": 0.002605739666860916,
+                "bulk_skin_J_RMS_max_A_m2": 24.56181531393034,
+                "bulk_skin_J_RMS_p95_A_m2": 7.252700954446091,
+                "SC_power_W": 1.8658043916255488e-06,
+                "dermis_power_W": 0.0005931036861795448,
+                "skin_SC_plus_dermis_power_W": 0.0005949694905711704,
+                "fat_power_W": 0.00012768763332507573,
+                "muscle_power_W": 3.564388487735762e-05,
+                "contact_power_W": 1.390250930942964e-06,
+                "tissue_contact_power_W": 0.0007596912597045467,
+                "source_resistor_power_W": 0.00011874098494608687,
+                "source_power_W": 0.0008784322448806027,
+                "loaded_metal_Vpp": 1.4336727939972982
+              },
+              "achieved_centre20_E_RMS_V_m": 2.095037820228884,
+              "achieved_ROI_energy_RMS_V_m": 2.308521087567318
+            },
+            "ROI_energy_RMS": {
+              "required_source_Vpp": 1.6493440663383405,
+              "amplitude_scale": 1.6493440663383405,
+              "burdens": {
+                "source_current_RMS_mA": 1.543790957645306,
+                "source_current_peak_mA": 2.18325010977094,
+                "contact_J_RMS_max_A_m2": 24.69408576502607,
+                "contact_J_RMS_p95_A_m2": 17.977912870106817,
+                "contact_voltage_RMS_max_V": 0.0026103827791118155,
+                "bulk_skin_J_RMS_max_A_m2": 24.60558149174112,
+                "bulk_skin_J_RMS_p95_A_m2": 7.26562438846445,
+                "SC_power_W": 1.8724595902786186e-06,
+                "dermis_power_W": 0.0005952192470985295,
+                "skin_SC_plus_dermis_power_W": 0.0005970917066888081,
+                "fat_power_W": 0.00012814308651681056,
+                "muscle_power_W": 3.577102421505598e-05,
+                "contact_power_W": 1.3952098624175436e-06,
+                "tissue_contact_power_W": 0.0007624010272830921,
+                "source_resistor_power_W": 0.00011916452604537054,
+                "source_power_W": 0.0008815655535592522,
+                "loaded_metal_Vpp": 1.4362274251441653
+              },
+              "achieved_centre20_E_RMS_V_m": 2.0987709236900294,
+              "achieved_ROI_energy_RMS_V_m": 2.3126345923350664
+            }
+          }
+        }
+      ],
+      "point_definition": "Native complex E trilinear interpolation at(0,0,20)mm, sqrt(sum_f dot(E*,E)/2); same original electrical metric",
+      "ROI_definition": "Central r<=5mm, depth15..20; full-precision fractional volume; sqrt(weighted mean of native E_RMS squared), NOT mean(E_RMS)",
+      "limits": "RMS matching is neither matched total current/power/skin burden nor modulation/physiological equivalence. Two-pad C1 footprint differs from4pad TIS; no eight-screen/target-volume substitute or loaded-instrument validation."
+    }
+  ],
+  "return_scout": {
+    "summary_path": "docs/cloud-next-return-current-20261021T172000Z/summary.json",
+    "summary_SHA256": "482146de98397f3753404aaad2355b0832ff8b64bfbc201d8e9446aa971a2ae1",
+    "status": "calculated_unadopted",
+    "resources": {
+      "CPU_count": 1,
+      "max_batch_seconds": 600,
+      "max_condition_seconds": 60,
+      "peak_RSS_bytes": 553181184,
+      "wall_seconds": 70.01292848699813,
+      "cumulative_budget_limit_seconds": 13800,
+      "new_PDE": 0
+    },
+    "new_PDE": 0,
+    "conditions": [
+      {
+        "id": "return-net-square-tau0",
+        "geometry": "adjacent-square",
+        "tau": 0.0,
+        "condition_path": "docs/cloud-next-return-current-20261021T172000Z/return-net-square-tau0/condition.json",
+        "condition_SHA256": "220924f62826c6c35ba28291efa9a7bf9e66dc41db6858f2ed0be19ca7768d6c",
+        "source_circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "n_return_nodes": 1,
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "source_resistance_ohm": 50,
+          "active_frequencies_by_output_Hz": {
+            "0": [
+              3000
+            ],
+            "1": [
+              3030
+            ]
+          },
+          "uncommanded_frequency_termination": "0V through50ohm",
+          "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+        },
+        "seed_coefficients": {
+          "3000": {
+            "real": [
+              1.0,
+              -0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.0,
+              1.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "coefficient_vectors": {
+          "3000": {
+            "real": [
+              0.9999999999999929,
+              -0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.0,
+              0.9999999999999929
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "actual_raw_source_Vpp_intervals_V": [
+          [
+            0.9999999999999929,
+            1.0
+          ],
+          [
+            0.9999999999999929,
+            1.0
+          ]
+        ],
+        "source_normalization": "one global amplitude factor; not independent column normalization",
+        "physical_pad_current_evidence": {
+          "physical_pads": 4,
+          "independent_outputs": 2,
+          "common_GND_return_pads": [
+            2,
+            3
+          ],
+          "spectrum": [
+            {
+              "frequency_Hz": 3000,
+              "pad_current_peak_real_A": [
+                0.001766131119338566,
+                -0.000627428140243077,
+                -0.000358043322270028,
+                -0.0007806596568224726
+              ],
+              "pad_current_peak_imaginary_A": [
+                0.00034993375426621256,
+                -0.00012236236000412972,
+                -3.7599363573252766e-05,
+                -0.00018997201076627172
+              ],
+              "KCL_groupwise_relative_error": 1.1065232068963285e-08,
+              "source_groupwise_relative_error": 3.076483307375696e-10
+            },
+            {
+              "frequency_Hz": 3030,
+              "pad_current_peak_real_A": [
+                -0.0006280465980195311,
+                0.0017679500143981688,
+                -0.000781712713513835,
+                -0.00035819070363179886
+              ],
+              "pad_current_peak_imaginary_A": [
+                -0.0001216416896382237,
+                0.00034806187965562,
+                -0.00018896799421949022,
+                -3.74521964639281e-05
+              ],
+              "KCL_groupwise_relative_error": 5.637477439416078e-10,
+              "source_groupwise_relative_error": 8.278331026800178e-10
+            }
+          ],
+          "physical_pad_current_RMS_mA": [
+            1.351094369948467,
+            1.351930646112173,
+            0.6230539310813202,
+            0.6225841757758452
+          ],
+          "maximum_groupwise_relative_error": 1.1065232068963285e-08
+        },
+        "return_cancellation_validation": {
+          "frequencies": [
+            {
+              "frequency_Hz": 3000,
+              "wrong_return_pad": 2,
+              "net_current_real_A": -0.000358043322270028,
+              "net_current_imaginary_A": -3.7599363573252766e-05,
+              "net_current_over_max_source_current": 0.19995512788382855,
+              "wrong_return_local_J_peak_max_A_m2": 7.629205657038581,
+              "wrong_return_absolute_patch_current_integral_A": 0.0003715721912881971
+            },
+            {
+              "frequency_Hz": 3030,
+              "wrong_return_pad": 3,
+              "net_current_real_A": -0.00035819070363179886,
+              "net_current_imaginary_A": -3.74521964639281e-05,
+              "net_current_over_max_source_current": 0.19987019462831526,
+              "wrong_return_local_J_peak_max_A_m2": 7.670884408353758,
+              "wrong_return_absolute_patch_current_integral_A": 0.0003716576369091995
+            }
+          ],
+          "full_cancel_tolerance": 2e-06,
+          "common_GND_nodes": 1,
+          "zero_net_implies_zero_local_J": false,
+          "isolated_pairs": false
+        },
+        "signed_power": {
+          "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+          "outputs": [
+            {
+              "output_index": 0,
+              "ideal_source_power_W": 0.00044153277983466143,
+              "metal_delivered_power_W": 0.00035025997999324704,
+              "source_resistor_loss_W": 9.127279984141444e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": 0.0017661311193386583,
+                    "imaginary": 0.00034993375426684085
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.4116934440330635,
+                    "imaginary": -0.017496687713342042
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.49999999999999645,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.00044153277983466143,
+                  "metal_delivered_power_W": 0.00036049096075786876,
+                  "source_resistor_loss_W": 8.10418190767927e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": -0.0006280465982458077,
+                    "imaginary": -0.00012164169111262252
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.03140232991229038,
+                    "imaginary": 0.006082084555631126
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.0,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": -0.0,
+                  "metal_delivered_power_W": -1.023098076462174e-05,
+                  "source_resistor_loss_W": 1.0230980764621738e-05
+                }
+              ]
+            },
+            {
+              "output_index": 1,
+              "ideal_source_power_W": 0.0004419875035996302,
+              "metal_delivered_power_W": 0.0003506016799968871,
+              "source_resistor_loss_W": 9.138582360274311e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": -0.0006274281405790619,
+                    "imaginary": -0.0001223623595637545
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.031371407028953094,
+                    "imaginary": 0.006118117978187725
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.0,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": -0.0,
+                  "metal_delivered_power_W": -1.0215965465712715e-05,
+                  "source_resistor_loss_W": 1.0215965465712717e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": 0.0017679500143985335,
+                    "imaginary": 0.0003480618796556753
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.41160249928006976,
+                    "imaginary": -0.017403093982783762
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.49999999999999645,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.0004419875035996302,
+                  "metal_delivered_power_W": 0.0003608176454625998,
+                  "source_resistor_loss_W": 8.11698581370304e-05
+                }
+              ]
+            }
+          ],
+          "totals": {
+            "ideal_source_power_W": 0.0008835202834342917,
+            "metal_delivered_power_W": 0.0007008616599901342,
+            "source_resistor_loss_W": 0.00018265862344415756
+          },
+          "requires_source_power_absorption": false,
+          "requires_output_power_absorption": true,
+          "hardware_absorption_and_compliance_validated": false
+        },
+        "field_waveform_passed": true,
+        "probe40_waveform_passed": true,
+        "skin8_source_Vpp_intervals_V": [
+          [
+            1.078092494625656,
+            1.0780924946256636
+          ],
+          [
+            1.078092494625656,
+            1.0780924946256636
+          ]
+        ],
+        "active_skin8_caps": [
+          "bulk_skin_J_vector_RMS_p95_A_m2"
+        ],
+        "eight_gate_screen": {
+          "checks": [
+            {
+              "name": "primary_maxTIS_mean",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 4.061848941601601,
+              "candidate": 3.459575163314036,
+              "passed": false,
+              "relative_change_percent": -14.827576971636125,
+              "arithmetic_tolerance": 4.071848941601601e-10
+            },
+            {
+              "name": "primary_maxTIS_p10",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 3.6457357391300533,
+              "candidate": 3.1573506489142673,
+              "passed": false,
+              "relative_change_percent": -13.396063926792579,
+              "arithmetic_tolerance": 3.6557357391300533e-10
+            },
+            {
+              "name": "surface_0_5_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 25.25922183168775,
+              "candidate": 53.158344809843115,
+              "passed": false,
+              "relative_change_percent": 110.45123703358057,
+              "arithmetic_tolerance": 2.526922183168775e-09
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 7.766529017857144e-06,
+              "candidate": 8.660731026785714e-06,
+              "passed": false,
+              "relative_change_percent": 11.513534641698776,
+              "arithmetic_tolerance": 7.7765290178571445e-16
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 8.209453125000001e-06,
+              "candidate": 8.938158482142857e-06,
+              "passed": false,
+              "relative_change_percent": 8.876417783832036,
+              "arithmetic_tolerance": 8.219453125000001e-16
+            },
+            {
+              "name": "primary_complement_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 23.43571858123385,
+              "candidate": 26.97918319342987,
+              "passed": false,
+              "relative_change_percent": 15.119931569042855,
+              "arithmetic_tolerance": 2.344571858123385e-09
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 1.9399655254908982e-05,
+              "candidate": 2.2006702684164062e-05,
+              "passed": false,
+              "relative_change_percent": 13.438627619918053,
+              "arithmetic_tolerance": 1.940965525490898e-15
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 2.1155655660629288e-05,
+              "candidate": 2.3983896787677508e-05,
+              "passed": false,
+              "relative_change_percent": 13.368723581144227,
+              "arithmetic_tolerance": 2.1165655660629285e-15
+            }
+          ],
+          "all_screen_checks_passed": false,
+          "failed_checks": [
+            "primary_maxTIS_mean",
+            "primary_maxTIS_p10",
+            "surface_0_5_maxTIS_p95",
+            "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+            "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+            "primary_complement_maxTIS_p95",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_p10"
+          ],
+          "normalization": "skin_contact_only"
+        },
+        "candidate_adopted": false
+      },
+      {
+        "id": "return-net-square-tau0p5",
+        "geometry": "adjacent-square",
+        "tau": 0.5,
+        "condition_path": "docs/cloud-next-return-current-20261021T172000Z/return-net-square-tau0p5/condition.json",
+        "condition_SHA256": "fd2165b6a967fa79a410014965ca4ba0854c941f3aaefd1184e4f13e5edeec45",
+        "source_circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "n_return_nodes": 1,
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "source_resistance_ohm": 50,
+          "active_frequencies_by_output_Hz": {
+            "0": [
+              3000,
+              3030
+            ],
+            "1": [
+              3000,
+              3030
+            ]
+          },
+          "uncommanded_frequency_termination": "0V through50ohm",
+          "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+        },
+        "seed_coefficients": {
+          "3000": {
+            "real": [
+              1.0,
+              -0.22203286339391198
+            ],
+            "imaginary": [
+              0.0,
+              0.02994947609243206
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.22192852646040748,
+              1.0
+            ],
+            "imaginary": [
+              0.029692865257833375,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "coefficient_vectors": {
+          "3000": {
+            "real": [
+              0.8169809702778016,
+              -0.18139662416911678
+            ],
+            "imaginary": [
+              0.0,
+              0.024468152037306967
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.18131138287994647,
+              0.8169809702778016
+            ],
+            "imaginary": [
+              0.024258505868672738,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "actual_raw_source_Vpp_intervals_V": [
+          [
+            0.9998842675041715,
+            0.9998850083044936
+          ],
+          [
+            0.9999992497093182,
+            1.0
+          ]
+        ],
+        "source_normalization": "one global amplitude factor; not independent column normalization",
+        "physical_pad_current_evidence": {
+          "physical_pads": 4,
+          "independent_outputs": 2,
+          "common_GND_return_pads": [
+            2,
+            3
+          ],
+          "spectrum": [
+            {
+              "frequency_Hz": 3000,
+              "pad_current_peak_real_A": [
+                0.0015597028428975196,
+                -0.0008415293059856,
+                -0.00014625729041482853,
+                -0.0005719162469770665
+              ],
+              "pad_current_peak_imaginary_A": [
+                0.00029273332999300383,
+                -0.00012023055656261755,
+                -1.535898226695201e-05,
+                -0.0001571437785033375
+              ],
+              "KCL_groupwise_relative_error": 7.983429903666641e-09,
+              "source_groupwise_relative_error": 2.8524286515279037e-10
+            },
+            {
+              "frequency_Hz": 3030,
+              "pad_current_peak_real_A": [
+                -0.000842095042152876,
+                0.001561204360969896,
+                -0.0005727918250267901,
+                -0.0001463174942987989
+              ],
+              "pad_current_peak_imaginary_A": [
+                -0.00011959870055508833,
+                0.00029117948306474817,
+                -0.00015628191702253316,
+                -1.529886590306746e-05
+              ],
+              "KCL_groupwise_relative_error": 4.13695185858453e-10,
+              "source_groupwise_relative_error": 7.672841168648541e-10
+            }
+          ],
+          "physical_pad_current_RMS_mA": [
+            1.2731444674160741,
+            1.273729073946504,
+            0.43251682380083367,
+            0.43210254865855513
+          ],
+          "maximum_groupwise_relative_error": 7.983429903666641e-09
+        },
+        "return_cancellation_validation": {
+          "frequencies": [
+            {
+              "frequency_Hz": 3000,
+              "wrong_return_pad": 2,
+              "net_current_real_A": -0.00014625729041482853,
+              "net_current_imaginary_A": -1.535898226695201e-05,
+              "net_current_over_max_source_current": 0.09267010907591879,
+              "wrong_return_local_J_peak_max_A_m2": 4.0445862932420065,
+              "wrong_return_absolute_patch_current_integral_A": 0.0001542990161781415
+            },
+            {
+              "frequency_Hz": 3030,
+              "wrong_return_pad": 3,
+              "net_current_real_A": -0.0001463174942987989,
+              "net_current_imaginary_A": -1.529886590306746e-05,
+              "net_current_over_max_source_current": 0.09263441922152126,
+              "wrong_return_local_J_peak_max_A_m2": 4.067207018995382,
+              "wrong_return_absolute_patch_current_integral_A": 0.00015433537695103372
+            }
+          ],
+          "full_cancel_tolerance": 2e-06,
+          "common_GND_nodes": 1,
+          "zero_net_implies_zero_local_J": false,
+          "isolated_pairs": false
+        },
+        "signed_power": {
+          "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+          "outputs": [
+            {
+              "output_index": 0,
+              "ideal_source_power_W": 0.00035600691820156905,
+              "metal_delivered_power_W": 0.0002749620764387046,
+              "source_resistor_loss_W": 8.10448417628645e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": 0.0015597028429424453,
+                    "imaginary": 0.0002927333299083275
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.33050534299177853,
+                    "imaginary": -0.014636666495416374
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.4084904851389008,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.0003185618854930411,
+                  "metal_delivered_power_W": 0.00025560274147499204,
+                  "source_resistor_loss_W": 6.295914401804909e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": -0.0008420950423378925,
+                    "imaginary": -0.00011959870175950447
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.048550939323078614,
+                    "imaginary": 0.018109188022311592
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.09065569143997323,
+                    "imaginary": 0.012129252934336369
+                  },
+                  "ideal_source_power_W": 3.744503270852795e-05,
+                  "metal_delivered_power_W": 1.9359334963712548e-05,
+                  "source_resistor_loss_W": 1.8085697744815397e-05
+                }
+              ]
+            },
+            {
+              "output_index": 1,
+              "ideal_source_power_W": 0.000356295752371524,
+              "metal_delivered_power_W": 0.0002751764646590627,
+              "source_resistor_loss_W": 8.111928771246127e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": -0.0008415293062601571,
+                    "imaginary": -0.00012023055620272674
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.048621846771550535,
+                    "imaginary": 0.01824560382878982
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.09069831208455839,
+                    "imaginary": 0.012234076018653483
+                  },
+                  "ideal_source_power_W": 3.742718894156825e-05,
+                  "metal_delivered_power_W": 1.9361514943080293e-05,
+                  "source_resistor_loss_W": 1.806567399848796e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": 0.001561204361083365,
+                    "imaginary": 0.00029117948329718333
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.33043026708473255,
+                    "imaginary": -0.014558974164859167
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.4084904851389008,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.0003188685634299557,
+                  "metal_delivered_power_W": 0.00025581494971598244,
+                  "source_resistor_loss_W": 6.305361371397331e-05
+                }
+              ]
+            }
+          ],
+          "totals": {
+            "ideal_source_power_W": 0.0007123026705730931,
+            "metal_delivered_power_W": 0.0005501385410977673,
+            "source_resistor_loss_W": 0.00016216412947532577
+          },
+          "requires_source_power_absorption": false,
+          "requires_output_power_absorption": false,
+          "hardware_absorption_and_compliance_validated": false
+        },
+        "field_waveform_passed": true,
+        "probe40_waveform_passed": true,
+        "skin8_source_Vpp_intervals_V": [
+          [
+            1.1787971125783285,
+            1.1787979859326847
+          ],
+          [
+            1.1789326689580315,
+            1.1789335535008911
+          ]
+        ],
+        "active_skin8_caps": [
+          "bulk_skin_J_vector_RMS_p95_A_m2"
+        ],
+        "eight_gate_screen": {
+          "checks": [
+            {
+              "name": "primary_maxTIS_mean",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 4.061848941601601,
+              "candidate": 3.260466982678854,
+              "passed": false,
+              "relative_change_percent": -19.72948700073418,
+              "arithmetic_tolerance": 4.071848941601601e-10
+            },
+            {
+              "name": "primary_maxTIS_p10",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 3.6457357391300533,
+              "candidate": 2.7356952732712703,
+              "passed": false,
+              "relative_change_percent": -24.961778114941957,
+              "arithmetic_tolerance": 3.6557357391300533e-10
+            },
+            {
+              "name": "surface_0_5_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 25.25922183168775,
+              "candidate": 59.845174875989024,
+              "passed": false,
+              "relative_change_percent": 136.92406391123706,
+              "arithmetic_tolerance": 2.526922183168775e-09
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 7.766529017857144e-06,
+              "candidate": 7.716953125e-06,
+              "passed": true,
+              "relative_change_percent": -0.6383275301380609,
+              "arithmetic_tolerance": 7.7765290178571445e-16
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 8.209453125000001e-06,
+              "candidate": 8.266372767857143e-06,
+              "passed": false,
+              "relative_change_percent": 0.693342686662124,
+              "arithmetic_tolerance": 8.219453125000001e-16
+            },
+            {
+              "name": "primary_complement_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 23.43571858123385,
+              "candidate": 33.28843036890128,
+              "passed": false,
+              "relative_change_percent": 42.04143241230498,
+              "arithmetic_tolerance": 2.344571858123385e-09
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 1.9399655254908982e-05,
+              "candidate": 2.1516764856321485e-05,
+              "passed": false,
+              "relative_change_percent": 10.913130020064553,
+              "arithmetic_tolerance": 1.940965525490898e-15
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 2.1155655660629288e-05,
+              "candidate": 2.3512160595740605e-05,
+              "passed": false,
+              "relative_change_percent": 11.138888687325244,
+              "arithmetic_tolerance": 2.1165655660629285e-15
+            }
+          ],
+          "all_screen_checks_passed": false,
+          "failed_checks": [
+            "primary_maxTIS_mean",
+            "primary_maxTIS_p10",
+            "surface_0_5_maxTIS_p95",
+            "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+            "primary_complement_maxTIS_p95",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_p10"
+          ],
+          "normalization": "skin_contact_only"
+        },
+        "candidate_adopted": false
+      },
+      {
+        "id": "return-net-square-tau1",
+        "geometry": "adjacent-square",
+        "tau": 1.0,
+        "condition_path": "docs/cloud-next-return-current-20261021T172000Z/return-net-square-tau1/condition.json",
+        "condition_SHA256": "7230e59cab7a6ab272cc2a14883965a378ae00593a8f8dbd9980fb217f1b2a66",
+        "source_circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "n_return_nodes": 1,
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "source_resistance_ohm": 50,
+          "active_frequencies_by_output_Hz": {
+            "0": [
+              3000,
+              3030
+            ],
+            "1": [
+              3000,
+              3030
+            ]
+          },
+          "uncommanded_frequency_termination": "0V through50ohm",
+          "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+        },
+        "seed_coefficients": {
+          "3000": {
+            "real": [
+              1.0,
+              -0.44406572678782397
+            ],
+            "imaginary": [
+              0.0,
+              0.05989895218486412
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.44385705292081495,
+              1.0
+            ],
+            "imaginary": [
+              0.05938573051566675,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "coefficient_vectors": {
+          "3000": {
+            "real": [
+              0.690586248614846,
+              -0.3066656844008285
+            ],
+            "imaginary": [
+              0.0,
+              0.04136539268530535
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.30652157709782674,
+              0.690586248614846
+            ],
+            "imaginary": [
+              0.04101096885806648,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "actual_raw_source_Vpp_intervals_V": [
+          [
+            0.999805526465753,
+            0.999806269089573
+          ],
+          [
+            0.9999992515781166,
+            1.0
+          ]
+        ],
+        "source_normalization": "one global amplitude factor; not independent column normalization",
+        "physical_pad_current_evidence": {
+          "physical_pads": 4,
+          "independent_outputs": 2,
+          "common_GND_return_pads": [
+            2,
+            3
+          ],
+          "spectrum": [
+            {
+              "frequency_Hz": 3000,
+              "pad_current_peak_real_A": [
+                0.0014171381113866214,
+                -0.0009893802012581488,
+                1.0164395367051604e-19,
+                -0.000427757910941974
+              ],
+              "pad_current_peak_imaginary_A": [
+                0.0002532299640907469,
+                -0.00011875773012880154,
+                6.606856988583543e-20,
+                -0.00013447222631727136
+              ],
+              "KCL_groupwise_relative_error": 5.340313092347022e-09,
+              "source_groupwise_relative_error": 2.658677051117151e-10
+            },
+            {
+              "frequency_Hz": 3030,
+              "pad_current_peak_real_A": [
+                -0.0009899095256319156,
+                0.0014184204453795103,
+                -0.0004285109200776949,
+                -2.1006417091906648e-19
+              ],
+              "pad_current_peak_imaginary_A": [
+                -0.00011818721141877692,
+                0.00025189575087827126,
+                -0.00013370853970273033,
+                1.0164395367051604e-19
+              ],
+              "KCL_groupwise_relative_error": 2.8462629583639196e-10,
+              "source_groupwise_relative_error": 7.149220570705247e-10
+            }
+          ],
+          "physical_pad_current_RMS_mA": [
+            1.2382033208115686,
+            1.2386170938365288,
+            0.3174110759057324,
+            0.3170643546854212
+          ],
+          "maximum_groupwise_relative_error": 5.340313092347022e-09
+        },
+        "return_cancellation_validation": {
+          "frequencies": [
+            {
+              "frequency_Hz": 3000,
+              "wrong_return_pad": 2,
+              "net_current_real_A": 1.0164395367051604e-19,
+              "net_current_imaginary_A": 6.606856988583543e-20,
+              "net_current_over_max_source_current": 8.42112828287317e-17,
+              "wrong_return_local_J_peak_max_A_m2": 2.8771003082574653,
+              "wrong_return_absolute_patch_current_integral_A": 0.00010922337538420466
+            },
+            {
+              "frequency_Hz": 3030,
+              "wrong_return_pad": 3,
+              "net_current_real_A": -2.1006417091906648e-19,
+              "net_current_imaginary_A": 1.0164395367051604e-19,
+              "net_current_over_max_source_current": 1.619888319459285e-16,
+              "wrong_return_local_J_peak_max_A_m2": 2.8910459740272505,
+              "wrong_return_absolute_patch_current_integral_A": 0.00010932062660173823
+            }
+          ],
+          "full_cancel_tolerance": 2e-06,
+          "common_GND_nodes": 1,
+          "zero_net_implies_zero_local_J": false,
+          "isolated_pairs": false
+        },
+        "signed_power": {
+          "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+          "outputs": [
+            {
+              "output_index": 0,
+              "ideal_source_power_W": 0.0003193094372760474,
+              "metal_delivered_power_W": 0.00024265206407528587,
+              "source_resistor_loss_W": 7.66573732007615e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": 0.001417138111462508,
+                    "imaginary": 0.0002532299639471608
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.2744362187342976,
+                    "imaginary": -0.01266149819735804
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.345293124307423,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.0002446640230410052,
+                  "metal_delivered_power_W": 0.00019285387700100008,
+                  "source_resistor_loss_W": 5.181014604000509e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": -0.0009899095257884373,
+                    "imaginary": -0.00011818721243674041
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.10376531225949151,
+                    "imaginary": 0.026414845050870262
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.15326078854891337,
+                    "imaginary": 0.02050548442903324
+                  },
+                  "ideal_source_power_W": 7.464541423504218e-05,
+                  "metal_delivered_power_W": 4.979818707428579e-05,
+                  "source_resistor_loss_W": 2.48472271607564e-05
+                }
+              ]
+            },
+            {
+              "output_index": 1,
+              "ideal_source_power_W": 0.0003195095377398943,
+              "metal_delivered_power_W": 0.00024280092245447993,
+              "source_resistor_loss_W": 7.670861528541443e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": -0.000989380201490283,
+                    "imaginary": -0.00011875772982449405
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.10386383212590009,
+                    "imaginary": 0.026620582833877377
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.15333284220041424,
+                    "imaginary": 0.020682696342652674
+                  },
+                  "ideal_source_power_W": 7.46241241235104e-05,
+                  "metal_delivered_power_W": 4.979970958615989e-05,
+                  "source_resistor_loss_W": 2.4824414537350513e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": 0.0014184204455710875,
+                    "imaginary": 0.0002518957512711835
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.27437210202886864,
+                    "imaginary": -0.012594787563559173
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.345293124307423,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.0002448854136163839,
+                  "metal_delivered_power_W": 0.00019300121286832002,
+                  "source_resistor_loss_W": 5.188420074806392e-05
+                }
+              ]
+            }
+          ],
+          "totals": {
+            "ideal_source_power_W": 0.0006388189750159417,
+            "metal_delivered_power_W": 0.0004854529865297658,
+            "source_resistor_loss_W": 0.00015336598848617592
+          },
+          "requires_source_power_absorption": false,
+          "requires_output_power_absorption": false,
+          "hardware_absorption_and_compliance_validated": false
+        },
+        "field_waveform_passed": true,
+        "probe40_waveform_passed": true,
+        "skin8_source_Vpp_intervals_V": [
+          [
+            1.2223484883513627,
+            1.2223493962730332
+          ],
+          [
+            1.2225853340098283,
+            1.2225862490201314
+          ]
+        ],
+        "active_skin8_caps": [
+          "bulk_skin_J_vector_RMS_p95_A_m2"
+        ],
+        "eight_gate_screen": {
+          "checks": [
+            {
+              "name": "primary_maxTIS_mean",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 4.061848941601601,
+              "candidate": 3.3827836987734026,
+              "passed": false,
+              "relative_change_percent": -16.718131387733003,
+              "arithmetic_tolerance": 4.071848941601601e-10
+            },
+            {
+              "name": "primary_maxTIS_p10",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 3.6457357391300533,
+              "candidate": 2.8384639641378526,
+              "passed": false,
+              "relative_change_percent": -22.142904279311047,
+              "arithmetic_tolerance": 3.6557357391300533e-10
+            },
+            {
+              "name": "surface_0_5_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 25.25922183168775,
+              "candidate": 64.32464794803687,
+              "passed": false,
+              "relative_change_percent": 154.6580744912001,
+              "arithmetic_tolerance": 2.526922183168775e-09
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 7.766529017857144e-06,
+              "candidate": 7.107890625e-06,
+              "passed": true,
+              "relative_change_percent": -8.480472954427555,
+              "arithmetic_tolerance": 7.7765290178571445e-16
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 8.209453125000001e-06,
+              "candidate": 7.309893973214287e-06,
+              "passed": true,
+              "relative_change_percent": -10.95760141496288,
+              "arithmetic_tolerance": 8.219453125000001e-16
+            },
+            {
+              "name": "primary_complement_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 23.43571858123385,
+              "candidate": 40.82078297078643,
+              "passed": false,
+              "relative_change_percent": 74.18191308831328,
+              "arithmetic_tolerance": 2.344571858123385e-09
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 1.9399655254908982e-05,
+              "candidate": 2.1668125762173123e-05,
+              "passed": false,
+              "relative_change_percent": 11.69335473984836,
+              "arithmetic_tolerance": 1.940965525490898e-15
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 2.1155655660629288e-05,
+              "candidate": 2.3383203021628534e-05,
+              "passed": false,
+              "relative_change_percent": 10.529323206676677,
+              "arithmetic_tolerance": 2.1165655660629285e-15
+            }
+          ],
+          "all_screen_checks_passed": false,
+          "failed_checks": [
+            "primary_maxTIS_mean",
+            "primary_maxTIS_p10",
+            "surface_0_5_maxTIS_p95",
+            "primary_complement_maxTIS_p95",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_p10"
+          ],
+          "normalization": "skin_contact_only"
+        },
+        "candidate_adopted": false
+      },
+      {
+        "id": "return-net-cross-tau0",
+        "geometry": "adjacent-cross",
+        "tau": 0.0,
+        "condition_path": "docs/cloud-next-return-current-20261021T172000Z/return-net-cross-tau0/condition.json",
+        "condition_SHA256": "94cc1b416f17732dd64db9fbaba773844020ec4affac633fd49eb97eceeb880a",
+        "source_circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "n_return_nodes": 1,
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "source_resistance_ohm": 50,
+          "active_frequencies_by_output_Hz": {
+            "0": [
+              3000
+            ],
+            "1": [
+              3030
+            ]
+          },
+          "uncommanded_frequency_termination": "0V through50ohm",
+          "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+        },
+        "seed_coefficients": {
+          "3000": {
+            "real": [
+              1.0,
+              -0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.0,
+              1.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "coefficient_vectors": {
+          "3000": {
+            "real": [
+              0.9999999999999929,
+              -0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.0,
+              0.9999999999999929
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "actual_raw_source_Vpp_intervals_V": [
+          [
+            0.9999999999999929,
+            1.0
+          ],
+          [
+            0.9999999999999929,
+            1.0
+          ]
+        ],
+        "source_normalization": "one global amplitude factor; not independent column normalization",
+        "physical_pad_current_evidence": {
+          "physical_pads": 4,
+          "independent_outputs": 2,
+          "common_GND_return_pads": [
+            2,
+            3
+          ],
+          "spectrum": [
+            {
+              "frequency_Hz": 3000,
+              "pad_current_peak_real_A": [
+                0.0017611474770353429,
+                -0.0006272625843376618,
+                -0.0003544378475686453,
+                -0.0007794470405314798
+              ],
+              "pad_current_peak_imaginary_A": [
+                0.00035499573056690405,
+                -0.0001247370807269499,
+                -3.7083242491475397e-05,
+                -0.00019317539929521646
+              ],
+              "KCL_groupwise_relative_error": 5.161624122494516e-09,
+              "source_groupwise_relative_error": 7.509854605909158e-10
+            },
+            {
+              "frequency_Hz": 3030,
+              "pad_current_peak_real_A": [
+                -0.0006279062991805205,
+                0.0017630271651937583,
+                -0.0007805349744193978,
+                -0.0003545858867381629
+              ],
+              "pad_current_peak_imaginary_A": [
+                -0.0001240312396604609,
+                0.000353179403922458,
+                -0.00019220166614119253,
+                -3.694648998869148e-05
+              ],
+              "KCL_groupwise_relative_error": 5.267624294213142e-09,
+              "source_groupwise_relative_error": 6.147451223444725e-10
+            }
+          ],
+          "physical_pad_current_RMS_mA": [
+            1.3485756325751574,
+            1.3494476954636674,
+            0.6217626884198327,
+            0.6212691116104689
+          ],
+          "maximum_groupwise_relative_error": 5.267624294213142e-09
+        },
+        "return_cancellation_validation": {
+          "frequencies": [
+            {
+              "frequency_Hz": 3000,
+              "wrong_return_pad": 2,
+              "net_current_real_A": -0.0003544378475686453,
+              "net_current_imaginary_A": -3.7083242491475397e-05,
+              "net_current_over_max_source_current": 0.19836275199678266,
+              "wrong_return_local_J_peak_max_A_m2": 6.2566958529701,
+              "wrong_return_absolute_patch_current_integral_A": 0.00036809089889993106
+            },
+            {
+              "frequency_Hz": 3030,
+              "wrong_return_pad": 3,
+              "net_current_real_A": -0.0003545858867381629,
+              "net_current_imaginary_A": -3.694648998869148e-05,
+              "net_current_over_max_source_current": 0.1982729136889845,
+              "wrong_return_local_J_peak_max_A_m2": 6.29069723868078,
+              "wrong_return_absolute_patch_current_integral_A": 0.0003681829759449595
+            }
+          ],
+          "full_cancel_tolerance": 2e-06,
+          "common_GND_nodes": 1,
+          "zero_net_implies_zero_local_J": false,
+          "isolated_pairs": false
+        },
+        "signed_power": {
+          "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+          "outputs": [
+            {
+              "output_index": 0,
+              "ideal_source_power_W": 0.00044028686925824104,
+              "metal_delivered_power_W": 0.00034935405739303804,
+              "source_resistor_loss_W": 9.093281186520307e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": 0.0017611474770329767,
+                    "imaginary": 0.00035499573055801365
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.41194262614834765,
+                    "imaginary": -0.01774978652790068
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.49999999999999645,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.00044028686925824104,
+                  "metal_delivered_power_W": 0.00035959530914389016,
+                  "source_resistor_loss_W": 8.069156011435091e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": -0.0006279063001417796,
+                    "imaginary": -0.0001240312391147785
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.03139531500708898,
+                    "imaginary": 0.006201561955738925
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.0,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": -0.0,
+                  "metal_delivered_power_W": -1.024125175085215e-05,
+                  "source_resistor_loss_W": 1.0241251750852148e-05
+                }
+              ]
+            },
+            {
+              "output_index": 1,
+              "ideal_source_power_W": 0.00044075679129609895,
+              "metal_delivered_power_W": 0.00034970633712053193,
+              "source_resistor_loss_W": 9.105045417556699e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": -0.0006272625856015182,
+                    "imaginary": -0.0001247370802547198
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.03136312928007591,
+                    "imaginary": 0.006236854012735989
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.0,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": -0.0,
+                  "metal_delivered_power_W": -1.0225442262149359e-05,
+                  "source_resistor_loss_W": 1.0225442262149359e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": 0.0017630271651844084,
+                    "imaginary": 0.0003531794039274295
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.411848641740776,
+                    "imaginary": -0.017658970196371474
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.49999999999999645,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.00044075679129609895,
+                  "metal_delivered_power_W": 0.0003599317793826813,
+                  "source_resistor_loss_W": 8.082501191341763e-05
+                }
+              ]
+            }
+          ],
+          "totals": {
+            "ideal_source_power_W": 0.0008810436605543399,
+            "metal_delivered_power_W": 0.00069906039451357,
+            "source_resistor_loss_W": 0.00018198326604077007
+          },
+          "requires_source_power_absorption": false,
+          "requires_output_power_absorption": true,
+          "hardware_absorption_and_compliance_validated": false
+        },
+        "field_waveform_passed": true,
+        "probe40_waveform_passed": true,
+        "skin8_source_Vpp_intervals_V": [
+          [
+            1.073278779368617,
+            1.0732787793686245
+          ],
+          [
+            1.073278779368617,
+            1.0732787793686245
+          ]
+        ],
+        "active_skin8_caps": [
+          "bulk_skin_J_vector_RMS_p95_A_m2"
+        ],
+        "eight_gate_screen": {
+          "checks": [
+            {
+              "name": "primary_maxTIS_mean",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 4.061848941601601,
+              "candidate": 3.4390161638072394,
+              "passed": false,
+              "relative_change_percent": -15.333725767477112,
+              "arithmetic_tolerance": 4.071848941601601e-10
+            },
+            {
+              "name": "primary_maxTIS_p10",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 3.6457357391300533,
+              "candidate": 3.140656204848576,
+              "passed": false,
+              "relative_change_percent": -13.85398093614979,
+              "arithmetic_tolerance": 3.6557357391300533e-10
+            },
+            {
+              "name": "surface_0_5_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 25.25922183168775,
+              "candidate": 50.32869521221458,
+              "passed": false,
+              "relative_change_percent": 99.24879534126076,
+              "arithmetic_tolerance": 2.526922183168775e-09
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 7.766529017857144e-06,
+              "candidate": 8.612896205357144e-06,
+              "passed": false,
+              "relative_change_percent": 10.897624737562882,
+              "arithmetic_tolerance": 7.7765290178571445e-16
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 8.209453125000001e-06,
+              "candidate": 8.894090401785716e-06,
+              "passed": false,
+              "relative_change_percent": 8.339620999854546,
+              "arithmetic_tolerance": 8.219453125000001e-16
+            },
+            {
+              "name": "primary_complement_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 23.43571858123385,
+              "candidate": 26.858393862848438,
+              "passed": false,
+              "relative_change_percent": 14.60452458391992,
+              "arithmetic_tolerance": 2.344571858123385e-09
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 1.9399655254908982e-05,
+              "candidate": 2.1897475082193116e-05,
+              "passed": false,
+              "relative_change_percent": 12.875588738372423,
+              "arithmetic_tolerance": 1.940965525490898e-15
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 2.1155655660629288e-05,
+              "candidate": 2.385824979935375e-05,
+              "passed": false,
+              "relative_change_percent": 12.774806803808936,
+              "arithmetic_tolerance": 2.1165655660629285e-15
+            }
+          ],
+          "all_screen_checks_passed": false,
+          "failed_checks": [
+            "primary_maxTIS_mean",
+            "primary_maxTIS_p10",
+            "surface_0_5_maxTIS_p95",
+            "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+            "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+            "primary_complement_maxTIS_p95",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_p10"
+          ],
+          "normalization": "skin_contact_only"
+        },
+        "candidate_adopted": false
+      },
+      {
+        "id": "return-net-cross-tau0p5",
+        "geometry": "adjacent-cross",
+        "tau": 0.5,
+        "condition_path": "docs/cloud-next-return-current-20261021T172000Z/return-net-cross-tau0p5/condition.json",
+        "condition_SHA256": "6bb1ba46361272a3e1633cf88d521db8a1c7c6bf5bea7a622e35629b4360b204",
+        "source_circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "n_return_nodes": 1,
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "source_resistance_ohm": 50,
+          "active_frequencies_by_output_Hz": {
+            "0": [
+              3000,
+              3030
+            ],
+            "1": [
+              3000,
+              3030
+            ]
+          },
+          "uncommanded_frequency_termination": "0V through50ohm",
+          "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+        },
+        "seed_coefficients": {
+          "3000": {
+            "real": [
+              1.0,
+              -0.21976207927711375
+            ],
+            "imaginary": [
+              0.0,
+              0.030676884886968295
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.21965201386424257,
+              1.0
+            ],
+            "imaginary": [
+              0.03042046650016269,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "coefficient_vectors": {
+          "3000": {
+            "real": [
+              0.8184166780375322,
+              -0.17985695088059622
+            ],
+            "imaginary": [
+              0.0,
+              0.02510647422173237
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.17976687151102735,
+              0.8184166780375322
+            ],
+            "imaginary": [
+              0.02489661713741518,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "actual_raw_source_Vpp_intervals_V": [
+          [
+            0.9998797430530616,
+            0.9998804838255999
+          ],
+          [
+            0.9999992496901443,
+            1.0
+          ]
+        ],
+        "source_normalization": "one global amplitude factor; not independent column normalization",
+        "physical_pad_current_evidence": {
+          "physical_pads": 4,
+          "independent_outputs": 2,
+          "common_GND_return_pads": [
+            2,
+            3
+          ],
+          "spectrum": [
+            {
+              "frequency_Hz": 3000,
+              "pad_current_peak_real_A": [
+                0.0015573017104436016,
+                -0.0008390294669593532,
+                -0.00014503892288895298,
+                -0.0005732333163342085
+              ],
+              "pad_current_peak_imaginary_A": [
+                0.00029722090644671505,
+                -0.00012171915317742577,
+                -1.5174772065366877e-05,
+                -0.00016032697497019108
+              ],
+              "KCL_groupwise_relative_error": 4.7627463601023316e-09,
+              "source_groupwise_relative_error": 6.965411267474336e-10
+            },
+            {
+              "frequency_Hz": 3030,
+              "pad_current_peak_real_A": [
+                -0.0008396158377696321,
+                0.0015588555451130758,
+                -0.0005741402026992531,
+                -0.00014509950175162065
+              ],
+              "pad_current_peak_imaginary_A": [
+                -0.00012110577932634703,
+                0.0002957118797051693,
+                -0.00015948728326253657,
+                -1.5118811800846065e-05
+              ],
+              "KCL_groupwise_relative_error": 3.814007896692949e-09,
+              "source_groupwise_relative_error": 5.691990087907702e-10
+            }
+          ],
+          "physical_pad_current_RMS_mA": [
+            1.2714460762060296,
+            1.2720578062739278,
+            0.4337855050241003,
+            0.43334952275123423
+          ],
+          "maximum_groupwise_relative_error": 4.7627463601023316e-09
+        },
+        "return_cancellation_validation": {
+          "frequencies": [
+            {
+              "frequency_Hz": 3000,
+              "wrong_return_pad": 2,
+              "net_current_real_A": -0.00014503892288895298,
+              "net_current_imaginary_A": -1.5174772065366877e-05,
+              "net_current_over_max_source_current": 0.09198281827742742,
+              "wrong_return_local_J_peak_max_A_m2": 3.3837685951326324,
+              "wrong_return_absolute_patch_current_integral_A": 0.00015409387703686702
+            },
+            {
+              "frequency_Hz": 3030,
+              "wrong_return_pad": 3,
+              "net_current_real_A": -0.00014509950175162065,
+              "net_current_imaginary_A": -1.5118811800846065e-05,
+              "net_current_over_max_source_current": 0.09194498959914572,
+              "wrong_return_local_J_peak_max_A_m2": 3.4013871643558122,
+              "wrong_return_absolute_patch_current_integral_A": 0.00015414516941107714
+            }
+          ],
+          "full_cancel_tolerance": 2e-06,
+          "common_GND_nodes": 1,
+          "zero_net_implies_zero_local_J": false,
+          "isolated_pairs": false
+        },
+        "signed_power": {
+          "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+          "outputs": [
+            {
+              "output_index": 0,
+              "ideal_source_power_W": 0.0003556104202441841,
+              "metal_delivered_power_W": 0.00027478166397294985,
+              "source_resistor_loss_W": 8.08287562712343e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": 0.0015573017105108685,
+                    "imaginary": 0.00029722090649553077
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.33134325349322263,
+                    "imaginary": -0.014861045324776539
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.4092083390187661,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.0003186304231546179,
+                  "metal_delivered_power_W": 0.00025579220103416535,
+                  "source_resistor_loss_W": 6.283822212045256e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": -0.0008396158385552915,
+                    "imaginary": -0.00012110577888095942
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.0479026438277491,
+                    "imaginary": 0.01850359751275556
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.08988343575551368,
+                    "imaginary": 0.01244830856870759
+                  },
+                  "ideal_source_power_W": 3.697999708956622e-05,
+                  "metal_delivered_power_W": 1.898946293878449e-05,
+                  "source_resistor_loss_W": 1.7990534150781727e-05
+                }
+              ]
+            },
+            {
+              "output_index": 1,
+              "ideal_source_power_W": 0.0003559106799855507,
+              "metal_delivered_power_W": 0.00027500412680878496,
+              "source_resistor_loss_W": 8.090655317676579e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": -0.000839029467993828,
+                    "imaginary": -0.0001217191527909681
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.04797700204060671,
+                    "imaginary": 0.01863919475041459
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.08992847544029811,
+                    "imaginary": 0.012553237110866184
+                  },
+                  "ideal_source_power_W": 3.6962335760125286e-05,
+                  "metal_delivered_power_W": 1.8992685752171364e-05,
+                  "source_resistor_loss_W": 1.7969650007953926e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": 0.0015588555452717625,
+                    "imaginary": 0.00029571187958543453
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.33126556175517796,
+                    "imaginary": -0.014785593979271726
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.4092083390187661,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.0003189483442254254,
+                  "metal_delivered_power_W": 0.0002560114410566136,
+                  "source_resistor_loss_W": 6.293690316881186e-05
+                }
+              ]
+            }
+          ],
+          "totals": {
+            "ideal_source_power_W": 0.0007115211002297348,
+            "metal_delivered_power_W": 0.0005497857907817348,
+            "source_resistor_loss_W": 0.00016173530944800008
+          },
+          "requires_source_power_absorption": false,
+          "requires_output_power_absorption": false,
+          "hardware_absorption_and_compliance_validated": false
+        },
+        "field_waveform_passed": true,
+        "probe40_waveform_passed": true,
+        "skin8_source_Vpp_intervals_V": [
+          [
+            1.1881205519591251,
+            1.1881214321920563
+          ],
+          [
+            1.188262557327871,
+            1.1882634488936477
+          ]
+        ],
+        "active_skin8_caps": [
+          "bulk_skin_J_vector_RMS_p95_A_m2"
+        ],
+        "eight_gate_screen": {
+          "checks": [
+            {
+              "name": "primary_maxTIS_mean",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 4.061848941601601,
+              "candidate": 3.2815929748918693,
+              "passed": false,
+              "relative_change_percent": -19.209379224281875,
+              "arithmetic_tolerance": 4.071848941601601e-10
+            },
+            {
+              "name": "primary_maxTIS_p10",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 3.6457357391300533,
+              "candidate": 2.753225737224481,
+              "passed": false,
+              "relative_change_percent": -24.480929660539342,
+              "arithmetic_tolerance": 3.6557357391300533e-10
+            },
+            {
+              "name": "surface_0_5_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 25.25922183168775,
+              "candidate": 57.91838072517316,
+              "passed": false,
+              "relative_change_percent": 129.29598192337983,
+              "arithmetic_tolerance": 2.526922183168775e-09
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 7.766529017857144e-06,
+              "candidate": 7.773373325892859e-06,
+              "passed": false,
+              "relative_change_percent": 0.0881256996526858,
+              "arithmetic_tolerance": 7.7765290178571445e-16
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 8.209453125000001e-06,
+              "candidate": 8.292988281250001e-06,
+              "passed": false,
+              "relative_change_percent": 1.017548367449872,
+              "arithmetic_tolerance": 8.219453125000001e-16
+            },
+            {
+              "name": "primary_complement_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 23.43571858123385,
+              "candidate": 33.55376804656814,
+              "passed": false,
+              "relative_change_percent": 43.173625891873925,
+              "arithmetic_tolerance": 2.344571858123385e-09
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 1.9399655254908982e-05,
+              "candidate": 2.167325318949565e-05,
+              "passed": false,
+              "relative_change_percent": 11.719785247273107,
+              "arithmetic_tolerance": 1.940965525490898e-15
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 2.1155655660629288e-05,
+              "candidate": 2.3659409515772562e-05,
+              "passed": false,
+              "relative_change_percent": 11.834914952802734,
+              "arithmetic_tolerance": 2.1165655660629285e-15
+            }
+          ],
+          "all_screen_checks_passed": false,
+          "failed_checks": [
+            "primary_maxTIS_mean",
+            "primary_maxTIS_p10",
+            "surface_0_5_maxTIS_p95",
+            "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+            "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+            "primary_complement_maxTIS_p95",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_p10"
+          ],
+          "normalization": "skin_contact_only"
+        },
+        "candidate_adopted": false
+      },
+      {
+        "id": "return-net-cross-tau1",
+        "geometry": "adjacent-cross",
+        "tau": 1.0,
+        "condition_path": "docs/cloud-next-return-current-20261021T172000Z/return-net-cross-tau1/condition.json",
+        "condition_SHA256": "8091739954c3215d8ad6a559f3680c01a624cf6045564a281a9d037a2e5e5147",
+        "source_circuit": {
+          "n_pads": 4,
+          "n_outputs": 2,
+          "n_return_nodes": 1,
+          "pad_to_node": {
+            "0": "out0",
+            "1": "out1",
+            "2": "GND",
+            "3": "GND"
+          },
+          "return_topology": "all_return_pads_ideal_common_GND",
+          "source_resistance_ohm": 50,
+          "active_frequencies_by_output_Hz": {
+            "0": [
+              3000,
+              3030
+            ],
+            "1": [
+              3000,
+              3030
+            ]
+          },
+          "uncommanded_frequency_termination": "0V through50ohm",
+          "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+        },
+        "seed_coefficients": {
+          "3000": {
+            "real": [
+              1.0,
+              -0.4395241585542275
+            ],
+            "imaginary": [
+              0.0,
+              0.06135376977393659
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.43930402772848515,
+              1.0
+            ],
+            "imaginary": [
+              0.06084093300032538,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "coefficient_vectors": {
+          "3000": {
+            "real": [
+              0.6926411581187013,
+              -0.30443252220214784
+            ],
+            "imaginary": [
+              0.0,
+              0.04249614615116761
+            ]
+          },
+          "3030": {
+            "real": [
+              -0.304280050532068,
+              0.6926411581187013
+            ],
+            "imaginary": [
+              0.04214093429436768,
+              0.0
+            ]
+          },
+          "9000": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          },
+          "9090": {
+            "real": [
+              0.0,
+              0.0
+            ],
+            "imaginary": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "actual_raw_source_Vpp_intervals_V": [
+          [
+            0.9997974511611061,
+            0.9997981937441199
+          ],
+          [
+            0.9999992515504172,
+            1.0
+          ]
+        ],
+        "source_normalization": "one global amplitude factor; not independent column normalization",
+        "physical_pad_current_evidence": {
+          "physical_pads": 4,
+          "independent_outputs": 2,
+          "common_GND_return_pads": [
+            2,
+            3
+          ],
+          "spectrum": [
+            {
+              "frequency_Hz": 3000,
+              "pad_current_peak_real_A": [
+                0.0014161032016419377,
+                -0.0009857044017124365,
+                0.0,
+                -0.00043039879590148433
+              ],
+              "pad_current_peak_imaginary_A": [
+                0.0002572024369758435,
+                -0.00011962830110170317,
+                2.202285662861181e-20,
+                -0.00013757413090071722
+              ],
+              "KCL_groupwise_relative_error": 4.446687443161105e-09,
+              "source_groupwise_relative_error": 6.494095132822749e-10
+            },
+            {
+              "frequency_Hz": 3030,
+              "pad_current_peak_real_A": [
+                -0.0009862510512227136,
+                0.001417431330247065,
+                -0.0004311802774915227,
+                5.55653613398821e-19
+              ],
+              "pad_current_peak_imaginary_A": [
+                -0.0001190789764260765,
+                0.0002559062651331206,
+                -0.00013682728534257068,
+                -7.453889935837843e-20
+              ],
+              "KCL_groupwise_relative_error": 2.566877487291982e-09,
+              "source_groupwise_relative_error": 5.297694235095158e-10
+            }
+          ],
+          "physical_pad_current_RMS_mA": [
+            1.2366026665731096,
+            1.237037527822034,
+            0.31987352009183545,
+            0.3195072495316305
+          ],
+          "maximum_groupwise_relative_error": 4.446687443161105e-09
+        },
+        "return_cancellation_validation": {
+          "frequencies": [
+            {
+              "frequency_Hz": 3000,
+              "wrong_return_pad": 2,
+              "net_current_real_A": 0.0,
+              "net_current_imaginary_A": 2.202285662861181e-20,
+              "net_current_over_max_source_current": 1.5301395438250648e-17,
+              "wrong_return_local_J_peak_max_A_m2": 3.2623705833066667,
+              "wrong_return_absolute_patch_current_integral_A": 0.00011157191329530888
+            },
+            {
+              "frequency_Hz": 3030,
+              "wrong_return_pad": 3,
+              "net_current_real_A": 5.55653613398821e-19,
+              "net_current_imaginary_A": -7.453889935837843e-20,
+              "net_current_over_max_source_current": 3.8923319626392737e-16,
+              "wrong_return_local_J_peak_max_A_m2": 3.2788974907353654,
+              "wrong_return_absolute_patch_current_integral_A": 0.00011167059632314803
+            }
+          ],
+          "full_cancel_tolerance": 2e-06,
+          "common_GND_nodes": 1,
+          "zero_net_implies_zero_local_J": false,
+          "isolated_pairs": false
+        },
+        "signed_power": {
+          "definition": "Peak phasors: Videal=Vmetal+50I; P=.5Re(V*conj(I)); resistor=50|I|^2/2; RMS=sqrt(sum_f|I|^2/2)",
+          "outputs": [
+            {
+              "output_index": 0,
+              "ideal_source_power_W": 0.00031898244557017585,
+              "metal_delivered_power_W": 0.0002425231377815633,
+              "source_resistor_loss_W": 7.645930778861257e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": 0.001416103201757435,
+                    "imaginary": 0.0002572024370646286
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.2755154189714789,
+                    "imaginary": -0.012860121853231432
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.34632057905935065,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.00024521284042021765,
+                  "metal_delivered_power_W": 0.0001934253061287266,
+                  "source_resistor_loss_W": 5.178753429149107e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": -0.0009862510518867424,
+                    "imaginary": -0.00011907897605015905
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.1028274726716969,
+                    "imaginary": 0.027024415949691794
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.152140025266034,
+                    "imaginary": 0.02107046714718384
+                  },
+                  "ideal_source_power_W": 7.376960514995821e-05,
+                  "metal_delivered_power_W": 4.909783165283671e-05,
+                  "source_resistor_loss_W": 2.4671773497121505e-05
+                }
+              ]
+            },
+            {
+              "output_index": 1,
+              "ideal_source_power_W": 0.0003191920034996714,
+              "metal_delivered_power_W": 0.0002426789111796137,
+              "source_resistor_loss_W": 7.651309232005772e-05,
+              "spectrum": [
+                {
+                  "frequency_Hz": 3000,
+                  "current_peak_A": {
+                    "real": -0.000985704402588028,
+                    "imaginary": -0.0001196283007746566
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": -0.10293104097167252,
+                    "imaginary": 0.027229488114316636
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": -0.15221626110107392,
+                    "imaginary": 0.021248073075583806
+                  },
+                  "ideal_source_power_W": 7.374918391802477e-05,
+                  "metal_delivered_power_W": 4.9101081427333446e-05,
+                  "source_resistor_loss_W": 2.4648102490691317e-05
+                },
+                {
+                  "frequency_Hz": 3030,
+                  "current_peak_A": {
+                    "real": 0.0014174313305221399,
+                    "imaginary": 0.0002559062649270097
+                  },
+                  "metal_voltage_peak_V": {
+                    "real": 0.27544901253324366,
+                    "imaginary": -0.012795313246350486
+                  },
+                  "ideal_voltage_peak_V": {
+                    "real": 0.34632057905935065,
+                    "imaginary": 0.0
+                  },
+                  "ideal_source_power_W": 0.00024544281958164665,
+                  "metal_delivered_power_W": 0.00019357782975228024,
+                  "source_resistor_loss_W": 5.1864989829366404e-05
+                }
+              ]
+            }
+          ],
+          "totals": {
+            "ideal_source_power_W": 0.0006381744490698473,
+            "metal_delivered_power_W": 0.000485202048961177,
+            "source_resistor_loss_W": 0.0001529724001086703
+          },
+          "requires_source_power_absorption": false,
+          "requires_output_power_absorption": false,
+          "hardware_absorption_and_compliance_validated": false
+        },
+        "field_waveform_passed": true,
+        "probe40_waveform_passed": true,
+        "skin8_source_Vpp_intervals_V": [
+          [
+            1.240450785629307,
+            1.2404517069536032
+          ],
+          [
+            1.2407011597937647,
+            1.240702088396725
+          ]
+        ],
+        "active_skin8_caps": [
+          "bulk_skin_J_vector_RMS_p95_A_m2"
+        ],
+        "eight_gate_screen": {
+          "checks": [
+            {
+              "name": "primary_maxTIS_mean",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 4.061848941601601,
+              "candidate": 3.427802937730598,
+              "passed": false,
+              "relative_change_percent": -15.609787881993375,
+              "arithmetic_tolerance": 4.071848941601601e-10
+            },
+            {
+              "name": "primary_maxTIS_p10",
+              "unit": "V/m",
+              "required_direction": "greater",
+              "baseline": 3.6457357391300533,
+              "candidate": 2.8755264422275713,
+              "passed": false,
+              "relative_change_percent": -21.126306238703673,
+              "arithmetic_tolerance": 3.6557357391300533e-10
+            },
+            {
+              "name": "surface_0_5_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 25.25922183168775,
+              "candidate": 62.89952515986374,
+              "passed": false,
+              "relative_change_percent": 149.01608441854748,
+              "arithmetic_tolerance": 2.526922183168775e-09
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 7.766529017857144e-06,
+              "candidate": 7.153498883928571e-06,
+              "passed": true,
+              "relative_change_percent": -7.893231745082863,
+              "arithmetic_tolerance": 7.7765290178571445e-16
+            },
+            {
+              "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 8.209453125000001e-06,
+              "candidate": 7.365920758928573e-06,
+              "passed": true,
+              "relative_change_percent": -10.275134692013088,
+              "arithmetic_tolerance": 8.219453125000001e-16
+            },
+            {
+              "name": "primary_complement_maxTIS_p95",
+              "unit": "V/m",
+              "required_direction": "less",
+              "baseline": 23.43571858123385,
+              "candidate": 41.40561035783446,
+              "passed": false,
+              "relative_change_percent": 76.67736627879633,
+              "arithmetic_tolerance": 2.344571858123385e-09
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 1.9399655254908982e-05,
+              "candidate": 2.19069619704996e-05,
+              "passed": false,
+              "relative_change_percent": 12.924491093501045,
+              "arithmetic_tolerance": 1.940965525490898e-15
+            },
+            {
+              "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+              "unit": "m3",
+              "required_direction": "less",
+              "baseline": 2.1155655660629288e-05,
+              "candidate": 2.3670184771077994e-05,
+              "passed": false,
+              "relative_change_percent": 11.885848166494073,
+              "arithmetic_tolerance": 2.1165655660629285e-15
+            }
+          ],
+          "all_screen_checks_passed": false,
+          "failed_checks": [
+            "primary_maxTIS_mean",
+            "primary_maxTIS_p10",
+            "surface_0_5_maxTIS_p95",
+            "primary_complement_maxTIS_p95",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+            "primary_complement_high_volume_at_primary_r5_depth15_20_p10"
+          ],
+          "normalization": "skin_contact_only"
+        },
+        "candidate_adopted": false
+      }
+    ],
+    "operators": [
+      {
+        "path": "docs/cloud-next-return-current-20261021T172000Z/operators/adjacent-square/return-response.json",
+        "SHA256": "3613a4ab8d6b5174b879b5272e06c152d0293c914439ca236e0dd7ef3b6765af",
+        "geometry": "adjacent-square",
+        "frequency_response": {
+          "3000": {
+            "full_response_singular_values_A": [
+              0.0024807280259219223,
+              0.001642213877381785
+            ],
+            "return_singular_values_A": [
+              0.00116122056690909,
+              0.00044924602373622814
+            ],
+            "return_relative_minimum_singular_value": 0.38687398116967636,
+            "return_condition_number": 2.5848210235710245,
+            "relative_resolution": 2e-06,
+            "source_groupwise_relative_error": 3.076480152093827e-10,
+            "KCL_groupwise_relative_error": 1.1070320087396395e-08,
+            "physical_pad_area_m2": [
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005
+            ],
+            "response_peak_real_A": [
+              [
+                0.0017661311193385794,
+                -0.0006274281402743841
+              ],
+              [
+                -0.0006274281402430822,
+                0.0017661311193374548
+              ],
+              [
+                -0.00035804332227003087,
+                -0.0007806596568223016
+              ],
+              [
+                -0.0007806596568224782,
+                -0.000358043322269847
+              ]
+            ],
+            "response_peak_imaginary_A": [
+              [
+                0.00034993375426621505,
+                -0.0001223623599944317
+              ],
+              [
+                -0.00012236236000413045,
+                0.00034993375426628444
+              ],
+              [
+                -3.75993635732531e-05,
+                -0.00018997201076545158
+              ],
+              [
+                -0.00018997201076627324,
+                -3.7599363574702995e-05
+              ]
+            ]
+          },
+          "3030": {
+            "full_response_singular_values_A": [
+              0.0024826898998996025,
+              0.0016435607091060452
+            ],
+            "return_singular_values_A": [
+              0.0011621729230932292,
+              0.00044980877028262626
+            ],
+            "return_relative_minimum_singular_value": 0.3870411720533113,
+            "return_condition_number": 2.5837044537015283,
+            "relative_resolution": 2e-06,
+            "source_groupwise_relative_error": 8.278331662018537e-10,
+            "KCL_groupwise_relative_error": 5.637482838309451e-10,
+            "physical_pad_area_m2": [
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005
+            ],
+            "response_peak_real_A": [
+              [
+                0.0017679500143969837,
+                -0.0006280465980195357
+              ],
+              [
+                -0.0006280465977958356,
+                0.0017679500143981805
+              ],
+              [
+                -0.0003581907036336249,
+                -0.0007817127135138415
+              ],
+              [
+                -0.0007817127135142437,
+                -0.00035819070363180103
+              ]
+            ],
+            "response_peak_imaginary_A": [
+              [
+                0.00034806187965471386,
+                -0.00012164168963822441
+              ],
+              [
+                -0.00012164168975544195,
+                0.00034806187965562264
+              ],
+              [
+                -3.74521964627759e-05,
+                -0.00018896799421949166
+              ],
+              [
+                -0.00018896799421664085,
+                -3.7452196463928323e-05
+              ]
+            ]
+          }
+        }
+      },
+      {
+        "path": "docs/cloud-next-return-current-20261021T172000Z/operators/adjacent-cross/return-response.json",
+        "SHA256": "6be953403ea4c314539bd25206ede587d7af55a77a08fa4559bc1c1ec319bdb3",
+        "geometry": "adjacent-cross",
+        "frequency_response": {
+          "3000": {
+            "full_response_singular_values_A": [
+              0.0024778304524240764,
+              0.0016362848175478554
+            ],
+            "return_singular_values_A": [
+              0.0011570280895680958,
+              0.00045276658128901937
+            ],
+            "return_relative_minimum_singular_value": 0.39131857330968645,
+            "return_condition_number": 2.555462654231359,
+            "relative_resolution": 2e-06,
+            "source_groupwise_relative_error": 7.509851726541886e-10,
+            "KCL_groupwise_relative_error": 5.1616235856926e-09,
+            "physical_pad_area_m2": [
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005
+            ],
+            "response_peak_real_A": [
+              [
+                0.0017611474770353552,
+                -0.0006272625762513572
+              ],
+              [
+                -0.0006272625843376668,
+                0.0017611474770342192
+              ],
+              [
+                -0.00035443784756864757,
+                -0.0007794470487809762
+              ],
+              [
+                -0.0007794470405314863,
+                -0.00035443785499177967
+              ]
+            ],
+            "response_peak_imaginary_A": [
+              [
+                0.00035499573056690654,
+                -0.00012473708416444116
+              ],
+              [
+                -0.00012473708072695077,
+                0.00035499573055695677
+              ],
+              [
+                -3.7083242491475735e-05,
+                -0.00019317540485748442
+              ],
+              [
+                -0.000193175399295218,
+                -3.708323996641111e-05
+              ]
+            ]
+          },
+          "3030": {
+            "full_response_singular_values_A": [
+              0.0024798850022379475,
+              0.0016376863278976745
+            ],
+            "return_singular_values_A": [
+              0.001158019104720292,
+              0.0004533616602867805
+            ],
+            "return_relative_minimum_singular_value": 0.3914975654881665,
+            "return_condition_number": 2.5542943000247753,
+            "relative_resolution": 2e-06,
+            "source_groupwise_relative_error": 6.354408934755329e-10,
+            "KCL_groupwise_relative_error": 5.276903213040598e-09,
+            "physical_pad_area_m2": [
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005,
+              0.00022500000000000005
+            ],
+            "response_peak_real_A": [
+              [
+                0.001763027165190235,
+                -0.0006279062991805248
+              ],
+              [
+                -0.0006279062991393068,
+                0.0017630271651937711
+              ],
+              [
+                -0.00035458588674087944,
+                -0.0007805349744194024
+              ],
+              [
+                -0.0007805349744206362,
+                -0.0003545858867381658
+              ]
+            ],
+            "response_peak_imaginary_A": [
+              [
+                0.00035317940392183957,
+                -0.00012403123966046178
+              ],
+              [
+                -0.00012403123966113136,
+                0.0003531794039224606
+              ],
+              [
+                -3.6946489988447415e-05,
+                -0.00019220166614119372
+              ],
+              [
+                -0.00019220166614091223,
+                -3.694648998869174e-05
+              ]
+            ]
+          }
+        }
+      }
+    ],
+    "source_review": "docs/cloud-return-current-context-20261021T172000Z/source-review.json",
+    "source_review_scope": "Static code review only, not independent native recalculation",
+    "all_six_unadopted": true
+  },
+  "unchanged_holds": {
+    "candidate_adopted": false,
+    "full_convergence_validated": false,
+    "experimentally_validated": false,
+    "COMSOL_5_3a_runtime_verified": false,
+    "instrument_loading_validated": false,
+    "new_PDE": 0,
+    "new_native_RHS": 0,
+    "new_research_postprocess": 0,
+    "remote_operations_by_this_document": 0,
+    "existing_files_modified": false
+  },
+  "next_question": {
+    "status": "root_selected_preregistering_not_executed",
+    "question": "Rotate only physical common-GND return pad2 of the completed asym281.25/168.75mm2 four-pad design by90degrees about its fixed centre; can fixed skin8 target mean/P10 be preserved while all six off-target screens do not worsen?",
+    "kind": "one new geometry PDE condition; not cached resynthesis",
+    "fixed": "Same centres, areas, other3outlines,2outputs,oneidealcommonGND,50ohm,Rs500,nominal square_3h3k3030plus90009090,XY.625/SC2/bulk14,14,40,D50/layers/top-only",
+    "duplicate_checks": [
+      "Existing geometry factory varies all-pad axis/tangent, not a single return orientation",
+      "Prior return translations ±.625mm, source translations inward.625/1.25mm, role swap and source/return-area splits remain distinct",
+      "Rotating both return rectangles90degrees is an x-y reflection of the original common-GND geometry and should not be rerun as an independent candidate"
+    ],
+    "suggested_max_seconds": 900,
+    "unsupported_assumptions": [
+      "No demonstrated selectivity gain from unilateral rotation",
+      "Fullface/area/D50/gap preservation must be validated before registration",
+      "Changed shape/current redistribution requires new field/network solve; old E/phi cannot be relabeled",
+      "One-grid improvement would still need SC/XY/bulk/edge/contact convergence before adoption"
+    ],
+    "screen_policy": "All existing eight screens retained against original baseline, no relaxed cap/cutoff or target-point-only success. If any fail, do not automatically refine this geometry.",
+    "root_decision": {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/decision.json",
+      "SHA256": "5b51b3d5d5fe5ae1e4087f4017a0fc69365f43644209c81216a0e26f54f3b440"
+    },
+    "root_queue_max_seconds": 1320,
+    "root_preparation_max_seconds": 120,
+    "root_budget_note": "Larger finite reservation includes native600 and explicit fullskin/volume/screen/feedback/publication stages; existing cumulative13800 limit unchanged"
+  },
+  "source_sha256_before": {
+    "docs/cloud-return-current-context-20261021T172000Z/feedback-after.json": "6033fbdc198791400ad2c79feec0bc4802aa4774b55563c4660409c02a5e7772",
+    "docs/cloud-next-return-current-20261021T172000Z/summary.json": "482146de98397f3753404aaad2355b0832ff8b64bfbc201d8e9446aa971a2ae1",
+    "docs/cloud-return-current-context-20261021T172000Z/preregistration.json": "816a2bbe1764e6cca1e50254e1393eea2633efd9380d2de3395a251ba5b58b9d",
+    "docs/cloud-return-current-context-20261021T172000Z/decision.json": "a7ec126929415d1fd72c8eb3574b279eeaa89cab70ff5ae3dc16cc3eaa0653cd",
+    "docs/cloud-return-current-context-20261021T172000Z/queue/summary.json": "1ac61c86a6f1e517755091fc40f92939e4f6d9e5f243a1952721f048f6af6106",
+    "docs/cloud-return-current-context-20261021T172000Z/return-routing-publication-20261021T172000Z.json": "a3a3d4c13db0e67d0fa0d03ba267b627a80a9e2fdd11e8e85de6641c6f6a1fbc",
+    "docs/cloud-return-current-context-20261021T172000Z/source-review.json": "c0ef31715bad0d9531f5325e13c78104e26ba577fee5df1f47a734b16ac15ecc",
+    "docs/cloud-next-coherent-weak-20261021T170000Z/summary.json": "0a40f07ebc77c25951ad987258d1df4b34ef7d648798b104a87e8c31d1c75746",
+    "docs/cloud-next-coherent-drive-20261021T165000Z/summary.json": "0d39a5fede92c683d02970556ad227b8941195f536fe76c7abb4e2da949229bb",
+    "docs/cloud-coherent-single-pair-20261021T172000Z/summary.json": "48c8b2058ccdb03eb1ad94539df7d12afe86a762160bdd22bd0116476d77fecf",
+    "docs/cloud-coherent-single-pair-context-20261021T172000Z/single-pair-publication-20261021T172000Z.json": "b07322bd4b825262d333aa87cb67ebdefaa8906160e5079fa5096753d2890bd1",
+    "tools/task1_return_current_drive_scout.py": "36105f2956c6f14145904f6dffda8f69befe301a53f650fad5944c93a1b6874b",
+    "tests/test_task1_return_current_drive_scout.py": "5e72cc893058649a6ac1406b978da11e89ce78c9a030b116fd3ffcf5adea675b",
+    "tools/task1_coherent_single_pair.py": "acaf89ca75851347d7d174f71e9ec998014457b21b3d836b705b76f82deab0fa",
+    "docs/cloud-next-return-current-20261021T172000Z/return-net-square-tau0/condition.json": "220924f62826c6c35ba28291efa9a7bf9e66dc41db6858f2ed0be19ca7768d6c",
+    "docs/cloud-next-return-current-20261021T172000Z/return-net-square-tau0p5/condition.json": "fd2165b6a967fa79a410014965ca4ba0854c941f3aaefd1184e4f13e5edeec45",
+    "docs/cloud-next-return-current-20261021T172000Z/return-net-square-tau1/condition.json": "7230e59cab7a6ab272cc2a14883965a378ae00593a8f8dbd9980fb217f1b2a66",
+    "docs/cloud-next-return-current-20261021T172000Z/return-net-cross-tau0/condition.json": "94cc1b416f17732dd64db9fbaba773844020ec4affac633fd49eb97eceeb880a",
+    "docs/cloud-next-return-current-20261021T172000Z/return-net-cross-tau0p5/condition.json": "6bb1ba46361272a3e1633cf88d521db8a1c7c6bf5bea7a622e35629b4360b204",
+    "docs/cloud-next-return-current-20261021T172000Z/return-net-cross-tau1/condition.json": "8091739954c3215d8ad6a559f3680c01a624cf6045564a281a9d037a2e5e5147",
+    "docs/cloud-next-return-current-20261021T172000Z/operators/adjacent-square/return-response.json": "3613a4ab8d6b5174b879b5272e06c152d0293c914439ca236e0dd7ef3b6765af",
+    "docs/cloud-next-return-current-20261021T172000Z/operators/adjacent-cross/return-response.json": "6be953403ea4c314539bd25206ede587d7af55a77a08fa4559bc1c1ec319bdb3",
+    "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p05-p090/condition.json": "2e679dd64f2ecf34351eaf758ee75f13b589fbf81cce39899f4a9163a570d0f1",
+    "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p05-p270/condition.json": "3ba346d5b4e86c5631ff19a2fa523229117e888274c46a63d3438073a35226d2",
+    "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p1-p090/condition.json": "c5d882319a542f5cdfa9e4bf73356d83e69c60019b408909eed88d87c578b74d",
+    "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p1-p270/condition.json": "ac0439efb25b8cc705f6098b176dfd3a809be757f908e95c491a267520f216c8",
+    "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p2-p090/condition.json": "911a964fc6e7b57ea6d3d80cb42b9eedae40c5d191b09e73a1246487ec61fa72",
+    "docs/cloud-next-coherent-weak-20261021T170000Z/coherent-weak-r0p2-p270/condition.json": "74a4af0efac023e1db755aa0e301cfae3017bcb54611d4f6e27b4188fdcb40d6"
+  },
+  "sources_unchanged_after_metadata_readback": true
+}

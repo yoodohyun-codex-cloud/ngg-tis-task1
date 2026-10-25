@@ -1,0 +1,476 @@
+{
+  "overall_proof_passed": true,
+  "conclusion": "excluded_fixed_discrete_positive_amplitude_family",
+  "branches": [
+    {
+      "variable_output": 0,
+      "constant_output": 1,
+      "parameterization": "A*[t,1]",
+      "common_A": "arbitrary positive, no1Vpp ceiling assumed",
+      "inner": {
+        "interval_t": [
+          0.5,
+          1.0
+        ],
+        "endpoints": "both included",
+        "surface_over_target_lower_bound": 6.810510523688636,
+        "baseline_allowed_ratio_upper_bound": 6.218651424631439,
+        "excluded": true,
+        "proof": "coordinatewise monotone+degree1 homogeneous: S/T >=(l/u)*S(u)/T(l),l=.5,u=1; commonA cancels"
+      },
+      "outer": {
+        "interval_t": [
+          0.0,
+          0.5
+        ],
+        "endpoints": "both open; t=.5 covered by inner",
+        "constant_output_power_caps": [
+          {
+            "metric": "SC_power_W",
+            "usable": true,
+            "constant_output": 1,
+            "constant_unit_power_lower_W": 1.132332154644771e-06,
+            "baseline_cap_upper_W": 2.1763570415530455e-06,
+            "common_A_upper": 1.386366832957217
+          },
+          {
+            "metric": "contact_power_W",
+            "usable": true,
+            "constant_output": 1,
+            "constant_unit_power_lower_W": 9.618121402747297e-07,
+            "baseline_cap_upper_W": 1.837275500578639e-06,
+            "common_A_upper": 1.382108131654628
+          },
+          {
+            "metric": "skin_SC_plus_dermis_power_W",
+            "usable": true,
+            "constant_output": 1,
+            "constant_unit_power_lower_W": 0.00037907263035114025,
+            "baseline_cap_upper_W": 0.0007361807702706562,
+            "common_A_upper": 1.3935771848215361
+          }
+        ],
+        "common_A_upper": 1.382108131654628,
+        "target_mean_upper_V_m": 3.2978811779727537,
+        "target_mean_required_lower_V_m": 4.061848890575925,
+        "excluded": true,
+        "proof": "T(t)<=T(.5); Pj(A,t)=A²*(t²Pvariable,j+Pconstant,j)>=A²Pconstant,j; combine3necessary power caps"
+      },
+      "branch_excluded": true
+    },
+    {
+      "variable_output": 1,
+      "constant_output": 0,
+      "parameterization": "A*[1,t]",
+      "common_A": "arbitrary positive, no1Vpp ceiling assumed",
+      "inner": {
+        "interval_t": [
+          0.5,
+          1.0
+        ],
+        "endpoints": "both included",
+        "surface_over_target_lower_bound": 6.978651472056413,
+        "baseline_allowed_ratio_upper_bound": 6.218651424631439,
+        "excluded": true,
+        "proof": "coordinatewise monotone+degree1 homogeneous: S/T >=(l/u)*S(u)/T(l),l=.5,u=1; commonA cancels"
+      },
+      "outer": {
+        "interval_t": [
+          0.0,
+          0.5
+        ],
+        "endpoints": "both open; t=.5 covered by inner",
+        "constant_output_power_caps": [
+          {
+            "metric": "SC_power_W",
+            "usable": true,
+            "constant_output": 0,
+            "constant_unit_power_lower_W": 9.994900571049721e-07,
+            "baseline_cap_upper_W": 2.1763570415530455e-06,
+            "common_A_upper": 1.4756244436365646
+          },
+          {
+            "metric": "contact_power_W",
+            "usable": true,
+            "constant_output": 0,
+            "constant_unit_power_lower_W": 8.358104642954346e-07,
+            "baseline_cap_upper_W": 1.837275500578639e-06,
+            "common_A_upper": 1.4826315827149967
+          },
+          {
+            "metric": "skin_SC_plus_dermis_power_W",
+            "usable": true,
+            "constant_output": 0,
+            "constant_unit_power_lower_W": 0.00036254549266687966,
+            "baseline_cap_upper_W": 0.0007361807702706562,
+            "common_A_upper": 1.4249872773100143
+          }
+        ],
+        "common_A_upper": 1.4249872773100143,
+        "target_mean_upper_V_m": 3.318273110508089,
+        "target_mean_required_lower_V_m": 4.061848890575925,
+        "excluded": true,
+        "proof": "T(t)<=T(.5); Pj(A,t)=A²*(t²Pvariable,j+Pconstant,j)>=A²Pconstant,j; combine3necessary power caps"
+      },
+      "branch_excluded": true
+    }
+  ],
+  "zero_amplitude_endpoints": {
+    "basic_two_carrier_maxTIS": 0,
+    "scope": "Analytic endpoint; carrierRMS need not be zero and no physiological inference is made"
+  },
+  "baseline_mean_required_lower_V_m": 4.061848890575925,
+  "baseline_surface_p95_allowed_upper_V_m": 25.259222096806894,
+  "necessary_conditions_only": "Targetmean retention andsurfaceP95 plus3of8skin caps. If this subset is impossible, simultaneous8gate/8cap acceptance is also impossible in the stated fixed family.",
+  "arithmetic_guard": {
+    "relative": 1e-08,
+    "absolute": 1e-08,
+    "unit": "Applied outward separately in the units of each scalar,ratio,power andamplitude; conservative numerical diagnostic, not model uncertainty or continuum error bound"
+  },
+  "schema": "task1-rotation-amplitude-bounds-v1",
+  "status": "completed_bounds_diagnostic",
+  "power_unit_identity_checks": [
+    {
+      "output_index": 0,
+      "metric": "SC_power_W",
+      "values_W": [
+        1.009490067199873e-06,
+        1.009490067199873e-06,
+        1.009490067199873e-06,
+        1.009490067199873e-06,
+        1.009490067199873e-06
+      ],
+      "passed": true
+    },
+    {
+      "output_index": 0,
+      "metric": "contact_power_W",
+      "values_W": [
+        8.458104727535395e-07,
+        8.458104727535395e-07,
+        8.458104727535393e-07,
+        8.458104727535395e-07,
+        8.458104727535395e-07
+      ],
+      "passed": true
+    },
+    {
+      "output_index": 0,
+      "metric": "skin_SC_plus_dermis_power_W",
+      "values_W": [
+        0.0003625554962924347,
+        0.0003625554962924347,
+        0.00036255549629243475,
+        0.0003625554962924347,
+        0.0003625554962924347
+      ],
+      "passed": true
+    },
+    {
+      "output_index": 1,
+      "metric": "SC_power_W",
+      "values_W": [
+        1.1423321660680928e-06,
+        1.1423321660680928e-06,
+        1.1423321660680928e-06,
+        1.142332166068093e-06,
+        1.1423321660680928e-06
+      ],
+      "passed": true
+    },
+    {
+      "output_index": 1,
+      "metric": "contact_power_W",
+      "values_W": [
+        9.718121499928517e-07,
+        9.718121499928517e-07,
+        9.718121499928517e-07,
+        9.718121499928514e-07,
+        9.718121499928517e-07
+      ],
+      "passed": true
+    },
+    {
+      "output_index": 1,
+      "metric": "skin_SC_plus_dermis_power_W",
+      "values_W": [
+        0.0003790826341419666,
+        0.0003790826341419666,
+        0.0003790826341419666,
+        0.0003790826341419666,
+        0.0003790826341419666
+      ],
+      "passed": true
+    }
+  ],
+  "power_unit_bounds": [
+    {
+      "SC_power_W": {
+        "lower_W": 9.994900571049721e-07,
+        "upper_W": 1.0194900772947739e-06,
+        "values_W": [
+          1.009490067199873e-06,
+          1.009490067199873e-06,
+          1.009490067199873e-06,
+          1.009490067199873e-06,
+          1.009490067199873e-06
+        ]
+      },
+      "contact_power_W": {
+        "lower_W": 8.358104642954346e-07,
+        "upper_W": 8.558104812116442e-07,
+        "values_W": [
+          8.458104727535395e-07,
+          8.458104727535395e-07,
+          8.458104727535393e-07,
+          8.458104727535395e-07,
+          8.458104727535395e-07
+        ]
+      },
+      "skin_SC_plus_dermis_power_W": {
+        "lower_W": 0.00036254549266687966,
+        "upper_W": 0.0003625654999179898,
+        "values_W": [
+          0.0003625554962924347,
+          0.0003625554962924347,
+          0.00036255549629243475,
+          0.0003625554962924347,
+          0.0003625554962924347
+        ]
+      }
+    },
+    {
+      "SC_power_W": {
+        "lower_W": 1.132332154644771e-06,
+        "upper_W": 1.152332177491415e-06,
+        "values_W": [
+          1.1423321660680928e-06,
+          1.1423321660680928e-06,
+          1.1423321660680928e-06,
+          1.142332166068093e-06,
+          1.1423321660680928e-06
+        ]
+      },
+      "contact_power_W": {
+        "lower_W": 9.618121402747297e-07,
+        "upper_W": 9.818121597109734e-07,
+        "values_W": [
+          9.718121499928517e-07,
+          9.718121499928517e-07,
+          9.718121499928517e-07,
+          9.718121499928514e-07,
+          9.718121499928517e-07
+        ]
+      },
+      "skin_SC_plus_dermis_power_W": {
+        "lower_W": 0.00037907263035114025,
+        "upper_W": 0.000379092637932793,
+        "values_W": [
+          0.0003790826341419666,
+          0.0003790826341419666,
+          0.0003790826341419666,
+          0.0003790826341419666,
+          0.0003790826341419666
+        ]
+      }
+    }
+  ],
+  "source_scalars": {
+    "baseline_target": 4.061848941601601,
+    "baseline_surface": 25.25922183168775,
+    "equal_surface": 32.50144348395667,
+    "half_targets": [
+      2.386123786310339,
+      2.3286334360519656
+    ],
+    "power_caps": {
+      "SC_power_W": 2.166357019889475e-06,
+      "contact_power_W": 1.827275482305884e-06,
+      "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+    }
+  },
+  "source_configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+  "fixed_ROI": {
+    "domain_definition": "source FVM whole-square centre-inside-cylinder mask; no outer-wall clipping",
+    "field_integration": "native cell-constant E; fractional target XY area and exact z overlap",
+    "target_definition": "r<=5mm and surface-depth 15<=z<=20mm",
+    "region_definitions": {
+      "surface_0_5": "0<=z<5mm",
+      "subsurface_5_10": "5<=z<10mm",
+      "remaining": "10<=z<=25.1mm excluding target",
+      "off_target": "all cells excluding target"
+    },
+    "coordinate_system": {
+      "surface_z_mm": 0,
+      "depth_axis": "+z",
+      "xy": "local phantom axes, no anatomical registration"
+    },
+    "layer_faces_mm": [
+      0.0,
+      0.1,
+      5.1,
+      10.1,
+      25.1
+    ],
+    "layer_counts": [
+      2,
+      14,
+      14,
+      40
+    ],
+    "cells": 351680,
+    "xy_cells": 5024,
+    "h_xy_mm": 0.625,
+    "target_xy_boundary_cells": 60,
+    "target_boundary_subdivisions": 128,
+    "analytic_cylinder_volume_m3": 4.9283734753189886e-05,
+    "represented_domain_volume_m3": 4.925875000000001e-05,
+    "domain_relative_volume_deviation": -0.0005069573828972995,
+    "domain_relative_volume_tolerance": 0.002,
+    "analytic_target_volume_m3": 3.926990816987242e-07,
+    "represented_target_volume_m3": 3.927097320556641e-07,
+    "target_relative_volume_deviation": 2.712091124279503e-05,
+    "target_relative_volume_tolerance": 0.001,
+    "max_relative_partition_roundoff": 1.7646519734464589e-16,
+    "source_csv_volume_relative_rounding": -1.2239098623467726e-12,
+    "renormalized_to_analytic_volume": false,
+    "target_boundary_cell_centres_can_be_outside_ROI": true,
+    "region_volumes_m3": {
+      "total": 4.925875000000001e-05,
+      "target": 3.927097320556641e-07,
+      "surface_0_5": 9.812500000000001e-06,
+      "subsurface_5_10": 9.812500000000001e-06,
+      "remaining": 2.924104026794434e-05,
+      "off_target": 4.886604026794434e-05
+    }
+  },
+  "circuit": {
+    "n_pads": 4,
+    "n_outputs": 2,
+    "n_signal_pads": 2,
+    "n_return_pads": 2,
+    "n_return_nodes": 1,
+    "return_topology": "all_return_pads_ideal_common_GND",
+    "pad_to_node": {
+      "0": "out0",
+      "1": "out1",
+      "2": "GND",
+      "3": "GND"
+    },
+    "source_Vpp_each": 1.0,
+    "source_peak_V": 0.5,
+    "source_resistance_ohm": 50.0,
+    "source_phase_deg": [
+      0.0,
+      0.0
+    ],
+    "carrier_assignment_Hz": [
+      3000,
+      3030
+    ],
+    "harmonics_Hz": [
+      9000,
+      9090
+    ],
+    "inactive_source_at_other_frequencies": "0 V through50 ohm",
+    "exclusive_source_return_pair_assumed": false
+  },
+  "root_selection": {
+    "decision": {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/decision.json",
+      "SHA256": "7b329e55b6a88d1070bec372493dbc7125249531c880db3739af4709da128c82"
+    },
+    "feedback": {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-context-20261021T180500Z/feedback-after.json",
+      "SHA256": "4810fac2e8b779184d91557673542353741e72ddfc973b11ff678977daba0bf5"
+    },
+    "root_selected": true,
+    "peer_endorsed": false
+  },
+  "metric_definition_evidence": {
+    "code": [
+      {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source/tis-java/selectivity_volume.py",
+        "SHA256": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+        "locations": [
+          {
+            "literal": "dirs = directions(fibonacci_count)",
+            "line": 264
+          },
+          {
+            "literal": "np.minimum(projected_a, projected_b, out=projected_a)",
+            "line": 284
+          }
+        ]
+      },
+      {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source/tis-java/explore_tis.py",
+        "SHA256": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+        "locations": [
+          {
+            "literal": "def directions(",
+            "line": 27
+          }
+        ]
+      }
+    ],
+    "directions": "26 fixed +2048 Fibonacci directions, total2074; no amplitude-dependent direction selection",
+    "metric": "At each cached native cell max_n2min(a|n.E3000|,b|n.E3030|); positive fixed weightedmean andweighted inverse-ECDFP95 inherit monotonicity anddegree1 homogeneity",
+    "native_arrays_read": false
+  },
+  "scope": "Conditional bound only for fixed one-return90 geometry,SC2/XY.625/bulk14/14/40,nominal tissue/contact,2074directions,fixedpositive ROIweights,exclusive square3h phase0/0,two50ohmoutputs/commonGND",
+  "holds": [
+    "No geometry/globalphysical/continuous-direction/continuum/convergence/hardware/experimental/activation/safety impossibility claim",
+    "The mathematical implication is conditional on the cached discrete scalar/power identities within stated outward arithmetic tolerance; unproved intervals remain inconclusive"
+  ],
+  "new_PDE": 0,
+  "native_arrays_read": false,
+  "independent_field_recalculation": false,
+  "global_physical_feasibility_inferred": false,
+  "candidate_adopted": false,
+  "implementation_git_commit": "645ddca95ba8c258e86b1a91a2cdf6d4d3d454bd",
+  "implementation_files_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_rotation_amplitude_bounds.py": "25e4f5ab1fca13d1245d699cb5ba31ac5fece12f9744f8bc16804a695a3f9af3",
+    "/workspace/ngg-tis-task1/tests/test_task1_rotation_amplitude_bounds.py": "9fe53d2bc6d0afd9b79b9f065b4f5331b3560b2c7580ab554c90ebc335a8240d",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py": "180c2133342614f6f0ab3cac327532e5f0e2e8589d8a59614679134d7615fac7",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  },
+  "inputs_unchanged": true,
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/decision.json": "7b329e55b6a88d1070bec372493dbc7125249531c880db3739af4709da128c82",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-context-20261021T180500Z/feedback-after.json": "4810fac2e8b779184d91557673542353741e72ddfc973b11ff678977daba0bf5",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/summary.json": "33c7e69904b10f8a73fc33e5b743240f9387da2f6aeb9d9b0cb5973821e599b0",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/screen.json": "ba679d6406530219ace98c2749c00b40f006029681d2edd9f54c8e27d24670e8",
+    "/workspace/ngg-tis-task1/docs/cloud-return-rotation-operator-20261021T180000Z/summary.json": "4c1681f866afd39d7591b754a9ca06607b1f6f007fc3ee984e72c24ad4e7704c",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json": "8de92edabdcdbe5a0ec7601882ce497e7d2a6c480fa478dbb71853f281041933",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/preregistration.json": "5fdd771477b8c7bcc5df6445f3eb8b8689335948ddad5c5b4cc45a030217a543",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/audit/asym-return2-rot90-xy80.json": "47716139b7f1239cc89581ce302d4f20c5022d8fa30604209fcd35031ebc2022",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o0-half/condition.json": "d8274dce2250f362fd431a102aefc9c01f6de0756638d9777c4db50ba557c1d8",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o0-sqrt-half/condition.json": "1e49449b7697228484973d6aae6017e0e00732b669715ca682fa1119fb0c5ba2",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o1-sqrt-half/condition.json": "8c3001ffbc24e579a2afced0081130a131b7fdff1b57e9f55cbdc6fe10cf6246",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-ratio-20261021T180500Z/rotation-ratio-o1-half/condition.json": "c303f1fe2b16a3784526c8cceb6cf0b2dc113b3006d89e6e40121724cacf9cdb",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source-manifest.json": "0534e3266378214e79ea910b01d6d49ddab385691b502a5100e632ea17901f75",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/frozen-source/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-task1/tools/task1_rotation_amplitude_bounds.py": "25e4f5ab1fca13d1245d699cb5ba31ac5fece12f9744f8bc16804a695a3f9af3",
+    "/workspace/ngg-tis-task1/tests/test_task1_rotation_amplitude_bounds.py": "9fe53d2bc6d0afd9b79b9f065b4f5331b3560b2c7580ab554c90ebc335a8240d",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_candidate_screen.py": "180c2133342614f6f0ab3cac327532e5f0e2e8589d8a59614679134d7615fac7",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d"
+  },
+  "preregistration": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-amplitude-bounds-context-20261021T181000Z/preregistration.json",
+    "SHA256": "a88b55e7963f4fd39a7c9453a891bf34b2eda3855869d7dcaebcc084c3a29e86"
+  },
+  "resources": {
+    "wall_seconds": 0.08177248999709263,
+    "max_seconds": 60,
+    "CPU_count": 1,
+    "peak_RSS_bytes": 24379392
+  }
+}

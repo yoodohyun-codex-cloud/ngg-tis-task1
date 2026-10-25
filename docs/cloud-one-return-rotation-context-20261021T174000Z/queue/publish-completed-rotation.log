@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 236, in <module>
+    if __name__ == '__main__': main()
+                               ^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 233, in main
+    args = parser.parse_args(); result = publish(args.spec, args.output); print(json.dumps(dict(status=result['status'], commit=result.get('published_commit'))))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 166, in publish
+    spec = bounded.read(spec_path); files, body_file, artifacts = verify_spec(spec, root)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 127, in verify_spec
+    refs = field(obj, row['source_hashes_field'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/ngg-tis-task1/tools/task1_batch_publish.py", line 49, in field
+    obj = obj[key]
+          ~~~^^^^^
+KeyError: 'input_sha256'

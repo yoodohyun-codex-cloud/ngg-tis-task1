@@ -1,0 +1,99 @@
+{
+  "schema": "task1-mixed-r1-preflight-failure-preservation-v1",
+  "status": "pre_numerical_spec_identity_failure_preserved",
+  "source_commit": "01fa95c422deb8b1c9cf3d9b0903a8d230143ddd",
+  "old_owner_receipt": {
+    "schema": "task1-mixed-fourpad-owner-v1",
+    "status": "failed_preserved",
+    "started_utc": "2026-10-25T11:00:06.805569+00:00",
+    "pid": 170787,
+    "proc_start_ticks": 5763364,
+    "maximum_new_driven_RHS": 4,
+    "Windows_saved_verified": false,
+    "candidate_adopted": false,
+    "error_type": "ValueError",
+    "error": "Finite child failed cached-mixed-fourpad-child; preserve log /dev/shm/task1-mixed-fourpad-20261025-run/logs/12-cached-mixed-fourpad-child.log",
+    "failed_phase": "cached-mixed-fourpad-child",
+    "finished_utc": "2026-10-25T11:00:54.214702+00:00",
+    "elapsed_seconds": 47.39490801100328,
+    "nonduplicated_ledger_seconds": 4.133534685999621,
+    "resources": {
+      "peak_RSS": 68079616,
+      "peak_owned_tmpfs": 6361308372,
+      "peak_accounted": 6429137713
+    },
+    "remaining_approved_seconds": null
+  },
+  "old_worker_receipt": {
+    "schema": "task1-memory-separated-mixed-fourpad-worker-v1",
+    "status": "failed_preserved",
+    "maximum_new_driven_RHS": 4,
+    "expected_control_alias_cases": 2,
+    "new_eigen_solves": 0,
+    "new_native_FVM_RHS": 0,
+    "candidate_adopted": false,
+    "actual_Windows_saved": false,
+    "CPU_cap": 4,
+    "configured": {
+      "status": "configured_before_numpy_import",
+      "affinity_cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "thread_environment": {
+        "OPENBLAS_NUM_THREADS": "4",
+        "OMP_NUM_THREADS": "4",
+        "MKL_NUM_THREADS": "4",
+        "NUMEXPR_NUM_THREADS": "4",
+        "NUMEXPR_MAX_THREADS": "4"
+      },
+      "actual_BLAS_threads_verified": false,
+      "java_active_processor_count": 4,
+      "java_heap_bytes": 2147483648,
+      "java_GC_policy": "unchanged; caller retains existing SerialGC"
+    },
+    "actual_parent_authentication": {
+      "parent_pid": 170787,
+      "parent_start_ticks": 5763364,
+      "three_dual_locks": true,
+      "source_publication_commit": "01fa95c422deb8b1c9cf3d9b0903a8d230143ddd",
+      "exact_source_input_readback_verified": true
+    },
+    "error_type": "ValueError",
+    "error": "Exact completed-recovery/donor/catalog/source provenance before numerical work",
+    "elapsed_seconds": 1.0111532470036764,
+    "process_CPU_seconds": 1.010674133,
+    "average_process_CPU_cores": 0.9995261707311961,
+    "peak_worker_RSS_bytes": 27070464,
+    "actual_worker_VmPeak_bytes": 53530624,
+    "input_verification": {
+      "before_tests_and_build": {
+        "passed": true,
+        "count": 108
+      }
+    }
+  },
+  "diagnosis": {
+    "status": "metadata_only_preflight_diagnosed",
+    "new_PDE_RHS": 0,
+    "arrays_decoded": false,
+    "existing_failed_artifacts_unchanged": true,
+    "differences": [
+      {
+        "path": "/input_sha256//dev/shm/task1-mixed-fourpad-20261025-run/source/model/mixed_catalog.py",
+        "only": "regenerated"
+      },
+      {
+        "path": "/input_sha256//dev/shm/task1-mixed-fourpad-20261025/source/mixed_catalog.py",
+        "only": "saved"
+      }
+    ]
+  },
+  "original_worker_log_SHA256": "606d28e151af072ceb9ac368d55fa70e46c642227565cb48867156813161cc16",
+  "original_worker_log_UTF8": "Traceback (most recent call last):\n  File \"/dev/shm/task1-mixed-fourpad-20261025-run/source/owner/worker.py\", line 132, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/dev/shm/task1-mixed-fourpad-20261025-run/source/owner/worker.py\", line 107, in main\n    req(spec==model.make_spec(spec['catalog'],admission),'Exact completed-recovery/donor/catalog/source provenance before numerical work')\n  File \"/dev/shm/task1-mixed-fourpad-20261025-run/source/owner/worker.py\", line 18, in req\n    if not ok:raise ValueError(message)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Exact completed-recovery/donor/catalog/source provenance before numerical work\n",
+  "new_PDE_RHS": 0,
+  "original_inputs_and_sources_unchanged": true,
+  "retry": "New R2 source/output/owner namespaces; canonical path identity fix only, no physical or numerical acceptance relaxation"
+}

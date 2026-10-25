@@ -1,0 +1,32 @@
+{
+  "status": "computed_waveform_and_C1_control",
+  "error": null,
+  "command": [
+    "python",
+    "tools/task1_waveform_check.py",
+    "--summary",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/postprocess/baseline-square15-coupled-xy100-sc8-bulk/summary.json",
+    "--summary",
+    "/workspace/ngg-tis-task1/data-native/cloud-candidate-coupled-20261021T041100Z/postprocess/free-square10-r12p5xy-coupled-xy100-sc8-bulk/summary.json",
+    "--match-tis",
+    "/workspace/ngg-tis-task1/data-native/cloud-candidate-coupled-20261021T041100Z/postprocess/free-square10-r12p5xy-coupled-xy100-sc8-bulk/summary.json",
+    "--match-single",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-c1-20261019T195100Z/postprocess/baseline-square15-C1pair0-coupled-xy100-sc8-bulk/summary.json",
+    "--match-control-waveform",
+    "sine",
+    "--output",
+    "/workspace/ngg-tis-task1/docs/cloud-continuation-20261021/waveform-candidate-coupled.json"
+  ],
+  "source_code_SHA256": "76df6e73d8c72b86b3e7249d49ebde35466bb95566d41def8df88f1b5a2bf032",
+  "resources": {
+    "wall_seconds": 6.328647008000189,
+    "max_seconds": 180.0,
+    "peak_aggregate_RSS_bytes": 92839936,
+    "CPU": 1,
+    "global_limit_seconds": 6600
+  },
+  "new_PDE": 0,
+  "C1_geometry_note": "Independent existing baseline C1 control uses two225mm2pads; new TIS candidate uses four100mm2pads. Distinct geometries are explicit; same mesh/material/contact but not a same-footprint control.",
+  "C1_physiological_equivalence": false,
+  "probe_loading": "unloaded native potential differences; ETA5001 loaded-field prediction unvalidated"
+}

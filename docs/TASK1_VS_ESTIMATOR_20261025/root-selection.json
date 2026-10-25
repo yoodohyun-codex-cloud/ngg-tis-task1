@@ -1,0 +1,89 @@
+{
+  "schema": "task1-VS-MMS-next-native-selection-v1",
+  "created_utc": "2026-10-25T04:15:25.269731+00:00",
+  "status": "U19_selected_pending_separately_published_root_admission_and_native_source_validation",
+  "SC8_result_commit": "a31cabc8b2c0dd1f4419bb8a3f766ef358f4a8dc",
+  "mms_summary_sha256": "110a4bfbec9914baa23526275ab649ec93a94a709cb44524841024d45e35c080",
+  "mms_spec_sha256": "3a360d59c496bece106b7d4736b5d7a8a2a9758fe791037d8c5917d87ceed1d7",
+  "selected_candidate": "U19",
+  "candidate_adopted": false,
+  "new_native_PDE_started": false,
+  "native_cells": 793860,
+  "reason": "OnlyU19passes all predeclared worst-envelope nonregression screens and a>=10percent continuum error reduction; G18improves purefitbias butfails all-interface error nonregression at verylowamplitude m16,z10.1mm",
+  "actual_MMS_cases": 15,
+  "original_5percent_criteria_unchanged": true,
+  "criteria_relaxed": false,
+  "actual_native_analytic_truth_available": false,
+  "review": [
+    {
+      "candidate": "U19",
+      "baseline_metrics": {
+        "SC_conservative_flux_vs_continuum_kfd_max_relative": 5.764608109193052e-05,
+        "all_interface_flux_vs_continuum_kfd_max_relative": 0.2509678129697418,
+        "VS_profile_vs_continuum_kfd_max_relative": 0.008425338498020938,
+        "physical_k_profile_max_relative": 0.00023655463992470092,
+        "exact_sample_lowerVS_bias_max_relative": {
+          "common_two_point": 0.40748057865184806,
+          "three_point": 0.16188378688801114
+        }
+      },
+      "candidate_metrics": {
+        "SC_conservative_flux_vs_continuum_kfd_max_relative": 5.655969733413679e-05,
+        "all_interface_flux_vs_continuum_kfd_max_relative": 0.23454096019775408,
+        "VS_profile_vs_continuum_kfd_max_relative": 0.007554391858975792,
+        "physical_k_profile_max_relative": 0.00023546459922008347,
+        "exact_sample_lowerVS_bias_max_relative": {
+          "common_two_point": 0.39129225210941676,
+          "three_point": 0.14916903155894776
+        }
+      },
+      "true_continuum_error_nonregression": true,
+      "physical_error_improvement_review": true,
+      "estimator_localization_only_review": false,
+      "pure_fit_bias_improves_both_fixed_orders": false,
+      "automatic_native_admission": false,
+      "requires_root_review": true,
+      "native_implementation_blocker": "Frozen native ValidationMesh supports neither VS19 nor gradedVS18. A separately published/validated mesh adapter is needed before any real native followup.",
+      "nonregression_scope": "Worst envelopes over all declared modes/interfaces; full per-mode/interface rows are retained, so this is not a pointwise monotonicity guarantee",
+      "interpretation": "A screening flag improvement alone never proves improved PDE accuracy; no winner chosen and no real fields corrected"
+    },
+    {
+      "candidate": "G18",
+      "baseline_metrics": {
+        "SC_conservative_flux_vs_continuum_kfd_max_relative": 5.764608109193052e-05,
+        "all_interface_flux_vs_continuum_kfd_max_relative": 0.2509678129697418,
+        "VS_profile_vs_continuum_kfd_max_relative": 0.008425338498020938,
+        "physical_k_profile_max_relative": 0.00023655463992470092,
+        "exact_sample_lowerVS_bias_max_relative": {
+          "common_two_point": 0.40748057865184806,
+          "three_point": 0.16188378688801114
+        }
+      },
+      "candidate_metrics": {
+        "SC_conservative_flux_vs_continuum_kfd_max_relative": 5.17596505548509e-05,
+        "all_interface_flux_vs_continuum_kfd_max_relative": 0.2863866101153368,
+        "VS_profile_vs_continuum_kfd_max_relative": 0.00606772022310193,
+        "physical_k_profile_max_relative": 0.00023161771765304662,
+        "exact_sample_lowerVS_bias_max_relative": {
+          "common_two_point": 0.25457406201045674,
+          "three_point": 0.06628280053742351
+        }
+      },
+      "true_continuum_error_nonregression": false,
+      "physical_error_improvement_review": false,
+      "estimator_localization_only_review": false,
+      "pure_fit_bias_improves_both_fixed_orders": true,
+      "automatic_native_admission": false,
+      "requires_root_review": true,
+      "native_implementation_blocker": "Frozen native ValidationMesh supports neither VS19 nor gradedVS18. A separately published/validated mesh adapter is needed before any real native followup.",
+      "nonregression_scope": "Worst envelopes over all declared modes/interfaces; full per-mode/interface rows are retained, so this is not a pointwise monotonicity guarantee",
+      "interpretation": "A screening flag improvement alone never proves improved PDE accuracy; no winner chosen and no real fields corrected"
+    }
+  ],
+  "remaining_holds": [
+    "NativeU19explicitfaceadapter/sourcefreeze/geometrycontracts notyetvalidated",
+    "Independent5percentrealSC8flagsfailed",
+    "FullSC/XY/bulk/edge/contact/material/anatomic/experimental/activation/safetyvalidation notcomplete"
+  ],
+  "next_command_pending_source": "python -B /dev/shm/task1-vs19-uniform-2000-20261025/source/u19_run.py --prepare --output /dev/shm/task1-vs19-uniform-2000-20261025-run"
+}

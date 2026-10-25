@@ -1,0 +1,651 @@
+test_expired_stage_rejects_before_partial_result_and_bad_weights_fail (test_high_volume.WeightedThresholdContracts.test_expired_stage_rejects_before_partial_result_and_bad_weights_fail) ... ok
+test_fractional_physical_volume_not_cell_count_and_hotspot_ties (test_high_volume.WeightedThresholdContracts.test_fractional_physical_volume_not_cell_count_and_hotspot_ties) ... ERROR
+test_scaling_changes_absolute_subset_without_mutating_original (test_high_volume.WeightedThresholdContracts.test_scaling_changes_absolute_subset_without_mutating_original) ... ERROR
+test_zero_drive_and_empty_ROI_remain_empty_without_nan_or_invented_hotspot (test_high_volume.WeightedThresholdContracts.test_zero_drive_and_empty_ROI_remain_empty_without_nan_or_invented_hotspot) ... ok
+test_complete_ellipse_requires_exact_actual_accounting (test_light_inputs.ProvenanceContracts.test_complete_ellipse_requires_exact_actual_accounting) ... ok
+test_direct_readback_identity_cannot_be_skipped_or_changed (test_light_inputs.ProvenanceContracts.test_direct_readback_identity_cannot_be_skipped_or_changed) ... ok
+test_failed_or_missing_ellipse_never_invents_native_fields (test_light_inputs.ProvenanceContracts.test_failed_or_missing_ellipse_never_invents_native_fields) ... ok
+test_four_existing_normalizations_cannot_be_inferred_or_missing (test_light_inputs.ProvenanceContracts.test_four_existing_normalizations_cannot_be_inferred_or_missing) ... ok
+test_invalid_admission_stops_before_metadata_or_context (test_light_inputs.ProvenanceContracts.test_invalid_admission_stops_before_metadata_or_context) ... ok
+test_source_identity_uses_canonical_namespace_not_frozen_deployment (test_light_inputs.ProvenanceContracts.test_source_identity_uses_canonical_namespace_not_frozen_deployment) ... ok
+test_zero_work_and_actual_outcome_review_mandatory (test_light_inputs.ProvenanceContracts.test_zero_work_and_actual_outcome_review_mandatory) ... ok
+test_affine_complex_potential_streaming_is_exact_at_all_40_probes (test_light_probe.LightPhysicalProbeTests.test_affine_complex_potential_streaming_is_exact_at_all_40_probes) ... ERROR
+test_default_missing_same_layer_bracket_is_not_cross_layer_fill (test_light_probe.LightPhysicalProbeTests.test_default_missing_same_layer_bracket_is_not_cross_layer_fill) ... ERROR
+test_expired_deadline_rejects_before_any_data_access (test_light_probe.LightPhysicalProbeTests.test_expired_deadline_rejects_before_any_data_access) ... ok
+test_explicit_one_spacing_extrapolation_retains_negative_weights (test_light_probe.LightPhysicalProbeTests.test_explicit_one_spacing_extrapolation_retains_negative_weights) ... ERROR
+test_extrapolation_beyond_one_spacing_is_unavailable (test_light_probe.LightPhysicalProbeTests.test_extrapolation_beyond_one_spacing_is_unavailable) ... ERROR
+test_native_zmajor_order_is_authenticated_not_index_guessed (test_light_probe.LightPhysicalProbeTests.test_native_zmajor_order_is_authenticated_not_index_guessed) ... ok
+test_no_noncoherent_or_more_than_two_carrier_formula_extension (test_light_probe.LightPhysicalProbeTests.test_no_noncoherent_or_more_than_two_carrier_formula_extension) ... ERROR
+test_physical_layer_interface_requires_explicit_other_reconstruction (test_light_probe.LightPhysicalProbeTests.test_physical_layer_interface_requires_explicit_other_reconstruction) ... ERROR
+test_single_carrier_has_zero_two_tone_am_without_activation_claim (test_light_probe.LightPhysicalProbeTests.test_single_carrier_has_zero_two_tone_am_without_activation_claim) ... ERROR
+test_two_tone_real_waveform_dft_rms_and_demodulation_are_distinct (test_light_probe.LightPhysicalProbeTests.test_two_tone_real_waveform_dft_rms_and_demodulation_are_distinct) ... ERROR
+test_all_four_cached_modes_and_positive_finite_scales_are_required (test_native_light_post.CachedValueContracts.test_all_four_cached_modes_and_positive_finite_scales_are_required) ... ok
+test_explicit_extrapolation_does_not_become_strict_native_availability (test_native_light_post.CachedValueContracts.test_explicit_extrapolation_does_not_become_strict_native_availability) ... ok
+test_remaining_ROI_is_labelled_scaled_cached_statistic_not_invented_producer_row (test_native_light_post.CachedValueContracts.test_remaining_ROI_is_labelled_scaled_cached_statistic_not_invented_producer_row) ... ok
+
+======================================================================
+ERROR: test_fractional_physical_volume_not_cell_count_and_hotspot_ties (test_high_volume.WeightedThresholdContracts.test_fractional_physical_volume_not_cell_count_and_hotspot_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_high_volume.py", line 11, in test_fractional_physical_volume_not_cell_count_and_hotspot_ties
+    np,g,v,w=self.fixture();r=subject.threshold_summary(np,g,v,w,2.)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/high_volume.py", line 52, in threshold_summary
+    for ident in np.unique(layer):
+                 ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_scaling_changes_absolute_subset_without_mutating_original (test_high_volume.WeightedThresholdContracts.test_scaling_changes_absolute_subset_without_mutating_original)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_high_volume.py", line 21, in test_scaling_changes_absolute_subset_without_mutating_original
+    r=subject.threshold_summary(np,g,v,w,2.,2.)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/high_volume.py", line 52, in threshold_summary
+    for ident in np.unique(layer):
+                 ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_affine_complex_potential_streaming_is_exact_at_all_40_probes (test_light_probe.LightPhysicalProbeTests.test_affine_complex_potential_streaming_is_exact_at_all_40_probes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 16, in test_affine_complex_potential_streaming_is_exact_at_all_40_probes
+    prepared=p.prepare(np,g,allow_same_layer_extrapolation=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 153, in prepare
+    _check(guard,deadline_monotonic);layout=_layout(np,grid);probes=[]
+                                            ^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 75, in _layout
+    xs=np.unique(xy[:,0]);ys=np.unique(xy[:,1]);ix=np.searchsorted(xs,xy[:,0]);iy=np.searchsorted(ys,xy[:,1])
+       ^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_default_missing_same_layer_bracket_is_not_cross_layer_fill (test_light_probe.LightPhysicalProbeTests.test_default_missing_same_layer_bracket_is_not_cross_layer_fill)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 27, in test_default_missing_same_layer_bracket_is_not_cross_layer_fill
+    prepared=p.prepare(np,grid())
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 153, in prepare
+    _check(guard,deadline_monotonic);layout=_layout(np,grid);probes=[]
+                                            ^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 75, in _layout
+    xs=np.unique(xy[:,0]);ys=np.unique(xy[:,1]);ix=np.searchsorted(xs,xy[:,0]);iy=np.searchsorted(ys,xy[:,1])
+       ^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_explicit_one_spacing_extrapolation_retains_negative_weights (test_light_probe.LightPhysicalProbeTests.test_explicit_one_spacing_extrapolation_retains_negative_weights)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 35, in test_explicit_one_spacing_extrapolation_retains_negative_weights
+    prepared=p.prepare(np,grid(),allow_same_layer_extrapolation=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 153, in prepare
+    _check(guard,deadline_monotonic);layout=_layout(np,grid);probes=[]
+                                            ^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 75, in _layout
+    xs=np.unique(xy[:,0]);ys=np.unique(xy[:,1]);ix=np.searchsorted(xs,xy[:,0]);iy=np.searchsorted(ys,xy[:,1])
+       ^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_extrapolation_beyond_one_spacing_is_unavailable (test_light_probe.LightPhysicalProbeTests.test_extrapolation_beyond_one_spacing_is_unavailable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 44, in test_extrapolation_beyond_one_spacing_is_unavailable
+    g=grid([.05,4.7,4.8,6.,9.,10.,12.,15.,20.,23.]);prepared=p.prepare(np,g,allow_same_layer_extrapolation=True)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 153, in prepare
+    _check(guard,deadline_monotonic);layout=_layout(np,grid);probes=[]
+                                            ^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 75, in _layout
+    xs=np.unique(xy[:,0]);ys=np.unique(xy[:,1]);ix=np.searchsorted(xs,xy[:,0]);iy=np.searchsorted(ys,xy[:,1])
+       ^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_no_noncoherent_or_more_than_two_carrier_formula_extension (test_light_probe.LightPhysicalProbeTests.test_no_noncoherent_or_more_than_two_carrier_formula_extension)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 78, in test_no_noncoherent_or_more_than_two_carrier_formula_extension
+    with self.assertRaisesRegex(ValueError,'Coherent'):p.waveform_metrics(np,[1.,1.],[2000,2010.5])
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 192, in waveform_metrics
+    _require(delta.ndim==freq.ndim==1 and len(delta)==len(freq)and len(freq)in(1,2)and np.isfinite(delta).all()and np.isfinite(freq).all()and np.all(freq>0)and len(np.unique(freq))==len(freq),
+                                                                                                                                                                    ^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_physical_layer_interface_requires_explicit_other_reconstruction (test_light_probe.LightPhysicalProbeTests.test_physical_layer_interface_requires_explicit_other_reconstruction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 50, in test_physical_layer_interface_requires_explicit_other_reconstruction
+    layout=p._layout(np,grid())
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 75, in _layout
+    xs=np.unique(xy[:,0]);ys=np.unique(xy[:,1]);ix=np.searchsorted(xs,xy[:,0]);iy=np.searchsorted(ys,xy[:,1])
+       ^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_single_carrier_has_zero_two_tone_am_without_activation_claim (test_light_probe.LightPhysicalProbeTests.test_single_carrier_has_zero_two_tone_am_without_activation_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 71, in test_single_carrier_has_zero_two_tone_am_without_activation_claim
+    metrics,_=p.waveform_metrics(np,[.3+.4j],[2000])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 192, in waveform_metrics
+    _require(delta.ndim==freq.ndim==1 and len(delta)==len(freq)and len(freq)in(1,2)and np.isfinite(delta).all()and np.isfinite(freq).all()and np.all(freq>0)and len(np.unique(freq))==len(freq),
+                                                                                                                                                                    ^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+======================================================================
+ERROR: test_two_tone_real_waveform_dft_rms_and_demodulation_are_distinct (test_light_probe.LightPhysicalProbeTests.test_two_tone_real_waveform_dft_rms_and_demodulation_are_distinct)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025/source/test_light_probe.py", line 59, in test_two_tone_real_waveform_dft_rms_and_demodulation_are_distinct
+    delta=np.asarray([.4+.3j,.2-.1j]);metrics,small=p.waveform_metrics(np,delta,[2000,2010])
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025/source/light_probe.py", line 192, in waveform_metrics
+    _require(delta.ndim==freq.ndim==1 and len(delta)==len(freq)and len(freq)in(1,2)and np.isfinite(delta).all()and np.isfinite(freq).all()and np.all(freq>0)and len(np.unique(freq))==len(freq),
+                                                                                                                                                                    ^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 294, in unique
+    ret = _unique1d(ar, return_index, return_inverse, return_counts,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 365, in _unique1d
+    if not optional_indices and not return_counts and not np.ma.is_masked(ar):
+                                                          ^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py", line 727, in __getattr__
+    import numpy.ma as ma
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/__init__.py", line 42, in <module>
+    from . import core, extras
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 133, in manufactured_import
+    return real_import(name,*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8819, in <module>
+    arange = _convert2ma(
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8760, in __init__
+    self.__doc__ = self.getdoc(np_ret, np_ma_ret)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8768, in getdoc
+    doc = self._replace_return_type(doc, np_ret, np_ma_ret)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/ma/core.py", line 8796, in _replace_return_type
+    f"found in the docstring for `np.{self._func.__name__}`. "
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 662, in __getattr__
+    raise AttributeError(name)
+AttributeError: __name__
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.090s
+
+FAILED (errors=10)
+test_actual_partial_availability_and_strict_extrap_counts_remain_separate (test_owner_contracts.LightOwnerContracts.test_actual_partial_availability_and_strict_extrap_counts_remain_separate) ... ok
+test_dropped_failure_or_loaded_hardware_claim_cannot_pass (test_owner_contracts.LightOwnerContracts.test_dropped_failure_or_loaded_hardware_claim_cannot_pass) ... ok
+test_failed_or_skipped_or_changed_source_MFG_never_admits_real_native_read (test_owner_contracts.LightOwnerContracts.test_failed_or_skipped_or_changed_source_MFG_never_admits_real_native_read) ... ok
+test_hidden_scientific_work_or_count_relabelling_blocks (test_owner_contracts.LightOwnerContracts.test_hidden_scientific_work_or_count_relabelling_blocks) ... ok
+test_manufactured_FFT_vector_allowed_native_field_and_Q_shape_rejected (test_owner_contracts.LightOwnerContracts.test_manufactured_FFT_vector_allowed_native_field_and_Q_shape_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

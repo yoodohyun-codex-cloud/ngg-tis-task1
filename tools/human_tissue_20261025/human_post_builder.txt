@@ -1,0 +1,82 @@
+from pathlib import Path
+p=Path('/dev/shm/task1-human-tissue-20261025/source')
+s=Path('/dev/shm/task1-all-layer-sensitivity-20261025/source/whole_layer_post.py').read_text()
+s=s.replace('for a four-layer assumption sensitivity','for a source-documented human-reference proxy comparison')
+s=s.replace("CASE='baseline-square15-sc-eps1100-xy80'", "CASE='baseline-square15-human-reference-xy80'\nSOURCE=Path('/dev/shm/task1-human-tissue-20261025/source')\nSENSITIVITY_RUN=Path('/dev/shm/task1-all-layer-sensitivity-20261025-run')\nSC4_RUN=Path('/dev/shm/task1-all-layer-sc4-check-20261025-run')")
+needle="    return dict(post=post,square=square,summary_path=path,archive_path=weights),pins"
+replacement="""    additional={}
+    for label,run_ in(('SC_epsilon1100',SENSITIVITY_RUN),('SC2_to_SC4',SC4_RUN)):
+        statpath=run_/'postprocess/summary.json';artifactpath=run_/'postprocess/artifact-sha256.json'
+        statraw=statpath.read_bytes();artraw=artifactpath.read_bytes();artifact=json.loads(artraw)
+        require(len(statraw)<4*1024**2 and sha(statraw)==artifact['summary.json']['SHA256'],'Pinned actual sensitivity/check summary')
+        additional[label]=json.loads(statraw);pins[str(statpath)]=sha(statraw);pins[str(artifactpath)]=sha(artraw)
+    return dict(post=post,square=square,summary_path=path,archive_path=weights,additional=additional),pins"""
+s=s.replace(needle,replacement)
+a=s.index('def _gamma(config,f):');b=s.index('\ndef weighted_statistics',a)
+s=s[:a]+'''def _material_value(config,layer,kind,f):
+    # Native old comparator uses bare constants; new human run requires all
+    # explicit per-frequency keys, independently checked inside build.
+    key=layer+'.'+kind+'.'+str(f)
+    value=float(config[key]if key in config else config[layer+'.'+kind])
+    require(math.isfinite(value)and value>0,'Finite positive material lookup')
+    return value
+
+
+def _sigma(config,f):
+    return np.asarray([_material_value(config,n,'sigma',f)for n in LAYERS],float)
+
+
+def _gamma(config,f):
+    return np.asarray([complex(_material_value(config,n,'sigma',f),2*math.pi*f*EPS0*_material_value(config,n,'epsilon_r',f))for n in LAYERS],np.complex128)
+
+''' + s[b:]
+s=s.replace("task1-all-layer-sensitivity-20261025-run'and folder.is_dir()", "task1-human-tissue-20261025-run'and folder.is_dir()")
+s=s.replace("(p.is_relative_to(folder)or p.is_relative_to(run/'configs')or str(p)in old_pins)", "(p.is_relative_to(folder)or p.is_relative_to(run/'configs')or p==SOURCE/'material-input.json'or str(p)in old_pins)")
+a=s.index("    require([float(config[k+'.sigma'])");b=s.index("    oldconfig=",a)
+s=s[:a]+'''    require(all(k+'.'+kind+'.'+str(f)in config for k in LAYERS for kind in('sigma','epsilon_r')for f in FREQUENCIES)and
+        all(k+'.'+kind not in config for k in LAYERS for kind in('sigma','epsilon_r')),'All32explicit per-frequency material values; no ambiguous bare values')
+    require(config['material.lookup']=='source_verified_per_frequency'and Path(config['material.input_path'])==SOURCE/'material-input.json','Exact preregistered material table path and lookup type')
+    new_pins[str(SOURCE/'material-input.json')]=config['material.input_sha256']
+    material_source_receipt=js(SOURCE/'material-input.json')
+''' + s[b:]
+s=s.replace("material['frequency_dependent_sigma_epsilon']is False and len(material['rows'])==4", "material['frequency_dependent_sigma_epsilon']is True and sorted(row['frequency_Hz']for row in material['rows'])==list(FREQUENCIES)")
+s=s.replace("item['sigma_S_m']==float(config[LAYERS[i]+'.sigma'])", "item['sigma_S_m']==_material_value(config,LAYERS[i],'sigma',frequency)")
+s=s.replace("item['epsilon_r']==float(config[LAYERS[i]+'.epsilon_r'])", "item['epsilon_r']==_material_value(config,LAYERS[i],'epsilon_r',frequency)")
+s=s.replace("material_status='uncalibrated sensitivity assumption; not measured phantom data'", "material_status='source-documented layer-specific human-reference proxy; not measured phantom calibration',actual_exporter_material_row=item")
+s=s.replace("('Jconduction',np.asarray([float(config[k+'.sigma'])for k in LAYERS])[layer,None])", "('Jconduction',_sigma(config,f)[layer,None])")
+s=s.replace("import whole_layer_interfaces as iface", "import human_interfaces as iface")
+s=s.replace("sourcepower=0.;old_energy=np.zeros(len(grid))", "sourcepower=0.;old_losses=np.zeros(6);old_sourcepower=0.;old_energy=np.zeros(len(grid))")
+needle="        del phi,density,transfer,loss_matrix,old_native"
+s=s.replace(needle,"""        old_loss_matrix=binary(oldfolder,'loss-'+str(f)+'.bin',(6,2,2))
+        actual_old_losses=np.einsum('i,kij,j->k',c.conj(),old_loss_matrix,c)
+        require(np.max(abs(actual_old_losses.imag))<=1e-12 and np.all(actual_old_losses.real>=-1e-12),'Actual original source loss forms')
+        old_losses+=actual_old_losses.real
+        old_current=binary(oldfolder,'source-'+str(f)+'.bin',(2,2))@c
+        old_sourcepower+=float(.25*np.vdot(c,old_current).real)
+        del phi,density,transfer,loss_matrix,old_native,old_loss_matrix""")
+s=s.replace("    baseline_electrical=old['square']['metrics']", """    baseline_electrical=dict(old['square']['metrics'])
+    require(abs(old_sourcepower-baseline_electrical['source_power_W'])<=1e-12 and abs(old_losses.sum()-old_sourcepower)<=2e-7*old_sourcepower,'Actual original loss and cached source power agree')
+    baseline_electrical.update(layers_power_W={name:float(old_losses[i])for i,name in enumerate(LAYERS)},contact_power_W=float(old_losses[4]),source_resistor_power_W=float(old_losses[5]),
+        layer_power_provenance='Recomputed from actual pinned old native loss-f.bin c†Lc with original square3h coefficients; no new comparator solve')""")
+s=s.replace("schema='task1-whole-layer-assumption-sensitivity-post-v1'", "schema='task1-human-reference-proxy-post-v1'")
+s=s.replace("material_status='Uncalibrated four-layer hypotheses; only SCepsilon110000to1100; not a paper-material reproduction or experimental correction'", "material_status='Source-documented layer-specific human forearm SC/dermis surrogates plus mixed-reference fat/muscle proxies; not thoracoabdominal-specific tissue or calibrated experimental phantom'")
+s=s.replace("frequency_dispersion_status='sigma/epsilon constants; only omega term changes; no calibrated tissue dispersion fit'", "frequency_dispersion_status='Explicit per-frequency sigma/epsilon lookup from registered input table; source-specific frequency validity and transfer limits remain',material_source_receipt=material_source_receipt,material_source_receipt_sha256=config['material.input_sha256']")
+s=s.replace("        comparator=dict(run_id=RUN_ID", "        SC_epsilon1100_cached_comparison=dict(run_id=SENSITIVITY_RUN.name,case_id=old['additional']['SC_epsilon1100']['case_id'],statistics=old['additional']['SC_epsilon1100']['statistics'],electrical=old['additional']['SC_epsilon1100']['electrical'],new_PDE=0),\n        historical_SC2_to_SC4_adjacent_check=dict(run_id=SC4_RUN.name,result=old['additional']['SC2_to_SC4']['adjacent_SC2_to_SC4_checks'],interpretation='Only previous uncalibrated SCepsilon1100 material; cannot transfer this adjacent check to the new human-reference material',new_human_material_SC4_check='not_run'),\n        comparator=dict(run_id=RUN_ID")
+s=s.replace("material_calibration=False,nominal_PBS_contact_as_skin_validated=False", "material_calibration=False,new_human_material_SC4_convergence=False,anatomic_thoracoabdominal_specificity_validated=False,nominal_PBS_contact_as_skin_validated=False")
+s=s.replace("current_f35_new_material_solve=False", "current_f35_new_material_solve=False,human_reference_is_not_new_best_candidate=True")
+(p/'human_post.py').write_text(s)
+(p/'human_interfaces.py').write_text(Path('/dev/shm/task1-all-layer-sensitivity-20261025/source/whole_layer_interfaces.py').read_text())
+(p/'test_human_interfaces.py').write_text(Path('/dev/shm/task1-all-layer-sensitivity-20261025/source/test_whole_layer_interfaces.py').read_text().replace('import whole_layer_interfaces as d','import human_interfaces as d').replace('from whole_layer_interfaces','from human_interfaces'))
+s=Path('/dev/shm/task1-all-layer-sensitivity-20261025/source/test_whole_layer_post.py').read_text().replace('import whole_layer_post as p','import human_post as p')
+s=s.replace("if __name__=='__main__':unittest.main()",'''class PerCarrierMaterialLookup(unittest.TestCase):
+    def test_per_frequency_conduction_and_displacement_are_distinct(self):
+        config={n+'.'+kind+'.'+str(f):str((i+1)*(f/3000 if kind=='sigma'else 100))for i,n in enumerate(p.LAYERS)for kind in('sigma','epsilon_r')for f in p.FREQUENCIES}
+        a=p._gamma(config,3000);b=p._gamma(config,9000)
+        self.assertTrue(np.allclose(a.real,[1,2,3,4]))
+        self.assertTrue(np.allclose(b.real,[3,6,9,12]))
+        self.assertTrue(np.allclose(b.imag,3*a.imag))
+        self.assertTrue(np.array_equal(p._sigma(config,9000),b.real))
+
+
+if __name__=='__main__':unittest.main()''')
+(p/'test_human_post.py').write_text(s)

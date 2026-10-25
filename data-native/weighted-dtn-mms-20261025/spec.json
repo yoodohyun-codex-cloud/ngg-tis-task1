@@ -1,0 +1,74 @@
+{
+  "schema": "task1-weighted-DtN-Fourier-MMS-spec-v1",
+  "plan": {
+    "period_width_m": 0.05,
+    "SC_thickness_m": 0.0001,
+    "grids": [
+      16,
+      32,
+      64
+    ],
+    "bottoms": [
+      "Dirichlet0",
+      "Neumann0"
+    ],
+    "moved_faces_m": [
+      -0.0175,
+      -0.0025,
+      0.0025,
+      0.0175
+    ],
+    "spatial_top_forcing": "cos(kappa*x)+0.3*sin(2*kappa*y), kappa=2pi/L; exact physical cell averages",
+    "depth_quadrature_points": 5,
+    "energy_quadrature_points": 8,
+    "maximum_physical_samples": 800000,
+    "MMS_conditions": 6,
+    "one_dimensional_eigensystems": 3,
+    "new_actual_circle_eigensystems": 0,
+    "new_actual_phantom_PDE": 0,
+    "new_actual_four_pad_CEM_RHS": 0,
+    "CPU_limit": 4,
+    "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+    "numerical_child_timeout_seconds": 600
+  },
+  "gates": {
+    "eigen_relative_residual": 1e-10,
+    "orthogonality_absolute": 1e-10,
+    "weighted_null_alignment": 1e-10,
+    "uniform_limit_relative": 1e-12,
+    "full_contact_relative": 1e-10,
+    "parseval_relative": 1e-10,
+    "complex_power_relative": 1e-10,
+    "finest_relative_phi": 0.02,
+    "finest_relative_qtop": 0.02,
+    "finest_relative_Ez": 0.02,
+    "finest_relative_Ex": 0.05,
+    "finest_relative_Ey": 0.05,
+    "minimum_observed_order": 1.0
+  },
+  "absolute_error_floors": {
+    "phi": 1e-12,
+    "qtop": 1e-12,
+    "Ex": 1e-10,
+    "Ey": 1e-10,
+    "Ez": 1e-10
+  },
+  "gamma_SC_S_m": {
+    "real": 5.959456590514033e-06,
+    "imaginary": 2.5055522184188793e-05
+  },
+  "gamma_config_SHA256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+  "material_receipt_SHA256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+  "material_scope": "Original2kHz HREF-MIX declared SC surrogate; no new human/phantom calibration",
+  "coordinate_system": "Periodic50mm by50mm rectangle, SCslab0.1mm, depth0top; not a circle or actual phantom. Peak exp(+jomega*t).",
+  "top_boundary": "Prescribed spatially variable Dirichlet cell-average Fourier forcing; no equipotential pads/metals/50ohm",
+  "zero_modes": "Dirichlet bottom: F0=1-z/t,Y0=gamma/t; Neumann bottom:F0=1,Y0=0. Actual four-pad insulated bottom is unchanged.",
+  "field_ABI": "phi and Ez use analytic modal depth; Ex/Ey are explicitly conservative nonuniform opposite-face gradient averages; J=gammaE derived, not independent verification",
+  "norm": "Area-mass weighted cell-average spatialRMS of PEAK phasor errors; temporalRMS is separately divided bysqrt2; five fixed Gauss depth points for volume metrics, exact physical lateral Fourier cell averages. Not continuous 3D truth.",
+  "energy": "VI*/2 signed complex power; independent8point depth quadrature of (G²+lambdaF²), discrete horizontal eigenvalue retained, no continuum error conflation.",
+  "rate": "Observed pairwise order of absolute weighted RMS errors vs nominalh=L/n. >=1 is a predeclared engineering screening hypothesis, not a theorem for abrupt moved-face TPFA. Failures/inconclusivefloors remain.",
+  "quadrature": "Five physical Gauss depth points fixed acrossallgrids; eight-point energy quadrature independent from analytic modal boundarypower",
+  "no_fourier_as_discrete_eigenvector_assumption": true,
+  "no_fitted_curves_or_criteria_relaxation": true,
+  "candidate_adopted": false
+}

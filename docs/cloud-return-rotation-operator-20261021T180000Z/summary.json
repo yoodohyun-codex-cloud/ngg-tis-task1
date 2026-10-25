@@ -1,0 +1,827 @@
+{
+  "schema": "task1-return-rotation-operator-audit-v1",
+  "status": "completed_operator_diagnostic",
+  "cases": [
+    {
+      "geometry": "opposite-square",
+      "run_id": "cloud-mesh-c1-20261019T190000Z",
+      "case_id": "baseline-square15-xy80",
+      "source_commit": "38f005ecefc2c432cd6424a06f599f93682cc202",
+      "configuration_sha256": "f838aeab4f1729e3eb064318781e49ef72c99f28a90b4f416097cfbdec92b64b",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "n_return_nodes": 1,
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+      },
+      "frequencies": [
+        {
+          "frequency_Hz": 3000,
+          "status": "measured_operator_rank_deficient_at_native_resolution",
+          "physical_pad_response_peak_real_A": [
+            [
+              0.0018037311433924054,
+              -0.00024834867521702597
+            ],
+            [
+              -0.0002483486751465461,
+              0.0018037311433680345
+            ],
+            [
+              -0.0007776912401912467,
+              -0.0007776912401912528
+            ],
+            [
+              -0.0007776912401912472,
+              -0.0007776912401912505
+            ]
+          ],
+          "physical_pad_response_peak_imaginary_A": [
+            [
+              0.00037038368441642567,
+              3.695287438414652e-06
+            ],
+            [
+              3.6952873254548254e-06,
+              0.00037038368440002196
+            ],
+            [
+              -0.00018703949023181484,
+              -0.00018703949023034418
+            ],
+            [
+              -0.00018703949023181487,
+              -0.00018703949023034393
+            ]
+          ],
+          "source_matrix_peak_real_A": [
+            [
+              0.001803731143391698,
+              -0.00024834867508279795
+            ],
+            [
+              -0.00024834867490837475,
+              0.0018037311433763059
+            ]
+          ],
+          "source_matrix_peak_imaginary_A": [
+            [
+              0.00037038368442183204,
+              3.6952871548769656e-06
+            ],
+            [
+              3.6952870927523903e-06,
+              0.00037038368438459447
+            ]
+          ],
+          "response_definition": "Ipad_peak_A = R[pad,source_basis] @ dimensionless command coefficients; each native basis is0.5Vpeak before50ohm,+jwt",
+          "physical_pad_areas_m2": [
+            0.00022500000000000005,
+            0.00022500000000000005,
+            0.00022500000000000005,
+            0.00022500000000000005
+          ],
+          "max_area_relative_error": 2.220446049250313e-16,
+          "signal_source_relative_error": 1.8083338029607477e-10,
+          "full_pad_KCL_relative_error": 8.127143534813119e-09,
+          "return_singular_values_A": [
+            0.001599734272904229,
+            1.390703257020747e-18
+          ],
+          "return_weakest_over_strongest": 8.693339141231264e-16,
+          "return_rank_at_native_resolution": 1,
+          "native_relative_resolution": 2e-06,
+          "return_condition_number_raw": 1150305979962455.5,
+          "return_condition_number_at_native_resolution": null,
+          "return_rows_difference_over_max_return_entry": 2.862795175158825e-15,
+          "return_rows_equal_within_native_resolution": true,
+          "future_q_denominator": {
+            "row": 2,
+            "column": 1,
+            "absolute_A": 0.0007998671364519459,
+            "relative_to_max_return_entry": 0.9999999999995767,
+            "resolved": true
+          },
+          "rank_deficiency_is_valid_result": true,
+          "drive_weights_constructed": false,
+          "independent_return_nodes": 0,
+          "common_GND_nodes": 1,
+          "local_J_cancellation_inferred": false,
+          "physical_symmetry_inferred_from_rank": false,
+          "candidate_adopted": false
+        },
+        {
+          "frequency_Hz": 3030,
+          "status": "measured_operator_rank_deficient_at_native_resolution",
+          "physical_pad_response_peak_real_A": [
+            [
+              0.0018056884787442421,
+              -0.0002482482341942109
+            ],
+            [
+              -0.00024824823417833846,
+              0.0018056884785895187
+            ],
+            [
+              -0.0007787201276200284,
+              -0.000778720127621126
+            ],
+            [
+              -0.0007787201276200277,
+              -0.0007787201276211271
+            ]
+          ],
+          "physical_pad_response_peak_imaginary_A": [
+            [
+              0.00036842015244747175,
+              3.6637493693769805e-06
+            ],
+            [
+              3.6637493255004066e-06,
+              0.0003684201525028803
+            ],
+            [
+              -0.00018604195655894215,
+              -0.00018604195656264183
+            ],
+            [
+              -0.0001860419565589416,
+              -0.00018604195656264272
+            ]
+          ],
+          "source_matrix_peak_real_A": [
+            [
+              0.0018056884787430471,
+              -0.00024824823430231243
+            ],
+            [
+              -0.00024824823424585325,
+              0.0018056884785307792
+            ]
+          ],
+          "source_matrix_peak_imaginary_A": [
+            [
+              0.00036842015251021355,
+              3.6637487665605607e-06
+            ],
+            [
+              3.66374873289739e-06,
+              0.0003684201524403408
+            ]
+          ],
+          "response_definition": "Ipad_peak_A = R[pad,source_basis] @ dimensionless command coefficients; each native basis is0.5Vpeak before50ohm,+jwt",
+          "physical_pad_areas_m2": [
+            0.00022500000000000005,
+            0.00022500000000000005,
+            0.00022500000000000005,
+            0.00022500000000000005
+          ],
+          "max_area_relative_error": 2.220446049250313e-16,
+          "signal_source_relative_error": 3.3232175485113066e-10,
+          "full_pad_KCL_relative_error": 8.481068680136002e-09,
+          "return_singular_values_A": [
+            0.0016012703041802477,
+            1.1526820716965355e-18
+          ],
+          "return_weakest_over_strongest": 7.198547732305808e-16,
+          "return_rank_at_native_resolution": 1,
+          "native_relative_resolution": 2e-06,
+          "return_condition_number_raw": 1389169089637590.2,
+          "return_condition_number_at_native_resolution": null,
+          "return_rows_difference_over_max_return_entry": 1.7555412112123152e-15,
+          "return_rows_equal_within_native_resolution": true,
+          "future_q_denominator": {
+            "row": 3,
+            "column": 0,
+            "absolute_A": 0.0008006351520891594,
+            "relative_to_max_return_entry": 0.9999999999975903,
+            "resolved": true
+          },
+          "rank_deficiency_is_valid_result": true,
+          "drive_weights_constructed": false,
+          "independent_return_nodes": 0,
+          "common_GND_nodes": 1,
+          "local_J_cancellation_inferred": false,
+          "physical_symmetry_inferred_from_rank": false,
+          "candidate_adopted": false
+        }
+      ],
+      "native_numerical_gates": {
+        "max_residual": 7.793850404402165e-10,
+        "max_power_error": 5.695564046739923e-10,
+        "max_current_error": 5.810842786645832e-09,
+        "max_area_relative_error": 1.0880185641326534e-14,
+        "max_interface_normal_current_relative_error": 1.5768270062742985e-15,
+        "channels": 2,
+        "cells": 351680,
+        "h_xy_mm": 0.625,
+        "sc_cells": 2
+      },
+      "hypothesis_status": "Actual response measured; any equality/rank1 classification uses these values, never geometry alone",
+      "independent_return_control_resolved_at_both_frequencies": false,
+      "candidate_adopted": false,
+      "new_PDE": 0
+    },
+    {
+      "geometry": "opposite-asymmetric",
+      "run_id": "cloud-asymmetric-20261021T051000Z",
+      "case_id": "asym-cross281p25-return168p75-xy80",
+      "source_commit": "713c35c95114f7e478e04f5ada35d7efbfe49156",
+      "configuration_sha256": "12afd425530b37dc0e7ab4f941d279277d00e23d3d3dd6acf81cc8fbdb98c584",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "harmonics_Hz": [
+          9000,
+          9090
+        ],
+        "inactive_source_at_other_frequencies": "0 V through50 ohm",
+        "exclusive_source_return_pair_assumed": false
+      },
+      "frequencies": [
+        {
+          "frequency_Hz": 3000,
+          "status": "measured_operator_rank2_at_native_resolution",
+          "physical_pad_response_peak_real_A": [
+            [
+              0.0018648760438119973,
+              -0.0003513187200884357
+            ],
+            [
+              -0.0003513187165961568,
+              0.0018648760399712114
+            ],
+            [
+              -0.000779537196048386,
+              -0.0007340201459246716
+            ],
+            [
+              -0.0007340201248379381,
+              -0.0007795371875056441
+            ]
+          ],
+          "physical_pad_response_peak_imaginary_A": [
+            [
+              0.00036889292724312186,
+              4.427511933232934e-06
+            ],
+            [
+              4.427498224805181e-06,
+              0.00036889293004511634
+            ],
+            [
+              -0.00020321514156754856,
+              -0.0001701052881876899
+            ],
+            [
+              -0.00017010528833825135,
+              -0.00020321513800900114
+            ]
+          ],
+          "source_matrix_peak_real_A": [
+            [
+              0.0018648760441524026,
+              -0.00035131871946845675
+            ],
+            [
+              -0.000351318714948941,
+              0.001864876037899289
+            ]
+          ],
+          "source_matrix_peak_imaginary_A": [
+            [
+              0.0003688929277786493,
+              4.427513241119514e-06
+            ],
+            [
+              4.427497965808919e-06,
+              0.0003688929269079303
+            ]
+          ],
+          "response_definition": "Ipad_peak_A = R[pad,source_basis] @ dimensionless command coefficients; each native basis is0.5Vpeak before50ohm,+jwt",
+          "physical_pad_areas_m2": [
+            0.0002812500000000001,
+            0.0002812500000000001,
+            0.00016875000000000006,
+            0.00016875000000000006
+          ],
+          "max_area_relative_error": 2.220446049250313e-16,
+          "signal_source_relative_error": 1.9776984177623117e-09,
+          "full_pad_KCL_relative_error": 1.0940994505102295e-08,
+          "return_singular_values_A": [
+            0.0015589175490047585,
+            5.6285563788221357e-05
+          ],
+          "return_weakest_over_strongest": 0.036105542479879765,
+          "return_rank_at_native_resolution": 2,
+          "native_relative_resolution": 2e-06,
+          "return_condition_number_raw": 27.696578733230822,
+          "return_condition_number_at_native_resolution": 27.696578733230822,
+          "return_rows_difference_over_max_return_entry": 0.0698687960510188,
+          "return_rows_equal_within_native_resolution": false,
+          "future_q_denominator": {
+            "row": 2,
+            "column": 1,
+            "absolute_A": 0.0007534728818562041,
+            "relative_to_max_return_entry": 0.9353060967391774,
+            "resolved": true
+          },
+          "rank_deficiency_is_valid_result": true,
+          "drive_weights_constructed": false,
+          "independent_return_nodes": 0,
+          "common_GND_nodes": 1,
+          "local_J_cancellation_inferred": false,
+          "physical_symmetry_inferred_from_rank": false,
+          "candidate_adopted": false
+        },
+        {
+          "frequency_Hz": 3030,
+          "status": "measured_operator_rank2_at_native_resolution",
+          "physical_pad_response_peak_real_A": [
+            [
+              0.0018668261743057008,
+              -0.0003512104268342108
+            ],
+            [
+              -0.000351210426531178,
+              0.0018668261712437232
+            ],
+            [
+              -0.0007807014488146322,
+              -0.000734914307763222
+            ],
+            [
+              -0.0007349143076568924,
+              -0.0007807014495152351
+            ]
+          ],
+          "physical_pad_response_peak_imaginary_A": [
+            [
+              0.00036697730141272897,
+              4.367127714497326e-06
+            ],
+            [
+              4.3671272812778084e-06,
+              0.0003669773008312753
+            ],
+            [
+              -0.00020218797122292025,
+              -0.00016915643966139876
+            ],
+            [
+              -0.0001691564400086823,
+              -0.00020218797197432472
+            ]
+          ],
+          "source_matrix_peak_real_A": [
+            [
+              0.0018668261744991023,
+              -0.00035121042752619307
+            ],
+            [
+              -0.00035121042760997306,
+              0.0018668261722139014
+            ]
+          ],
+          "source_matrix_peak_imaginary_A": [
+            [
+              0.00036697730351863226,
+              4.367127651065458e-06
+            ],
+            [
+              4.367127596000151e-06,
+              0.00036697730013829035
+            ]
+          ],
+          "response_definition": "Ipad_peak_A = R[pad,source_basis] @ dimensionless command coefficients; each native basis is0.5Vpeak before50ohm,+jwt",
+          "physical_pad_areas_m2": [
+            0.0002812500000000001,
+            0.0002812500000000001,
+            0.00016875000000000006,
+            0.00016875000000000006
+          ],
+          "max_area_relative_error": 2.220446049250313e-16,
+          "signal_source_relative_error": 1.1115401999728597e-09,
+          "full_pad_KCL_relative_error": 1.1169158736741556e-08,
+          "return_singular_values_A": [
+            0.0015604447424983573,
+            5.6458342282229694e-05
+          ],
+          "return_weakest_over_strongest": 0.03618093018265857,
+          "return_rank_at_native_resolution": 2,
+          "native_relative_resolution": 2e-06,
+          "return_condition_number_raw": 27.638869286984157,
+          "return_condition_number_at_native_resolution": 27.638869286984157,
+          "return_rows_difference_over_max_return_entry": 0.07000777863538646,
+          "return_rows_equal_within_native_resolution": false,
+          "future_q_denominator": {
+            "row": 3,
+            "column": 0,
+            "absolute_A": 0.0007541305860361456,
+            "relative_to_max_return_entry": 0.9351143598866516,
+            "resolved": true
+          },
+          "rank_deficiency_is_valid_result": true,
+          "drive_weights_constructed": false,
+          "independent_return_nodes": 0,
+          "common_GND_nodes": 1,
+          "local_J_cancellation_inferred": false,
+          "physical_symmetry_inferred_from_rank": false,
+          "candidate_adopted": false
+        }
+      ],
+      "native_numerical_gates": {
+        "max_residual": 9.469447623906857e-10,
+        "max_power_error": 2.6798939596982526e-09,
+        "max_current_error": 1.2887979655014283e-08,
+        "max_area_relative_error": 1.4210854715202004e-14,
+        "max_interface_normal_current_relative_error": 1.8814601393702973e-15,
+        "channels": 2,
+        "cells": 351680,
+        "h_xy_mm": 0.625,
+        "sc_cells": 2
+      },
+      "hypothesis_status": "Actual response measured; any equality/rank1 classification uses these values, never geometry alone",
+      "independent_return_control_resolved_at_both_frequencies": true,
+      "candidate_adopted": false,
+      "new_PDE": 0
+    },
+    {
+      "geometry": "one-return-rot90",
+      "run_id": "cloud-one-return-rotation-20261021T174000Z",
+      "case_id": "asym-return2-rot90-xy80",
+      "source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+      "configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "harmonics_Hz": [
+          9000,
+          9090
+        ],
+        "inactive_source_at_other_frequencies": "0 V through50 ohm",
+        "exclusive_source_return_pair_assumed": false
+      },
+      "frequencies": [
+        {
+          "frequency_Hz": 3000,
+          "status": "measured_operator_rank_deficient_at_native_resolution",
+          "physical_pad_response_peak_real_A": [
+            [
+              0.0018316744009110601,
+              -0.0003512730639626174
+            ],
+            [
+              -0.0003512730627462844,
+              0.0018977013399859885
+            ],
+            [
+              -0.0007402006667713188,
+              -0.0007732141387889216
+            ],
+            [
+              -0.0007402006667713187,
+              -0.0007732141387889217
+            ]
+          ],
+          "physical_pad_response_peak_imaginary_A": [
+            [
+              0.000343956465436099,
+              4.467089602566614e-06
+            ],
+            [
+              4.467086647807762e-06,
+              0.0003932850366537835
+            ],
+            [
+              -0.00017421177856853396,
+              -0.00019887606169977112
+            ],
+            [
+              -0.00017421177856853542,
+              -0.00019887606169977258
+            ]
+          ],
+          "source_matrix_peak_real_A": [
+            [
+              0.0018316744009308273,
+              -0.00035127306199011935
+            ],
+            [
+              -0.00035127306311357734,
+              0.001897701339783966
+            ]
+          ],
+          "source_matrix_peak_imaginary_A": [
+            [
+              0.0003439564654181763,
+              4.467088506573088e-06
+            ],
+            [
+              4.467086851124897e-06,
+              0.0003932850366997708
+            ]
+          ],
+          "response_definition": "Ipad_peak_A = R[pad,source_basis] @ dimensionless command coefficients; each native basis is0.5Vpeak before50ohm,+jwt",
+          "physical_pad_areas_m2": [
+            0.0002812500000000001,
+            0.0002812500000000001,
+            0.00016875000000000006,
+            0.00016875000000000006
+          ],
+          "max_area_relative_error": 2.220446049250313e-16,
+          "signal_source_relative_error": 1.1643473483387992e-09,
+          "full_pad_KCL_relative_error": 3.5336252014102975e-09,
+          "return_singular_values_A": [
+            0.0015592681380833906,
+            2.251049702717275e-19
+          ],
+          "return_weakest_over_strongest": 1.443657859567504e-16,
+          "return_rank_at_native_resolution": 1,
+          "native_relative_resolution": 2e-06,
+          "return_condition_number_raw": 6926848999385376.0,
+          "return_condition_number_at_native_resolution": null,
+          "return_rows_difference_over_max_return_entry": 1.8383246806898902e-15,
+          "return_rows_equal_within_native_resolution": true,
+          "future_q_denominator": {
+            "row": 2,
+            "column": 1,
+            "absolute_A": 0.0007983807314435293,
+            "relative_to_max_return_entry": 0.9999999999999994,
+            "resolved": true
+          },
+          "rank_deficiency_is_valid_result": true,
+          "drive_weights_constructed": false,
+          "independent_return_nodes": 0,
+          "common_GND_nodes": 1,
+          "local_J_cancellation_inferred": false,
+          "physical_symmetry_inferred_from_rank": false,
+          "candidate_adopted": false
+        },
+        {
+          "frequency_Hz": 3030,
+          "status": "measured_operator_rank_deficient_at_native_resolution",
+          "physical_pad_response_peak_real_A": [
+            [
+              0.0018334188547803202,
+              -0.0003511644661756273
+            ],
+            [
+              -0.00035116446502016273,
+              0.001899852161818228
+            ],
+            [
+              -0.0007411271941830008,
+              -0.000774343849395046
+            ],
+            [
+              -0.0007411271941829997,
+              -0.0007743438493950438
+            ]
+          ],
+          "physical_pad_response_peak_imaginary_A": [
+            [
+              0.00034210221838663316,
+              4.40643470401095e-06
+            ],
+            [
+              4.4064296079269134e-06,
+              0.0003913070882868659
+            ],
+            [
+              -0.00017325432635897944,
+              -0.00019785675869985717
+            ],
+            [
+              -0.00017325432635898134,
+              -0.00019785675869985847
+            ]
+          ],
+          "source_matrix_peak_real_A": [
+            [
+              0.0018334188547792618,
+              -0.00035116446531420785
+            ],
+            [
+              -0.000351164464984035,
+              0.0018998521617969977
+            ]
+          ],
+          "source_matrix_peak_imaginary_A": [
+            [
+              0.00034210221839402015,
+              4.406432647374139e-06
+            ],
+            [
+              4.40643027195213e-06,
+              0.00039130708832115966
+            ]
+          ],
+          "response_definition": "Ipad_peak_A = R[pad,source_basis] @ dimensionless command coefficients; each native basis is0.5Vpeak before50ohm,+jwt",
+          "physical_pad_areas_m2": [
+            0.0002812500000000001,
+            0.0002812500000000001,
+            0.00016875000000000006,
+            0.00016875000000000006
+          ],
+          "max_area_relative_error": 2.220446049250313e-16,
+          "signal_source_relative_error": 1.1495161299631887e-09,
+          "full_pad_KCL_relative_error": 3.307782882880271e-09,
+          "return_singular_values_A": [
+            0.0015607961260964357,
+            6.22208178079213e-19
+          ],
+          "return_weakest_over_strongest": 3.986479513089009e-16,
+          "return_rank_at_native_resolution": 1,
+          "native_relative_resolution": 2e-06,
+          "return_condition_number_raw": 2508478964250662.0,
+          "return_condition_number_at_native_resolution": null,
+          "return_rows_difference_over_max_return_entry": 3.1640426627196456e-15,
+          "return_rows_equal_within_native_resolution": true,
+          "future_q_denominator": {
+            "row": 3,
+            "column": 0,
+            "absolute_A": 0.0007611087829999534,
+            "relative_to_max_return_entry": 0.9523121851811959,
+            "resolved": true
+          },
+          "rank_deficiency_is_valid_result": true,
+          "drive_weights_constructed": false,
+          "independent_return_nodes": 0,
+          "common_GND_nodes": 1,
+          "local_J_cancellation_inferred": false,
+          "physical_symmetry_inferred_from_rank": false,
+          "candidate_adopted": false
+        }
+      ],
+      "native_numerical_gates": {
+        "max_residual": 9.757777443742462e-10,
+        "max_power_error": 4.697677761624391e-10,
+        "max_current_error": 1.1166084078368561e-08,
+        "max_area_relative_error": 1.4210854715202004e-14,
+        "max_interface_normal_current_relative_error": 1.892840755807422e-15,
+        "channels": 2,
+        "cells": 351680,
+        "h_xy_mm": 0.625,
+        "sc_cells": 2
+      },
+      "hypothesis_status": "Actual response measured; any equality/rank1 classification uses these values, never geometry alone",
+      "independent_return_control_resolved_at_both_frequencies": false,
+      "candidate_adopted": false,
+      "new_PDE": 0
+    }
+  ],
+  "new_PDE": 0,
+  "drive_weights_constructed": false,
+  "candidate_adopted": false,
+  "independent_field_recalculation": false,
+  "symmetry_hypothesis": "One Y return and one X return may restore x=y reflection for opposite symmetric cross sources; this is a hypothesis compared with measured R rows, not assumed a result",
+  "root_selection_context": {
+    "root_selected": true,
+    "peer_endorsed": false,
+    "decision": {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-return-rotation-operator-context-20261021T180000Z/decision.json",
+      "SHA256": "141ec1818ca0bdb71375d2a6d2bc4ef8245cf7c622cbb5e4f1d08e6c018f1668"
+    },
+    "feedback": {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/feedback-after.json",
+      "SHA256": "e1beaf647dc8c597838d0a669c5b695c9daa717e9070eaf5e4dd99d886ad4785"
+    }
+  },
+  "holds": [
+    "Rank is an observed algebraic property at native2e-6 resolution, not independent-ground isolation or hardware validation",
+    "No q/drive weights, candidate or localJ-zero inference; no mesh/contact/experimental/physiological validation"
+  ],
+  "implementation_git_commit": "d637feb59a05277f039695d36b3c7c163c4b8725",
+  "implementation_files_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_return_rotation_operator_audit.py": "33b651b87e6f2ff72c3fec296ae879dcd8be9f1736f14da8d5a0e3b7d291bd81",
+    "/workspace/ngg-tis-task1/tests/test_task1_return_rotation_operator_audit.py": "32f7e5a3a033d6ac399e16747daf95435d772dc1c5b1cfd729615f354bfc70c5",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  },
+  "inputs_unchanged": true,
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/docs/cloud-return-rotation-operator-context-20261021T180000Z/decision.json": "141ec1818ca0bdb71375d2a6d2bc4ef8245cf7c622cbb5e4f1d08e6c018f1668",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/feedback-after.json": "e1beaf647dc8c597838d0a669c5b695c9daa717e9070eaf5e4dd99d886ad4785",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/screen.json": "ba679d6406530219ace98c2749c00b40f006029681d2edd9f54c8e27d24670e8",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/postprocess/asym-cross281p25-return168p75-xy80/summary.json": "34fc758cd915fc8b926117c1ccf8762a460c9890a4be3c3294d6a6cf747fc199",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json": "8de92edabdcdbe5a0ec7601882ce497e7d2a6c480fa478dbb71853f281041933",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/preregistration.json": "a5bff7509ba3e881f8885729453df4d0f88bbfc2e08908b93ee7c843d3f5b9b3",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/cases/baseline-square15-xy80.json": "93a714a9fb99c091d194827f9943ad22f1b586d818dc995098e5d58826a36b31",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/summary.json": "b77a11ff3a9d529c1b9a7d8bad872f79086117e23c97fd09a0985f558315fca9",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/configs/baseline-square15-xy80.properties": "f838aeab4f1729e3eb064318781e49ef72c99f28a90b4f416097cfbdec92b64b",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/masks/baseline-square15-h0.625.csv": "7cfc576d31e50dcf0621567cce225df3d2cc8e55eeff4aa5d6667c59bfc401b2",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/validation.json": "3394185cf08eae55bc32d32a8cdcc5178b18a927dfdc0e32cef79fc9c2ca66f6",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/mesh-metadata.json": "16a419d3dece50876fffb74c04c781983973fd7540fa11a0bad7be96604895d7",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/density-3000.bin": "b44da64103732696077db7e69cd080d0d194aeb06d7ab16b1e2750b7284b0c49",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/source-3000.bin": "5c5eefd94d439ffdf0bc39fd0d16f454c416f7f20afb08df19b5061f75924c04",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/contacts-3000.csv": "cac097f5a185a5a5f143728b3ca349d6105cab6132b06ca8755c40d787fd8618",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/density-3030.bin": "9376a5b56b76b28edb23b2507760ea7551d7d8f1c0c95184f64dfd40440dbbf6",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/source-3030.bin": "3613f83d1658bd5411c8ec021c7b33fb01f81eceed1bd810bbd236576fbbbd7a",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-xy80/contacts-3030.csv": "cac097f5a185a5a5f143728b3ca349d6105cab6132b06ca8755c40d787fd8618",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/preregistration.json": "4cfd9b34766beb952740c5c9c4fda4b79c22379ad21561bb5e7c9b5c6e337580",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/cases/asym-cross281p25-return168p75-xy80.json": "091f2cc821b5e0999235b8538aa840b53aae5ae4d10f8a64eab6320556f663ce",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/summary.json": "2934f748233b7da17815c9cadc3fa525ea22f846c0716a5bace2b56e217a8d30",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/configs/asym-cross281p25-return168p75-xy80.properties": "12afd425530b37dc0e7ab4f941d279277d00e23d3d3dd6acf81cc8fbdb98c584",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/masks/asym-cross281p25-return168p75-xy80.csv": "8c4464d3daf2c19db1799b2c4fb5bcea1ac911bcbe304f568e5a8b637f6b0c3d",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/validation.json": "722d0ee09fe3a6048339d1c9d84449fb9eb1c46b6b181aff3aa5f9c2156a5dbd",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/mesh-metadata.json": "ed8a648c8fec266922fb5cb9cbd98725955a151916cdfb3f3876b0d4f99458c2",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/density-3000.bin": "3ff1124ca34911ce31e260475e66573c6c3238b88473176be709748e7d768481",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/source-3000.bin": "e74c5f6533c482bf785e286a11970b16a21b22963c12f91f3a6bff9e5656d296",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/contacts-3000.csv": "29851b71af402d9c585aca71d0e950b84d5489ca564bdf87a943ff62256896e8",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/density-3030.bin": "26e969599d50531b769fbac6015371f901454d33b77e9dd8e71d75efe57e3964",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/source-3030.bin": "efb6da1b315ddeb80b27d09541f3a21973e3e559eb18ade4d37b546dfdeeba0a",
+    "/workspace/ngg-tis-task1/data-native/cloud-asymmetric-20261021T051000Z/bases/asym-cross281p25-return168p75-xy80/contacts-3030.csv": "29851b71af402d9c585aca71d0e950b84d5489ca564bdf87a943ff62256896e8",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/preregistration.json": "5fdd771477b8c7bcc5df6445f3eb8b8689335948ddad5c5b4cc45a030217a543",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/cases/asym-return2-rot90-xy80.json": "971bcba7f3a5e7a3694f0d0435e7b949fab575f43e93a18b67c03d3bef4303f9",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/summary.json": "19578018664a2cf27f421a9e015f86745148aa5c8bafb36f8427d6096dcb8971",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/configs/asym-return2-rot90-xy80.properties": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/masks/asym-return2-rot90-xy80.csv": "2fc01b2c4e255db3a6cffbc8403e3ffac4c5deaf03023d6635389a5b4fb820b7",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/validation.json": "44a5e33c16c8d365f520f78ee40ffa8fcc0314bfc2ede67ce059e039a1f5dfaf",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/mesh-metadata.json": "3cecbb1af32c05cdcb323dff86c012a9654b24225a5ca871aee96f589173c27e",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/density-3000.bin": "4a628091810d5f924b1a8f1595a0f313817515d20e133c8f8f418a82e37cc7c6",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/source-3000.bin": "6face7d6660c6080555a8e5a1096435871b843605e1634a249a6847e94927137",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/contacts-3000.csv": "7b9cc48bec2fac1feacc5f569237342fe37a70007683f04d5686445fa98e6332",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/density-3030.bin": "b15a9c28b92f079202e63fa5cbfb40e2ad3710ee2137ad1dbdcca0a8325242bb",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/source-3030.bin": "a30449cc16373521fe342f1a42a7cbcf27ed4c8908aac8d4bf3cff849ef50d13",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/bases/asym-return2-rot90-xy80/contacts-3030.csv": "7b9cc48bec2fac1feacc5f569237342fe37a70007683f04d5686445fa98e6332",
+    "/workspace/ngg-tis-task1/tools/task1_return_rotation_operator_audit.py": "33b651b87e6f2ff72c3fec296ae879dcd8be9f1736f14da8d5a0e3b7d291bd81",
+    "/workspace/ngg-tis-task1/tests/test_task1_return_rotation_operator_audit.py": "32f7e5a3a033d6ac399e16747daf95435d772dc1c5b1cfd729615f354bfc70c5",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d"
+  },
+  "preregistration": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-return-rotation-operator-context-20261021T180000Z/preregistration.json",
+    "SHA256": "ffa4e25fc9e2510179f93532ebedc757f6a1491e1b2b06f0d85dbb1fe75615a2"
+  },
+  "resources": {
+    "wall_seconds": 0.08662493500014534,
+    "max_seconds": 60,
+    "CPU_count": 1,
+    "peak_RSS_bytes": 27684864
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "completed_preregistered_queue",
+  "pid": 25669,
+  "proc_start_ticks": 5230471,
+  "created_utc": "2026-10-21T18:03:38.008820+00:00",
+  "phase": "finished",
+  "stages": [
+    {
+      "id": "twelve-rotation-C1-RMS-matches",
+      "elapsed_seconds": 1.381174367001222,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-20261021T183500Z/summary.json",
+        "statuses": [
+          "calculated_unadopted"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 1.381174367001222,
+        "child_ledger_delta_seconds": 1.183039771996846,
+        "excluded_already_recorded_seconds": 1.183039771996846,
+        "unrecorded_child_wall_seconds": 0.19813459500437602
+      }
+    },
+    {
+      "id": "feedback-after-rotation-C1",
+      "elapsed_seconds": 4.167798139998922,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/feedback-after.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 4.167798139998922,
+        "child_ledger_delta_seconds": 4.032170431004488,
+        "excluded_already_recorded_seconds": 4.032170431004488,
+        "unrecorded_child_wall_seconds": 0.13562770899443422
+      }
+    },
+    {
+      "id": "publish-rotation-C1-matches",
+      "elapsed_seconds": 3.498078735996387,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/single-pair-publication-20261021T183500Z.json",
+        "statuses": [
+          "published_completed_batch"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 3.498078735996387,
+        "child_ledger_delta_seconds": 3.4129092860021046,
+        "excluded_already_recorded_seconds": 3.4129092860021046,
+        "unrecorded_child_wall_seconds": 0.08516944999428233
+      }
+    }
+  ],
+  "current_child": null,
+  "plan_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/queue-plan.json",
+  "plan_sha256": "0c74db6c74f4842c58a0e3649dbe45f431ac0df008f9ebb893966821b4adcb70",
+  "background_daemon": false,
+  "candidate_adopted": false,
+  "updated_utc": "2026-10-21T18:03:47.477172+00:00",
+  "elapsed_seconds": 9.4684203479992,
+  "coordinator_overhead_seconds": 0.8352015580021543,
+  "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_batch_publish.py --spec /workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/publication-spec.json --output /workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/single-pair-publication-20261021T183500Z.json",
+  "aggregate_rss_bytes": 21344256,
+  "current_child_members": {
+    "25769": 5231089
+  },
+  "stopped_utc": "2026-10-21T18:03:47.477143+00:00",
+  "stop_reason": "All predefined stages completed; root selects next finite scientific question",
+  "next_step_owner": "root",
+  "resume_condition": "Do not rerun attempted queue; inspect evidence and preregister a new unique output",
+  "resume_command": null,
+  "next_inspection_command": "cat /workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/queue/heartbeat.json",
+  "numerical_validation_promoted": false
+}

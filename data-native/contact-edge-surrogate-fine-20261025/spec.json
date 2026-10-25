@@ -1,0 +1,140 @@
+{
+  "schema": "task1-surrogate-equipotential-contact-slab-spec-v1",
+  "plan": {
+    "period_width_m": 0.002,
+    "SC_thickness_m": 0.0001,
+    "contact_endpoints_m": [
+      -0.0005,
+      0.0005
+    ],
+    "transferred_gamma_S_m": {
+      "real": 5.959456590514033e-06,
+      "imaginary": 2.5055522184188793e-05
+    },
+    "transferred_contact_ohm_m2": {
+      "real": 5.5504758759767015e-05,
+      "imaginary": -0.00012307933145190832
+    },
+    "equipotential_contact_peak_V": {
+      "real": 1.0,
+      "imaginary": 0.0
+    },
+    "bottom_peak_V": 0.0,
+    "panel_counts": [
+      256,
+      512,
+      1024
+    ],
+    "positive_harmonic_cutoffs": [
+      4096,
+      8192,
+      16384
+    ],
+    "unique_cases": [
+      [
+        256,
+        16384
+      ],
+      [
+        512,
+        16384
+      ],
+      [
+        1024,
+        4096
+      ],
+      [
+        1024,
+        8192
+      ],
+      [
+        1024,
+        16384
+      ]
+    ],
+    "panel_axis": {
+      "panels": [
+        256,
+        512,
+        1024
+      ],
+      "fixed_positive_harmonics": 16384
+    },
+    "harmonic_axis": {
+      "positive_harmonics": [
+        4096,
+        8192,
+        16384
+      ],
+      "fixed_panels": 1024
+    },
+    "field_x_midpoints": 512,
+    "field_z_midpoints": 128,
+    "surface_x_midpoints": 1024,
+    "spectral_block_modes": 64,
+    "reconstruction_depth_block": 8,
+    "max_all_physical_evaluation_samples": 800000,
+    "surrogate_slab_conditions": 5,
+    "surrogate_slab_RHS": 5,
+    "analytic_contract_extra_slab_RHS": 1,
+    "root_admission_required": true,
+    "new_actual_phantom_PDE": 0,
+    "new_actual_four_pad_CEM_RHS": 0
+  },
+  "diagnostic_delta_limits": {
+    "contact_current_complex_relative": 0.01,
+    "source_real_power_relative": 0.02,
+    "contact_J_RMS_P95_relative": 0.05,
+    "slab_E_L2_RMS_relative": 0.01,
+    "same_grid_vector_field_relative_L2": 0.02
+  },
+  "algebraic_contracts": {
+    "linear_residual": 1e-10,
+    "complex_symmetry": 1e-10,
+    "complex_power_balance": 1e-10,
+    "analytic_relative": 1e-10,
+    "analytic_absolute": 1e-10,
+    "passivity_relative": 1e-12
+  },
+  "coefficient_transfer": {
+    "original_CEM_spec_sha256": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+    "frozen_synthetic_BEM_source_sha256": "5c84ed110897959bbf3336d7c0e3042fc10c7c1f3d5500512be25c6e10b1a61a",
+    "frequency_Hz": 2000,
+    "SC_source_row": {
+      "layer": "sc",
+      "sigma_S_m": 5.959456590514033e-06,
+      "epsilon_r": 225.18780331254555,
+      "gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      }
+    },
+    "gamma_unit": "S/m",
+    "zA_unit": "ohm m^2",
+    "contact_specific_impedance_ohm_m2": {
+      "real": 5.5504758759767015e-05,
+      "imaginary": -0.00012307933145190832
+    },
+    "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+    "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+    "operation": "Exact complex coefficient copy at2000Hz; no new measurement, Rs subtraction, area scaling, material evaluation or empirical correction",
+    "beta_dimensionless": 3.4772677639953304e-05,
+    "beta_definition": "abs(zA*gamma)/SC_thickness",
+    "edge_resolution_warning": "Small beta makes the contact edge difficult; unchanged diagnostic flags and increasing panel Jmax must be retained"
+  },
+  "admission_policy": "Conditional source only: root executes after actual finite-volume benchmark results are validated; no automatic admission",
+  "coordinate_system": {
+    "x": "periodic horizontal coordinate in metres, -L/2 <= x < L/2",
+    "z": "depth from physical SC top,0<=z<=t",
+    "out_of_plane": "unit length; I in A/m and complex power in W/m"
+  },
+  "phasor": "peak complex exp(+j omega t); transferred coefficients evaluated at2000Hz",
+  "circuit": "one ideal1Vpeak equipotential patch and grounded entire bottom; insulated top outside patch and periodic sides; actual four-pad/50ohm source topology is not transferred",
+  "material_provenance": "HREF-MIX declared surrogate SC and PBS-derived uncertain contact coefficients from the actual CEM input; not direct human thoracoabdominal measurements or validated skin contact",
+  "series": "finite symmetric +/-n Fourier truncation; separately evaluated positive and negative complex coefficients, never assume conjugate symmetry",
+  "power": "Ssource=.5 V conj(I); Scontact=.5 zA integral|q|^2; Sbulk=.5 integral phi_top conj(q); all per unit out-of-plane length",
+  "field": "analytic x/z derivatives of finite Fourier potential; E_RMS=sqrt((abs(Ex)^2+abs(Ez)^2)/2)",
+  "interpretation": "Separate periodic slab comparison of transferred coefficients; finite panel/harmonic diagnostics, no exact continuum truth, actual four-pad solution, anatomical/skin-contact/physiological/safety validation",
+  "original_results_preserved": true,
+  "candidate_adopted": false
+}

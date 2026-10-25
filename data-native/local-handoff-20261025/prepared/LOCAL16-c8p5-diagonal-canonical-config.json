@@ -1,0 +1,170 @@
+{
+  "ROI": {
+    "depth_axis": "+z",
+    "depth_origin": "physical top z0",
+    "off_target": "whole represented domain minus fractional primary ROI",
+    "primary_depth_mm": [
+      15,
+      20
+    ],
+    "primary_radius_mm": 5,
+    "surface_depth_mm": [
+      0,
+      5
+    ],
+    "volume_weight_ABI": "native centre-inside D50 whole XY cells; exact depth overlap; target lateral128x128 midpoint boundary subcells; m3 weights; no analytic-volume renormalization"
+  },
+  "candidate_catalog_SHA256": "c893edb20cc28a793c66304cc02900bff2cd23b887740bd5e98a9a9622b8da04",
+  "circuit": {
+    "drives": {
+      "2000": 0,
+      "2010": 1
+    },
+    "inactive_output": "0V behind its50ohm, not open",
+    "independent_outputs": 2,
+    "physical_pads": 4,
+    "return_topology": "pad2 and pad3 common GND",
+    "source_high_impedance_Vpp": 1,
+    "source_peak_V": 0.5,
+    "source_resistance_ohm": 50
+  },
+  "contact_SHA256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+  "field_version": "native-lateral-half-face-v1+analytic-z-DtN-v1",
+  "frequencies_Hz": [
+    2000,
+    2010
+  ],
+  "gamma_by_frequency": {
+    "2000": [
+      {
+        "imaginary": 2.5055522184188793e-05,
+        "real": 5.959456590514033e-06
+      },
+      {
+        "imaginary": 0.0968802834717473,
+        "real": 0.29312219368408116
+      },
+      {
+        "imaginary": 0.001146904009299627,
+        "real": 0.1968291518398069
+      },
+      {
+        "imaginary": 0.01869525522912356,
+        "real": 0.2516252154881487
+      }
+    ],
+    "2010": [
+      {
+        "imaginary": 2.5164463225582382e-05,
+        "real": 5.982654773535635e-06
+      },
+      {
+        "imaginary": 0.09695056637952608,
+        "real": 0.29337189333334235
+      },
+      {
+        "imaginary": 0.001144901252761352,
+        "real": 0.19685212124914125
+      },
+      {
+        "imaginary": 0.018661517222210797,
+        "real": 0.25166136225224006
+      }
+    ]
+  },
+  "geometry_fixed": {
+    "depth_direction": "+z",
+    "depth_origin": "physicaltop z0",
+    "layer_slots_mm": [
+      0.1,
+      5,
+      5,
+      15
+    ],
+    "mounting": "top",
+    "phantom_diameter_mm": 50
+  },
+  "grid": {
+    "cells": 793860,
+    "h_m": 0.0005,
+    "layer_counts": [
+      8,
+      19,
+      18,
+      56
+    ],
+    "nx": 100,
+    "nxy": 7860
+  },
+  "input_manifest_SHA256": "f6429dbf2dc9e6f5cd63214d9ac69185834863c86f9d31d8ae3435b376120d4a",
+  "material_SHA256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+  "metric_version": "task1-provisional-coarse-dtn-screen-metrics-v1",
+  "modulation_definition": "peak 2min(abs(u dot E2000),abs(u dot E2010)); max over same2074 real unit directions is sampled lower bound",
+  "pads": [
+    {
+      "center_mm": [
+        -8.5,
+        -8.5
+      ],
+      "height_mm": 16,
+      "node": "out0",
+      "pad": 0,
+      "rotation_deg": 0,
+      "width_mm": 16
+    },
+    {
+      "center_mm": [
+        8.5,
+        8.5
+      ],
+      "height_mm": 16,
+      "node": "out1",
+      "pad": 1,
+      "rotation_deg": 0,
+      "width_mm": 16
+    },
+    {
+      "center_mm": [
+        8.5,
+        -8.5
+      ],
+      "height_mm": 16,
+      "node": "GND",
+      "pad": 2,
+      "rotation_deg": 0,
+      "width_mm": 16
+    },
+    {
+      "center_mm": [
+        -8.5,
+        8.5
+      ],
+      "height_mm": 16,
+      "node": "GND",
+      "pad": 3,
+      "rotation_deg": 0,
+      "width_mm": 16
+    }
+  ],
+  "portable_ROI_SHA256": "8591056b828dc6cec031b6218ab1fca0c4157bb5c292bbae2dbdc9a94eeec24e",
+  "portable_adapter_SHA256": "cbf5f839b345c3d8b45718e9f307c8cade397c1648c5218743cdeefc584a9ef4",
+  "scientific_source_SHA256": {
+    "kernel/design_screen.py": "82c3c15cbf71ce3588e63f715df18641a3080aa8ed102d8569297745d77df537",
+    "kernel/frozen_coarse_cem.py": "65567475caf2d5e48ca8959606db4923298b38daa1122e7dd18f3f20c9348323",
+    "kernel/frozen_fourier_v1.py": "6d855155d823d165fb51f4ce17b9ac607a23d9850cdd806ec354b3c577d415f5",
+    "kernel/frozen_layer_dtn_backend.py": "c470f22b3faf980b05d1e42aca86feed5da57eab3c98d467334f31d76b4ddaf8",
+    "kernel/provisional_field.py": "5cebbe9b18c0b5912de328cc66036e5a6abe015e268261c3a7e974d719df1e87",
+    "kernel/screen_metrics.py": "d761d3fd965f85d1cc121fac9d9fc6addb21810f12d9d18240601e8278834ba0",
+    "portable_native_ROI": "8591056b828dc6cec031b6218ab1fca0c4157bb5c292bbae2dbdc9a94eeec24e"
+  },
+  "z_by_frequency": {
+    "2000": {
+      "imaginary": -0.00012307933145190832,
+      "real": 5.5504758759767015e-05
+    },
+    "2010": {
+      "imaginary": -0.00012267769048126954,
+      "real": 5.542998401437274e-05
+    }
+  }
+}

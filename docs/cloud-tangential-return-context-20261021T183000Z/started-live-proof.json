@@ -1,0 +1,50 @@
+{
+  "schema": "task1-started-live-proof-v1",
+  "observed_utc": "2026-10-21T18:06:26.708210+00:00",
+  "owners": [
+    {
+      "role": "queue",
+      "pid": 26077,
+      "proc_start_ticks": 5246212,
+      "live": true,
+      "phase": "tangential-return-native",
+      "controller_path": "/workspace/ngg-tis-task1/docs/cloud-tangential-return-context-20261021T183000Z/queue/heartbeat.json",
+      "cmdline": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-tangential-return-context-20261021T183000Z/queue-plan.json "
+    },
+    {
+      "role": "native-controller",
+      "pid": 26122,
+      "proc_start_ticks": 5246242,
+      "live": true,
+      "phase": "solving",
+      "controller_path": "/workspace/ngg-tis-task1/data-native/cloud-tangential-return-20261021T183000Z/controller.json",
+      "cmdline": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-tangential-return-20261021T183000Z "
+    }
+  ],
+  "children": [
+    {
+      "pid": 26077,
+      "proc_start_ticks": 5246212,
+      "live": true,
+      "cmdline": "python tools/task1_bounded_continuation.py --execute --plan /workspace/ngg-tis-task1/docs/cloud-tangential-return-context-20261021T183000Z/queue-plan.json "
+    },
+    {
+      "pid": 26122,
+      "proc_start_ticks": 5246242,
+      "live": true,
+      "cmdline": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-tangential-return-20261021T183000Z "
+    },
+    {
+      "pid": 26124,
+      "proc_start_ticks": 5246253,
+      "live": true,
+      "cmdline": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java -Xmx2g -XX:+UseSerialGC -XX:ActiveProcessorCount=1 -cp /workspace/ngg-tis-task1/data-native/cloud-tangential-return-20261021T183000Z/classes CloudShapeBasis --execute-parent 26122 5246242 /workspace/ngg-tis-task1/data-native/cloud-tangential-return-20261021T183000Z/configs/asym-return-tangent4p375-xy80.properties /workspace/ngg-tis-task1/data-native/cloud-tangential-return-20261021T183000Z/bases/asym-return-tangent4p375-xy80 "
+    }
+  ],
+  "linux_proc_locks": "1: FLOCK  ADVISORY  WRITE 26124 00:21:87026 0 EOF\n2: POSIX  ADVISORY  WRITE 26122 00:1b:262185 0 EOF\n3: FLOCK  ADVISORY  WRITE 26122 00:1b:262185 0 EOF\n4: POSIX  ADVISORY  WRITE 26077 00:1b:264792 0 EOF\n5: FLOCK  ADVISORY  WRITE 26077 00:1b:264792 0 EOF\n6: FLOCK  ADVISORY  WRITE 443 00:1b:786894 0 EOF\n7: FLOCK  ADVISORY  WRITE 171 00:1b:9223372036855850032 0 EOF\n8: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849987 0 EOF\n9: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849976 0 EOF\n10: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849990 0 EOF\n11: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849993 0 EOF\n12: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855849979 0 EOF\n13: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850079 0 EOF\n14: FLOCK  ADVISORY  WRITE 118 00:1b:9223372036855850085 0 EOF\n",
+  "resource_limit_seconds": 13800,
+  "spent_seconds": 8380.890064957006,
+  "remaining_seconds": 5419.109935042994,
+  "only_one_numerical_worker": true,
+  "context": "LivePID/startticks and cmdline/kernelFLOCK+POSIX, not stale heartbeat"
+}

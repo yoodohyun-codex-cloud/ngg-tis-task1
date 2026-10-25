@@ -1,0 +1,333 @@
+{
+  "actual_new_driven_RHS": 6,
+  "actual_reused_baseline_RHS": 2,
+  "candidate_adopted": false,
+  "decision": {
+    "geometry_confounds": "Equal total900mm2 contact area, preserved D50/layers/top mounting. Segmentation also changes gaps, inner coverage and centroids, so the result does not isolate pad count as a causal variable.",
+    "limits": "Existing interface/contact/XY failures and surrogate-material/PBS-contact limits remain. Native maxima occur in superficial SC here; no target concentration, full convergence, safety or physiological adoption claimed.",
+    "mean_ratios": "Both target/surface0..5 and target/off-target mean ratios worsen for every extension here: target numerator falls while either denominator exceeds B0. No scalar ratio was newly evaluated by this reviewer.",
+    "next_direction": "Keep four-pad B0 visible; the already conditionally assigned local size/position cases test geometry alternatives. Local execution still requires owner/Job, fresh RAM, source/input verification and per-candidate CAS lease.",
+    "no_automatic_gain": "8/12/16 physical pads still share only two output potentials and common return; one50ohm per output before fanout. No extra independent drive and no equal-branch-current assumption.",
+    "partial_improvements": "Off-target P95 and skin-vector J RMS P95 decline, but target absolute strength also declines and contact-normal P95 and source power rise at fixed voltage. These tradeoffs must remain separate.",
+    "within_this_family": "Four-pad B0 retains the largest target absolute mean and P10 for fixed voltage and the published current, power and joint-burden normalizations. Do not adopt a new pad-count winner from this family."
+  },
+  "evidence_scope": "Local completed summary bytes match local immutable Git readback receipt; reviewer did not perform network readback, open arrays or run numerical code",
+  "holds": {
+    "full_SC_XY_bulk_edge_contact_convergence": false,
+    "material_contact_hardware_or_experiment_validated": false,
+    "old_5percent_interface_failures_preserved": true,
+    "old_XY_contact_burden_failures_preserved": true,
+    "provisional_screen_only": true
+  },
+  "metric": "maxTIS: fixed sampled real-direction peak modulation lower bound; distinct from carrier RMS",
+  "result_commit": "9299ac1ae665fbad5e083e2683ea5789a61e54ad",
+  "reviewer_actions": {
+    "PDE_or_source_solves": 0,
+    "arrays_opened": false,
+    "numpy_imported": false,
+    "source_or_registry_mutations": false,
+    "worker_started": false
+  },
+  "schema": "task1-multipad-metadata-independent-decision-basis-v1",
+  "summary_SHA256": "db0ba0248a08bd95ff8d54232d10e2c61cb62fea0c0197bb2c5495eacd2ff9eb",
+  "summary_bytes": 878830,
+  "summary_repository_relative_path": "data-native/multipad-extension-20261025/summary.json",
+  "table": [
+    {
+      "candidate_id": "B0-square15-c10-diagonal",
+      "contact_normal_J_RMS_P95_A_m2": 0.07275403734573047,
+      "contact_normal_J_RMS_max_A_m2": 0.07401560623649277,
+      "global_native_maxTIS_V_m": 2569.720496390579,
+      "global_native_maximum_xyz_mm": [
+        -2.7500000000000027,
+        2.749999999999999,
+        0.00625
+      ],
+      "independent_outputs": 2,
+      "mean_ratio_definitions": {
+        "target_to_off_target": "target mean divided by off_target mean; no new field calculation",
+        "target_to_surface": "target mean divided by surface_0_5 mean; no new field calculation"
+      },
+      "mean_ratio_evaluation": "Deferred to root; all source numerator/denominator metadata copied above",
+      "normalizations": {
+        "joint_eight_surface_contact_burden_caps": {
+          "amplitude_scale": 1.0,
+          "limiting_constraints": [
+            "contact_normal_J_RMS_max_A_m2",
+            "contact_normal_J_RMS_P95_A_m2",
+            "contact_voltage_RMS_max_V",
+            "skin_vector_J_RMS_max_A_m2",
+            "skin_vector_J_RMS_P95_A_m2",
+            "SC_power_W",
+            "skin_power_W",
+            "contact_power_W"
+          ],
+          "target_P10_V_m": 0.07040825270526592,
+          "target_mean_V_m": 0.07766885985732715
+        },
+        "same_source_real_power": {
+          "amplitude_scale": 1.0,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.07040825270526592,
+          "target_mean_V_m": 0.07766885985732715
+        },
+        "same_source_voltage": {
+          "amplitude_scale": 1.0,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.07040825270526592,
+          "target_mean_V_m": 0.07766885985732715
+        },
+        "same_sum_output_RMS_current_bookkeeping": {
+          "amplitude_scale": 1.0,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.07040825270526592,
+          "target_mean_V_m": 0.07766885985732715
+        }
+      },
+      "off_target_maxTIS_P95_V_m": 0.16152912437293793,
+      "off_target_maxTIS_mean_V_m": 4.685190883108337,
+      "output_resistors": 2,
+      "physical_pad_to_node": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "physical_pads": 4,
+      "skin_vector_J_RMS_P95_A_m2": 0.06779461615396677,
+      "skin_vector_J_RMS_max_A_m2": 0.11324146653657206,
+      "source_power_W": 2.5982835020943453e-06,
+      "surface_0_5_maxTIS_P99_V_m": 88.77762043961576,
+      "surface_0_5_maxTIS_mean_V_m": 23.086525379447806,
+      "target_maxTIS_V_m": {
+        "max": 0.09356446594770067,
+        "mean": 0.07766885985732715,
+        "p10": 0.07040825270526592,
+        "std": 0.005750222209509415
+      }
+    },
+    {
+      "candidate_id": "MP8-vertical-strips",
+      "contact_normal_J_RMS_P95_A_m2": 0.0728220444711724,
+      "contact_normal_J_RMS_max_A_m2": 0.07401993847893959,
+      "global_native_maxTIS_V_m": 2569.3795363257796,
+      "global_native_maximum_xyz_mm": [
+        -2.2500000000000018,
+        2.749999999999999,
+        0.00625
+      ],
+      "independent_outputs": 2,
+      "mean_ratio_definitions": {
+        "target_to_off_target": "target mean divided by off_target mean; no new field calculation",
+        "target_to_surface": "target mean divided by surface_0_5 mean; no new field calculation"
+      },
+      "mean_ratio_evaluation": "Deferred to root; all source numerator/denominator metadata copied above",
+      "normalizations": {
+        "joint_eight_surface_contact_burden_caps": {
+          "amplitude_scale": 0.999054361123851,
+          "limiting_constraints": [
+            "contact_power_W"
+          ],
+          "target_P10_V_m": 0.06972459560797889,
+          "target_mean_V_m": 0.07695040584870239
+        },
+        "same_source_real_power": {
+          "amplitude_scale": 0.9998670321151356,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.06978131239780994,
+          "target_mean_V_m": 0.0770130004031473
+        },
+        "same_source_voltage": {
+          "amplitude_scale": 1.0,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.0697905923052522,
+          "target_mean_V_m": 0.0770232420207242
+        },
+        "same_sum_output_RMS_current_bookkeeping": {
+          "amplitude_scale": 0.9990595270980338,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.06972495614437693,
+          "target_mean_V_m": 0.07695080374878213
+        }
+      },
+      "off_target_maxTIS_P95_V_m": 0.15864030556510753,
+      "off_target_maxTIS_mean_V_m": 4.689229662821821,
+      "output_resistors": 2,
+      "physical_pad_to_node": [
+        0,
+        0,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "physical_pads": 8,
+      "skin_vector_J_RMS_P95_A_m2": 0.06621055379313205,
+      "skin_vector_J_RMS_max_A_m2": 0.1131454697748933,
+      "source_power_W": 2.598974616458416e-06,
+      "surface_0_5_maxTIS_P99_V_m": 88.92641198125335,
+      "surface_0_5_maxTIS_mean_V_m": 23.10838954517646,
+      "target_maxTIS_V_m": {
+        "max": 0.09283969969380405,
+        "mean": 0.0770232420207242,
+        "p10": 0.0697905923052522,
+        "std": 0.005733753651967083
+      }
+    },
+    {
+      "candidate_id": "MP12-vertical-strips",
+      "contact_normal_J_RMS_P95_A_m2": 0.0729332023611209,
+      "contact_normal_J_RMS_max_A_m2": 0.07402486713701534,
+      "global_native_maxTIS_V_m": 2569.022170700363,
+      "global_native_maximum_xyz_mm": [
+        -1.7500000000000016,
+        2.749999999999999,
+        0.00625
+      ],
+      "independent_outputs": 2,
+      "mean_ratio_definitions": {
+        "target_to_off_target": "target mean divided by off_target mean; no new field calculation",
+        "target_to_surface": "target mean divided by surface_0_5 mean; no new field calculation"
+      },
+      "mean_ratio_evaluation": "Deferred to root; all source numerator/denominator metadata copied above",
+      "normalizations": {
+        "joint_eight_surface_contact_burden_caps": {
+          "amplitude_scale": 0.9975434368766187,
+          "limiting_constraints": [
+            "contact_normal_J_RMS_P95_A_m2"
+          ],
+          "target_P10_V_m": 0.06910609711538283,
+          "target_mean_V_m": 0.0762841484422966
+        },
+        "same_source_real_power": {
+          "amplitude_scale": 0.9996918269900563,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.0692549295875665,
+          "target_mean_V_m": 0.07644844014556175
+        },
+        "same_source_voltage": {
+          "amplitude_scale": 1.0,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.06927627866688098,
+          "target_mean_V_m": 0.07647200675405959
+        },
+        "same_sum_output_RMS_current_bookkeeping": {
+          "amplitude_scale": 0.9981328463202501,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.06914692920824873,
+          "target_mean_V_m": 0.0763292217652509
+        }
+      },
+      "off_target_maxTIS_P95_V_m": 0.1570994794876408,
+      "off_target_maxTIS_mean_V_m": 4.693349460280031,
+      "output_resistors": 2,
+      "physical_pad_to_node": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "physical_pads": 12,
+      "skin_vector_J_RMS_P95_A_m2": 0.0647858461334139,
+      "skin_vector_J_RMS_max_A_m2": 0.11278030722658569,
+      "source_power_W": 2.599885684375358e-06,
+      "surface_0_5_maxTIS_P99_V_m": 92.89891305520618,
+      "surface_0_5_maxTIS_mean_V_m": 23.130280602493986,
+      "target_maxTIS_V_m": {
+        "max": 0.0922395045844057,
+        "mean": 0.07647200675405959,
+        "p10": 0.06927627866688098,
+        "std": 0.005714465452513754
+      }
+    },
+    {
+      "candidate_id": "MP16-subpad2x2",
+      "contact_normal_J_RMS_P95_A_m2": 0.07293048509090318,
+      "contact_normal_J_RMS_max_A_m2": 0.07402442143591545,
+      "global_native_maxTIS_V_m": 2569.9620095419514,
+      "global_native_maximum_xyz_mm": [
+        -2.2500000000000018,
+        2.2499999999999987,
+        0.00625
+      ],
+      "independent_outputs": 2,
+      "mean_ratio_definitions": {
+        "target_to_off_target": "target mean divided by off_target mean; no new field calculation",
+        "target_to_surface": "target mean divided by surface_0_5 mean; no new field calculation"
+      },
+      "mean_ratio_evaluation": "Deferred to root; all source numerator/denominator metadata copied above",
+      "normalizations": {
+        "joint_eight_surface_contact_burden_caps": {
+          "amplitude_scale": 0.9975806037084111,
+          "limiting_constraints": [
+            "contact_normal_J_RMS_P95_A_m2"
+          ],
+          "target_P10_V_m": 0.06897578148789991,
+          "target_mean_V_m": 0.07615468417260561
+        },
+        "same_source_real_power": {
+          "amplitude_scale": 0.9997281759078597,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.0691242712141516,
+          "target_mean_V_m": 0.07631862850149383
+        },
+        "same_source_voltage": {
+          "amplitude_scale": 1.0,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.06914306596528541,
+          "target_mean_V_m": 0.07633937938398944
+        },
+        "same_sum_output_RMS_current_bookkeeping": {
+          "amplitude_scale": 0.9981226351412928,
+          "limiting_constraints": [],
+          "target_P10_V_m": 0.06901325920301891,
+          "target_mean_V_m": 0.07619606251579843
+        }
+      },
+      "off_target_maxTIS_P95_V_m": 0.15566402940459154,
+      "off_target_maxTIS_mean_V_m": 4.6932665300910985,
+      "output_resistors": 2,
+      "physical_pad_to_node": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "physical_pads": 16,
+      "skin_vector_J_RMS_P95_A_m2": 0.06464024269919767,
+      "skin_vector_J_RMS_max_A_m2": 0.11166603503357905,
+      "source_power_W": 2.59969663035986e-06,
+      "surface_0_5_maxTIS_P99_V_m": 92.84101826040072,
+      "surface_0_5_maxTIS_mean_V_m": 23.130369726426142,
+      "target_maxTIS_V_m": {
+        "max": 0.09208030944162228,
+        "mean": 0.07633937938398944,
+        "p10": 0.06914306596528541,
+        "std": 0.005713166880886216
+      }
+    }
+  ],
+  "target_ROI": "r<=5mm, physical-top depth15..20mm, same fractional volume weights"
+}

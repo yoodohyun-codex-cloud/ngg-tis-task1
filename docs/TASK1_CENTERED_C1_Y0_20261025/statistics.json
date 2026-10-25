@@ -1,0 +1,649 @@
+{
+  "offcenter_comparison": {
+    "schema": "task1-centered-versus-offcenter-control-v1",
+    "old_case_id": "baseline-square15-C1pair0-xy80",
+    "new_case_id": "centered-square15-C1-y0-xy80-f3000",
+    "old_centres_mm": [
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        -10
+      ]
+    ],
+    "new_centres_mm": [
+      [
+        -10,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "reference_candidate_id": "rounded-expand-f35b23a22166",
+    "raw_unit": {
+      "old": {
+        "centre20_E_RMS_V_m": 1.2724882373084518,
+        "ROI_energy_RMS_V_m": 1.4021541287436026,
+        "burdens": {
+          "source_current_RMS_mA": 0.9360029778823712,
+          "source_current_peak_mA": 1.3237081057428535,
+          "contact_J_RMS_max_A_m2": 14.97206451280276,
+          "contact_J_RMS_p95_A_m2": 10.90003792235967,
+          "contact_voltage_RMS_max_V": 0.001582679340464751,
+          "bulk_skin_J_RMS_max_A_m2": 14.918404227425533,
+          "bulk_skin_J_RMS_p95_A_m2": 4.405159927967392,
+          "SC_power_W": 6.883192716270774e-07,
+          "dermis_power_W": 0.00021880358900579235,
+          "skin_SC_plus_dermis_power_W": 0.00021949190827741944,
+          "fat_power_W": 4.7105612550053544e-05,
+          "muscle_power_W": 1.3149488224415134e-05,
+          "contact_power_W": 5.128814748537565e-07,
+          "tissue_contact_power_W": 0.00028025989052674185,
+          "source_resistor_power_W": 4.3805078730233336e-05,
+          "source_power_W": 0.0003240649693418138,
+          "loaded_metal_Vpp": 0.8707870325278405
+        }
+      },
+      "new": {
+        "centre20_E_RMS_V_m": 1.5139312574479629,
+        "ROI_energy_RMS_V_m": 1.684855498674556,
+        "burdens": {
+          "source_current_RMS_mA": 0.984780244258672,
+          "source_current_peak_mA": 1.3926895773877035,
+          "contact_J_RMS_max_A_m2": 14.798764458919374,
+          "contact_J_RMS_p95_A_m2": 10.834992081329814,
+          "contact_voltage_RMS_max_V": 0.0015643599954774166,
+          "bulk_skin_J_RMS_max_A_m2": 14.745785623526439,
+          "bulk_skin_J_RMS_p95_A_m2": 4.427940529630156,
+          "SC_power_W": 7.287521776646495e-07,
+          "dermis_power_W": 0.00022722473609460315,
+          "skin_SC_plus_dermis_power_W": 0.0002279534882722678,
+          "fat_power_W": 4.874829496938754e-05,
+          "muscle_power_W": 1.5120811510772166e-05,
+          "contact_power_W": 5.430590811213899e-07,
+          "tissue_contact_power_W": 0.00029236565383354893,
+          "source_resistor_power_W": 4.848960647410851e-05,
+          "source_power_W": 0.0003408552600057788,
+          "loaded_metal_Vpp": 0.8641247795226222
+        }
+      }
+    },
+    "modes": {
+      "raw_1Vpp": {
+        "centre20_E_RMS": {
+          "old": {
+            "required_source_Vpp": 1.4160986253708459,
+            "source_current_RMS_mA": 1.325472530322244,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 21.20191997554361,
+              "surface_J_RMS_p95_A_m2": 15.43552871834362,
+              "contact_voltage_RMS_max_V": 0.002241230038434971,
+              "SC_power_W": 1.3803109446121364e-06,
+              "contact_power_W": 1.028499334845015e-06,
+              "source_power_W": 0.0006498589279514595,
+              "bulk_skin_J_vector_RMS_max_A_m2": 21.125931719183914,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 6.238140918533358,
+              "skin_SC_plus_dermis_power_W": 0.00044015487541553087
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.1444133821707272,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.07260226060828141,
+              "target_fraction_within_10_percent_of_TIS": 0.8186057837080422,
+              "TIS_ROI_energy_RMS_V_m": 1.9891031072695635,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "new": {
+            "required_source_Vpp": 1.1902580350250858,
+            "source_current_RMS_mA": 1.172142598462851,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 17.61434830567245,
+              "surface_J_RMS_p95_A_m2": 12.896436384235988,
+              "contact_voltage_RMS_max_V": 0.001861992054288802,
+              "SC_power_W": 1.0324335510484809e-06,
+              "contact_power_W": 7.693595062014165e-07,
+              "source_power_W": 0.0004828944835664811,
+              "bulk_skin_J_vector_RMS_max_A_m2": 17.551289821159738,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 5.270391794005527,
+              "skin_SC_plus_dermis_power_W": 0.00032294494148204855
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.031372967414950576,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.01577241888582446,
+              "target_fraction_within_10_percent_of_TIS": 1.0,
+              "TIS_ROI_energy_RMS_V_m": 1.9891031072695635,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "relative_change": {
+            "required_source_Vpp": -0.1594808343851173,
+            "source_current_RMS_mA": -0.11567944891480775,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": -0.16920975430571472,
+              "surface_J_RMS_p95_A_m2": -0.1644966220748998,
+              "contact_voltage_RMS_max_V": -0.1692097543057146,
+              "SC_power_W": -0.2520282802375432,
+              "contact_power_W": -0.25195916017062703,
+              "source_power_W": -0.25692413722974905,
+              "bulk_skin_J_vector_RMS_max_A_m2": -0.1692063548031889,
+              "bulk_skin_J_vector_RMS_p95_A_m2": -0.1551342198206317,
+              "skin_SC_plus_dermis_power_W": -0.26629248130633465
+            }
+          }
+        },
+        "ROI_energy_RMS": {
+          "old": {
+            "required_source_Vpp": 1.4186051779142819,
+            "source_current_RMS_mA": 1.327818670967119,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 21.239448241928667,
+              "surface_J_RMS_p95_A_m2": 15.46285023612146,
+              "contact_voltage_RMS_max_V": 0.0022451971073612566,
+              "SC_power_W": 1.3852016829549647e-06,
+              "contact_power_W": 1.0321435290406303e-06,
+              "source_power_W": 0.0006521615178054106,
+              "bulk_skin_J_vector_RMS_max_A_m2": 21.163325483244172,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 6.2491826833550475,
+              "skin_SC_plus_dermis_power_W": 0.0004417144387402877
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.14449832339749522,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.07264496388819566,
+              "target_fraction_within_10_percent_of_TIS": 0.819080311132481,
+              "TIS_ROI_energy_RMS_V_m": 1.9891031072695635,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "new": {
+            "required_source_Vpp": 1.1805778648877325,
+            "source_current_RMS_mA": 1.1626097581505228,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 17.471093747887494,
+              "surface_J_RMS_p95_A_m2": 12.791551817451841,
+              "contact_voltage_RMS_max_V": 0.0018468487833765113,
+              "SC_power_W": 1.0157086194278714e-06,
+              "contact_power_W": 7.568962487648317e-07,
+              "source_power_W": 0.000475071823009376,
+              "bulk_skin_J_vector_RMS_max_A_m2": 17.408548107515067,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 5.227528576320625,
+              "skin_SC_plus_dermis_power_W": 0.00031771338729822356
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.02669111649554571,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.013418669146912416,
+              "target_fraction_within_10_percent_of_TIS": 1.0000000000000002,
+              "TIS_ROI_energy_RMS_V_m": 1.9891031072695635,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "relative_change": {
+            "required_source_Vpp": -0.16778968294512453,
+            "source_current_RMS_mA": -0.1244212906693547,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": -0.17742242882760428,
+              "surface_J_RMS_p95_A_m2": -0.17275588768423966,
+              "contact_voltage_RMS_max_V": -0.17742242882760417,
+              "SC_power_W": -0.26674315233206813,
+              "contact_power_W": -0.26667539206648794,
+              "source_power_W": -0.27154269296961786,
+              "bulk_skin_J_vector_RMS_max_A_m2": -0.17741906293044107,
+              "bulk_skin_J_vector_RMS_p95_A_m2": -0.1634860363028976,
+              "skin_SC_plus_dermis_power_W": -0.280726733306928
+            }
+          }
+        }
+      },
+      "skin_contact_only": {
+        "centre20_E_RMS": {
+          "old": {
+            "required_source_Vpp": 1.564941547939747,
+            "source_current_RMS_mA": 1.4647899490834508,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 23.430405814519307,
+              "surface_J_RMS_p95_A_m2": 17.05792221881949,
+              "contact_voltage_RMS_max_V": 0.0024768006569591654,
+              "SC_power_W": 1.685722838985615e-06,
+              "contact_power_W": 1.2560682977971594e-06,
+              "source_power_W": 0.000793648736353612,
+              "bulk_skin_J_vector_RMS_max_A_m2": 23.34643060445818,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 6.893817796595435,
+              "skin_SC_plus_dermis_power_W": 0.000537544912669893
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.15959234603330535,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.07260226060828141,
+              "target_fraction_within_10_percent_of_TIS": 0.8186057837080422,
+              "TIS_ROI_energy_RMS_V_m": 2.1981732344998273,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "new": {
+            "required_source_Vpp": 1.315363364110379,
+            "source_current_RMS_mA": 1.2953438549975276,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 19.4657526033613,
+              "surface_J_RMS_p95_A_m2": 14.251951634207302,
+              "contact_voltage_RMS_max_V": 0.002057701826330872,
+              "SC_power_W": 1.260873010918921e-06,
+              "contact_power_W": 9.395903843672377e-07,
+              "source_power_W": 0.0005897412195024795,
+              "bulk_skin_J_vector_RMS_max_A_m2": 19.3960661842122,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 5.824350751135015,
+              "skin_SC_plus_dermis_power_W": 0.00039440074406143014
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.03467050903813888,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.015772418885824445,
+              "target_fraction_within_10_percent_of_TIS": 1.0,
+              "TIS_ROI_energy_RMS_V_m": 2.1981732344998273,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "relative_change": {
+            "required_source_Vpp": -0.1594808343851174,
+            "source_current_RMS_mA": -0.11567944891480797,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": -0.16920975430571505,
+              "surface_J_RMS_p95_A_m2": -0.1644966220748999,
+              "contact_voltage_RMS_max_V": -0.16920975430571472,
+              "SC_power_W": -0.2520282802375434,
+              "contact_power_W": -0.25195916017062736,
+              "source_power_W": -0.25692413722974916,
+              "bulk_skin_J_vector_RMS_max_A_m2": -0.16920635480318902,
+              "bulk_skin_J_vector_RMS_p95_A_m2": -0.1551342198206318,
+              "skin_SC_plus_dermis_power_W": -0.26629248130633487
+            }
+          }
+        },
+        "ROI_energy_RMS": {
+          "old": {
+            "required_source_Vpp": 1.5677115585499117,
+            "source_current_RMS_mA": 1.4673826872633307,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 23.47187859207584,
+              "surface_J_RMS_p95_A_m2": 17.088115439515622,
+              "contact_voltage_RMS_max_V": 0.002481184695524741,
+              "SC_power_W": 1.6916957173114653e-06,
+              "contact_power_W": 1.2605188177392247e-06,
+              "source_power_W": 0.0007964608044030415,
+              "bulk_skin_J_vector_RMS_max_A_m2": 23.387754742454874,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 6.9060201363353775,
+              "skin_SC_plus_dermis_power_W": 0.0005394495498283889
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.15968621524023818,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.07264496388819565,
+              "target_fraction_within_10_percent_of_TIS": 0.819080311132481,
+              "TIS_ROI_energy_RMS_V_m": 2.1981732344998273,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "new": {
+            "required_source_Vpp": 1.3046657331914149,
+            "source_current_RMS_mA": 1.284809039408161,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": 19.307440883123096,
+              "surface_J_RMS_p95_A_m2": 14.136042887911335,
+              "contact_voltage_RMS_max_V": 0.0020409668804748623,
+              "SC_power_W": 1.2404474688891456e-06,
+              "contact_power_W": 9.243694678114309e-07,
+              "source_power_W": 0.0005801876927306914,
+              "bulk_skin_J_vector_RMS_max_A_m2": 19.238321212001548,
+              "bulk_skin_J_vector_RMS_p95_A_m2": 5.776982277617909,
+              "skin_SC_plus_dermis_power_W": 0.00038801163992117227
+            },
+            "shape_comparison": {
+              "weighted_RMS_difference_V_m": 0.029496559361351496,
+              "relative_RMS_difference_to_TIS_ROI_energy": 0.013418669146912412,
+              "target_fraction_within_10_percent_of_TIS": 1.0000000000000002,
+              "TIS_ROI_energy_RMS_V_m": 2.1981732344998273,
+              "definition": "sqrt(sum(target_volume*(C1_local_RMS*A_C1 - TIS_local_RMS*A_TIS)^2)/sum(target_volume)); denominator=TIS ROI energy RMS. Fraction uses abs(diff)<=0.1*abs(TIS); a zero TIS cell passes only if C1 is also zero.",
+              "scalar_RMS_only": true,
+              "vector_or_waveform_equality": false,
+              "numerical_10_percent_comparison_not_activation_threshold": true
+            }
+          },
+          "relative_change": {
+            "required_source_Vpp": -0.16778968294512464,
+            "source_current_RMS_mA": -0.1244212906693547,
+            "burdens": {
+              "surface_J_RMS_max_A_m2": -0.17742242882760428,
+              "surface_J_RMS_p95_A_m2": -0.17275588768423988,
+              "contact_voltage_RMS_max_V": -0.17742242882760406,
+              "SC_power_W": -0.26674315233206825,
+              "contact_power_W": -0.26667539206648816,
+              "source_power_W": -0.27154269296961797,
+              "bulk_skin_J_vector_RMS_max_A_m2": -0.17741906293044118,
+              "bulk_skin_J_vector_RMS_p95_A_m2": -0.1634860363028977,
+              "skin_SC_plus_dermis_power_W": -0.2807267333069282
+            }
+          }
+        }
+      }
+    },
+    "regions": {
+      "old": {
+        "primary_r5_depth15_20": {
+          "mean": 1.3952202357208672,
+          "p10": 1.2220727667356468,
+          "p95": 1.653065365590359,
+          "min": 1.1068709854823058,
+          "max": 1.8118113425450775,
+          "std": 0.13927201652786814,
+          "CV": 0.099820811770201,
+          "p10_over_mean": 0.8758995429164196,
+          "volume_m3": 3.9270973205566415e-07,
+          "energy_RMS_V_m": 1.4021541287436023,
+          "positive_weight_cells": 3136
+        },
+        "surface_0_5": {
+          "mean": 8.82011568230909,
+          "p10": 1.786983435516435,
+          "p95": 23.034412753330287,
+          "min": 0.5021952256649882,
+          "max": 812.5574248784691,
+          "std": 19.51866585799346,
+          "CV": 2.212971639039037,
+          "p10_over_mean": 0.20260317436659808,
+          "volume_m3": 9.812500000000001e-06,
+          "energy_RMS_V_m": 21.418981243871404,
+          "positive_weight_cells": 80384
+        },
+        "primary_complement": {
+          "mean": 4.307407752966671,
+          "p10": 0.6473412370594811,
+          "p95": 16.784506708500384,
+          "min": 0.03201391660201032,
+          "max": 812.5574248784691,
+          "std": 9.93689542619891,
+          "CV": 2.3069316851544883,
+          "p10_over_mean": 0.15028557178354737,
+          "volume_m3": 4.886604026794435e-05,
+          "energy_RMS_V_m": 10.83031173427294,
+          "positive_weight_cells": 349712
+        },
+        "total": {
+          "mean": 4.284190672151721,
+          "p10": 0.6485500034665448,
+          "p95": 16.757156545664422,
+          "min": 0.03201391660201032,
+          "max": 812.5574248784691,
+          "std": 9.900601517883697,
+          "CV": 2.310961923856473,
+          "p10_over_mean": 0.1513821519855027,
+          "volume_m3": 4.925875000000001e-05,
+          "energy_RMS_V_m": 10.787780129909622,
+          "positive_weight_cells": 351680
+        }
+      },
+      "new": {
+        "primary_r5_depth15_20": {
+          "mean": 1.679357110805209,
+          "p10": 1.510487752114402,
+          "p95": 1.912321293582561,
+          "min": 1.4282156794120338,
+          "max": 1.9671599033573592,
+          "std": 0.13600641823777168,
+          "CV": 0.08098719287439707,
+          "p10_over_mean": 0.8994440446261972,
+          "volume_m3": 3.9270973205566415e-07,
+          "energy_RMS_V_m": 1.684855498674556,
+          "positive_weight_cells": 3136,
+          "hotspot": {
+            "value_V_m": 1.9671599033573592,
+            "native_cell_index": 218583,
+            "center_xyz_mm": [
+              -0.3125,
+              0.3125,
+              15.1625
+            ],
+            "layer_index": 3,
+            "layer": "muscle",
+            "scope": "Native cell centre with positive region overlap; a layer-boundary maximum is not deep focus"
+          }
+        },
+        "surface_0_5": {
+          "mean": 9.394232380120538,
+          "p10": 3.1409613308601725,
+          "p95": 22.987457393874042,
+          "min": 0.1746441637341164,
+          "max": 803.1554455426023,
+          "std": 19.882018795496705,
+          "CV": 2.116406960250391,
+          "p10_over_mean": 0.3343499717450965,
+          "volume_m3": 9.812500000000001e-06,
+          "energy_RMS_V_m": 21.98968561385518,
+          "positive_weight_cells": 80384,
+          "hotspot": {
+            "value_V_m": 803.1554455426023,
+            "native_cell_index": 1599,
+            "center_xyz_mm": [
+              -2.8125,
+              -7.1875,
+              0.025
+            ],
+            "layer_index": 0,
+            "layer": "sc",
+            "scope": "Native cell centre with positive region overlap; a layer-boundary maximum is not deep focus"
+          }
+        },
+        "primary_complement": {
+          "mean": 4.662118599845279,
+          "p10": 0.8343891688262758,
+          "p95": 15.831787333759294,
+          "min": 0.03282679540605861,
+          "max": 803.1554455426023,
+          "std": 10.074988419391802,
+          "CV": 2.1610322010525773,
+          "p10_over_mean": 0.17897210269467762,
+          "volume_m3": 4.886604026794435e-05,
+          "energy_RMS_V_m": 11.101384665432594,
+          "positive_weight_cells": 349712,
+          "hotspot": {
+            "value_V_m": 803.1554455426023,
+            "native_cell_index": 1599,
+            "center_xyz_mm": [
+              -2.8125,
+              -7.1875,
+              0.025
+            ],
+            "layer_index": 0,
+            "layer": "sc",
+            "scope": "Native cell centre with positive region overlap; a layer-boundary maximum is not deep focus"
+          }
+        },
+        "total": {
+          "mean": 4.638338876138389,
+          "p10": 0.8362409099399546,
+          "p95": 15.800173637259142,
+          "min": 0.03282679540605861,
+          "max": 803.1554455426023,
+          "std": 10.038259948986335,
+          "CV": 2.1641928753044466,
+          "p10_over_mean": 0.18028887760701093,
+          "volume_m3": 4.925875000000001e-05,
+          "energy_RMS_V_m": 11.058067206041017,
+          "positive_weight_cells": 351680,
+          "hotspot": {
+            "value_V_m": 803.1554455426023,
+            "native_cell_index": 1599,
+            "center_xyz_mm": [
+              -2.8125,
+              -7.1875,
+              0.025
+            ],
+            "layer_index": 0,
+            "layer": "sc",
+            "scope": "Native cell centre with positive region overlap; a layer-boundary maximum is not deep focus"
+          }
+        }
+      }
+    },
+    "holds": [
+      "Only C1 pair yposition changes; f35 reference/weights/source amplitudes remain unchanged",
+      "Old full C1 scalar was not decoded; new-versus-old whole-volume L2 is not inferred from display planes"
+    ]
+  },
+  "proofs": {
+    "input_sha256": {
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/mesh-metadata.json": "23a0c7a47b2323a54c41adee88c8c153f8f11d9aea0af596e1691f70dacb497b",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/validation.json": "eba1e8e896619d46d98261686ec70b940e18963e2d4eb0981f814f172414ceb5",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/configs/centered-square15-C1-y0-xy80-f3000.properties": "59aa13ffdf3c6b08780f75bc506d157b8776014fb7cc517e359da475ed75e863",
+      "/workspace/ngg-tis-task1/docs/task1-top5-context-20261022/preregistration-v2.json": "1f87eefb943f9511ceed7faf3f309889acdb01020b857117c33eee2b134ca8a1",
+      "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-expansion-20261021T214000Z/rounded-expand-f35b23a22166/condition.json": "b29a07e13752ef6c84893f43bbefa37a3a9aa0bdd6e1c20dfea8986ccdd835ce",
+      "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/configs/rounded-fullface225-xy80.properties": "cd9053286100f9ecb03180c1313f3fbca51d225a072594b97567f84aa4275ed0",
+      "/dev/shm/task1-best1-pair-20261025/index.html": "e14bcbf6e3c45ef73a61c1d7dec768f12adced9f792aac839e599f8bc7f9ec60",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/grid.csv.gz": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365",
+      "/workspace/ngg-tis-task1/data-native/cloud-rounded-fullface-20261021T200000Z/bases/rounded-fullface225-xy80/grid.csv.gz": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365",
+      "/workspace/ngg-tis-task1/docs/cloud-rounded-drive-expansion-20261021T214000Z/rounded-expand-f35b23a22166/volume.npz": "4d099d4619c43537e8a46ad659ff88db7f117990d1aeb088ee936952483931d2",
+      "/workspace/ngg-tis-task1/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/field-3000.bin.gz": "7673ab73a452a5d1874e388fd7cb9ed473b47fe0155872f52b4734e37cdd2fb0",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/contacts-3000.csv": "6a1e2797c100fd9890aca9e3c215803b9c632a64e2a5f2ee593f432ed078b65c",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/density-3000.bin": "b2878be856673cd3019af14a531426355e536dc4766f7c178955890c56edfd19",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/source-3000.bin": "20d03da61a4ddb0a7b61e0be805133ed90ae82b191ae077837579fd5c23d4d67",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/loss-3000.bin": "110b50eb4ad03e5f64aad13d053f84f4e6660d25de2a48c64b89f1627c108f7c",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/masks/centered-square15-C1-y0-xy80-f3000.csv": "80d7345a7e5554cc6e7e00ceee56def23ff5bcec6049d940b3b0e62de8253041",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/bases/centered-square15-C1-y0-xy80-f3000/potential-3000.bin.gz": "b5c3610d31ebed9babedfd7fe6a89ef8b9cfea963b7a2509e2c8b7487cf0ae9c",
+      "/workspace/ngg-tis-task1/tis-java/layered_probe_analysis.py": "cda32e600af3e9d3d2cca153d29eaac146c40eb01c3c0d114e046dcc7ea134ea",
+      "/dev/shm/task1-centered-c1-y0-20261025-run-r2/source-publication.json": "7d689e179f89cd213d813be0ce253c54783f45e3580a989d27386e1e66c18ed6",
+      "/workspace/ngg-tis-task1/docs/cloud-rounded-single-pair-20261021T212000Z/summary.json": "7e29ffa9e301461ed4a6fc90e8865dc71dd655255ce9b1cc301e549cfb4dd134",
+      "/workspace/ngg-tis-task1/tools/task1_best1_pair_metrics.py": "19b673746b313cf67bf1f5ea692389048ca865cffafedfb5e98b05f61f915d58",
+      "/dev/shm/task1-centered-c1-y0-20261025-source-r2/centered_metrics.py": "c8ec38b027f90c8bfba8824ac627b859a77b3149423f0fe19992498ed73ed712"
+    },
+    "inputs_unchanged": true,
+    "native_five_gates": {
+      "max_residual": 6.329219339115966e-10,
+      "max_power_error": 8.856505229477571e-10,
+      "max_current_error": 2.543114070346451e-09,
+      "max_area_relative_error": 1.0880185641326534e-14,
+      "max_interface_normal_current_relative_error": 2.597019617561584e-15,
+      "channels": 1,
+      "cells": 351680,
+      "h_xy_mm": 0.625,
+      "sc_cells": 2,
+      "new_native_RHS": 1
+    },
+    "original_gate_limits": {
+      "max_residual": 2e-07,
+      "max_power_error": 2e-07,
+      "max_current_error": 2e-06,
+      "max_area_relative_error": 1e-10,
+      "max_interface_normal_current_relative_error": 2e-07
+    },
+    "source_derivation": {
+      "parent_metrics_SHA256": "19b673746b313cf67bf1f5ea692389048ca865cffafedfb5e98b05f61f915d58",
+      "derived_metrics_SHA256": "c8ec38b027f90c8bfba8824ac627b859a77b3149423f0fe19992498ed73ed712",
+      "only_change": "C1 case ID literal",
+      "new_case_id": "centered-square15-C1-y0-xy80-f3000"
+    },
+    "source_commit": "2339c6b4d638294cb615d1eafa7d806b9a838f74",
+    "TIS_display_unchanged": true,
+    "new_PDE": 1,
+    "new_native_RHS": 1,
+    "probe40_computed_from_new_phi": true,
+    "instrument_loading_validated": false
+  },
+  "unit": {
+    "case_id": "centered-square15-C1-y0-xy80-f3000",
+    "source_run_id": "task1-centered-c1-y0-20261025-run-r2",
+    "circuit": {
+      "n_pads": 2,
+      "n_outputs": 1,
+      "n_signal_pads": 1,
+      "n_return_pads": 1,
+      "n_return_nodes": 1,
+      "pad_to_node": {
+        "0": "out0",
+        "1": "GND"
+      },
+      "return_topology": "one_actual_return_pad_at_GND",
+      "source_Vpp_each": 1.0,
+      "source_peak_V": 0.5,
+      "source_resistance_ohm": 50.0,
+      "carrier_assignment_Hz": [
+        3000
+      ],
+      "basis_phase": "cosine peak0.5+0j; pure-sine postprocessing coefficient-j",
+      "inactive_impedance_keys_Hz": [
+        3030,
+        9000,
+        9090
+      ],
+      "other_TIS_pads_physically_present": false,
+      "other_TIS_output_present": false
+    },
+    "physical_pad_centres_mm": [
+      [
+        -10,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "waveform": "pure sine",
+    "frequency_Hz": 3000,
+    "raw_source_Vpp": 1.0,
+    "raw_centre20_E_RMS_V_m": 1.5139312574479629,
+    "raw_ROI_energy_RMS_V_m": 1.684855498674556,
+    "raw_burdens": {
+      "source_current_RMS_mA": 0.984780244258672,
+      "source_current_peak_mA": 1.3926895773877035,
+      "contact_J_RMS_max_A_m2": 14.798764458919374,
+      "contact_J_RMS_p95_A_m2": 10.834992081329814,
+      "contact_voltage_RMS_max_V": 0.0015643599954774166,
+      "bulk_skin_J_RMS_max_A_m2": 14.745785623526439,
+      "bulk_skin_J_RMS_p95_A_m2": 4.427940529630156,
+      "SC_power_W": 7.287521776646495e-07,
+      "dermis_power_W": 0.00022722473609460315,
+      "skin_SC_plus_dermis_power_W": 0.0002279534882722678,
+      "fat_power_W": 4.874829496938754e-05,
+      "muscle_power_W": 1.5120811510772166e-05,
+      "contact_power_W": 5.430590811213899e-07,
+      "tissue_contact_power_W": 0.00029236565383354893,
+      "source_resistor_power_W": 4.848960647410851e-05,
+      "source_power_W": 0.0003408552600057788,
+      "loaded_metal_Vpp": 0.8641247795226222
+    },
+    "represented_pad_contact_areas_m2": [
+      0.00022500000000000005,
+      0.00022500000000000005
+    ],
+    "unloaded_probe_reference": {
+      "status": "computed_from_new_native_phi",
+      "in_memory_result": "postprocess.probe40",
+      "case_id": "centered-square15-C1-y0-xy80-f3000",
+      "probe_count": 40,
+      "tip_gap_mm": 5.0,
+      "instrument_loading_validated": false
+    },
+    "source_commit": "2339c6b4d638294cb615d1eafa7d806b9a838f74"
+  }
+}

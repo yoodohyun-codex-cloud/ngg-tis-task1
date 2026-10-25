@@ -1,0 +1,71 @@
+{
+  "output_directory": "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-context-20261021T224000Z/queue",
+  "max_total_seconds": 240,
+  "stages": [
+    {
+      "id": "latest-original-fine-C1-RMS-comparison",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_original_single_pair.py",
+        "--preregistration",
+        "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-context-20261021T224000Z/preregistration.json",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-20261021T224000Z"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-20261021T224000Z/attempt.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-20261021T224000Z/summary.json",
+        "statuses": [
+          "calculated_unadopted"
+        ]
+      }
+    },
+    {
+      "id": "feedback-after-original-single-pair",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-context-20261021T224000Z/feedback-after.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-context-20261021T224000Z/feedback-after.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-context-20261021T224000Z/feedback-after.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_original_single_pair.py": "eea1b80a19f423cfb67268e85b0e4121768af7043393a99fda99f5496148a303",
+    "/workspace/ngg-tis-task1/tests/test_task1_original_single_pair.py": "37a0dbce440457cb30da74465c0a3b4e4c6ac4b625737dbe4b4f3f0451ce999a",
+    "/workspace/ngg-tis-task1/tools/task1_rounded_single_pair.py": "3d379d6ab7d7022ca9ef16972bf120f6117f59b588a94c8936b21974273c549f",
+    "/workspace/ngg-tis-task1/tools/task1_original_cached_drive.py": "f9db78a62fcced7d1a712ab29dc41cb020df4af41a232ef079524a5d5a279215",
+    "/workspace/ngg-tis-task1/tools/task1_rotation_coherent_single_pair.py": "31fcd9e6940c1aa23c7cb25a38176c61187442d602e62bddee0942c552a02871",
+    "/workspace/ngg-tis-task1/tools/task1_coherent_single_pair.py": "acaf89ca75851347d7d174f71e9ec998014457b21b3d836b705b76f82deab0fa",
+    "/workspace/ngg-tis-task1/tools/task1_rounded_drive_scout.py": "967bf110658caa2515641739f4804eb21cec35dfcea4b7457576701f048beafb",
+    "/workspace/ngg-tis-task1/tools/task1_drive_ratio_audit.py": "7cb7bf771ddd5f1d2f4ec88556fd6c7e48736e3c5b75e915b9903c9af61ee92f",
+    "/workspace/ngg-tis-task1/tools/task1_results_view.py": "06d4016f1c330a0d6f556a30564f80c46f6298b194a1b58fbbdce128d2889082",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-context-20261021T224000Z/decision.json": "59054dd5116d95556343602380efd371adb09f5d1876489c011d806789296263",
+    "/workspace/ngg-tis-task1/docs/cloud-original-single-pair-context-20261021T224000Z/feedback-before.json": "de615af774db90e66ef4477bc6e10de2105d932c0a04205402602a098d28a400",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-20261021T222000Z/summary.json": "a7d89ab643aa5be6cb476685b13cd99228d890a1125b6c4856849e79ff68349b",
+    "/workspace/ngg-tis-task1/docs/cloud-original-drive-refinement-20261021T222000Z/original-refine-3e018f8a317a/condition.json": "1e6b9dc90d1032d76d247567f71c62cf2d3fe4d6b28ad746e3b2cc102b61f366",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-20261021T183500Z/summary.json": "ca3fe19e82f201c447083fa456a2332960bea8b6c5ea6d70f515195a85d41fec",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-single-pair-20261021T212000Z/summary.json": "7e29ffa9e301461ed4a6fc90e8865dc71dd655255ce9b1cc301e549cfb4dd134",
+    "/workspace/ngg-tis-task1/docs/cloud-original-mesh-sensitivity-20261021T223000Z/summary.json": "b4ec4b8d053e62256b4a3070e5da2918277e9a8cf32bc4092fefe7a678d18bbb",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/preregistration.json": "a5bff7509ba3e881f8885729453df4d0f88bbfc2e08908b93ee7c843d3f5b9b3",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/summary.json": "96b798cf85cdf0218a918a584caba4d01b489c2614f954bd215af17285945950",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/cases/baseline-square15-C1pair0-xy80.json": "265b058a0274fb7dff43e8c1101eaec730d44eb2731e6106e9e1ef149e2a3c88",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/configs/baseline-square15-C1pair0-xy80.properties": "326ca4c1bb380de90f1d794c6d0acca0d61a90a54c0f95e2168f6e55ae1706e3",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json": "7ac08215db1ec71a6880d8eded01fcec203e2992e191f91d42ebf780484da83b",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json": "f57f94297cf5de0347af346a650fb5441ff9328f68f3764f2d4a9768324186d1",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/configs/baseline-square15-xy80.properties": "f838aeab4f1729e3eb064318781e49ef72c99f28a90b4f416097cfbdec92b64b",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d"
+  }
+}

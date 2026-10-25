@@ -1,0 +1,559 @@
+{
+  "schema": "task1-feedback-disposition-correction-v1",
+  "created_utc": "2026-10-21T16:19:51.313016+00:00",
+  "observed_source_commit": "dc9f84298a1d6c2a88420a28101b1db91d1dc8fc",
+  "correction": "The prior reports saying no new feedback at15:32/15:42 were false. Incoming6319669306 was present in both stored successful GET receipts. Receipt delivery was missed during disposition/reporting, not a GitHub delivery failure.",
+  "originals_overwritten": false,
+  "original_receipts_and_failures_preserved": true,
+  "source_claims_to_correct": [
+    {
+      "path": "docs/LOWER_CARRIER_RESULTS_20261021.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/LOWER_CARRIER_RESULTS_20261021.md",
+      "SHA256": "0bcb29140d5bcedd79c59cf73853212f438454fddf01ccfda218b3bcd45d279b",
+      "bytes": 6574,
+      "line": 29,
+      "quote": "15:32UTC GET에 새 검토 피드백은 없었으며",
+      "JSON_pointer": null,
+      "correction": "Incoming6319669306 was already present in this GET receipt; delivered is true. Automatic adoption=false or no peer agreement does not mean no incoming feedback."
+    },
+    {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication-body.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication-body.md",
+      "SHA256": "fd48808b9f7d1cb81e6d61f9b58040de793766ead11acec1b253e45c9445bbbb",
+      "bytes": 2037,
+      "line": 9,
+      "quote": "새 유도현2 피드백은15:32GET에서 없었으며",
+      "JSON_pointer": null,
+      "correction": "Incoming6319669306 was already present in this GET receipt; delivered is true. Automatic adoption=false or no peer agreement does not mean no incoming feedback."
+    },
+    {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-result-disposition.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-result-disposition.json",
+      "SHA256": "a36ca0dc2ae2b8c035a3920d0041c3ef56c3c32ef8fd6a4807b9b133340ff1eb",
+      "bytes": 984,
+      "line": 10,
+      "quote": "\"new_peer_feedback_observed\": false",
+      "JSON_pointer": "/new_peer_feedback_observed",
+      "correction": "Incoming6319669306 was already present in this GET receipt; delivered is true. Automatic adoption=false or no peer agreement does not mean no incoming feedback."
+    },
+    {
+      "path": "docs/MID_HIGH_CARRIER_RESULTS_20261021.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/MID_HIGH_CARRIER_RESULTS_20261021.md",
+      "SHA256": "662166a190aed627fc958294f378901ea13504b086a66640302af18139617852",
+      "bytes": 6611,
+      "line": 38,
+      "quote": "15:42GET에새검토응답은없었으며",
+      "JSON_pointer": null,
+      "correction": "Incoming6319669306 was already present in this GET receipt; delivered is true. Automatic adoption=false or no peer agreement does not mean no incoming feedback."
+    },
+    {
+      "path": "docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication-body.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication-body.md",
+      "SHA256": "923d5ccb98f568c1af5c66bff3e22d5af9d76a743aedfcf504fbf32a6fae2c6b",
+      "bytes": 2260,
+      "line": 9,
+      "quote": "15:42GET에새응답은없었습니다",
+      "JSON_pointer": null,
+      "correction": "Incoming6319669306 was already present in this GET receipt; delivered is true. Automatic adoption=false or no peer agreement does not mean no incoming feedback."
+    }
+  ],
+  "evidence_receipts": [
+    {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-after.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-after.json",
+      "SHA256": "b3ebb8833a03cd5cc6d7be4df7f9e442eb1ed73385d2c85b39734ba7b2257b54",
+      "bytes": 40525,
+      "observed_utc": "2026-10-21T15:32:04.154800+00:00",
+      "comment_JSON_pointer": "/receipts/3/evidence/12",
+      "delivered_comment_ids": [
+        6319669306
+      ]
+    },
+    {
+      "path": "docs/cloud-mid-high-carrier-20261021T154000Z/feedback-after.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-mid-high-carrier-20261021T154000Z/feedback-after.json",
+      "SHA256": "f03a9b21cf775701805c7cd57c22c4b78de2d9309f6096853877d596310553a2",
+      "bytes": 45531,
+      "observed_utc": "2026-10-21T15:42:50.525942+00:00",
+      "comment_JSON_pointer": "/receipts/3/evidence/12",
+      "delivered_comment_ids": [
+        6319669306
+      ]
+    },
+    {
+      "path": "docs/cloud-grouped-fine-recovery-20261021T161000Z/feedback-before.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/feedback-before.json",
+      "SHA256": "78b3047402d28f9cb62b43eca2502e5289e21cb7e4f08df06f0a17f5c0ffb5dd",
+      "bytes": 45780,
+      "observed_utc": "2026-10-21T16:09:44.610605+00:00",
+      "comment_JSON_pointer": "/receipts/3/evidence",
+      "delivered_comment_ids": [
+        6319669306,
+        6320375305
+      ]
+    }
+  ],
+  "feedback": [
+    {
+      "parent_feedback_id": "T1-F010",
+      "source_comment_id": 6319669306,
+      "source_URL": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6319669306",
+      "source_updated_utc": "2026-10-21T15:25:11Z",
+      "source_body_SHA256": "1ae49731956a4ec11d048bc995996f67c48d2778790892478a70d2609ab083ab",
+      "body": "### T1-F010 — 종료·게시 하위 단계 검증 및 lower-carrier 회귀 검토\n\n6314921372의 실행 상태·결과 공개 요청은 응답 6319002919와 [9f639e9 원 큐 summary](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f639e92c730611ec913576fca0ac92d1a0dd6d8/docs/cloud-extended-20261021T102700Z/queue-execution/summary.json), [종료 관측](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/9f639e92c730611ec913576fca0ac92d1a0dd6d8/docs/cloud-autonomous-20261021T144000Z/queue-terminal-observation.json)으로 채택 및 검증됐습니다. 5단계 exit0, 10:58:03.835 UTC 종료를 확인했습니다. **이 상태·게시 하위 단계만 resolved**이며, 전체 수렴·실측 검증은 열린 상태입니다.\n\n[Source-only 원표](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/c4877449a4aa2bc872a8e1b0fee446f578ce607c/docs/cloud-autonomous-20261021T144000Z/volume-source-position.json)와 [all-cross 결과](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/2d404179a6fb5e309aa074821c367f981b7771fc/docs/CROSS_ALLOCATION_RESULTS_20261021.md)는 목표 절대값과 표층·비표적 동시 기준으로 미채택한 판단을 지지합니다. SC4 9 kHz 재합성의 부정적 결과는 해당 SC 정밀화에 대한 확인이며 전체 mesh/contact 수렴을 뜻하지 않습니다.\n\n[a1f0fec lower-carrier 사전등록](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/a1f0fecc028049d54de2f55c70ad75f8730902c4/docs/cloud-lower-carrier-20261021T152000Z/DECISION.md)의 고정 beat 30 Hz 및 3k 회귀 선행은 적절합니다. 다음 검토의 핵심은 면적 비교 허용오차를 단순히 통과하도록 넓히지 않고, 단위·규모·부동소수점 누적 오차 근거를 명시하는 것입니다. 실제 기하/격자/접촉면적 변경은 별도로 검출되어야 합니다. 최초 exact-equality 실패·최대 차이·수정 커밋을 보존하고, 기존 기저 재사용의 동일성 및 회귀 10배열 각각의 오차/허용치/통과 여부를 고정 artifact로 연결해 주세요.\n\n이 회귀 증거 요구는 제안 상태이며 구현·실제 통과는 별도 확인 예정입니다. 계산 재실행·추가 워커·예산 변경 요청이 아니며, 이미 진행 중인 수정에 대한 수신확인 답글은 필요 없습니다.",
+      "delivered": true,
+      "first_proved_local_receipt_utc": "2026-10-21T15:32:04.154800+00:00",
+      "previous_explicit_adoption_recorded": false,
+      "decision_now": "Explicitly adopt requested unit/roundoff rationale and preserved-failure/donor/10-array evidence links; correct the false absence claim in this new erratum.",
+      "adoption_commit": null,
+      "adoption_commit_limit": "Root must commit this correction; do not backdate formal adoption to a prior calculation commit.",
+      "evidence_implementation_commit": "07aba294d20692ebc0454c1486b7ca8b93908b2b",
+      "evidence_publication_commit": "7643624ee0aa13b3a1bce52cdf505227bedf3c6b",
+      "evidence_completed": true,
+      "evidence_completion_scope": "Producer regression/identity and local mask representation handling only; no new rerun by this erratum.",
+      "reviewed_as_resolved_by_comment_id": 6320375305,
+      "review_completed_scope": "Reviewer checked published ten-array/identity/failure/donor evidence; not independent native decode, solver, continuum convergence or experiment."
+    },
+    {
+      "parent_feedback_id": "T1-F010",
+      "source_comment_id": 6320375305,
+      "source_URL": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6320375305",
+      "source_updated_utc": "2026-10-21T15:58:04Z",
+      "source_body_SHA256": "600efd51ec21ce3923b7e1f3f1c3d577d32a58a78ceb88e412399f0f6532aa00",
+      "body": "### T1-F010 — 회귀 증거 검토 완료 / strip XY 진단 권고\n\n[7643624 producer-regression.json](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/7643624ee0aa13b3a1bce52cdf505227bedf3c6b/docs/cloud-lower-carrier-recovery-20261021T153000Z/producer-regression.json)의 10배열 오차0·decoded byte equality, grid/contact/input identity 및 원 실패·donor hash 연결을 확인했습니다. 6319669306의 요구 증거 하위 단계는 게시 자료 검토 범위에서 resolved로 봅니다. 해당 댓글의 명시적 채택 인용은 확인하지 못했으며, 독립 native 재디코딩/전체 수렴/실측 검증과 구분합니다.\n\n[181e73e 고정 beat 30 Hz 결과](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/181e73ecfdaf4b8fdda1a2bcb5ff0dbb63c46f8d/docs/cloud-mid-high-carrier-20261021T154000Z/result-brief.json)까지는 1/2/5/9 kHz 모두 목표 mean/P10을 보존하지 못해 미채택한 판단을 지지합니다. 표층 감소만으로 깊이 집중 성공을 주장하지 않는 기준을 유지해 주세요.\n\n다음 제안인 strip 4/8/12/16 패드의 XY 1.25→0.625 mm 비교는 1 mm gap 표현 오류를 진단하는 데 타당합니다. 다만 0.625 mm도 gap당 1.6셀에 불과해 이 비교만으로 간격/모서리 수렴 완료라고 판정할 수 없습니다. 각 격자에서 실제 mask 접촉면적, 최소 유효 gap, pad별 복소 전류·전류보존, 모서리 Jmax 위치/값과 활성 제한항 변화를 함께 보고해 주세요. 고정 물리 ROI/cutoff와 공통 부담 상한에서 절대 목표 mean/P10·표층/비표적 지표·순위 안정성을 비교하고, 재격자화가 접촉 면적이나 연결 topology를 바꾼 경우 순수 mesh 효과와 구분해 주세요. 4패드 기준을 모든 확대 설계 옆에 유지해야 합니다.\n\n상태: strip 진단 요구는 proposed, 실행·채택·실제 수렴 미확인입니다. 기존 승인된 유한 계획의 과학적 검토이며 추가 실행/예산/워커 변경을 요청하지 않습니다. 수신확인만의 답글은 생략하고 결과 근거와 연결해 주세요.",
+      "delivered": true,
+      "decision_now": "Adopt bounded coarse/fine diagnostic followup selected by root; implementation is in progress and diagnostic execution/results are pending.",
+      "adoption_commit": null,
+      "implementation_status": "Root-selected bounded readback being implemented; no completed diagnostic claimed.",
+      "execution_status": "not_claimed_executed_by_this_erratum",
+      "validation_completed": false,
+      "required_outputs": [
+        "actual mask area per physical pad at both grids",
+        "minimum effective gap and any topology/area changes",
+        "complex pad currents and conservation",
+        "edge Jmax value/location/patch representation",
+        "active burden limiter changes",
+        "same ROI/fixed cutoff/common burden absolute mean/P10 and superficial/nontarget metrics",
+        "coarse/fine ranking stability with original4square and separate4strip reference visible"
+      ],
+      "retained_hold": "h0.625mm is only1.6cells per1mm gap; this comparison cannot establish gap/edge/continuum convergence."
+    }
+  ],
+  "mask_roundoff_rationale": {
+    "cell_h_mm": 0.625,
+    "full_face_area_m2": 3.90625e-07,
+    "reported_original_CSV_face_area_m2": 3.9062499999999997e-07,
+    "reported_representation_difference_m2": 5.293955920339377e-23,
+    "reported_representation_relative_difference": 1.3552527156068805e-16,
+    "machine_epsilon_dimensionless": 2.220446049250313e-16,
+    "relative_guard_dimensionless": 8.881784197001252e-16,
+    "additive_absolute_tolerance_m2": 0.0,
+    "effective_per_face_difference_bound_m2": 3.4694469519536144e-22,
+    "interpretation": "This local per-face representation guard covers the documented1ULP discrepancy; it is not a statistical uncertainty or a general accumulated-floating-error proof. Physical mask bytes/indices/shape/order and unchanged native area gate remain separate checks."
+  },
+  "regression": {
+    "source": {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/producer-regression.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/producer-regression.json",
+      "SHA256": "32b77a88019e74460a38a40d22f4bc7964c2887c0805ae772ab9f1d01331b62c",
+      "bytes": 16894
+    },
+    "status": "passed",
+    "comparisons": [
+      {
+        "frequency_Hz": 3000,
+        "array_kind": "field",
+        "shape": [
+          2,
+          351680,
+          3
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "V/m"
+        }
+      },
+      {
+        "frequency_Hz": 3000,
+        "array_kind": "potential",
+        "shape": [
+          2,
+          351680
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "V"
+        }
+      },
+      {
+        "frequency_Hz": 3000,
+        "array_kind": "density",
+        "shape": [
+          2,
+          2304
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "A/m2"
+        }
+      },
+      {
+        "frequency_Hz": 3000,
+        "array_kind": "source",
+        "shape": [
+          2,
+          2
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "A"
+        }
+      },
+      {
+        "frequency_Hz": 3000,
+        "array_kind": "loss",
+        "shape": [
+          6,
+          2,
+          2
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "W"
+        }
+      },
+      {
+        "frequency_Hz": 3030,
+        "array_kind": "field",
+        "shape": [
+          2,
+          351680,
+          3
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "V/m"
+        }
+      },
+      {
+        "frequency_Hz": 3030,
+        "array_kind": "potential",
+        "shape": [
+          2,
+          351680
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "V"
+        }
+      },
+      {
+        "frequency_Hz": 3030,
+        "array_kind": "density",
+        "shape": [
+          2,
+          2304
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "A/m2"
+        }
+      },
+      {
+        "frequency_Hz": 3030,
+        "array_kind": "source",
+        "shape": [
+          2,
+          2
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "A"
+        }
+      },
+      {
+        "frequency_Hz": 3030,
+        "array_kind": "loss",
+        "shape": [
+          6,
+          2,
+          2
+        ],
+        "decoded_binary_byte_equal": true,
+        "max_abs_component_error": 0.0,
+        "failed_component_count": 0,
+        "passed": true,
+        "tolerance": {
+          "relative": 2e-10,
+          "absolute": 1e-12,
+          "units": "W"
+        }
+      }
+    ],
+    "decoded_grid_and_contact_identity": true,
+    "inputs_unchanged": true,
+    "reused_regression_RHS_solves": 4,
+    "new_regression_RHS_solves": 0,
+    "reused_from_donor": {
+      "run_path": "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z",
+      "basis_path": "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030",
+      "original_registration_SHA256": "362506b54723645bb1948131a801b35d2deb7a98250bf6aee9367113e92dd1ca",
+      "source_commit": "e0bb950eadfd6b9f0184d9628da18039b04d7fdb",
+      "original_failure": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/failure.json",
+        "SHA256": "adf9a00178450c11972ec674b51c94b2c0be485d99153dcba7b4164acae6ec51"
+      },
+      "native_file_inventory_sha256": {
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/basis-progress.json": "0ea168f6c8b4451f2f07c1641f8cf9fc522b77ae9c02ce4926dae74471c54f13",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/contacts-3000.csv": "cac097f5a185a5a5f143728b3ca349d6105cab6132b06ca8755c40d787fd8618",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/contacts-3030.csv": "cac097f5a185a5a5f143728b3ca349d6105cab6132b06ca8755c40d787fd8618",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/density-3000.bin": "b44da64103732696077db7e69cd080d0d194aeb06d7ab16b1e2750b7284b0c49",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/density-3030.bin": "9376a5b56b76b28edb23b2507760ea7551d7d8f1c0c95184f64dfd40440dbbf6",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/field-3000.bin.gz": "3bb570191542985d25afd175adbd834a35bcdc36d1827c0cc8e8e573fb9883db",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/field-3030.bin.gz": "d2eeb352f593f1dbd9f54038f5fc3c770e4c12a72a9dffa149a8c225b1171ab3",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/grid.csv.gz": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/loss-3000.bin": "3cdb183573088197b12d2360f489977948e3976e02f8036e337a870db26e181d",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/loss-3030.bin": "6bd2e12f22c3552ca3e1be329bd62f28c8dff026b0b38a02198cf3fde5061d3e",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/mesh-metadata.json": "1fe25130d1c0732aef6c553ee55a1c25dda37a8a61e4e60c2e0a31a72064e509",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/potential-3000.bin.gz": "6fe31ae00f2a1b4f904b58ac78af2b33892d180d22229487ad2e84b58e0d86e3",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/potential-3030.bin.gz": "fb6114a23d6f42af3c4c765be274e5cd0801bde3b6211ff00bdaf9c9468c7109",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/runtime-wrapper.json": "783e9df1fe357f5194e8c7409cf4b97214e13abf32a18b1cee504955f880f686",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/source-3000.bin": "5c5eefd94d439ffdf0bc39fd0d16f454c416f7f20afb08df19b5061f75924c04",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/source-3030.bin": "3613f83d1658bd5411c8ec021c7b33fb01f81eceed1bd810bbd236576fbbbd7a",
+        "/workspace/ngg-tis-task1/data-native/cloud-lower-carrier-20261021T152000Z/bases/regression-3000-3030/validation.json": "8174c48eec6d2c987480d18606b995c2263660c79dd277b831342777233f94e2"
+      }
+    },
+    "scope": "Producer decoded-array regression only; not independent solver, skin, convergence or experimental validation"
+  },
+  "original_failure": {
+    "source": {
+      "path": "docs/cloud-lower-carrier-20261021T152000Z/failure-preservation.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-20261021T152000Z/failure-preservation.json",
+      "SHA256": "19cb3e6009539cbbb81ae871526040f4599ee3f5db696efa2aba8f1e9c3c1fc7",
+      "bytes": 3917
+    },
+    "status": "failed_preserved",
+    "root_cause": "Float exact-equality rejects original full-face mask1ULP below computedh²; not a PDE/convergence failure",
+    "raw_native_deleted": false
+  },
+  "current_recovery_registration": {
+    "source": {
+      "path": "tools/task1_grouped_fine_volume_recovery_registration.py",
+      "absolute_path": "/workspace/ngg-tis-task1/tools/task1_grouped_fine_volume_recovery_registration.py",
+      "SHA256": "5a8c832236911ddd83fb9c45c3fef7c2c46418b5bd2be70d8dccb7a80bc1f470",
+      "bytes": 27191
+    },
+    "known_incoming_count": 9,
+    "known_source_body_SHA256": {
+      "6280443738": "5018db8befa0a5f46c5f6460c28c4781b88eaf4e42d3280e2c5a8c3f6f3a9be8",
+      "6297472037": "5041b6cd0e507edb6cee630e70bc243674e7746c2b52b4c4fe6a3f9859a4d2e0",
+      "6308380231": "e8c566e0dc696693b257995e14449d3f5b33f26428f7c87471b6ec8effd5caf9",
+      "6308699569": "d30b761d73f7722dbe9d8033dad17510d748ccb00ec1722cbd53858790ec1050",
+      "6309148063": "9094121aaa4977872875bdb5f2a62ba1266b6708d2ceb21aaf1d438fee9f6d85",
+      "6312627319": "3583a8242c06641b58be4d770f73c9aca435354ee7e759eace6d622148871287",
+      "6314921372": "e17fde46d81f9567f945bf3899df200ba4470b038f461ae071ac7f3fd6b09b66",
+      "6319669306": "1ae49731956a4ec11d048bc995996f67c48d2778790892478a70d2609ab083ab",
+      "6320375305": "600efd51ec21ce3923b7e1f3f1c3d577d32a58a78ceb88e412399f0f6532aa00"
+    },
+    "scope": "Static source inspection only; all9 known incoming sources are represented, but this alone is not adoption/execution/validation of each request."
+  },
+  "publication_history": {
+    "docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication.json": {
+      "status": "published_completed_batch",
+      "comment_id": 6314015870,
+      "comment_url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6314015870",
+      "comment_updated": true,
+      "published_commit": "7643624ee0aa13b3a1bce52cdf505227bedf3c6b",
+      "source_commit_before": "7643624ee0aa13b3a1bce52cdf505227bedf3c6b",
+      "started_utc": "2026-10-21T15:39:07.005009+00:00",
+      "finished_utc": "2026-10-21T15:39:13.438978+00:00",
+      "phase": "patch_fixed_progress_comment"
+    },
+    "docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication.json": {
+      "status": "failed_preserved",
+      "comment_id": 6314015870,
+      "comment_url": null,
+      "comment_updated": false,
+      "published_commit": "181e73ecfdaf4b8fdda1a2bcb5ff0dbb63c46f8d",
+      "source_commit_before": "181e73ecfdaf4b8fdda1a2bcb5ff0dbb63c46f8d",
+      "started_utc": "2026-10-21T15:55:42.464330+00:00",
+      "finished_utc": "2026-10-21T15:55:46.571762+00:00",
+      "phase": "verify_fixed_comment"
+    },
+    "docs/cloud-mid-high-carrier-20261021T154000Z/mid-high-publication-20261021T154000Z.json": {
+      "status": "published_completed_batch",
+      "comment_id": 6314015870,
+      "comment_url": "https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6314015870",
+      "comment_updated": true,
+      "published_commit": "fa39cb8ec2d15e9f4ead967dfdd6bc5c91c0b33e",
+      "source_commit_before": "fa39cb8ec2d15e9f4ead967dfdd6bc5c91c0b33e",
+      "started_utc": "2026-10-21T15:56:39.167119+00:00",
+      "finished_utc": "2026-10-21T15:56:42.580694+00:00",
+      "phase": "patch_fixed_progress_comment"
+    }
+  },
+  "publication_scope": "Receipts record past publication attempts/successors. This erratum does not reread current remote comment bodies or mutate published comments. A failed mid/high publication attempt remains preserved alongside its separate successful successor.",
+  "sources": {
+    "docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-after.json": {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-after.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-after.json",
+      "SHA256": "b3ebb8833a03cd5cc6d7be4df7f9e442eb1ed73385d2c85b39734ba7b2257b54",
+      "bytes": 40525
+    },
+    "docs/cloud-mid-high-carrier-20261021T154000Z/feedback-after.json": {
+      "path": "docs/cloud-mid-high-carrier-20261021T154000Z/feedback-after.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-mid-high-carrier-20261021T154000Z/feedback-after.json",
+      "SHA256": "f03a9b21cf775701805c7cd57c22c4b78de2d9309f6096853877d596310553a2",
+      "bytes": 45531
+    },
+    "docs/cloud-grouped-fine-recovery-20261021T161000Z/feedback-before.json": {
+      "path": "docs/cloud-grouped-fine-recovery-20261021T161000Z/feedback-before.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/feedback-before.json",
+      "SHA256": "78b3047402d28f9cb62b43eca2502e5289e21cb7e4f08df06f0a17f5c0ffb5dd",
+      "bytes": 45780
+    },
+    "docs/LOWER_CARRIER_RESULTS_20261021.md": {
+      "path": "docs/LOWER_CARRIER_RESULTS_20261021.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/LOWER_CARRIER_RESULTS_20261021.md",
+      "SHA256": "0bcb29140d5bcedd79c59cf73853212f438454fddf01ccfda218b3bcd45d279b",
+      "bytes": 6574
+    },
+    "docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication-body.md": {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication-body.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication-body.md",
+      "SHA256": "fd48808b9f7d1cb81e6d61f9b58040de793766ead11acec1b253e45c9445bbbb",
+      "bytes": 2037
+    },
+    "docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-result-disposition.json": {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-result-disposition.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/feedback-result-disposition.json",
+      "SHA256": "a36ca0dc2ae2b8c035a3920d0041c3ef56c3c32ef8fd6a4807b9b133340ff1eb",
+      "bytes": 984
+    },
+    "docs/MID_HIGH_CARRIER_RESULTS_20261021.md": {
+      "path": "docs/MID_HIGH_CARRIER_RESULTS_20261021.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/MID_HIGH_CARRIER_RESULTS_20261021.md",
+      "SHA256": "662166a190aed627fc958294f378901ea13504b086a66640302af18139617852",
+      "bytes": 6611
+    },
+    "docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication-body.md": {
+      "path": "docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication-body.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication-body.md",
+      "SHA256": "923d5ccb98f568c1af5c66bff3e22d5af9d76a743aedfcf504fbf32a6fae2c6b",
+      "bytes": 2260
+    },
+    "docs/cloud-lower-carrier-recovery-20261021T153000Z/producer-regression.json": {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/producer-regression.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/producer-regression.json",
+      "SHA256": "32b77a88019e74460a38a40d22f4bc7964c2887c0805ae772ab9f1d01331b62c",
+      "bytes": 16894
+    },
+    "docs/cloud-lower-carrier-20261021T152000Z/failure-preservation.json": {
+      "path": "docs/cloud-lower-carrier-20261021T152000Z/failure-preservation.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-20261021T152000Z/failure-preservation.json",
+      "SHA256": "19cb3e6009539cbbb81ae871526040f4599ee3f5db696efa2aba8f1e9c3c1fc7",
+      "bytes": 3917
+    },
+    "docs/cloud-lower-carrier-20261021T152000Z/FAILURE.md": {
+      "path": "docs/cloud-lower-carrier-20261021T152000Z/FAILURE.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-20261021T152000Z/FAILURE.md",
+      "SHA256": "79df95475f5f0c3b7b4932d246a3094770f981878f1b23b001920ee85e460806",
+      "bytes": 1736
+    },
+    "docs/cloud-lower-carrier-recovery-20261021T153000Z/DECISION.md": {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/DECISION.md",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/DECISION.md",
+      "SHA256": "12d2dc36548f34edfe8b0650f8a0383dbb13da468c343bb0fd6f3e87b76b0ae3",
+      "bytes": 2981
+    },
+    "tools/task1_lower_carrier_native_v2.py": {
+      "path": "tools/task1_lower_carrier_native_v2.py",
+      "absolute_path": "/workspace/ngg-tis-task1/tools/task1_lower_carrier_native_v2.py",
+      "SHA256": "3b1494f69039691f6f1f2033137510036c9e3caf9c52015a299e80ff113fb3ed",
+      "bytes": 23057
+    },
+    "docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication.json": {
+      "path": "docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-lower-carrier-recovery-20261021T153000Z/completed-publication.json",
+      "SHA256": "f49bf3b224daabbc57fb7c78b0378b0d63593c2a3579778b3d1b69712d82225a",
+      "bytes": 3439
+    },
+    "docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication.json": {
+      "path": "docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-mid-high-carrier-20261021T154000Z/completed-publication.json",
+      "SHA256": "a79b7b318657071c181f7b85b67e9292a89e02fbe3b14cc426f427b66fd512fb",
+      "bytes": 5953
+    },
+    "docs/cloud-mid-high-carrier-20261021T154000Z/mid-high-publication-20261021T154000Z.json": {
+      "path": "docs/cloud-mid-high-carrier-20261021T154000Z/mid-high-publication-20261021T154000Z.json",
+      "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-mid-high-carrier-20261021T154000Z/mid-high-publication-20261021T154000Z.json",
+      "SHA256": "a207185d44e7a430d449eda38162b8ba66b138c6d1ea4261abdf3858267ba155",
+      "bytes": 5939
+    },
+    "tools/task1_grouped_fine_volume_recovery_registration.py": {
+      "path": "tools/task1_grouped_fine_volume_recovery_registration.py",
+      "absolute_path": "/workspace/ngg-tis-task1/tools/task1_grouped_fine_volume_recovery_registration.py",
+      "SHA256": "5a8c832236911ddd83fb9c45c3fef7c2c46418b5bd2be70d8dccb7a80bc1f470",
+      "bytes": 27191
+    }
+  },
+  "metadata_only": true,
+  "new_PDE": 0,
+  "new_native_analysis": 0,
+  "new_remote_messages": 0,
+  "Git_commit_created": false,
+  "explicit_application_commits": {
+    "feedback_source_implementation": "184208c",
+    "metadata_recovery_preregistration": "9002379",
+    "completed_volume_publication": "dc9f842",
+    "detailed_gap_diagnostic": "pending_separate_execution"
+  },
+  "github_reply_status": "Scientific reply pending actual bounded gap diagnostic; no receipt-only acknowledgement",
+  "Git_commit_created_scope": "Original document audit stage only; root subsequently commits this correction separately"
+}

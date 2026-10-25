@@ -1,0 +1,76 @@
+{
+  "output_directory": "/workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/queue-audit-recovery",
+  "max_total_seconds": 360,
+  "stages": [
+    {
+      "id": "self-physics-audit-rounded-fullface225-contact0p5-sc4-xy80",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z",
+        "--case",
+        "rounded-fullface225-contact0p5-sc4-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/postprocess/rounded-fullface225-contact0p5-sc4-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/audit/rounded-fullface225-contact0p5-sc4-xy80-self-physics-diagnostic.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/audit/rounded-fullface225-contact0p5-sc4-xy80-self-physics-diagnostic.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/audit/rounded-fullface225-contact0p5-sc4-xy80-self-physics-diagnostic.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      }
+    },
+    {
+      "id": "self-physics-audit-rounded-fullface225-contact2-sc4-xy80",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z",
+        "--case",
+        "rounded-fullface225-contact2-sc4-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/postprocess/rounded-fullface225-contact2-sc4-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/audit/rounded-fullface225-contact2-sc4-xy80-self-physics-diagnostic.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/audit/rounded-fullface225-contact2-sc4-xy80-self-physics-diagnostic.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/audit/rounded-fullface225-contact2-sc4-xy80-self-physics-diagnostic.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      }
+    },
+    {
+      "id": "feedback-after-complete-contact-bases",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/feedback-after-native.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/feedback-after-native.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/feedback-after-native.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/preregistration.json": "8db154d21f8518b52798ce4ca5c6ecb00f18b879242c23fdd222930c9f9a5087",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-contact-20261021T210000Z/summary.json": "7b95c2cf4e2d4e0531aa8877063f7d6c66fa108d15911d94a07ca7e73a5e7f82",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/queue-native/summary.json": "eff4c06eda648738fc4cda90459e01811273f4cf5a83ae013fd8d4266c083bc1",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/decision-after-bounds.json": "0f7eb8698b5fd6881dd58666e12df85457f3e99341566d2fcdc592079ff716fe",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/audit-failure-disposition.json": "fe1f53d4233c9f67318b54e4e0fb84dc4dcfa145499e76d17b30146a51d431b1"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "schema": "task1-partial-contact-column-spec-v1",
+  "plan": {
+    "frequency_Hz": 2000,
+    "SC_thickness_m": 0.0001,
+    "DeltaV_peak_V": 1.0,
+    "DeltaV_Vpp": 2.0,
+    "contact_impedance_scale_factors": [
+      1.0,
+      1000.0,
+      100000.0
+    ],
+    "masks": [
+      "COARSE_XY100",
+      "FINE_XY102"
+    ],
+    "toy_conditions": 1,
+    "fixed_contact_scales": 3,
+    "new_phantom_PDE": 0,
+    "new_CEM_conditions": 0,
+    "new_CEM_RHS": 0,
+    "finite_timeout_seconds": 60,
+    "CPU_limit": 4,
+    "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+    "model_uniform": "Each contacted pixel has one uniform tissue top potential and fullh² independent SC-column admittance; contact occupiesA=f*h²",
+    "model_area_resolved": "Independent SCcolumn only under actualA, uniform bottomDirichlet; NO lateral spread; analytical comparison, NOT true3D reference",
+    "boundary": "Each toy column has metal1Vpeak and SC-bottom0V; pad IDs index geometry only, no actualground/source topology/50ohm network",
+    "formula_uniform": "I=h²*Y*f/(f+Y*zA)*DeltaV; J=Y*DeltaV/(f+Y*zA)",
+    "formula_area_resolved": "I=A*Y/(1+Y*zA)*DeltaV; J=Y*DeltaV/(1+Y*zA)",
+    "fraction_roundoff_allowance": 1e-10,
+    "area_relative_gate": 1e-10,
+    "analytic_relative_gate": 1e-10,
+    "original_contact_input_changed": false,
+    "model_correction_applied": false,
+    "candidate_adopted": false
+  },
+  "masks": [
+    {
+      "id": "COARSE_XY100",
+      "path": "/dev/shm/task1-vs19-uniform-2000-20261025-run/masks/baseline-square15-human-sine2000-sc8-vs19uniform-bulk19-18-56-xy100.csv",
+      "SHA256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+      "h_m": 0.0005,
+      "nx": 100,
+      "patches": 3600,
+      "pads": [
+        {
+          "pad": 0,
+          "patches": 900,
+          "actual_contact_area_m2": 0.000225,
+          "whole_contacted_pixel_footprint_m2": 0.000225,
+          "footprint_to_contact_area_ratio": 1.0,
+          "min_raw_fraction": 1.0,
+          "max_raw_fraction": 1.0,
+          "full_cells_within_roundoff": 900,
+          "partial_cells": 0,
+          "area_relative_error": 0.0
+        },
+        {
+          "pad": 1,
+          "patches": 900,
+          "actual_contact_area_m2": 0.000225,
+          "whole_contacted_pixel_footprint_m2": 0.000225,
+          "footprint_to_contact_area_ratio": 1.0,
+          "min_raw_fraction": 1.0,
+          "max_raw_fraction": 1.0,
+          "full_cells_within_roundoff": 900,
+          "partial_cells": 0,
+          "area_relative_error": 0.0
+        },
+        {
+          "pad": 2,
+          "patches": 900,
+          "actual_contact_area_m2": 0.000225,
+          "whole_contacted_pixel_footprint_m2": 0.000225,
+          "footprint_to_contact_area_ratio": 1.0,
+          "min_raw_fraction": 1.0,
+          "max_raw_fraction": 1.0,
+          "full_cells_within_roundoff": 900,
+          "partial_cells": 0,
+          "area_relative_error": 0.0
+        },
+        {
+          "pad": 3,
+          "patches": 900,
+          "actual_contact_area_m2": 0.000225,
+          "whole_contacted_pixel_footprint_m2": 0.000225,
+          "footprint_to_contact_area_ratio": 1.0,
+          "min_raw_fraction": 1.0,
+          "max_raw_fraction": 1.0,
+          "full_cells_within_roundoff": 900,
+          "partial_cells": 0,
+          "area_relative_error": 0.0
+        }
+      ],
+      "raw_areas_preserved": true,
+      "fractions_clamped_or_rescaled": false,
+      "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+      "actual_contact_area_m2": 0.0009,
+      "whole_contacted_pixel_footprint_m2": 0.0009
+    },
+    {
+      "id": "FINE_XY102",
+      "path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask.csv",
+      "SHA256": "04ef856c91caac24557892a46d17447af71ee12d647dfa2fa01fa00af4c7e1c7",
+      "h_m": 0.0004901960784313725,
+      "nx": 102,
+      "patches": 3844,
+      "pads": [
+        {
+          "pad": 0,
+          "patches": 961,
+          "actual_contact_area_m2": 0.00022500000000000002,
+          "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+          "footprint_to_contact_area_ratio": 1.0263146652996709,
+          "min_raw_fraction": 0.49000000000000005,
+          "max_raw_fraction": 1.0000000000000002,
+          "full_cells_within_roundoff": 841,
+          "partial_cells": 120,
+          "area_relative_error": 1.2046690805394493e-16
+        },
+        {
+          "pad": 1,
+          "patches": 961,
+          "actual_contact_area_m2": 0.00022500000000000002,
+          "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+          "footprint_to_contact_area_ratio": 1.0263146652996709,
+          "min_raw_fraction": 0.49000000000000005,
+          "max_raw_fraction": 1.0000000000000002,
+          "full_cells_within_roundoff": 841,
+          "partial_cells": 120,
+          "area_relative_error": 1.2046690805394493e-16
+        },
+        {
+          "pad": 2,
+          "patches": 961,
+          "actual_contact_area_m2": 0.00022500000000000002,
+          "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+          "footprint_to_contact_area_ratio": 1.0263146652996709,
+          "min_raw_fraction": 0.49000000000000005,
+          "max_raw_fraction": 1.0000000000000002,
+          "full_cells_within_roundoff": 841,
+          "partial_cells": 120,
+          "area_relative_error": 1.2046690805394493e-16
+        },
+        {
+          "pad": 3,
+          "patches": 961,
+          "actual_contact_area_m2": 0.00022500000000000002,
+          "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+          "footprint_to_contact_area_ratio": 1.0263146652996709,
+          "min_raw_fraction": 0.49000000000000005,
+          "max_raw_fraction": 1.0000000000000002,
+          "full_cells_within_roundoff": 841,
+          "partial_cells": 120,
+          "area_relative_error": 1.2046690805394493e-16
+        }
+      ],
+      "raw_areas_preserved": true,
+      "fractions_clamped_or_rescaled": false,
+      "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+      "actual_contact_area_m2": 0.0009000000000000001,
+      "whole_contacted_pixel_footprint_m2": 0.0009236831987697038
+    }
+  ],
+  "config_sha256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+  "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+  "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+  "gamma_SC_S_m": {
+    "real": 5.959456590514033e-06,
+    "imaginary": 2.5055522184188793e-05
+  },
+  "sigma_SC_S_m": 5.959456590514033e-06,
+  "epsilon_SC_r": 225.18780331254555,
+  "Y_SC_column_S_m2": {
+    "real": 0.059594565905140326,
+    "imaginary": 0.2505552218418879
+  },
+  "actual_zA_ohm_m2": {
+    "real": 5.5504758759767015e-05,
+    "imaginary": -0.00012307933145190832
+  },
+  "source_actual_reference_commit": "d2456af62d0686e06555d9e6664ee5d3504d8c64",
+  "actual_comparison_sha256": "29b0b4d505b770fb51e650385c03d03733b2808db5d517d9e6f0377e31165b7e",
+  "actual_basis0_burden_context": {
+    "contact_J_RMS_max_A_m2": {
+      "coarse": 0.0699537575796483,
+      "fine": 0.1426372907495671,
+      "fine_to_coarse_ratio": 2.0390225726925735
+    },
+    "edge_J_RMS_P95_A_m2": {
+      "coarse": 0.06902031258639639,
+      "fine": 0.09854832649816628,
+      "fine_to_coarse_ratio": 1.4278162877748215
+    },
+    "source_power_W": {
+      "coarse": 1.2965344068802122e-06,
+      "fine": 1.3314446859744035e-06,
+      "fine_to_coarse_ratio": 1.0269258408484463
+    },
+    "contact_power_W": {
+      "coarse": 7.740921530102334e-11,
+      "fine": 8.230246231836488e-11,
+      "fine_to_coarse_ratio": 1.0632127195491263
+    }
+  },
+  "mechanism_hypothesis": "A shared whole-pixel topDOF can draw SC current throughh² even when contactA=f*h² ispartial. Unit independent-column limit diagnoses possiblefootprintaliasing; no quantitative attribution of actual coupledCEM burden change.",
+  "actual_geometry_and_powers_not_replaced": true,
+  "lower_SC4_sampling_not_changed_by_this_diagnostic": true,
+  "actual_contact_scales_not_applied": true,
+  "no_fitted_parameters": true,
+  "old_failed_screens_preserved": true,
+  "physiological_or_safety_threshold": false
+}

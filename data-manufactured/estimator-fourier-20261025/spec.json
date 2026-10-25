@@ -1,0 +1,88 @@
+{
+  "schema": "task1-fixed-order-SC4-SC8-manufactured-spec-v1",
+  "frequency_Hz": 2000,
+  "period_m": 0.05,
+  "thickness_m": [
+    0.0001,
+    0.005,
+    0.005,
+    0.015
+  ],
+  "material_rows": [
+    {
+      "layer": "sc",
+      "sigma_S_m": 5.959456590514033e-06,
+      "epsilon_r": 225.18780331254555,
+      "gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      }
+    },
+    {
+      "layer": "dermis",
+      "sigma_S_m": 0.29312219368408116,
+      "epsilon_r": 870716.5653512729,
+      "gamma_S_m": {
+        "real": 0.29312219368408116,
+        "imaginary": 0.0968802834717473
+      }
+    },
+    {
+      "layer": "fat",
+      "sigma_S_m": 0.1968291518398069,
+      "epsilon_r": 10307.859184332388,
+      "gamma_S_m": {
+        "real": 0.1968291518398069,
+        "imaginary": 0.001146904009299627
+      }
+    },
+    {
+      "layer": "muscle",
+      "sigma_S_m": 0.2516252154881487,
+      "epsilon_r": 168024.57464128954,
+      "gamma_S_m": {
+        "real": 0.2516252154881487,
+        "imaginary": 0.01869525522912356
+      }
+    }
+  ],
+  "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+  "config_sha256": "61830d8b2abf39a2458666df2b26a0bfb1e585873f3e3002f4e29ba1ab76af13",
+  "modes": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "grids": [
+    {
+      "id": "D",
+      "h_mm": 0.5,
+      "sc_cells": 4,
+      "bulk_counts": [
+        18,
+        18,
+        56
+      ]
+    },
+    {
+      "id": "E",
+      "h_mm": 0.5,
+      "sc_cells": 8,
+      "bulk_counts": [
+        18,
+        18,
+        56
+      ]
+    }
+  ],
+  "boundary": "top Dirichlet cos(k*x) Vpeak; bottom Jz0; x periodic; y independent",
+  "independent_normal_current_QA_limit": 0.05,
+  "analytic_absolute_tolerance": 1e-10,
+  "analytic_relative_tolerance": 1e-10,
+  "scope": "Manufactured planar operator/diagnostic test only; not cylinder, CEM, electrodes,50ohm hardware, real phantom, TIS, candidate, activation or safety validation",
+  "comparison": "SC4 vs SC8 at unchanged XY0.5/bulk18,18,56; exactly2/2 and exactly3/3 one-sided fits are separate fixed-order series",
+  "real_field_bias_correction": false,
+  "new_real_native_PDE": 0
+}

@@ -1,0 +1,36 @@
+{
+  "cause_status": "Hypothesis from source only; actual numeric ECDF diagnostics must decide, no reason fabricated",
+  "common_display_definition": "TIS_ROI_and_skin",
+  "regression_absolute_limit": "1e-10+2e-7*abs(saved_value), unchanged",
+  "schema": "task1-ECDF-producer-source-definitions-v1",
+  "sources": {
+    "TIS_ROI_and_skin": {
+      "SHA256": "d761d3fd965f85d1cc121fac9d9fc6addb21810f12d9d18240601e8278834ba0",
+      "definition": "All scalar values including zero-weight rows; stable argsort; cumulative=cumsum(weight[order]); threshold=p*cumulative[-1]; left inverse ECDF",
+      "function": "weighted_stats",
+      "function_AST_SHA256": "30d07ed7bd9e5b5ef0a111f56e597f893e558b3805ead6ba136da51c36854018",
+      "path": "/dev/shm/task1-peripheral-recovery-20261025/source/screen_metrics.py"
+    },
+    "TIS_contact": {
+      "SHA256": "74778b09dbbbb50e43155eff0a016903d376ff426238afa95963bf86ae7549fd",
+      "definition": "All contact weights positive; stable argsort; threshold=.95*sum(area) before sorting; left inverse ECDF",
+      "function": "_p95",
+      "function_AST_SHA256": "07995dff01b35f4e7e006e4dd152f0a160ae1ecaa0624eda722e316ead219122",
+      "path": "/dev/shm/task1-peripheral-recovery-20261025/source/allocation_electrical.py"
+    },
+    "failed_GUI_v1": {
+      "SHA256": "4c293b1bb6619fa35b1ca15ec51602deb7677e0de9303f986b8ddd74e3729efb",
+      "definition": "Restrict positive weights; threshold=p*sum(positive_weight), same normalization family as single producer; incorrect assumption for saved TIS ECDF regression",
+      "function": "_stats",
+      "function_AST_SHA256": "17bc086793357f196884dcac03b37f174bbe9132b554d5f0b6d98f8fb654eff3",
+      "path": "/dev/shm/task1-single-pair-comparison-gui-20261025/source/pair_gui_post.py"
+    },
+    "single_ROI_skin_contact": {
+      "SHA256": "c4316294a49c4d031d7b02f75077783b5203115dbf8105fe3f9b40bb66d39b21",
+      "definition": "Restrict positive weights; stable argsort; cumulative=cumsum(positive_weight[order]); threshold=p*sum(positive_weight) before sorting; left inverse ECDF",
+      "function": "_weighted_stats",
+      "function_AST_SHA256": "576232acb5df236349b5fa0e4d23156e48124a74db106aaa8f24397444db91f8",
+      "path": "/dev/shm/task1-single-pair-refresh-20261025/source/single_pair_refresh.py"
+    }
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "schema": "task1-finite-continuation-v1",
+  "status": "error",
+  "phase": "render-final",
+  "pid": 8017,
+  "proc_start_ticks": 2004466,
+  "created_utc": "2026-10-20T00:24:10.369761+00:00",
+  "updated_utc": "2026-10-20T00:37:04.215286+00:00",
+  "coarse_run": "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z",
+  "maximum_PDE_conditions": 11,
+  "maximum_new_PDE_conditions": 5,
+  "source_commit": "be724b0b314263f284fdbc5397bdaf019685fa29",
+  "stages": [
+    {
+      "stage": "rank-coarse",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_candidate_ranking.py",
+        "--select-max",
+        "2",
+        "--output",
+        "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/rank-coarse.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-bulk/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-circle225-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-ellipse24-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-rectangle17p5-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-rounded18-r3-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/adjacent-square15-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/free-square10-r12p5xy-coarse/summary.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/00-rank-coarse.log",
+      "wall_seconds": 0.7191993649976212,
+      "exit_code": 0
+    },
+    {
+      "stage": "prepare-fine",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py",
+        "--prepare",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine",
+        "--case",
+        "free-square10-r12p5xy-xy80",
+        "--case",
+        "adjacent-square15-xy80"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/01-prepare-fine.log",
+      "wall_seconds": 3.0080889540004137,
+      "exit_code": 0
+    },
+    {
+      "stage": "execute-fine",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py",
+        "--execute",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/02-execute-fine.log",
+      "wall_seconds": 203.41006573499908,
+      "exit_code": 0
+    },
+    {
+      "stage": "audit-free-square10-r12p5xy-xy80",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine",
+        "--case",
+        "free-square10-r12p5xy-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine/audit/finite-loop-20261020T002600Z-free-square10-r12p5xy-xy80.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/03-audit-free-square10-r12p5xy-xy80.log",
+      "wall_seconds": 2.7768676160012546,
+      "exit_code": 0
+    },
+    {
+      "stage": "audit-adjacent-square15-xy80",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine",
+        "--case",
+        "adjacent-square15-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine/audit/finite-loop-20261020T002600Z-adjacent-square15-xy80.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/04-audit-adjacent-square15-xy80.log",
+      "wall_seconds": 2.7252892989999964,
+      "exit_code": 0
+    },
+    {
+      "stage": "rank-fine",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_candidate_ranking.py",
+        "--select-max",
+        "1",
+        "--output",
+        "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/rank-fine.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-bulk/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine/postprocess/free-square10-r12p5xy-xy80/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine/postprocess/adjacent-square15-xy80/summary.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/05-rank-fine.log",
+      "wall_seconds": 0.16883120399870677,
+      "exit_code": 0
+    },
+    {
+      "stage": "prepare-confirm",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py",
+        "--prepare",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm",
+        "--case",
+        "free-square10-r12p5xy-xy100",
+        "--case",
+        "free-square10-r12p5xy-sc4",
+        "--case",
+        "free-square10-r12p5xy-bulk"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/06-prepare-confirm.log",
+      "wall_seconds": 3.407385427999543,
+      "exit_code": 0
+    },
+    {
+      "stage": "execute-confirm",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py",
+        "--execute",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/07-execute-confirm.log",
+      "wall_seconds": 429.55423909199817,
+      "exit_code": 0
+    },
+    {
+      "stage": "audit-free-square10-r12p5xy-xy100",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm",
+        "--case",
+        "free-square10-r12p5xy-xy100",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm/audit/finite-loop-20261020T002600Z-free-square10-r12p5xy-xy100.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/08-audit-free-square10-r12p5xy-xy100.log",
+      "wall_seconds": 3.9808405930016306,
+      "exit_code": 0
+    },
+    {
+      "stage": "audit-free-square10-r12p5xy-sc4",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm",
+        "--case",
+        "free-square10-r12p5xy-sc4",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm/audit/finite-loop-20261020T002600Z-free-square10-r12p5xy-sc4.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/09-audit-free-square10-r12p5xy-sc4.log",
+      "wall_seconds": 2.726298001001851,
+      "exit_code": 0
+    },
+    {
+      "stage": "audit-free-square10-r12p5xy-bulk",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm",
+        "--case",
+        "free-square10-r12p5xy-bulk",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-bulk/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm/audit/finite-loop-20261020T002600Z-free-square10-r12p5xy-bulk.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/10-audit-free-square10-r12p5xy-bulk.log",
+      "wall_seconds": 3.681231578000734,
+      "exit_code": 0
+    },
+    {
+      "stage": "rank-final",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_candidate_ranking.py",
+        "--select-max",
+        "1",
+        "--output",
+        "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/rank-final.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-baseline-20261019T185900Z/postprocess/baseline-square15-coarse/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-bulk/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-circle225-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-ellipse24-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-rectangle17p5-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/equal-rounded18-r3-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/adjacent-square15-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/postprocess/free-square10-r12p5xy-coarse/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine/postprocess/free-square10-r12p5xy-xy80/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-fine/postprocess/adjacent-square15-xy80/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm/postprocess/free-square10-r12p5xy-xy100/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm/postprocess/free-square10-r12p5xy-sc4/summary.json",
+        "--summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-finite-loop-20261020T002600Z-confirm/postprocess/free-square10-r12p5xy-bulk/summary.json"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/11-rank-final.log",
+      "wall_seconds": 0.8192406980015221,
+      "exit_code": 0
+    },
+    {
+      "stage": "render-final",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/ngg-tis-task1/tools/task1_results_view.py",
+        "--figures",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/CLOUD_RESULTS.html"
+      ],
+      "log": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/12-render-final.log",
+      "wall_seconds": 108.94992863199877,
+      "exit_code": 1
+    }
+  ],
+  "current_child": null,
+  "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python /workspace/ngg-tis-task1/tools/task1_results_view.py --figures --output /workspace/ngg-tis-task1/docs/CLOUD_RESULTS.html",
+  "automatic_C1": false,
+  "automatic_adoption": false,
+  "background_daemon": false,
+  "registered_coarse_cases": [
+    "equal-circle225-coarse",
+    "equal-ellipse24-coarse",
+    "equal-rectangle17p5-coarse",
+    "equal-rounded18-r3-coarse",
+    "adjacent-square15-coarse",
+    "free-square10-r12p5xy-coarse"
+  ],
+  "peer_before": {
+    "status": "read_only_GitHub_GET_verified",
+    "evidence": {
+      "head": {
+        "head_sha": "8053270779400652da95bd2bca01b7f276b64b8e",
+        "updated_at": "2026-10-19T19:21:29Z"
+      },
+      "comments": [],
+      "reviews": [],
+      "review_comments": []
+    }
+  },
+  "reused_audits": [
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/audit/equal-circle225-coarse-spatial-full-skin.json",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/audit/equal-ellipse24-coarse-spatial-full-skin.json",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/audit/equal-rectangle17p5-coarse-spatial-full-skin.json",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/audit/equal-rounded18-r3-coarse-spatial-full-skin.json",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/audit/adjacent-square15-coarse-spatial-full-skin.json",
+    "/workspace/ngg-tis-task1/data-native/cloud-fourpad-20261020T001400Z/audit/free-square10-r12p5xy-coarse-spatial-full-skin.json"
+  ],
+  "coordinator_overhead_seconds": 7.91774014800103,
+  "peer_phase_checks": [
+    {
+      "phase": "fine",
+      "checked_utc": "2026-10-20T00:24:14.924829+00:00",
+      "snapshot": {
+        "status": "read_only_GitHub_GET_verified",
+        "evidence": {
+          "head": {
+            "head_sha": "8053270779400652da95bd2bca01b7f276b64b8e",
+            "updated_at": "2026-10-19T19:21:29Z"
+          },
+          "comments": [],
+          "reviews": [],
+          "review_comments": []
+        }
+      }
+    },
+    {
+      "phase": "confirm",
+      "checked_utc": "2026-10-20T00:27:48.943064+00:00",
+      "snapshot": {
+        "status": "read_only_GitHub_GET_verified",
+        "evidence": {
+          "head": {
+            "head_sha": "8053270779400652da95bd2bca01b7f276b64b8e",
+            "updated_at": "2026-10-19T19:21:29Z"
+          },
+          "comments": [],
+          "reviews": [],
+          "review_comments": []
+        }
+      }
+    }
+  ],
+  "candidate_mesh_validation": {
+    "path": "/workspace/ngg-tis-task1/runtime/finite-loop-20261020T002600Z/candidate-mesh-validation.json",
+    "status": "failed_gates",
+    "SHA256": "0e8d65f80e6fc6b47c9eec4e70574afbbeeae19dd1d8924a804e15216b32659f"
+  },
+  "peer_after": {
+    "status": "read_only_GitHub_GET_verified",
+    "evidence": {
+      "head": {
+        "head_sha": "8affb846ea24f153afcc31651d6c2cdb040e5d37",
+        "updated_at": "2026-10-20T00:30:51Z"
+      },
+      "comments": [],
+      "reviews": [],
+      "review_comments": []
+    }
+  },
+  "next_decision": "Root review of mesh/surface gates, held results and peer feedback; no automatic C1, adoption or background continuation.",
+  "error_type": "RuntimeError",
+  "error": "child_error: render-final exit 1",
+  "stopped_utc": "2026-10-20T00:37:04.214375+00:00",
+  "partial_evidence_preserved": true
+}

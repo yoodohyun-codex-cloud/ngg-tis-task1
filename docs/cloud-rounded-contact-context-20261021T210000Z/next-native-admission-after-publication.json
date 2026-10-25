@@ -1,0 +1,54 @@
+{
+  "schema": "task1-next-fine-native-admission-v1",
+  "status": "blocked_for_next_fine_native_batch",
+  "observed_utc": "2026-10-21T20:08:18.770622+00:00",
+  "blockers": [
+    "disk_reserve_for_next_fine_native_and_postprocessing"
+  ],
+  "source_commit": "63a471d0803b1079f11b88f788edd9585c06a060",
+  "numerical_worker_started": false,
+  "prior_native_controllers": [
+    {
+      "run_id": "cloud-rounded-sc4-20261021T204000Z",
+      "status": "complete",
+      "last_pid": 33296,
+      "last_startticks": 5773556,
+      "live": false
+    },
+    {
+      "run_id": "cloud-rounded-contact-20261021T210000Z",
+      "status": "complete",
+      "last_pid": 35106,
+      "last_startticks": 5873735,
+      "live": false
+    }
+  ],
+  "filesystem": {
+    "free_bytes": 2285654016,
+    "reserve_bytes": 2147483648,
+    "next_SC4_basis_cells": 361728,
+    "conservative_native_bound_bytes": 217036800,
+    "postprocessing_reserve_bytes": 134217728,
+    "required_free_bytes": 2498738176,
+    "deficit_bytes": 213084160,
+    "original_or_failure_data_deleted": false,
+    "full_raw_persistent_backup_verified": false
+  },
+  "budget": {
+    "approved_limit_seconds": 13800,
+    "remaining_seconds_before_check": 3798.8470664330016,
+    "next_finite_batch_reserve_seconds": 1320,
+    "expanded": false,
+    "remaining_seconds_after_check": 3798.839115822004
+  },
+  "next_scientific_question": "Keep the physical rounded polygon, top-only geometry, original SC2 caps and true source topology fixed; select next XY/bulk/edge or contact diagnostic after resources permit. No coarse-grid reranking to bypass a fine-grid storage gate.",
+  "resume_condition": "Both locks free; at least required_free_bytes available without deleting original/failure evidence; remaining approved time>=1320s; new uniquely preregistered finite batch and current feedback review. This check alone does not register or execute a PDE.",
+  "next_inspection_command": "python tools/task1_native_resume_preflight.py --output /workspace/ngg-tis-task1/docs/cloud-rounded-contact-context-20261021T210000Z/next-native-admission-after-publication-next.json",
+  "current_completed_evidence": [
+    "docs/cloud-rounded-contact-sensitivity-20261021T210000Z/summary.json",
+    "docs/cloud-rounded-single-pair-20261021T212000Z/summary.json",
+    "docs/cloud-rounded-contact-native-maps-20261021T211000Z-v2/summary.json"
+  ],
+  "new_PDE": 0,
+  "candidate_adopted": false
+}

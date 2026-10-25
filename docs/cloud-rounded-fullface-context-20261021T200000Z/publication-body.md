@@ -1,0 +1,9 @@
+원래4square의중심·각225mm²/총900mm²를보존한rounded-looking576fullface 형상1조건을새8RHS로계산하고fullskin/40phi/동일2행부피/고정8screen/GET를완료했습니다. 상태calculated_unadopted이며전체수렴/실험완료·후보자동채택을뜻하지않습니다. [실제2행×5모드](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/codex/task1-cloud-restart-20261020/docs/cloud-rounded-fullface-context-20261021T200000Z/volume.json), [8screen](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/codex/task1-cloud-restart-20261020/docs/cloud-rounded-fullface-context-20261021T200000Z/screen.json)에서실제개별결과를확인할수있습니다.
+
+원래square를유일한8피부cap/고정cutoff기준으로primary r≤5mm depth15–20mm의절대mean/P10/CV/max·표층0–5/전체비표적P95·4개고변조부피·globalhotspot과J/contactV/피부접촉손실/총전력을비교합니다. raw전체source1Vpp,출력RMS전류합일치,총전력일치,8피부cap,legacy는각각보존하고동시에같다고하지않습니다. 전체carrierRMS·기본차이주파수변조·nativeφ40probeVpp를분리합니다.40probe는깊이5/10/15/20mm·중심/±5X/±5Y·수평X/Y·tipgap5mm의무부하예측이며ETA부하검증이아닙니다.
+
+같은centres(±10,±10)에서localodd u²+v²≤730의560strict+ALL16경계ties=576fullfaces를모두포함해D4대칭·한연결·holes0·각225mm²를확인했습니다. 실제physicaloutline은고정nonconvex계단형faceunion이며smoothcircle·convexhull·bboxrectangle이아닙니다. bbox17.5mm/minphysicalgap2.5mm(4XYcells)/rim2.0020381mm,실제계단형둘레70mm>원래square60mm입니다. 둘레감소나독립edge원인을주장하지않고futuremesh는같은physicalpolygon을교차해야하며radialcell재선정으로형상을바꾸지않습니다.
+
+D50/층.1,5,5,15mm/윗면/4물리pads/2실제outputs/commonGND1/50Ω·비구동tone0V50Ω/XY.625SC2bulk14,14,40/3,3.03,9,9.09kHz·전체square3h1Vppbefore50Ω/명목PBS10nm접촉은고정입니다. 역사적h1.25부분접촉circle의skin8mean.82958·contactV제한은그대로보존하고이번고정fullface형상을그circle의격자수렴이나부분접촉오류해결증명으로해석하지않습니다.
+
+직전inward는targetmean/P103.405653/3.114895<원래4.061849/3.645736으로3/8통과·미채택이며낮은비표적P95만으로성공이라하지않았습니다. root가새완료결과의부담제한과다음유한단계를선정합니다. 실제소스/설정/격자·물성/접촉/전원연결/SHA·잠금/PID/startticks/checkpoint/예산을보존합니다. 478원본hash검증과수치재현은구분하며역사적source4loss2정확재현·독립fullraw영속backup·COMSOL5.3a5.3.1.201·SC/XY/bulk/edge/contact·실제피부접촉·hardware흡수/동기화·ETA부하·실험/활성화/안전검증은보류입니다. 기존13800초/CPU1/RSS3GiB/여유2GiB 유한큐이며설치/삭제/main병합/예산확대/무기한daemon없습니다.

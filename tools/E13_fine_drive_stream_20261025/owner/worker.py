@@ -1,0 +1,132 @@
+"""One killable manufactured-stage then authenticated native GUI build child."""
+import argparse,contextlib,hashlib,io,json,os,re,resource,sys,threading,time,unittest
+from pathlib import Path
+sys.dont_write_bytecode=True
+ROOT=Path('/workspace/ngg-tis-task1');OWNER=Path('/workspace/ngg-tis-task1/runtime/E13-fine-drive-stream-owner-20261025/source');MODEL=Path('/workspace/ngg-tis-task1/runtime/E13-fine-drive-stream-20261025/source');OUT=Path('/dev/shm/task1-E13-fine-drive-stream-20261025-run')
+sys.path[:0]=[str(ROOT/'tools'),str(OWNER)]
+import task1_bounded_continuation as b,task1_execution_policy as ep
+from owner_contracts import validate_owner_admission,validate_MFG,validate_summary
+from lease_checkpoint import lease_checkpoint
+REMOTE='data-native/E13-fine-drive-stream-20261025/'
+
+def req(ok,message):
+ if not ok:raise ValueError(message)
+def sha(path):
+ h=hashlib.sha256()
+ with Path(path).open('rb')as f:
+  for part in iter(lambda:f.read(1024**2),b''):h.update(part)
+ return h.hexdigest()
+def new(path,value):
+ with Path(path).open('xb')as f:f.write((json.dumps(value,ensure_ascii=False,allow_nan=False,indent=2)+'\n').encode())
+def read_pinned(path,digest):
+ p=Path(path);req(p.is_file()and p==p.resolve()and not p.is_symlink()and p.stat().st_size<16*1024**2 and sha(p)==digest,'Bounded canonical controller metadata/fullSHA');return json.loads(p.read_bytes())
+def identity(path):
+ p=Path(path);req(p.is_absolute()and p.is_file()and p==p.resolve()and not p.is_symlink(),'Canonical immutable native/source input');s=p.stat();return(s.st_dev,s.st_ino,s.st_size,s.st_mtime_ns,s.st_ctime_ns)
+def owns(pid,path):
+ wanted=path.stat();kinds=set()
+ for fd in Path('/proc',str(pid),'fd').glob('*'):
+  try:
+   got=fd.stat()
+   if(got.st_dev,got.st_ino)!=(wanted.st_dev,wanted.st_ino):continue
+   for line in Path('/proc',str(pid),'fdinfo',fd.name).read_text().splitlines():
+    if line.startswith('lock:')and(' '+str(pid)+' ')in line:
+     if' FLOCK 'in line:kinds.add('FLOCK')
+     if' POSIX 'in line:kinds.add('POSIX')
+  except OSError:pass
+ return kinds=={'FLOCK','POSIX'}
+def controller(pid):
+ req(Path('/proc',str(pid),'exe').resolve().name.startswith('python'),'Actual Python parent')
+ argv=[v.decode()for v in Path('/proc',str(pid),'cmdline').read_bytes().split(b'\0')if v];at=1
+ while at<len(argv)and argv[at].startswith('-'):
+  req(argv[at]in('-B','-u','-E','-s','-S','-I','-O','-OO','-q','-R'),'Actual script parent, no -c/-m');at+=1
+ req(at<len(argv),'Parent script argument');return(Path('/proc',str(pid),'cwd').resolve()/argv[at]).resolve()
+def main():
+ parser=argparse.ArgumentParser();parser.add_argument('--output',required=True);parser.add_argument('--source',required=True);parser.add_argument('--as-limit',type=int,required=True)
+ for name in('registration-sha','preregistration-sha','publication-sha','publication-plan-sha'):parser.add_argument('--'+name,required=True)
+ args=parser.parse_args();out=Path(args.output);src=Path(args.source)
+ req(args.as_limit==1200000000,'Preregistered1.2GB virtual address cap, not a RAM allocation');resource.setrlimit(resource.RLIMIT_AS,(args.as_limit,args.as_limit));limits=ep.resolve_limits();configured=ep.configure_process(limits)
+ req(limits['cpu_limit']==4 and limits['total_memory_bytes']==8000000000 and limits['max_cells']==800000,'Exact unchanged execution limits')
+ start=time.monotonic();deadline=start+3000;cpu0=time.process_time();lease=None;pins={};stats={};native_stats={};proofs={};state=None;lease_audit={};lease_audit_mutex=threading.RLock()
+ record=dict(schema='task1-E13-fine-drive-stream-worker-v1',status='failed_preserved',new_PDE_RHS=0,new_Q_loads=0,new_eigen_solves=0,actual_directional_metric_evaluations=None,actual_new_metric_evaluations=None,browser_validation_performed=False,GUI_generated=False,candidate_adopted=False,stored_native_phase_started=False,configured=configured)
+ def quick_guard():
+  req(time.monotonic()<deadline and not(out/'STOP').exists(),'Finite3000s child deadline/STOP')
+  req(lease is not None,'Authenticated parent required');req(os.getppid()==lease['pid']and b.live(lease['pid'],lease['ticks']),'Actual parent PID/startticks on EVERY request')
+ def full_lease_audit():
+  parent=lease['pid'];actual=controller(parent);req(actual==OWNER/'guardian.py'and sha(actual)==lease['controller_sha'],'Actual frozen parent controller')
+  for name in('.task1-queue-owner.lock','.task1-loop.lock','.task1-execution.lock'):req(owns(parent,ROOT/name),'Parent owns both FLOCK/POSIX '+name)
+  for p,digest in lease['metadata'].items():req(sha(p)==digest,'Frozen controller/publication metadata')
+  for p,digest in pins.items():
+   req(identity(p)==stats[p],'Frozen metadata/source stat changed')
+   if stats[p][2]<=1024**2:req(sha(p)==digest,'Frozen small metadata/source SHA changed')
+  for p,stat in native_stats.items():req(identity(p)==stat,'Native descriptor stat changed; no byte read in guard')
+ def guard(force=False):
+  with lease_audit_mutex:lease_checkpoint(lease_audit,time.monotonic,quick_guard,full_lease_audit,force)
+ def verify(stage):
+  guard(force=True)
+  for p,digest in pins.items():guard();req(sha(p)==digest,'Complete before/after metadata/source SHA')
+  guard(force=True);proofs[stage]=dict(passed=True,count=len(pins),native_bytes_opened_by_verifier=False,full_entry_exit_SHA_uncached=True)
+ try:
+  req(out==OUT and out==out.resolve()and src==MODEL and Path(__file__).resolve()==out/'source/owner/worker.py','Exact new GUI frozen worker path')
+  reg=read_pinned(out/'registration.json',args.registration_sha);pre=read_pinned(out/'preregistration.json',args.preregistration_sha);pub=read_pinned(out/'source-publication/result-publication.json',args.publication_sha);plan=read_pinned(out/'source-plan.json',args.publication_plan_sha)
+  req(pub['status']=='published_readback_verified'and re.fullmatch('[0-9a-f]{40}',pub['commit'])and pub['remote_branch_head_verified']==pub['commit']and pub['expected_parent']==plan['expected_parent']and set(pub['files'])==set(plan['files']),'Actual exact source publication/readback before tests')
+  for target,item in plan['files'].items():
+   proof=pub['files'][target];req(proof['readback_passed']is True and proof['SHA256']==item['SHA256']and proof['bytes']==item['bytes']and sha(item['local_path'])==item['SHA256'],'Every published source/controller byte')
+  for name in('registration.json','preregistration.json','spec.json','root-admission.json','test-source-inventory.json','native-descriptor-stat-registration.json','parent-prepublication-metadata-release.json'):req(pub['files'][REMOTE+name]['SHA256']==sha(out/name),'Exact published GUI metadata '+name)
+  req(reg['source_sha256']==pre['source_sha256'],'Canonical source maps agree')
+  admission=read_pinned(out/'root-admission.json',pre['root_admission_SHA256']);validate_owner_admission(admission,pre['source_sha256'],pre['model_source_sha256'],pre['expected_model_tests'],pre['expected_owner_tests'])
+  spec=read_pinned(out/'spec.json',pre['spec_SHA256']);req(spec['root_admission']==admission==pre['root_decision'],'Exact actual-root GUI decision')
+  inventory=read_pinned(out/'test-source-inventory.json',pre['test_inventory_SHA256']);req(inventory['model_total']==pre['expected_model_tests'] and inventory['owner_total']==pre['expected_owner_tests']and inventory['total']==pre['expected_synthetic_tests'],'Exact separately published source test inventory counts')
+  numeric=json.loads((out/'numeric-admission.json').read_bytes());req(numeric['task_temp_accounting_roots']==['/dev/shm/task1-*','/tmp/task1-*']and numeric['task_temp_accounted_bytes']==numeric['task_shm_bytes']+numeric['task_tmp_aux_bytes'],'Both actual task temp roots counted without deletion')
+  record['task_temporary_accounting_at_entry']={k:numeric[k]for k in('task_temp_accounting_roots','task_shm_bytes','task_tmp_aux_bytes','task_temp_accounted_bytes')}
+  req(numeric['output_storage']=='owned_task_tmpfs'and numeric['forecast_new_output_bytes']==35000000 and numeric['forecast_new_owned_tmpfs_output_bytes']==35000000,'Owned task tmpfs forecast distinct from actual both-root usage; no quota or cap reduction')
+  req(numeric['child_RLIMIT_AS_bytes']==args.as_limit and numeric['physical_forecast_bytes']<=numeric['physical_cap_bytes']==8000000000 and numeric['publication_peak_forecast_bytes']<=8000000000,'Actual whole-task memory forecast and unchanged cap')
+  pins={**pre['source_sha256'],**pre['frozen_source_sha256'],**pre['metadata_input_sha256'],**pre['helper_sha256'],**pre['execution_policy_refs']};stats={p:identity(p)for p in pins}
+  req(all(Path(p).suffix.lower()in('.py','.md','.json','.txt','.log')for p in pins),'No native archives in pre-MFG byte hash set')
+  statdoc=read_pinned(out/'native-descriptor-stat-registration.json',pre['native_descriptor_stats_SHA256']);native_stats={p:tuple(v)for p,v in statdoc['files'].items()}
+  lease=dict(pid=reg['supervisor_pid'],ticks=reg['proc_start_ticks'],controller_sha=reg['controller_sha256'],metadata={str(out/'registration.json'):args.registration_sha,str(out/'preregistration.json'):args.preregistration_sha,str(out/'source-publication/result-publication.json'):args.publication_sha,str(out/'source-plan.json'):args.publication_plan_sha,str(out/'spec.json'):pre['spec_SHA256'],str(out/'root-admission.json'):pre['root_admission_SHA256'],str(out/'test-source-inventory.json'):pre['test_inventory_SHA256'],str(out/'native-descriptor-stat-registration.json'):pre['native_descriptor_stats_SHA256'],str(out/'numeric-admission.json'):sha(out/'numeric-admission.json'),str(out/'parent-prepublication-metadata-release.json'):sha(out/'parent-prepublication-metadata-release.json')})
+  guard();verify('before_MFG_metadata_only');record['actual_parent_authentication']=dict(pid=lease['pid'],startticks=lease['ticks'],three_dual_locks=True,source_publication_commit=pub['commit'])
+  sys.path[:0]=[str(out/'source/owner'),str(out/'source/model')]
+  import drive_screen as model,drive_inputs,mfg_boundary
+  req(spec==model.make_spec(admission),'Exact metadata-only spec recreated under frozen modules; no __file__ source alias contamination')
+  state=dict(manufactured_phase=True,scientific_API_spy_calls=[],native_IO_attempts=[],array_allocations=[],negative_fixture_counts={},IO_audit_installed=False)
+  mfg_boundary.install_io_gate(state,{**pins,**lease['metadata']},out)
+  import numpy as np
+  import numpy.ma,numpy.fft,numpy.testing
+  np.fft.rfft(np.asarray([0.,1.,0.,-1.]));np.testing.assert_allclose(np.asarray([1.]),np.asarray([1.]))
+  record['dependencies_initialized_before_mocks']=dict(modules=['numpy.ma','numpy.fft','numpy.testing'],native_inputs_read=False,small_constant_library_initialization_only=True)
+  events=[];current=[None];stream=io.StringIO();results={}
+  class RecordingResult(unittest.TextTestResult):
+   def startTest(self,test):guard();current[0]=test.id();super().startTest(test)
+   def addSuccess(self,test):events.append(dict(test_id=test.id(),outcome='passed'));super().addSuccess(test)
+   def addFailure(self,test,err):events.append(dict(test_id=test.id(),outcome='failed'));super().addFailure(test,err)
+   def addError(self,test,err):events.append(dict(test_id=test.id(),outcome='error'));super().addError(test,err)
+   def addSkip(self,test,reason):events.append(dict(test_id=test.id(),outcome='skipped',reason=reason));super().addSkip(test,reason)
+   def stopTest(self,test):super().stopTest(test);current[0]=None;guard()
+  expected_events=[]
+  with contextlib.ExitStack()as stack:
+   mfg_boundary.install_spies(stack,np,state,((model,('build','make_spec','required_inputs','verify_native','load_geometry','small_electrical','new_json')),(drive_inputs,('make_spec','required_inputs','metadata','digest'))),current)
+   for namespace,directory in(('model',out/'source/model'),('owner',out/'source/owner')):
+    modules=inventory[namespace+'_methods']
+    for module,methods in modules.items():
+     expected_events.extend(module+'.'+method for method in methods)
+     suite=unittest.TestLoader().loadTestsFromName(module);result=unittest.TextTestRunner(stream=stream,verbosity=2,resultclass=RecordingResult).run(suite)
+     prior=results.setdefault(namespace,dict(run=0,failures=0,errors=0,skipped=0));prior['run']+=result.testsRun;prior['failures']+=len(result.failures);prior['errors']+=len(result.errors);prior['skipped']+=len(result.skipped)
+  with(out/'tests.log').open('x')as f:f.write(stream.getvalue())
+  total=sum(v['run']for v in results.values());failed=sum(v['failures']for v in results.values());errors=sum(v['errors']for v in results.values());skipped=sum(v['skipped']for v in results.values());ok=failed==errors==skipped==0 and results['model']['run']==pre['expected_model_tests'] and results['owner']['run']==pre['expected_owner_tests']and not state['scientific_API_spy_calls']and not state['native_IO_attempts']
+  mfg=dict(schema='task1-E13-fine-drive-stream-manufactured-tests-v1',status='passed'if ok else'failed',source_publication_commit=pub['commit'],model_source_sha256=pre['model_source_sha256'],owner_source_sha256=pre['source_sha256'],source_sha256=pre['source_sha256'],model_source_test_count=pre['expected_model_tests'],model_tests_run=results['model']['run'],owner_tests_run=results['owner']['run'],tests_run=total,expected_total_tests=pre['expected_synthetic_tests'],tests_failed=failed,tests_errors=errors,tests_skipped=skipped,test_events=events,per_namespace=results,native_RHS=0,native_Q_loaded=False,native_Q_loads=0,native_field_reads=0,native_eigen_solves=0,new_angular_evaluations=0,field_admission_granted=False,browser_validation_performed=False,candidate_adopted=False,scientific_API_spy_calls=state['scientific_API_spy_calls'],native_IO_attempts=state['native_IO_attempts'],array_allocations=state['array_allocations'],IO_audit_installed=state['IO_audit_installed'],negative_fixture_counts=state['negative_fixture_counts'],dependencies_initialized_before_mocks=True)
+  new(out/'synthetic-test-receipt.json',mfg);record['actual_tests_run']=total;validate_MFG(mfg,pre['model_source_sha256'],pre['expected_model_tests'],pre['expected_owner_tests'],expected_events)
+  receipt_path=str(out/'synthetic-test-receipt.json');pins[receipt_path]=sha(receipt_path);stats[receipt_path]=identity(receipt_path);lease['metadata'][receipt_path]=pins[receipt_path]
+  state['manufactured_phase']=False;guard(force=True);verify('after_MFG_before_native_bytes');record['stored_native_phase_started']=True
+  result=model.build(spec,guard,deadline_monotonic=deadline,output_dir=out);summary=result['summary'];accounting=validate_summary(summary)
+  actual=json.loads((out/'drive-stream-result.json').read_text());req(actual==summary,'Model-owned result matches returned summary; owner alone writes overall summary')
+  baseline=json.loads((out/'baseline-agreement-proof.json').read_text());req(baseline.get('passed')is True,'Mandatory baseline agreement proof before two relative allocation metrics')
+  expected_maps=[out/'conditions/r0p8-maps.npz',out/'conditions/r1p25-maps.npz'];req(all(p.is_file()and not p.is_symlink()for p in expected_maps),'Exactly two declared new-ratio map archives; no baseline map duplicate')
+  req(not any('baseline'in p.name for p in(out/'conditions').glob('*.npz')),'No duplicate baseline arrays')
+  verify('after_cached_native_drive_metadata_only');new(out/'input-SHA-verification.json',proofs);new(out/'summary.json',summary)
+  record.update(status='e13_fine_streamed_allocation_complete_unadopted',GUI_generated=False,build_accounting=accounting,actual_directional_metric_evaluations=summary['actual_directional_metric_evaluations'],actual_new_metric_evaluations=summary['actual_new_metric_evaluations'],baseline_agreement_passed=True,actual_stored_native_inputs_read=True,browser_validation_performed=False)
+ except BaseException as error:
+  record.update(error_type=type(error).__name__,error=str(error),MFG_boundary=state,actual_native_bytes_may_have_been_read=record['stored_native_phase_started']);raise
+ finally:
+  record.update(elapsed_seconds=time.monotonic()-start,process_CPU_seconds=time.process_time()-cpu0,peak_worker_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,input_verification=proofs,child_lease_audit=lease_audit)
+  new(out/'worker-receipt.json',record)
+if __name__=='__main__':main()

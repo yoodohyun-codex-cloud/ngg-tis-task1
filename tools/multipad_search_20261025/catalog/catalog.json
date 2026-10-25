@@ -1,0 +1,26 @@
+{
+  "schema":"task1-proposed-grouped-multipad-area-matched-family-v1",
+  "parent_clusters":[
+    {"parent_cluster":0,"sign_x":-1,"sign_y":-1,"electrical_node":0,"node_name":"out0"},
+    {"parent_cluster":1,"sign_x":1,"sign_y":1,"electrical_node":1,"node_name":"out1"},
+    {"parent_cluster":2,"sign_x":1,"sign_y":-1,"electrical_node":-1,"node_name":"GND"},
+    {"parent_cluster":3,"sign_x":-1,"sign_y":1,"electrical_node":-1,"node_name":"GND"}
+  ],
+  "candidates":[
+    {"candidate_id":"B0-square15-c10-diagonal","baseline":true,"physical_pad_count":4,"positive_x_intervals_mm":[[2.5,17.5]],"positive_y_intervals_mm":[[2.5,17.5]]},
+    {"candidate_id":"MP8-vertical-strips","baseline":false,"physical_pad_count":8,"positive_x_intervals_mm":[[2,10],[10.5,17.5]],"positive_y_intervals_mm":[[2.5,17.5]]},
+    {"candidate_id":"MP12-vertical-strips","baseline":false,"physical_pad_count":12,"positive_x_intervals_mm":[[1.5,6.5],[7,12],[12.5,17.5]],"positive_y_intervals_mm":[[2.5,17.5]]},
+    {"candidate_id":"MP16-subpad2x2","baseline":false,"physical_pad_count":16,"positive_x_intervals_mm":[[2,10],[10.5,17.5]],"positive_y_intervals_mm":[[2,10],[10.5,17.5]]}
+  ],
+  "area_constraints_mm2":{"each_parent_cluster":225,"total_per_candidate":900},
+  "minimum_physical_insulating_gap_mm":0.5,
+  "pad_numbering":"parent_cluster0,1,2,3; withinparent positive recipey thenrecipex; mirrorgeometry withparent signs; maskpad column is physical ID",
+  "electrical_outputs":2,
+  "output_resistance":"ONE50ohm per output BEFORE fanout to all assigned physical pads, never50ohmperpad",
+  "carrier_nodes":{"2000":{"active_output":0,"other_output":"0Vbehind50ohm"},"2010":{"active_output":1,"other_output":"0Vbehind50ohm"}},
+  "return_topology":"All pieces of parentclusters2 and3 are hard common0V at bothfrequencies",
+  "current_sharing":"Calculated perphysicalpad; equality is not assumed",
+  "scope":"Source-only nextfamily proposal, unadmitted until actualfirst8evidence/root finite selection",
+  "confounds":"Equal area and commonouter17.5mm bounds; innerextent, centroid, gaps and coverage change. This is an area-matched segmentation pattern comparison, not isolated causal padcount.",
+  "local_PC_allocation_or_reservation":false
+}

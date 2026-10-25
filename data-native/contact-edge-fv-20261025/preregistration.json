@@ -1,0 +1,99 @@
+{
+  "schema": "task1-contact-edge-FV-preregistration-v1",
+  "question": "How do three conservative FV contact treatments compare with the finite independent Galerkin reference under exact physical field/contact integrals?",
+  "source_sha256": {
+    "/dev/shm/task1-contact-edge-fv-20261025/source/test_contact_edge_fv.py": "fc661a1a246b97c67f473bacdc91eefd1c5fcfc3821092973d96bbfadbca46fb",
+    "/dev/shm/task1-contact-edge-fv-20261025/source/contact_edge_fv.py": "d02813aacdbdccc390666878562e7bb5f9ce9dd4f0f2332f53e3b7c2aa5835cf",
+    "/dev/shm/task1-contact-continuation-20261025/fv-owner-source/worker.py": "bc8d9647350d04bd718aaf684efb41d93938c1c85d3d30a449ae9ad75fda2fb4",
+    "/dev/shm/task1-contact-continuation-20261025/fv-owner-source/guardian.py": "474e37da90a1e92a312d7d24a6abfe27e51c3cdf2d0c885d7298afce5819ed69"
+  },
+  "input_sha256": {
+    "/dev/shm/task1-contact-edge-equipotential-20261025-run/summary.json": "7be1e43ddbd4437bfb463e247e7117b85a57a9f878376ce44987c7c1065c7d8a",
+    "/dev/shm/task1-contact-edge-equipotential-20261025-run/spec.json": "9cad3960e516e2caea95faaf8bc8a3e35dbd3582094c23fd024fd537fd673ad3",
+    "/dev/shm/task1-contact-edge-equipotential-20261025-run/receipt.json": "4f27f00d4424cafe6a763f00032bf21f3442ceba0de65842fbe356ccad068bd7",
+    "/dev/shm/task1-contact-edge-equipotential-20261025-run/cases/P128-H2048.json": "e89e7fdbe3ed5d5498d48d2b7a6795f65e2fb571a5bda95d8fb21bff97c6abe9",
+    "/dev/shm/task1-contact-edge-equipotential-20261025-run/result-publication/result-publication.json": "e7d0295d027938212402977228fb6be7ccc8a042f4ea32743a66b5e793fdf34d",
+    "/dev/shm/task1-contact-edge-equipotential-20261025-run/cases/P128-H2048.npz": "bf2eee9185dd27cf2e61d2b9e0b618e7cbc34482385683cc27af8a0b9da70b88",
+    "/workspace/ngg-tis-task1/runtime/task1-execution-resource-policy.json": "3f1cf1bced28489b85f0f8795b81c0a20aab2950ab70c91c8ac2018034256804",
+    "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/approval.json": "2bf9de71a70a1c7a3e054372a51d0f40e34c74077446784b6bcba58578f725a8",
+    "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/environment-snapshot.json": "76ee85eb5776408782edfa0091ea91543765e8bda881009c78d8d4dc090b0fd4",
+    "/workspace/ngg-tis-task1/tools/task1_bounded_continuation.py": "10fbbfaefa4437d598046758b15008b6fe34d350dd0adc16dc0622b86cbd84bc",
+    "/workspace/ngg-tis-task1/tools/task1_execution_policy.py": "e89a611a3768bb6b3cccb9a7226d611f68bd91dab11a3ffd5a68c50779e2e3e1",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "84ac97fbdecc00e1cc1b9d1bbfc9fb1d94baaaed392a3d6a0f8956647b08b89e"
+  },
+  "spec_SHA256": "b40f51193bb00df8989aada648fcf2ff7c6698dc22dc928fa9d1369b19ec671f",
+  "limits": {
+    "schema": "task1-resolved-execution-limits-v2",
+    "cpu_limit": 4,
+    "effective_cpu_limit": 4,
+    "affinity_cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "total_memory_bytes": 8000000000,
+    "effective_total_memory_bytes": 8000000000,
+    "requested_cpu_limit": 4,
+    "requested_total_memory_bytes": 8000000000,
+    "requested_total_memory_GiB": 7.450580596923828,
+    "java_heap_bytes": 2147483648,
+    "java_heap_fits_effective_total_cap": true,
+    "java_active_processor_count": 4,
+    "blas_threads": 4,
+    "max_cells": 800000,
+    "concurrent_solves": 1,
+    "numerical_owners": 1,
+    "cumulative_time_unlimited": true,
+    "finite_batch_timeouts_required": true,
+    "memory_accounting_scope": "Aggregate owned process RSS plus all task1-owned tmpfs bytes; caller must enforce",
+    "visible_cgroup_memory_headroom_bytes": 6222733312,
+    "host_MemAvailable_bytes": 13828108288,
+    "environment": {
+      "schema": "task1-execution-environment-snapshot-v1",
+      "helper_version": "task1-execution-policy-2.0",
+      "python_version": "3.12.14",
+      "cgroup_version": 2,
+      "affinity_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "affinity_status": "observed",
+      "visible_cpuset_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "visible_cpu_quota_us": 400000,
+      "visible_cpu_period_us": 100000,
+      "visible_cpu_quota_cores": 4.0,
+      "visible_cpu_quota_status": "visible_finite",
+      "visible_cgroup_memory_limit_bytes": 17179869184,
+      "visible_cgroup_memory_limit_status": "visible_finite",
+      "visible_cgroup_memory_current_bytes": 10957135872,
+      "visible_cgroup_memory_headroom_bytes": 6222733312,
+      "host_MemAvailable_bytes": 13828108288,
+      "hidden_ancestor_limits_verified": false,
+      "capacity_guaranteed": false,
+      "measurement_scope": "Current process affinity and visible cgroup v2 mount only; host availability is informational"
+    },
+    "immutable_policy_refs": {
+      "/workspace/ngg-tis-task1/runtime/task1-execution-resource-policy.json": "3f1cf1bced28489b85f0f8795b81c0a20aab2950ab70c91c8ac2018034256804",
+      "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/approval.json": "2bf9de71a70a1c7a3e054372a51d0f40e34c74077446784b6bcba58578f725a8",
+      "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/environment-snapshot.json": "76ee85eb5776408782edfa0091ea91543765e8bda881009c78d8d4dc090b0fd4"
+    },
+    "hidden_ancestor_limits_verified": false,
+    "capacity_guaranteed": false
+  },
+  "hard_child_seconds": 600,
+  "new_full_phantom_CEM": 0,
+  "new_TIS": 0,
+  "prior_failed_model_commit": "d2456af62d0686e06555d9e6664ee5d3504d8c64",
+  "old_failed_flags_preserved": true,
+  "criteria_relaxed": false
+}

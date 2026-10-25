@@ -1,0 +1,134 @@
+{
+  "schema": "task1-kangasmaa2025-real-conductivity-evidence-v1",
+  "DOI": "10.1002/bem.22541",
+  "original_title": "Estimating Human Fat and Muscle Conductivity From100Hz to1MHz Using Measurements and Modelling",
+  "source_URL": "https://onlinelibrary.wiley.com/doi/10.1002/bem.22541",
+  "repository_PDF_URL": "https://acris.aalto.fi/ws/portalfiles/portal/171814823/Bioelectromagnetics_-_2025_-_Kangasmaa_-_Estimating_Human_Fat_and_Muscle_Conductivity_From_100_Hz_to_1_MHz_Using.pdf",
+  "PDF_SHA256": "85e1d130245eb2b36ac79a44592044063ae9dfb435195bba3039731dc8ccafb1",
+  "PDF_bytes": 3374121,
+  "private_PDF_and_render_do_not_publish": true,
+  "original_full_text_read": true,
+  "Table3_visually_verified": true,
+  "Table3_printed_page": 11,
+  "Table3_PDF_zero_based_page_with_repository_cover": 11,
+  "Equation10": {
+    "section": "3.5",
+    "expression": "sigma_star = sigma_inf + (sigma_DC-sigma_inf)/(1+(j*omega*tau)^(1-alpha))",
+    "use": "REAL PART ONLY",
+    "real_expression": "sigma_inf+(sigma_DC-sigma_inf)*(1+u*cos(pi*(1-alpha)/2))/(1+2*u*cos(pi*(1-alpha)/2)+u*u), u=(omega*tau)^(1-alpha)",
+    "omega": "2*pi*f",
+    "tau_conversion": "Table3 microseconds multiplied by1e-6 to seconds",
+    "sigma_unit": "S/m",
+    "valid_frequency_range_Hz": [
+      100,
+      1000000
+    ],
+    "permittivity_from_imaginary_part_validated": false,
+    "frequency_numeric_evaluation_by_this_agent": false
+  },
+  "Table3": {
+    "lateral_perpendicular_muscle": {
+      "sigma_DC_S_m": 0.107,
+      "sigma_inf_S_m": 0.711,
+      "tau_us": 0.901,
+      "alpha": 0.198
+    },
+    "longitudinal_parallel_muscle": {
+      "sigma_DC_S_m": 0.513,
+      "sigma_inf_S_m": 0.808,
+      "tau_us": 3.099,
+      "alpha": 0.318
+    },
+    "subcutaneous_fat": {
+      "sigma_DC_S_m": 0.194,
+      "sigma_inf_S_m": 0.209,
+      "tau_us": 38.367,
+      "alpha": 0.0
+    }
+  },
+  "population_conditions": {
+    "species": "human",
+    "in_vivo": true,
+    "sample_size": 10,
+    "male": 6,
+    "female": 4,
+    "age_years": [
+      22,
+      42
+    ],
+    "site": "right forearm",
+    "thoracoabdominal_direct_evidence": false,
+    "state": "healthy living volunteers, relaxed/palm down",
+    "temperature_C_scalar": null,
+    "temperature_source": "Room and skin-surface temperatures before/after are individual plots in Figure1d; no uniform37C assumption",
+    "inference_type": "Population probabilistic inverse estimate from noninvasive tetrapolar impedances and subject-specific models, not isolated-tissue direct measurement"
+  },
+  "orientation": {
+    "perpendicular_is_lateral": true,
+    "parallel_is_longitudinal": true,
+    "fibre_direction": "Laplacian field inferred through the entire segmented forearm muscle volume",
+    "direct_fibre_mapping_measured": false,
+    "tissue_pooling": "Forearm muscles and tendons segmented as one muscle material",
+    "torso_fibre_direction_measured": false,
+    "diaphragm_or_intercostal_or_abdominal_wall_specific": false,
+    "scalar_substitution_warning": "Assigning one component to all axes is an explicitly isotropic component-based substitute, not fibre-resolved human muscle."
+  },
+  "uncertainty": {
+    "conditional_95percent_credible_intervals": "Frequency-specific, equal-tailed marginal posterior intervals; not universal subject variability or Table3 parameter confidence intervals",
+    "posterior_fit_parameter_covariance_available_here": false,
+    "fat_tau_alpha_reliability": "Weak effect on fit; authors call them unreliable",
+    "source_frequency_grid": "46 points from10^1.5Hz to10^6Hz; fits exclude values below100Hz",
+    "source_resolution_S_m": 0.01,
+    "examples_only_not_carrier_intervals": {
+      "muscle_below10kHz_summary": {
+        "perpendicular_MAP_S_m": 0.13,
+        "perpendicular_CrI_S_m": [
+          0.1,
+          0.16
+        ],
+        "parallel_MAP_S_m": 0.56,
+        "parallel_CrI_S_m": [
+          0.52,
+          0.6
+        ]
+      },
+      "fat_10000Hz": {
+        "MAP_S_m": 0.21,
+        "CrI_S_m": [
+          0.12,
+          0.31
+        ]
+      },
+      "fat_1000000Hz": {
+        "MAP_S_m": 0.22,
+        "CrI_S_m": [
+          0.07,
+          0.37
+        ]
+      }
+    },
+    "actual_3000_3030_9000_9090_CrI": null,
+    "CrI_interpolated_or_digitized": false
+  },
+  "supplement": {
+    "name": "Conductivity_table.xlsx",
+    "publisher_link": "https://onlinelibrary.wiley.com/doi/suppl/10.1002/bem.22541/supinfo/bem22541-sup-0001-Conductivity_table.xlsx",
+    "publisher_declared_size": "14.1KB",
+    "source_contains": "Figure7 MAP estimates and95percent credible intervals in table form",
+    "retrieval_status": "HTTP403 from directpublisherdownload; web-link click failed; NCBIoaAPI attemptHTTP404",
+    "raw_source_table_retrieved": false,
+    "do_not_invent_missing_intervals": true
+  },
+  "explicit_hybrid_option": {
+    "conductive_real_part": "Re(Kangasmaa Equation10), human forearm inverse-model substitute",
+    "displacement_term": "j*omega*epsilon0*Re(Gabriel1996III complex permittivity), mixed-source generic reference",
+    "gamma_expression": "sigma_Kangasmaa_real(f) + j*omega*epsilon0*epsilon_Gabriel_real(f)",
+    "do_not_add": "Do NOT additionally add Gabriel ionic or dispersive real conductivity; do NOT infer epsilon from Kangasmaa imaginary conductivity",
+    "classification": "Explicit hybrid of human other-site real conductivity and generic mixed-source dielectric reference; not measured human thoracoabdominal complex material"
+  },
+  "no_new_skin_constants": "Paper fixed skin conductivity0.44 as a nuisance assumption, not estimated SC or dermis. Do not adopt as measured layer-specific skin data.",
+  "adoption_status": "source_verified_candidate_only; parent evaluates and registers",
+  "PDE_executed": false,
+  "numeric_frequency_evaluation_executed": false,
+  "tests_executed": false
+}

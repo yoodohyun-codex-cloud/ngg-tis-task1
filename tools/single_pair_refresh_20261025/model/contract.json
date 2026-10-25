@@ -1,0 +1,89 @@
+{
+  "schema": "task1-single-pair-refresh-source-contract-v1",
+  "status": "source_prepared_not_numerically_executed_by_author",
+  "entrypoint": "single_pair_refresh.py",
+  "APIs": {
+    "required_inputs(admission=None)": "Metadata-only actual publication/config/source proofs. No scientific import, array/cache/raw decode or raw dataset hash; returns path to SHA256 mapping.",
+    "make_spec(admission=None)": "Same metadata proof inventory, exact executed configuration body, current gamma/contact model, positive root admission and selected TIS descriptor. Missing/negative admission blocks before numerical imports.",
+    "build(spec, guard, deadline_monotonic=None, output_dir=None)": "Sole admitted root numerical owner only; guard/deadline and canonical new /dev/shm run directory required. Returns summary and no large arrays. Writes exclusive files."
+  },
+  "admission_schema": "task1-single-pair-refresh-root-admission-v1",
+  "admission_required_fields": {
+    "status": "admitted_single_pair_comparison",
+    "root_review_positive": true,
+    "sole_NUM_owner": true,
+    "maximum_new_driven_RHS": 2,
+    "CPU_limit": 4,
+    "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+    "max_physical_evaluation_cells": 800000,
+    "candidate_adopted": false,
+    "selected_TIS_reference": "Root-selected actual published record, candidate ID, record_pointer list, summary descriptor and exactly 2000/2010 raw_by_frequency descriptors; selection_completed_by_root=true.",
+    "common_grid": "Original first-eight published common-grid-and-ROI.npz descriptor with SHA f88e921b2d2877482ff368f39e52fea2bd4217fb70037072cda96892b5891d6b and commit 4d6207caa60ae16ab7a7e997022ac72653b97ec3.",
+    "ROI_receipt": "Actual original receipt descriptor, authenticated via publication.",
+    "baseline8_summary": "Actual original eight-candidate published summary descriptor, authenticated via publication.",
+    "baseline8_records_pointer": ["candidates"]
+  },
+  "file_descriptor": {
+    "path": "Absolute canonical actual file path",
+    "SHA256": "Full actual SHA256 from publication file proof",
+    "publication_commit": "Actual published readback-verified commit",
+    "publication_target": "Exact key in publication.files",
+    "publication_proof": {"path": "Absolute actual publication JSON path", "SHA256": "Full actual metadata SHA256"},
+    "E_key": "E_peak_V_m (optional, raw field descriptors only)"
+  },
+  "fixed_scientific_scope": {
+    "diameter_mm": 50,
+    "physical_layers_mm": [0.1, 5, 5, 15],
+    "XY_spacing_mm": 0.5,
+    "XY_nodes": 7860,
+    "depth_planes": 101,
+    "physical_evaluation_cells": 793860,
+    "single_pair_geometries_centres_xy_mm": [[[-12.5, 0], [12.5, 0]], [[-15, 0], [15, 0]]],
+    "each_pad_rectangle_mm": [15, 15],
+    "physical_pad_ids": [0, 1],
+    "physical_pad_electrical_nodes": ["source0", "GND"],
+    "physical_contact_areas_mm2": [225, 225],
+    "total_contact_area_mm2": 450,
+    "connected_sources": 1,
+    "source_frequency_Hz": 2000,
+    "source_high_impedance_Vpp": 1,
+    "source_peak_V": 0.5,
+    "source_series_resistance_ohm": 50,
+    "other_instrument_channel": "Not attached to any physical pad",
+    "solver_internal_mapping": "Existing validated CEM logical pad0=physical source0; logical pad2=physical GND1. No logical1/3 patches. Dummy metal unknown remains zero through50ohm and has zero current; it is explicitly not a second connected source.",
+    "material_contact": "Exact existing HREF-MIX scalar surrogate gamma and PBS contact bytes from original source spec c10bd163e9f8470e07a97e8adb0e8e81cdb7b0dc1b6bd9270d20bbb86ee6af4f. No reevaluation or refit."
+  },
+  "memory_execution_contract": {
+    "actual_new_physical_RHS": 2,
+    "existing_PDE_repeat": false,
+    "new_eigen_work": false,
+    "TIS_angular_computation": false,
+    "raw_frame": "One geometry at2000Hz owns cached Q, profiles, solver and full phi/E; writes own state/proof/phi/E/raw receipt; returns only JSON metadata. Frame exits and GC runs before any RMS/J metrics. Each frame verifies cache chunks before and after.",
+    "metrics_frame": "No Q references. Original common fractional ROI loaded once. Existing selected TIS carriers read one at a time only to verify ROI RMS and physically interpolate the centre. Single-pair RMS/J scalar arrays archived separately. No retained full raw E after scalar derivation.",
+    "external_owner_enforcement": "Root guard/watchdog enforces sole NUM ownership,4CPU and aggregate all-RSS plus all task-owned tmpfs<8e9 bytes. Module does not acquire locks, start workers or create resource leases."
+  },
+  "metrics_contract": {
+    "centre_xyz_mm": [0, 0, 20],
+    "coordinate_system": "mm; z positive DOWN from physical top",
+    "sampling": "Trilinear complex E components over actual XY/Z node coordinates, same physical layer and no extrapolation; components interpolated before vector magnitude. No nearest-cell or potential-difference proxy labelled E.",
+    "single_centre_vector_RMS": "norm(interpolated E2000_peak)/sqrt(2)",
+    "TIS_centre_vector_RMS": "sqrt((norm(interpolated E2000_peak)^2+norm(interpolated E2010_peak)^2)/2)",
+    "target_volume_RMS": "sqrt(sum(target_fractional_volume*carrier_vector_RMS^2)/sum(target_fractional_volume))",
+    "TIS_ROI_crosscheck": "sqrt(stored target mean(RMS_field)^2+stored std(RMS_field)^2), independently verified from actual existing raw carriers",
+    "matching_modes": ["separate centre20mm vector RMS match", "separate target-volume RMS match"],
+    "required_source_Vpp": "TIS matching target/single1Vpp RMS; original1Vpp case always preserved",
+    "linear_scaling": "E,phi,all physical/source currents,contact J95/Jmax,skin J95/Jmax,contact voltage",
+    "quadratic_scaling": "Layer,SC,skin,contact,skin+contact,source and50ohm resistor powers",
+    "joint_burdens": "Five linear and three power burden ratios checked individually against each of the original eight baseline candidates, at1Vpp and at each distinct RMS match. Equal RMS does not automatically match any burden.",
+    "single_carrier_envelope_AM_at_10Hz": 0,
+    "RMS_is_TIS_modulation": false,
+    "activation_equivalence": false
+  },
+  "meaningful_test_source": {
+    "path": "test_single_pair_refresh.py",
+    "author_executed": false,
+    "checks": ["Correct y0 two-pad layouts", "Independent complex scalar one-source circuit residual/sign/current conservation/complex power identity", "Existing frozen CEM0/2 mapping with dummy equation and absent1/3 current exactly0", "1Vpp/.5peak/RMS convention", "Distinct-carrier vector RMS", "ROI second moment versus mean and centre complex-vector cancellation", "Physical interpolation weights and no extrapolation", "All relevant current/voltage linear and power quadratic scaling", "Absent admission blocks before science import", "Single-carrier10Hz envelope AM exactly0"]
+  },
+  "claims_excluded": ["Anatomy", "Safety", "Activation", "Material/contact/hardware calibration", "Experimental validation", "Full numerical convergence", "Candidate adoption", "Windows saved verification"],
+  "author_performed": "Only source/metadata reads and new source/contract/template writes. No scientific module import, test execution, arrays, PDE, eigen, locks, workers, Git, Windows assignment, COMSOL changes, installs or paid resources."
+}

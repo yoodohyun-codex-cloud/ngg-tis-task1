@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 191, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/worker.py", line 163, in main
+    validate_MFG(mfg,source_model,model_count,prereg['expected_owner_tests'])
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/owner_contracts.py", line 28, in validate_MFG
+    require(r.get('status')=='passed'and r.get('model_source_sha256')==sources and r.get('model_source_test_count')==model_count,'Actual successful prospective tests bound to exact canonical model')
+  File "/dev/shm/task1-native-light-post-20261025-run/source/owner/owner_contracts.py", line 3, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Actual successful prospective tests bound to exact canonical model

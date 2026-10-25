@@ -1,0 +1,54 @@
+{
+  "output_directory": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/queue-audit-recovery",
+  "max_total_seconds": 300,
+  "stages": [
+    {
+      "id": "SC4-fullskin-same-grid-control",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_spatial_audit.py",
+        "--run",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z",
+        "--case",
+        "rounded-fullface225-sc4-xy80",
+        "--baseline-summary",
+        "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json",
+        "--output",
+        "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80-same-grid-control.json"
+      ],
+      "max_seconds": 120,
+      "must_not_exist": "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80-same-grid-control.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/audit/rounded-fullface225-sc4-xy80-same-grid-control.json",
+        "statuses": [
+          "computed_spatial_and_skinJ_audit"
+        ]
+      }
+    },
+    {
+      "id": "feedback-after-SC4-native",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/ngg-tis-task1/tools/task1_queue_feedback.py",
+        "--output",
+        "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-native.json"
+      ],
+      "max_seconds": 60,
+      "must_not_exist": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-native.json",
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/feedback-after-native.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/preregistration.json": "e8397f27483d6b5c5abb8fa7bbfe125d62bd2870de55e44d44bb5c0a8409413b",
+    "/workspace/ngg-tis-task1/data-native/cloud-rounded-sc4-20261021T204000Z/summary.json": "5b7ae9b94aaf5a5d194876a61c895b5cb6ba8cc6159d4c42e5d940b77dc84e88",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-sc4/summary.json": "7d17d268324fc81544a545058b7482c17dbd458b71bde6036645c23ccc252b4d",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/queue-native/summary.json": "39f4ab0f24e239682260f9794ca28a5d9e62f19926b36f9922c533ac9dea4304",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/decision.json": "7fffabb7057f841a08e47ca71c4f3846f70c9aae658084d1958c168ef72a9ab4",
+    "/workspace/ngg-tis-task1/docs/cloud-rounded-sc4-context-20261021T204000Z/audit-failure-disposition.json": "55e2c82d4297c00a135da34bb1f3096c406ed600aa4170f8c92388ff4f0183e4"
+  }
+}

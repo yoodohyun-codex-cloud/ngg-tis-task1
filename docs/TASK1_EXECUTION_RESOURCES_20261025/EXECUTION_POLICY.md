@@ -1,0 +1,13 @@
+# Execution resource approval and actual verification
+
+The explicit user approval raises the CPU ceiling from1 to4 and aggregate owned-process RSS plus ALL task-owned tmpfs from3GiB to8,000,000,000bytes (decimal8GB =7.4505805969GiB). Cumulative research time stays unlimited, while every batch/stage retains a finite scope, watchdog and checkpoints. No billing/paid-resource, security, credential, installation, service-limit bypass or main-merge change is authorized. Max800000cells and one numerical owner/concurrent solve with both FLOCK/POSIX locks remain.
+
+Visible environment: affinity/cpuset0-4, parent cpu.max400000/100000 (4CPU), init child unlimited; memory.max17,179,869,184bytes (16GiB). The immutable snapshot records observed memory.current, cgroup headroom and hostMemAvailable separately. Hidden host ancestor constraints and future availability are not guaranteed. Actual worker limits are clamped to visible quota/affinity/memory, rather than assuming the requested allocation was added.
+
+Java heap remains2GiB (2,147,483,648bytes), leaving room for native solver state, thread stacks, BLAS and all retained tmpfs inside the total8GB cap. It is not an8GB heap plus extra memory. The existing Java COCG and sequential RHS implementation remains sequential. ActiveProcessorCount4 does not make that solver4-threaded.
+
+Installed NumPy/OpenBLAS/threadpoolctl were used under one locked finite verification. A1536x1536 dense matrix multiplication repeated twice was tested at1 and4 BLAS threads, with arithmetic agreement at registered tolerance. The4-thread trial observed 3.99579 average CPU cores (process CPU seconds/wall seconds), demonstrating actual parallel BLAS for that test only. This is not a4-core claim for Java or all research stages. Peak taskRSS+tmpfs in this probe was 1883664304bytes, below8,000,000,000. Five policy contracts passed, including stricter-environment clamp and immutable approval rejection.
+
+The prior XY100/2000Hz/2RHS calculation completed under its originalCPU1/3GiB registration: native gates and13scalaradjacent metrics passed, but independentSCnormal-current QA worsened and remains failed. Its resource history is unchanged. A GitHub REST large-blob upload was refused withHTTP422; the response advises supported Git transport. The raw file and failure are preserved; alternate supported transport recovery is separate from these policy results.
+
+Next scientific work: manufactured exact-Fourier diagnostic of polynomial-fit bias versus discretization, then fixedXY0.5/SC2 bulk18/18/56 if justified. No candidate, activation or safety validation is inferred. Windows saving remains unverified.

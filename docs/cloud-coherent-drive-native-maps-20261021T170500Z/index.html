@@ -1,0 +1,92 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coherent 구동 저장 단면 지도</title>
+<style>body{font:16px/1.65 system-ui,sans-serif;background:#f5f7fa;color:#17212f;margin:0}main{max-width:1540px;margin:auto;padding:24px}h1,h2,h3{line-height:1.3}section,details,.card{background:white;border:1px solid #d7dfe8;border-radius:10px;padding:18px;margin:18px 0}.status{display:inline-block;background:#e8edf5;padding:4px 10px;border-radius:6px}nav a{margin-right:18px}a{color:#164c88}figure{margin:15px 0}img{display:block;width:100%;height:auto;border:1px solid #d7dfe8}figcaption{font-size:14px;color:#39495b}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid #d7dfe8;padding:7px;text-align:left;vertical-align:top}th{background:#eef3f8}.scroll{overflow:auto}.bounds{font-variant-numeric:tabular-nums}summary{cursor:pointer;font-weight:650}.note{border-left:5px solid #bf6e16;padding-left:12px}</style><main>
+<h1>Coherent 구동: 저장된 native scalar 단면</h1><p class="status">지도 생성 완료 · 후보 미채택 · 전체 수렴 및 실험 검증 미완료</p>
+<p>기존 4패드·독립 출력 2개·공통 GND·50 Ω, 동일 격자와 ROI의 저장된 값만 표시합니다. 각 그림의 6열은 원래 square 기준, exclusive sine 대조, 같은 비율의 위상 0°·90°·180°·270° 순서입니다. 두 비율 패널을 포함한 <strong>서로 다른 10조건 전체가 같은 색상 범위</strong>를 사용합니다.</p>
+<p class="note">저장된 skin8 screen에서 r=1·위상90°의 목표 mean은 +7.99%이지만, 표층 0–5 mm P95는 +165.24%, 전체 목표 ROI 밖 P95는 +119.92%입니다. 깊이 집중 성공으로 채택하지 않았습니다.</p>
+<p>원래 square는 4개 spectral line, exclusive sine는 출력마다 carrier 하나, coherent 조건은 <strong>두 출력 모두에 3000/3030 Hz 두 tone</strong>을 인가합니다. 변조와 RMS는 별도 물리량이며, RMS의 spectral line 수 차이도 유지했습니다.</p>
+<p>XY는 실제 native 깊이 약17.5 mm, XZ는 중심에 가장 가까운 실제 y 평면입니다. +z는 피부 표면 z=0에서 깊어지는 방향입니다. 흰 점선은 r≤5 mm·깊이15–20 mm 기본 ROI, 주황선은 표층 비표적의 깊이5 mm 경계입니다. 층 경계 고전기장이나 지방층의 색 띠를 깊이 집중으로 해석하지 않습니다.</p>
+<nav><a href="#raw_1Vpp">원래 전압</a><a href="#skin_contact_only">피부·접촉 부담 정규화</a><a href="#source-vpp">전체 파형 Vpp 구간</a><a href="summary.json">원본 지도 요약 JSON</a></nav>
+<section id="raw_1Vpp"><h2>원래 전체 파형 1 Vpp</h2>
+<h3>최대 방향 TIS 변조 · maxTIS · V/m</h3><p>Fundamental2carrier maximum over2074 sampled directions; lower bound on continuous-direction maximum</p>
+<details open><summary>전체 native 범위 — <span class="bounds">0–1591.62233165 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 표층 및 모든 비표적 조직을 포함한 전체 native 셀의 표시 범위입니다.</p>
+<figure><a href="r0p5--global_native_range--raw_1Vpp--maxTIS.png"><img loading="lazy" src="r0p5--global_native_range--raw_1Vpp--maxTIS.png" alt="최대 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=0.5, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–1591.62233165 V/m. <a href="r0p5--global_native_range--raw_1Vpp--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--global_native_range--raw_1Vpp--maxTIS.png"><img loading="lazy" src="r1p0--global_native_range--raw_1Vpp--maxTIS.png" alt="최대 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=1, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–1591.62233165 V/m. <a href="r1p0--global_native_range--raw_1Vpp--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<details open><summary>깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping — <span class="bounds">0–4.97132718867 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 기본 ROI에 양의 부피 가중치가 있는 셀들의 저장값으로 정한 표시 범위이며, 높은 값은 이 그림에서만 색이 포화됩니다. 원래 값은 변경하지 않았습니다.</p>
+<figure><a href="r0p5--deep_ROI_display_clipped--raw_1Vpp--maxTIS.png"><img loading="lazy" src="r0p5--deep_ROI_display_clipped--raw_1Vpp--maxTIS.png" alt="최대 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=0.5, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–4.97132718867 V/m. <a href="r0p5--deep_ROI_display_clipped--raw_1Vpp--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--deep_ROI_display_clipped--raw_1Vpp--maxTIS.png"><img loading="lazy" src="r1p0--deep_ROI_display_clipped--raw_1Vpp--maxTIS.png" alt="최대 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=1, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–4.97132718867 V/m. <a href="r1p0--deep_ROI_display_clipped--raw_1Vpp--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<h3>고정 대각 방향 TIS 변조 · fixedTIS · V/m</h3><p>Fundamental2carrier modulation in fixed diagonal direction (1/sqrt2,1/sqrt2,0)</p>
+<details open><summary>전체 native 범위 — <span class="bounds">0–183.115052894 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 표층 및 모든 비표적 조직을 포함한 전체 native 셀의 표시 범위입니다.</p>
+<figure><a href="r0p5--global_native_range--raw_1Vpp--fixedTIS.png"><img loading="lazy" src="r0p5--global_native_range--raw_1Vpp--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=0.5, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–183.115052894 V/m. <a href="r0p5--global_native_range--raw_1Vpp--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--global_native_range--raw_1Vpp--fixedTIS.png"><img loading="lazy" src="r1p0--global_native_range--raw_1Vpp--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=1, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–183.115052894 V/m. <a href="r1p0--global_native_range--raw_1Vpp--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<details open><summary>깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping — <span class="bounds">0–4.97132718867 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 기본 ROI에 양의 부피 가중치가 있는 셀들의 저장값으로 정한 표시 범위이며, 높은 값은 이 그림에서만 색이 포화됩니다. 원래 값은 변경하지 않았습니다.</p>
+<figure><a href="r0p5--deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png"><img loading="lazy" src="r0p5--deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=0.5, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–4.97132718867 V/m. <a href="r0p5--deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png"><img loading="lazy" src="r1p0--deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 원래 전체 파형 1 Vpp, r=1, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–4.97132718867 V/m. <a href="r1p0--deep_ROI_display_clipped--raw_1Vpp--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<h3>전체 전기장 RMS · RMS · V/m</h3><p>Stored vector-field RMS; four square spectral lines versus two pure-sine lines; distinct from modulation</p>
+<details open><summary>전체 native 범위 — <span class="bounds">0–1237.56324327 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 표층 및 모든 비표적 조직을 포함한 전체 native 셀의 표시 범위입니다.</p>
+<figure><a href="r0p5--global_native_range--raw_1Vpp--RMS.png"><img loading="lazy" src="r0p5--global_native_range--raw_1Vpp--RMS.png" alt="전체 전기장 RMS, 원래 전체 파형 1 Vpp, r=0.5, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–1237.56324327 V/m. <a href="r0p5--global_native_range--raw_1Vpp--RMS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--global_native_range--raw_1Vpp--RMS.png"><img loading="lazy" src="r1p0--global_native_range--raw_1Vpp--RMS.png" alt="전체 전기장 RMS, 원래 전체 파형 1 Vpp, r=1, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–1237.56324327 V/m. <a href="r1p0--global_native_range--raw_1Vpp--RMS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<details open><summary>깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping — <span class="bounds">0–2.61871566585 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 기본 ROI에 양의 부피 가중치가 있는 셀들의 저장값으로 정한 표시 범위이며, 높은 값은 이 그림에서만 색이 포화됩니다. 원래 값은 변경하지 않았습니다.</p>
+<figure><a href="r0p5--deep_ROI_display_clipped--raw_1Vpp--RMS.png"><img loading="lazy" src="r0p5--deep_ROI_display_clipped--raw_1Vpp--RMS.png" alt="전체 전기장 RMS, 원래 전체 파형 1 Vpp, r=0.5, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–2.61871566585 V/m. <a href="r0p5--deep_ROI_display_clipped--raw_1Vpp--RMS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--deep_ROI_display_clipped--raw_1Vpp--RMS.png"><img loading="lazy" src="r1p0--deep_ROI_display_clipped--raw_1Vpp--RMS.png" alt="전체 전기장 RMS, 원래 전체 파형 1 Vpp, r=1, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–2.61871566585 V/m. <a href="r1p0--deep_ROI_display_clipped--raw_1Vpp--RMS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+</section>
+<section id="skin_contact_only"><h2>기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale</h2>
+<p>저장된 공통 amplitude scale만 적용합니다. 전원 총전력 상한이나 1 Vpp ceiling을 추가하지 않았으며, 일부 전체 파형 Vpp는 1 V를 넘습니다. 이 상한은 기존 기준의 수치 비교값입니다.</p>
+<h3>최대 방향 TIS 변조 · maxTIS · V/m</h3><p>Fundamental2carrier maximum over2074 sampled directions; lower bound on continuous-direction maximum</p>
+<details open><summary>전체 native 범위 — <span class="bounds">0–2408.04130849 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 표층 및 모든 비표적 조직을 포함한 전체 native 셀의 표시 범위입니다.</p>
+<figure><a href="r0p5--global_native_range--skin_contact_only--maxTIS.png"><img loading="lazy" src="r0p5--global_native_range--skin_contact_only--maxTIS.png" alt="최대 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=0.5, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–2408.04130849 V/m. <a href="r0p5--global_native_range--skin_contact_only--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--global_native_range--skin_contact_only--maxTIS.png"><img loading="lazy" src="r1p0--global_native_range--skin_contact_only--maxTIS.png" alt="최대 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=1, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–2408.04130849 V/m. <a href="r1p0--global_native_range--skin_contact_only--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<details open><summary>깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping — <span class="bounds">0–5.01450577277 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 기본 ROI에 양의 부피 가중치가 있는 셀들의 저장값으로 정한 표시 범위이며, 높은 값은 이 그림에서만 색이 포화됩니다. 원래 값은 변경하지 않았습니다.</p>
+<figure><a href="r0p5--deep_ROI_display_clipped--skin_contact_only--maxTIS.png"><img loading="lazy" src="r0p5--deep_ROI_display_clipped--skin_contact_only--maxTIS.png" alt="최대 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=0.5, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–5.01450577277 V/m. <a href="r0p5--deep_ROI_display_clipped--skin_contact_only--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--deep_ROI_display_clipped--skin_contact_only--maxTIS.png"><img loading="lazy" src="r1p0--deep_ROI_display_clipped--skin_contact_only--maxTIS.png" alt="최대 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=1, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–5.01450577277 V/m. <a href="r1p0--deep_ROI_display_clipped--skin_contact_only--maxTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<h3>고정 대각 방향 TIS 변조 · fixedTIS · V/m</h3><p>Fundamental2carrier modulation in fixed diagonal direction (1/sqrt2,1/sqrt2,0)</p>
+<details open><summary>전체 native 범위 — <span class="bounds">0–277.043493799 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 표층 및 모든 비표적 조직을 포함한 전체 native 셀의 표시 범위입니다.</p>
+<figure><a href="r0p5--global_native_range--skin_contact_only--fixedTIS.png"><img loading="lazy" src="r0p5--global_native_range--skin_contact_only--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=0.5, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–277.043493799 V/m. <a href="r0p5--global_native_range--skin_contact_only--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--global_native_range--skin_contact_only--fixedTIS.png"><img loading="lazy" src="r1p0--global_native_range--skin_contact_only--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=1, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–277.043493799 V/m. <a href="r1p0--global_native_range--skin_contact_only--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<details open><summary>깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping — <span class="bounds">0–5.01450577277 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 기본 ROI에 양의 부피 가중치가 있는 셀들의 저장값으로 정한 표시 범위이며, 높은 값은 이 그림에서만 색이 포화됩니다. 원래 값은 변경하지 않았습니다.</p>
+<figure><a href="r0p5--deep_ROI_display_clipped--skin_contact_only--fixedTIS.png"><img loading="lazy" src="r0p5--deep_ROI_display_clipped--skin_contact_only--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=0.5, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–5.01450577277 V/m. <a href="r0p5--deep_ROI_display_clipped--skin_contact_only--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--deep_ROI_display_clipped--skin_contact_only--fixedTIS.png"><img loading="lazy" src="r1p0--deep_ROI_display_clipped--skin_contact_only--fixedTIS.png" alt="고정 대각 방향 TIS 변조, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=1, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–5.01450577277 V/m. <a href="r1p0--deep_ROI_display_clipped--skin_contact_only--fixedTIS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<h3>전체 전기장 RMS · RMS · V/m</h3><p>Stored vector-field RMS; four square spectral lines versus two pure-sine lines; distinct from modulation</p>
+<details open><summary>전체 native 범위 — <span class="bounds">0–1237.56324327 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 표층 및 모든 비표적 조직을 포함한 전체 native 셀의 표시 범위입니다.</p>
+<figure><a href="r0p5--global_native_range--skin_contact_only--RMS.png"><img loading="lazy" src="r0p5--global_native_range--skin_contact_only--RMS.png" alt="전체 전기장 RMS, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=0.5, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–1237.56324327 V/m. <a href="r0p5--global_native_range--skin_contact_only--RMS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--global_native_range--skin_contact_only--RMS.png"><img loading="lazy" src="r1p0--global_native_range--skin_contact_only--RMS.png" alt="전체 전기장 RMS, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=1, 전체 native 범위, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–1237.56324327 V/m. <a href="r1p0--global_native_range--skin_contact_only--RMS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+<details open><summary>깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping — <span class="bounds">0–2.61871566585 V/m</span></summary>
+<p>범위는 두 비율 패널과 XY/XZ에 공통입니다. 기본 ROI에 양의 부피 가중치가 있는 셀들의 저장값으로 정한 표시 범위이며, 높은 값은 이 그림에서만 색이 포화됩니다. 원래 값은 변경하지 않았습니다.</p>
+<figure><a href="r0p5--deep_ROI_display_clipped--skin_contact_only--RMS.png"><img loading="lazy" src="r0p5--deep_ROI_display_clipped--skin_contact_only--RMS.png" alt="전체 전기장 RMS, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=0.5, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=0.5; 공통 범위 0–2.61871566585 V/m. <a href="r0p5--deep_ROI_display_clipped--skin_contact_only--RMS.png">원래 PNG 열기</a></figcaption></figure>
+<figure><a href="r1p0--deep_ROI_display_clipped--skin_contact_only--RMS.png"><img loading="lazy" src="r1p0--deep_ROI_display_clipped--skin_contact_only--RMS.png" alt="전체 전기장 RMS, 기존 8개 피부·접촉 부담 상한에 맞춘 저장 scale, r=1, 깊은 기본 ROI의 공통 표시 범위 · 범위 밖 색상 clipping, 여섯 조건의 XY 및 XZ native 단면"></a><figcaption>r=1; 공통 범위 0–2.61871566585 V/m. <a href="r1p0--deep_ROI_display_clipped--skin_contact_only--RMS.png">원래 PNG 열기</a></figcaption></figure>
+</details>
+</section>
+<section id="source-vpp"><h2>저장된 실제 전체 파형 Vpp 구간</h2><p>50 Ω 출력저항 전의 전체 파형 max−min 구간입니다. 각 tone의 Vpp 또는 팬텀 접촉 전압을 뜻하지 않습니다. 시간 파형이나 Vpp를 다시 계산하지 않았습니다. 피부·접촉 정규화 값도 저장된 구간과 scale을 그대로 옮겼습니다.</p><div class="scroll"><table><tr><th>조건</th><th>Raw 출력0 [V]</th><th>Raw 출력1 [V]</th><th>skin8 scale</th><th>skin8 출력0 [V]</th><th>skin8 출력1 [V]</th></tr>
+<tr><td>4-line square baseline</td><td>[1, 1]</td><td>[1, 1]</td><td>1</td><td>[1, 1]</td><td>[1, 1]</td></tr>
+<tr><td>Exclusive 2-line sine control</td><td>[1, 1]</td><td>[1, 1]</td><td>1.069863902</td><td>[1.069863902, 1.069863902]</td><td>[1.069863902, 1.069863902]</td></tr>
+<tr><td>Coherent r=0.5; phase0deg</td><td>[0.9999992569, 1]</td><td>[0.9999992519, 1]</td><td>1.435392148</td><td>[1.435391081, 1.435392148]</td><td>[1.435391074, 1.435392148]</td></tr>
+<tr><td>Coherent r=0.5; phase90deg</td><td>[0.9999992569, 1]</td><td>[0.9999992519, 1]</td><td>1.435315666</td><td>[1.4353146, 1.435315666]</td><td>[1.435314592, 1.435315666]</td></tr>
+<tr><td>Coherent r=0.5; phase180deg</td><td>[0.9999992569, 1]</td><td>[0.9999992519, 1]</td><td>1.435277882</td><td>[1.435276816, 1.435277882]</td><td>[1.435276808, 1.435277882]</td></tr>
+<tr><td>Coherent r=0.5; phase270deg</td><td>[0.9999992569, 1]</td><td>[0.9999992519, 1]</td><td>1.435315666</td><td>[1.4353146, 1.435315666]</td><td>[1.435314592, 1.435315666]</td></tr>
+<tr><td>Coherent r=1; phase0deg</td><td>[0.9999992544, 1]</td><td>[0.9999992544, 1]</td><td>1.513046125</td><td>[1.513044997, 1.513046125]</td><td>[1.513044997, 1.513046125]</td></tr>
+<tr><td>Coherent r=1; phase90deg</td><td>[0.9999992544, 1]</td><td>[0.9999992544, 1]</td><td>1.512947676</td><td>[1.512946548, 1.512947676]</td><td>[1.512946548, 1.512947676]</td></tr>
+<tr><td>Coherent r=1; phase180deg</td><td>[0.9999992544, 1]</td><td>[0.9999992544, 1]</td><td>1.512895567</td><td>[1.512894439, 1.512895567]</td><td>[1.512894439, 1.512895567]</td></tr>
+<tr><td>Coherent r=1; phase270deg</td><td>[0.9999992544, 1]</td><td>[0.9999992544, 1]</td><td>1.512947676</td><td>[1.512946548, 1.512947676]</td><td>[1.512946548, 1.512947676]</td></tr>
+</table></div><p>다중 tone의 동기화·전력 흡수/compliance와 측정기 부하는 검증되지 않았습니다. 이 페이지는 실험 검증 또는 생리적 활성화·인체 안전의 판정이 아닙니다.</p></section>
+<section><h2>출처와 상태</h2><p>이 index는 완료된 <a href="summary.json">지도 요약 JSON</a>만 읽어 만들었습니다. 기존 24 PNG를 연결했으며 배열 decode, 새 렌더링, 정규화 또는 gate 재계산은 수행하지 않았습니다.</p><p>요약 SHA256: <code>e3453bbf485ce57e7b4f9420de3de649adbbac9b065f6cb2219c102bb0e500b3</code><br>생성 근거: <a href="index-build.json">index-build.json</a></p><p>원래 렌더링 소스 commit: <code>afc5e0c331b2355ab9cef443507787725027580b</code></p></section></main></html>

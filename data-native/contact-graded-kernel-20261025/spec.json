@@ -1,0 +1,139 @@
+{
+  "schema": "task1-graded-log-kernel-spec-v1",
+  "stage": "verification",
+  "plan": {
+    "period_width_m": 0.002,
+    "thickness_m": 0.0001,
+    "partial_contact_endpoints_m": [
+      -0.0005,
+      0.0005
+    ],
+    "boundary_panels": [
+      128,
+      256,
+      512
+    ],
+    "Gauss_orders": [
+      8,
+      16,
+      32
+    ],
+    "unique_operator_cases": [
+      [
+        128,
+        32
+      ],
+      [
+        256,
+        32
+      ],
+      [
+        512,
+        8
+      ],
+      [
+        512,
+        16
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "correction_positive_modes": 64,
+    "pair_block": 64,
+    "base_panels": 128,
+    "base_edge_width_over_Robin_length": 0.25,
+    "nested_bisection_levels": [
+      0,
+      1,
+      2
+    ],
+    "near_gap_over_max_width": 2.0,
+    "maximum_panel_width_over_period": 0.25,
+    "log_F_fallback_cancellation_condition": 10000.0,
+    "Decimal_precision": 50,
+    "Decimal_check_precision": 70,
+    "maximum_boundary_unknowns": 512,
+    "actual_3D_cells": 0,
+    "actual_3D_RHS": 0,
+    "physical_cell_cap_unchanged": 800000,
+    "CPU_limit": 4,
+    "total_RSS_plus_ALL_task1_tmpfs_bytes": 8000000000,
+    "root_admission_required": true,
+    "spatial_E_reconstruction": false,
+    "old_spatial_E_2percent_gate": "not_applicable_not_passed"
+  },
+  "contracts": {
+    "linear_residual": 1e-10,
+    "complex_symmetry": 1e-10,
+    "constant_relative": 1e-10,
+    "complex_power_balance": 1e-10,
+    "passivity_relative": 1e-12,
+    "MMS_panel_nonregression_absolute_allowance": 1e-10
+  },
+  "diagnostic_limits": {
+    "contact_current_complex_relative": 0.01,
+    "source_real_power_relative": 0.02,
+    "contact_J_RMS_P95_relative": 0.05,
+    "conditional_operator_slab_RMS_L2_relative": 0.01
+  },
+  "operator_accuracy_gate_before_first_execution": {
+    "declared_before_first_execution": true,
+    "actual_outputs_observed_when_declared": false,
+    "finest_panels": 512,
+    "finest_Gauss_order": 32,
+    "MMS_forcings": [
+      "MMS-mode1",
+      "MMS-mode4"
+    ],
+    "projected_q_nonconstant_relative_L2_limit": 0.005,
+    "metric": "sqrt(sum_i l_i*abs(q_num_i-exact_panel_average_q_i)^2) / sqrt(integral_period abs(q_exact-q0)^2 dx)",
+    "scope": "Engineering operator-fixture accuracy only; not independent E/skin/physiological/safety validity"
+  },
+  "material": {
+    "gamma_S_m": {
+      "real": 5.959456590514033e-06,
+      "imaginary": 2.5055522184188793e-05
+    },
+    "zA_ohm_m2": {
+      "real": 5.5504758759767015e-05,
+      "imaginary": -0.00012307933145190832
+    },
+    "frequency_Hz": 2000,
+    "HREF_spec_SHA256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+    "original_CEM_spec_SHA256": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+    "scope": "HREF-MIX declared surrogate SC and PBS-derived uncertain contact coefficients from the actual CEM input; not direct human thoracoabdominal measurements or validated skin contact"
+  },
+  "voltage_peak_V": {
+    "real": 1.0,
+    "imaginary": 0.0
+  },
+  "MMS_modes": [
+    1,
+    4
+  ],
+  "MMS_coefficients": {
+    "q0": {
+      "real": 1.0,
+      "imaginary": 0.2
+    },
+    "qc": {
+      "real": 0.3,
+      "imaginary": -0.1
+    },
+    "qs": {
+      "real": 0.2,
+      "imaginary": 0.4
+    }
+  },
+  "partial_contact_admission": null,
+  "forcing": "Entire period prescribed U(x): constant or analytic non-equipotential Fourier MMS ONLY",
+  "registered_synthetic_RHS": 15,
+  "kernel": "gamma*K=t/L-log(2|sin(pi*s/L)|)/pi-(2/pi)sum cos(2pi*n*s/L)/(n(exp(4pi*n*t/L)+1))",
+  "quadrature_scope": "Total quadrature operations and peak temporary nodes are separate from boundary panels and actual3D physical cells; no800kcap reinterpretation",
+  "energy_scope": "q^H G q/|gamma|^2 is conditional quadrature-operator bulk energy, not independent spatial field validation; previous spatial E2percent gate N/A",
+  "source_scope": "Separate2D transferred-surrogate slab; no actual4pad/50ohm/human anatomy/skin-contact/activation/safety validation",
+  "originals_preserved": true,
+  "candidate_adopted": false
+}

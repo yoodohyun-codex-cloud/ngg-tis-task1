@@ -1,0 +1,134 @@
+{
+  "schema": "task1-layer-dtn-xy102-phase1-spec-v1",
+  "plan": {
+    "phase": "proposed_nx102_graph_full_eigen_and_analytic_manufactured_only",
+    "h_m": 0.0004901960784313725,
+    "radius_m": 0.025,
+    "nx": 102,
+    "physical_layers_m": [
+      0.0001,
+      0.005,
+      0.005,
+      0.015
+    ],
+    "evaluation_SC_cells": 4,
+    "evaluation_bulk_counts": [
+      19,
+      18,
+      56
+    ],
+    "max_evaluation_cells": 800000,
+    "evaluation_planes": 97,
+    "eigensolver": "scipy.linalg.eigh",
+    "driver": "evr",
+    "overwrite_a": true,
+    "check_finite": false,
+    "real_dtype": "float64",
+    "dense_order": "F",
+    "eigen_residual_block_columns": 128,
+    "orthogonality_selected_columns": 64,
+    "orthogonality_scope": "all columns against 64 deterministic selected columns; NOT exhaustive all-pairs",
+    "complex_roundtrip_probe_count": 3,
+    "cache_raw_chunk_max_bytes": 33554432,
+    "local_cache_durability": "local recomputable cache only; NOT remote verified scientific raw output",
+    "outer_numerical_child_watchdog_seconds": 600,
+    "max_effective_CPU": 4,
+    "total_RSS_plus_all_owned_tmpfs_limit_bytes": 8000000000,
+    "new_CEM_conditions": 0,
+    "new_CEM_RHS": 0,
+    "candidate_adopted": false
+  },
+  "tolerances": {
+    "eigenvalue_roundoff_relative": 1e-12,
+    "eigen_residual_spectral_relative": 1e-11,
+    "unit_norm_absolute": 2e-10,
+    "selected_orthogonality_absolute": 2e-10,
+    "transform_relative": 2e-10,
+    "constant_mode_alignment_error": 2e-10,
+    "analytic_absolute": 1e-10,
+    "analytic_relative": 1e-10,
+    "passive_admittance_relative": 1e-12
+  },
+  "frequency_Hz": 2000,
+  "registered_geometry": {
+    "XY_columns": 8184,
+    "undirected_edges": 16164,
+    "evaluation_planes": 97,
+    "evaluation_cells": 793848,
+    "dense_real_matrix_entries": 66977856,
+    "dense_real_matrix_bytes": 535822848
+  },
+  "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+  "actual_U19_config_sha256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+  "material_rows": [
+    {
+      "layer": "sc",
+      "sigma_S_m": 5.959456590514033e-06,
+      "epsilon_r": 225.18780331254555,
+      "gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      }
+    },
+    {
+      "layer": "dermis",
+      "sigma_S_m": 0.29312219368408116,
+      "epsilon_r": 870716.5653512729,
+      "gamma_S_m": {
+        "real": 0.29312219368408116,
+        "imaginary": 0.0968802834717473
+      }
+    },
+    {
+      "layer": "fat",
+      "sigma_S_m": 0.1968291518398069,
+      "epsilon_r": 10307.859184332388,
+      "gamma_S_m": {
+        "real": 0.1968291518398069,
+        "imaginary": 0.001146904009299627
+      }
+    },
+    {
+      "layer": "muscle",
+      "sigma_S_m": 0.2516252154881487,
+      "epsilon_r": 168024.57464128954,
+      "gamma_S_m": {
+        "real": 0.2516252154881487,
+        "imaginary": 0.01869525522912356
+      }
+    }
+  ],
+  "physical_model": "PROPOSED nx102 staircase XY Neumann graph; same D50/scalar four layers0.1,5,5,15mm; continuous analytic z/insulated bottom",
+  "graph_source": "Same strict-center radius test and j-then-i nearest-neighbor ordering as original mesh, evaluated at h=.05/102; NOT old XY100 reproduction",
+  "coarse_reference_commit": "e4c09902bf529b4111c006dd4b4fb6681ca81252",
+  "coarse_reference_summary_sha256": "bfe77b2968dc65255f8fcee276166d11508428cb4e68278332a4ab21929bea63",
+  "coarse_comparison_sha256": "38c85c2fafcfb71ab3fcfe6238401c1dc223489c8bbe0d850c27936bec7af39b",
+  "coarse_mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+  "fine_mask_generated": false,
+  "future_fine_fractional_contact_mask_required": true,
+  "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+  "reference_commit": "cebb04aa2074e848e34ffd7aede4bc0476aa16c6",
+  "local_eigen_cache_directory": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache",
+  "independent_normal_current_QA_limit": 0.05,
+  "evaluation_sampling_scope": "97 continuous-z evaluation planes: SC4/VS19/fat18/muscle56. Physical SC remains0.1mm; no new vertical FVM approximation. Old SC8 reference and failures preserved. Future comparison requires matched physical quadrature/true interface flux, not raw SC8-vsSC4 fit equivalence.",
+  "inherited_material_scope": "HREF-MIX declared surrogates; no anatomical/phantom/skin-contact calibration",
+  "source_and_hardware_scope": "Graph mathematics only. Old padmask is provenance, NOT fine-grid contact data. Same physical15mm square pads at(-10,-10),(10,10),(10,-10),(-10,10)mm and2outputs/commonreturns/50ohm require a NEW verified fractional fine mask before separately admitted fine CEM.",
+  "cell_semantics": {
+    "physical_evaluation_cells": 793848,
+    "physical_evaluation_cell_limit": 800000,
+    "surface_graph_nodes": 8184,
+    "future_surface_CEM_unknowns": 8186,
+    "dense_real_matrix_entries": 66977856,
+    "dense_entries_are_not_physical_cells": true
+  },
+  "resource_estimate": {
+    "status": "owner-computed theoretical allocation sizes; actual peak/runtime unverified",
+    "dense_input_real_bytes": 535822848,
+    "returned_real_Q_bytes": 535822848,
+    "workspace_conservative_allowance_bytes": 536870912,
+    "vector_library_diagnostic_allowance_bytes": 268435456,
+    "additional_local_Q_cache_bytes": 535822848,
+    "allocation_lifetime": "Real Fortran input/Q may coexist through EVR; input released before blocked checks; Q RSS and local cache tmpfs counted together with ALL existing originals.",
+    "caveat": "Parent must enforce600s separately killable child and aggregate8e9bytes; no assumption of prior runtime or full memory feasibility. No CEM/fine mask/reference field calculated."
+  }
+}

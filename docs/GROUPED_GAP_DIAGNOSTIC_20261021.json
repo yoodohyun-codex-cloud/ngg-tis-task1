@@ -1,0 +1,3619 @@
+{
+  "schema": "task1-saved-grouped-gap-diagnostic-brief-v1",
+  "created_utc": "2026-10-21T16:30:14.277346+00:00",
+  "source": {
+    "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+    "absolute_path": "/workspace/ngg-tis-task1/docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+    "SHA256": "3de44841a85c73b5bb3e15e435c5e55479619962c6f33a6bea426b7323f2695d",
+    "source_commit": "1d1cd9ce41e4a40a2e42b54847f69c7bb6443e69",
+    "preregistration": {
+      "path": "/workspace/ngg-tis-task1/docs/cloud-grouped-gap-diagnostic-20261021T162000Z/preregistration.json",
+      "SHA256": "9731e640ae0b7afca19d3525d7f20b6a4bacd7f743d02fe9ddca4182096a3f35"
+    },
+    "preregistration_public_commit": "7045c954fd8bbcc53ae9b3e81a4529b436362124"
+  },
+  "scope": "Saved JSON extraction and unit conversion only; no raw arrays, PDE, native analysis, tests or independent physics rerun",
+  "status": "completed_diagnostic_not_adopted_not_peer_reviewed",
+  "counts": {
+    "cases": 8,
+    "new_PDE_for_diagnostic": 0
+  },
+  "resources": {
+    "wall_seconds": 23.621845822999603,
+    "max_seconds": 600,
+    "CPU_count": 1,
+    "new_PDE_solves": 0,
+    "peak_RSS_bytes": 348348416,
+    "global_limit_seconds": 13800
+  },
+  "inputs_unchanged_reported": true,
+  "fixed_comparator": {
+    "baseline_path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-xy80/summary.json",
+    "numerical_burden_caps": "all modes use original fine square4 raw burdens",
+    "cutoffs": "original fine square4 native weighted primary/supplemental mean and P10, fixed across both meshes",
+    "ROI": "central r<=5mm, surface depth z15..20mm; saved fractional native volume",
+    "depth": "z=0 top; +z depth; SC0..0.1, dermis0.1..5.1mm",
+    "volume_weighting": "native h^2 dz; saved primary fraction; exact depth overlap; no analytic renormalization",
+    "modes": [
+      "raw_1Vpp",
+      "equal_total_source_output_RMS_sum",
+      "equal_total_power",
+      "skin_contact_only",
+      "legacy_composite_full_skin"
+    ],
+    "canonical_eight_gates": [
+      {
+        "name": "primary_maxTIS_mean",
+        "unit": "V/m",
+        "required_direction": "greater"
+      },
+      {
+        "name": "primary_maxTIS_p10",
+        "unit": "V/m",
+        "required_direction": "greater"
+      },
+      {
+        "name": "surface_0_5_maxTIS_p95",
+        "unit": "V/m",
+        "required_direction": "less"
+      },
+      {
+        "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+        "unit": "m3",
+        "required_direction": "less"
+      },
+      {
+        "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+        "unit": "m3",
+        "required_direction": "less"
+      },
+      {
+        "name": "primary_complement_maxTIS_p95",
+        "unit": "V/m",
+        "required_direction": "less"
+      },
+      {
+        "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+        "unit": "m3",
+        "required_direction": "less"
+      },
+      {
+        "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+        "unit": "m3",
+        "required_direction": "less"
+      }
+    ],
+    "no_physiological_cutoff": true
+  },
+  "fixed_fine_baseline_cutoffs_V_m": {
+    "maxTIS": {
+      "primary_r5_depth15_20_mean": 4.061848941601601,
+      "primary_r5_depth15_20_p10": 3.6457357391300533,
+      "supplemental_wholeXY_depth15_20_mean": 2.401291663750621,
+      "supplemental_wholeXY_depth15_20_p10": 1.434883322330378
+    },
+    "fixedTIS": {
+      "primary_r5_depth15_20_mean": 4.023709021949991,
+      "primary_r5_depth15_20_p10": 3.6018169687464905,
+      "supplemental_wholeXY_depth15_20_mean": 1.9116124549976508,
+      "supplemental_wholeXY_depth15_20_p10": 0.5467893133322058
+    },
+    "RMS": {
+      "primary_r5_depth15_20_mean": 2.306949462834824,
+      "primary_r5_depth15_20_p10": 2.104669371240444,
+      "supplemental_wholeXY_depth15_20_mean": 1.8166989673887375,
+      "supplemental_wholeXY_depth15_20_p10": 1.3960655291307387
+    }
+  },
+  "baseline_primary_maxTIS_V_m": {
+    "mean": 4.061848941601601,
+    "p10": 3.6457357391300533
+  },
+  "rank_stability": {
+    "raw_1Vpp": {
+      "mean": {
+        "coarse": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "fine": [
+          8,
+          4,
+          12,
+          16
+        ],
+        "order_identical": false,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      },
+      "p10": {
+        "coarse": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "fine": [
+          8,
+          4,
+          12,
+          16
+        ],
+        "order_identical": false,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      }
+    },
+    "equal_total_source_output_RMS_sum": {
+      "mean": {
+        "coarse": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": true,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      },
+      "p10": {
+        "coarse": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": true,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      }
+    },
+    "equal_total_power": {
+      "mean": {
+        "coarse": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": true,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      },
+      "p10": {
+        "coarse": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": true,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      }
+    },
+    "skin_contact_only": {
+      "mean": {
+        "coarse": [
+          16,
+          8,
+          4,
+          12
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": false,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      },
+      "p10": {
+        "coarse": [
+          16,
+          8,
+          4,
+          12
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": false,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      }
+    },
+    "legacy_composite_full_skin": {
+      "mean": {
+        "coarse": [
+          16,
+          8,
+          4,
+          12
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": false,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      },
+      "p10": {
+        "coarse": [
+          16,
+          8,
+          4,
+          12
+        ],
+        "fine": [
+          4,
+          8,
+          12,
+          16
+        ],
+        "order_identical": false,
+        "tie_rule": "descending actual absolute value, physical pad count only for exact ties; no adoption threshold"
+      }
+    }
+  },
+  "pairs": [
+    {
+      "n_pads": 4,
+      "coarse_case_id": "grouped-strip225-gap1-p04-xy40",
+      "fine_case_id": "grouped-strip225-gap1-p04-xy80",
+      "physical_geometry_identical": true,
+      "electrical_metal_node_topology_identical": true,
+      "represented_pad_area_changes_m2": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shared_tissue_top_face_counts": {
+        "coarse": 0,
+        "fine": 0
+      },
+      "common_fixed_fine_comparator": true,
+      "active_skin_contact_caps": {
+        "coarse": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "fine": [
+          "contact_voltage_RMS_max_V"
+        ]
+      },
+      "all_eight_screen_pass": {
+        "coarse": false,
+        "fine": false
+      },
+      "interpretation": "Two XY grids diagnose sensitivity only; .625mm has1.6 cells per1mm physical gap; edge/gap/SC/contact convergence remains open"
+    },
+    {
+      "n_pads": 8,
+      "coarse_case_id": "grouped-strip225-gap1-p08-xy40",
+      "fine_case_id": "grouped-strip225-gap1-p08-xy80",
+      "physical_geometry_identical": true,
+      "electrical_metal_node_topology_identical": true,
+      "represented_pad_area_changes_m2": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shared_tissue_top_face_counts": {
+        "coarse": 44,
+        "fine": 0
+      },
+      "common_fixed_fine_comparator": true,
+      "active_skin_contact_caps": {
+        "coarse": [
+          "surface_J_RMS_max_A_m2"
+        ],
+        "fine": [
+          "contact_voltage_RMS_max_V"
+        ]
+      },
+      "all_eight_screen_pass": {
+        "coarse": false,
+        "fine": false
+      },
+      "interpretation": "Two XY grids diagnose sensitivity only; .625mm has1.6 cells per1mm physical gap; edge/gap/SC/contact convergence remains open"
+    },
+    {
+      "n_pads": 12,
+      "coarse_case_id": "grouped-strip225-gap1-p12-xy40",
+      "fine_case_id": "grouped-strip225-gap1-p12-xy80",
+      "physical_geometry_identical": true,
+      "electrical_metal_node_topology_identical": true,
+      "represented_pad_area_changes_m2": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shared_tissue_top_face_counts": {
+        "coarse": 0,
+        "fine": 0
+      },
+      "common_fixed_fine_comparator": true,
+      "active_skin_contact_caps": {
+        "coarse": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "fine": [
+          "contact_voltage_RMS_max_V"
+        ]
+      },
+      "all_eight_screen_pass": {
+        "coarse": false,
+        "fine": false
+      },
+      "interpretation": "Two XY grids diagnose sensitivity only; .625mm has1.6 cells per1mm physical gap; edge/gap/SC/contact convergence remains open"
+    },
+    {
+      "n_pads": 16,
+      "coarse_case_id": "grouped-strip225-gap1-p16-xy40",
+      "fine_case_id": "grouped-strip225-gap1-p16-xy80",
+      "physical_geometry_identical": true,
+      "electrical_metal_node_topology_identical": true,
+      "represented_pad_area_changes_m2": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shared_tissue_top_face_counts": {
+        "coarse": 44,
+        "fine": 0
+      },
+      "common_fixed_fine_comparator": true,
+      "active_skin_contact_caps": {
+        "coarse": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "fine": [
+          "contact_voltage_RMS_max_V"
+        ]
+      },
+      "all_eight_screen_pass": {
+        "coarse": false,
+        "fine": false
+      },
+      "interpretation": "Two XY grids diagnose sensitivity only; .625mm has1.6 cells per1mm physical gap; edge/gap/SC/contact convergence remains open"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "grouped-strip225-gap1-p04-xy40",
+      "mesh_label": "coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "h_xy_mm": 1.25,
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "config_SHA256": "2885307dd618f0102ada7eab065455a0c2031b853fdc29817738b329d1e77a69",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p04-xy40/summary.json",
+        "SHA256": "f6f3ac822906164c2ed6ea0472a655ef6aa8d126da49bd55dcf8ba4cd2f0b8d0"
+      },
+      "physical_pad_node_ids": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 899.9999999999999,
+      "represented_pad_areas_m2": [
+        0.00022499999999999997,
+        0.00022499999999999997,
+        0.00022499999999999997,
+        0.00022499999999999997
+      ],
+      "analytical_minimum_gap_mm": 1.0,
+      "gap_in_cells": 0.8,
+      "minimum_represented_support_signed_bbox_gap_mm": 0.0,
+      "minimum_contact_cell_centre_distance_mm": 1.25,
+      "shared_tissue_top_faces": {
+        "count": 0,
+        "physical_pad_pairs_same_node": 0,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 77.93910613612101,
+        "surface_J_RMS_p95_A_m2": 28.099400350930306,
+        "contact_voltage_RMS_max_V": 0.008208967037843266
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 165,
+        "physical_pad_id": 1,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          1.875,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          2.273076923076923,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          2.046153846153846,
+          2.5,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 3.4038461538461547e-07,
+        "patch_fraction_of_native_face": 0.21784615384615388,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 1,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.226923076923077,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 165,
+        "physical_pad_id": 1,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          1.875,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          2.273076923076923,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          2.046153846153846,
+          2.5,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 3.4038461538461547e-07,
+        "patch_fraction_of_native_face": 0.21784615384615388,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 1,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.226923076923077,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 21.60892810072801,
+          "J_vector_RMS_p95_A_m2": 14.257616232089322,
+          "hotspot": {
+            "center_xyz_mm": [
+              3.125,
+              0.625,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 1
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 24.440027089780862,
+          "J_vector_RMS_p95_A_m2": 8.16551138942772,
+          "hotspot": {
+            "center_xyz_mm": [
+              3.125,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 1
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 24.440027089780862,
+          "J_vector_RMS_p95_A_m2": 8.298186015834935,
+          "hotspot": {
+            "center_xyz_mm": [
+              3.125,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 1
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        1.8937270872706389,
+        1.8964591392007133,
+        1.2630707781083885,
+        1.2615155440744545
+      ],
+      "output_RMS_mA": [
+        1.893727087351688,
+        1.8964591391964178
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 6.694024937091125e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 5.008437976013536e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 1.204956086528053e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 1.48529185000243e-09,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/0/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.8284575872963713,
+        "p10": 3.4247911118360688,
+        "max": 4.715353378835524,
+        "CV": 0.08422873269621865
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.3270616686042187,
+        "active_caps": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "source_Vpp_per_output": 0.3270616686042187,
+        "source_output_RMS_by_output_mA": [
+          0.6193655410702501,
+          0.6202590905053007
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.49089410240104,
+          "surface_J_RMS_p95_A_m2": 9.190236765553234,
+          "contact_voltage_RMS_max_V": 0.0026848384569140493,
+          "SC_power_W": 4.348714431913879e-07,
+          "contact_power_W": 5.25074577179724e-07,
+          "source_power_W": 0.00015300423786282873,
+          "bulk_skin_J_vector_RMS_max_A_m2": 7.9933960407160365,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 2.714018564727167,
+          "skin_SC_plus_dermis_power_W": 9.747499765299343e-05
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 1.2521417266816326,
+            "p10": 1.120117895658002,
+            "p95": 1.44132441274524,
+            "max": 1.5422113441404872,
+            "CV": 0.08422873269621864,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 3.269712811537211,
+            "p10": 0.8440597769337475,
+            "p95": 8.245595728847185,
+            "max": 299.6626821990409,
+            "CV": 2.2196481207937344,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 1.740357142857143e-06,
+                "region_volume_fraction": 0.17623869801084993
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 2.0584151785714286e-06,
+                "region_volume_fraction": 0.2084471066907776
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 2.366191149028918,
+            "p10": 0.4424384929470416,
+            "p95": 7.436185258077427,
+            "max": 299.6626821990409,
+            "CV": 1.681629912157208,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 1.0874285714285726e-05,
+                "region_volume_fraction": 0.22111293610113114
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 1.1442366071428582e-05,
+                "region_volume_fraction": 0.23266403187050386
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 8.686571795127902e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 9.694666581931613e-11,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 1.4149489743913202e-09,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.9575630740306407e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 1.2521417266816326,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -69.17310947098123
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 1.120117895658002,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -69.27594384761181
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 8.245595728847185,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -67.35609757184575
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 1.740357142857143e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -77.59157097262319
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 2.0584151785714286e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -74.92628135846225
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 7.436185258077427,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -68.26986451342717
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 1.0874285714285726e-05,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -43.9459847538577
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 1.1442366071428582e-05,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -45.9134415166208
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    },
+    {
+      "case_id": "grouped-strip225-gap1-p08-xy40",
+      "mesh_label": "coarse",
+      "n_pads": 8,
+      "n_outputs": 2,
+      "h_xy_mm": 1.25,
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "config_SHA256": "fda238c3a7e4728c4dc557aa9eb29d30f9d8aa76db3f54aa9b3c701d1cdc2445",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p08-xy40/summary.json",
+        "SHA256": "112f19243ede49c03356a7dbe5877b65dcdde2bfe44816572d53f03d8ab150fa"
+      },
+      "physical_pad_node_ids": [
+        0,
+        0,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 899.9999999999999,
+      "represented_pad_areas_m2": [
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998
+      ],
+      "analytical_minimum_gap_mm": 1.0,
+      "gap_in_cells": 0.8,
+      "minimum_represented_support_signed_bbox_gap_mm": -1.25,
+      "minimum_contact_cell_centre_distance_mm": 0.0,
+      "shared_tissue_top_faces": {
+        "count": 44,
+        "physical_pad_pairs_same_node": 4,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 69.254446611387,
+        "surface_J_RMS_p95_A_m2": 27.672984019495924,
+        "contact_voltage_RMS_max_V": 0.0072938253203061465
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 183,
+        "physical_pad_id": 2,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          10.625,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          10.1,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          10.0,
+          10.2,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 1.4999999999999946e-07,
+        "patch_fraction_of_native_face": 0.09599999999999966,
+        "tied_contact_patch_count": 2,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 2,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.09999999999999964,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 183,
+        "physical_pad_id": 2,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          10.625,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          10.1,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          10.0,
+          10.2,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 1.4999999999999946e-07,
+        "patch_fraction_of_native_face": 0.09599999999999966,
+        "tied_contact_patch_count": 2,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 2,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.09999999999999964,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 22.779275876422837,
+          "J_vector_RMS_p95_A_m2": 15.002011484414908,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.875,
+              0.625,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 2
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 25.067344792007116,
+          "J_vector_RMS_p95_A_m2": 8.217545250608456,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.875,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 2
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 25.067344792007116,
+          "J_vector_RMS_p95_A_m2": 8.39444567534597,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.875,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 2
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        0.7764900390555566,
+        1.1378557385042285,
+        1.139519111954134,
+        0.7774766321667705,
+        0.7216168025340731,
+        0.6008958031517811,
+        0.5998813354233552,
+        0.7212435632176271
+      ],
+      "output_RMS_mA": [
+        1.9132136448417343,
+        1.915881214038072
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 3.301539928204664e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 8.931090813756747e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 3.285740001882319e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 3.295201957527381e-09,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/1/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.8234105661828095,
+        "p10": 3.419387902360454,
+        "max": 4.710951593982865,
+        "CV": 0.08437606149829387
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.3680809157285888,
+        "active_caps": [
+          "surface_J_RMS_max_A_m2"
+        ],
+        "source_Vpp_per_output": 0.3680809157285888,
+        "source_output_RMS_by_output_mA": [
+          0.7042174303777766,
+          0.705199311690334
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.49124012699599,
+          "surface_J_RMS_p95_A_m2": 10.185897298838665,
+          "contact_voltage_RMS_max_V": 0.002684717903062654,
+          "SC_power_W": 5.494598739132885e-07,
+          "contact_power_W": 6.106918962675277e-07,
+          "source_power_W": 0.00019606209910427169,
+          "bulk_skin_J_vector_RMS_max_A_m2": 9.226811225926252,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 3.089835251215237,
+          "skin_SC_plus_dermis_power_W": 0.00012484005769237383
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 1.4073244624069308,
+            "p10": 1.2586114303320943,
+            "p95": 1.6202449763176192,
+            "max": 1.7340113766662681,
+            "CV": 0.08437606149829388,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 3.6668361403783796,
+            "p10": 0.9502736017098655,
+            "p95": 9.313510434599113,
+            "max": 408.9525420999744,
+            "CV": 2.285384542906919,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 2.0415848214285715e-06,
+                "region_volume_fraction": 0.20674276672694397
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 2.425513392857143e-06,
+                "region_volume_fraction": 0.245621609403255
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 2.657580358168568,
+            "p10": 0.4966134312335,
+            "p95": 8.358976570029224,
+            "max": 408.9525420999744,
+            "CV": 1.7136156576838975,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 1.1437254464285725e-05,
+                "region_volume_fraction": 0.23256009470228436
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 1.198185267857144e-05,
+                "region_volume_fraction": 0.24363371492158323
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 9.515424067706226e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 2.147052993829289e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 3.1987173164982793e-09,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.7354850843018684e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 1.4073244624069308,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -65.35261447088631
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 1.2586114303320943,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -65.47716235098201
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 9.313510434599113,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -63.12827648983512
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 2.0415848214285715e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -73.71303426879021
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 2.425513392857143e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -70.45462887813075
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 8.358976570029224,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -64.33232230087165
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 1.1437254464285725e-05,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -41.044032411908006
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 1.198185267857144e-05,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -43.36335932679369
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    },
+    {
+      "case_id": "grouped-strip225-gap1-p12-xy40",
+      "mesh_label": "coarse",
+      "n_pads": 12,
+      "n_outputs": 2,
+      "h_xy_mm": 1.25,
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "config_SHA256": "45214bb1216589b0a35a33d0ac751a8b49c2fca86cde9b2520651d0c39a6650d",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p12-xy40/summary.json",
+        "SHA256": "784aafefce2dda641e449b867202dee9da42db421e7d4f93ddb967b6919e03d2"
+      },
+      "physical_pad_node_ids": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 900.0,
+      "represented_pad_areas_m2": [
+        7.499999999999998e-05,
+        7.500000000000001e-05,
+        7.5e-05,
+        7.5e-05,
+        7.500000000000001e-05,
+        7.499999999999998e-05,
+        7.5e-05,
+        7.500000000000001e-05,
+        7.499999999999998e-05,
+        7.499999999999998e-05,
+        7.500000000000001e-05,
+        7.5e-05
+      ],
+      "analytical_minimum_gap_mm": 0.9999999999999982,
+      "gap_in_cells": 0.7999999999999986,
+      "minimum_represented_support_signed_bbox_gap_mm": 0.0,
+      "minimum_contact_cell_centre_distance_mm": 1.25,
+      "shared_tissue_top_faces": {
+        "count": 0,
+        "physical_pad_pairs_same_node": 0,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 119.03627137249202,
+        "surface_J_RMS_p95_A_m2": 28.126476203672823,
+        "contact_voltage_RMS_max_V": 0.012538015345974067
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 187,
+        "physical_pad_id": 3,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.625,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          1.148076923076923,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          1.046153846153846,
+          1.25,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 1.528846153846155e-07,
+        "patch_fraction_of_native_face": 0.09784615384615392,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 3,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.101923076923077,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 187,
+        "physical_pad_id": 3,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.625,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          1.148076923076923,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          1.046153846153846,
+          1.25,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 1.528846153846155e-07,
+        "patch_fraction_of_native_face": 0.09784615384615392,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 3,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.101923076923077,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 23.406377929128897,
+          "J_vector_RMS_p95_A_m2": 13.771071974802368,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.875,
+              0.625,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 3
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 25.606204140030307,
+          "J_vector_RMS_p95_A_m2": 8.461891959479297,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.875,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 3
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 25.606204140030307,
+          "J_vector_RMS_p95_A_m2": 8.628419914515352,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.875,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 3
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        0.5733218691016151,
+        0.5083609139495363,
+        0.9680229759190631,
+        0.9699458649671359,
+        0.5088025834332264,
+        0.5741321477583766,
+        0.6349435939142287,
+        0.3720708573207988,
+        0.4546877068329897,
+        0.45388228368605854,
+        0.3714575883169335,
+        0.6355222882233815
+      ],
+      "output_RMS_mA": [
+        2.0410416944380647,
+        2.04427531845125
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 6.741434764947187e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 9.293991872357595e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 1.4080505041616731e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 1.1971359382861417e-09,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/2/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.821824472383001,
+        "p10": 3.417393896944241,
+        "max": 4.711277010055065,
+        "CV": 0.0845569842312369
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.2141358407075284,
+        "active_caps": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "source_Vpp_per_output": 0.2141358407075284,
+        "source_output_RMS_by_output_mA": [
+          0.43706017915761325,
+          0.4377526139542088
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.489932045038074,
+          "surface_J_RMS_p95_A_m2": 6.022886628013771,
+          "contact_voltage_RMS_max_V": 0.0026848384569140493,
+          "SC_power_W": 2.165039419567698e-07,
+          "contact_power_W": 3.068159041223624e-07,
+          "source_power_W": 7.021324673809202e-05,
+          "bulk_skin_J_vector_RMS_max_A_m2": 5.483206050853984,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 1.847653952372325,
+          "skin_SC_plus_dermis_power_W": 4.364447451905554e-05
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 0.8183895964303401,
+            "p10": 0.7317865151509316,
+            "p95": 0.9424091921085704,
+            "max": 1.008853263354192,
+            "CV": 0.08455698423123689,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 2.118936096819371,
+            "p10": 0.5632785465655582,
+            "p95": 5.324493641022952,
+            "max": 247.17024484604593,
+            "CV": 2.2845070210320477,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 7.739955357142858e-07,
+                "region_volume_fraction": 0.07837929475587704
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 9.4125e-07,
+                "region_volume_fraction": 0.09531645569620253
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 1.543552794312336,
+            "p10": 0.2884462344291415,
+            "p95": 4.8707009178575325,
+            "max": 247.17024484604593,
+            "CV": 1.7086430163882669,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 6.491383928571434e-06,
+                "region_volume_fraction": 0.13199294165321682
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 7.894642857142865e-06,
+                "region_volume_fraction": 0.16052619063700418
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 8.69911658305132e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 1.9192785711920823e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 1.3168881351742043e-09,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.9206078447725243e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 0.8183895964303401,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -79.85179635686683
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 0.7317865151509316,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -79.92760398685532
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 5.324493641022952,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -78.92059511372847
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 7.739955357142858e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -90.03421562019943
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 9.4125e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -88.53455905444372
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 4.8707009178575325,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -79.2167630748146
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 6.491383928571434e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -66.53866347996662
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 7.894642857142865e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -62.683062232692656
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    },
+    {
+      "case_id": "grouped-strip225-gap1-p16-xy40",
+      "mesh_label": "coarse",
+      "n_pads": 16,
+      "n_outputs": 2,
+      "h_xy_mm": 1.25,
+      "source_commit": "038ce93981adce7b707694d495d69e9b72703430",
+      "config_SHA256": "9654b7b05bc4c605922582be62c76f806908cd5cf679ee91ab6dd19300acc400",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-20261019T191500Z/postprocess/grouped-strip225-gap1-p16-xy40/summary.json",
+        "SHA256": "42c5c9e1b716fdf1fd68ad6ae0c22b2e13a4d422932f6e5b5a84832ae1ba525e"
+      },
+      "physical_pad_node_ids": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 900.0000000000001,
+      "represented_pad_areas_m2": [
+        5.625000000000004e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.625000000000004e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.625000000000004e-05,
+        5.625000000000004e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05
+      ],
+      "analytical_minimum_gap_mm": 0.9999999999999982,
+      "gap_in_cells": 0.7999999999999986,
+      "minimum_represented_support_signed_bbox_gap_mm": -1.25,
+      "minimum_contact_cell_centre_distance_mm": 0.0,
+      "shared_tissue_top_faces": {
+        "count": 44,
+        "physical_pad_pairs_same_node": 4,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [
+          [
+            1,
+            2
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            13,
+            14
+          ]
+        ],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 67.07589505623454,
+        "surface_J_RMS_p95_A_m2": 28.818855578401973,
+        "contact_voltage_RMS_max_V": 0.007064952555529294
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 198,
+        "physical_pad_id": 4,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.625,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          0.898076923076923,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          0.546153846153846,
+          1.25,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 5.278846153846155e-07,
+        "patch_fraction_of_native_face": 0.3378461538461539,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 4,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.351923076923077,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 198,
+        "physical_pad_id": 4,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.625,
+          0.625,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          0.898076923076923,
+          0.875,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          0.546153846153846,
+          1.25,
+          0.5,
+          1.25
+        ],
+        "contact_patch_area_m2": 5.278846153846155e-07,
+        "patch_fraction_of_native_face": 0.3378461538461539,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 4,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.351923076923077,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 22.84457528927067,
+          "J_vector_RMS_p95_A_m2": 16.356583193644102,
+          "hotspot": {
+            "center_xyz_mm": [
+              0.625,
+              0.625,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 4
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 25.894076512609526,
+          "J_vector_RMS_p95_A_m2": 8.449155761810424,
+          "hotspot": {
+            "center_xyz_mm": [
+              0.625,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 4
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 25.894076512609526,
+          "J_vector_RMS_p95_A_m2": 8.578417546159665,
+          "hotspot": {
+            "center_xyz_mm": [
+              0.625,
+              0.625,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 4
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        0.41424215165350015,
+        0.38560836177325303,
+        0.4817902612007008,
+        0.8533339830298418,
+        0.8553680327924839,
+        0.4821609535222344,
+        0.3860088698966339,
+        0.41478148689257854,
+        0.6006998517160815,
+        0.3296267347808494,
+        0.2958440567163928,
+        0.33246470493738356,
+        0.33191593313523,
+        0.295380087527145,
+        0.3290310969483097,
+        0.6018913334506824
+      ],
+      "output_RMS_mA": [
+        2.1218648016972277,
+        2.125351676122893
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 8.161363714381944e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 5.813219375321723e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 1.5569752139230743e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 1.7304655847393366e-09,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/3/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.7851203556676594,
+        "p10": 3.3839339679858953,
+        "max": 4.667058626913007,
+        "CV": 0.08466014286247943
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.3800221495914782,
+        "active_caps": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "source_Vpp_per_output": 0.3800221495914782,
+        "source_output_RMS_by_output_mA": [
+          0.8063556230834761,
+          0.807680712598073
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.490325825042657,
+          "surface_J_RMS_p95_A_m2": 10.951803445670679,
+          "contact_voltage_RMS_max_V": 0.0026848384569140493,
+          "SC_power_W": 7.203348808972776e-07,
+          "contact_power_W": 8.92467102536708e-07,
+          "source_power_W": 0.00022975988471326853,
+          "bulk_skin_J_vector_RMS_max_A_m2": 9.840322618008079,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 3.2599886759848493,
+          "skin_SC_plus_dermis_power_W": 0.00014171043393022123
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 1.4384295740232842,
+            "p10": 1.2859698605896202,
+            "p95": 1.6566460991895664,
+            "max": 1.7735856516689334,
+            "CV": 0.08466014286247942,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 3.7356033108988775,
+            "p10": 0.9921076819244982,
+            "p95": 9.283059801841295,
+            "max": 440.90813266579096,
+            "CV": 2.39959383733262,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 1.994017857142857e-06,
+                "region_volume_fraction": 0.2019258589511754
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 2.3695089285714285e-06,
+                "region_volume_fraction": 0.2399502712477396
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 2.7155779985069,
+            "p10": 0.5063217512662298,
+            "p95": 8.567206443667486,
+            "max": 440.90813266579096,
+            "CV": 1.769905801655254,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 1.1433772321428582e-05,
+                "region_volume_fraction": 0.23248929034314791
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 1.1954866071428583e-05,
+                "region_volume_fraction": 0.2430849811382759
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 8.784716933423752e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 3.1518028759751837e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 1.6174988060778225e-09,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.7687417432995304e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 1.4384295740232842,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -64.58682745951387
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 1.2859698605896202,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -64.7267396046517
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 9.283059801841295,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -63.24882902688762
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 1.994017857142857e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -74.32549530738733
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 2.3695089285714285e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -71.13682370198772
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 8.567206443667486,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -63.44380730647758
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 1.1433772321428582e-05,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -41.061981920862614
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 1.1954866071428583e-05,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -43.49092146703537
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    },
+    {
+      "case_id": "grouped-strip225-gap1-p04-xy80",
+      "mesh_label": "fine",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "h_xy_mm": 0.625,
+      "source_commit": "fa39cb8ec2d15e9f4ead967dfdd6bc5c91c0b33e",
+      "config_SHA256": "3c113f8587373e248014ca418feb2c08e1655c299396e73840ce0d8a384684ca",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-fine-20261021T160000Z/postprocess/grouped-strip225-gap1-p04-xy80/summary.json",
+        "SHA256": "87fbff47ea8854e75be080935f33c1b9574a8726bc6dd463c6c46fea7f1ebbaf"
+      },
+      "physical_pad_node_ids": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 899.9999999999999,
+      "represented_pad_areas_m2": [
+        0.00022499999999999997,
+        0.00022499999999999997,
+        0.00022499999999999997,
+        0.00022499999999999997
+      ],
+      "analytical_minimum_gap_mm": 1.0,
+      "gap_in_cells": 1.6,
+      "minimum_represented_support_signed_bbox_gap_mm": 0.0,
+      "minimum_contact_cell_centre_distance_mm": 0.625,
+      "shared_tissue_top_faces": {
+        "count": 0,
+        "physical_pad_pairs_same_node": 0,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 101.18628931901317,
+        "surface_J_RMS_p95_A_m2": 18.024628587836975,
+        "contact_voltage_RMS_max_V": 0.010657632766264026
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 616,
+        "physical_pad_id": 1,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          2.1875,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          2.273076923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          2.046153846153846,
+          2.5,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 5.6730769230769246e-08,
+        "patch_fraction_of_native_face": 0.14523076923076927,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 1,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.0625,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 616,
+        "physical_pad_id": 1,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          2.1875,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          2.273076923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          2.046153846153846,
+          2.5,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 5.6730769230769246e-08,
+        "patch_fraction_of_native_face": 0.14523076923076927,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 1,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.0625,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 26.58178448916819,
+          "J_vector_RMS_p95_A_m2": 13.969376240013018,
+          "hotspot": {
+            "center_xyz_mm": [
+              2.1875,
+              0.9375,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 1
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 26.526384654630114,
+          "J_vector_RMS_p95_A_m2": 7.9843609101871005,
+          "hotspot": {
+            "center_xyz_mm": [
+              2.1875,
+              0.9375,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 1
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 26.58178448916819,
+          "J_vector_RMS_p95_A_m2": 8.095055309572981,
+          "hotspot": {
+            "center_xyz_mm": [
+              2.1875,
+              0.9375,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 1
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        1.8028355265694394,
+        1.8052147664982865,
+        1.193899228423883,
+        1.1924835233376083
+      ],
+      "output_RMS_mA": [
+        1.802835524843896,
+        1.8052147669646765
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 2.2944601393497688e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 2.749246320900893e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 4.21806242995952e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 7.847433974142366e-10,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/4/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.8233807951598537,
+        "p10": 3.4188144873337234,
+        "max": 4.714437096333977,
+        "CV": 0.08382799718167817
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.25191696090455595,
+        "active_caps": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "source_Vpp_per_output": 0.25191696090455595,
+        "source_output_RMS_by_output_mA": [
+          0.4541648464294444,
+          0.45476421787376753
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.490542490454928,
+          "surface_J_RMS_p95_A_m2": 4.540709655281269,
+          "contact_voltage_RMS_max_V": 0.0026848384569140493,
+          "SC_power_W": 2.420315591368512e-07,
+          "contact_power_W": 2.9241263911176965e-07,
+          "source_power_W": 8.64427531956143e-05,
+          "bulk_skin_J_vector_RMS_max_A_m2": 6.6964023639311145,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 2.0392817319419145,
+          "skin_SC_plus_dermis_power_W": 5.565606376798349e-05
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 0.963174470297515,
+            "p10": 0.8612573555455791,
+            "p95": 1.1072856484945708,
+            "max": 1.1876466656841547,
+            "CV": 0.08382799718167817,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 2.5621949132482498,
+            "p10": 0.6575389351634066,
+            "p95": 6.461208151331054,
+            "max": 283.2258922898768,
+            "CV": 2.2453416843040186,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 1.1859375e-06,
+                "region_volume_fraction": 0.12085987261146496
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 1.4274944196428572e-06,
+                "region_volume_fraction": 0.1454771383075523
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 1.8405444923317813,
+            "p10": 0.34764736688288655,
+            "p95": 5.766883365327449,
+            "max": 283.2258922898768,
+            "CV": 1.701505394065372,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 8.730279017857151e-06,
+                "region_volume_fraction": 0.1786573859880382
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 1.0016473214285725e-05,
+                "region_volume_fraction": 0.20497820489163793
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 9.684466638788121e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 1.5609725930533641e-09,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 3.97802266779385e-09,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.7412363375283098e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 0.963174470297515,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -76.28728975042257
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 0.8612573555455791,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -76.37630872963128
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 6.461208151331054,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -74.4203990353121
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 1.1859375e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -84.73014782699916
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 1.4274944196428572e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -82.61157719147269
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 5.766883365327449,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -75.39276064722299
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 8.730279017857151e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -54.99776205740563
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 1.0016473214285725e-05,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -52.65344938977052
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    },
+    {
+      "case_id": "grouped-strip225-gap1-p08-xy80",
+      "mesh_label": "fine",
+      "n_pads": 8,
+      "n_outputs": 2,
+      "h_xy_mm": 0.625,
+      "source_commit": "fa39cb8ec2d15e9f4ead967dfdd6bc5c91c0b33e",
+      "config_SHA256": "5bf38bac2886100fb8a7505f603d99bc8a6ac488d57b4d7849035bbb258d1020",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-fine-20261021T160000Z/postprocess/grouped-strip225-gap1-p08-xy80/summary.json",
+        "SHA256": "918bbd1880f42956413362eea69d4dd6951adcc405ae8d60d81ff2f60f192067"
+      },
+      "physical_pad_node_ids": [
+        0,
+        0,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 899.9999999999999,
+      "represented_pad_areas_m2": [
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998,
+        0.00011249999999999998
+      ],
+      "analytical_minimum_gap_mm": 1.0,
+      "gap_in_cells": 1.6,
+      "minimum_represented_support_signed_bbox_gap_mm": 0.0,
+      "minimum_contact_cell_centre_distance_mm": 0.625,
+      "shared_tissue_top_faces": {
+        "count": 0,
+        "physical_pad_pairs_same_node": 0,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 114.42354697657669,
+        "surface_J_RMS_p95_A_m2": 18.562646260836544,
+        "contact_voltage_RMS_max_V": 0.012052013174039207
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 660,
+        "physical_pad_id": 2,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          1.5625,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          1.710576923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          1.546153846153846,
+          1.875,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 4.110576923076925e-08,
+        "patch_fraction_of_native_face": 0.10523076923076928,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 2,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.0625,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 660,
+        "physical_pad_id": 2,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          1.5625,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          1.710576923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          1.546153846153846,
+          1.875,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 4.110576923076925e-08,
+        "patch_fraction_of_native_face": 0.10523076923076928,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 2,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.0625,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 25.901191046385375,
+          "J_vector_RMS_p95_A_m2": 13.937184791743892,
+          "hotspot": {
+            "center_xyz_mm": [
+              2.1875,
+              0.9375,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 2
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 26.070319252659083,
+          "J_vector_RMS_p95_A_m2": 8.319302045902187,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.5625,
+              0.9375,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 2
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 26.070319252659083,
+          "J_vector_RMS_p95_A_m2": 8.460874400654964,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.5625,
+              0.9375,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 2
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        0.7661497698874498,
+        1.113900808749282,
+        1.1155218678039638,
+        0.7670656990046455,
+        0.7040210961661436,
+        0.5878665857513707,
+        0.5869172367286837,
+        0.7038245050788712
+      ],
+      "output_RMS_mA": [
+        1.8788860342030158,
+        1.881443209950559
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 2.906062537810184e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 3.0805159254717597e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 1.9026869180756434e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 1.2638513085333262e-09,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/5/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.8306288008145577,
+        "p10": 3.4239217595157285,
+        "max": 4.727304945233829,
+        "CV": 0.08412670728551797
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.22277095271496714,
+        "active_caps": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "source_Vpp_per_output": 0.22277095271496714,
+        "source_output_RMS_by_output_mA": [
+          0.41856123188225214,
+          0.41913089635979195
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.490242572997786,
+          "surface_J_RMS_p95_A_m2": 4.135218392437479,
+          "contact_voltage_RMS_max_V": 0.0026848384569140493,
+          "SC_power_W": 2.0134212281354248e-07,
+          "contact_power_W": 2.5268311512128716e-07,
+          "source_power_W": 7.035819830915544e-05,
+          "bulk_skin_J_vector_RMS_max_A_m2": 5.807709857498214,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 1.884837051035583,
+          "skin_SC_plus_dermis_power_W": 4.481342767770078e-05
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 0.8533528274548511,
+            "p10": 0.7627503123888254,
+            "p95": 0.9818400342940166,
+            "max": 1.0531062264239157,
+            "CV": 0.08412670728551798,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 2.25001545599056,
+            "p10": 0.5911873353014592,
+            "p95": 5.661074342588676,
+            "max": 255.87747196406647,
+            "CV": 2.285470067383862,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 9.081668526785715e-07,
+                "region_volume_fraction": 0.09255203594176524
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 1.0957338169642858e-06,
+                "region_volume_fraction": 0.11166714058234758
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 1.6268904763193757,
+            "p10": 0.3073751072189011,
+            "p95": 5.105858779791465,
+            "max": 255.87747196406647,
+            "CV": 1.7156646442218855,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 7.211598772321434e-06,
+                "region_volume_fraction": 0.14757894711293343
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 8.518267299107152e-06,
+                "region_volume_fraction": 0.17431875495537244
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 9.559540006698132e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 4.6062753432851207e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 2.8583535986122933e-09,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.5975421263466545e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 0.8533528274548511,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -78.99102503013391
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 0.7627503123888254,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -79.0782885275488
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 5.661074342588676,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -77.58808889556983
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 9.081668526785715e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -88.30665731640899
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 1.0957338169642858e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -86.65277942050147
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 5.105858779791465,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -78.21334659701887
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 7.211598772321434e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -62.82614985904671
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 8.518267299107152e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -59.73527157109264
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    },
+    {
+      "case_id": "grouped-strip225-gap1-p12-xy80",
+      "mesh_label": "fine",
+      "n_pads": 12,
+      "n_outputs": 2,
+      "h_xy_mm": 0.625,
+      "source_commit": "fa39cb8ec2d15e9f4ead967dfdd6bc5c91c0b33e",
+      "config_SHA256": "335188dec1b76ab35f7e2ce71a79dc8c5e6cd2ff1f5c95bcf19c4faec576e05f",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-fine-20261021T160000Z/postprocess/grouped-strip225-gap1-p12-xy80/summary.json",
+        "SHA256": "c4006dc2a191a69c221ea5166d875bd6da3c748c2d2f562b89adcb601b0b913f"
+      },
+      "physical_pad_node_ids": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 900.0,
+      "represented_pad_areas_m2": [
+        7.499999999999998e-05,
+        7.500000000000001e-05,
+        7.5e-05,
+        7.5e-05,
+        7.500000000000001e-05,
+        7.499999999999998e-05,
+        7.5e-05,
+        7.500000000000001e-05,
+        7.499999999999998e-05,
+        7.499999999999998e-05,
+        7.500000000000001e-05,
+        7.5e-05
+      ],
+      "analytical_minimum_gap_mm": 0.9999999999999982,
+      "gap_in_cells": 1.5999999999999972,
+      "minimum_represented_support_signed_bbox_gap_mm": 0.0,
+      "minimum_contact_cell_centre_distance_mm": 0.625,
+      "shared_tissue_top_faces": {
+        "count": 0,
+        "physical_pad_pairs_same_node": 0,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 133.2634023789552,
+        "surface_J_RMS_p95_A_m2": 18.353000973907903,
+        "contact_voltage_RMS_max_V": 0.014036567082272985
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 660,
+        "physical_pad_id": 3,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.9375,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          1.148076923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          1.046153846153846,
+          1.25,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 2.548076923076925e-08,
+        "patch_fraction_of_native_face": 0.06523076923076927,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 3,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.0625,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 660,
+        "physical_pad_id": 3,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.9375,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          1.148076923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          1.046153846153846,
+          1.25,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 2.548076923076925e-08,
+        "patch_fraction_of_native_face": 0.06523076923076927,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 3,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.0625,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 27.421795111216163,
+          "J_vector_RMS_p95_A_m2": 13.949783348218032,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.5625,
+              0.9375,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 3
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 26.96545494862196,
+          "J_vector_RMS_p95_A_m2": 8.443437075467664,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.5625,
+              0.9375,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 3
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 27.421795111216163,
+          "J_vector_RMS_p95_A_m2": 8.635080809110734,
+          "hotspot": {
+            "center_xyz_mm": [
+              1.5625,
+              0.9375,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 3
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        0.5341865249622508,
+        0.5224176760819598,
+        0.9047955583327345,
+        0.9064029622409242,
+        0.5228739695115785,
+        0.5348527945503798,
+        0.5895150418965852,
+        0.37590449436213014,
+        0.4183211954098403,
+        0.41764808933786995,
+        0.37529628335646026,
+        0.5899747376330337
+      ],
+      "output_RMS_mA": [
+        1.956307083130104,
+        1.9591114563064618
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 8.885634731736383e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 1.1334764649515789e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 5.675197445165229e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 9.94496710503687e-10,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/6/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.8213572942092777,
+        "p10": 3.4149410380996676,
+        "max": 4.717264512814207,
+        "CV": 0.08424780787669234
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.19127457883236826,
+        "active_caps": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "source_Vpp_per_output": 0.19127457883236826,
+        "source_output_RMS_by_output_mA": [
+          0.37419181339248947,
+          0.3747282186906861
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.489901163803076,
+          "surface_J_RMS_p95_A_m2": 3.510462531594279,
+          "contact_voltage_RMS_max_V": 0.0026848384569140493,
+          "SC_power_W": 1.6036346325085773e-07,
+          "contact_power_W": 2.0597428259983692e-07,
+          "source_power_W": 5.3849296962004384e-05,
+          "bulk_skin_J_vector_RMS_max_A_m2": 5.245092310725367,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 1.6516714449461214,
+          "skin_SC_plus_dermis_power_W": 3.392264103364904e-05
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 0.7309285070178779,
+            "p10": 0.6531914087998844,
+            "p95": 0.8412995800335279,
+            "max": 0.9022927829294143,
+            "CV": 0.08424780787669232,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 1.9211361665508302,
+            "p10": 0.5108137933938246,
+            "p95": 4.762363587119245,
+            "max": 250.47557587182305,
+            "CV": 2.3480673199562574,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 6.369698660714287e-07,
+                "region_volume_fraction": 0.06491412647861693
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 7.827399553571429e-07,
+                "region_volume_fraction": 0.07976967697907188
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 1.3927646033485936,
+            "p10": 0.2630713482264564,
+            "p95": 4.372981568742228,
+            "max": 250.47557587182305,
+            "CV": 1.7453098850056676,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 3.986724330357145e-06,
+                "region_volume_fraction": 0.08158476333455646
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 6.498058035714291e-06,
+                "region_volume_fraction": 0.13297697132986147
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 9.065100737984078e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 2.928744023856196e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 9.947252720467577e-10,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.6390108144152198e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 0.7309285070178779,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -82.00502978996383
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 0.6531914087998844,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -82.0834131835417
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 4.762363587119245,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -81.14603997362717
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 6.369698660714287e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -91.79852589738763
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 7.827399553571429e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -90.46538248725133
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 4.372981568742228,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -81.34052705239475
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 3.986724330357145e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -79.44950939605833
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 6.498058035714291e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -69.28453487826809
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    },
+    {
+      "case_id": "grouped-strip225-gap1-p16-xy80",
+      "mesh_label": "fine",
+      "n_pads": 16,
+      "n_outputs": 2,
+      "h_xy_mm": 0.625,
+      "source_commit": "fa39cb8ec2d15e9f4ead967dfdd6bc5c91c0b33e",
+      "config_SHA256": "514541699be16ad82c353bf363e6e3d033decd622598620ea4a56d8b0a1d4739",
+      "summary_reference": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-grouped-fine-20261021T160000Z/postprocess/grouped-strip225-gap1-p16-xy80/summary.json",
+        "SHA256": "7f32a65a84f1f3e076e2d738f876151dee1e3a4aab4fde311da79220b6d4335e"
+      },
+      "physical_pad_node_ids": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "represented_total_area_mm2": 900.0000000000001,
+      "represented_pad_areas_m2": [
+        5.625000000000004e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.625000000000004e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.625000000000004e-05,
+        5.625000000000004e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05,
+        5.624999999999999e-05
+      ],
+      "analytical_minimum_gap_mm": 0.9999999999999982,
+      "gap_in_cells": 1.5999999999999972,
+      "minimum_represented_support_signed_bbox_gap_mm": 0.0,
+      "minimum_contact_cell_centre_distance_mm": 0.625,
+      "shared_tissue_top_faces": {
+        "count": 0,
+        "physical_pad_pairs_same_node": 0,
+        "physical_pad_pairs_different_nodes": 0,
+        "same_node_pairs": [],
+        "different_node_pairs": []
+      },
+      "mask_geometry_area_checks": {
+        "all_pad_native_area_gates_passed": true,
+        "input_rows_modified": false,
+        "area_renormalization": false
+      },
+      "raw_contact_metrics": {
+        "surface_J_RMS_max_A_m2": 162.51654497093185,
+        "surface_J_RMS_p95_A_m2": 18.949784942529238,
+        "contact_voltage_RMS_max_V": 0.017118007520236324
+      },
+      "normal_J_RMS_max_location": {
+        "contact_patch_index": 704,
+        "physical_pad_id": 4,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.3125,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          0.585576923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          0.546153846153846,
+          0.625,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 9.855769230769251e-09,
+        "patch_fraction_of_native_face": 0.025230769230769282,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 4,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.039423076923077005,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "contact_voltage_RMS_max_location": {
+        "contact_patch_index": 704,
+        "physical_pad_id": 4,
+        "node": 1,
+        "tissue_top_face_center_xyz_mm": [
+          0.3125,
+          0.3125,
+          0.0
+        ],
+        "physical_patch_centroid_xyz_mm": [
+          0.585576923076923,
+          0.5625,
+          0.0
+        ],
+        "physical_patch_bounds_xy_mm": [
+          0.546153846153846,
+          0.625,
+          0.5,
+          0.625
+        ],
+        "contact_patch_area_m2": 9.855769230769251e-09,
+        "patch_fraction_of_native_face": 0.025230769230769282,
+        "tied_contact_patch_count": 1,
+        "nearest_analytic_pad_edge": {
+          "physical_pad_id": 4,
+          "XY_projection_distance_to_analytic_pad_edge_mm": 0.039423076923077005,
+          "interpretation": "XY projection only; native tissue cell center is not a contact-edge surface sample"
+        },
+        "representation": "density is constant on this saved physical pad/top-cell overlap; tissue face center and clipped physical patch centroid are distinct"
+      },
+      "skin_total_J": {
+        "SC": {
+          "J_vector_RMS_max_A_m2": 30.03195950986078,
+          "J_vector_RMS_p95_A_m2": 14.460095337498853,
+          "hotspot": {
+            "center_xyz_mm": [
+              0.9375,
+              0.9375,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 4
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "dermis": {
+          "J_vector_RMS_max_A_m2": 29.284916476252935,
+          "J_vector_RMS_p95_A_m2": 8.462149475617121,
+          "hotspot": {
+            "center_xyz_mm": [
+              0.9375,
+              0.9375,
+              0.278571428571
+            ],
+            "layer": "dermis",
+            "physical_pad_id": 4
+          },
+          "saved_audit_statistics_reproduced": true
+        },
+        "skin_SC_plus_dermis": {
+          "J_vector_RMS_max_A_m2": 30.03195950986078,
+          "J_vector_RMS_p95_A_m2": 8.66420231765261,
+          "hotspot": {
+            "center_xyz_mm": [
+              0.9375,
+              0.9375,
+              0.025
+            ],
+            "layer": "stratum_corneum",
+            "physical_pad_id": 4
+          },
+          "saved_audit_statistics_reproduced": true
+        }
+      },
+      "physical_pad_RMS_mA": [
+        0.4169061625894396,
+        0.36824007845313517,
+        0.4486646795543345,
+        0.81167456193947,
+        0.8135135458728563,
+        0.44893082840943144,
+        0.3685863958833449,
+        0.41744424493509313,
+        0.5627006756637708,
+        0.30396356671949826,
+        0.2784622051957051,
+        0.33095227548140577,
+        0.33041159815786875,
+        0.27804842380075956,
+        0.30345542009380355,
+        0.5637226752551722
+      ],
+      "output_RMS_mA": [
+        2.0317396817126916,
+        2.0348537795782815
+      ],
+      "current_conservation_by_frequency": [
+        {
+          "frequency_Hz": 3000,
+          "conservation_relative_error": 9.551500994990797e-10,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 3030,
+          "conservation_relative_error": 1.408801457095153e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9000,
+          "conservation_relative_error": 3.801113950015623e-09,
+          "conservation_limit": 2e-06
+        },
+        {
+          "frequency_Hz": 9090,
+          "conservation_relative_error": 4.5093217294314725e-09,
+          "conservation_limit": 2e-06
+        }
+      ],
+      "per_frequency_complex_currents_reference": {
+        "path": "docs/cloud-grouped-gap-diagnostic-20261021T162000Z/summary.json",
+        "JSON_pointer": "/cases/7/native_diagnostic/pad_currents/per_frequency",
+        "convention": "current entering tissue from each physical metal pad; +jomega_t peak spectra; common GND returns not exclusive output pairs"
+      },
+      "raw_primary_maxTIS": {
+        "mean": 3.806387329096133,
+        "p10": 3.401115863781436,
+        "max": 4.698749052434998,
+        "CV": 0.08425801362920178
+      },
+      "skin_contact_only": {
+        "amplitude_scale": 0.15684293009803418,
+        "active_caps": [
+          "contact_voltage_RMS_max_V"
+        ],
+        "source_Vpp_per_output": 0.15684293009803418,
+        "source_output_RMS_by_output_mA": [
+          0.3186640048762659,
+          0.31915242911011704
+        ],
+        "normalized_burdens": {
+          "surface_J_RMS_max_A_m2": 25.489571102649894,
+          "surface_J_RMS_p95_A_m2": 2.972139795113894,
+          "contact_voltage_RMS_max_V": 0.0026848384569140493,
+          "SC_power_W": 1.1805768103049013e-07,
+          "contact_power_W": 1.6009509328212497e-07,
+          "source_power_W": 3.7412609258265536e-05,
+          "bulk_skin_J_vector_RMS_max_A_m2": 4.710300526112087,
+          "bulk_skin_J_vector_RMS_p95_A_m2": 1.358918878462814,
+          "skin_SC_plus_dermis_power_W": 2.326953920249712e-05
+        },
+        "regions": {
+          "primary_r5_depth15_20": {
+            "mean": 0.5970049417834679,
+            "p10": 0.5334409776783869,
+            "p95": 0.6872238524295827,
+            "max": 0.7369655691792667,
+            "CV": 0.08425801362920178,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 0.0,
+                "region_volume_fraction": 0.0
+              }
+            }
+          },
+          "surface_0_5": {
+            "mean": 1.5684234409420295,
+            "p10": 0.42334153112185996,
+            "p95": 3.8740215392453057,
+            "max": 249.6504405477217,
+            "CV": 2.4008366860400425,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 4.5241071428571423e-07,
+                "region_volume_fraction": 0.04610555050045494
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 5.501590401785714e-07,
+                "region_volume_fraction": 0.05606716333030026
+              }
+            }
+          },
+          "primary_complement": {
+            "mean": 1.1378808078035225,
+            "p10": 0.21480929024812645,
+            "p95": 3.5759101724338307,
+            "max": 249.6504405477217,
+            "CV": 1.7720283897556321,
+            "fixed_baseline_threshold_volume": {
+              "primary_r5_depth15_20_mean": {
+                "cutoff_V_m": 4.061848941601601,
+                "volume_m3": 9.420591517857143e-07,
+                "region_volume_fraction": 0.01927840165931546
+              },
+              "primary_r5_depth15_20_p10": {
+                "cutoff_V_m": 3.6457357391300533,
+                "volume_m3": 2.124840959821429e-06,
+                "region_volume_fraction": 0.04348297812080559
+              }
+            }
+          }
+        }
+      },
+      "native_equation_gates": {
+        "max_residual": {
+          "value": 9.340515652823922e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_power_error": {
+          "value": 3.0085524454308776e-10,
+          "limit": 2e-07,
+          "passed": true
+        },
+        "max_current_error": {
+          "value": 4.192593637775461e-09,
+          "limit": 2e-06,
+          "passed": true
+        },
+        "max_area_relative_error": {
+          "value": 0.0,
+          "limit": 1e-10,
+          "passed": true
+        },
+        "max_interface_normal_current_relative_error": {
+          "value": 1.4600247709297818e-15,
+          "limit": 2e-07,
+          "passed": true
+        }
+      },
+      "canonical_eight_screen": [
+        {
+          "name": "primary_maxTIS_mean",
+          "baseline": 4.061848941601601,
+          "candidate": 0.5970049417834679,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -85.30213825361838
+        },
+        {
+          "name": "primary_maxTIS_p10",
+          "baseline": 3.6457357391300533,
+          "candidate": 0.5334409776783869,
+          "unit": "V/m",
+          "passed": false,
+          "relative_change_percent": -85.36808436352338
+        },
+        {
+          "name": "surface_0_5_maxTIS_p95",
+          "baseline": 25.25922183168775,
+          "candidate": 3.8740215392453057,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -84.66294185521845
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 7.766529017857144e-06,
+          "candidate": 4.5241071428571423e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -94.1748661049806
+        },
+        {
+          "name": "surface_0_5_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 8.209453125000001e-06,
+          "candidate": 5.501590401785714e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -93.29846907215794
+        },
+        {
+          "name": "primary_complement_maxTIS_p95",
+          "baseline": 23.43571858123385,
+          "candidate": 3.5759101724338307,
+          "unit": "V/m",
+          "passed": true,
+          "relative_change_percent": -84.74162351779884
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_mean",
+          "baseline": 1.9399655254908982e-05,
+          "candidate": 9.420591517857143e-07,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -95.14393869681096
+        },
+        {
+          "name": "primary_complement_high_volume_at_primary_r5_depth15_20_p10",
+          "baseline": 2.1155655660629288e-05,
+          "candidate": 2.124840959821429e-06,
+          "unit": "m3",
+          "passed": true,
+          "relative_change_percent": -89.95615643444339
+        }
+      ],
+      "all_eight_screen_pass": false,
+      "adopted": false
+    }
+  ],
+  "conclusions": [
+    "Both target mean and P10 fail the fixed original fine4square comparison in all8 cases under skin_contact_only caps; no adoption.",
+    "Skin/contact-capped mean and P10 ranking changes from coarse16,8,4,12 to fine4,8,12,16.",
+    "Physical areas and metal-node topology remain unchanged across each mesh pair; numerical tissue-face sharing differs.",
+    "Coarse8 and16 each share44 tissue top faces across4 same-electrical-node pad pairs, zero different-node pairs; fine has no shared top faces. This is not evidence of metal merging or a short.",
+    "Raw contact voltage maxima and hotspot patch fractions change with grid; this establishes mesh/fragment sensitivity, not a proven nonphysical artifact or converged edge maximum."
+  ],
+  "feedback": {
+    "parent_id": "T1-F010",
+    "regression_source_comment_id": 6319669306,
+    "gap_source_comment_id": 6320375305,
+    "explicit_erratum_commit": "40b8bd39904b63c0f269000b6f8de00c2f979f78",
+    "correction_document": "docs/FEEDBACK_DISPOSITION_CORRECTION_20261021.md",
+    "disposition": "Requested detailed gap diagnostic now implemented and computed. This new result has not been independently peer reviewed; previous regression evidence review applies only to its earlier substep."
+  },
+  "next_root_selected_question": {
+    "status": "native_prepared_not_started_as_reported_by_root",
+    "run_id": "cloud-adjacent-cross-20261021T164000Z",
+    "new_case_id": "balancedcross225-adjacent-sources-xy80",
+    "new_PDE_conditions_planned": 1,
+    "question": "Close the900mm2 four-pad square/cross by opposite/adjacent source-wiring2x2 comparison using one aligned full-face adjacent-cross condition and three completed cached controls.",
+    "cached_controls": [
+      "baseline-square15-xy80 (square/opposite)",
+      "adjacent-square15-xy80 (square/adjacent)",
+      "crossalloc-source225-return225-xy80 (cross/opposite)"
+    ],
+    "constraints": "Physical four225mm2 pads/900mm2; two50ohm common-GND outputs; top-only fixed phantom; reuse three completed controls. No rounded/partial-face shape PDE selected until fragment/edge uncertainty is addressed.",
+    "actual_started": false,
+    "next_result_not_claimed": true,
+    "prepared_source_commit": "7045c954fd8bbcc53ae9b3e81a4529b436362124",
+    "root_decision": "docs/cloud-adjacent-cross-20261021T164000Z/decision.json",
+    "actual_allocation_result": "docs/cloud-autonomous-20261021T144000Z/volume-cross-allocation.json",
+    "preserved_path_failure": "docs/cloud-adjacent-cross-20261021T164000Z/decision-path-failure-preserved.json",
+    "failure_scope": "Earlier decision-path lookup failed before creating any new numerical run or PDE; evidence retained separately."
+  },
+  "raw_probe_status": "existing source-bound unloaded native potential Vpp artifact preserved, not recomputed or loaded",
+  "candidate_adopted": false,
+  "mesh_convergence_validated": false,
+  "experimental_validation": false,
+  "holds": [
+    "Same numerical operator; no independent solver validation",
+    "Two XY grids do not establish SC/XY/bulk/edge/contact convergence",
+    "Shared tissue DOFs do not imply metal pad merging or an electrical short",
+    "Numerical burden limits/cutoffs do not establish human safety or physiological activation"
+  ]
+}

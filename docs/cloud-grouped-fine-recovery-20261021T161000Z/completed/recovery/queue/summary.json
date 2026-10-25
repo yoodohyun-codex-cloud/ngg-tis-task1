@@ -1,0 +1,115 @@
+{
+  "schema": "task1-bounded-continuation-v1",
+  "status": "completed_preregistered_queue",
+  "pid": 17099,
+  "proc_start_ticks": 4591923,
+  "created_utc": "2026-10-21T16:17:12.323782+00:00",
+  "phase": "finished",
+  "stages": [
+    {
+      "id": "register-five-row-native-volume",
+      "elapsed_seconds": 0.26016429000446806,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/volume-plan.json",
+        "statuses": [
+          "preregistered_not_executed"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 0.26016429000446806,
+        "child_ledger_delta_seconds": 0.0,
+        "excluded_already_recorded_seconds": 0.0,
+        "unrecorded_child_wall_seconds": 0.26016429000446806
+      }
+    },
+    {
+      "id": "five-row-native-volume-audit",
+      "elapsed_seconds": 15.589074639996397,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/volume.json",
+        "statuses": [
+          "calculated_unadopted"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 15.589074639996397,
+        "child_ledger_delta_seconds": 15.410070004996669,
+        "excluded_already_recorded_seconds": 15.410070004996669,
+        "unrecorded_child_wall_seconds": 0.1790046349997283
+      }
+    },
+    {
+      "id": "fixed-eight-candidate-screen",
+      "elapsed_seconds": 0.21296743499988224,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/screen.json",
+        "statuses": [
+          "screen_complete_not_adopted"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 0.21296743499988224,
+        "child_ledger_delta_seconds": 0.11693776299944147,
+        "excluded_already_recorded_seconds": 0.11693776299944147,
+        "unrecorded_child_wall_seconds": 0.09602967200044077
+      }
+    },
+    {
+      "id": "feedback-after-grouped-fine",
+      "elapsed_seconds": 2.2836762980005005,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/feedback-after.json",
+        "statuses": [
+          "read_only_feedback_checked"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 2.2836762980005005,
+        "child_ledger_delta_seconds": 2.1365387680052663,
+        "excluded_already_recorded_seconds": 2.1365387680052663,
+        "unrecorded_child_wall_seconds": 0.14713752999523422
+      }
+    },
+    {
+      "id": "publish-only-completed-grouped-results",
+      "elapsed_seconds": 3.927292182997917,
+      "exit_code": 0,
+      "completion": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/grouped-fine-recovery-publication-20261021T161000Z.json",
+        "statuses": [
+          "published_completed_batch"
+        ]
+      },
+      "accounting": {
+        "child_wall_seconds": 3.927292182997917,
+        "child_ledger_delta_seconds": 3.8409211990001495,
+        "excluded_already_recorded_seconds": 3.8409211990001495,
+        "unrecorded_child_wall_seconds": 0.08637098399776733
+      }
+    }
+  ],
+  "current_child": null,
+  "plan_path": "/workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/queue-plan.json",
+  "plan_sha256": "a9a416ce1b3a61fb0de9837a21c86e0a2618912aa0402c8bbfa258c6bd9b3506",
+  "background_daemon": false,
+  "candidate_adopted": false,
+  "updated_utc": "2026-10-21T16:17:34.853034+00:00",
+  "elapsed_seconds": 22.52931710199482,
+  "coordinator_overhead_seconds": 1.0198235259958892,
+  "next_command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/ngg-tis-task1/tools/task1_batch_publish.py --spec /workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/publication-spec.json --output /workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/grouped-fine-recovery-publication-20261021T161000Z.json",
+  "aggregate_rss_bytes": 25669632,
+  "current_child_members": {
+    "17229": 4593790
+  },
+  "stopped_utc": "2026-10-21T16:17:34.853001+00:00",
+  "stop_reason": "All predefined stages completed; root selects next finite scientific question",
+  "next_step_owner": "root",
+  "resume_condition": "Do not rerun attempted queue; inspect evidence and preregister a new unique output",
+  "resume_command": null,
+  "next_inspection_command": "cat /workspace/ngg-tis-task1/docs/cloud-grouped-fine-recovery-20261021T161000Z/queue/heartbeat.json",
+  "numerical_validation_promoted": false
+}

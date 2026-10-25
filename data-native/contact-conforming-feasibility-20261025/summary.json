@@ -1,0 +1,436 @@
+{
+  "schema": "task1-contact-conforming-scalar-preflight-result-v1",
+  "status": "geometry_resource_options_only_unadmitted",
+  "spec": {
+    "schema": "task1-contact-conforming-scalar-preflight-spec-v1",
+    "plan": {
+      "base_uniform_nx": 102,
+      "physical_diameter_m": 0.05,
+      "physical_layer_thickness_m": [
+        0.0001,
+        0.005,
+        0.005,
+        0.015
+      ],
+      "pad_centres_mm": [
+        [
+          -10,
+          -10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          -10
+        ],
+        [
+          -10,
+          10
+        ]
+      ],
+      "pad_width_mm": 15.0,
+      "pad_height_mm": 15.0,
+      "pad_area_m2": 0.000225,
+      "geometry_methods": [
+        "move_nearest_faces",
+        "union_faces"
+      ],
+      "evaluation_options": [
+        {
+          "id": "moved_faces_keep97",
+          "geometry": "move_nearest_faces",
+          "layer_samples": [
+            4,
+            19,
+            18,
+            56
+          ],
+          "planes": 97
+        },
+        {
+          "id": "union_faces_keep97",
+          "geometry": "union_faces",
+          "layer_samples": [
+            4,
+            19,
+            18,
+            56
+          ],
+          "planes": 97
+        },
+        {
+          "id": "union_faces_explicit90",
+          "geometry": "union_faces",
+          "layer_samples": [
+            4,
+            18,
+            18,
+            50
+          ],
+          "planes": 90
+        }
+      ],
+      "physical_evaluation_cell_cap": 800000,
+      "CPU_limit": 4,
+      "total_RSS_plus_all_owned_tmpfs_limit_bytes": 8000000000,
+      "root_scalar_preflight_timeout_seconds": 60,
+      "future_numerical_child_timeout_seconds": 600,
+      "real_Q_cache_chunk_max_bytes": 33554432,
+      "no_automatic_method_or_sampling_selection": true,
+      "new_eigen_runs": 0,
+      "new_CEM_conditions": 0,
+      "new_CEM_RHS": 0,
+      "new_actual_phantom_PDE": 0
+    },
+    "proposed_validation_gates": {
+      "weighted_null_relative": 1e-12,
+      "full_contact_analytic_relative": 1e-10,
+      "uniform_limit_operator_relative": 1e-12,
+      "eigen_residual_spectral_relative": 1e-11,
+      "selected_orthogonality_absolute": 2e-10,
+      "real_transform_relative": 2e-10,
+      "CEM_loaded_current_residual": 2e-07,
+      "CEM_KCL": 2e-06,
+      "CEM_complex_power": 2e-07,
+      "CEM_reciprocity": 2e-07,
+      "existing_independent_potential_gradient_screen": 0.05
+    },
+    "baseline_geometry_metadata": {
+      "commit": "ea11fdd9198a7e0c82d91d87f594a5063087486a",
+      "summary_SHA256": "33e6585e3ff2c797a8fb3cb42040d252dfe5da1aa848aa3817feb2747b538cd4",
+      "XY_nodes": 8184,
+      "h_m": 0.0004901960784313725
+    },
+    "insertion_face_coordinates_m": [
+      -0.0175,
+      -0.0025,
+      0.0025,
+      0.0175
+    ],
+    "physical_geometry": "Same50mm body/four-layer thickness/pad polygons; new Cartesian staircase and local spacing are numerical geometry changes and must be compared on physical overlap.",
+    "material_and_contact": "No material/gamma/contact data evaluated here. Future admission must pin unchanged owner-selected latest verified material/contact/frequency inputs; no invented constants or inherited experimental validation.",
+    "mass_operator": "M_i=dx_i*dy_i; K_ij=-shared_face_length/centre_distance, diagonal=sum conductances; A=M^(-1/2) K M^(-1/2)",
+    "modal_operator": "I_tissue=M^(1/2) Q diag(Y) Q^T M^(1/2) phi; Q real Euclidean-orthonormal, zeroq=sqrt(M)/sqrt(sumM)",
+    "reconstruction": "b=Q^T sqrt(M) phi_top; phi(z)=M^(-1/2) Q diag(F(z)) b; integratedJ(z)=sqrt(M) Q diag(Junit(z)) b",
+    "contacts": "Conforming full physical cell faces only, G=actual_area/zA with noSC halfcell; pad0/1 two outputs each50ohm, pad2/3 common0V, inactive output0V behind50ohm.",
+    "zero_mode": "Actual insulated bottom givesY(0)=0; a grounded-bottom full-contact analytic validation is separately labelled synthetic and must not change actual boundary conditions.",
+    "cell_semantics": "Unique physical evaluation samples=Nxy*selected_planes <=800000; densebasis entries are disclosed storage, not cells. Streaming/chunking cannot bypass total evaluation cap.",
+    "resource_semantics": "No resource admission from approximate historic4.4GB tmpfs. Root supplies fresh aggregate task-tmpfs/other-owned-RSS snapshot; theoretical passing estimate is not a runtime guarantee.",
+    "required_before_actual_four_pad": [
+      "nonuniform constant/mass/null and uniform-grid reduction checks",
+      "separate grounded-full-contact analytic current/power check",
+      "controlled Fourier/MMS operator consistency/refinement with nonuniform waves NOT assumed eigenmodes",
+      "weighted eigen residual/orthogonality and transforms",
+      "fresh resource/cell/sampling admission and source publication"
+    ],
+    "no_old_graph_recomputation": true,
+    "no_actual_solver_admission": true,
+    "no_criteria_relaxation": true,
+    "candidate_adopted": false
+  },
+  "geometries": {
+    "move_nearest_faces": {
+      "method": "move_nearest_faces",
+      "cells_across": 102,
+      "XY_nodes": 8184,
+      "undirected_edges": 16164,
+      "connected_components": 1,
+      "source_node_order": "j then i over exact rational center-inside circle",
+      "moved_faces": [
+        {
+          "index": 15,
+          "original_m": -0.01764705882352941,
+          "new_m": -0.0175,
+          "shift_m": 0.00014705882352941175
+        },
+        {
+          "index": 46,
+          "original_m": -0.0024509803921568627,
+          "new_m": -0.0025,
+          "shift_m": -4.901960784313725e-05
+        },
+        {
+          "index": 56,
+          "original_m": 0.0024509803921568627,
+          "new_m": 0.0025,
+          "shift_m": 4.901960784313725e-05
+        },
+        {
+          "index": 87,
+          "original_m": 0.01764705882352941,
+          "new_m": 0.0175,
+          "shift_m": -0.00014705882352941175
+        }
+      ],
+      "minimum_dx_m": 0.0003431372549019608,
+      "maximum_dx_m": 0.0006372549019607843,
+      "maximum_abs_face_shift_m": 0.00014705882352941175,
+      "represented_staircase_area_m2": 0.001965888119953864,
+      "physical_circle_area_m2": 0.001963495408493621,
+      "baseline_verified_uniform_area_m2": 0.001966551326412918,
+      "represented_area_difference_from_verified_uniform_m2": -6.632064590539853e-07,
+      "mass_min_m2": 1.1774317570165321e-07,
+      "mass_max_m2": 3.436178392925798e-07,
+      "degree_min": 2,
+      "degree_max": 4,
+      "A_Gershgorin_upper_bound_per_m2": 46307620.03846339,
+      "weighted_zero_scalar_relative_residual": 1.5449790664095136e-16,
+      "weighted_zero_scalar_gate": 1e-12,
+      "weighted_zero_scalar_passed": true,
+      "zero_vector": "sqrt(M)/sqrt(sumM), NOT a constant Euclidean vector",
+      "pad_area_proofs": [
+        {
+          "pad": 0,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        },
+        {
+          "pad": 1,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        },
+        {
+          "pad": 2,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        },
+        {
+          "pad": 3,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        }
+      ],
+      "full_face_contacts": true,
+      "geometry_table_SHA256": "6e74b08eaa5fe68595246dae2cc1b2357f22d303ea2dfaf44cfc144636709778",
+      "unchanged_body_and_physical_pads": true,
+      "staircase_projection_required": true,
+      "new_eigen_or_CEM_runs": 0
+    },
+    "union_faces": {
+      "method": "union_faces",
+      "cells_across": 106,
+      "XY_nodes": 8896,
+      "undirected_edges": 17580,
+      "connected_components": 1,
+      "source_node_order": "j then i over exact rational center-inside circle",
+      "moved_faces": [],
+      "minimum_dx_m": 4.901960784313725e-05,
+      "maximum_dx_m": 0.0004901960784313725,
+      "maximum_abs_face_shift_m": 0.0,
+      "represented_staircase_area_m2": 0.0019659746251441757,
+      "physical_circle_area_m2": 0.001963495408493621,
+      "baseline_verified_uniform_area_m2": 0.001966551326412918,
+      "represented_area_difference_from_verified_uniform_m2": -5.767012687422565e-07,
+      "mass_min_m2": 2.4029219530949633e-09,
+      "mass_max_m2": 2.402921953094964e-07,
+      "degree_min": 2,
+      "degree_max": 4,
+      "A_Gershgorin_upper_bound_per_m2": 421137944.4020245,
+      "weighted_zero_scalar_relative_residual": 7.696462253273586e-17,
+      "weighted_zero_scalar_gate": 1e-12,
+      "weighted_zero_scalar_passed": true,
+      "zero_vector": "sqrt(M)/sqrt(sumM), NOT a constant Euclidean vector",
+      "pad_area_proofs": [
+        {
+          "pad": 0,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        },
+        {
+          "pad": 1,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        },
+        {
+          "pad": 2,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        },
+        {
+          "pad": 3,
+          "full_contact_faces": 961,
+          "exact_area_numerator": 9,
+          "exact_area_denominator": 40000,
+          "area_m2": 0.000225,
+          "all_contact_fractions_exactly_one": true
+        }
+      ],
+      "full_face_contacts": true,
+      "geometry_table_SHA256": "5107a173579b81b67e0a3ffde8738b1401ef4bbce5ba1a36af35ded31fedd4d0",
+      "unchanged_body_and_physical_pads": true,
+      "staircase_projection_required": true,
+      "new_eigen_or_CEM_runs": 0
+    }
+  },
+  "evaluation_options": [
+    {
+      "id": "moved_faces_keep97",
+      "geometry": "move_nearest_faces",
+      "layer_samples": [
+        4,
+        19,
+        18,
+        56
+      ],
+      "planes": 97,
+      "XY_nodes": 8184,
+      "physical_evaluation_cells": 793848,
+      "maximum": 800000,
+      "physical_evaluation_cap_passed": true,
+      "sampling_changed": false,
+      "resources": {
+        "real_dense_input_bytes": 535822848,
+        "real_returned_Q_bytes": 535822848,
+        "possible_real_backend_copy_bytes": 535822848,
+        "new_local_Q_cache_bytes": 535822848,
+        "workspace_allowance_bytes": 536870912,
+        "vector_library_allowance_bytes": 268435456,
+        "sparse_scalar_allowance_bytes": 2592768,
+        "conservative_incremental_bytes": 2951190528,
+        "eigenmatrix_entries": 66977856,
+        "max_cache_chunk_bytes": 33554432,
+        "cache_chunks": 16,
+        "peak_estimate_not_measured": true,
+        "no_complex_dense_Q_or_K": true,
+        "status": "theoretical_budget_estimate_passes_runtime_gate_pending",
+        "snapshot": {
+          "owned_tmpfs_bytes": 4346749777,
+          "other_owned_RSS_bytes": 34283520
+        },
+        "projected_RSS_plus_all_owned_tmpfs_bytes": 7332223825,
+        "approved_limit_bytes": 8000000000,
+        "budget_estimate_within_limit": true,
+        "actual_worker_admitted": false
+      },
+      "status": "pending_validation_and_explicit_owner_selection",
+      "no_like_sampled_fit_or_E_TIS_convergence_claim": true,
+      "actual_eigen_or_CEM_admitted": false
+    },
+    {
+      "id": "union_faces_keep97",
+      "geometry": "union_faces",
+      "layer_samples": [
+        4,
+        19,
+        18,
+        56
+      ],
+      "planes": 97,
+      "XY_nodes": 8896,
+      "physical_evaluation_cells": 862912,
+      "maximum": 800000,
+      "physical_evaluation_cap_passed": false,
+      "sampling_changed": false,
+      "resources": {
+        "real_dense_input_bytes": 633110528,
+        "real_returned_Q_bytes": 633110528,
+        "possible_real_backend_copy_bytes": 633110528,
+        "new_local_Q_cache_bytes": 633110528,
+        "workspace_allowance_bytes": 536870912,
+        "vector_library_allowance_bytes": 268435456,
+        "sparse_scalar_allowance_bytes": 2819584,
+        "conservative_incremental_bytes": 3340568064,
+        "eigenmatrix_entries": 79138816,
+        "max_cache_chunk_bytes": 33554432,
+        "cache_chunks": 19,
+        "peak_estimate_not_measured": true,
+        "no_complex_dense_Q_or_K": true,
+        "status": "theoretical_budget_estimate_passes_runtime_gate_pending",
+        "snapshot": {
+          "owned_tmpfs_bytes": 4346749777,
+          "other_owned_RSS_bytes": 34283520
+        },
+        "projected_RSS_plus_all_owned_tmpfs_bytes": 7721601361,
+        "approved_limit_bytes": 8000000000,
+        "budget_estimate_within_limit": true,
+        "actual_worker_admitted": false
+      },
+      "status": "blocked_physical_evaluation_cap",
+      "no_like_sampled_fit_or_E_TIS_convergence_claim": true,
+      "actual_eigen_or_CEM_admitted": false
+    },
+    {
+      "id": "union_faces_explicit90",
+      "geometry": "union_faces",
+      "layer_samples": [
+        4,
+        18,
+        18,
+        50
+      ],
+      "planes": 90,
+      "XY_nodes": 8896,
+      "physical_evaluation_cells": 800640,
+      "maximum": 800000,
+      "physical_evaluation_cap_passed": false,
+      "sampling_changed": true,
+      "resources": {
+        "real_dense_input_bytes": 633110528,
+        "real_returned_Q_bytes": 633110528,
+        "possible_real_backend_copy_bytes": 633110528,
+        "new_local_Q_cache_bytes": 633110528,
+        "workspace_allowance_bytes": 536870912,
+        "vector_library_allowance_bytes": 268435456,
+        "sparse_scalar_allowance_bytes": 2819584,
+        "conservative_incremental_bytes": 3340568064,
+        "eigenmatrix_entries": 79138816,
+        "max_cache_chunk_bytes": 33554432,
+        "cache_chunks": 19,
+        "peak_estimate_not_measured": true,
+        "no_complex_dense_Q_or_K": true,
+        "status": "theoretical_budget_estimate_passes_runtime_gate_pending",
+        "snapshot": {
+          "owned_tmpfs_bytes": 4346749777,
+          "other_owned_RSS_bytes": 34283520
+        },
+        "projected_RSS_plus_all_owned_tmpfs_bytes": 7721601361,
+        "approved_limit_bytes": 8000000000,
+        "budget_estimate_within_limit": true,
+        "actual_worker_admitted": false
+      },
+      "status": "blocked_physical_evaluation_cap",
+      "no_like_sampled_fit_or_E_TIS_convergence_claim": true,
+      "actual_eigen_or_CEM_admitted": false
+    }
+  ],
+  "actual_new_eigen_runs": 0,
+  "actual_new_CEM_conditions": 0,
+  "actual_new_CEM_RHS": 0,
+  "actual_old_uniform_graph_runs": 0,
+  "automatic_option_selected": null,
+  "holds": {
+    "nonuniform_operator_MMS_required": true,
+    "weighted_eigen_validation_required": true,
+    "fullcontact_nonzero_current_validation_required": true,
+    "fresh_resource_snapshot_required": false,
+    "no_criteria_relaxation": true,
+    "no_silent_sampling_change": true,
+    "actual_material_circuit_contact_changes": false,
+    "candidate_adopted": false,
+    "full_convergence": false,
+    "experimental_validation": false
+  }
+}

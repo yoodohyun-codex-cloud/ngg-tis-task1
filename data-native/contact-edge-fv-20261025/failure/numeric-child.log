@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/dev/shm/task1-contact-continuation-20261025/fv-owner-source/worker.py", line 40, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/dev/shm/task1-contact-continuation-20261025/fv-owner-source/worker.py", line 27, in main
+    result=model.build(spec,guard,deadline_monotonic=deadline,output_dir=out)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-contact-edge-fv-20261025/source/contact_edge_fv.py", line 190, in build
+    result['metadata'].update(spec_sha256=spec_sha,method_sha256=method_sha,arrays_SHA256=file_sha(arr_path));new_json(meta_path,result['metadata']);solves+=1
+                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-contact-edge-fv-20261025/source/contact_edge_fv.py", line 30, in new_json
+    with Path(path).open('xb')as stream:stream.write(encoded(value))
+                                                     ^^^^^^^^^^^^^^
+  File "/dev/shm/task1-contact-edge-fv-20261025/source/contact_edge_fv.py", line 28, in encoded
+    def encoded(value):return(json.dumps(value,allow_nan=False,ensure_ascii=False,sort_keys=True,separators=(',',':'))+'\n').encode()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

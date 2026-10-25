@@ -1,0 +1,98 @@
+{
+  "admitted_resources": {
+    "aggregate_cap_bytes": 8000000000,
+    "child_RLIMIT_AS_bytes": 1309931895,
+    "extra_reserve_bytes": 600000000,
+    "observed_owned_tmpfs_bytes": 6063620233,
+    "parent_RSS_bytes": 26447872
+  },
+  "candidate_adopted": false,
+  "completed_new_RHS": 2,
+  "failed_phase": "postprocessing_before_first_angular_evaluation",
+  "failed_source_commit": "3329379d39bd8632dc75308e32dc4e30fb9296e7",
+  "failure": {
+    "CPU_cap": 4,
+    "actual_Windows_saved": false,
+    "actual_parent_authentication": {
+      "exact_source_input_readback_verified": true,
+      "parent_pid": 163930,
+      "parent_start_ticks": 5557984,
+      "source_publication_commit": "3329379d39bd8632dc75308e32dc4e30fb9296e7",
+      "three_dual_locks": true
+    },
+    "average_process_CPU_cores": 2.309364990607377,
+    "candidate_adopted": false,
+    "configured": {
+      "actual_BLAS_threads_verified": false,
+      "affinity_cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "java_GC_policy": "unchanged; caller retains existing SerialGC",
+      "java_active_processor_count": 4,
+      "java_heap_bytes": 2147483648,
+      "status": "configured_before_numpy_import",
+      "thread_environment": {
+        "MKL_NUM_THREADS": "4",
+        "NUMEXPR_MAX_THREADS": "4",
+        "NUMEXPR_NUM_THREADS": "4",
+        "OMP_NUM_THREADS": "4",
+        "OPENBLAS_NUM_THREADS": "4"
+      }
+    },
+    "elapsed_seconds": 21.14137312099774,
+    "error": "Unable to allocate 18.2 MiB for an array with shape (793860, 3) and data type float64",
+    "error_type": "MemoryError",
+    "expected_control_case_aliases": 2,
+    "input_verification": {
+      "before_tests_and_build": {
+        "count": 113,
+        "passed": true
+      }
+    },
+    "maximum_new_driven_RHS": 6,
+    "new_eigen_solves": 0,
+    "new_native_FVM_RHS": 0,
+    "peak_worker_RSS_bytes": 858378240,
+    "process_CPU_seconds": 48.823146939,
+    "schema": "task1-peripheral-fourpad-search-worker-v1",
+    "status": "failed_preserved",
+    "test_count": 25
+  },
+  "failure_owner": {
+    "Windows_saved_verified": false,
+    "candidate_adopted": false,
+    "elapsed_seconds": 72.99042604800343,
+    "error": "Finite child failed peripheral-fourpad-search-child; preserve log /dev/shm/task1-peripheral-fourpad-20261025-run/logs/13-peripheral-fourpad-search-child.log",
+    "error_type": "ValueError",
+    "expected_control_case_aliases": 2,
+    "failed_phase": "peripheral-fourpad-search-child",
+    "finished_utc": "2026-10-25T10:27:06.019571+00:00",
+    "maximum_new_driven_RHS": 6,
+    "nonduplicated_ledger_seconds": 24.086582621006528,
+    "pid": 163930,
+    "proc_start_ticks": 5557984,
+    "remaining_approved_seconds": null,
+    "resources": {
+      "peak_RSS": 873283584,
+      "peak_accounted": 7032931229,
+      "peak_owned_tmpfs": 6159647645
+    },
+    "schema": "task1-peripheral-search-owner-v1",
+    "started_utc": "2026-10-25T10:25:53.014215+00:00",
+    "status": "failed_preserved"
+  },
+  "new_angular_metrics_completed": 0,
+  "planned_recovery": "Reuse authenticated P23p5 raw states; solve only the two P12 RHS. Separate Q/profile-dependent solves from angular metrics and release Q before metrics. Preserve all failure evidence, same4CPU/8e9aggregate and same criteria.",
+  "ready_new_geometries": 2,
+  "recipe_blockers": [
+    {
+      "blocker": "Final physical pad is not four-neighbour connected; no maskrepair allowed",
+      "candidate_id": "P24-peripheral-polyomino225"
+    }
+  ],
+  "schema": "task1-peripheral-memory-failure-recovery-checkpoint-v1",
+  "status": "failed_preserved_two_raw_RHS_reusable_after_authenticated_publication"
+}

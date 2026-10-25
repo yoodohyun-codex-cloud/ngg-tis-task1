@@ -1,0 +1,74 @@
+{
+  "schema": "task1-instrument-user-spec-v1",
+  "version": "2026-10-20-user-spec-1",
+  "provenance": {
+    "source_type": "user-provided hardware specifications and URLs",
+    "independent_manufacturer_verification_performed": false,
+    "documents_downloaded_or_republished": false,
+    "urls": [
+      "https://en.tw-eta.com/index.php?c=show&id=121",
+      "https://go.keysight.com/us/en/assets/7018-06411/data-sheets/5992-3484.pdf"
+    ],
+    "uncertainty": "Specification values are user supplied; actual instrument options, switches, tolerances not stated here, calibration and complete transfer functions are unverified."
+  },
+  "probe": {
+    "model": "ETA5001",
+    "bandwidth_Hz": 15000000.0,
+    "attenuation_options": [50, 500],
+    "actual_attenuation_switch": null,
+    "each_input_to_ground": {
+      "resistance_ohm": 4000000.0,
+      "capacitance_F": 7e-12,
+      "value_status": "user-provided specification values; actual R/C not measured"
+    },
+    "between_inputs": {
+      "resistance_ohm": 8000000.0,
+      "capacitance_F": 3.5e-12,
+      "interpretation": "Equivalent differential impedance of the two equal input-to-ground shunts; do not add an independent parallel 8Mohm/3.5pF branch."
+    },
+    "input_model": "Two identical 4Mohm parallel 7pF shunts from the two tips to the probe reference ground.",
+    "actual_reference_ground_connection": null,
+    "output_impedance_ohm": null,
+    "measured_complex_transfer_function": null,
+    "attenuation_reference_load": "Nominal voltage conversion for intended high-impedance scope connection; output impedance and calibration are unverified."
+  },
+  "scope": {
+    "model": "Keysight DSOX1202A",
+    "input_resistance_ohm": 1000000.0,
+    "input_resistance_relative_tolerance": 0.02,
+    "input_capacitance_F": 16e-12,
+    "input_capacitance_absolute_tolerance_F": 3e-12,
+    "physical_connection": "Scope input loads the probe output downstream, not the phantom or probe input in parallel.",
+    "possible_bandwidth_options_Hz": [70000000.0, 100000000.0, 200000000.0],
+    "actual_bandwidth_option_Hz": null,
+    "actual_coupling": null,
+    "actual_probe_factor": null,
+    "actual_20MHz_limit_enabled": null,
+    "external_50ohm_termination": null
+  },
+  "recommended_start_configuration": {
+    "probe_attenuation": 50,
+    "scope_probe_factor": 50,
+    "scope_coupling": "DC",
+    "scope_input": "1Mohm high impedance",
+    "scope_bandwidth_limit_Hz": 20000000.0,
+    "external_50ohm_termination": false,
+    "actual_switches_verified": false
+  },
+  "illustrative_filter_option": {
+    "enabled_by_default": false,
+    "probe_model": "Assumed unity-DC-gain one-pole low-pass, cutoff 15MHz",
+    "scope_model": "Assumed unity-DC-gain one-pole low-pass, cutoff 20MHz limit",
+    "formula": "H(f)=1/(1+j*f/15MHz) * 1/(1+j*f/20MHz)",
+    "status": "Illustrative assumption only; bandwidth specifications do not determine actual complex transfer functions."
+  },
+  "loaded_prediction": {
+    "status": "held_missing_native_port_response",
+    "required": [
+      "Per-frequency 2x2 complex Thevenin impedance matrix Z_port between finite probe-tip ports, with the existing common-ground/50ohm source termination preserved",
+      "Open-circuit complex potential at each tip relative to the actual probe reference ground, not only their difference",
+      "Finite tip geometry/contact regularization and its discretization/convergence evidence",
+      "Actual probe reference-ground connection, output transfer/load reference, attenuation switch and scope settings"
+    ]
+  }
+}

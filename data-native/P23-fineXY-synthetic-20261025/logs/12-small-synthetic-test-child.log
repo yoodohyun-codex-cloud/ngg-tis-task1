@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/dev/shm/task1-P23-fineXY-synthetic-20261025-run/source/owner/worker.py", line 107, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/dev/shm/task1-P23-fineXY-synthetic-20261025-run/source/owner/worker.py", line 98, in main
+    validate_test_receipt(receipt,prereg['expected_principal_tests'],prereg['expected_owner_tests'],prereg['model_source_sha256'],expected_events)
+  File "/dev/shm/task1-P23-fineXY-synthetic-20261025-run/source/owner/owner_contracts.py", line 19, in validate_test_receipt
+    require(receipt.get('forbidden_field_calls')==[]and receipt.get('native_IO_attempts')==[],'Synthetic scope forbids native input/cache/field APIs even if a test catches the exception')
+  File "/dev/shm/task1-P23-fineXY-synthetic-20261025-run/source/owner/owner_contracts.py", line 8, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Synthetic scope forbids native input/cache/field APIs even if a test catches the exception

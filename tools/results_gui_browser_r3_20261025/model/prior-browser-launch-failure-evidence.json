@@ -1,0 +1,199 @@
+{
+  "schema": "task1-prior-browser-launch-failure-evidence-v1",
+  "previous_run": "/dev/shm/task1-results-gui-browser-20261025-run",
+  "previous_source_publication_commit": "9299f993e5e655ee6dcb2710a4bbee17af5f5e76",
+  "failure_stage": "Chromium launch before page/GUI",
+  "root_reported_owner_dead": true,
+  "old_owner_pid": 177183,
+  "old_owner_start_ticks": 6000973,
+  "diagnosis": "Chromium process_singleton_posix UNIX socket path exceeded platform108-byte address limit under long temporary directory; no HTML/science result was exercised or invalidated",
+  "resolution": "New R2 namespace and exclusive short /dev/shm/task1-gbr2-PID scratch with p/t/c; preserve original attempt and actual profiles, unchanged flags/limits/gates",
+  "new_PDE_RHS": 0,
+  "old_HTML_modified": false,
+  "old_source_modified": false,
+  "evidence": {
+    "owner_receipt": {
+      "path": "/dev/shm/task1-results-gui-browser-20261025-run/receipt.json",
+      "SHA256": "37055aec6e1e198fc4053d2af7b5bd048e21b685bcc62df53113cc797ee8cee0",
+      "bytes": 826,
+      "format": "JSON",
+      "record": {
+        "schema": "task1-results-gui-browser-owner-v1",
+        "status": "failed_preserved",
+        "started_utc": "2026-10-25T11:39:42.914855+00:00",
+        "pid": 177183,
+        "proc_start_ticks": 6000973,
+        "maximum_new_driven_RHS": 0,
+        "new_PDE_RHS": 0,
+        "Windows_saved_verified": false,
+        "candidate_adopted": false,
+        "error_type": "ValueError",
+        "error": "Finite child failed actual-browser-child; preserve log /dev/shm/task1-results-gui-browser-20261025-run/logs/8-actual-browser-child.log",
+        "failed_phase": "actual-browser-child",
+        "finished_utc": "2026-10-25T11:40:08.603827+00:00",
+        "elapsed_seconds": 25.66841186599777,
+        "nonduplicated_ledger_seconds": 3.107176127996354,
+        "resources": {
+          "peak_RSS": 165105664,
+          "peak_owned_tmpfs": 6837676535,
+          "peak_accounted": 7002782199
+        },
+        "remaining_approved_seconds": null
+      }
+    },
+    "worker_receipt": {
+      "path": "/dev/shm/task1-results-gui-browser-20261025-run/worker-receipt.json",
+      "SHA256": "30aa488fe52e692c55176cd9e8cc0372e35db165f3d929a7aa520efe21bd3c76",
+      "bytes": 6782,
+      "format": "JSON",
+      "record": {
+        "schema": "task1-results-gui-browser-worker-v1",
+        "status": "failed_preserved",
+        "maximum_new_driven_RHS": 0,
+        "new_PDE_RHS": 0,
+        "expected_canonical_native_geometries": 15,
+        "expected_unloaded_probes": 600,
+        "new_eigen_solves": 0,
+        "new_native_FVM_RHS": 0,
+        "candidate_adopted": false,
+        "actual_Windows_saved": false,
+        "CPU_cap": 4,
+        "configured": {
+          "status": "configured_before_numpy_import",
+          "affinity_cpus": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "thread_environment": {
+            "OPENBLAS_NUM_THREADS": "4",
+            "OMP_NUM_THREADS": "4",
+            "MKL_NUM_THREADS": "4",
+            "NUMEXPR_NUM_THREADS": "4",
+            "NUMEXPR_MAX_THREADS": "4"
+          },
+          "actual_BLAS_threads_verified": false,
+          "java_active_processor_count": 4,
+          "java_heap_bytes": 2147483648,
+          "java_GC_policy": "unchanged; caller retains existing SerialGC"
+        },
+        "actual_parent_authentication": {
+          "parent_pid": 177183,
+          "parent_start_ticks": 6000973,
+          "three_dual_locks": true,
+          "source_publication_commit": "9299f993e5e655ee6dcb2710a4bbee17af5f5e76",
+          "exact_source_input_readback_verified": true
+        },
+        "error_type": "TargetClosedError",
+        "error": "BrowserType.launch_persistent_context: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disk-cache-size=0 --media-cache-size=0 --user-data-dir=/dev/shm/task1-results-gui-browser-20261025-run/browser-profile/chromium --remote-debugging-pipe about:blank\n<launched> pid=177367\n[pid=177367][err] [177367:177367:1025/114008.433046:FATAL:chrome/browser/process_singleton_posix.cc:313] Socket path too long: /dev/shm/task1-results-gui-browser-20261025-run/browser-profile/org.chromium.Chromium.UMsVP8/SingletonSocket.\n[pid=177367][err] [1025/114008.438151:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)\n[pid=177367][err] [1025/114008.438459:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)\nCall log:\n  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disk-cache-size=0 --media-cache-size=0 --user-data-dir=/dev/shm/task1-results-gui-browser-20261025-run/browser-profile/chromium --remote-debugging-pipe about:blank\n  - <launched> pid=177367\n  - [pid=177367][err] [177367:177367:1025/114008.433046:FATAL:chrome/browser/process_singleton_posix.cc:313] Socket path too long: /dev/shm/task1-results-gui-browser-20261025-run/browser-profile/org.chromium.Chromium.UMsVP8/SingletonSocket.\n  - [pid=177367][err] [1025/114008.438151:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)\n  - [pid=177367][err] [1025/114008.438459:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)\n  - [pid=177367] <gracefully close start>\n  - [pid=177367] <kill>\n  - [pid=177367] <will force kill>\n  - [pid=177367] <process did exit: exitCode=null, signal=SIGABRT>\n  - [pid=177367] starting temporary directories cleanup\n  - [pid=177367] finished temporary directories cleanup\n  - [pid=177367] <gracefully close end>\n",
+        "elapsed_seconds": 0.817551239997556,
+        "process_CPU_seconds": 0.254087083,
+        "average_process_CPU_cores": 0.31079040746211767,
+        "peak_worker_RSS_bytes": 37482496,
+        "actual_worker_VmPeak_bytes": 59981824,
+        "input_verification": {
+          "before_actual_browser": {
+            "passed": true,
+            "count": 23
+          }
+        }
+      }
+    },
+    "worker_log": {
+      "path": "/dev/shm/task1-results-gui-browser-20261025-run/logs/8-actual-browser-child.log",
+      "SHA256": "940a2f8528c14c5691cb048b90a6aa49f849c829df399905b826cf467481c16a",
+      "bytes": 7627,
+      "format": "text",
+      "record": "Traceback (most recent call last):\n  File \"/dev/shm/task1-results-gui-browser-20261025-run/source/model/worker.py\", line 118, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/dev/shm/task1-results-gui-browser-20261025-run/source/model/worker.py\", line 108, in main\n    result=browser_checks.build(spec,guard,deadline_monotonic=deadline,output_dir=out)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/dev/shm/task1-results-gui-browser-20261025-run/source/model/browser_checks.py\", line 26, in build\n    context=engine.chromium.launch_persistent_context(str(profile/'chromium'),executable_path='/usr/bin/chromium',headless=True,viewport=dict(width=1450,height=1050),env=env,ignore_default_args=['--disable-dev-shm-usage'],args=['--disk-cache-size=0','--media-cache-size=0'])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py\", line 17003, in launch_persistent_context\n    self._sync(\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_browser_type.py\", line 165, in launch_persistent_context\n    result = await self._channel.send_return_as_dict(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py\", line 103, in send_return_as_dict\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py\", line 632, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TargetClosedError: BrowserType.launch_persistent_context: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disk-cache-size=0 --media-cache-size=0 --user-data-dir=/dev/shm/task1-results-gui-browser-20261025-run/browser-profile/chromium --remote-debugging-pipe about:blank\n<launched> pid=177367\n[pid=177367][err] [177367:177367:1025/114008.433046:FATAL:chrome/browser/process_singleton_posix.cc:313] Socket path too long: /dev/shm/task1-results-gui-browser-20261025-run/browser-profile/org.chromium.Chromium.UMsVP8/SingletonSocket.\n[pid=177367][err] [1025/114008.438151:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)\n[pid=177367][err] [1025/114008.438459:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)\nCall log:\n  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disk-cache-size=0 --media-cache-size=0 --user-data-dir=/dev/shm/task1-results-gui-browser-20261025-run/browser-profile/chromium --remote-debugging-pipe about:blank\n  - <launched> pid=177367\n  - [pid=177367][err] [177367:177367:1025/114008.433046:FATAL:chrome/browser/process_singleton_posix.cc:313] Socket path too long: /dev/shm/task1-results-gui-browser-20261025-run/browser-profile/org.chromium.Chromium.UMsVP8/SingletonSocket.\n  - [pid=177367][err] [1025/114008.438151:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)\n  - [pid=177367][err] [1025/114008.438459:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)\n  - [pid=177367] <gracefully close start>\n  - [pid=177367] <kill>\n  - [pid=177367] <will force kill>\n  - [pid=177367] <process did exit: exitCode=null, signal=SIGABRT>\n  - [pid=177367] starting temporary directories cleanup\n  - [pid=177367] finished temporary directories cleanup\n  - [pid=177367] <gracefully close end>\n\n"
+    },
+    "source_publication": {
+      "path": "/dev/shm/task1-results-gui-browser-20261025-run/source-publication/result-publication.json",
+      "SHA256": "26975c1423bd7b9130354ca8c6e8feeb414b63aff6dd1f82e4bd04fb24375fdd",
+      "bytes": 3988,
+      "format": "JSON",
+      "record": {
+        "status": "published_readback_verified",
+        "commit": "9299f993e5e655ee6dcb2710a4bbee17af5f5e76",
+        "files": {
+          "tools/results_gui_browser_20261025/model/browser_inputs.py": {
+            "SHA256": "7e6655554ea6e505012741c7d572f638746a68f26b29f44d812ccfa84c78d994",
+            "bytes": 4975,
+            "Git_blob_SHA": "b504c5f2cf06e272e7347fc6e5a8c881a5243024",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_20261025/model/browser_checks.py": {
+            "SHA256": "627b320d59319827f79c2f52351ecaea7e599c83c61574aa9345666c3178950e",
+            "bytes": 15649,
+            "Git_blob_SHA": "7f626453550cfd9d6c5f41b9078f3ea44855cfaa",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_20261025/model/guardian.py": {
+            "SHA256": "d927b43fa5620eb6ea3371858fc3d0a668d6f6653bfc9db92630894215704fa4",
+            "bytes": 15972,
+            "Git_blob_SHA": "e77935e08b4540951d989ba728da48b4d9b4cc95",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_20261025/model/worker.py": {
+            "SHA256": "750e7825da5de5ab79c1835153723539e6efbdc14f67ac1be5bcfbeeca47b0f6",
+            "bytes": 9654,
+            "Git_blob_SHA": "40641e053632e536cdf170755832b2a0e79cd285",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_20261025/model/CONTROLLER_CONTRACT.md": {
+            "SHA256": "0db643c1f6367a7add346139741f10f064667d231f943b4daa0166b99abd2448",
+            "bytes": 3737,
+            "Git_blob_SHA": "0a1dcbd52626daec23846c24dc7d8b7648734a39",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "tools/results_gui_browser_20261025/model/root-admission.json": {
+            "SHA256": "22c1baf3621068045fd8212217c91546673163a938a5b4af7e1c3f2542c14b89",
+            "bytes": 1107,
+            "Git_blob_SHA": "056beed5b5de4ab8dec2e49b84ce8428ea9aaa33",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-20261025/preregistration.json": {
+            "SHA256": "91b4e4430793fe8e7cfa24405569a6d35a8292e795170d489e1aedbc29f397b9",
+            "bytes": 8685,
+            "Git_blob_SHA": "fe56b3474d00c69b8c6ef2d12459fcb59930d951",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-20261025/spec.json": {
+            "SHA256": "4537e4a518294fe9417d46c57322db838da1fe60470287691ff76b2f05b2c5ea",
+            "bytes": 4984,
+            "Git_blob_SHA": "883e4c7f6bfa67387fa684f86e9b6fa286ba7c7f",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-20261025/root-admission.json": {
+            "SHA256": "22c1baf3621068045fd8212217c91546673163a938a5b4af7e1c3f2542c14b89",
+            "bytes": 1107,
+            "Git_blob_SHA": "056beed5b5de4ab8dec2e49b84ce8428ea9aaa33",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          },
+          "data-native/results-gui-browser-20261025/registration.json": {
+            "SHA256": "63396549b31abe566c5686c5ab361300007e31dd78c4bbb2136b82462378f271",
+            "bytes": 5701,
+            "Git_blob_SHA": "fa77d3b088bafc5cb23dfbe7c43101e272c8c221",
+            "readback_passed": true,
+            "proof_kind": "fresh_second_remote_Git_object_database_full_readback"
+          }
+        },
+        "transport": "supported_Git_HTTPS_only",
+        "verification": "fresh_separate_remote_blobless_fetch_then_ls_tree_and_cat_file; no REST",
+        "expected_parent": "a0c9e96f56ba8989a5488cfba4702700b8fc0ebc",
+        "tree": "9a86d6ce1f1973e531c77d77b29b1bcf0aceccbc",
+        "remote_branch_head_verified": "9299f993e5e655ee6dcb2710a4bbee17af5f5e76",
+        "new_PDE": 0
+      }
+    }
+  }
+}

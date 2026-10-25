@@ -1,0 +1,592 @@
+{
+  "schema": "task1-cloud-finite-v1",
+  "batch_kind": "one_coupled_grid_sensitivity",
+  "status": "prepared",
+  "created_utc": "2026-10-19T19:33:12.687226+00:00",
+  "source_commit": "73f4ab094bd337ce64611863bc0d8fda38de628a",
+  "historical_source_commit": "8c3a30a778cc9bf19ccb52ca523598bff0a84650",
+  "package_integrity": {
+    "status": "passed",
+    "files": 478,
+    "bytes": 33360627,
+    "scope": "All original indexed bytes; explicitly allows new files. No numerical claim."
+  },
+  "limits": {
+    "cpu": 1,
+    "concurrent_solves": 1,
+    "max_cells": 800000,
+    "per_condition_seconds": 600,
+    "cumulative_seconds": 6600,
+    "java_heap_bytes": 2147483648,
+    "aggregate_rss_bytes": 3221225472,
+    "minimum_free_disk_bytes": 2147483648,
+    "max_batch_added_bytes": 2147483648
+  },
+  "gates": {
+    "max_residual": 2e-07,
+    "max_power_error": 2e-07,
+    "max_current_error": 2e-06,
+    "max_area_relative_error": 1e-10,
+    "max_interface_normal_current_relative_error": 2e-07
+  },
+  "cases": [
+    {
+      "id": "baseline-square15-coupled-xy100-sc8-bulk",
+      "design_id": "baseline-square15",
+      "mesh_id": "coupled_xy100_sc8_bulk",
+      "config_file": "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/configs/baseline-square15-coupled-xy100-sc8-bulk.properties",
+      "config_sha256": "f4c5f60c0586c187acf0f645728a14ca610da5a6e45e4b0f7e69b83edb16ddb0",
+      "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/masks/baseline-square15-coupled-xy100-sc8-bulk.csv",
+      "mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+      "expected_pad_areas_m2": [
+        0.000225,
+        0.000225,
+        0.000225,
+        0.000225
+      ],
+      "channels": 2,
+      "h_xy_mm": 0.5,
+      "sc_cells": 8,
+      "bulk_counts": [
+        18,
+        18,
+        56
+      ],
+      "cells": 786000,
+      "nx": 100,
+      "volume_metadata": {
+        "h_xy_mm": 0.5,
+        "sc_cells": 8,
+        "bulk_layer_counts": [
+          18,
+          18,
+          56
+        ],
+        "layer_counts": [
+          8,
+          18,
+          18,
+          56
+        ],
+        "radius_mm": 25.0,
+        "geometry_volume_tolerance_relative": 0.002,
+        "target_volume_tolerance_relative": 0.001
+      },
+      "n_outputs": 2,
+      "n_pads": 4,
+      "java_class": "CloudShapeBasis",
+      "postprocessor": "legacy_native",
+      "exporter_class": "SelectivityShapeBasis",
+      "source_run_id": "cloud-coupled-20261019T193200Z",
+      "source_coating_nm": 10,
+      "source_Rs_fit_window_Hz": 500,
+      "historical_nominal_candidate_alias": "coat010-f0500-minusRs-square_3h",
+      "nominal_reference_role": "coupled_grid_sensitivity_of_historical_Best1_family",
+      "coupled_baseline_reference": {
+        "run_id": "cloud-reference-20261019T192000Z",
+        "case_id": "baseline-square15-xy100",
+        "registration_path": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/preregistration.json",
+        "registration_sha256": "678fe5ec33666cbe62dde9ab82ac673672267ac5158e99aa7e938dd89d82a8cc",
+        "case_record_path": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/cases/baseline-square15-xy100.json",
+        "case_record_sha256": "d791249c7428da43c89b8dae1788c6334798b299ef4f0936d6d5eda602e11643",
+        "postprocess_path": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json",
+        "postprocess_sha256": "e1315777c6345be6ceff706253361fa196ebdbc2e3cc319a13282bb9ea46ab93",
+        "config_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties",
+        "config_sha256": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+        "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/baseline-square15-xy100.csv",
+        "mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+        "native_input_sha256": {
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/validation.json": "fd0601f56909999bc43ea103c961a7abf4bec23a28be9266f84e54b967fa0dce",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/mesh-metadata.json": "e946d56ebe558930005f7cbf87b0cfa40a5b930a829b3b81ad598fc19f421246",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/grid.csv.gz": "03c2555dcb1edd926b4343f6df14e554e308534e0c34aa267898fa532c603bbd",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-3000.bin.gz": "86d7b0276fd3c6cb3553a4a8a8b7becb3755ef954030878ded7ba3db41602626",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-3000.bin.gz": "56bf0a2cf81e24618220232f9bfb5d88e4af411851a2d09f3ef89341ed1cd763",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-3000.bin": "2ed436c905709373925ba0ce9873995f43043c57b153efb9697cad5cb457beb9",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-3000.bin": "61ab10c76e7202eb913eb0875faf139bb549e4dccc12702794e179333b33239c",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-3000.bin": "c0778b00267b32134c453dc2f3a1fa33e518bfd30918b0015b658653c3ce633c",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-3000.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-3030.bin.gz": "6830a054f55a184eac4e7701d44fcc0faca70d92a24293a4b8b8c3056bdc634b",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-3030.bin.gz": "c4f0844c101d936c39bd2f520ddc1e3df555351badbeeefe93ea212ce89007c1",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-3030.bin": "0f111845741795c8a04d651515c5950ba746feb01272599689491bd8baac8231",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-3030.bin": "e7c42caec7af6733ccc5d9f0e3a343f9fb5b935bd2c5d44a84e4fb1adbbdc65a",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-3030.bin": "1651d25cb8896bef41ad8f19ca8ae4a994e893bb6847cae16839abe3a88a5949",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-3030.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-9000.bin.gz": "aad0a11affb81827e8e6468249859a73fe18eebf605bfb32f27da4e975537834",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-9000.bin.gz": "323f49c21ada83bc6437e104a1f662eb356122504e551af632a73e3ae368ce13",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-9000.bin": "a0ac026789a8660a40a1c7245db9bc7c7c56cc83af01fbb1df146e78f7d5da63",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-9000.bin": "3378ad2df8a23ca7f8963e0e45cf863ec2b248ed4f60e9ce7a50235599cab38b",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-9000.bin": "7eab9a3434cf66e8c090b75fce8b1baaa83f93d7560c0e2e02ed4f6b8f306739",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-9000.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-9090.bin.gz": "ebacbbc06804bd00916b23852bae9a72fd589279920e5a90dd5ddaf6c339b5d4",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-9090.bin.gz": "af4605598f472397d3337a856bb6d56e7edabba03eb49b02f757f4ff2efb5d49",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-9090.bin": "fbeca124afd88cc6af2af5c084cea500bcccd966c9ae2c46627aed441dbcf71f",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-9090.bin": "0b30d8d2ae9477bb5f8e83d6a289b1c3dca081f644b7eba0719e559c56c190a1",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-9090.bin": "7fbd939ad8e6c332b6929bb722db542242b5e8e4783ab9389326fc135e37a7b8",
+          "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-9090.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414"
+        }
+      },
+      "requires_coupled_comparison_after_postprocess": true,
+      "status": "preregistered_not_executed",
+      "design": {
+        "id": "baseline-square15",
+        "group": "equal_area_225mm2",
+        "pads": [
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -17.5
+              ],
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                -17.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 0,
+            "role": "signal",
+            "source_output": 0,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                2.5
+              ],
+              [
+                17.5,
+                2.5
+              ],
+              [
+                17.5,
+                17.5
+              ],
+              [
+                2.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 1,
+            "role": "signal",
+            "source_output": 1,
+            "indexed_pair": 1
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              10.0,
+              -10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                2.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -17.5
+              ],
+              [
+                17.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 2,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 0
+          },
+          {
+            "shape": "rectangle",
+            "center_mm": [
+              -10.0,
+              10.0
+            ],
+            "width_mm": 15,
+            "height_mm": 15,
+            "rotation_deg": 0.0,
+            "corner_radius_mm": 0.0,
+            "polygon_mm": [
+              [
+                -17.5,
+                2.5
+              ],
+              [
+                -2.5,
+                2.5
+              ],
+              [
+                -2.5,
+                17.5
+              ],
+              [
+                -17.5,
+                17.5
+              ]
+            ],
+            "area_mm2": 225,
+            "analytic_area_mm2": 225,
+            "polygon_area_mm2": 225.0,
+            "curve_hausdorff_upper_mm": 0.0,
+            "curve_area_relative_error": 0.0,
+            "pad": 3,
+            "role": "common_gnd_return",
+            "source_output": null,
+            "indexed_pair": 1
+          }
+        ],
+        "phantom_diameter_mm": 50.0,
+        "contact_plane_z_mm": 0.0,
+        "source_outputs": 2,
+        "total_pads": 4,
+        "return_connection": "all_return_pads_ideal_common_GND",
+        "minimum_gap_mm": 1.0,
+        "minimum_gap_status": "unvalidated_manufacturing_assumption_not_safety",
+        "geometry_revision": "feasibility_revised_before_registration",
+        "channels": 2,
+        "xy_mm": [
+          [
+            -10.0,
+            -10.0
+          ],
+          [
+            10.0,
+            10.0
+          ],
+          [
+            10.0,
+            -10.0
+          ],
+          [
+            -10.0,
+            10.0
+          ]
+        ]
+      },
+      "circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "harmonics_Hz": [
+          9000,
+          9090
+        ],
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "inactive_source_at_other_frequencies": "0 V through50 ohm",
+        "exclusive_source_return_pair_assumed": false
+      },
+      "cache_signature": "35f925ee1d6a4b9cb5325b4fd25bf1ebc6c89109795cd405347eba307fb618c5"
+    }
+  ],
+  "new_PDE_conditions_maximum": 1,
+  "expected_raw_bound_bytes": 471600000,
+  "java": "/workspace/.cloud-setup/jdk/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+  "source_and_input_sha256": {
+    "/workspace/ngg-tis-task1/tis-java/analyze_selectivity_design.py": "81a79f923418e576093ddf2dccce7159591b71a71dddab20ed3fa3684d3b9673",
+    "/workspace/ngg-tis-task1/tis-java/analyze_selectivity_matched_power.py": "60e372712b648d39850eb57cc6be682d5f175641f149a11f231fc90d2dc648aa",
+    "/workspace/ngg-tis-task1/tis-java/audit_selectivity_saved_results.py": "d041e7f25baf91e00121d47bda3c4f83dde8b40d0a7a2434af26eb932db45919",
+    "/workspace/ngg-tis-task1/tis-java/c4_phase_allocation.py": "976ba07dcaee9e4658acb6459eea059ed5f58b123c7810fe5b76f49b1178208d",
+    "/workspace/ngg-tis-task1/tis-java/coating_rs_validation.py": "11a51310daf674bfe08ac246ad35736d8b7d5859dde749ae8232c3e022b063a2",
+    "/workspace/ngg-tis-task1/tis-java/depth_probe_comparison.py": "d657c55fdcdd01c229830b6f58451873dbf381ace963a8e3fe13c006cdba5293",
+    "/workspace/ngg-tis-task1/tis-java/eis_rs_window_analysis.py": "2c67d92ad2e4f85908d82a2b92c50999d57bb3543793875f1bcb2c519934e350",
+    "/workspace/ngg-tis-task1/tis-java/explore_amplitude.py": "40183baae6665a327dfd663d81d5becfd90560d3e22df0689bf8bb6293426e7c",
+    "/workspace/ngg-tis-task1/tis-java/explore_inputs.py": "a1ef002509b872aa0164140981daab9f5f65efeb22a2821ea79c4612f50c9888",
+    "/workspace/ngg-tis-task1/tis-java/explore_tis.py": "7df358caa1cc042c06785fedee94a35c75802b3b25d3ef22b6f51897497aa20b",
+    "/workspace/ngg-tis-task1/tis-java/fit_ngg_eis.py": "ceba0a811d0c48630e38cbf99d988551cc6de1d86bdf2dbc72392257473aba90",
+    "/workspace/ngg-tis-task1/tis-java/layered_probe_analysis.py": "cda32e600af3e9d3d2cca153d29eaac146c40eb01c3c0d114e046dcc7ea134ea",
+    "/workspace/ngg-tis-task1/tis-java/leader_spatial_diagnostics.py": "f07eaea8249408fb176ebe9c361e43b29597f80643a9a3a3672b786086266e1a",
+    "/workspace/ngg-tis-task1/tis-java/measurement_waveforms.py": "e151d651872aac6f0e17ff27a7d18cc78b406f7d891efa56ed75de272ed13588",
+    "/workspace/ngg-tis-task1/tis-java/mesh_validation.py": "61ca26fb44f85a7a6e0d808d6762b87edddafdc643017cf627374e2eb2164c96",
+    "/workspace/ngg-tis-task1/tis-java/mesh_validation_3k.py": "9782acb67129c6d366e0315798eef9ceab530107578724eca431396ec22a581c",
+    "/workspace/ngg-tis-task1/tis-java/native_probe_followup.py": "8007366e54b47a639da2c6bc6f73a24218564e5838ef0d274826293ead1b48aa",
+    "/workspace/ngg-tis-task1/tis-java/rs_window_tis_validation.py": "ba05156b42a4781124530c1befe933533d90ab53828ecabf242f5204f4a298b7",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_design.py": "7bb8dd79ed8d2e4d80fde1ebf6ef8eb3ec8dc932ca6d0e078b51990056a25a9f",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_geometry.py": "0a33f50ef6db1a4bec4d89f5a1485d17cfb395af91a61742f1a5540338153764",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_postprocess.py": "b3390d957ba7b30b3f777466a5914fd3a95defb22d478df75e745890522e751d",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_volume.py": "1340631085e81dd0020045abba441520d966cbc03b72784dee0a80c70317a688",
+    "/workspace/ngg-tis-task1/tis-java/single_vs_tis.py": "f59c5a9015175198355a7e0fa92ea0f91d45b9a6b1b1b3e79dc07d6b3f519f08",
+    "/workspace/ngg-tis-task1/tis-java/update_ngg_eis.py": "0ddca1dcd0f13ba620e378a79d94ed005dccc392b6f33f9c57bbf5049c7b448c",
+    "/workspace/ngg-tis-task1/tis-java/validation_3k_postprocess.py": "9acca0b8cab3d402e38d98cbdfa1d99ec503540440bafc8f8e57ca1361d78629",
+    "/workspace/ngg-tis-task1/tis-java/TisSweep.java": "c3f80a160374213f49da0281274270badff47b955de486ab6dc17ef5278e228b",
+    "/workspace/ngg-tis-task1/tis-java/ExploreBasis.java": "a21d7bc31f688192908de3a9b9dd842c73fe6cbcc667376d22fb4067f4aff276",
+    "/workspace/ngg-tis-task1/tis-java/SelectivityShapeBasis.java": "e1cdf19aec6a56d0df7775cd6b8091206b4c64aa9c318aea96a84174d9b73573",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "154f04a783b2a3234c572f205c926fc874993f27bbd67bbfef545d45af127b90",
+    "/workspace/ngg-tis-task1/tools/java/CloudShapeBasis.java": "f9febd65278f90bbea15341afdb72eae29d412208a3332d0ca7294afa5a3b45f",
+    "/workspace/ngg-tis-task1/tools/task1_producer_regression.py": "e3cf870e073b94b9fbe773313001638c56b30ceb3da62db33eed096648198284",
+    "/workspace/ngg-tis-task1/tools/task1_grouped_postprocess.py": "8940ad863dbfd9452fb55e305bd12fb0c4708b4e776790436bd69a7709421149",
+    "/workspace/ngg-tis-task1/tools/task1_grouped_registration.py": "40557c20e55694a2d0cf0fa14be209b1eae383524fbdae3f09d80bc837fc9a20",
+    "/workspace/ngg-tis-task1/tools/task1_reference_registration.py": "81b53f45022ac0461596df74e31bef6fbac26e79bcd57affba44096329cc2dd2",
+    "/workspace/ngg-tis-task1/tools/task1_coupled_registration.py": "5e1b510da0baafddb8899b4617d04092f72f0a472d24b4320b8b01e7b0e3d25a",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/preregistration.json": "7c832c3a0d5bc0b470547ce53b1151460eda2e1e27e0e270635d9a4ec0c69b52",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/inputs/designs.json": "cb0416a2066c30ba3276f0908b7ef0c88b21e2b4c6c54bc983894970df14834e",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-xy100.properties": "e82461198edb6c8d7a2bc05ba246190d0858e3cba929c4c41790bb6d6dac75c6",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-h0.5.csv": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/preregistration.json": "678fe5ec33666cbe62dde9ab82ac673672267ac5158e99aa7e938dd89d82a8cc",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/cases/baseline-square15-xy100.json": "d791249c7428da43c89b8dae1788c6334798b299ef4f0936d6d5eda602e11643",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json": "e1315777c6345be6ceff706253361fa196ebdbc2e3cc319a13282bb9ea46ab93",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/validation.json": "fd0601f56909999bc43ea103c961a7abf4bec23a28be9266f84e54b967fa0dce",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/mesh-metadata.json": "e946d56ebe558930005f7cbf87b0cfa40a5b930a829b3b81ad598fc19f421246",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/grid.csv.gz": "03c2555dcb1edd926b4343f6df14e554e308534e0c34aa267898fa532c603bbd",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-3000.bin.gz": "86d7b0276fd3c6cb3553a4a8a8b7becb3755ef954030878ded7ba3db41602626",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-3000.bin.gz": "56bf0a2cf81e24618220232f9bfb5d88e4af411851a2d09f3ef89341ed1cd763",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-3000.bin": "2ed436c905709373925ba0ce9873995f43043c57b153efb9697cad5cb457beb9",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-3000.bin": "61ab10c76e7202eb913eb0875faf139bb549e4dccc12702794e179333b33239c",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-3000.bin": "c0778b00267b32134c453dc2f3a1fa33e518bfd30918b0015b658653c3ce633c",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-3000.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-3030.bin.gz": "6830a054f55a184eac4e7701d44fcc0faca70d92a24293a4b8b8c3056bdc634b",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-3030.bin.gz": "c4f0844c101d936c39bd2f520ddc1e3df555351badbeeefe93ea212ce89007c1",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-3030.bin": "0f111845741795c8a04d651515c5950ba746feb01272599689491bd8baac8231",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-3030.bin": "e7c42caec7af6733ccc5d9f0e3a343f9fb5b935bd2c5d44a84e4fb1adbbdc65a",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-3030.bin": "1651d25cb8896bef41ad8f19ca8ae4a994e893bb6847cae16839abe3a88a5949",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-3030.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-9000.bin.gz": "aad0a11affb81827e8e6468249859a73fe18eebf605bfb32f27da4e975537834",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-9000.bin.gz": "323f49c21ada83bc6437e104a1f662eb356122504e551af632a73e3ae368ce13",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-9000.bin": "a0ac026789a8660a40a1c7245db9bc7c7c56cc83af01fbb1df146e78f7d5da63",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-9000.bin": "3378ad2df8a23ca7f8963e0e45cf863ec2b248ed4f60e9ce7a50235599cab38b",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-9000.bin": "7eab9a3434cf66e8c090b75fce8b1baaa83f93d7560c0e2e02ed4f6b8f306739",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-9000.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-9090.bin.gz": "ebacbbc06804bd00916b23852bae9a72fd589279920e5a90dd5ddaf6c339b5d4",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-9090.bin.gz": "af4605598f472397d3337a856bb6d56e7edabba03eb49b02f757f4ff2efb5d49",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-9090.bin": "fbeca124afd88cc6af2af5c084cea500bcccd966c9ae2c46627aed441dbcf71f",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-9090.bin": "0b30d8d2ae9477bb5f8e83d6a289b1c3dca081f644b7eba0719e559c56c190a1",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-9090.bin": "7fbd939ad8e6c332b6929bb722db542242b5e8e4783ab9389326fc135e37a7b8",
+    "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-9090.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/configs/baseline-square15-coupled-xy100-sc8-bulk.properties": "f4c5f60c0586c187acf0f645728a14ca610da5a6e45e4b0f7e69b83edb16ddb0",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/masks/baseline-square15-coupled-xy100-sc8-bulk.csv": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep.class": "b8160809788fa0898e2fba1412b94e6d0fe741b43523e545875e978781cda655",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep$Scenario.class": "a10c18daee31728bc2722af4cf5a1a2c35c9a0da8ac517bf2109b59b76fdc8c6",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/SelectivityShapeBasis$ValidationMesh.class": "4997fe6facf2794fe037a970ad7ad7277ec5ac37c0c24071109c94d4229ca628",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/CloudShapeBasis.class": "a7bba70b9a9d299bdbbf425c4efaf728ddd8bae814eb303a6dccc34968a4abcb",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/ExploreBasis$Boundary.class": "71f22ac2f8ceb24992a9903c9c60439ed467450838618a8c793610808738ebbc",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/ExploreBasis.class": "018bc5a38cd7680306376cd2d656bb2269d3e6d4b14c02277d8fa0d938124023",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep$Layout.class": "fcc62f4d4c9ffcb065fdb52d0f41e68bac17bd9bf1ab7080c9b5cf5d8d0123cd",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/SelectivityShapeBasis.class": "4b47dc35c5354f0e6c573b3c2aeec7b680cc73349846de08c273333c0db25fe3",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep$Mesh.class": "2e31446a0e6884eb8058eda41c910e97d9c5d9f731a2281aa27eb70e926d8f32",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/SelectivityShapeBasis$ControllerJson.class": "2d0ec768ab5f739adb1e623ad9c6d5a6d786c72dcd99e4d9f4992815da2b00cf",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep$Edge.class": "30326b9bfe586d631ab88be8f2aa9a375dc9ae6e3d13a3df64fbe550525a8ebd",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep$Net.class": "d66d9319f0b986095ae1d4a74c1b272c843ca22f5d90f335ed2f8a49f970dbb5",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/SelectivityShapeBasis$ShapeNet.class": "437f9cf77dcee523c9671443e6ace140c3ca2bbcdb2bbce32d1c7cd6af7d3222",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/ExploreBasis$Contact.class": "06b1c8646d4b742a40f6ac93e7f5684afabf97e8a7e8ed962702959256c5a613",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/ExploreBasis$GNet.class": "c37acfa242d4559f4063b66dd1abe471ac942a54d3291f2fa78d2113af932177",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep$C.class": "60064d9c27b0509f5c0528694db4b47710944723b457dc4b4fabecbede49c0fa",
+    "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/classes/TisSweep$Result.class": "9a76da3a1aec32c5a78ebff18fcc65e8cf700c04ee0f4f081a0e34e6e5ce5500"
+  },
+  "preparation_seconds": 3.322369136999896,
+  "path_mapping": [
+    {
+      "original_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/baseline-square15-xy100.properties",
+      "original_sha256": "e82461198edb6c8d7a2bc05ba246190d0858e3cba929c4c41790bb6d6dac75c6",
+      "new_config": "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/configs/baseline-square15-coupled-xy100-sc8-bulk.properties",
+      "new_sha256": "f4c5f60c0586c187acf0f645728a14ca610da5a6e45e4b0f7e69b83edb16ddb0",
+      "changed_fields": [
+        "validation.sc_cells",
+        "bulk.counts",
+        "mask.path"
+      ],
+      "original_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/baseline-square15-h0.5.csv",
+      "new_mask": "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z/masks/baseline-square15-coupled-xy100-sc8-bulk.csv",
+      "mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+      "mask_bytes_unchanged": true,
+      "physical_material_contact_circuit_changed": false
+    }
+  ],
+  "scientific_scope": "One coupled SC/bulk grid check; unchanged4square top contact/10nmRs500/2outputs/commonGND/50ohm",
+  "coupled_grid_selection": {
+    "h_xy_mm": 0.5,
+    "sc_cells": 8,
+    "bulk_counts": [
+      18,
+      18,
+      56
+    ],
+    "cells": 786000,
+    "already_computed_same_xy_baseline": {
+      "h_xy_mm": 0.5,
+      "sc_cells": 2,
+      "bulk_counts": [
+        14,
+        14,
+        40
+      ],
+      "cells": 550200
+    },
+    "rejected_finer_xy_options": [
+      {
+        "h_xy_mm": 0.4166666666666667,
+        "sc_cells": 4,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 813888,
+        "reason": "exceeds fixed800000cell cap"
+      },
+      {
+        "h_xy_mm": 0.4166666666666667,
+        "sc_cells": 8,
+        "bulk_counts": [
+          14,
+          14,
+          40
+        ],
+        "cells": 859104,
+        "reason": "exceeds fixed800000cell cap"
+      }
+    ],
+    "reason": "Fixed h0.5 allows simultaneous SC8 and bulk18/18/56 under800000cells without changing phantom size"
+  },
+  "fixed_comparison_gate_percent": {
+    "target20_modulation_V_m": 1.0,
+    "target20_total_E_RMS_V_m": 1.0,
+    "roi_mean_TIS_V_m": 1.0,
+    "roi_p10_TIS_V_m": 1.0,
+    "roi_mean_RMS_V_m": 1.0,
+    "target_superficial_p95_ratio": 1.0,
+    "surface_J_RMS_max_A_m2": 5.0,
+    "surface_J_RMS_p95_A_m2": 5.0,
+    "contact_voltage_RMS_max_V": 5.0,
+    "SC_power_W": 2.0,
+    "contact_power_W": 2.0,
+    "source_power_W": 2.0
+  },
+  "coupled_comparison_baseline": {
+    "run_id": "cloud-reference-20261019T192000Z",
+    "case_id": "baseline-square15-xy100",
+    "registration_path": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/preregistration.json",
+    "registration_sha256": "678fe5ec33666cbe62dde9ab82ac673672267ac5158e99aa7e938dd89d82a8cc",
+    "case_record_path": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/cases/baseline-square15-xy100.json",
+    "case_record_sha256": "d791249c7428da43c89b8dae1788c6334798b299ef4f0936d6d5eda602e11643",
+    "postprocess_path": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/postprocess/baseline-square15-xy100/summary.json",
+    "postprocess_sha256": "e1315777c6345be6ceff706253361fa196ebdbc2e3cc319a13282bb9ea46ab93",
+    "config_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties",
+    "config_sha256": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+    "mask_file": "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/masks/baseline-square15-xy100.csv",
+    "mask_sha256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+    "native_input_sha256": {
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/validation.json": "fd0601f56909999bc43ea103c961a7abf4bec23a28be9266f84e54b967fa0dce",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/mesh-metadata.json": "e946d56ebe558930005f7cbf87b0cfa40a5b930a829b3b81ad598fc19f421246",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/grid.csv.gz": "03c2555dcb1edd926b4343f6df14e554e308534e0c34aa267898fa532c603bbd",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/configs/baseline-square15-xy100.properties": "6c1ee4fd1e485d6a963bd0158d100735d8a55eb0b6e44e9c8d965dcb84fc084a",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-3000.bin.gz": "86d7b0276fd3c6cb3553a4a8a8b7becb3755ef954030878ded7ba3db41602626",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-3000.bin.gz": "56bf0a2cf81e24618220232f9bfb5d88e4af411851a2d09f3ef89341ed1cd763",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-3000.bin": "2ed436c905709373925ba0ce9873995f43043c57b153efb9697cad5cb457beb9",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-3000.bin": "61ab10c76e7202eb913eb0875faf139bb549e4dccc12702794e179333b33239c",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-3000.bin": "c0778b00267b32134c453dc2f3a1fa33e518bfd30918b0015b658653c3ce633c",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-3000.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-3030.bin.gz": "6830a054f55a184eac4e7701d44fcc0faca70d92a24293a4b8b8c3056bdc634b",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-3030.bin.gz": "c4f0844c101d936c39bd2f520ddc1e3df555351badbeeefe93ea212ce89007c1",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-3030.bin": "0f111845741795c8a04d651515c5950ba746feb01272599689491bd8baac8231",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-3030.bin": "e7c42caec7af6733ccc5d9f0e3a343f9fb5b935bd2c5d44a84e4fb1adbbdc65a",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-3030.bin": "1651d25cb8896bef41ad8f19ca8ae4a994e893bb6847cae16839abe3a88a5949",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-3030.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-9000.bin.gz": "aad0a11affb81827e8e6468249859a73fe18eebf605bfb32f27da4e975537834",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-9000.bin.gz": "323f49c21ada83bc6437e104a1f662eb356122504e551af632a73e3ae368ce13",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-9000.bin": "a0ac026789a8660a40a1c7245db9bc7c7c56cc83af01fbb1df146e78f7d5da63",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-9000.bin": "3378ad2df8a23ca7f8963e0e45cf863ec2b248ed4f60e9ce7a50235599cab38b",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-9000.bin": "7eab9a3434cf66e8c090b75fce8b1baaa83f93d7560c0e2e02ed4f6b8f306739",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-9000.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/field-9090.bin.gz": "ebacbbc06804bd00916b23852bae9a72fd589279920e5a90dd5ddaf6c339b5d4",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/potential-9090.bin.gz": "af4605598f472397d3337a856bb6d56e7edabba03eb49b02f757f4ff2efb5d49",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/density-9090.bin": "fbeca124afd88cc6af2af5c084cea500bcccd966c9ae2c46627aed441dbcf71f",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/loss-9090.bin": "0b30d8d2ae9477bb5f8e83d6a289b1c3dca081f644b7eba0719e559c56c190a1",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/source-9090.bin": "7fbd939ad8e6c332b6929bb722db542242b5e8e4783ab9389326fc135e37a7b8",
+      "/workspace/ngg-tis-task1/data-native/cloud-reference-20261019T192000Z/bases/baseline-square15-xy100/contacts-9090.csv": "886acad4e7b6cb33b76d00b86ce9a0fc587b18cc879032f9db1b4aee7a2cd414"
+    }
+  },
+  "comparison_waveforms": [
+    "square_3h",
+    "sine",
+    "triangle_3h"
+  ],
+  "fixed_gate_count": 36,
+  "convergence": {
+    "field_ROI_percent": 1,
+    "J_contact_voltage_percent": 5,
+    "power_percent": 2,
+    "coupled_comparison_pending": true,
+    "independent_axis_convergence_validated": false,
+    "continuum_convergence_validated": false,
+    "experimental_validation": false
+  },
+  "storage": {
+    "native_location": "/workspace/ngg-tis-task1/data-native/cloud-coupled-20261019T193200Z",
+    "persistent_backup_verified": false,
+    "retirement_of_old_environment_allowed": false
+  },
+  "frozen_source_snapshot_owner": "root core.freeze_sources once after this preparation",
+  "next_decision": "Preserve all36 gate outcomes; coupled failure blocks adoption, passing this finite pair does not certify continuum convergence or safety"
+}

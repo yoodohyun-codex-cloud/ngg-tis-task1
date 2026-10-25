@@ -1,0 +1,742 @@
+{
+  "schema": "task1-six-fourpad-bounded-exploration-v1",
+  "status": "plan_only_not_prepared_or_executed",
+  "new_helper_required": false,
+  "question": "Can any frozen4pad shape/connection/area control improve both absolute ROImean and P10 under matched complete skin/contact/source burden without worsening target/non-target dominance?",
+  "fixed": {
+    "D_mm": 50,
+    "layers_mm": [
+      0.1,
+      5,
+      5,
+      15
+    ],
+    "attachment": "top_z0;+z_depth",
+    "side_bottom": "insulating",
+    "n_pads": 4,
+    "n_outputs": 2,
+    "pad_node_ids": [
+      0,
+      1,
+      -1,
+      -1
+    ],
+    "return_nodes": 1,
+    "return_topology": "common_GND",
+    "whole_waveform_source_Vpp_each": 1,
+    "source_definition": "open_circuit_HighZ;0.5Vpeak basis before50ohm",
+    "Rsource_ohm_each": 50,
+    "inactive_source": "0V/50ohm at every other frequency",
+    "frequencies_Hz": [
+      3000,
+      3030,
+      9000,
+      9090
+    ],
+    "phases_deg": [
+      0,
+      0
+    ],
+    "primary_waveform": "square_3h; sine/triangle tracked separately",
+    "properties_contact": "unchanged frozen baseline sigma,epsilon_r,area-specific z.f.re/im; area scaling once in existing operator"
+  },
+  "geometry_API": {
+    "module": "tis-java/selectivity_geometry.py",
+    "construction": "_pad(shape,center,width,height,rotation_deg,corner_radius); _design(id,group,shape,width,height,radius,tangent,corner_radius,adjacent)",
+    "public_calls": "validate_design(design),mask(design,h)",
+    "mask_contract": "4096-vertex inscribed curved polygons; polygon/cell intersection, D50 center-in-disk, no area renormalization, reject clipped area;1mm manufacturing-gap assumption is not safety",
+    "execution_support": "Existing core --prepare --case accepts1..6 frozen case_pool IDs. Selected configs/masks already available; no new registration helper or controller modification needed.",
+    "C1_scope": "Frozen geom._design_scope admits exact indexed subsets only of old designs. All selected six are old registered designs with existing C1xy80 masks.",
+    "inventory_method": "Read-only code/config/mask inventory; no research module imports or mask generation."
+  },
+  "coarse_cases": [
+    {
+      "design_id": "equal-circle225",
+      "case_id": "equal-circle225-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "cells": 88480,
+      "role": "equal_analytic_area_shape_control",
+      "pads": [
+        {
+          "pad": 0,
+          "shape": "circle",
+          "center_mm": [
+            -10.0,
+            -10.0
+          ],
+          "width_mm": 16.925687506432688,
+          "height_mm": 16.925687506432688,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 0
+        },
+        {
+          "pad": 1,
+          "shape": "circle",
+          "center_mm": [
+            10.0,
+            10.0
+          ],
+          "width_mm": 16.925687506432688,
+          "height_mm": 16.925687506432688,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 1
+        },
+        {
+          "pad": 2,
+          "shape": "circle",
+          "center_mm": [
+            10.0,
+            -10.0
+          ],
+          "width_mm": 16.925687506432688,
+          "height_mm": 16.925687506432688,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        },
+        {
+          "pad": 3,
+          "shape": "circle",
+          "center_mm": [
+            -10.0,
+            10.0
+          ],
+          "width_mm": 16.925687506432688,
+          "height_mm": 16.925687506432688,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        }
+      ],
+      "analytic_total_area_mm2": 899.9999999999999,
+      "represented_total_area_mm2": 899.9996470354808,
+      "represented_pad_areas_mm2": [
+        224.9999117588702,
+        224.9999117588702,
+        224.9999117588702,
+        224.9999117588702
+      ],
+      "patch_area_min_mm2": 0.0074519266405728675,
+      "patch_area_max_mm2": 1.5624999999999998,
+      "minimum_patch_fraction_of_h_squared": 0.004769233049966635,
+      "contact_patches": 688,
+      "source_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/equal-circle225-coarse.properties",
+      "source_config_sha256": "272ca86a9f0fc8dbf12c645a2464a61fa0c9827012ff745c0b8a113463f6f284",
+      "source_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/equal-circle225-h1.25.csv",
+      "source_mask_sha256": "c265a4669f8f75c8f22d4c8dcb54b39cd81b93aea8aa2c41a2903fd3fe54b291",
+      "available_followup_case_ids": [
+        "equal-circle225-xy80",
+        "equal-circle225-xy100",
+        "equal-circle225-sc4",
+        "equal-circle225-bulk",
+        "equal-circle225-C1pair0-xy80"
+      ],
+      "provenance": "Already computed historically; new environment native E/phi absent. Fresh computation restores native evidence, not a newly invented shape."
+    },
+    {
+      "design_id": "equal-ellipse24",
+      "case_id": "equal-ellipse24-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "cells": 88480,
+      "role": "equal_analytic_area_shape_control",
+      "pads": [
+        {
+          "pad": 0,
+          "shape": "ellipse",
+          "center_mm": [
+            -10.0,
+            -10.0
+          ],
+          "width_mm": 24,
+          "height_mm": 11.93662073189215,
+          "rotation_deg": -45.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 0
+        },
+        {
+          "pad": 1,
+          "shape": "ellipse",
+          "center_mm": [
+            10.0,
+            10.0
+          ],
+          "width_mm": 24,
+          "height_mm": 11.93662073189215,
+          "rotation_deg": 135.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 1
+        },
+        {
+          "pad": 2,
+          "shape": "ellipse",
+          "center_mm": [
+            10.0,
+            -10.0
+          ],
+          "width_mm": 24,
+          "height_mm": 11.93662073189215,
+          "rotation_deg": 45.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        },
+        {
+          "pad": 3,
+          "shape": "ellipse",
+          "center_mm": [
+            -10.0,
+            10.0
+          ],
+          "width_mm": 24,
+          "height_mm": 11.93662073189215,
+          "rotation_deg": 225.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        }
+      ],
+      "analytic_total_area_mm2": 900.0,
+      "represented_total_area_mm2": 899.9996470354813,
+      "represented_pad_areas_mm2": [
+        224.9999117588703,
+        224.9999117588703,
+        224.9999117588703,
+        224.99991175887035
+      ],
+      "patch_area_min_mm2": 0.002713241446438449,
+      "patch_area_max_mm2": 1.5624999999999998,
+      "minimum_patch_fraction_of_h_squared": 0.0017364745257206075,
+      "contact_patches": 712,
+      "source_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/equal-ellipse24-coarse.properties",
+      "source_config_sha256": "afa0c10c78d0b9f3bbe7f654eb2c48da0a52645d974ac16a5d2f5018a72b9645",
+      "source_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/equal-ellipse24-h1.25.csv",
+      "source_mask_sha256": "72d4f935e69b94d026fb675cf4c3aca480e05a4675790ff2ab9575831ac3a948",
+      "available_followup_case_ids": [
+        "equal-ellipse24-xy80",
+        "equal-ellipse24-xy100",
+        "equal-ellipse24-sc4",
+        "equal-ellipse24-bulk",
+        "equal-ellipse24-C1pair0-xy80"
+      ],
+      "provenance": "Already computed historically; new environment native E/phi absent. Fresh computation restores native evidence, not a newly invented shape."
+    },
+    {
+      "design_id": "equal-rectangle17p5",
+      "case_id": "equal-rectangle17p5-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "cells": 88480,
+      "role": "equal_analytic_area_shape_control",
+      "pads": [
+        {
+          "pad": 0,
+          "shape": "rectangle",
+          "center_mm": [
+            -10.0,
+            -10.0
+          ],
+          "width_mm": 17.5,
+          "height_mm": 12.857142857142858,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 0
+        },
+        {
+          "pad": 1,
+          "shape": "rectangle",
+          "center_mm": [
+            10.0,
+            10.0
+          ],
+          "width_mm": 17.5,
+          "height_mm": 12.857142857142858,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 1
+        },
+        {
+          "pad": 2,
+          "shape": "rectangle",
+          "center_mm": [
+            10.0,
+            -10.0
+          ],
+          "width_mm": 17.5,
+          "height_mm": 12.857142857142858,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        },
+        {
+          "pad": 3,
+          "shape": "rectangle",
+          "center_mm": [
+            -10.0,
+            10.0
+          ],
+          "width_mm": 17.5,
+          "height_mm": 12.857142857142858,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        }
+      ],
+      "analytic_total_area_mm2": 900.0,
+      "represented_total_area_mm2": 899.9999999999986,
+      "represented_pad_areas_mm2": [
+        224.9999999999997,
+        224.99999999999966,
+        224.9999999999997,
+        224.99999999999966
+      ],
+      "patch_area_min_mm2": 0.22321428571428603,
+      "patch_area_max_mm2": 1.5624999999999998,
+      "minimum_patch_fraction_of_h_squared": 0.14285714285714307,
+      "contact_patches": 672,
+      "source_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/equal-rectangle17p5-coarse.properties",
+      "source_config_sha256": "245f05aa5f59b1dbe3f9cdfda8d26c170102fdd8699e60f31b28c0b7bc2f6692",
+      "source_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/equal-rectangle17p5-h1.25.csv",
+      "source_mask_sha256": "cf140484d6ff76d1e6c62154204b625e244eb33b9704857ef4310d1d352faf98",
+      "available_followup_case_ids": [
+        "equal-rectangle17p5-xy80",
+        "equal-rectangle17p5-xy100",
+        "equal-rectangle17p5-sc4",
+        "equal-rectangle17p5-bulk",
+        "equal-rectangle17p5-C1pair0-xy80"
+      ],
+      "provenance": "Already computed historically; new environment native E/phi absent. Fresh computation restores native evidence, not a newly invented shape."
+    },
+    {
+      "design_id": "equal-rounded18-r3",
+      "case_id": "equal-rounded18-r3-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "cells": 88480,
+      "role": "equal_analytic_area_shape_control",
+      "pads": [
+        {
+          "pad": 0,
+          "shape": "rounded_rectangle",
+          "center_mm": [
+            -10.0,
+            -10.0
+          ],
+          "width_mm": 18,
+          "height_mm": 12.929203673205103,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 3,
+          "role": "signal",
+          "source_output": 0
+        },
+        {
+          "pad": 1,
+          "shape": "rounded_rectangle",
+          "center_mm": [
+            10.0,
+            10.0
+          ],
+          "width_mm": 18,
+          "height_mm": 12.929203673205103,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 3,
+          "role": "signal",
+          "source_output": 1
+        },
+        {
+          "pad": 2,
+          "shape": "rounded_rectangle",
+          "center_mm": [
+            10.0,
+            -10.0
+          ],
+          "width_mm": 18,
+          "height_mm": 12.929203673205103,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 3,
+          "role": "common_gnd_return",
+          "source_output": null
+        },
+        {
+          "pad": 3,
+          "shape": "rounded_rectangle",
+          "center_mm": [
+            -10.0,
+            10.0
+          ],
+          "width_mm": 18,
+          "height_mm": 12.929203673205103,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 3,
+          "role": "common_gnd_return",
+          "source_output": null
+        }
+      ],
+      "analytic_total_area_mm2": 900.0,
+      "represented_total_area_mm2": 899.9999555584109,
+      "represented_pad_areas_mm2": [
+        224.99998888960272,
+        224.99998888960275,
+        224.99998888960272,
+        224.99998888960275
+      ],
+      "patch_area_min_mm2": 0.10780808981394777,
+      "patch_area_max_mm2": 1.5624999999999998,
+      "minimum_patch_fraction_of_h_squared": 0.06899717748092657,
+      "contact_patches": 720,
+      "source_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/equal-rounded18-r3-coarse.properties",
+      "source_config_sha256": "83a6e9f496d1231ec1988f9537777112e69df381a10299bf9914f19278cfeb4f",
+      "source_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/equal-rounded18-r3-h1.25.csv",
+      "source_mask_sha256": "fc50f3fbeb0d09533820d913d80cf3c26f8ae44cb96f90083e67631e117f8682",
+      "available_followup_case_ids": [
+        "equal-rounded18-r3-xy80",
+        "equal-rounded18-r3-xy100",
+        "equal-rounded18-r3-sc4",
+        "equal-rounded18-r3-bulk",
+        "equal-rounded18-r3-C1pair0-xy80"
+      ],
+      "provenance": "Already computed historically; new environment native E/phi absent. Fresh computation restores native evidence, not a newly invented shape."
+    },
+    {
+      "design_id": "adjacent-square15",
+      "case_id": "adjacent-square15-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "cells": 88480,
+      "role": "connection_control",
+      "pads": [
+        {
+          "pad": 0,
+          "shape": "rectangle",
+          "center_mm": [
+            -10.0,
+            -10.0
+          ],
+          "width_mm": 15,
+          "height_mm": 15,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 0
+        },
+        {
+          "pad": 1,
+          "shape": "rectangle",
+          "center_mm": [
+            10.0,
+            -10.0
+          ],
+          "width_mm": 15,
+          "height_mm": 15,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 1
+        },
+        {
+          "pad": 2,
+          "shape": "rectangle",
+          "center_mm": [
+            10.0,
+            10.0
+          ],
+          "width_mm": 15,
+          "height_mm": 15,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        },
+        {
+          "pad": 3,
+          "shape": "rectangle",
+          "center_mm": [
+            -10.0,
+            10.0
+          ],
+          "width_mm": 15,
+          "height_mm": 15,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        }
+      ],
+      "analytic_total_area_mm2": 900,
+      "represented_total_area_mm2": 899.9999999999981,
+      "represented_pad_areas_mm2": [
+        224.99999999999952,
+        224.99999999999952,
+        224.99999999999952,
+        224.99999999999952
+      ],
+      "patch_area_min_mm2": 1.5624999999999998,
+      "patch_area_max_mm2": 1.5624999999999998,
+      "minimum_patch_fraction_of_h_squared": 1.0,
+      "contact_patches": 576,
+      "source_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/adjacent-square15-coarse.properties",
+      "source_config_sha256": "706ab72bb2aa967bd77ab4ae24287f4df291825a3f9b228ad951950689e3b81d",
+      "source_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/adjacent-square15-h1.25.csv",
+      "source_mask_sha256": "bc99c6dbed87c7e0bf9c7089b05649aeeceea0bbebeca6c628de51fa80c20e42",
+      "available_followup_case_ids": [
+        "adjacent-square15-xy80",
+        "adjacent-square15-xy100",
+        "adjacent-square15-sc4",
+        "adjacent-square15-bulk",
+        "adjacent-square15-C1pair0-xy80"
+      ],
+      "provenance": "Already computed historically; new environment native E/phi absent. Fresh computation restores native evidence, not a newly invented shape."
+    },
+    {
+      "design_id": "free-square10-r12p5xy",
+      "case_id": "free-square10-r12p5xy-coarse",
+      "n_pads": 4,
+      "n_outputs": 2,
+      "cells": 88480,
+      "role": "area_position_control",
+      "pads": [
+        {
+          "pad": 0,
+          "shape": "rectangle",
+          "center_mm": [
+            -12.5,
+            -12.5
+          ],
+          "width_mm": 10,
+          "height_mm": 10,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 0
+        },
+        {
+          "pad": 1,
+          "shape": "rectangle",
+          "center_mm": [
+            12.5,
+            12.5
+          ],
+          "width_mm": 10,
+          "height_mm": 10,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "signal",
+          "source_output": 1
+        },
+        {
+          "pad": 2,
+          "shape": "rectangle",
+          "center_mm": [
+            12.5,
+            -12.5
+          ],
+          "width_mm": 10,
+          "height_mm": 10,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        },
+        {
+          "pad": 3,
+          "shape": "rectangle",
+          "center_mm": [
+            -12.5,
+            12.5
+          ],
+          "width_mm": 10,
+          "height_mm": 10,
+          "rotation_deg": 0.0,
+          "corner_radius_mm": 0.0,
+          "role": "common_gnd_return",
+          "source_output": null
+        }
+      ],
+      "analytic_total_area_mm2": 400,
+      "represented_total_area_mm2": 400.0000000000002,
+      "represented_pad_areas_mm2": [
+        100.00000000000006,
+        100.00000000000006,
+        100.00000000000006,
+        100.00000000000006
+      ],
+      "patch_area_min_mm2": 1.5624999999999998,
+      "patch_area_max_mm2": 1.5624999999999998,
+      "minimum_patch_fraction_of_h_squared": 1.0,
+      "contact_patches": 256,
+      "source_config": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/configs/free-square10-r12p5xy-coarse.properties",
+      "source_config_sha256": "30eb9cea8991af1312b017135dd220540d42d666f5046d28a94e5ad62b2f7898",
+      "source_mask": "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/masks/free-square10-r12p5xy-h1.25.csv",
+      "source_mask_sha256": "0403b8d90e6cb62ea2ea4cf6cf1030b0816aaa39af92e29a2a727aac01348dd5",
+      "available_followup_case_ids": [
+        "free-square10-r12p5xy-xy80",
+        "free-square10-r12p5xy-xy100",
+        "free-square10-r12p5xy-sc4",
+        "free-square10-r12p5xy-bulk",
+        "free-square10-r12p5xy-C1pair0-xy80"
+      ],
+      "provenance": "Already computed historically; new environment native E/phi absent. Fresh computation restores native evidence, not a newly invented shape."
+    }
+  ],
+  "choice_rationale": "Four225mm2/pad shape controls + equal-area wiring control + explicit100mm2/pad size/position control. Legacy matched-contact ROImean retention for free-square10~79.8% versus free-circle12~22.1% motivates this control; not current full-skin evidence. Rounded recomputation is native recovery, not a duplicate shape invention.",
+  "baseline_reuse": [
+    {
+      "run": "cloud-baseline-20261019T185900Z",
+      "case": "baseline-square15-coarse",
+      "purpose": "same-grid coarse baseline; never rerun"
+    },
+    {
+      "run": "cloud-mesh-c1-20261019T190000Z",
+      "cases": [
+        "baseline-square15-xy80",
+        "baseline-square15-sc4",
+        "baseline-square15-bulk"
+      ],
+      "purpose": "same-grid refinement baselines"
+    },
+    {
+      "run": "cloud-reference-20261019T192000Z",
+      "case": "baseline-square15-xy100",
+      "purpose": "same-grid XY0.5 baseline"
+    },
+    {
+      "run": "cloud-coupled-20261019T193200Z",
+      "case": "baseline-square15-coupled-xy100-sc8-bulk",
+      "purpose": "latest coupled computational reference; not substitute for shape convergence"
+    }
+  ],
+  "ROI": {
+    "target": "volume-weighted r<=5mm,z15–20mm mean/P10/max; fixed direction and sampled directional maximum distinct",
+    "non_target": "depth0–5mm and full target-excluded volume P95/max",
+    "distribution": "depth curves,globalmaximumXYZ/depth,high-modulation spatial range and off-target volumes at fixed baseline ROI-P10 and half-baseline-ROImean thresholds",
+    "success_rule": "No20mm-point-only success; layer-interface or remaining surfaceglobalmaximum is not deepfocus"
+  },
+  "normalization": {
+    "raw": "same whole waveform1Vpp each",
+    "equal_total_power": "a=sqrt(Pbase/Pcandidate), exact unclipped row may exceed1Vpp; show1Vpp-capped row separately",
+    "contact_source_cap": "a=min(1,Jcontactmax_base/cand,Jcontact95_base/cand,Vcontact_base/cand,sqrt(PSC_base/cand),sqrt(Pcontact_base/cand),sqrt(Psource_base/cand))",
+    "complete_skin_cap": "Add SC+dermis native-volume total-complex-vector Jmax,J95 and sqrt((PSC+Pdermis)_base/cand) caps; requires completed matched full-skin audits for both. Missing means unavailable, not0/pass.",
+    "definitions": "skin=SC0–0.1mm+dermis0.1–5.1mm; totalJ=gammaE. Contact-normal area-weighted J and skin-vector volume-weighted J are different. Conductive Re(gamma)E separate.",
+    "legacy_warning": "skin_power_W=SC+contact is a legacy alias, never actual full-skin loss. Actual skin loss=PSC+Pdermis; contact separate.",
+    "all_burden": "Report sourceVpp,currentRMS each output,contactV,SC,dermis,fat,muscle,contact,source-resistor and total power. At claimed burden nonincrease require no per-output sourcecurrent increase relative same-grid baseline.",
+    "limits": "Numerical reference values only; not human safety or activation thresholds."
+  },
+  "ranking": {
+    "eligible": "At complete matched burden both ROImean and P10>=same-grid baseline; at least one improves by more than1%; all data/normalizations available. This is a practical screening margin, not a relaxed historical or mesh gate.",
+    "dominance": "Do not worsen mean/surfaceP95,P10/surfaceP95,mean/alloffP95,normalized non-target maxima or fixed-threshold off-target high-modulation volume. Report global maximum location and preserve surface-dominant hold.",
+    "order": "Maximize min(ROImean/base,P10/base),then targetmean/surfaceP95,then lower sourcepower,then lexical designID.",
+    "none_improve": "Best available control may proceed to fine for numerical diagnosis only, never adopted optimizer; latest baseline/probe/C1 reference unchanged.",
+    "adoption": "Require genuine improvement persisting across comparison grids and all registered mesh/edge/contact gates; finite axis pass alone is not continuum/experimental proof."
+  },
+  "sequence": [
+    {
+      "stage": 1,
+      "max_conditions": 6,
+      "case_rule": "six listed -coarse",
+      "h_mm": 1.25,
+      "SC_cells": 2,
+      "bulk": [
+        14,
+        14,
+        40
+      ],
+      "cells_each": 88480
+    },
+    {
+      "stage": 2,
+      "max_conditions": 2,
+      "case_rule": "most promising designIDs + -xy80",
+      "h_mm": 0.625,
+      "SC_cells": 2,
+      "bulk": [
+        14,
+        14,
+        40
+      ],
+      "purpose": "Genuine candidates if present, otherwise explicit numerical controls; no broad new sweep"
+    },
+    {
+      "stage": 3,
+      "max_conditions": 3,
+      "case_rule": "one selected designID + -xy100,-sc4,-bulk",
+      "purpose": "XY,SC-axis,bulk-axis comparisons to same designxy80 and existing same-grid baselines"
+    },
+    {
+      "stage": 4,
+      "max_conditions": 1,
+      "separate_conditional_C1_bound": true,
+      "condition": "Only genuine improvement plus candidate mesh gates and live budget; no automatic execution if controls merely diagnostic.",
+      "case_rule": "selected-C1pair0-xy80 is currently executable only against selected-TISxy80. Same-grid C1h0.5 requires future new registration.",
+      "latest_guard": "C1xy80 is a numerical prediction comparison at that exact grid, not evidence to adopt h0.5 or relabel a latesth0.5 comparison. Probe/latest candidate update only when genuine improvement and validation conditions hold."
+    }
+  ],
+  "bounds": {
+    "geometry_conditions_max": 11,
+    "separate_conditional_C1_max": 1,
+    "all_new_conditions_max": 12,
+    "CPU": 1,
+    "simultaneous_solvers": 1,
+    "per_condition_seconds": 600,
+    "global_seconds": 6600,
+    "spent_snapshot_seconds": 1948.6528036719994,
+    "snapshot_not_live_reservation": true,
+    "residual_batch_priority": true,
+    "expected_research_seconds_upper_estimate": 2000,
+    "estimate_not_guarantee": "Old sixcoarse runs totaled~268s; current native postprocess/fine/audits estimated.12*600 cannot all be reserved from current remaining budget.",
+    "phase_admission": "Before each finite phase read actual worker/lock and live budget. Admit only finite prefixes whose600s-per-condition bound plus preparation headroom fit remaining global6600s. Unstarted cases become not_run_budget; no reserve/budget expansion.",
+    "max_cells": 800000,
+    "Java_heap_GiB": 2,
+    "aggregate_RSS_GiB": 3,
+    "free_reserve_GiB": 2,
+    "storage": "Require phase raw bound + copy/archive peak + reserve on actual mount; preserve originals/failures. RawTIS upper600bytes/cell; coarse6 bound318528000bytes.",
+    "failure_policy": "Stop current phase on numerical/postprocess/resource failure. No retry, duplicate completed operator, source mutation during worker, or threshold relaxation."
+  },
+  "gates": {
+    "native": {
+      "residual": 2e-07,
+      "power_error": 2e-07,
+      "current_error": 2e-06,
+      "area_error": 1e-10,
+      "interface_current_error": 2e-07
+    },
+    "mesh_percent": {
+      "ROImean_P10_and_target_nontarget_ratio": 1,
+      "contactJmax_J95_contactV": 5,
+      "SC_contact_source_power": 2
+    },
+    "extra_skin": "Report actual SC+dermis total-vector J/loss sensitivity separately; missing or failed full-skin evidence blocks full-burden adoption.",
+    "comparisons": "xy80->xy100 sameSC/bulk;xy80->sc4 sameXY/bulk;xy80->bulk18/18/56 sameXY/SC. No cap expansion, phantom resizing or continuous-convergence claim.",
+    "contact_edge": "Partial-face area min/max and full native skin/contact maxima remain explicit; no clipping renormalization. Sharp-edge, baselineXY and PBS-model holds persist until their evidence clears them."
+  },
+  "coarse_commands_after_residual_only": [
+    "python /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --prepare --output /workspace/ngg-tis-task1/data-native/cloud-fourpad-screen-20261020-first --case equal-circle225-coarse --case equal-ellipse24-coarse --case equal-rectangle17p5-coarse --case equal-rounded18-r3-coarse --case adjacent-square15-coarse --case free-square10-r12p5xy-coarse",
+    "python /workspace/ngg-tis-task1/tools/task1_cloud_batch.py --execute --output /workspace/ngg-tis-task1/data-native/cloud-fourpad-screen-20261020-first"
+  ],
+  "command_conditions": "Unique output absent; existing baseline/cache integrity and operator signatures checked; residual finished; actual live budget/disk admit six. Planner executed neither command.",
+  "future_contact_question": "PBS-derived impedance remains uncertain skin contact. Rs subtraction,contact-area scaling exactly once,and alternate contact sensitivity are separate later batches, held fixed here.",
+  "source_hashes": {
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/preregistration.json": "7c832c3a0d5bc0b470547ce53b1151460eda2e1e27e0e270635d9a4ec0c69b52",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/inputs/designs.json": "cb0416a2066c30ba3276f0908b7ef0c88b21e2b4c6c54bc983894970df14834e",
+    "/workspace/ngg-tis-task1/tis-java/runs/selectivity-design-20261019T155933Z/analysis-rows-cm.csv": "4baacfad81e12e445d3109cf351bc867b719607ffd6b33132e5bad9fd657ce59",
+    "/workspace/ngg-tis-task1/tis-java/selectivity_geometry.py": "0a33f50ef6db1a4bec4d89f5a1485d17cfb395af91a61742f1a5540338153764"
+  },
+  "new_helpers_implemented": false,
+  "new_PDE_started_by_planner": 0,
+  "original_files_modified": false,
+  "calculation_completed": false,
+  "numerically_validated": false,
+  "experimentally_validated": false
+}

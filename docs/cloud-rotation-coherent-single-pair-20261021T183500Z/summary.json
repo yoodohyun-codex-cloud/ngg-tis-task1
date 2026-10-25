@@ -1,0 +1,4441 @@
+{
+  "schema": "task1-rotation-coherent-single-pair-rms-v1",
+  "status": "calculated_unadopted",
+  "targets": [
+    {
+      "id": "rotation-square-control--raw",
+      "reference_id": "rotation-square-control",
+      "reference_waveform": "square_3h",
+      "reference_frequencies_Hz": [
+        3000,
+        3030,
+        9000,
+        9090
+      ],
+      "reference_summary_path": "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json",
+      "reference_condition_id": "asym-return2-rot90-xy80-square_3h",
+      "reference_source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+      "reference_configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+      "reference_circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "harmonics_Hz": [
+          9000,
+          9090
+        ],
+        "inactive_source_at_other_frequencies": "0 V through50 ohm",
+        "exclusive_source_return_pair_assumed": false
+      },
+      "reference_amplitude_scale": 1.0,
+      "reference_source_Vpp_intervals_V": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "reference_centre20_E_RMS_V_m": 2.2613262039741584,
+      "reference_ROI_energy_RMS_V_m": 2.4955463330589693,
+      "reference_nine_burdens": {
+        "surface_J_RMS_max_A_m2": 22.512784456954655,
+        "surface_J_RMS_p95_A_m2": 13.273042615662588,
+        "contact_voltage_RMS_max_V": 0.0023713043930772516,
+        "SC_power_W": 2.1518222332679656e-06,
+        "contact_power_W": 1.817622622746391e-06,
+        "source_power_W": 0.0011741274867687157,
+        "bulk_skin_J_vector_RMS_max_A_m2": 22.492214826285423,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 7.072845719480294,
+        "skin_SC_plus_dermis_power_W": 0.0007416381304344012
+      },
+      "reference_source_output_RMS_by_output_mA": [
+        1.5066102716657168,
+        1.5676207554553605
+      ],
+      "reference_probe_artifact": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/probes.json",
+        "SHA256": "24c7b539964ab0a24e18ea3c999758650aa898c40684cf186dd6aab131e46932",
+        "scope": "raw unloaded probe predictions only; no newly reconstructed or loaded Vpp"
+      },
+      "canonical_skin8_limits": {
+        "surface_J_RMS_max_A_m2": 25.49124012699599,
+        "surface_J_RMS_p95_A_m2": 13.553106044904386,
+        "contact_voltage_RMS_max_V": 0.0026848384569140493,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.827275482305884e-06,
+        "source_power_W": 0.001135915555805781,
+        "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+        "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+      },
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.7770900647044736,
+          "amplitude_scale": 1.7770900647044736,
+          "burdens": {
+            "source_current_RMS_mA": 1.663361592528563,
+            "source_current_peak_mA": 2.3523485232844035,
+            "contact_J_RMS_max_A_m2": 26.60670709381621,
+            "contact_J_RMS_p95_A_m2": 19.370349096727363,
+            "contact_voltage_RMS_max_V": 0.002812563731552938,
+            "bulk_skin_J_RMS_max_A_m2": 26.511347933803133,
+            "bulk_skin_J_RMS_p95_A_m2": 7.828365941425127,
+            "SC_power_W": 2.1737460549470206e-06,
+            "dermis_power_W": 0.000690992476914517,
+            "skin_SC_plus_dermis_power_W": 0.000693166222969464,
+            "fat_power_W": 0.00014876183722779506,
+            "muscle_power_W": 4.152672942721405e-05,
+            "contact_power_W": 1.6197048790794097e-06,
+            "tissue_contact_power_W": 0.0008850744945035525,
+            "source_resistor_power_W": 0.00013833858937495788,
+            "source_power_W": 0.0010234130841464348,
+            "loaded_metal_Vpp": 1.5474669839787167
+          },
+          "achieved_centre20_E_RMS_V_m": 2.2613262039741584,
+          "achieved_ROI_energy_RMS_V_m": 2.4917541713746134,
+          "actual_source_Vpp": 1.7770900647044736,
+          "source_peak_V": 0.8885450323522368,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.09241243035835894,
+              "Vpp_lower_V": 0.2613786500817025,
+              "Vpp_upper_V": 0.2613818246893026,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.2278018213569686e-09,
+              "Vpp_lower_V": 6.3002980879913964e-09,
+              "Vpp_upper_V": 6.301175100085061e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06572114246701694,
+              "Vpp_lower_V": 0.18586477900772597,
+              "Vpp_upper_V": 0.18588746202302078,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.04953830958484794,
+              "Vpp_lower_V": 0.14011526304549288,
+              "Vpp_upper_V": 0.14011549854385905,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06572113988135243,
+              "Vpp_lower_V": 0.18586477171567772,
+              "Vpp_upper_V": 0.18588745470965715,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.04953830473498417,
+              "Vpp_lower_V": 0.14011524932571323,
+              "Vpp_upper_V": 0.14011548482637284,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.048590250780647146,
+              "Vpp_lower_V": 0.13740391585801126,
+              "Vpp_upper_V": 0.1374339833062031,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.386459142628248e-10,
+              "Vpp_lower_V": 1.8062791243543587e-09,
+              "Vpp_upper_V": 1.806363427009316e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.15179584692202322,
+              "Vpp_lower_V": 0.42933676814652644,
+              "Vpp_upper_V": 0.42934349085807405,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.3891841560855226e-09,
+              "Vpp_lower_V": 6.756050218781517e-09,
+              "Vpp_upper_V": 6.757633273086176e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.021364449635956254,
+              "Vpp_lower_V": 0.06042619006782285,
+              "Vpp_upper_V": 0.06042778885561297,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.246072705781995e-09,
+              "Vpp_lower_V": 3.523421035118777e-09,
+              "Vpp_upper_V": 3.5244258404396983e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01830078302330443,
+              "Vpp_lower_V": 0.05176009058829073,
+              "Vpp_upper_V": 0.0517624311072092,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.0054738743388294715,
+              "Vpp_lower_V": 0.015482348052357533,
+              "Vpp_upper_V": 0.015482454657397504,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.01830078229392579,
+              "Vpp_lower_V": 0.0517600885688242,
+              "Vpp_upper_V": 0.05176242904421488,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.005473872190089168,
+              "Vpp_lower_V": 0.015482341967604674,
+              "Vpp_upper_V": 0.015482448579842148,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.015773620013987813,
+              "Vpp_lower_V": 0.04461435153368512,
+              "Vpp_upper_V": 0.04461453470300282,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.504364379146751e-09,
+              "Vpp_lower_V": 4.254883608616171e-09,
+              "Vpp_upper_V": 4.254985015480662e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.026914330697417742,
+              "Vpp_lower_V": 0.07612476436222039,
+              "Vpp_upper_V": 0.07612522298896593,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.441739679872038e-10,
+              "Vpp_lower_V": 2.67023673905821e-09,
+              "Vpp_upper_V": 2.670527261534267e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.014149389198747992,
+              "Vpp_lower_V": 0.040017100845007585,
+              "Vpp_upper_V": 0.040020516208329866,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.732339517745437e-10,
+              "Vpp_lower_V": 1.62129536245469e-09,
+              "Vpp_upper_V": 1.6213504580245802e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.012857826666613314,
+              "Vpp_lower_V": 0.03636184131262859,
+              "Vpp_upper_V": 0.036367425709134246,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.002255853923029833,
+              "Vpp_lower_V": 0.006380014417158347,
+              "Vpp_upper_V": 0.00638051842536273,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.012857826118341912,
+              "Vpp_lower_V": 0.036361839838513585,
+              "Vpp_upper_V": 0.03636742415838854,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.002255853200114495,
+              "Vpp_lower_V": 0.006380012396078208,
+              "Vpp_upper_V": 0.006380516380649377,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.011701917830702869,
+              "Vpp_lower_V": 0.03309602548750129,
+              "Vpp_upper_V": 0.033098021803911325,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.4716637973949957e-09,
+              "Vpp_lower_V": 4.162331860433495e-09,
+              "Vpp_upper_V": 4.162493803059017e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.01624553031172966,
+              "Vpp_lower_V": 0.04594247772102667,
+              "Vpp_upper_V": 0.045949298589582924,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 5.150011970501416e-10,
+              "Vpp_lower_V": 1.4564303114835483e-09,
+              "Vpp_upper_V": 1.4566433550133885e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.01124202481567769,
+              "Vpp_lower_V": 0.03179176771503307,
+              "Vpp_upper_V": 0.03179724792573279,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 5.106926654856753e-10,
+              "Vpp_lower_V": 1.4440237747526349e-09,
+              "Vpp_upper_V": 1.4444569874686266e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010453645248580388,
+              "Vpp_lower_V": 0.029561403357827944,
+              "Vpp_upper_V": 0.029567373773559103,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0012939007267600156,
+              "Vpp_lower_V": 0.00365967982381018,
+              "Vpp_upper_V": 0.003659703912296863,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.01045364482532549,
+              "Vpp_lower_V": 0.029561402277675942,
+              "Vpp_upper_V": 0.02956737257641347,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0012939011635983932,
+              "Vpp_lower_V": 0.0036596810537864724,
+              "Vpp_upper_V": 0.0036597051478623787,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.00978242278331592,
+              "Vpp_lower_V": 0.0276653668541572,
+              "Vpp_upper_V": 0.027668869946066068,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 1.0062400567765482e-09,
+              "Vpp_lower_V": 2.8454983471709406e-09,
+              "Vpp_upper_V": 2.8460766705929557e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.012378268032717384,
+              "Vpp_lower_V": 0.0350027136299672,
+              "Vpp_upper_V": 0.03501102906111676,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.610456332148318e-10,
+              "Vpp_lower_V": 1.586875364832525e-09,
+              "Vpp_upper_V": 1.5868766872052435e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.7797945902674042,
+          "amplitude_scale": 1.7797945902674042,
+          "burdens": {
+            "source_current_RMS_mA": 1.665893036509225,
+            "source_current_peak_mA": 2.3559285256942437,
+            "contact_J_RMS_max_A_m2": 26.64719942502093,
+            "contact_J_RMS_p95_A_m2": 19.399828527925298,
+            "contact_voltage_RMS_max_V": 0.002816844128287147,
+            "bulk_skin_J_RMS_max_A_m2": 26.551695139394337,
+            "bulk_skin_J_RMS_p95_A_m2": 7.840279809059112,
+            "SC_power_W": 2.1803674698456052e-06,
+            "dermis_power_W": 0.000693097298621284,
+            "skin_SC_plus_dermis_power_W": 0.0006952776660911296,
+            "fat_power_W": 0.00014921497840457573,
+            "muscle_power_W": 4.165322336807393e-05,
+            "contact_power_W": 1.6246386375528245e-06,
+            "tissue_contact_power_W": 0.000887770506501332,
+            "source_resistor_power_W": 0.0001387599804544963,
+            "source_power_W": 0.001026530487224569,
+            "loaded_metal_Vpp": 1.5498220497680566
+          },
+          "achieved_centre20_E_RMS_V_m": 2.2647676809404875,
+          "achieved_ROI_energy_RMS_V_m": 2.4955463330589693,
+          "actual_source_Vpp": 1.7797945902674042,
+          "source_peak_V": 0.8898972951337021,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.09255307139012245,
+              "Vpp_lower_V": 0.2617764381594091,
+              "Vpp_upper_V": 0.2617796175983948,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.2311922780899567e-09,
+              "Vpp_lower_V": 6.309886413069276e-09,
+              "Vpp_upper_V": 6.310764759873922e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06582116244538343,
+              "Vpp_lower_V": 0.18614764370662823,
+              "Vpp_upper_V": 0.1861703612428491,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.04961370116306762,
+              "Vpp_lower_V": 0.14032850227190558,
+              "Vpp_upper_V": 0.14032873812867303,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06582115985578384,
+              "Vpp_lower_V": 0.18614763640348234,
+              "Vpp_upper_V": 0.18617035391835537,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.04961369630582292,
+              "Vpp_lower_V": 0.14032848853124602,
+              "Vpp_upper_V": 0.14032872439031038,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.04866419952300721,
+              "Vpp_lower_V": 0.1376130287275644,
+              "Vpp_upper_V": 0.13764314193493518,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.396178594866996e-10,
+              "Vpp_lower_V": 1.8090280722904424e-09,
+              "Vpp_upper_V": 1.8091125032442912e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.1520268626462688,
+              "Vpp_lower_V": 0.429990169056036,
+              "Vpp_upper_V": 0.4299969019987731,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.3928202180685467e-09,
+              "Vpp_lower_V": 6.7663321458959856e-09,
+              "Vpp_upper_V": 6.76791760942622e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.021396963857562682,
+              "Vpp_lower_V": 0.06051815174098436,
+              "Vpp_upper_V": 0.0605197529619446,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.247969084335334e-09,
+              "Vpp_lower_V": 3.5287832744603326e-09,
+              "Vpp_upper_V": 3.5297896089787494e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01832863469863097,
+              "Vpp_lower_V": 0.051838863460254826,
+              "Vpp_upper_V": 0.05184120754117241,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.005482204942534746,
+              "Vpp_lower_V": 0.0155059103956025,
+              "Vpp_upper_V": 0.015506017162883015,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.018328633968142303,
+              "Vpp_lower_V": 0.0518388614377149,
+              "Vpp_upper_V": 0.05184120547503846,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.005482202790524308,
+              "Vpp_lower_V": 0.015505904301589352,
+              "Vpp_upper_V": 0.01550601107607832,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.015797625639473584,
+              "Vpp_lower_V": 0.04468224941719306,
+              "Vpp_upper_V": 0.04468243286527328,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.5066538477562337e-09,
+              "Vpp_lower_V": 4.261359049402967e-09,
+              "Vpp_upper_V": 4.261460610596978e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.026955291196171325,
+              "Vpp_lower_V": 0.0762406174499613,
+              "Vpp_upper_V": 0.0762410767746837,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.45610891575373e-10,
+              "Vpp_lower_V": 2.674300530569565e-09,
+              "Vpp_upper_V": 2.6745914951872324e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.014170922932770771,
+              "Vpp_lower_V": 0.04007800224462668,
+              "Vpp_upper_V": 0.04008142280573696,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.741063475562238e-10,
+              "Vpp_lower_V": 1.6237627864980227e-09,
+              "Vpp_upper_V": 1.6238179659169986e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.012877394791827817,
+              "Vpp_lower_V": 0.03641717982996005,
+              "Vpp_upper_V": 0.03642277272527138,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.002259287071817419,
+              "Vpp_lower_V": 0.006389724061270245,
+              "Vpp_upper_V": 0.0063902288365168276,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.01287739424272201,
+              "Vpp_lower_V": 0.03641717835360162,
+              "Vpp_upper_V": 0.036422771172165615,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.0022592863478018872,
+              "Vpp_lower_V": 0.006389722037114255,
+              "Vpp_upper_V": 0.006390226788691658,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.011719726796346775,
+              "Vpp_lower_V": 0.03314639381082948,
+              "Vpp_upper_V": 0.03314839316540222,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.473903499500784e-09,
+              "Vpp_lower_V": 4.16866644816291e-09,
+              "Vpp_upper_V": 4.1688286372463795e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.016270254130113473,
+              "Vpp_lower_V": 0.04601239685899763,
+              "Vpp_upper_V": 0.046019228108127,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 5.157849693135882e-10,
+              "Vpp_lower_V": 1.4586468299854899e-09,
+              "Vpp_upper_V": 1.4588601977429448e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.011259133877338082,
+              "Vpp_lower_V": 0.031840151108865365,
+              "Vpp_upper_V": 0.031845639659812,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 5.114698806623506e-10,
+              "Vpp_lower_V": 1.4462214119404537e-09,
+              "Vpp_upper_V": 1.4466552839560993e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010469554487713573,
+              "Vpp_lower_V": 0.02960639239504404,
+              "Vpp_upper_V": 0.029612371897057482,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0012958698940301048,
+              "Vpp_lower_V": 0.003665249433270172,
+              "Vpp_upper_V": 0.0036652735584167457,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.01046955406381453,
+              "Vpp_lower_V": 0.02960639131324817,
+              "Vpp_upper_V": 0.029612370698089932,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0012958703315333,
+              "Vpp_lower_V": 0.003665250665118346,
+              "Vpp_upper_V": 0.0036652747958626497,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.009797310499481996,
+              "Vpp_lower_V": 0.027707470343086085,
+              "Vpp_upper_V": 0.02771097876629572,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 1.0077714377740834e-09,
+              "Vpp_lower_V": 2.849828866581323e-09,
+              "Vpp_upper_V": 2.8504080701447047e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.012397106325150727,
+              "Vpp_lower_V": 0.035055983712145015,
+              "Vpp_upper_V": 0.03506431179841912,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.618994797852095e-10,
+              "Vpp_lower_V": 1.5892904056200542e-09,
+              "Vpp_upper_V": 1.589291730005271e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        }
+      }
+    },
+    {
+      "id": "rotation-square-control--skin_contact_only",
+      "reference_id": "rotation-square-control",
+      "reference_waveform": "square_3h",
+      "reference_frequencies_Hz": [
+        3000,
+        3030,
+        9000,
+        9090
+      ],
+      "reference_summary_path": "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json",
+      "reference_condition_id": "asym-return2-rot90-xy80-square_3h",
+      "reference_source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+      "reference_configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+      "reference_circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_signal_pads": 2,
+        "n_return_pads": 2,
+        "n_return_nodes": 1,
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "source_Vpp_each": 1.0,
+        "source_peak_V": 0.5,
+        "source_resistance_ohm": 50.0,
+        "source_phase_deg": [
+          0.0,
+          0.0
+        ],
+        "carrier_assignment_Hz": [
+          3000,
+          3030
+        ],
+        "harmonics_Hz": [
+          9000,
+          9090
+        ],
+        "inactive_source_at_other_frequencies": "0 V through50 ohm",
+        "exclusive_source_return_pair_assumed": false
+      },
+      "reference_amplitude_scale": 0.9894546450470344,
+      "reference_source_Vpp_intervals_V": [
+        [
+          0.9894546450470344,
+          0.9894546450470344
+        ],
+        [
+          0.9894546450470344,
+          0.9894546450470344
+        ]
+      ],
+      "reference_centre20_E_RMS_V_m": 2.2374797164888087,
+      "reference_ROI_energy_RMS_V_m": 2.4692299111752907,
+      "reference_nine_burdens": {
+        "surface_J_RMS_max_A_m2": 22.27537915387646,
+        "surface_J_RMS_p95_A_m2": 13.133073669974587,
+        "contact_voltage_RMS_max_V": 0.0023462981465507252,
+        "SC_power_W": 2.106678067116368e-06,
+        "contact_power_W": 1.7794897991266867e-06,
+        "source_power_W": 0.001149494872825813,
+        "bulk_skin_J_vector_RMS_max_A_m2": 22.255026437263886,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+        "skin_SC_plus_dermis_power_W": 0.0007260789292759284
+      },
+      "reference_source_output_RMS_by_output_mA": [
+        1.490722531575218,
+        1.5510896381574477
+      ],
+      "reference_probe_artifact": {
+        "path": "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/probes.json",
+        "SHA256": "24c7b539964ab0a24e18ea3c999758650aa898c40684cf186dd6aab131e46932",
+        "scope": "raw unloaded probe predictions only; no newly reconstructed or loaded Vpp"
+      },
+      "canonical_skin8_limits": {
+        "surface_J_RMS_max_A_m2": 25.49124012699599,
+        "surface_J_RMS_p95_A_m2": 13.553106044904386,
+        "contact_voltage_RMS_max_V": 0.0026848384569140493,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.827275482305884e-06,
+        "source_power_W": 0.001135915555805781,
+        "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+        "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+      },
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.7583500191887764,
+          "amplitude_scale": 1.7583500191887764,
+          "burdens": {
+            "source_current_RMS_mA": 1.6458208541202193,
+            "source_current_peak_mA": 2.3275421731332853,
+            "contact_J_RMS_max_A_m2": 26.326129923382332,
+            "contact_J_RMS_p95_A_m2": 19.166081889939516,
+            "contact_voltage_RMS_max_V": 0.002782904248675875,
+            "bulk_skin_J_RMS_max_A_m2": 26.23177635955961,
+            "bulk_skin_J_RMS_p95_A_m2": 7.745813043871093,
+            "SC_power_W": 2.128141937860232e-06,
+            "dermis_power_W": 0.0006764957965172901,
+            "skin_SC_plus_dermis_power_W": 0.0006786239384551503,
+            "fat_power_W": 0.00014564088746112718,
+            "muscle_power_W": 4.065551918316546e-05,
+            "contact_power_W": 1.585724271830703e-06,
+            "tissue_contact_power_W": 0.0008665060693712737,
+            "source_resistor_power_W": 0.0001354363141928504,
+            "source_power_W": 0.0010019423838264275,
+            "loaded_metal_Vpp": 1.531148395354666
+          },
+          "achieved_centre20_E_RMS_V_m": 2.2374797164888087,
+          "achieved_ROI_energy_RMS_V_m": 2.4654777391819356,
+          "actual_source_Vpp": 1.7583500191887764,
+          "source_peak_V": 0.8791750095943882,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.09143790847816384,
+              "Vpp_lower_V": 0.258622319439464,
+              "Vpp_upper_V": 0.2586254605697001,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.2043088603858964e-09,
+              "Vpp_lower_V": 6.2338592083440376e-09,
+              "Vpp_upper_V": 6.234726972033876e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06502808969178782,
+              "Vpp_lower_V": 0.183904768939835,
+              "Vpp_upper_V": 0.18392721275468213,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.049015910526505814,
+              "Vpp_lower_V": 0.13863769786235003,
+              "Vpp_upper_V": 0.13863793087730233,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06502808713339006,
+              "Vpp_lower_V": 0.18390476172468398,
+              "Vpp_upper_V": 0.1839272055184405,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.04901590572778559,
+              "Vpp_lower_V": 0.13863768428725032,
+              "Vpp_upper_V": 0.13863791730447186,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.048077849338911606,
+              "Vpp_lower_V": 0.13595494279336112,
+              "Vpp_upper_V": 0.13598469316963924,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.319111664076621e-10,
+              "Vpp_lower_V": 1.7872312698439103e-09,
+              "Vpp_upper_V": 1.7873146834974475e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.15019510583584447,
+              "Vpp_lower_V": 0.4248092595320622,
+              "Vpp_upper_V": 0.42481591135023034,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.3639893611115995e-09,
+              "Vpp_lower_V": 6.684805271144406e-09,
+              "Vpp_upper_V": 6.686371631579512e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.02113915393117034,
+              "Vpp_lower_V": 0.0597889744451023,
+              "Vpp_upper_V": 0.05979055637310768,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.2329324268023217e-09,
+              "Vpp_lower_V": 3.486265309654704e-09,
+              "Vpp_upper_V": 3.4872595189468578e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.018107794770406475,
+              "Vpp_lower_V": 0.05121426206063955,
+              "Vpp_upper_V": 0.05121657789795525,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.005416150390958585,
+              "Vpp_lower_V": 0.015319081196640067,
+              "Vpp_upper_V": 0.015319186677492052,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.018107794048719397,
+              "Vpp_lower_V": 0.051214260062469014,
+              "Vpp_upper_V": 0.05121657585671594,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.0054161482648775105,
+              "Vpp_lower_V": 0.015319075176053088,
+              "Vpp_upper_V": 0.015319180664026674,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.01560728159204711,
+              "Vpp_lower_V": 0.044143877360766026,
+              "Vpp_upper_V": 0.04414405859849826,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.4885003227900508e-09,
+              "Vpp_lower_V": 4.210014350679759e-09,
+              "Vpp_upper_V": 4.210114688172869e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.026630509526891975,
+              "Vpp_lower_V": 0.07532200170130991,
+              "Vpp_upper_V": 0.07532245549167363,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.342173183574287e-10,
+              "Vpp_lower_V": 2.642078144836392e-09,
+              "Vpp_upper_V": 2.642365603649817e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.014000178867279538,
+              "Vpp_lower_V": 0.03959510631240836,
+              "Vpp_upper_V": 0.03959848565951212,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.671889962819899e-10,
+              "Vpp_lower_V": 1.6041982273740085e-09,
+              "Vpp_upper_V": 1.6042527419415576e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.01272223632049017,
+              "Vpp_lower_V": 0.035978392789243516,
+              "Vpp_upper_V": 0.035983918296305824,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.0022320651426894437,
+              "Vpp_lower_V": 0.006312734900524374,
+              "Vpp_upper_V": 0.006313233593783343,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.012722235778000485,
+              "Vpp_lower_V": 0.03597839133067358,
+              "Vpp_upper_V": 0.03598391676191328,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.0022320644273975043,
+              "Vpp_lower_V": 0.006312732900757243,
+              "Vpp_upper_V": 0.0063132315706322184,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.01157851695354767,
+              "Vpp_lower_V": 0.0327470161512032,
+              "Vpp_upper_V": 0.03274899141574809,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.4561445802800362e-09,
+              "Vpp_lower_V": 4.1184385935331856e-09,
+              "Vpp_upper_V": 4.11859882841624e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.01607421542819331,
+              "Vpp_lower_V": 0.045457997986039736,
+              "Vpp_upper_V": 0.04546474692611597,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 5.095703266260457e-10,
+              "Vpp_lower_V": 1.4410717368846961e-09,
+              "Vpp_upper_V": 1.4412825337948938e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.011123473673606322,
+              "Vpp_lower_V": 0.03145651223989582,
+              "Vpp_upper_V": 0.031461934659828494,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 5.053072300562528e-10,
+              "Vpp_lower_V": 1.428796031487347e-09,
+              "Vpp_upper_V": 1.4292246758214786e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010343407848881726,
+              "Vpp_lower_V": 0.029249667866511862,
+              "Vpp_upper_V": 0.02925557532208992,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.001280256084322431,
+              "Vpp_lower_V": 0.0036210872010538956,
+              "Vpp_upper_V": 0.0036211110355189357,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.010343407430090202,
+              "Vpp_lower_V": 0.029249666797750443,
+              "Vpp_upper_V": 0.029255574137568612,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0012802565165541929,
+              "Vpp_lower_V": 0.003621088418059651,
+              "Vpp_upper_V": 0.0036211122580549746,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.009679263662765877,
+              "Vpp_lower_V": 0.027373625740776102,
+              "Vpp_upper_V": 0.02737709189133736,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.956288982099473e-10,
+              "Vpp_lower_V": 2.8154915570819464e-09,
+              "Vpp_upper_V": 2.8160637818781986e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.012247734802609433,
+              "Vpp_lower_V": 0.03463359759042219,
+              "Vpp_upper_V": 0.03464182533239869,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.5512920786777e-10,
+              "Vpp_lower_V": 1.5701412008442494e-09,
+              "Vpp_upper_V": 1.570142509272078e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.7610260245696665,
+          "amplitude_scale": 1.7610260245696665,
+          "burdens": {
+            "source_current_RMS_mA": 1.6483256031255615,
+            "source_current_peak_mA": 2.331084423146981,
+            "contact_J_RMS_max_A_m2": 26.366195248581626,
+            "contact_J_RMS_p95_A_m2": 19.195250450071658,
+            "contact_voltage_RMS_max_V": 0.0027871395071071823,
+            "bulk_skin_J_RMS_max_A_m2": 26.271698089546494,
+            "bulk_skin_J_RMS_p95_A_m2": 7.757601275542015,
+            "SC_power_W": 2.1346244387492305e-06,
+            "dermis_power_W": 0.0006785564601057049,
+            "skin_SC_plus_dermis_power_W": 0.0006806910845444541,
+            "fat_power_W": 0.00014608452196014494,
+            "muscle_power_W": 4.0779359343710655e-05,
+            "contact_power_W": 1.590554522491608e-06,
+            "tissue_contact_power_W": 0.0008691455203708012,
+            "source_resistor_power_W": 0.00013584886469596234,
+            "source_power_W": 0.001004994385329866,
+            "loaded_metal_Vpp": 1.5334786261393198
+          },
+          "achieved_centre20_E_RMS_V_m": 2.240884901858965,
+          "achieved_ROI_energy_RMS_V_m": 2.4692299111752907,
+          "actual_source_Vpp": 1.7610260245696665,
+          "source_peak_V": 0.8805130122848333,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.09157706640032645,
+              "Vpp_lower_V": 0.2590159127006951,
+              "Vpp_upper_V": 0.25901905861136815,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.207663563549182e-09,
+              "Vpp_lower_V": 6.243346421130566e-09,
+              "Vpp_upper_V": 6.244215505456386e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06512705492398005,
+              "Vpp_lower_V": 0.18418465073008367,
+              "Vpp_upper_V": 0.18420712870182143,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.04909050707377271,
+              "Vpp_lower_V": 0.1388486884054303,
+              "Vpp_upper_V": 0.13884892177500444,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06512705236168871,
+              "Vpp_lower_V": 0.18418464350395203,
+              "Vpp_upper_V": 0.18420712145456708,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.049090502267749386,
+              "Vpp_lower_V": 0.13884867480967086,
+              "Vpp_upper_V": 0.13884890818151768,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.04815101826553517,
+              "Vpp_lower_V": 0.1361618504934796,
+              "Vpp_upper_V": 0.13619164614638987,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.328728621241563e-10,
+              "Vpp_lower_V": 1.7899512291482607e-09,
+              "Vpp_upper_V": 1.790034769747732e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.15042368541727816,
+              "Vpp_lower_V": 0.42545577009705443,
+              "Vpp_upper_V": 0.4254624320385205,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.3675870795303813e-09,
+              "Vpp_lower_V": 6.694978771687851e-09,
+              "Vpp_upper_V": 6.696547515942395e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.02117132527876891,
+              "Vpp_lower_V": 0.059879966349778255,
+              "Vpp_upper_V": 0.05988155068529511,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.2348088073706907e-09,
+              "Vpp_lower_V": 3.49157100227906e-09,
+              "Vpp_upper_V": 3.492566724642779e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.018135352739930666,
+              "Vpp_lower_V": 0.05129220424470812,
+              "Vpp_upper_V": 0.05129452360646039,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.005424393145490815,
+              "Vpp_lower_V": 0.015342395066611994,
+              "Vpp_upper_V": 0.015342500707993636,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.01813535201714526,
+              "Vpp_lower_V": 0.0512922022434966,
+              "Vpp_upper_V": 0.05129452156211456,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.005424391016174091,
+              "Vpp_lower_V": 0.015342389036862377,
+              "Vpp_upper_V": 0.01534249468537646,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.015631034069691265,
+              "Vpp_lower_V": 0.04421105923699182,
+              "Vpp_upper_V": 0.04421124075054692,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.4907656481403928e-09,
+              "Vpp_lower_V": 4.216421505644981e-09,
+              "Vpp_upper_V": 4.216521995840152e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.02667103808264715,
+              "Vpp_lower_V": 0.07543663307711819,
+              "Vpp_upper_V": 0.07543708755809836,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.356390890763205e-10,
+              "Vpp_lower_V": 2.6460990822238046e-09,
+              "Vpp_upper_V": 2.6463869785163004e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.014021485520433584,
+              "Vpp_lower_V": 0.03965536548515134,
+              "Vpp_upper_V": 0.03965874997523058,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.680521923404928e-10,
+              "Vpp_lower_V": 1.6066396315549847e-09,
+              "Vpp_upper_V": 1.6066942290874014e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.012741598092878522,
+              "Vpp_lower_V": 0.03603314774226715,
+              "Vpp_upper_V": 0.0360386816585122,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.0022354620877044584,
+              "Vpp_lower_V": 0.006322342152992645,
+              "Vpp_upper_V": 0.006322841605205081,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.01274159754956323,
+              "Vpp_lower_V": 0.03603314628147744,
+              "Vpp_upper_V": 0.03603868012178449,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.002235461371323927,
+              "Vpp_lower_V": 0.0063223401501820995,
+              "Vpp_upper_V": 0.006322839578974955,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.011596138117327516,
+              "Vpp_lower_V": 0.032796853322683506,
+              "Vpp_upper_V": 0.0327988315933526,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.4583606639321302e-09,
+              "Vpp_lower_V": 4.124706380786514e-09,
+              "Vpp_upper_V": 4.1248668595285295e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.016098678525136474,
+              "Vpp_lower_V": 0.04552717980188278,
+              "Vpp_upper_V": 0.045533939013065315,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 5.103458337327721e-10,
+              "Vpp_lower_V": 1.4432648814122749e-09,
+              "Vpp_upper_V": 1.443475999130992e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.011140402314138593,
+              "Vpp_lower_V": 0.03150438541366632,
+              "Vpp_upper_V": 0.031509816085895044,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 5.060762492230151e-10,
+              "Vpp_lower_V": 1.4309704938109625e-09,
+              "Vpp_upper_V": 1.431399790492199e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010359149319441222,
+              "Vpp_lower_V": 0.029294182478361522,
+              "Vpp_upper_V": 0.02930009892440379,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0012822044860246954,
+              "Vpp_lower_V": 0.0036265980770051826,
+              "Vpp_upper_V": 0.003626621947743522,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.010359148900012344,
+              "Vpp_lower_V": 0.029294181407973574,
+              "Vpp_upper_V": 0.02930009773807978,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.001282204918914264,
+              "Vpp_lower_V": 0.00362659929586308,
+              "Vpp_upper_V": 0.0036266231721401197,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.009693994382680541,
+              "Vpp_lower_V": 0.027415285233469477,
+              "Vpp_upper_V": 0.02741875665911104,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.971441302512951e-10,
+              "Vpp_lower_V": 2.8197764096280155e-09,
+              "Vpp_upper_V": 2.8203495052842315e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.012266374438562358,
+              "Vpp_lower_V": 0.03468630592067507,
+              "Vpp_upper_V": 0.03469454618432334,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.559740503229877e-10,
+              "Vpp_lower_V": 1.5725307741694482e-09,
+              "Vpp_upper_V": 1.5725320845885527e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        }
+      }
+    },
+    {
+      "id": "rotation-sine-control--raw",
+      "reference_id": "rotation-sine-control",
+      "reference_waveform": "sine",
+      "reference_frequencies_Hz": [
+        3000,
+        3030
+      ],
+      "reference_summary_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json",
+      "reference_condition_id": "rotation-sine-control",
+      "reference_source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+      "reference_configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+      "reference_circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_return_nodes": 1,
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "source_resistance_ohm": 50,
+        "active_frequencies_by_output_Hz": {
+          "0": [
+            3000
+          ],
+          "1": [
+            3030
+          ]
+        },
+        "uncommanded_frequency_termination": "0V through50ohm",
+        "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+      },
+      "reference_amplitude_scale": 1.0,
+      "reference_source_Vpp_intervals_V": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "reference_centre20_E_RMS_V_m": 2.025148634548753,
+      "reference_ROI_energy_RMS_V_m": 2.234722838621866,
+      "reference_nine_burdens": {
+        "surface_J_RMS_max_A_m2": 18.81406344921423,
+        "surface_J_RMS_p95_A_m2": 11.48879228360426,
+        "contact_voltage_RMS_max_V": 0.0019817358021992585,
+        "SC_power_W": 1.87968399628076e-06,
+        "contact_power_W": 1.4081881892808509e-06,
+        "source_power_W": 0.0009328816406819563,
+        "bulk_skin_J_vector_RMS_max_A_m2": 18.904194971329357,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.2915480454324335,
+        "skin_SC_plus_dermis_power_W": 0.000588921129706728
+      },
+      "reference_source_output_RMS_by_output_mA": [
+        1.3410207044405316,
+        1.3939103618578277
+      ],
+      "reference_probe_artifact": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-sine-control/probes.json",
+        "SHA256": "872ca98c4ba07db2a49280ca36290f743cb8af1454ff3d45b795b014b41cbdca"
+      },
+      "canonical_skin8_limits": {
+        "surface_J_RMS_max_A_m2": 25.49124012699599,
+        "surface_J_RMS_p95_A_m2": 13.553106044904386,
+        "contact_voltage_RMS_max_V": 0.0026848384569140493,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.827275482305884e-06,
+        "source_power_W": 0.001135915555805781,
+        "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+        "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+      },
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.5914871156941435,
+          "amplitude_scale": 1.5914871156941435,
+          "burdens": {
+            "source_current_RMS_mA": 1.489636679551144,
+            "source_current_peak_mA": 2.106664395229652,
+            "contact_J_RMS_max_A_m2": 23.827847767467105,
+            "contact_J_RMS_p95_A_m2": 17.347269914012976,
+            "contact_voltage_RMS_max_V": 0.002518813778624956,
+            "bulk_skin_J_RMS_max_A_m2": 23.74244811466478,
+            "bulk_skin_J_RMS_p95_A_m2": 7.010755267932246,
+            "SC_power_W": 1.7433965538722017e-06,
+            "dermis_power_W": 0.0005541925655311869,
+            "skin_SC_plus_dermis_power_W": 0.0005559359620850591,
+            "fat_power_W": 0.0001193105670188123,
+            "muscle_power_W": 3.330543455719018e-05,
+            "contact_power_W": 1.2990422216296357e-06,
+            "tissue_contact_power_W": 0.0007098510058826912,
+            "source_resistor_power_W": 0.00011095087185320791,
+            "source_power_W": 0.0008208018779507809,
+            "loaded_metal_Vpp": 1.3858463427815952
+          },
+          "achieved_centre20_E_RMS_V_m": 2.025148634548753,
+          "achieved_ROI_energy_RMS_V_m": 2.2315102301127907,
+          "actual_source_Vpp": 1.5914871156941435,
+          "source_peak_V": 0.7957435578470717,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.0827606856660743,
+              "Vpp_lower_V": 0.23407972515548012,
+              "Vpp_upper_V": 0.23408256820051945,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 1.995125607547175e-09,
+              "Vpp_lower_V": 5.642281970519146e-09,
+              "Vpp_upper_V": 5.643067385662192e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.058857090893899344,
+              "Vpp_lower_V": 0.16645267841353126,
+              "Vpp_upper_V": 0.1664729923679581,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.04436442643139983,
+              "Vpp_lower_V": 0.12548133618994753,
+              "Vpp_upper_V": 0.12548154709237896,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.05885708857828696,
+              "Vpp_lower_V": 0.16645267188307955,
+              "Vpp_upper_V": 0.1664729858184172,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.04436442208806583,
+              "Vpp_lower_V": 0.12548132390308994,
+              "Vpp_upper_V": 0.1254815348075753,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.04351538484269629,
+              "Vpp_lower_V": 0.1230531676909198,
+              "Vpp_upper_V": 0.1230800948328523,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 5.719444187028399e-10,
+              "Vpp_lower_V": 1.6176276097943933e-09,
+              "Vpp_upper_V": 1.617703107706316e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.13594197581226977,
+              "Vpp_lower_V": 0.38449595120131924,
+              "Vpp_upper_V": 0.38450197177901707,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.1396528386213327e-09,
+              "Vpp_lower_V": 6.0504344094464604e-09,
+              "Vpp_upper_V": 6.051852126296803e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.019133102483005072,
+              "Vpp_lower_V": 0.05411515423638247,
+              "Vpp_upper_V": 0.05411658604348062,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.1159303041852138e-09,
+              "Vpp_lower_V": 3.1554276803014864e-09,
+              "Vpp_upper_V": 3.1563275416837474e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.016389411525716123,
+              "Vpp_lower_V": 0.04635416004766493,
+              "Vpp_upper_V": 0.04635625611796365,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.004902171621011579,
+              "Vpp_lower_V": 0.01386533971204037,
+              "Vpp_upper_V": 0.01386543518303025,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.016389410872515296,
+              "Vpp_lower_V": 0.04635415823911564,
+              "Vpp_upper_V": 0.04635625427043271,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.004902169696690142,
+              "Vpp_lower_V": 0.013865334262791641,
+              "Vpp_upper_V": 0.0138654297402273,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.014126190629675002,
+              "Vpp_lower_V": 0.03995473670757188,
+              "Vpp_upper_V": 0.03995490074630852,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.3472454628344457e-09,
+              "Vpp_lower_V": 3.810494795049649e-09,
+              "Vpp_upper_V": 3.810585610772208e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.024103342527884132,
+              "Vpp_lower_V": 0.06817413707609339,
+              "Vpp_upper_V": 0.06817454780291637,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 8.455624927908961e-10,
+              "Vpp_lower_V": 2.391351710567913e-09,
+              "Vpp_upper_V": 2.391611890277792e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.012671597828382493,
+              "Vpp_lower_V": 0.035837632355934505,
+              "Vpp_upper_V": 0.03584069101167221,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.133642163934651e-10,
+              "Vpp_lower_V": 1.451963933246343e-09,
+              "Vpp_upper_V": 1.4520132745213596e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.011514928749065192,
+              "Vpp_lower_V": 0.032564135662750994,
+              "Vpp_upper_V": 0.03256913681337594,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.0020202478899048397,
+              "Vpp_lower_V": 0.005713672561969407,
+              "Vpp_upper_V": 0.005714123930518144,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.011514928258056386,
+              "Vpp_lower_V": 0.0325641343425956,
+              "Vpp_upper_V": 0.03256913542459331,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.002020247242492269,
+              "Vpp_lower_V": 0.005713670751975043,
+              "Vpp_upper_V": 0.005714122099358868,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.010479745414350858,
+              "Vpp_lower_V": 0.029639408373374997,
+              "Vpp_upper_V": 0.029641196190384675,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.3179601972380302e-09,
+              "Vpp_lower_V": 3.727609342199967e-09,
+              "Vpp_upper_V": 3.7277543712039096e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.014548813643294986,
+              "Vpp_lower_V": 0.04114415065858711,
+              "Vpp_upper_V": 0.04115025914157327,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.6121341059247995e-10,
+              "Vpp_lower_V": 1.3043177279919888e-09,
+              "Vpp_upper_V": 1.3045085208164813e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.01006788457367252,
+              "Vpp_lower_V": 0.02847136997078998,
+              "Vpp_upper_V": 0.02847627781698929,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 4.5735487094465966e-10,
+              "Vpp_lower_V": 1.2932069555276125e-09,
+              "Vpp_upper_V": 1.2935949226146777e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.009361844993444191,
+              "Vpp_lower_V": 0.026473949463920114,
+              "Vpp_upper_V": 0.02647929631712705,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0011587630680768553,
+              "Vpp_lower_V": 0.003277455320267231,
+              "Vpp_upper_V": 0.003277476892902717,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.009361844614394906,
+              "Vpp_lower_V": 0.026473948496581412,
+              "Vpp_upper_V": 0.026479295245013777,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0011587634592909325,
+              "Vpp_lower_V": 0.0032774564217822643,
+              "Vpp_upper_V": 0.0032774779994232243,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.008760726385867874,
+              "Vpp_lower_V": 0.024775938920498633,
+              "Vpp_upper_V": 0.024779076142268527,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.011462713464285e-10,
+              "Vpp_lower_V": 2.5483086351082747e-09,
+              "Vpp_upper_V": 2.548826557240147e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.01108545620728258,
+              "Vpp_lower_V": 0.03134695807648243,
+              "Vpp_upper_V": 0.0313544050268643,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.02448870944734e-10,
+              "Vpp_lower_V": 1.4211388311168072e-09,
+              "Vpp_upper_V": 1.4211400153781935e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.5937783106799284,
+          "amplitude_scale": 1.5937783106799284,
+          "burdens": {
+            "source_current_RMS_mA": 1.491781244880748,
+            "source_current_peak_mA": 2.109697268604173,
+            "contact_J_RMS_max_A_m2": 23.86215168660569,
+            "contact_J_RMS_p95_A_m2": 17.372244026245554,
+            "contact_voltage_RMS_max_V": 0.002522440005593934,
+            "bulk_skin_J_RMS_max_A_m2": 23.776629087626567,
+            "bulk_skin_J_RMS_p95_A_m2": 7.0208483482707855,
+            "SC_power_W": 1.7484199520882566e-06,
+            "dermis_power_W": 0.0005557894081651,
+            "skin_SC_plus_dermis_power_W": 0.0005575378281171883,
+            "fat_power_W": 0.0001196543468021253,
+            "muscle_power_W": 3.340140036609804e-05,
+            "contact_power_W": 1.3027852635464164e-06,
+            "tissue_contact_power_W": 0.000711896360548958,
+            "source_resistor_power_W": 0.00011127056412889771,
+            "source_power_W": 0.0008231669248933567,
+            "loaded_metal_Vpp": 1.3878414856642094
+          },
+          "achieved_centre20_E_RMS_V_m": 2.028064153217544,
+          "achieved_ROI_energy_RMS_V_m": 2.234722838621866,
+          "actual_source_Vpp": 1.5937783106799284,
+          "source_peak_V": 0.7968891553399642,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.08287983263631887,
+              "Vpp_lower_V": 0.23441671958494253,
+              "Vpp_upper_V": 0.23441956672299052,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 1.9979979033659378e-09,
+              "Vpp_lower_V": 5.6504049191951084e-09,
+              "Vpp_upper_V": 5.651191465066276e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.05894182489532741,
+              "Vpp_lower_V": 0.16669231311643942,
+              "Vpp_upper_V": 0.16671265631598553,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.04442829597227419,
+              "Vpp_lower_V": 0.1256619862281746,
+              "Vpp_upper_V": 0.1256621974342331,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.05894182257638135,
+              "Vpp_lower_V": 0.16669230657658612,
+              "Vpp_upper_V": 0.16671264975701558,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.044428291622687285,
+              "Vpp_lower_V": 0.12566197392362813,
+              "Vpp_upper_V": 0.12566218513174351,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.043578032055214,
+              "Vpp_lower_V": 0.12323032200025608,
+              "Vpp_upper_V": 0.12325728790802712,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 5.727678222801337e-10,
+              "Vpp_lower_V": 1.6199564381159544e-09,
+              "Vpp_upper_V": 1.6200320447189467e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.1361376855797365,
+              "Vpp_lower_V": 0.38504949334863525,
+              "Vpp_upper_V": 0.3850555225938977,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.142733204027264e-09,
+              "Vpp_lower_V": 6.059144957489256e-09,
+              "Vpp_upper_V": 6.060564715365069e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.019160647580944778,
+              "Vpp_lower_V": 0.05419306147723832,
+              "Vpp_upper_V": 0.05419449534564707,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.117536860651943e-09,
+              "Vpp_lower_V": 3.15997041269801e-09,
+              "Vpp_upper_V": 3.1608715695716807e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.016413006650764502,
+              "Vpp_lower_V": 0.04642089412174203,
+              "Vpp_upper_V": 0.04642299320966226,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.004909229064912166,
+              "Vpp_lower_V": 0.013885301040354722,
+              "Vpp_upper_V": 0.013885396648790045,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.01641300599662329,
+              "Vpp_lower_V": 0.04642089231058905,
+              "Vpp_upper_V": 0.04642299135947151,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.004909227137820367,
+              "Vpp_lower_V": 0.013885295583260945,
+              "Vpp_upper_V": 0.013885391198151329,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.014146527493743698,
+              "Vpp_lower_V": 0.0400122578093766,
+              "Vpp_upper_V": 0.0400124220842727,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.3491850337041234e-09,
+              "Vpp_lower_V": 3.8159805991643545e-09,
+              "Vpp_upper_V": 3.816071545630373e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.024138043064882486,
+              "Vpp_lower_V": 0.06827228442487719,
+              "Vpp_upper_V": 0.06827269574300578,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 8.46779812444034e-10,
+              "Vpp_lower_V": 2.394794435924889e-09,
+              "Vpp_upper_V": 2.3950549902042144e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.012689840578273439,
+              "Vpp_lower_V": 0.035889226241142,
+              "Vpp_upper_V": 0.03589228930029373,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.141032845938187e-10,
+              "Vpp_lower_V": 1.4540542627567667e-09,
+              "Vpp_upper_V": 1.4541036750662773e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.011531506292641486,
+              "Vpp_lower_V": 0.03261101683672416,
+              "Vpp_upper_V": 0.03261602518728879,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.0020231563531840874,
+              "Vpp_lower_V": 0.005721898288584034,
+              "Vpp_upper_V": 0.005722350306948496,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.011531505800925795,
+              "Vpp_lower_V": 0.0326110155146682,
+              "Vpp_upper_V": 0.03261602379650679,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.002023155704839465,
+              "Vpp_lower_V": 0.0057218964759839,
+              "Vpp_upper_V": 0.00572234847315298,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.010494832649370785,
+              "Vpp_lower_V": 0.02968207894430016,
+              "Vpp_upper_V": 0.02968386933515246,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.3198576073807813e-09,
+              "Vpp_lower_V": 3.732975819722525e-09,
+              "Vpp_upper_V": 3.733121057518436e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.014569758939389386,
+              "Vpp_lower_V": 0.04120338410807829,
+              "Vpp_upper_V": 0.04120950138518251,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.618773995392364e-10,
+              "Vpp_lower_V": 1.3061954976633706e-09,
+              "Vpp_upper_V": 1.3063865651640191e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.010082378870500426,
+              "Vpp_lower_V": 0.028512358967478807,
+              "Vpp_upper_V": 0.028517273879291465,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 4.5801330491921035e-10,
+              "Vpp_lower_V": 1.295068729501695e-09,
+              "Vpp_upper_V": 1.2954572551281512e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.009375322835705777,
+              "Vpp_lower_V": 0.026512062860923145,
+              "Vpp_upper_V": 0.026517417411762778,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0011604312890163208,
+              "Vpp_lower_V": 0.003282173730565297,
+              "Vpp_upper_V": 0.0032821953342579706,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.009375322456110793,
+              "Vpp_lower_V": 0.026512061892191807,
+              "Vpp_upper_V": 0.026517416338106028,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0011604316807936118,
+              "Vpp_lower_V": 0.0032821748336661336,
+              "Vpp_upper_V": 0.0032821964423714873,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.008773338823737582,
+              "Vpp_lower_V": 0.024811607765356354,
+              "Vpp_upper_V": 0.024814749503648387,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.024436125551678e-10,
+              "Vpp_lower_V": 2.5519773245430903e-09,
+              "Vpp_upper_V": 2.5524959923049964e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.011101415457864503,
+              "Vpp_lower_V": 0.031392086932667436,
+              "Vpp_upper_V": 0.031399544604100826,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.03172224795588e-10,
+              "Vpp_lower_V": 1.4231847830644223e-09,
+              "Vpp_upper_V": 1.4231859690307385e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        }
+      }
+    },
+    {
+      "id": "rotation-sine-control--skin_contact_only",
+      "reference_id": "rotation-sine-control",
+      "reference_waveform": "sine",
+      "reference_frequencies_Hz": [
+        3000,
+        3030
+      ],
+      "reference_summary_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json",
+      "reference_condition_id": "rotation-sine-control",
+      "reference_source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+      "reference_configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+      "reference_circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_return_nodes": 1,
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "source_resistance_ohm": 50,
+        "active_frequencies_by_output_Hz": {
+          "0": [
+            3000
+          ],
+          "1": [
+            3030
+          ]
+        },
+        "uncommanded_frequency_termination": "0V through50ohm",
+        "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+      },
+      "reference_amplitude_scale": 1.0735507840960077,
+      "reference_source_Vpp_intervals_V": [
+        [
+          1.0735507840960077,
+          1.0735507840960077
+        ],
+        [
+          1.0735507840960077,
+          1.0735507840960077
+        ]
+      ],
+      "reference_centre20_E_RMS_V_m": 2.174099904530773,
+      "reference_ROI_energy_RMS_V_m": 2.39908845563976,
+      "reference_nine_burdens": {
+        "surface_J_RMS_max_A_m2": 20.19785256793598,
+        "surface_J_RMS_p95_A_m2": 12.333801964379516,
+        "contact_voltage_RMS_max_V": 0.0021274940243221447,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.6229527810047706e-06,
+        "source_power_W": 0.0010751566194190793,
+        "bulk_skin_J_vector_RMS_max_A_m2": 20.294613334174436,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.754296337351693,
+        "skin_SC_plus_dermis_power_W": 0.0006787382485703983
+      },
+      "reference_source_output_RMS_by_output_mA": [
+        1.4396538287411131,
+        1.4964335619320208
+      ],
+      "reference_probe_artifact": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-sine-control/probes.json",
+        "SHA256": "872ca98c4ba07db2a49280ca36290f743cb8af1454ff3d45b795b014b41cbdca"
+      },
+      "canonical_skin8_limits": {
+        "surface_J_RMS_max_A_m2": 25.49124012699599,
+        "surface_J_RMS_p95_A_m2": 13.553106044904386,
+        "contact_voltage_RMS_max_V": 0.0026848384569140493,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.827275482305884e-06,
+        "source_power_W": 0.001135915555805781,
+        "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+        "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+      },
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.7085422409321416,
+          "amplitude_scale": 1.7085422409321416,
+          "burdens": {
+            "source_current_RMS_mA": 1.5992006253503042,
+            "source_current_peak_mA": 2.261611213325935,
+            "contact_J_RMS_max_A_m2": 25.58040465408462,
+            "contact_J_RMS_p95_A_m2": 18.623175218113715,
+            "contact_voltage_RMS_max_V": 0.0027040745070346494,
+            "bulk_skin_J_RMS_max_A_m2": 25.488723789857154,
+            "bulk_skin_J_RMS_p95_A_m2": 7.526401814993879,
+            "SC_power_W": 2.0092842043690182e-06,
+            "dermis_power_W": 0.0006387131864103606,
+            "skin_SC_plus_dermis_power_W": 0.0006407224706147297,
+            "fat_power_W": 0.00013750677503219605,
+            "muscle_power_W": 3.838488921340028e-05,
+            "contact_power_W": 1.4971608214617358e-06,
+            "tissue_contact_power_W": 0.0008181112956817877,
+            "source_resistor_power_W": 0.00012787213200604023,
+            "source_power_W": 0.0009459834279354817,
+            "loaded_metal_Vpp": 1.4877764279297663
+          },
+          "achieved_centre20_E_RMS_V_m": 2.174099904530773,
+          "achieved_ROI_energy_RMS_V_m": 2.395639557255849,
+          "actual_source_Vpp": 1.7085422409321416,
+          "source_peak_V": 0.8542711204660708,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.08884779898913729,
+              "Vpp_lower_V": 0.25129647248164366,
+              "Vpp_upper_V": 0.25129952463487487,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.1418686603522937e-09,
+              "Vpp_lower_V": 6.057276233541598e-09,
+              "Vpp_upper_V": 6.058119416584255e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06318607607875563,
+              "Vpp_lower_V": 0.1786954034257271,
+              "Vpp_upper_V": 0.1787172114874301,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.04762746478139894,
+              "Vpp_lower_V": 0.13471058685613294,
+              "Vpp_upper_V": 0.13471081327060358,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06318607359282816,
+              "Vpp_lower_V": 0.17869539641495555,
+              "Vpp_upper_V": 0.1787172044561654,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.04762746011860932,
+              "Vpp_lower_V": 0.13471057366556735,
+              "Vpp_upper_V": 0.13471080008224295,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.04671597551811614,
+              "Vpp_lower_V": 0.1321038246600845,
+              "Vpp_upper_V": 0.13213273231441958,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.140113791577691e-10,
+              "Vpp_lower_V": 1.736605388870122e-09,
+              "Vpp_upper_V": 1.736686439712664e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.14594061472482273,
+              "Vpp_lower_V": 0.41277592989391665,
+              "Vpp_upper_V": 0.41278239328982486,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.2970259825951805e-09,
+              "Vpp_lower_V": 6.495448604382713e-09,
+              "Vpp_upper_V": 6.496970595419025e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.020540357172819372,
+              "Vpp_lower_V": 0.058095366261944795,
+              "Vpp_upper_V": 0.058096903379577694,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.1980078530545328e-09,
+              "Vpp_lower_V": 3.3875118603459075e-09,
+              "Vpp_upper_V": 3.388477907238412e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01759486559430469,
+              "Vpp_lower_V": 0.049763544865282526,
+              "Vpp_upper_V": 0.04976579510319523,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.005262730187510179,
+              "Vpp_lower_V": 0.014885146319618453,
+              "Vpp_upper_V": 0.014885248812574498,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.01759486489306043,
+              "Vpp_lower_V": 0.049763542923713024,
+              "Vpp_upper_V": 0.04976579311977695,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.00526272812165339,
+              "Vpp_lower_V": 0.014885140469573208,
+              "Vpp_upper_V": 0.014885242969449123,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.015165183026777277,
+              "Vpp_lower_V": 0.04289343892076333,
+              "Vpp_upper_V": 0.04289361502467768,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.446336422995708e-09,
+              "Vpp_lower_V": 4.090759675019306e-09,
+              "Vpp_upper_V": 4.090857170309469e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.02587616227014466,
+              "Vpp_lower_V": 0.07318839831310878,
+              "Vpp_upper_V": 0.07318883924921164,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.077542771378414e-10,
+              "Vpp_lower_V": 2.5672375039295123e-09,
+              "Vpp_upper_V": 2.5675168200610593e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.013603603784409293,
+              "Vpp_lower_V": 0.03847351831585795,
+              "Vpp_upper_V": 0.038476801938123445,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.51122557036037e-10,
+              "Vpp_lower_V": 1.558757019015735e-09,
+              "Vpp_upper_V": 1.5588099893802174e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.0123618607873686,
+              "Vpp_lower_V": 0.0349592533741551,
+              "Vpp_upper_V": 0.034964622363329895,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.002168838706275646,
+              "Vpp_lower_V": 0.0061339176589701025,
+              "Vpp_upper_V": 0.006134402226029515,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.012361860260245711,
+              "Vpp_lower_V": 0.03495925195690124,
+              "Vpp_upper_V": 0.034964620872401216,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.002168838011245373,
+              "Vpp_lower_V": 0.006133915715849233,
+              "Vpp_upper_V": 0.0061344002601870385,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.011250538906702906,
+              "Vpp_lower_V": 0.031819410099378505,
+              "Vpp_upper_V": 0.03182132941173107,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.4148972031522164e-09,
+              "Vpp_lower_V": 4.001777932122379e-09,
+              "Vpp_upper_V": 4.001933628123278e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.015618890294426027,
+              "Vpp_lower_V": 0.04417033520049047,
+              "Vpp_upper_V": 0.04417689296718989,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.951360185771509e-10,
+              "Vpp_lower_V": 1.400251319596123e-09,
+              "Vpp_upper_V": 1.400456145382457e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.010808385378254235,
+              "Vpp_lower_V": 0.030565461556429113,
+              "Vpp_upper_V": 0.030570730378564608,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 4.909936803127679e-10,
+              "Vpp_lower_V": 1.3883233411050794e-09,
+              "Vpp_upper_V": 1.3887398434756018e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010050416033297295,
+              "Vpp_lower_V": 0.028421129205109526,
+              "Vpp_upper_V": 0.028426869323562278,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0012439910003154036,
+              "Vpp_lower_V": 0.003518514728912518,
+              "Vpp_upper_V": 0.0035185378882322594,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.01005041562636864,
+              "Vpp_lower_V": 0.028421128166622303,
+              "Vpp_upper_V": 0.02842686817259423,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0012439914203035828,
+              "Vpp_lower_V": 0.0035185159114448456,
+              "Vpp_upper_V": 0.003518539076138217,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.00940508468079904,
+              "Vpp_lower_V": 0.026598228654816102,
+              "Vpp_upper_V": 0.02660159662170706,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.67426286189152e-10,
+              "Vpp_lower_V": 2.7357387333391158e-09,
+              "Vpp_upper_V": 2.736294749049888e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.01190080020339017,
+              "Vpp_lower_V": 0.0336525514220324,
+              "Vpp_upper_V": 0.03366054610145398,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.39404379370873e-10,
+              "Vpp_lower_V": 1.5256647064547322e-09,
+              "Vpp_upper_V": 1.5256659778194721e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.7110019551056477,
+          "amplitude_scale": 1.7110019551056477,
+          "burdens": {
+            "source_current_RMS_mA": 1.6015029251414454,
+            "source_current_peak_mA": 2.2648671569152157,
+            "contact_J_RMS_max_A_m2": 25.61723165337341,
+            "contact_J_RMS_p95_A_m2": 18.6499861958831,
+            "contact_voltage_RMS_max_V": 0.002707967445840506,
+            "bulk_skin_J_RMS_max_A_m2": 25.52541880018145,
+            "bulk_skin_J_RMS_p95_A_m2": 7.537237249305262,
+            "SC_power_W": 2.01507372750726e-06,
+            "dermis_power_W": 0.0006405535655679644,
+            "skin_SC_plus_dermis_power_W": 0.0006425686392954716,
+            "fat_power_W": 0.0001379029851123743,
+            "muscle_power_W": 3.8495490891239885e-05,
+            "contact_power_W": 1.5014747195149205e-06,
+            "tissue_contact_power_W": 0.0008204685900186007,
+            "source_resistor_power_W": 0.00012824058096183033,
+            "source_power_W": 0.0009487091712287983,
+            "loaded_metal_Vpp": 1.4899183151357804
+          },
+          "achieved_centre20_E_RMS_V_m": 2.1772298618837005,
+          "achieved_ROI_energy_RMS_V_m": 2.39908845563976,
+          "actual_source_Vpp": 1.7110019551056477,
+          "source_peak_V": 0.8555009775528238,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.08897570931246601,
+              "Vpp_lower_V": 0.251658253115629,
+              "Vpp_upper_V": 0.2516613096629129,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.144952215780682e-09,
+              "Vpp_lower_V": 6.065996631461848e-09,
+              "Vpp_upper_V": 6.066841028398567e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06327704233242834,
+              "Vpp_lower_V": 0.17895266344893077,
+              "Vpp_upper_V": 0.1789745029067545,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.047696031977084455,
+              "Vpp_lower_V": 0.13490452384631854,
+              "Vpp_upper_V": 0.13490475058674828,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06327703984292198,
+              "Vpp_lower_V": 0.17895265642806613,
+              "Vpp_upper_V": 0.17897449586536718,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.047696027307582024,
+              "Vpp_lower_V": 0.13490451063676306,
+              "Vpp_upper_V": 0.13490473737940092,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.04678323048223595,
+              "Vpp_lower_V": 0.13229400880777842,
+              "Vpp_upper_V": 0.13232295807920988,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.148953447138003e-10,
+              "Vpp_lower_V": 1.7391055043407587e-09,
+              "Vpp_upper_V": 1.739186671868684e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.14615071909914185,
+              "Vpp_lower_V": 0.4133701855001979,
+              "Vpp_upper_V": 0.41337665820117686,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.30033291129202e-09,
+              "Vpp_lower_V": 6.5047998200639615e-09,
+              "Vpp_upper_V": 6.506324002244768e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.020569928234310537,
+              "Vpp_lower_V": 0.05817900364145235,
+              "Vpp_upper_V": 0.05818054297200685,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.1997325730090842e-09,
+              "Vpp_lower_V": 3.392388714272134e-09,
+              "Vpp_upper_V": 3.3933561519404565e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01762019615930122,
+              "Vpp_lower_V": 0.04983518728283391,
+              "Vpp_upper_V": 0.04983744076031656,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.005270306711943367,
+              "Vpp_lower_V": 0.014906575819281924,
+              "Vpp_upper_V": 0.01490667845979263,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.01762019545704741,
+              "Vpp_lower_V": 0.049835185338469215,
+              "Vpp_upper_V": 0.049837438774042835,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.005270304643112455,
+              "Vpp_lower_V": 0.01490656996081462,
+              "Vpp_upper_V": 0.014906672608255163,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.015187015683144279,
+              "Vpp_lower_V": 0.042955190744707855,
+              "Vpp_upper_V": 0.04295536710215137,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.4484186508236602e-09,
+              "Vpp_lower_V": 4.096648964328046e-09,
+              "Vpp_upper_V": 4.09674659997795e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.025913415058847793,
+              "Vpp_lower_V": 0.07329376447635257,
+              "Vpp_upper_V": 0.07329420604725201,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.09061131605963e-10,
+              "Vpp_lower_V": 2.570933444435921e-09,
+              "Vpp_upper_V": 2.57121316268679e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.013623188302858786,
+              "Vpp_lower_V": 0.03852890697177701,
+              "Vpp_upper_V": 0.038532195321331085,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.519159842820271e-10,
+              "Vpp_lower_V": 1.5610010939006692e-09,
+              "Vpp_upper_V": 1.5610541405242883e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.012379657622273313,
+              "Vpp_lower_V": 0.035009582695233334,
+              "Vpp_upper_V": 0.035014959413909016,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.0021719610893095966,
+              "Vpp_lower_V": 0.006142748394226995,
+              "Vpp_upper_V": 0.006143233658896589,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.012379657094391549,
+              "Vpp_lower_V": 0.03500958127593912,
+              "Vpp_upper_V": 0.035014957920833915,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.0021719603932787187,
+              "Vpp_lower_V": 0.0061427464483086985,
+              "Vpp_upper_V": 0.006143231690223974,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.011266735819688388,
+              "Vpp_lower_V": 0.03186521912425304,
+              "Vpp_upper_V": 0.03186714119975636,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.4169341692987185e-09,
+              "Vpp_lower_V": 4.007539118274554e-09,
+              "Vpp_upper_V": 4.007695038424234e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.01564137613347129,
+              "Vpp_lower_V": 0.04423392531663644,
+              "Vpp_upper_V": 0.0442404925242682,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.958488444315723e-10,
+              "Vpp_lower_V": 1.4022672006991865e-09,
+              "Vpp_upper_V": 1.402472321364323e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.010823945741978754,
+              "Vpp_lower_V": 0.03060946532596371,
+              "Vpp_upper_V": 0.03061474173339395,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 4.917005426224222e-10,
+              "Vpp_lower_V": 1.3903220500147652e-09,
+              "Vpp_upper_V": 1.3907391520056886e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010064885181425145,
+              "Vpp_lower_V": 0.028462045872346686,
+              "Vpp_upper_V": 0.028467794254599055,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0012457819202130122,
+              "Vpp_lower_V": 0.0035235801819876933,
+              "Vpp_upper_V": 0.0035236033746489023,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.01006488477391065,
+              "Vpp_lower_V": 0.0284620448323644,
+              "Vpp_upper_V": 0.02846779310197401,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.00124578234080583,
+              "Vpp_lower_V": 0.0035235813662224612,
+              "Vpp_upper_V": 0.003523604564265037,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.009418624773363428,
+              "Vpp_lower_V": 0.026636520971180907,
+              "Vpp_upper_V": 0.026639893786787747,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.688190478610343e-10,
+              "Vpp_lower_V": 2.7396772577584667e-09,
+              "Vpp_upper_V": 2.740234073940946e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.011917933269365978,
+              "Vpp_lower_V": 0.03370099954097516,
+              "Vpp_upper_V": 0.03370900572999001,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.401809364646361e-10,
+              "Vpp_lower_V": 1.5278611397723173e-09,
+              "Vpp_upper_V": 1.5278624129673859e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        }
+      }
+    },
+    {
+      "id": "rotation-coherent-r1-p090--raw",
+      "reference_id": "rotation-coherent-r1-p090",
+      "reference_waveform": "coherent_two_tone_sine",
+      "reference_frequencies_Hz": [
+        3000,
+        3030
+      ],
+      "reference_summary_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json",
+      "reference_condition_id": "rotation-coherent-r1-p090",
+      "reference_source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+      "reference_configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+      "reference_circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_return_nodes": 1,
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "source_resistance_ohm": 50,
+        "active_frequencies_by_output_Hz": {
+          "0": [
+            3000,
+            3030
+          ],
+          "1": [
+            3000,
+            3030
+          ]
+        },
+        "uncommanded_frequency_termination": "0V through50ohm",
+        "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+      },
+      "reference_amplitude_scale": 1.0,
+      "reference_source_Vpp_intervals_V": [
+        [
+          0.9999992544051025,
+          1.0
+        ],
+        [
+          0.9999992543822719,
+          1.0
+        ]
+      ],
+      "reference_centre20_E_RMS_V_m": 1.4320735135501337,
+      "reference_ROI_energy_RMS_V_m": 1.5802731486969857,
+      "reference_nine_burdens": {
+        "surface_J_RMS_max_A_m2": 13.272863931484599,
+        "surface_J_RMS_p95_A_m2": 8.135345052709573,
+        "contact_voltage_RMS_max_V": 0.0014004263349623723,
+        "SC_power_W": 9.403432624345774e-07,
+        "contact_power_W": 7.04232939144517e-07,
+        "source_power_W": 0.0004664578277927281,
+        "bulk_skin_J_vector_RMS_max_A_m2": 13.344800452166947,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 4.448655323147423,
+        "skin_SC_plus_dermis_power_W": 0.00029446869852903414
+      },
+      "reference_source_output_RMS_by_output_mA": [
+        0.9485123659900654,
+        0.9853845728938536
+      ],
+      "reference_probe_artifact": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-coherent-r1-p090/probes.json",
+        "SHA256": "fe39043daf8048c46619f1c3819d34a08ce668be190d64de33a672a24a2e882d"
+      },
+      "canonical_skin8_limits": {
+        "surface_J_RMS_max_A_m2": 25.49124012699599,
+        "surface_J_RMS_p95_A_m2": 13.553106044904386,
+        "contact_voltage_RMS_max_V": 0.0026848384569140493,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.827275482305884e-06,
+        "source_power_W": 0.001135915555805781,
+        "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+        "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+      },
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.125411985402108,
+          "amplitude_scale": 1.125411985402108,
+          "burdens": {
+            "source_current_RMS_mA": 1.053388969680885,
+            "source_current_peak_mA": 1.4897169673769284,
+            "contact_J_RMS_max_A_m2": 16.8497408489218,
+            "contact_J_RMS_p95_A_m2": 12.267033319161065,
+            "contact_voltage_RMS_max_V": 0.0017811662988073344,
+            "bulk_skin_J_RMS_max_A_m2": 16.789350920618173,
+            "bulk_skin_J_RMS_p95_A_m2": 4.95761978054759,
+            "SC_power_W": 8.71792244339582e-07,
+            "dermis_power_W": 0.0002771261532137688,
+            "skin_SC_plus_dermis_power_W": 0.0002779979454581084,
+            "fat_power_W": 5.966171423462797e-05,
+            "muscle_power_W": 1.665451240959968e-05,
+            "contact_power_W": 6.495911279456352e-07,
+            "tissue_contact_power_W": 0.0003549637632302816,
+            "source_resistor_power_W": 5.548141607226781e-05,
+            "source_power_W": 0.00041044517941000194,
+            "loaded_metal_Vpp": 0.979994163139567
+          },
+          "achieved_centre20_E_RMS_V_m": 1.4320735135501337,
+          "achieved_ROI_energy_RMS_V_m": 1.5780010618691007,
+          "actual_source_Vpp": 1.125411985402108,
+          "source_peak_V": 0.562705992701054,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.0585237961716533,
+              "Vpp_lower_V": 0.1655282820902438,
+              "Vpp_upper_V": 0.16553029253502263,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 1.4108428833474571e-09,
+              "Vpp_lower_V": 3.989910877708174e-09,
+              "Vpp_upper_V": 3.990466280015101e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.04162049121522734,
+              "Vpp_lower_V": 0.1177061613892902,
+              "Vpp_upper_V": 0.11772052629841037,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.031372077561313286,
+              "Vpp_lower_V": 0.08873348599548321,
+              "Vpp_upper_V": 0.08873363513406043,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.041620489577753876,
+              "Vpp_lower_V": 0.11770615677131464,
+              "Vpp_upper_V": 0.117720521666936,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.03137207448994683,
+              "Vpp_lower_V": 0.08873347730689463,
+              "Vpp_upper_V": 0.08873362644692424,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.03077168213830979,
+              "Vpp_lower_V": 0.08701641904317567,
+              "Vpp_upper_V": 0.08703546043406386,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 4.044475745009553e-10,
+              "Vpp_lower_V": 1.1438971022935024e-09,
+              "Vpp_upper_V": 1.1439504902563156e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.09613067387708218,
+              "Vpp_lower_V": 0.2718943480933021,
+              "Vpp_upper_V": 0.2718986055140712,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 1.5130445766341127e-09,
+              "Vpp_lower_V": 4.278533790272286e-09,
+              "Vpp_upper_V": 4.279536321502071e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.013529875699250678,
+              "Vpp_lower_V": 0.03826725492712866,
+              "Vpp_upper_V": 0.03826826742220522,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 7.891244150322224e-10,
+              "Vpp_lower_V": 2.231344567896166e-09,
+              "Vpp_upper_V": 2.2319809002766235e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01158968865210289,
+              "Vpp_lower_V": 0.032779107525565024,
+              "Vpp_upper_V": 0.03278058975097116,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.0034665456241398675,
+              "Vpp_lower_V": 0.009804804160664603,
+              "Vpp_upper_V": 0.009804871672487482,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.011589688190195261,
+              "Vpp_lower_V": 0.03277910624665863,
+              "Vpp_upper_V": 0.0327805884444991,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.003466544263365791,
+              "Vpp_lower_V": 0.009804800307256197,
+              "Vpp_upper_V": 0.009804867823637176,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.009989263554783613,
+              "Vpp_lower_V": 0.028253787995433925,
+              "Vpp_upper_V": 0.02825390399458872,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 9.52697748037493e-10,
+              "Vpp_lower_V": 2.6945719323595052e-09,
+              "Vpp_upper_V": 2.694636152233876e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.0170445555616715,
+              "Vpp_lower_V": 0.04820899283650045,
+              "Vpp_upper_V": 0.04820928327987555,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 5.979351980982298e-10,
+              "Vpp_lower_V": 1.6910321483885485e-09,
+              "Vpp_upper_V": 1.6912161331415317e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.008960655684628022,
+              "Vpp_lower_V": 0.025342398681130272,
+              "Vpp_upper_V": 0.025344561593913222,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 3.6302288363407643e-10,
+              "Vpp_lower_V": 1.0267488795435894e-09,
+              "Vpp_upper_V": 1.0267837709742087e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.008142723052832918,
+              "Vpp_lower_V": 0.023027562213807654,
+              "Vpp_upper_V": 0.023031098751928894,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.0014286079770055606,
+              "Vpp_lower_V": 0.004040394369827447,
+              "Vpp_upper_V": 0.004040713552791338,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.008142722705618548,
+              "Vpp_lower_V": 0.02302756128026651,
+              "Vpp_upper_V": 0.023031097769858355,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.0014286075191910679,
+              "Vpp_lower_V": 0.004040393089899176,
+              "Vpp_upper_V": 0.004040712257896408,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.007410698444849897,
+              "Vpp_lower_V": 0.020959356249060816,
+              "Vpp_upper_V": 0.020960620494728004,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 9.319888220443882e-10,
+              "Vpp_lower_V": 2.635959907711208e-09,
+              "Vpp_upper_V": 2.636062464230616e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.010288119260333727,
+              "Vpp_lower_V": 0.029094875996007016,
+              "Vpp_upper_V": 0.02909919557855183,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 3.261447076702027e-10,
+              "Vpp_lower_V": 9.223416195954519e-10,
+              "Vpp_upper_V": 9.224765377668247e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.0071194531549280725,
+              "Vpp_lower_V": 0.02013338385838534,
+              "Vpp_upper_V": 0.020136854416758544,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 3.234161610655938e-10,
+              "Vpp_lower_V": 9.144846935951237e-10,
+              "Vpp_upper_V": 9.147590425392144e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.006620180871840396,
+              "Vpp_lower_V": 0.018720918148702956,
+              "Vpp_upper_V": 0.018724699148639386,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0008194133852514548,
+              "Vpp_lower_V": 0.0023176357902463286,
+              "Vpp_upper_V": 0.0023176510452253313,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.006620180603797631,
+              "Vpp_lower_V": 0.018720917464654332,
+              "Vpp_upper_V": 0.01872469839049996,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0008194136618964913,
+              "Vpp_lower_V": 0.0023176365691770584,
+              "Vpp_upper_V": 0.0023176518276956564,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.006195102918683641,
+              "Vpp_lower_V": 0.01752017866544789,
+              "Vpp_upper_V": 0.017522397135799228,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 6.372409832117015e-10,
+              "Vpp_lower_V": 1.8020234359256354e-09,
+              "Vpp_upper_V": 1.802389681915921e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.007839023738426312,
+              "Vpp_lower_V": 0.022166841300366905,
+              "Vpp_upper_V": 0.02217210737329442,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 3.5530415284972544e-10,
+              "Vpp_lower_V": 1.004951066010746e-09,
+              "Vpp_upper_V": 1.0049519034551368e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.127032411274919,
+          "amplitude_scale": 1.127032411274919,
+          "burdens": {
+            "source_current_RMS_mA": 1.0549056931232734,
+            "source_current_peak_mA": 1.4918619382395237,
+            "contact_J_RMS_max_A_m2": 16.87400196962774,
+            "contact_J_RMS_p95_A_m2": 12.284696022625079,
+            "contact_voltage_RMS_max_V": 0.0017837309133589868,
+            "bulk_skin_J_RMS_max_A_m2": 16.813525088809346,
+            "bulk_skin_J_RMS_p95_A_m2": 4.964758015668739,
+            "SC_power_W": 8.743045540492976e-07,
+            "dermis_power_W": 0.0002779247686293745,
+            "skin_SC_plus_dermis_power_W": 0.0002787990731834238,
+            "fat_power_W": 5.983364591323963e-05,
+            "muscle_power_W": 1.670250697884354e-05,
+            "contact_power_W": 6.514631038764594e-07,
+            "tissue_contact_power_W": 0.0003559866891793834,
+            "source_resistor_power_W": 5.564130106919471e-05,
+            "source_power_W": 0.0004116279903563403,
+            "loaded_metal_Vpp": 0.9814052089767834
+          },
+          "achieved_centre20_E_RMS_V_m": 1.4341354864127158,
+          "achieved_ROI_energy_RMS_V_m": 1.5802731486969857,
+          "actual_source_Vpp": 1.127032411274919,
+          "source_peak_V": 0.5635162056374595,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.05860806173370681,
+              "Vpp_lower_V": 0.16576661819689648,
+              "Vpp_upper_V": 0.16576863153641674,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 1.412874287260248e-09,
+              "Vpp_lower_V": 3.995655755939713e-09,
+              "Vpp_upper_V": 3.996211957943354e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.041680418532226864,
+              "Vpp_lower_V": 0.11787564075487234,
+              "Vpp_upper_V": 0.1178900263473251,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.03141724868693092,
+              "Vpp_lower_V": 0.08886124901769807,
+              "Vpp_upper_V": 0.08886139837101265,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.041680416892395676,
+              "Vpp_lower_V": 0.11787563613024757,
+              "Vpp_upper_V": 0.11789002170918209,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.031417245611142154,
+              "Vpp_lower_V": 0.0888612403165992,
+              "Vpp_upper_V": 0.08886138967136828,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.03081598878381705,
+              "Vpp_lower_V": 0.08714170974436412,
+              "Vpp_upper_V": 0.08716077855202312,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 4.050299188534396e-10,
+              "Vpp_lower_V": 1.1455441439852857e-09,
+              "Vpp_upper_V": 1.145597608818825e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.09626908774963884,
+              "Vpp_lower_V": 0.27228583551482977,
+              "Vpp_upper_V": 0.2722900990656516,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 1.5152231357844475e-09,
+              "Vpp_lower_V": 4.284694242570096e-09,
+              "Vpp_upper_V": 4.285698217295741e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.013549356707915385,
+              "Vpp_lower_V": 0.03832235408261101,
+              "Vpp_upper_V": 0.03832336803552989,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 7.902606368208398e-10,
+              "Vpp_lower_V": 2.234557372198835e-09,
+              "Vpp_upper_V": 2.2351946208032767e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.011606376079990004,
+              "Vpp_lower_V": 0.03282630456505905,
+              "Vpp_upper_V": 0.03282778892464932,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.003471536934248075,
+              "Vpp_lower_V": 0.009818921620355695,
+              "Vpp_upper_V": 0.009818989229385558,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.011606375617417296,
+              "Vpp_lower_V": 0.03282630328431123,
+              "Vpp_upper_V": 0.03282778761629613,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.0034715355715146867,
+              "Vpp_lower_V": 0.009818917761398952,
+              "Vpp_upper_V": 0.009818985374993478,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.010003646608566993,
+              "Vpp_lower_V": 0.02829446924786999,
+              "Vpp_upper_V": 0.028294585414046315,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 9.540694910968465e-10,
+              "Vpp_lower_V": 2.698451715169696e-09,
+              "Vpp_upper_V": 2.6985160275111337e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.01706909718658838,
+              "Vpp_lower_V": 0.048278406615905434,
+              "Vpp_upper_V": 0.0482786974774758,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 5.987961358506534e-10,
+              "Vpp_lower_V": 1.693466983169542e-09,
+              "Vpp_upper_V": 1.6936512328332048e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.008973557696066557,
+              "Vpp_lower_V": 0.0253788879659741,
+              "Vpp_upper_V": 0.02538105399302976,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 3.6354558259294074e-10,
+              "Vpp_lower_V": 1.0282272452184473e-09,
+              "Vpp_upper_V": 1.0282621868875373e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.008154447362935436,
+              "Vpp_lower_V": 0.023060718478431656,
+              "Vpp_upper_V": 0.023064260108641793,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.001430664960010959,
+              "Vpp_lower_V": 0.004046211936779063,
+              "Vpp_upper_V": 0.0040465315793189495,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.008154447015221129,
+              "Vpp_lower_V": 0.023060717543546355,
+              "Vpp_upper_V": 0.023064259125157215,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.0014306645015372817,
+              "Vpp_lower_V": 0.004046210655007887,
+              "Vpp_upper_V": 0.004046530282559564,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.007421368748393309,
+              "Vpp_lower_V": 0.020989534604706556,
+              "Vpp_upper_V": 0.020990800670699465,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 9.333307473304172e-10,
+              "Vpp_lower_V": 2.6397552979234617e-09,
+              "Vpp_upper_V": 2.6398580021090035e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.010302932621883322,
+              "Vpp_lower_V": 0.029136768290066166,
+              "Vpp_upper_V": 0.029141094092167377,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 3.2661430754068956e-10,
+              "Vpp_lower_V": 9.236696543448143e-10,
+              "Vpp_upper_V": 9.23804766778287e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.007129704108571852,
+              "Vpp_lower_V": 0.020162372936638053,
+              "Vpp_upper_V": 0.020165848492099125,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 3.238818322347955e-10,
+              "Vpp_lower_V": 9.158014155396316e-10,
+              "Vpp_upper_V": 9.16076159505397e-10,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.006629712947654912,
+              "Vpp_lower_V": 0.018747873486414324,
+              "Vpp_upper_V": 0.018751659930428304,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0008205932186522113,
+              "Vpp_lower_V": 0.002320972841074809,
+              "Vpp_upper_V": 0.0023209881180187124,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.006629712679226206,
+              "Vpp_lower_V": 0.018747872801380773,
+              "Vpp_upper_V": 0.01875165917119727,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0008205934956955755,
+              "Vpp_lower_V": 0.002320973621127083,
+              "Vpp_upper_V": 0.0023209889016156783,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.006204022945468833,
+              "Vpp_lower_V": 0.017545405116893238,
+              "Vpp_upper_V": 0.017547626781511925,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 6.381585154486119e-10,
+              "Vpp_lower_V": 1.8046180816525888e-09,
+              "Vpp_upper_V": 1.8049848549826273e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.007850310766686266,
+              "Vpp_lower_V": 0.022198758254893362,
+              "Vpp_upper_V": 0.022204031910182654,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 3.558157379842921e-10,
+              "Vpp_lower_V": 1.006398046076176e-09,
+              "Vpp_upper_V": 1.006398884726362e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        }
+      }
+    },
+    {
+      "id": "rotation-coherent-r1-p090--skin_contact_only",
+      "reference_id": "rotation-coherent-r1-p090",
+      "reference_waveform": "coherent_two_tone_sine",
+      "reference_frequencies_Hz": [
+        3000,
+        3030
+      ],
+      "reference_summary_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json",
+      "reference_condition_id": "rotation-coherent-r1-p090",
+      "reference_source_commit": "3381113eeee81b0925890d5d4d17496764901fd5",
+      "reference_configuration_sha256": "94bbb78869a0e75d7c7c5e2c59a926f5d9d37528738923af82315d3ab1aaf594",
+      "reference_circuit": {
+        "n_pads": 4,
+        "n_outputs": 2,
+        "n_return_nodes": 1,
+        "pad_to_node": {
+          "0": "out0",
+          "1": "out1",
+          "2": "GND",
+          "3": "GND"
+        },
+        "return_topology": "all_return_pads_ideal_common_GND",
+        "source_resistance_ohm": 50,
+        "active_frequencies_by_output_Hz": {
+          "0": [
+            3000,
+            3030
+          ],
+          "1": [
+            3000,
+            3030
+          ]
+        },
+        "uncommanded_frequency_termination": "0V through50ohm",
+        "hardware_multitone_phase_sync_power_sink_compliance": "unverified; not experimental-ready"
+      },
+      "reference_amplitude_scale": 1.5178253669927877,
+      "reference_source_Vpp_intervals_V": [
+        [
+          1.5178242353099387,
+          1.5178253669927877
+        ],
+        [
+          1.517824235275286,
+          1.5178253669927877
+        ]
+      ],
+      "reference_centre20_E_RMS_V_m": 2.1736375062648827,
+      "reference_ROI_energy_RMS_V_m": 2.3985786718698505,
+      "reference_nine_burdens": {
+        "surface_J_RMS_max_A_m2": 20.145889567850947,
+        "surface_J_RMS_p95_A_m2": 12.348033090241866,
+        "contact_voltage_RMS_max_V": 0.002125602615810627,
+        "SC_power_W": 2.1663570198894746e-06,
+        "contact_power_W": 1.6224075104268252e-06,
+        "source_power_W": 0.001074622672474858,
+        "bulk_skin_J_vector_RMS_max_A_m2": 20.255076643755814,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.752281898480656,
+        "skin_SC_plus_dermis_power_W": 0.000678395175124119
+      },
+      "reference_source_output_RMS_by_output_mA": [
+        1.4396761300060683,
+        1.4956417009816447
+      ],
+      "reference_probe_artifact": {
+        "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-coherent-r1-p090/probes.json",
+        "SHA256": "fe39043daf8048c46619f1c3819d34a08ce668be190d64de33a672a24a2e882d"
+      },
+      "canonical_skin8_limits": {
+        "surface_J_RMS_max_A_m2": 25.49124012699599,
+        "surface_J_RMS_p95_A_m2": 13.553106044904386,
+        "contact_voltage_RMS_max_V": 0.0026848384569140493,
+        "SC_power_W": 2.166357019889475e-06,
+        "contact_power_W": 1.827275482305884e-06,
+        "source_power_W": 0.001135915555805781,
+        "bulk_skin_J_vector_RMS_max_A_m2": 25.464283751310983,
+        "bulk_skin_J_vector_RMS_p95_A_m2": 6.998260050840811,
+        "skin_SC_plus_dermis_power_W": 0.0007361707629089484
+      },
+      "matches": {
+        "centre20_E_RMS": {
+          "required_source_Vpp": 1.7081788597610368,
+          "amplitude_scale": 1.7081788597610368,
+          "burdens": {
+            "source_current_RMS_mA": 1.5988604994920437,
+            "source_current_peak_mA": 2.2611302027242695,
+            "contact_J_RMS_max_A_m2": 25.5749640877481,
+            "contact_J_RMS_p95_A_m2": 18.619214349568402,
+            "contact_voltage_RMS_max_V": 0.0027034993911624282,
+            "bulk_skin_J_RMS_max_A_m2": 25.483302722657978,
+            "bulk_skin_J_RMS_p95_A_m2": 7.524801062820351,
+            "SC_power_W": 2.008429606355212e-06,
+            "dermis_power_W": 0.0006384415259756091,
+            "skin_SC_plus_dermis_power_W": 0.0006404499555819643,
+            "fat_power_W": 0.00013744829001719822,
+            "muscle_power_W": 3.836856317549552e-05,
+            "contact_power_W": 1.4965240421243042e-06,
+            "tissue_contact_power_W": 0.0008177633328167824,
+            "source_resistor_power_W": 0.00012781774484179738,
+            "source_power_W": 0.0009455810779061282,
+            "loaded_metal_Vpp": 1.4874600003181035
+          },
+          "achieved_centre20_E_RMS_V_m": 2.1736375062648827,
+          "achieved_ROI_energy_RMS_V_m": 2.395130040846477,
+          "actual_source_Vpp": 1.7081788597610368,
+          "source_peak_V": 0.8540894298805184,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.08882890240205078,
+              "Vpp_lower_V": 0.25124302551131,
+              "Vpp_upper_V": 0.25124607701539425,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.141413117186017e-09,
+              "Vpp_lower_V": 6.055987942225927e-09,
+              "Vpp_upper_V": 6.056830945936266e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06317263735317254,
+              "Vpp_lower_V": 0.17865739760801172,
+              "Vpp_upper_V": 0.17867920103146887,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.047617335137826546,
+              "Vpp_lower_V": 0.1346819359456437,
+              "Vpp_upper_V": 0.13468216231195942,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06317263486777377,
+              "Vpp_lower_V": 0.17865739059873126,
+              "Vpp_upper_V": 0.1786791940016996,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.04761733047602864,
+              "Vpp_lower_V": 0.13468192275788357,
+              "Vpp_upper_V": 0.13468214912640375,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.04670603973456547,
+              "Vpp_lower_V": 0.13207572816860633,
+              "Vpp_upper_V": 0.13210462967471925,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.138807881962555e-10,
+              "Vpp_lower_V": 1.736236039090622e-09,
+              "Vpp_upper_V": 1.736317072694872e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.14590957535674628,
+              "Vpp_lower_V": 0.41268813867798104,
+              "Vpp_upper_V": 0.4126946006992224,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.2965374398061194e-09,
+              "Vpp_lower_V": 6.494067120411076e-09,
+              "Vpp_upper_V": 6.4955887877428455e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.020535988548581963,
+              "Vpp_lower_V": 0.05808301025357563,
+              "Vpp_upper_V": 0.05808454704428679,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.1977530548492521e-09,
+              "Vpp_lower_V": 3.386791387654362e-09,
+              "Vpp_upper_V": 3.3877572290832595e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01759112343171022,
+              "Vpp_lower_V": 0.04975296090968678,
+              "Vpp_upper_V": 0.04975521066900782,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.0052616108841573375,
+              "Vpp_lower_V": 0.014881980473453165,
+              "Vpp_upper_V": 0.014882082944610502,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.017591122730615104,
+              "Vpp_lower_V": 0.04975295896853022,
+              "Vpp_upper_V": 0.04975520868601138,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.005261608818739926,
+              "Vpp_lower_V": 0.014881974624652137,
+              "Vpp_upper_V": 0.014882077102727874,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.015161957621027119,
+              "Vpp_lower_V": 0.04288431613310593,
+              "Vpp_upper_V": 0.042884492199565624,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.4460288090482103e-09,
+              "Vpp_lower_V": 4.089889632122032e-09,
+              "Vpp_upper_V": 4.089987106676416e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.02587065880062301,
+              "Vpp_lower_V": 0.07317283224441398,
+              "Vpp_upper_V": 0.07317327308673639,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.075612114913509e-10,
+              "Vpp_lower_V": 2.5666914912244512e-09,
+              "Vpp_upper_V": 2.566970747949669e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.01360071050301654,
+              "Vpp_lower_V": 0.0384653355786641,
+              "Vpp_upper_V": 0.038468618502552655,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.510053415786722e-10,
+              "Vpp_lower_V": 1.5584254949026825e-09,
+              "Vpp_upper_V": 1.5584784540011672e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.012359231605986759,
+              "Vpp_lower_V": 0.03495181806812186,
+              "Vpp_upper_V": 0.03495718591539362,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.0021683774269872893,
+              "Vpp_lower_V": 0.006132613067178939,
+              "Vpp_upper_V": 0.006133097531178244,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.01235923107897598,
+              "Vpp_lower_V": 0.03495181665116943,
+              "Vpp_upper_V": 0.03495718442478204,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.002168376732104839,
+              "Vpp_lower_V": 0.006132611124471343,
+              "Vpp_upper_V": 0.006133095565753873,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.011248146086727178,
+              "Vpp_lower_V": 0.03181264259066332,
+              "Vpp_upper_V": 0.03181456149480708,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.4145962758526995e-09,
+              "Vpp_lower_V": 4.00092681430004e-09,
+              "Vpp_upper_V": 4.001082477186748e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.015615568391981608,
+              "Vpp_lower_V": 0.04416094083624901,
+              "Vpp_upper_V": 0.04416749720821034,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.95030710612281e-10,
+              "Vpp_lower_V": 1.3999535072551894e-09,
+              "Vpp_upper_V": 1.4001582894781672e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.010806086597666664,
+              "Vpp_lower_V": 0.0305589607436604,
+              "Vpp_upper_V": 0.030564228445196878,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 4.908892533607835e-10,
+              "Vpp_lower_V": 1.3880280656653059e-09,
+              "Vpp_upper_V": 1.3884444794520546e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010048278461359783,
+              "Vpp_lower_V": 0.02841508445949701,
+              "Vpp_upper_V": 0.02842082335711312,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0012437264221880921,
+              "Vpp_lower_V": 0.0035177663938862538,
+              "Vpp_upper_V": 0.0035177895482803568,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.010048278054517676,
+              "Vpp_lower_V": 0.028415083421230655,
+              "Vpp_upper_V": 0.02842082220638987,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.001243726842086946,
+              "Vpp_lower_V": 0.0035177675761670748,
+              "Vpp_upper_V": 0.003517790735933665,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.00940308436110909,
+              "Vpp_lower_V": 0.026592571612662656,
+              "Vpp_upper_V": 0.02659593886323784,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.672205292061459e-10,
+              "Vpp_lower_V": 2.7351568829634325e-09,
+              "Vpp_upper_V": 2.735712780418047e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.011898269082642092,
+              "Vpp_lower_V": 0.03364539403180029,
+              "Vpp_upper_V": 0.0336533870108741,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.392896561931962e-10,
+              "Vpp_lower_V": 1.5253402205775542e-09,
+              "Vpp_upper_V": 1.5253414916718938e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        },
+        "ROI_energy_RMS": {
+          "required_source_Vpp": 1.7106383832561205,
+          "amplitude_scale": 1.7106383832561205,
+          "burdens": {
+            "source_current_RMS_mA": 1.6011626208076137,
+            "source_current_peak_mA": 2.2643858939109767,
+            "contact_J_RMS_max_A_m2": 25.611788232187248,
+            "contact_J_RMS_p95_A_m2": 18.646023248935748,
+            "contact_voltage_RMS_max_V": 0.0027073920281854846,
+            "bulk_skin_J_RMS_max_A_m2": 25.519994888364486,
+            "bulk_skin_J_RMS_p95_A_m2": 7.535635657162788,
+            "SC_power_W": 2.0142174500004016e-06,
+            "dermis_power_W": 0.0006402813712543535,
+            "skin_SC_plus_dermis_power_W": 0.0006422955887043539,
+            "fat_power_W": 0.00013784438516009043,
+            "muscle_power_W": 3.847913276869792e-05,
+            "contact_power_W": 1.5008366887511386e-06,
+            "tissue_contact_power_W": 0.0008201199433218934,
+            "source_resistor_power_W": 0.00012818608691357534,
+            "source_power_W": 0.0009483060304837304,
+            "loaded_metal_Vpp": 1.48960172148382
+          },
+          "achieved_centre20_E_RMS_V_m": 2.176767220981761,
+          "achieved_ROI_energy_RMS_V_m": 2.3985786718698505,
+          "actual_source_Vpp": 1.7106383832561205,
+          "source_peak_V": 0.8553191916280602,
+          "unloaded_probe40": [
+            {
+              "id": "d5-centre-X",
+              "RMS_V": 0.08895680280969949,
+              "Vpp_lower_V": 0.2516047780998577,
+              "Vpp_upper_V": 0.25160783399765396,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-centre-Y",
+              "RMS_V": 2.144496433575459e-09,
+              "Vpp_lower_V": 6.064707664136039e-09,
+              "Vpp_upper_V": 6.065551881646338e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-X",
+              "RMS_V": 0.06326359655509023,
+              "Vpp_lower_V": 0.17891463768827412,
+              "Vpp_upper_V": 0.17893647250541814,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_plus-Y",
+              "RMS_V": 0.047685897018144595,
+              "Vpp_lower_V": 0.13487585790172507,
+              "Vpp_upper_V": 0.1348760845939746,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-X",
+              "RMS_V": 0.06326359406611286,
+              "Vpp_lower_V": 0.17891463066890131,
+              "Vpp_upper_V": 0.17893646546552702,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-x_minus-Y",
+              "RMS_V": 0.04768589234963439,
+              "Vpp_lower_V": 0.1348758446949765,
+              "Vpp_upper_V": 0.1348760713894337,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-X",
+              "RMS_V": 0.04677328948504274,
+              "Vpp_lower_V": 0.13226589757311846,
+              "Vpp_upper_V": 0.13229484069310157,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_plus-Y",
+              "RMS_V": 6.147646852267809e-10,
+              "Vpp_lower_V": 1.7387359607509052e-09,
+              "Vpp_upper_V": 1.738817111031493e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-X",
+              "RMS_V": 0.14611966344365646,
+              "Vpp_lower_V": 0.41328234821723436,
+              "Vpp_upper_V": 0.4132888195428252,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d5-y_minus-Y",
+              "RMS_V": 2.2998441121479917e-09,
+              "Vpp_lower_V": 6.503417611180841e-09,
+              "Vpp_upper_V": 6.504941469487245e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-X",
+              "RMS_V": 0.020565557317707858,
+              "Vpp_lower_V": 0.05816664114946662,
+              "Vpp_upper_V": 0.05816818015292782,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-centre-Y",
+              "RMS_V": 1.1994776411025452e-09,
+              "Vpp_lower_V": 3.391667863524136e-09,
+              "Vpp_upper_V": 3.3926350956210383e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-X",
+              "RMS_V": 0.01761645203306714,
+              "Vpp_lower_V": 0.04982459777347778,
+              "Vpp_upper_V": 0.049826850772117626,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_plus-Y",
+              "RMS_V": 0.005269186821254102,
+              "Vpp_lower_V": 0.0149034083118898,
+              "Vpp_upper_V": 0.014903510930590363,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-X",
+              "RMS_V": 0.01761645133096255,
+              "Vpp_lower_V": 0.04982459582952624,
+              "Vpp_upper_V": 0.04982684878626596,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-x_minus-Y",
+              "RMS_V": 0.005269184752862797,
+              "Vpp_lower_V": 0.014903402454667368,
+              "Vpp_upper_V": 0.014903505080296293,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-X",
+              "RMS_V": 0.015183788584914353,
+              "Vpp_lower_V": 0.04294606317001442,
+              "Vpp_upper_V": 0.04294623948998363,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_plus-Y",
+              "RMS_V": 1.4481108754606934e-09,
+              "Vpp_lower_V": 4.095778464889761e-09,
+              "Vpp_upper_V": 4.095876079793006e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-X",
+              "RMS_V": 0.025907908701469067,
+              "Vpp_lower_V": 0.0732781902396137,
+              "Vpp_upper_V": 0.07327863171668347,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d10-y_minus-Y",
+              "RMS_V": 9.088679646513812e-10,
+              "Vpp_lower_V": 2.570387145219479e-09,
+              "Vpp_upper_V": 2.5706668040328463e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-X",
+              "RMS_V": 0.013620293503263176,
+              "Vpp_lower_V": 0.038520719940823483,
+              "Vpp_upper_V": 0.03852400759163416,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-centre-Y",
+              "RMS_V": 5.51798707317737e-10,
+              "Vpp_lower_V": 1.560669395825673e-09,
+              "Vpp_upper_V": 1.5607224311773827e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-X",
+              "RMS_V": 0.012377027061270848,
+              "Vpp_lower_V": 0.03500214348764289,
+              "Vpp_upper_V": 0.03500751906381634,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_plus-Y",
+              "RMS_V": 0.002171499567972356,
+              "Vpp_lower_V": 0.00614144311787228,
+              "Vpp_upper_V": 0.006141928279427689,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-X",
+              "RMS_V": 0.012377026533501253,
+              "Vpp_lower_V": 0.035002142068650266,
+              "Vpp_upper_V": 0.03500751757105851,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-x_minus-Y",
+              "RMS_V": 0.0021714988720893786,
+              "Vpp_lower_V": 0.006141441172367474,
+              "Vpp_upper_V": 0.0061419263111733985,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-X",
+              "RMS_V": 0.01126434174411888,
+              "Vpp_lower_V": 0.03185844806439654,
+              "Vpp_upper_V": 0.03186036973147687,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_plus-Y",
+              "RMS_V": 1.4166330840924434e-09,
+              "Vpp_lower_V": 4.006687553841834e-09,
+              "Vpp_upper_V": 4.006843440859946e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-X",
+              "RMS_V": 0.01563805248791202,
+              "Vpp_lower_V": 0.044224526022853504,
+              "Vpp_upper_V": 0.04423109183501531,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d15-y_minus-Y",
+              "RMS_V": 4.957434812080424e-10,
+              "Vpp_lower_V": 1.4019692320860192e-09,
+              "Vpp_upper_V": 1.4021743091649402e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-X",
+              "RMS_V": 0.010821645755143057,
+              "Vpp_lower_V": 0.030602961101998106,
+              "Vpp_upper_V": 0.03060823638824131,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-centre-Y",
+              "RMS_V": 4.91596060874075e-10,
+              "Vpp_lower_V": 1.3900266196339559e-09,
+              "Vpp_upper_V": 1.3904436329946228e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-X",
+              "RMS_V": 0.010062746487831155,
+              "Vpp_lower_V": 0.028455997954851178,
+              "Vpp_upper_V": 0.028461745115626293,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_plus-Y",
+              "RMS_V": 0.0012455172032525856,
+              "Vpp_lower_V": 0.003522831454284665,
+              "Vpp_upper_V": 0.003522854642017652,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-X",
+              "RMS_V": 0.010062746080403254,
+              "Vpp_lower_V": 0.028455996915089876,
+              "Vpp_upper_V": 0.028461743963246168,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-x_minus-Y",
+              "RMS_V": 0.0012455176237560314,
+              "Vpp_lower_V": 0.0035228326382677946,
+              "Vpp_upper_V": 0.0035228558313810045,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-X",
+              "RMS_V": 0.009416623404037906,
+              "Vpp_lower_V": 0.026630860960585617,
+              "Vpp_upper_V": 0.026634233059500807,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_plus-Y",
+              "RMS_V": 9.68613182910362e-10,
+              "Vpp_lower_V": 2.739095102066161e-09,
+              "Vpp_upper_V": 2.7396517999304303e-09,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-X",
+              "RMS_V": 0.011915400820453014,
+              "Vpp_lower_V": 0.033693838395017696,
+              "Vpp_upper_V": 0.03370184288279256,
+              "fundamental_envelope_variation_V": 0.0
+            },
+            {
+              "id": "d20-y_minus-Y",
+              "RMS_V": 5.400661530878178e-10,
+              "Vpp_lower_V": 1.5275364836263963e-09,
+              "Vpp_upper_V": 1.5275377565509228e-09,
+              "fundamental_envelope_variation_V": 0.0
+            }
+          ],
+          "single_frequency_modulation_definition": "One pure sinusoid has zero temporal envelope variation; field RMS equality does not imply equal activation"
+        }
+      }
+    }
+  ],
+  "reference_ids": [
+    "rotation-square-control",
+    "rotation-sine-control",
+    "rotation-coherent-r1-p090"
+  ],
+  "modes": [
+    "raw",
+    "skin_contact_only"
+  ],
+  "source_summary_path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json",
+  "source_summary_sha256": "abe8f354a53ea7a58abeb62743c5a206b4ecd435056b45deda8b87d45c8bdf43",
+  "cohort_footprints": {
+    "C1": {
+      "physical_pads": 2,
+      "independent_outputs": 1,
+      "common_return_nodes": 1,
+      "per_pad_area_mm2": [
+        225.0,
+        225.0
+      ],
+      "total_contact_area_mm2": 450.0,
+      "interpretation": "Contact footprint differs between C1 and TIS cohorts; RMS matching does not equalize footprint"
+    },
+    "rotated_TIS": {
+      "physical_pads": 4,
+      "independent_outputs": 2,
+      "common_return_nodes": 1,
+      "per_pad_area_mm2": [
+        281.25000000000006,
+        281.25000000000006,
+        168.75,
+        168.75
+      ],
+      "total_contact_area_mm2": 900.0000000000002,
+      "interpretation": "Contact footprint differs between C1 and TIS cohorts; RMS matching does not equalize footprint"
+    }
+  },
+  "single_stimulation": {
+    "case_id": "baseline-square15-C1pair0-xy80",
+    "source_run_id": "cloud-mesh-c1-20261019T190000Z",
+    "circuit": {
+      "n_pads": 2,
+      "n_outputs": 1,
+      "return_topology": "all_return_pads_ideal_common_GND",
+      "n_return_nodes": 1,
+      "source_Vpp_each": 1.0,
+      "source_peak_V": 0.5,
+      "source_resistance_ohm": 50.0,
+      "inactive_source_at_other_frequencies": "0 V through 50 ohm",
+      "pad_to_node": {
+        "0": "out0",
+        "1": "GND"
+      },
+      "carrier_assignment_Hz": [
+        3000
+      ],
+      "note": "C1 basis also separately evaluated at 3030 Hz; square_3h has explicit harmonics"
+    },
+    "physical_pad_centres_mm": [
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        -10
+      ]
+    ],
+    "waveform": "pure sine",
+    "frequency_Hz": 3000,
+    "raw_source_Vpp": 1.0,
+    "raw_centre20_E_RMS_V_m": 1.2724882373084518,
+    "raw_ROI_energy_RMS_V_m": 1.4021541287436026,
+    "raw_burdens": {
+      "source_current_RMS_mA": 0.9360029778823712,
+      "source_current_peak_mA": 1.3237081057428535,
+      "contact_J_RMS_max_A_m2": 14.97206451280276,
+      "contact_J_RMS_p95_A_m2": 10.90003792235967,
+      "contact_voltage_RMS_max_V": 0.001582679340464751,
+      "bulk_skin_J_RMS_max_A_m2": 14.918404227425533,
+      "bulk_skin_J_RMS_p95_A_m2": 4.405159927967392,
+      "SC_power_W": 6.883192716270774e-07,
+      "dermis_power_W": 0.00021880358900579235,
+      "skin_SC_plus_dermis_power_W": 0.00021949190827741944,
+      "fat_power_W": 4.7105612550053544e-05,
+      "muscle_power_W": 1.3149488224415134e-05,
+      "contact_power_W": 5.128814748537565e-07,
+      "tissue_contact_power_W": 0.00028025989052674185,
+      "source_resistor_power_W": 4.3805078730233336e-05,
+      "source_power_W": 0.0003240649693418138,
+      "loaded_metal_Vpp": 0.8707870325278405
+    },
+    "represented_pad_contact_areas_m2": [
+      0.00022500000000000005,
+      0.00022500000000000005
+    ],
+    "unloaded_probe_reference": {
+      "path": "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json",
+      "SHA256": "7ac08215db1ec71a6880d8eded01fcec203e2992e191f91d42ebf780484da83b",
+      "condition_id": "baseline-square15-C1pair0-xy80-C1-3000Hz-sine",
+      "probe_count": 40,
+      "tip_gap_mm": 5.0,
+      "coordinate_system": {
+        "unit": "mm",
+        "surface_z_mm": 0.0,
+        "depth_axis": "+z",
+        "x_y_axes": "local phantom coordinates; no anatomical anterior/posterior assignment",
+        "displayed_depth": "positive distance from skin surface, not from SC bottom"
+      },
+      "scaling": "Saved source-bound nativephi sine waveforms/spectra and scalar statistics share each exact positive matching amplitude_scale"
+    }
+  },
+  "point_definition": "Native complex E trilinear interpolation at(0,0,20)mm, sqrt(sum_f dot(E*,E)/2)",
+  "ROI_definition": "Central r<=5mm, depth15..20; full-precision fractional volume; sqrt(weighted mean native E_RMS squared), NOT mean(E_RMS)",
+  "new_PDE": 0,
+  "new_native_RHS": 0,
+  "new_reference_recomposition": 0,
+  "candidate_adopted": false,
+  "full_convergence_validated": false,
+  "experimentally_validated": false,
+  "instrument_loading_validated": false,
+  "root_selection_decision": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/decision.json",
+    "SHA256": "267f316135f6e6537532a629e1aca3890f8a7196bfd96aa2c91a12754e09f6ee",
+    "question": "Connect latest completed unadopted rotated coherent and sine/square controls to the original single source-return pair at matched centre20 field RMS or volume-weighted ROI energy RMS, with all required source Vpp, RMS currents, powers and skin/contact burdens preserved separately."
+  },
+  "feedback_context": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-context-20261021T182000Z/feedback-after.json",
+    "SHA256": "494e3312ab47ec27fd93a466bc11b5b35fe95e296646af790cac0309c38627da",
+    "observed_utc": "2026-10-21T17:57:02.314496+00:00"
+  },
+  "holds": [
+    "All reference candidates remain unadopted; canonical original square eight-skin caps define skin8 reference normalization",
+    "RMS matching is not modulation or physiological equivalence; C1 is one actual source-return electrode pair",
+    "Source pad area/footprint differs between C1 and TIS; no equal-footprint claim",
+    "Native numerical checks do not establish mesh/contact/sphere convergence or experimental validation",
+    "Unloaded phi-derived probe predictions; instrument loading/calibration remains unvalidated"
+  ],
+  "source_commit": "1b901cbf501e6deabe736fd3d9e75a7f6313b268",
+  "implementation_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_rotation_coherent_single_pair.py": "31fcd9e6940c1aa23c7cb25a38176c61187442d602e62bddee0942c552a02871",
+    "/workspace/ngg-tis-task1/tests/test_task1_rotation_coherent_single_pair.py": "e1524654d5c48667b766fc9645ce9c9f5a94125c8421076c8cbf4d988fca4d7d",
+    "/workspace/ngg-tis-task1/tools/task1_coherent_single_pair.py": "acaf89ca75851347d7d174f71e9ec998014457b21b3d836b705b76f82deab0fa",
+    "/workspace/ngg-tis-task1/tools/task1_drive_ratio_audit.py": "7cb7bf771ddd5f1d2f4ec88556fd6c7e48736e3c5b75e915b9903c9af61ee92f",
+    "/workspace/ngg-tis-task1/tools/task1_results_view.py": "06d4016f1c330a0d6f556a30564f80c46f6298b194a1b58fbbdce128d2889082",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c"
+  },
+  "preregistration": {
+    "path": "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/preregistration.json",
+    "SHA256": "982557229e9c527ca93daf28b1d21c5ec250b9b83d621d74be81353a315c6e21"
+  },
+  "input_sha256": {
+    "/workspace/ngg-tis-task1/tools/task1_rotation_coherent_single_pair.py": "31fcd9e6940c1aa23c7cb25a38176c61187442d602e62bddee0942c552a02871",
+    "/workspace/ngg-tis-task1/tests/test_task1_rotation_coherent_single_pair.py": "e1524654d5c48667b766fc9645ce9c9f5a94125c8421076c8cbf4d988fca4d7d",
+    "/workspace/ngg-tis-task1/tools/task1_coherent_single_pair.py": "acaf89ca75851347d7d174f71e9ec998014457b21b3d836b705b76f82deab0fa",
+    "/workspace/ngg-tis-task1/tools/task1_drive_ratio_audit.py": "7cb7bf771ddd5f1d2f4ec88556fd6c7e48736e3c5b75e915b9903c9af61ee92f",
+    "/workspace/ngg-tis-task1/tools/task1_results_view.py": "06d4016f1c330a0d6f556a30564f80c46f6298b194a1b58fbbdce128d2889082",
+    "/workspace/ngg-tis-task1/tools/task1_cloud_batch.py": "b1107c57d9c7a501e441a5f1d72d08756af15b301c4245d46a2399099fd69459",
+    "/workspace/ngg-tis-task1/tools/task1_resource_policy.py": "c93c9220a12bc8b6bc275c6d3646cd03e309b291e9acc742d521742ad9feec3c",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/preregistration.json": "a5bff7509ba3e881f8885729453df4d0f88bbfc2e08908b93ee7c843d3f5b9b3",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/summary.json": "96b798cf85cdf0218a918a584caba4d01b489c2614f954bd215af17285945950",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/cases/baseline-square15-C1pair0-xy80.json": "265b058a0274fb7dff43e8c1101eaec730d44eb2731e6106e9e1ef149e2a3c88",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/summary.json": "abe8f354a53ea7a58abeb62743c5a206b4ecd435056b45deda8b87d45c8bdf43",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/summary.json": "8de92edabdcdbe5a0ec7601882ce497e7d2a6c480fa478dbb71853f281041933",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/cases/asym-return2-rot90-xy80.json": "971bcba7f3a5e7a3694f0d0435e7b949fab575f43e93a18b67c03d3bef4303f9",
+    "/workspace/ngg-tis-task1/docs/cloud-one-return-rotation-context-20261021T174000Z/volume.json": "4b31c43405fc8e27cf5bc3ae6dde216720b39e58ad360003147d681d2a457065",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/volume.npz": "791a6f42989a9564d88ef66584a510a53fbc226cf7e584a3d2434e9b4d149c88",
+    "/workspace/ngg-tis-task1/data-native/cloud-one-return-rotation-20261021T174000Z/postprocess/asym-return2-rot90-xy80/probes.json": "24c7b539964ab0a24e18ea3c999758650aa898c40684cf186dd6aab131e46932",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-sine-control/condition.json": "a244ae9fb80bec31f95d98b5e351c13770155aee119c4b40b3b2bbe2a37a17f7",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-sine-control/volume.npz": "969bc97e4e343cafb2a9a84c59df9d8ba1048f81d05ca41c1262e4e185a6d7dd",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-sine-control/probes.json": "872ca98c4ba07db2a49280ca36290f743cb8af1454ff3d45b795b014b41cbdca",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-coherent-r1-p090/condition.json": "f3a6510e3fc97de563205f59dc10bd9c785dc2c328a4322271f2780b0ba58a5c",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-coherent-r1-p090/volume.npz": "e8b2f818793681c3e19046d465ef829337da5bc3b6d6d83f3bc859424fba641c",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-20261021T182000Z/rotation-coherent-r1-p090/probes.json": "fe39043daf8048c46619f1c3819d34a08ce668be190d64de33a672a24a2e882d",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-single-pair-context-20261021T183500Z/decision.json": "267f316135f6e6537532a629e1aca3890f8a7196bfd96aa2c91a12754e09f6ee",
+    "/workspace/ngg-tis-task1/docs/cloud-rotation-coherent-context-20261021T182000Z/feedback-after.json": "494e3312ab47ec27fd93a466bc11b5b35fe95e296646af790cac0309c38627da",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/volume-C1-3000Hz.npz": "545fecec4766e25afdaba4199f9a72fe25371e0027bb11d20f6628c8f1b23ffc",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/configs/baseline-square15-C1pair0-xy80.properties": "326ca4c1bb380de90f1d794c6d0acca0d61a90a54c0f95e2168f6e55ae1706e3",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/masks/baseline-square15-C1pair0-xy80.csv": "8e20c20d73d8c69a70772c43a7f6607dfb25b9ad2fbd66eee3b1ee0ed3d521c4",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/BASIS_COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/validation.json": "21d4c07e3e45466160e15967484aaca423017f74c738dda508604a84cc2ac45b",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/mesh-metadata.json": "60429b2da097a8b71803f4648200620c3369dc593982bd879229c7299c3b1800",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/grid.csv.gz": "70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/field-3000.bin.gz": "33957273ffe52f8d276128ee8d9c728defe411b9b6d7f1e14a966af51ed731f1",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/potential-3000.bin.gz": "166c61eb4e7f66db97679da9c1908d05b4a0f2c3dc84185018b68f1d0725ed9f",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/density-3000.bin": "4d78352506a3a8d444c5a081651af29185cfaa3aecb8045d1bb87c24c7c9efa4",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/loss-3000.bin": "97f812dd1768a555307f1a695af7981625cfb699b003575f67ffd3d0a54d0ef7",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/source-3000.bin": "953f539b306fc633b28b0ab357b6ec0d9e5699b040a645ccec72604a34e2f6d9",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/bases/baseline-square15-C1pair0-xy80/contacts-3000.csv": "7884821fdaaebd34199523534f1fee9dccd5a6eca55f88e77093a0c1de5fdae6",
+    "/workspace/ngg-tis-task1/data-native/cloud-mesh-c1-20261019T190000Z/postprocess/baseline-square15-C1pair0-xy80/probes.json": "7ac08215db1ec71a6880d8eded01fcec203e2992e191f91d42ebf780484da83b",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-approval.json": "640d6c0f0e7bc5e1fd864f3f649796a7d3517a160256716307e779aa89ba0f1a",
+    "/workspace/ngg-tis-task1/docs/cloud-extended-20261021T102700Z/budget-amendment.json": "6747b5534e34ba49e078cd67c85964effc065612152cea3a6e5dbff695117f7d"
+  },
+  "inputs_unchanged": true,
+  "resources": {
+    "CPU_count": 1,
+    "max_batch_seconds": 120,
+    "peak_RSS_bytes": 252346368,
+    "wall_seconds": 1.1767712049986585,
+    "cumulative_budget_limit_seconds": 13800,
+    "new_PDE": 0
+  }
+}

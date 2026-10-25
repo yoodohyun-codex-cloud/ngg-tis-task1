@@ -1,0 +1,21 @@
+# Conditional local work alongside the cloud search
+
+The two assignments are `LOCAL14-c9-diagonal` (`task1-local-L14-c9-20261025`) and `LOCAL16-c8p5-diagonal` (`task1-local-L16-c8p5-20261025`). Both have status **assigned_waiting_adapter_and_lease**. No local process, reservation, canonical candidate hash or central lease has been created by these source documents.
+
+[conditional_assignments_v2.json](conditional_assignments_v2.json) contains the machine payloads. [proposal_history_v1.json](proposal_history_v1.json) preserves the earlier five unassigned proposals and earlier readiness snapshot. [ownership_protocol_v2.json](ownership_protocol_v2.json) defines the later ownership exchange; [ownership_protocol_draft_v1.json](ownership_protocol_draft_v1.json) preserves its prepublication draft.
+
+The latest user report verifies Python 3.13.17, NumPy 2.5.4, SciPy 1.18.1 and Temurin 21.0.12.1+1. The Intel Core i5-14400 has 10 physical cores and 16 logical threads. Windows Job tests passed for logical affinity `[0,2,4,6,8,10,12,13]` and a 4,000,000,000-byte Job cap. These tests establish neither PDE readiness nor eight-core acceleration. The earlier 756,920,320-byte available-RAM snapshot needs a fresh physical-memory and commit-headroom check. The Windows owner adapter is still pending.
+
+The cloud's existing single owner and locks stay unchanged. One verified Windows Job owner may perform approved disjoint local work concurrently. Central exclusivity applies to each canonical candidate; it does not require all environments to stop.
+
+Before local execution, freeze and publish the separate portable adapter/input manifest, verify its Windows ownership and resource enforcement, verify input/cache bytes and prepared mask identity, check current cloud canonical/symmetry aliases, and acquire a per-candidate Git compare-and-swap lease with readback. The first eight cloud sources remain pinned to commit `c8e5f2f9d4fbba5646944772d526533ecedbbab1`. This is not the future Windows adapter source commit.
+
+Both designs preserve the 50 mm phantom and 0.1/5/5/15 mm layers, top placement, four pads, two source outputs, shared returns, 2000/2010 Hz, 1 Vpp high-impedance definition and 50 Ω output resistors. The inactive ideal output remains 0 V behind 50 Ω. Material and contact receipts remain byte-pinned HREF-MIX substitutes with the existing regional and PBS-contact limitations.
+
+The target remains radius 5 mm and depth 15–20 mm below the physical top. Keep absolute modulation and non-target/contact burdens, using the same field/ROI/metric versions. The reconstruction remains provisional. Local raw solves need not wait for the cloud batch to finish; comparison normalizations against the common cloud B0 can wait for authenticated B0 metrics. Do not use a local candidate as an undisclosed replacement baseline.
+
+Canonical scientific identity must be platform-neutral. Include physical geometry/node roles, both carrier inputs, material/contact receipts, model/grid/cache/reconstruction versions, source circuit and metric definitions. Deployment paths, host names and current PID/lease state are not scientific identity. Preserve their separate execution provenance. Candidate hashes remain unset here. Root will use the frozen adapter's exact `portable_pair.encoded` recipe: UTF-8 JSON with sorted keys, two-space indentation, `ensure_ascii=False`, `allow_nan=False`, and exactly one trailing LF. The public central registry is `docs/TASK1_LOCAL_HANDOFF_20261025/candidate-ownership.json`; root will publish its actual conditional assignments and later lease state with Git readback.
+
+A TTL expiry marks a lease suspect; it does not prove that a process has died. Check PID plus Windows CreationTime or Linux startticks, owner/Job state and the latest checkpoint before a reviewed handoff. Keep failures and partial results. Never force-update the Git registry, steal an unverified stale lease, delete source evidence or silently repeat a completed RHS.
+
+All artifact locations in these documents are repository-relative or bundle-relative. There are no private Windows paths, host names or credentials. These documents performed no installation, security/configuration change, array/mask generation, candidate-hash calculation, CAS operation or local worker launch.

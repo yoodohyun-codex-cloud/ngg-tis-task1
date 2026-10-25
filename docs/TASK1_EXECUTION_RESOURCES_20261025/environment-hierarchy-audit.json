@@ -1,0 +1,162 @@
+{
+  "schema": "task1-readonly-resource-environment-audit-v1",
+  "observed_UTC": "2026-10-25T02:50:17.030849+00:00",
+  "requested_policy": {
+    "CPU_limit": 4,
+    "RSS_plus_ALL_task_tmpfs_limit_B": 8000000000,
+    "RSS_plus_ALL_task_tmpfs_limit_GiB": 7.450580596923828,
+    "cumulative_research_time": "No cumulative time cap under latest user instruction",
+    "max_cells_unchanged": 800000,
+    "single_owner_unchanged": true,
+    "activation_boundary": "Parent activates policy only after current XY publication/persistence boundary. This audit does not change policy or interrupt an active owner."
+  },
+  "method": "Read-only procfs/sysfs and source inspection; importlib.find_spec/distribution metadata only. No NumPy/SciPy/threadpoolctl import, no benchmark, no PDE, no research array decode, no tests, no resource/lock/ledger/Git change.",
+  "CPU": {
+    "sched_getaffinity": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "eligible_logical_CPU_count": 5,
+    "visible_parent_quota_CPU": 4.0,
+    "actual_self_child_quota_CPU": "unlimited",
+    "visible_effective_sustained_upper_bound_CPU": 4.0,
+    "interpretation": "Five eligible logical CPUs do not grant five sustained CPUs: visible ancestor quota permits aggregate 400000us per100000us (four CPU equivalents). It is an upper bound, not four dedicated cores or a measured speedup.",
+    "hidden_ancestor_limit_status": "Not observable above mounted cgroup root; additional host ancestor limits or contention cannot be excluded."
+  },
+  "cgroup_hierarchy": {
+    "self_proc_cgroup": "0::/",
+    "cgroup_mountinfo": [
+      "59 58 0:24 /.. /sys/fs/cgroup rw,nosuid,nodev,noexec,relatime shared:8 - cgroup2 cgroup2 rw,nsdelegate"
+    ],
+    "legacy_v1_mount_present": false,
+    "visible_parent": {
+      "path": "/sys/fs/cgroup",
+      "self_pid_is_direct_member": false,
+      "cpu.max": "400000 100000",
+      "cpu.max.burst": "0",
+      "cpuset.cpus.effective": "0-4",
+      "memory.max": "17179869184",
+      "memory.high": "max",
+      "memory.current": "8475361280",
+      "memory.peak": "9372614656",
+      "memory.swap.max": "max",
+      "memory.swap.current": "0",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.stat_selected_B": {
+        "anon": 61800448,
+        "file": 8124194816,
+        "kernel": 288067584,
+        "shmem": 1754632192,
+        "slab": 285600632
+      }
+    },
+    "actual_self_child": {
+      "path": "/sys/fs/cgroup/init",
+      "self_pid_is_direct_member": true,
+      "cpu.max": "max 100000",
+      "cpu.max.burst": "0",
+      "cpuset.cpus.effective": "0-4",
+      "memory.max": "max",
+      "memory.high": "max",
+      "memory.current": "8471384064",
+      "memory.peak": "9368637440",
+      "memory.swap.max": "max",
+      "memory.swap.current": "0",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.stat_selected_B": {
+        "anon": 61337600,
+        "file": 8122970112,
+        "kernel": 286375936,
+        "shmem": 1754632192,
+        "slab": 284127912
+      }
+    },
+    "mapping_evidence": "Mount root /.. exposes a parent above self cgroup namespace root. Self PID is absent from parent cgroup.procs and present in init/cgroup.procs. The self child has no descendant cgroups.",
+    "visible_parent_subdirectories": [
+      "init"
+    ],
+    "self_subdirectories": []
+  },
+  "memory": {
+    "visible_effective_hard_limit_B": 17179869184,
+    "visible_effective_hard_limit_GiB": 16.0,
+    "visible_parent_current_B": 8475361280,
+    "instantaneous_cgroup_hard_limit_minus_current_B": 8704507904,
+    "instantaneous_cgroup_headroom_GiB": 8.106704711914062,
+    "host_MemTotal": "18440112 kB",
+    "host_MemAvailable": "15911044 kB",
+    "host_SwapTotal": "0 kB",
+    "host_vs_cgroup": "Host MemAvailable is not the task allowance or the cgroup budget. Cgroup memory includes this workload plus sibling/cache/kernel charges and is dynamic.",
+    "task_vs_cgroup": "Approved8e9B is total task RSS plus all task-owned tmpfs, including retained old task outputs. It is not an extra8GB allocation on top of current task use, and it is not8GiB.",
+    "cache_accounting": "memory.stat shmem is included in file, so file+shmem would double-count. Not all file cache is necessarily free/reclaimable; tmpfs output preservation must remain.",
+    "allocation_guarantee": "Visible hard headroom exceeded8e9B at this snapshot, but this does not reserve that space or prove a future allocation will succeed. Retain live task and cgroup monitoring."
+  },
+  "installed_metadata_only": {
+    "numpy": {
+      "find_spec_present": true,
+      "origin": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__init__.py",
+      "distribution_version": "2.3.5",
+      "bundled_BLAS_library_metadata": [
+        "numpy.libs/libscipy_openblas64_-fdde5778.so"
+      ]
+    },
+    "scipy": {
+      "find_spec_present": true,
+      "origin": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/scipy/__init__.py",
+      "distribution_version": "1.17.0",
+      "bundled_BLAS_library_metadata": [
+        "scipy.libs/libscipy_openblas-6cdc3b4a.so"
+      ]
+    },
+    "threadpoolctl": {
+      "find_spec_present": true,
+      "origin": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/threadpoolctl.py",
+      "distribution_version": "3.6.0",
+      "bundled_BLAS_library_metadata": []
+    }
+  },
+  "NumPy_BLAS_build_metadata": {
+    "source": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/__config__.py",
+    "relevant_lines": [
+      {
+        "line": 75,
+        "text": "\"name\": \"scipy-openblas\","
+      },
+      {
+        "line": 81,
+        "text": "\"openblas configuration\": r\"OpenBLAS 0.3.30  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\","
+      },
+      {
+        "line": 85,
+        "text": "\"name\": \"scipy-openblas\","
+      },
+      {
+        "line": 91,
+        "text": "\"openblas configuration\": r\"OpenBLAS 0.3.30  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\","
+      }
+    ],
+    "interpretation": "Wheel metadata/config indicate bundled scipy-openblas0.3.30, ILP64 for NumPy, DYNAMIC_ARCH/NO_AFFINITY/MAX_THREADS64. Library loading, selected CPU kernel, actual runtime pool size and effective scaling remain unverified."
+  },
+  "Java_solver_threading": {
+    "source_files": [
+      "/workspace/ngg-tis-task1/tis-java/TisSweep.java",
+      "/workspace/ngg-tis-task1/tis-java/SelectivityShapeBasis.java"
+    ],
+    "source_locations": {
+      "preconditioner": "TisSweep.java:66",
+      "matrix_vector_edges": "TisSweep.java:67",
+      "COCG_iteration": "TisSweep.java:73",
+      "dot_reduction": "TisSweep.java:106",
+      "basis_source_loop": "SelectivityShapeBasis.java:350"
+    },
+    "status": "Current COCG matrix-vector, dot, preconditioner and vector updates use ordinary sequential Java loops; source basis RHS are also iterated sequentially.",
+    "parallel_solver_implementation_found": false,
+    "claim_boundary": "A4CPU policy or JVM ActiveProcessorCount=4 does not parallelize these loops or establish4x speedup. JVM GC/JIT can use helper threads without making the numerical solver parallel.",
+    "BLAS_boundary": "NumPy/OpenBLAS presence does not accelerate the plain Java solver. BLAS thread control applies only to operations actually using that BLAS library; NumPy elementwise/broadcast operations need not use BLAS.",
+    "future_parallelism": "Any explicit numerical parallelization needs a declared implementation and validation. Independent duplicate owners/workers are not authorized by raising the CPU cap."
+  },
+  "conclusion": "The visible environment supports an upper bound of4 sustained CPU equivalents and16GiB cgroup memory, with roughly8.7GB instantaneous hard headroom observed. The approved total task envelope8e9B is below that hard limit, while existing task tmpfs/RSS must remain included and runtime monitoring is still required. Existing solver numerical loops are serial."
+}

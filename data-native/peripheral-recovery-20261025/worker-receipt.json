@@ -1,0 +1,66 @@
+{
+  "schema": "task1-memory-separated-recovery-worker-v1",
+  "status": "peripheral_memory_recovery_computed",
+  "maximum_new_driven_RHS": 2,
+  "expected_reused_saved_RHS": 2,
+  "new_eigen_solves": 0,
+  "new_native_FVM_RHS": 0,
+  "candidate_adopted": false,
+  "actual_Windows_saved": false,
+  "CPU_cap": 4,
+  "configured": {
+    "status": "configured_before_numpy_import",
+    "affinity_cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "4",
+      "OMP_NUM_THREADS": "4",
+      "MKL_NUM_THREADS": "4",
+      "NUMEXPR_NUM_THREADS": "4",
+      "NUMEXPR_MAX_THREADS": "4"
+    },
+    "actual_BLAS_threads_verified": false,
+    "java_active_processor_count": 4,
+    "java_heap_bytes": 2147483648,
+    "java_GC_policy": "unchanged; caller retains existing SerialGC"
+  },
+  "actual_parent_authentication": {
+    "parent_pid": 168443,
+    "parent_start_ticks": 5659075,
+    "three_dual_locks": true,
+    "source_publication_commit": "0d689d4427d769965af88b991b6fe7bc72b5850c",
+    "exact_source_input_readback_verified": true
+  },
+  "test_count": 45,
+  "summary_SHA256": "4562a3915cd7fcd85aedec82fe3a1fc44887b73e94a9037785b08e6fef4ef069",
+  "recovery_accounting": {
+    "passed": true,
+    "completed_conditions": 4,
+    "actual_new_driven_RHS": 2,
+    "actual_reused_saved_RHS": 2,
+    "actual_new_metric_evaluations": 2,
+    "actual_alias_conditions": 2,
+    "new_P23_RHS": 0,
+    "new_P12_RHS": 2,
+    "new_eigen_solves": 0
+  },
+  "scope": "Two new P12 RHS, two saved P23 RHS reused without repeats, two new angular metrics and two immutable controls; source failure/P24 blocker retained, no convergence/physiological/hardware/experiment validation",
+  "elapsed_seconds": 89.0949438700045,
+  "process_CPU_seconds": 274.99547487300003,
+  "average_process_CPU_cores": 3.086544117186233,
+  "peak_worker_RSS_bytes": 712646656,
+  "input_verification": {
+    "before_tests_and_build": {
+      "passed": true,
+      "count": 121
+    },
+    "after_build": {
+      "passed": true,
+      "count": 121
+    }
+  }
+}
