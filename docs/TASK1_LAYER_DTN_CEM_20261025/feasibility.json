@@ -1,0 +1,119 @@
+{
+  "schema": "task1-layer-DtN-source-feasibility-audit-v1",
+  "status": "mathematical_formulation_conditionally_sound_benchmark_required",
+  "scope": {
+    "source_and_equation_review_only": true,
+    "research_imports": false,
+    "numerical_eigen_MMS_CEM_or_native_work": false,
+    "tests_or_compilation": false,
+    "native_array_reads": false,
+    "network_locks_ledger_operations": false,
+    "existing_files_modified": false,
+    "implementation_review_limit": "The new prototype source was not yet present when inspected. This is a feasibility audit of the equations and contract supplied by root and the source author, anchored to the frozen existing operator. A later source freeze/runtime receipt remains necessary.",
+    "actual_U19_failure_context": "Root reports completed/published U19, all13 scalar adjacency checks stable while the independent5percent potential-only interface screen still fails. The supplied figures13.9403/all and48.5892/periphery were not independently recalculated or decoded by this source-only audit. No old failure is cleared."
+  },
+  "existing_source_anchors": [
+    {
+      "path": "/workspace/ngg-tis-task1/tis-java/SelectivityShapeBasis.java",
+      "anchors": {
+        "fixed_D50_XY_mask_and_counts": "160-183",
+        "XY_graph_conductance_gamma_dz_and_insulating_missing_faces": "194-198",
+        "CEM_fractional_contact_mask_and_half_SC_cell_in_old_FVM": "200-207",
+        "all_output_50ohm_conductance": "209",
+        "old_native_half_face_mean_E_definition": "211-227",
+        "shared_flux_interface_check_is_algebraic_selfconsistency": "229-238",
+        "layer_contact_source_resistor_real_power_matrices": "241-262"
+      }
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/tis-java/TisSweep.java",
+      "anchors": {
+        "gamma_sigma_plus_jomega_epsilon": "51-52",
+        "edge_operator_missing_outside_faces": "54-68",
+        "0p5V_peak_through50ohm_RHS0p01A": "73-82"
+      }
+    },
+    {
+      "path": "/dev/shm/task1-vs-estimator-20261025/source/frozen_fourier_v1.py",
+      "anchors": {
+        "downward_current_and_layer_transfer_sign": "60-80",
+        "equivalent_tanh_admittance_recurrence": "84-88",
+        "old_vertical_FVM_half_cell_boundary": "101-106",
+        "peak_complex_energy_and_shared_flux_scope": "148-158",
+        "zero_mode_homogeneous_transfer_admittance_contracts": "161-182"
+      }
+    },
+    {
+      "path": "/dev/shm/task1-sc8-2000-20261025/source/sc8_interfaces.py",
+      "anchors": {
+        "independent_actual_node_Lagrange_fits": "21-33,95-159",
+        "fixed_order_region_and_non_accuracy_scope": "160-185"
+      }
+    },
+    {
+      "path": "/workspace/ngg-tis-task1/tis-java/selectivity_volume.py",
+      "anchors": {
+        "actual_native_weight_and_grid_validation": "69-133",
+        "fractional_target_XY_exact_depth_overlap_no_renormalization": "135-180"
+      }
+    }
+  ],
+  "mathematical_contract": {
+    "domain": "The identical XY0.5mm, center-inside-D50 cylinder staircase graph extruded through physical layers0.1/5/5/15mm; no missing outside XY edges and insulating physical bottom. This remains a spatially discretized lateral graph, not the smooth continuous cylinder.",
+    "assumptions": "Scalar isotropic gamma, constant across each XY layer; each layer gamma equals its exact source-verified value at the selected carrier. Horizontal heterogeneity, arbitrarily rotated anisotropy or changed side boundary destroys the stated simple modal separation.",
+    "lateral_operator": "L=(diag(degree)-adjacency)/h^2, with one node per original XY column, h in metres. L is real symmetric positive semidefinite, has units m^-2 and exactly one constant zero mode if the graph is connected. L must be verified against the original graph ordering/edges/mask rather than using a periodic, square-grid or smooth-cylinder eigensystem.",
+    "modal_equation": "For L q=lambda q, k=sqrt(lambda), v''=lambda*v and downward J=-gamma*v'. Use real orthonormal eigenvectors Q; Q^T is correct because Q is real. Eigenvector signs and repeated-eigenvalue rotations do not change Q diag(Y) Q^T when modes with equal eigenvalues receive equal Y.",
+    "admittance_recurrence": "Starting with insulated-bottom Ybelow=0, each layer has Ytop=gamma*k*(Ybelow+gamma*k*tanh(k*d))/(gamma*k+Ybelow*tanh(k*d)). Y has units S/m^2. The formula agrees with the frozen admittance_profile after algebraic rearrangement.",
+    "zero_mode": "Handle lambda0=0 explicitly: for this insulated-bottom problem every layer has Y0=0 and a constant potential profile. Do not evaluate0/0 or replace negative eigenvalues by abs(lambda). The general k-to-zero transfer with a nonzero load is Ytop=Ybelow/(1+d*Ybelow/gamma), but that is not the current bottom boundary.",
+    "surface_tissue_operator": "K=h^2*Q*diag(Ytop)*Q^T maps nodal surface potential in V to inward tissue current in A. The h^2 factor is required; omitting it confuses current density and integrated node current. K is complex symmetric, generally not Hermitian, and should satisfy the passive real-power quadratic form.",
+    "CEM_surface_and_metals": "For each contact patch on node i, g=A_patch/z_specific, in S. D_ii sums all patch g, C_i,e sums g only for output pad e. Surface equation (K+D)*phi-C*u=0. Output metal equation -C^T*phi+diag(sum_output_g+1/50)*u=0.01*basis. Ground-return pads2/3 contribute to D with metal0 and have no independent metal unknown. The inactive output still retains its50ohm to ideal0V; it is not open circuit or an isolated bipolar return.",
+    "SC_contact_double_counting": "Contact g must use A/z_specific only because phi is at the physical top and the analytic layer transfer already includes all0.1mm SC. Reusing the old FVM z_specific+dzSC/(2*gammaSC) contact term would double-count SC. Conversely, identifying this physical-top phi as the old first-cell-center phi would change the measurement definition silently.",
+    "source_and_power": "One basis is ideal0.5Vpeak through50ohm, RHS0.01A, other ideal source0 through50ohm. Use peak+jomega*t and S=V*conj(I)/2. The expression0.5*phi^H*K*phi is the conjugate of input complex power under this convention; its real part gives the same real power. Preserve signed complex-power conventions explicitly rather than inferring reactive signs from real-loss matrices.",
+    "verdict": "The proposed recurrence, scaling and coupled equations are sound for the stated graph-by-continuous-z reference. No source-level mathematical blocker requires a larger phantom, extra outputs or altered50ohm/common-return topology. This is not a convergence or experimental certificate."
+  },
+  "unknowns_cells_and_work_semantics": {
+    "XY_graph_nodes": 7860,
+    "surface_coupled_complex_unknowns": 7862,
+    "lateral_modes": 7860,
+    "vertical_unknowns": "Continuous analytic layer profiles, not101 finite-volume z unknowns. Modal layer states are derived profile parameters; state-array entries must not be mislabeled physical cells.",
+    "evaluation_grid": "The existing U19 physical evaluation grid has793860 cells/points with its exact native weights and is within the unchanged800000 limit. A future reconstruction can sample at those centers; the algorithm's surface/modal unknown count and sampled evaluation-cell count must both be recorded.",
+    "dense_basis_entries": 61779600,
+    "dense_basis_entries_are_not_cells": true,
+    "registration_requirement": "Register this as a new numerical reference method with its own unknown/evaluation/storage counts. Do not present it as unchanged FVM, a cached field reconstruction or a reinterpretation of the historical cell cap.",
+    "first_finite_benchmark": "Graph construction/eigendecomposition plus modal/manufactured backend checks only; actual CEM phantom reference conditions0 and actual CEM RHS0. Record numerical preprocessing/MMS work and elapsed resources truthfully.",
+    "later_CEM_stage": "Two new2000Hz transfer RHS are new reference-physics solves, not cached QA. More frequencies require new frequency-specific gamma/contact DtN and CEM solves, even if the geometry eigensystem is reused. One carrier cannot provide TIS modulation."
+  },
+  "first_benchmark_required_contracts": [
+    "Preregister the exact original XY mask/index ordering/edge list, h, connected-component count, symmetry, row sums, degree bounds and expected7860nodes. Check sparse graph action agrees with the existing unweighted XY stencil before diagonalization.",
+    "Freeze a supported installed eigensolver/backend/driver/thread choice and source/environment provenance without installation. Observe effective CPU/BLAS limits; do not assume4-core speedup from an affinity setting.",
+    "Preregister absolute/relative symmetry, constant-null-mode, negative-eigenvalue and eigen-residual tolerances. Clip only a justified roundoff-sized zero eigenvalue after checking its vector; any materially negative eigenvalue or extra zero mode fails closed.",
+    "Use bounded eigen-residual and orthogonality checks against the sparse original graph. Avoid allocating full LQ, Q^TQ or another n-by-n residual. Record whether orthogonality is full blocked checking or a sampled/probe check; do not label sampled checks exhaustive.",
+    "Check real-Q forward/inverse transforms with complex vectors split into real/imag parts, modal action and round-trip errors; no complex Q or dense complex K is required.",
+    "Compare layer DtN against independent bottom-up transfer and homogeneous closed form, constant zero mode, small-k limit, layered nonzero-current slab and finite passive admittance. Keep physical k and discrete graph k=sqrt(lambda) references distinct.",
+    "For manufactured nonzero modes retain exact analytic interface V/J and side errors plus the sampled2/2 and3/3 fits at declared depths. A better fit or exact-by-construction continuity must not be substituted for independent operator/profile error.",
+    "Use stable tanh/scaled exponential or equivalent bounded profile evaluation; check denominator conditioning, underflow/overflow and finite values across the full registered eigenvalue range. A direct large-cosh upward transfer can be ill-conditioned despite a finite result.",
+    "No CEM/field/probe/physiology claims from the backend benchmark. Publish measured benchmark resources and success or preserved failure before choosing the actual reference solve."
+  ],
+  "resource_feasibility": {
+    "policy": "Maximum4 effective CPU and total owned-process RSS plus ALL task-owned tmpfs8,000,000,000bytes, subject to smaller observed limits; one numerical owner, dual locks and finite watchdog. Java heap2GiB remains historical Java-only constraint; a Python/LAPACK eigen stage does not turn that into an8GB Java heap. No limit was queried or changed in this audit.",
+    "starting_tmpfs_context": "Root supplied approximately2.9GB of existing task tmpfs. This is context, not a fresh inventory by the reviewer.",
+    "one_real_dense_matrix_theoretical_bytes": 494236800,
+    "one_complex_dense_basis_theoretical_bytes": 988473600,
+    "memory_verdict": "Potentially feasible but unverified. Dense L, returned Q, an implicit input copy, LAPACK driver workspace, Python/BLAS allocations, diagnostics and persistent Q chunks can coexist. One matrix's494MB size is not a peak estimate. Require an explicit allocation-lifetime plan and a live monitor before admitting the finite benchmark.",
+    "copy_control": "Build the registered real matrix in the backend's required layout, select overwrite/copy flags honestly and measure peak RSS. Reuse or release dense L only after sparse graph residual validation can still be performed. Never retain complex Q or form dense complex K for convenience.",
+    "tmpfs_accounting": "Persisted eigen chunks add about one real basis to task-owned tmpfs while RSS/workspace may still be live. Continue RSS+alltasktmpfs accounting during export and publication; mapping a tmpfs file does not exempt either component under the approved conservative accounting metric.",
+    "transport_chunk_risk": "The source author initially proposed eigen chunks up to70MiB. Existing native owners use MAX_BLOB64MiB;70MiB would exceed that transport guard. Use chunks<=32MiB with complete dtype/endianness/order/row-column-range metadata and SHA, or explicitly verify the actual owner transport limit before source freeze. Storage overrides do not remove provider/API transport limits.",
+    "time_verdict": "A600second finite benchmark may be attempted only after source/resource registration; no source-only proof guarantees full7860-eigenvector decomposition and validation within that duration on the available backend. Timeout, resource failure or numerical failure must preserve a checkpoint and exact resume condition.",
+    "future_CEM_risk": "Each matrix-free complex matvec needs repeated real-Q transforms. Iteration count, preconditioning and multi-depth reconstruction may dominate wall time. K is not Hermitian; standard Hermitian CG is not justified. Use an appropriate registered solver with physical residuals, current balance and power/passivity gates before claiming a CEM solution."
+  },
+  "future_field_and_interpretation_holds": [
+    "Label the reference as the exact continuous-z solution of the fixed lateral graph, to numerical eigensolver/CEM tolerance. It is not the exact smooth-cylinder3D continuum, and it does not validate lateral staircase, electrode-edge, contact, tissue or anatomy assumptions.",
+    "Independent comparison against U19 estimates vertical-FVM effects conditional on identical XY graph/contact/material inputs and the new physical-top formulation. It does not identify the full true3D error or establish SC/XY/bulk/edge/contact convergence.",
+    "The reference enforces interface V and normal J continuity analytically. This is an algebraic/model property, not independent interface accuracy evidence. Preserve old5percent failures and also recompute the same potential-only sampled2/2 and3/3 diagnostics at matching physical scopes.",
+    "Define a new field ABI: analytic Ez from -dphi/dz, with an explicitly matching discrete XY gradient. Do not call the old vertical half-face phi-to-E reconstruction and present its output as the analytic-z field. The old stored E is a half-face average and comparisons must expose this definition difference.",
+    "Native-center ROI statistics use the fixed fractional XY/exact-depth-overlap weights and remain sampled quadrature of the continuous-z solution. Analytic layer energy can be evaluated separately; do not mix a center-sampled E integral with an exact power gate without documenting quadrature error.",
+    "For later native potential probes preserve the existing5mm tip spacing, coordinates, load/attenuation distinctions and interpolation operator when comparing old results. Direct analytic-depth evaluation is an additional prediction with a different sampling definition, not silently the identical old trilinear result.",
+    "No candidate adoption, activation, safety, material/phantom calibration, hardware validation or cleared historical failures follows from this new reference method."
+  ],
+  "owner_next_action": "Freeze/review the source and explicit dense-allocation/transport/backend contract, refresh active effective resource limits and actual task tmpfs inventory under the sole owner's locks, then run only the finite graph-eigen/MMS benchmark. Use its measured numerical/resource result to admit or block a separately registered actual CEM reference stage."
+}
