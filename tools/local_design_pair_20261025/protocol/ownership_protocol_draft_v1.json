@@ -1,0 +1,99 @@
+{
+  "schema": "task1-local-cloud-candidate-ownership-protocol-v1",
+  "public_paths_only": true,
+  "private_host_or_Windows_paths_allowed_in_public_payload": false,
+  "canonical_hash_recipe": {
+    "algorithm": "SHA256 after one agreed JSON canonicalization/version; NOT evaluated in this proposal",
+    "required_domains": [
+      "physical phantom geometry and coordinate system",
+      "electrode geometry/rotation/physical mask and node assignment",
+      "frequency-specific gamma and material source/receipt identity",
+      "contact zA and exact Rs/area model/receipt identity",
+      "solver/model source commit and hashes",
+      "grid/evaluation-depth/cache identities",
+      "field reconstruction ABI/source version",
+      "source waveform/Vpp phase/convention/output resistor and inactive termination",
+      "number of pads versus independent outputs/return topology",
+      "ROI/weighting/metric definitions and source versions"
+    ],
+    "unresolved_local_adapter_or_mask_fields": "No executable canonical hash or lease until the portable manifest and local adapter are frozen; no candidate hash calculated here",
+    "platform_neutrality": "Scientific identity excludes deployment paths, host names and current PID/lease state. Record deployment/runtime provenance separately; compare scientific aliases before assigning the same geometry through another wrapper."
+  },
+  "symmetry_review": {
+    "before_assignment": "Compare latest cloud completed/active/pending registry using the full canonical physics and analysis payload, not proposal name or nominal pad count alone",
+    "transforms": "Only transformations preserving the actual fixed grid/material/circuit and registered ROI/measurement definitions may be aliases. Rotate/reflect pad positions together with their node/frequency labels. Exchanging f1/f2 outputs is not automatically an alias because gamma/contact/drive roles differ. Identical common-return labels may be exchanged only with otherwise identical models.",
+    "current_latest_registry_verified": false
+  },
+  "lease": {
+    "registry_repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+    "registry_repository_relative_path": "runtime/task1-candidate-ownership.json",
+    "research_branch": "codex/task1-cloud-restart-20261020",
+    "acquire": [
+      "Read actual current Git ref and immutable registry",
+      "Check canonical and symmetry aliases against active/completed/pending work",
+      "Create registry commit with exact expected parent and unique run/candidate identity",
+      "Nonforce compare-and-swap ref update; on mismatch reread, never force",
+      "Verify remote commit and exact registry bytes before starting a case"
+    ],
+    "publication_coordination": "Root uses a safe cloud publication boundary so the registry does not invalidate an in-flight scientific publication parent; no global calculation stop is required",
+    "identity": {
+      "public_environment_id": "pseudonymous environment label, not a host name",
+      "Windows": [
+        "PID",
+        "CreationTime_UTC",
+        "WindowsJob_identity",
+        "frozen_owner_source_SHA256"
+      ],
+      "Linux": [
+        "PID",
+        "proc_start_ticks",
+        "frozen_owner_source_SHA256"
+      ],
+      "lease_id": "Nonsecret unique identifier, not an access credential",
+      "lease_epoch": "Monotone fencing revision"
+    },
+    "heartbeat": {
+      "fields": [
+        "candidate_id",
+        "run_id",
+        "lease_id",
+        "lease_epoch",
+        "OS_process_identity",
+        "phase",
+        "updated_UTC",
+        "last_checkpoint_relative_path",
+        "completed_RHS",
+        "stop_or_failure_reason"
+      ],
+      "artifact_example": "runs/task1-local-L14-c9-20261025/heartbeat.json",
+      "TTL": "Expiry marks suspect_stale only; it does not prove process death or free a candidate",
+      "takeover": "Verify actual PID+CreationTime or startticks, owner/Job state and checkpoint. An unreachable environment is not proof of death. Explicit root recovery/fencing and a fresh CAS are required before another owner starts the same case"
+    },
+    "worker_checks": "Verify its own live process identity and current candidate lease before each new RHS/checkpoint/publication. If ownership cannot be confirmed, preserve partials and stop starting new work; do not delete original evidence."
+  },
+  "execution_scope": {
+    "cloud": "Existing cloud queue/dual locks and one root owner stay unchanged",
+    "local": "One verified Windows native owner/Job and local lock per local environment",
+    "central": "Only canonical-candidate overlap is exclusive; approved disjoint local/cloud calculations may run concurrently"
+  },
+  "readiness_and_stop_report": {
+    "local_ready_not_implied_by_runtime_tests": true,
+    "require_fresh_RAM_and_commit_guard": true,
+    "no_unverified_8core_acceleration_claim": true,
+    "stop_reason_values": [
+      "complete",
+      "resource_shortage",
+      "error",
+      "explicit_approval_or_adapter_wait",
+      "environment_end"
+    ],
+    "preserve_originals_and_partial_evidence": true,
+    "no_installation_or_security_configuration_changes_by_protocol": true
+  },
+  "actual_operations": {
+    "reservations": 0,
+    "CAS_attempts": 0,
+    "candidate_hash_calculations": 0,
+    "local_processes_started": 0
+  }
+}

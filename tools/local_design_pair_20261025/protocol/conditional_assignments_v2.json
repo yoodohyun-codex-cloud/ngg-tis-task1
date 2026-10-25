@@ -1,0 +1,625 @@
+{
+  "schema": "task1-local-conditional-assignment-v2",
+  "status": "conditional_assignment_no_active_lease_or_local_execution",
+  "supersedes_history_document": "proposal_history_v1.json",
+  "root_requested_assignment": true,
+  "first8_cloud_source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+  "cloud_first8_unchanged": true,
+  "cloud_must_continue": true,
+  "local_readiness": {
+    "snapshot_kind": "Latest user-verified local runtime and Windows Job tests; no PDE",
+    "CPU_name": "Intel Core i5-14400",
+    "physical_cores": 10,
+    "logical_threads": 16,
+    "runtimes": {
+      "Python": "3.13.17",
+      "NumPy": "2.5.4",
+      "SciPy": "1.18.1",
+      "Java_distribution": "Temurin",
+      "Java": "21.0.12.1+1"
+    },
+    "Windows_Job": {
+      "logical_affinity": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        13
+      ],
+      "maximum_reported_physical_cores": 8,
+      "memory_cap_bytes": 4000000000,
+      "timeout_test_passed": true,
+      "memory_limit_test_passed": true,
+      "actual_PDE_verified": false,
+      "eight_core_acceleration_verified": false
+    },
+    "earlier_RAM_snapshot": {
+      "total_bytes": 16840822784,
+      "available_bytes": 756920320,
+      "fresh_for_new_allocation": false
+    },
+    "fresh_RAM_and_commit_headroom_verified": false,
+    "Windows_owner_adapter_verified": false,
+    "local_design_execution_started": false,
+    "actual_owner_PID": null,
+    "actual_owner_CreationTime_UTC": null,
+    "installation_by_this_protocol": false,
+    "configuration_changes_by_this_protocol": false
+  },
+  "candidate_entries": [
+    {
+      "candidate_id": "LOCAL14-c9-diagonal",
+      "run_id": "task1-local-L14-c9-20261025",
+      "supersedes_proposal_id": "PROPOSAL-L14-c9",
+      "assignment_status": "assigned_waiting_adapter_and_lease",
+      "assigned_environment": "local_windows_01",
+      "reserved": false,
+      "canonical_config_SHA256": null,
+      "canonical_hash_status": "not_computed; wait frozen portable adapter/input manifest and canonical symmetry review",
+      "lease": null,
+      "actual_owner_PID": null,
+      "actual_owner_CreationTime_UTC": null,
+      "execution_permitted": false,
+      "maximum_new_driven_RHS": 2,
+      "canonical_payload": {
+        "schema": "task1-canonical-provisional-local-design-payload-v1",
+        "task": "TASK1",
+        "geometry_fixed": {
+          "diameter_mm": 50,
+          "layer_slots_mm": [
+            0.1,
+            5,
+            5,
+            15
+          ],
+          "layer_order": [
+            "sc",
+            "dermis",
+            "fat",
+            "muscle"
+          ],
+          "top_surface_z_mm": 0,
+          "depth_direction": "+z",
+          "mounting": "top only"
+        },
+        "frequencies_Hz": [
+          2000,
+          2010
+        ],
+        "waveform": "sine",
+        "phasor_convention": "complex peak +jomega*t",
+        "material": {
+          "version": "HREF-MIX-v1",
+          "input": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "data-native/design-screen-coarse-20261025/input-material.json",
+            "local_relative_path": "inputs/material.json",
+            "SHA256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+            "bytes": 20812,
+            "source_readback_verified": true
+          },
+          "operation": "Use existing per-frequency gamma rows directly; no arbitrary epsilon or material reevaluation",
+          "scope": "Declared surrogate forearm SC/VS and mixed-source fat/muscle permittivity; not direct human thoracoabdominal data"
+        },
+        "contact": {
+          "input": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "data-native/design-screen-coarse-20261025/input-contact.json",
+            "local_relative_path": "inputs/contact.json",
+            "SHA256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+            "bytes": 1845,
+            "source_readback_verified": true
+          },
+          "selected_Rs_ohm": 236.5717747232937,
+          "measurement_area_m2": 0.0001,
+          "Rs_subtractions": 1,
+          "measurement_area_multiplications": 1,
+          "division_by_two": false,
+          "patch_operation": "Area-specific zA passed unchanged; apply actual patch area once in the CEM",
+          "PBS_as_human_skin_validated": false
+        },
+        "circuit": {
+          "pad_count": 4,
+          "independent_outputs": 2,
+          "pad_node_order": [
+            "out0",
+            "out1",
+            "GND",
+            "GND"
+          ],
+          "source_resistance_ohm": 50,
+          "high_impedance_ideal_source_Vpp": 1,
+          "ideal_source_peak_V": 0.5,
+          "drives": {
+            "2000": {
+              "output": 0
+            },
+            "2010": {
+              "output": 1
+            }
+          },
+          "inactive_output": "ideal0V behind50ohm at the other carrier; not open circuit",
+          "return_topology": "pads2and3 common0V",
+          "actual_equipment_topology_verified": false
+        },
+        "grid": {
+          "kind": "Same coarse XY100 cached graph and analytic-z evaluation as first8",
+          "h_mm": 0.5,
+          "nx": 100,
+          "nxy": 7860,
+          "evaluation_layer_counts": [
+            8,
+            19,
+            18,
+            56
+          ],
+          "evaluation_cells": 793860,
+          "evaluation_depths": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "data-native/design-screen-coarse-20261025/evaluation-z-faces.json",
+            "local_relative_path": "inputs/evaluation-z-faces.json",
+            "SHA256": "e2ad36d8c2ea76ce7173507fa230e907b7fe30d164919d47169b808e92ab9e45",
+            "bytes": 6150,
+            "source_readback_verified": true
+          },
+          "cache_manifest": {
+            "logical_artifact": "XY100-real-eigen-cache",
+            "source_result_commit": "815327e978ec5e3976ba9a462510d6faac6f318a",
+            "repository_relative_path": "data-native/cloud-layer-dtn-phase1-20261025/local-eigen-cache-manifest.json",
+            "SHA256": "99753623e06525d86b86cc1c659323e06012d4ddd145e02fd6fc0af514dba4ba",
+            "local_relative_path": "cache/xy100/manifest.json",
+            "local_chunk_delivery_and_full_readback_verified": false
+          }
+        },
+        "model_sources": {
+          "design_screen.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/design_screen.py",
+            "local_relative_path": "model/design_screen.py",
+            "SHA256": "82c3c15cbf71ce3588e63f715df18641a3080aa8ed102d8569297745d77df537",
+            "bytes": 22639,
+            "source_readback_verified": true
+          },
+          "frozen_coarse_cem.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/frozen_coarse_cem.py",
+            "local_relative_path": "model/frozen_coarse_cem.py",
+            "SHA256": "65567475caf2d5e48ca8959606db4923298b38daa1122e7dd18f3f20c9348323",
+            "bytes": 23135,
+            "source_readback_verified": true
+          },
+          "frozen_layer_dtn_backend.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/frozen_layer_dtn_backend.py",
+            "local_relative_path": "model/frozen_layer_dtn_backend.py",
+            "SHA256": "c470f22b3faf980b05d1e42aca86feed5da57eab3c98d467334f31d76b4ddaf8",
+            "bytes": 21275,
+            "source_readback_verified": true
+          },
+          "frozen_fourier_v1.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/frozen_fourier_v1.py",
+            "local_relative_path": "model/frozen_fourier_v1.py",
+            "SHA256": "6d855155d823d165fb51f4ce17b9ac607a23d9850cdd806ec354b3c577d415f5",
+            "bytes": 17642,
+            "source_readback_verified": true
+          },
+          "provisional_field.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/provisional_field.py",
+            "local_relative_path": "model/provisional_field.py",
+            "SHA256": "5cebbe9b18c0b5912de328cc66036e5a6abe015e268261c3a7e974d719df1e87",
+            "bytes": 5805,
+            "source_readback_verified": true
+          },
+          "screen_metrics.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/screen_metrics.py",
+            "local_relative_path": "model/screen_metrics.py",
+            "SHA256": "d761d3fd965f85d1cc121fac9d9fc6addb21810f12d9d18240601e8278834ba0",
+            "bytes": 15957,
+            "source_readback_verified": true
+          }
+        },
+        "reconstruction": {
+          "version": "native-lateral-half-face-v1+analytic-z-DtN-v1",
+          "full_E_accuracy_validated": false,
+          "old_5percent_failures_preserved": true
+        },
+        "metrics": {
+          "source": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/screen_metrics.py",
+            "local_relative_path": "model/screen_metrics.py",
+            "SHA256": "d761d3fd965f85d1cc121fac9d9fc6addb21810f12d9d18240601e8278834ba0",
+            "bytes": 15957,
+            "source_readback_verified": true
+          },
+          "target": {
+            "radius_mm": 5,
+            "depth_mm": [
+              15,
+              20
+            ],
+            "depth_origin": "physical top0mm; positive downward",
+            "weighting": "Existing128x128 boundary fractional XY overlap and exact depth overlap; volume weighted"
+          },
+          "non_target": {
+            "surface_depth_mm": [
+              0,
+              5
+            ],
+            "off_target": "All represented phantom volume outside target"
+          },
+          "directional_modulation": "Two actual carrier complex vectors;2074-direction angular sample is a lower bound, not continuum maximum",
+          "electrical": "Keep carrier RMS, modulation, skin/contact J, contact voltage, skin/contact/total power separate",
+          "normalizations": [
+            "same applied Vpp",
+            "same bookkeeping total output RMS current",
+            "same source real power",
+            "same declared contact/skin burden caps"
+          ],
+          "common_comparison_baseline": {
+            "candidate_id": "B0-square15-c10-diagonal",
+            "authenticated_cloud_result_commit": null,
+            "normalization_status": "defer until current common B0 metrics authenticated; local raw solves need not wait for cloud completion"
+          }
+        },
+        "provisional_only": true,
+        "candidate_adopted": false,
+        "skin_safety_or_experimental_validation": false,
+        "electrodes": {
+          "pad_record_order": [
+            "width_mm",
+            "height_mm",
+            "center_x_mm",
+            "center_y_mm"
+          ],
+          "pads": [
+            [
+              14,
+              14,
+              -9,
+              -9
+            ],
+            [
+              14,
+              14,
+              9,
+              9
+            ],
+            [
+              14,
+              14,
+              9,
+              -9
+            ],
+            [
+              14,
+              14,
+              -9,
+              9
+            ]
+          ],
+          "rotation_deg": 0,
+          "actual_mask_SHA256": null,
+          "mask_generation_by_this_protocol": false
+        }
+      },
+      "execution_conditions_pending": [
+        "New portable local adapter/source commit and readback",
+        "Verified Windows native owner/Job/lock adapter",
+        "Fresh RAM and commit headroom check for4e9 Job cap",
+        "Full input/cache SHA verification and prepared mask identity",
+        "Latest central canonical/symmetry alias check",
+        "Successful per-candidate central Git CAS lease and readback"
+      ]
+    },
+    {
+      "candidate_id": "LOCAL16-c8p5-diagonal",
+      "run_id": "task1-local-L16-c8p5-20261025",
+      "supersedes_proposal_id": "PROPOSAL-L16-c8p5",
+      "assignment_status": "assigned_waiting_adapter_and_lease",
+      "assigned_environment": "local_windows_01",
+      "reserved": false,
+      "canonical_config_SHA256": null,
+      "canonical_hash_status": "not_computed; wait frozen portable adapter/input manifest and canonical symmetry review",
+      "lease": null,
+      "actual_owner_PID": null,
+      "actual_owner_CreationTime_UTC": null,
+      "execution_permitted": false,
+      "maximum_new_driven_RHS": 2,
+      "canonical_payload": {
+        "schema": "task1-canonical-provisional-local-design-payload-v1",
+        "task": "TASK1",
+        "geometry_fixed": {
+          "diameter_mm": 50,
+          "layer_slots_mm": [
+            0.1,
+            5,
+            5,
+            15
+          ],
+          "layer_order": [
+            "sc",
+            "dermis",
+            "fat",
+            "muscle"
+          ],
+          "top_surface_z_mm": 0,
+          "depth_direction": "+z",
+          "mounting": "top only"
+        },
+        "frequencies_Hz": [
+          2000,
+          2010
+        ],
+        "waveform": "sine",
+        "phasor_convention": "complex peak +jomega*t",
+        "material": {
+          "version": "HREF-MIX-v1",
+          "input": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "data-native/design-screen-coarse-20261025/input-material.json",
+            "local_relative_path": "inputs/material.json",
+            "SHA256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+            "bytes": 20812,
+            "source_readback_verified": true
+          },
+          "operation": "Use existing per-frequency gamma rows directly; no arbitrary epsilon or material reevaluation",
+          "scope": "Declared surrogate forearm SC/VS and mixed-source fat/muscle permittivity; not direct human thoracoabdominal data"
+        },
+        "contact": {
+          "input": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "data-native/design-screen-coarse-20261025/input-contact.json",
+            "local_relative_path": "inputs/contact.json",
+            "SHA256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+            "bytes": 1845,
+            "source_readback_verified": true
+          },
+          "selected_Rs_ohm": 236.5717747232937,
+          "measurement_area_m2": 0.0001,
+          "Rs_subtractions": 1,
+          "measurement_area_multiplications": 1,
+          "division_by_two": false,
+          "patch_operation": "Area-specific zA passed unchanged; apply actual patch area once in the CEM",
+          "PBS_as_human_skin_validated": false
+        },
+        "circuit": {
+          "pad_count": 4,
+          "independent_outputs": 2,
+          "pad_node_order": [
+            "out0",
+            "out1",
+            "GND",
+            "GND"
+          ],
+          "source_resistance_ohm": 50,
+          "high_impedance_ideal_source_Vpp": 1,
+          "ideal_source_peak_V": 0.5,
+          "drives": {
+            "2000": {
+              "output": 0
+            },
+            "2010": {
+              "output": 1
+            }
+          },
+          "inactive_output": "ideal0V behind50ohm at the other carrier; not open circuit",
+          "return_topology": "pads2and3 common0V",
+          "actual_equipment_topology_verified": false
+        },
+        "grid": {
+          "kind": "Same coarse XY100 cached graph and analytic-z evaluation as first8",
+          "h_mm": 0.5,
+          "nx": 100,
+          "nxy": 7860,
+          "evaluation_layer_counts": [
+            8,
+            19,
+            18,
+            56
+          ],
+          "evaluation_cells": 793860,
+          "evaluation_depths": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "data-native/design-screen-coarse-20261025/evaluation-z-faces.json",
+            "local_relative_path": "inputs/evaluation-z-faces.json",
+            "SHA256": "e2ad36d8c2ea76ce7173507fa230e907b7fe30d164919d47169b808e92ab9e45",
+            "bytes": 6150,
+            "source_readback_verified": true
+          },
+          "cache_manifest": {
+            "logical_artifact": "XY100-real-eigen-cache",
+            "source_result_commit": "815327e978ec5e3976ba9a462510d6faac6f318a",
+            "repository_relative_path": "data-native/cloud-layer-dtn-phase1-20261025/local-eigen-cache-manifest.json",
+            "SHA256": "99753623e06525d86b86cc1c659323e06012d4ddd145e02fd6fc0af514dba4ba",
+            "local_relative_path": "cache/xy100/manifest.json",
+            "local_chunk_delivery_and_full_readback_verified": false
+          }
+        },
+        "model_sources": {
+          "design_screen.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/design_screen.py",
+            "local_relative_path": "model/design_screen.py",
+            "SHA256": "82c3c15cbf71ce3588e63f715df18641a3080aa8ed102d8569297745d77df537",
+            "bytes": 22639,
+            "source_readback_verified": true
+          },
+          "frozen_coarse_cem.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/frozen_coarse_cem.py",
+            "local_relative_path": "model/frozen_coarse_cem.py",
+            "SHA256": "65567475caf2d5e48ca8959606db4923298b38daa1122e7dd18f3f20c9348323",
+            "bytes": 23135,
+            "source_readback_verified": true
+          },
+          "frozen_layer_dtn_backend.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/frozen_layer_dtn_backend.py",
+            "local_relative_path": "model/frozen_layer_dtn_backend.py",
+            "SHA256": "c470f22b3faf980b05d1e42aca86feed5da57eab3c98d467334f31d76b4ddaf8",
+            "bytes": 21275,
+            "source_readback_verified": true
+          },
+          "frozen_fourier_v1.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/frozen_fourier_v1.py",
+            "local_relative_path": "model/frozen_fourier_v1.py",
+            "SHA256": "6d855155d823d165fb51f4ce17b9ac607a23d9850cdd806ec354b3c577d415f5",
+            "bytes": 17642,
+            "source_readback_verified": true
+          },
+          "provisional_field.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/provisional_field.py",
+            "local_relative_path": "model/provisional_field.py",
+            "SHA256": "5cebbe9b18c0b5912de328cc66036e5a6abe015e268261c3a7e974d719df1e87",
+            "bytes": 5805,
+            "source_readback_verified": true
+          },
+          "screen_metrics.py": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/screen_metrics.py",
+            "local_relative_path": "model/screen_metrics.py",
+            "SHA256": "d761d3fd965f85d1cc121fac9d9fc6addb21810f12d9d18240601e8278834ba0",
+            "bytes": 15957,
+            "source_readback_verified": true
+          }
+        },
+        "reconstruction": {
+          "version": "native-lateral-half-face-v1+analytic-z-DtN-v1",
+          "full_E_accuracy_validated": false,
+          "old_5percent_failures_preserved": true
+        },
+        "metrics": {
+          "source": {
+            "repository": "yoodohyun-codex-cloud/ngg-tis-task1",
+            "source_commit": "c8e5f2f9d4fbba5646944772d526533ecedbbab1",
+            "repository_relative_path": "tools/design_search_20261025/model/screen_metrics.py",
+            "local_relative_path": "model/screen_metrics.py",
+            "SHA256": "d761d3fd965f85d1cc121fac9d9fc6addb21810f12d9d18240601e8278834ba0",
+            "bytes": 15957,
+            "source_readback_verified": true
+          },
+          "target": {
+            "radius_mm": 5,
+            "depth_mm": [
+              15,
+              20
+            ],
+            "depth_origin": "physical top0mm; positive downward",
+            "weighting": "Existing128x128 boundary fractional XY overlap and exact depth overlap; volume weighted"
+          },
+          "non_target": {
+            "surface_depth_mm": [
+              0,
+              5
+            ],
+            "off_target": "All represented phantom volume outside target"
+          },
+          "directional_modulation": "Two actual carrier complex vectors;2074-direction angular sample is a lower bound, not continuum maximum",
+          "electrical": "Keep carrier RMS, modulation, skin/contact J, contact voltage, skin/contact/total power separate",
+          "normalizations": [
+            "same applied Vpp",
+            "same bookkeeping total output RMS current",
+            "same source real power",
+            "same declared contact/skin burden caps"
+          ],
+          "common_comparison_baseline": {
+            "candidate_id": "B0-square15-c10-diagonal",
+            "authenticated_cloud_result_commit": null,
+            "normalization_status": "defer until current common B0 metrics authenticated; local raw solves need not wait for cloud completion"
+          }
+        },
+        "provisional_only": true,
+        "candidate_adopted": false,
+        "skin_safety_or_experimental_validation": false,
+        "electrodes": {
+          "pad_record_order": [
+            "width_mm",
+            "height_mm",
+            "center_x_mm",
+            "center_y_mm"
+          ],
+          "pads": [
+            [
+              16,
+              16,
+              -8.5,
+              -8.5
+            ],
+            [
+              16,
+              16,
+              8.5,
+              8.5
+            ],
+            [
+              16,
+              16,
+              8.5,
+              -8.5
+            ],
+            [
+              16,
+              16,
+              -8.5,
+              8.5
+            ]
+          ],
+          "rotation_deg": 0,
+          "actual_mask_SHA256": null,
+          "mask_generation_by_this_protocol": false
+        }
+      },
+      "execution_conditions_pending": [
+        "New portable local adapter/source commit and readback",
+        "Verified Windows native owner/Job/lock adapter",
+        "Fresh RAM and commit headroom check for4e9 Job cap",
+        "Full input/cache SHA verification and prepared mask identity",
+        "Latest central canonical/symmetry alias check",
+        "Successful per-candidate central Git CAS lease and readback"
+      ]
+    }
+  ],
+  "total_maximum_new_driven_RHS": 4,
+  "new_portable_adapter_source_commit": null,
+  "new_portable_input_manifest": null,
+  "central_registry_publication": "Root publishes at a safe cloud Git boundary; this source document does not perform CAS or reserve a PID",
+  "parallelism": {
+    "disjoint_local_and_cloud_allowed": true,
+    "cloud_single_owner_and_existing_locks_unchanged": true,
+    "local_single_Windows_Job_owner": true,
+    "central_exclusive_lease_scope": "per canonical candidate",
+    "global_all_environment_exclusive_worker_required": false
+  },
+  "candidate_hashes_calculated": false,
+  "central_CAS_attempts": 0,
+  "local_jobs_started": 0,
+  "source_only": true
+}
