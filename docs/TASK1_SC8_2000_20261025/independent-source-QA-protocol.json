@@ -1,0 +1,194 @@
+{
+  "schema": "task1-SC8-source-metadata-QA-protocol-v1",
+  "status": "preexecution_independent_source_metadata_audit",
+  "input_sha256": {
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_run.py": "98ac23981236976d96067ba2bb8d802d1e80c38965943ad887c071efbba72c83",
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_inputs.py": "728cfed77b2bd90dda24c50a0780f0d43fae7819ba31be8affd55f98aa9b35ff",
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_post.py": "1e9a3a56005583f0ddf01197aeadf6d0c1629b11489b35554c1ad126b3058974",
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_interfaces.py": "88d9b8b588433505ef75504ccf30339b48e816eeff0dfa36a2e1730df17d2f6e",
+    "/dev/shm/task1-sc8-2000-20261025-run/preregistration.json": "491e7349f5173e474bebf9c5de340981269ce0bc940b16c39436803e16f7acac",
+    "/dev/shm/task1-sc8-2000-20261025-run/config-diff.json": "72d7df3c18cc1a5b806e0850c906dd74b6904a4b3e63cf93efd8d03da2cd8847",
+    "/dev/shm/task1-sc8-2000-20261025-run/prepare-receipt.json": "50f6bfe54df07ce94d50311c577e41b318e864911336dad90984c938adf651b8"
+  },
+  "scope": "Source/metadata and mask byte-identity inspection only; no native arrays, scientific-module imports, numerical tests, network, locks, PDE or ledger operations.",
+  "prepared_case": {
+    "case_id": "baseline-square15-human-sine2000-sc8-bulk18-18-56-xy100",
+    "status": "prepared",
+    "prepare_status": "prepared_compiled_selftested_no_phantom_PDE",
+    "maximum_new_conditions": 1,
+    "maximum_native_RHS": 2,
+    "mesh": {
+      "SC_cells": 8,
+      "XY_mm": 0.5,
+      "bulk_cells": [
+        18,
+        18,
+        56
+      ],
+      "native_cells": 786000,
+      "XY_columns": 7860
+    },
+    "frequency_Hz": 2000,
+    "physics": {
+      "radius_mm": 25,
+      "layers_mm": [
+        0.1,
+        5,
+        5,
+        15
+      ],
+      "pads": 4,
+      "outputs": 2,
+      "return_topology": "commonGND_pads2and3",
+      "source_resistance_ohm": 50,
+      "source_basis_highZ_Vpp": 1,
+      "phasor": "peak,+jomega_t",
+      "waveform": "sine",
+      "carrier_coefficients": {
+        "2000": [
+          1,
+          0
+        ]
+      },
+      "single_frequency_modulation": "not_defined_no_TIS_claim",
+      "actual_hardware_waveform_and_topology_verified": false
+    },
+    "limits": {
+      "CPU": 4,
+      "simultaneous_PDE_workers": 1,
+      "java_heap_bytes": 2147483648,
+      "RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+      "blas_threads": 4,
+      "actual_solver_serial": true,
+      "max_native_cells": 800000,
+      "max_run_bytes": null,
+      "minimum_root_free_bytes": 0,
+      "storage_capacity_guards_enabled": false,
+      "stage_caps_seconds": {
+        "prepare": 30,
+        "publish-source": 60,
+        "execute": 180,
+        "postprocess": 120,
+        "publish-results": 240,
+        "persist": 30
+      },
+      "finite_batch_maximum_seconds": 660,
+      "cumulative_time_limit_seconds": null,
+      "cumulative_time_unlimited": true
+    }
+  },
+  "exact_mask_audit": {
+    "actual_file_SHA256": {
+      "/dev/shm/task1-sc4-2000-20261025-run/masks/baseline-square15-human-sine2000-sc4-bulk18-18-56-xy100.csv": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+      "/dev/shm/task1-sc8-2000-20261025-run/masks/baseline-square15-human-sine2000-sc8-bulk18-18-56-xy100.csv": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca"
+    },
+    "byte_identical": true,
+    "registered_SHA256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+    "matches_registration": true,
+    "meaning": "Physical top-electrode patch mask is byte-identical; this audit did not independently regenerate pad areas or decode native field arrays.",
+    "source_enforcement": "sc8_inputs.derive_config checks exact old config/mask/receipt hashes, copies mask bytes, and limits changed keys to SCcount/expectedN/storage paths."
+  },
+  "actual_registered_config_diff": {
+    "changed": {
+      "validation.sc_cells": {
+        "old": "4",
+        "proposed": "8"
+      },
+      "mask.path": {
+        "old": "/dev/shm/task1-sc4-2000-20261025-run/masks/baseline-square15-human-sine2000-sc4-bulk18-18-56-xy100.csv",
+        "proposed": "/dev/shm/task1-sc8-2000-20261025-run/masks/baseline-square15-human-sine2000-sc8-bulk18-18-56-xy100.csv"
+      },
+      "material.input_path": {
+        "old": "/dev/shm/task1-sc4-2000-20261025-run/material-input.json",
+        "proposed": "/dev/shm/task1-sc8-2000-20261025-run/material-input.json"
+      },
+      "contact.input_path": {
+        "old": "/dev/shm/task1-sc4-2000-20261025-run/contact-receipt.json",
+        "proposed": "/dev/shm/task1-sc8-2000-20261025-run/contact-receipt.json"
+      },
+      "validation.expected_cells": {
+        "old": "754560",
+        "proposed": "786000"
+      }
+    },
+    "scope": "One same2000Hz SC4to8 numerical diagnostic with fixedXY0.5/bulk18/18/56; no human/TIS validation"
+  },
+  "invariant_checks": [
+    "D50 and layer thickness0.1/5/5/15mm fixed; actualSCthickness stays0.1mm, only4→8 depthcells.",
+    "XY0.5mm and bulk18/18/56 unchanged; post checks bulk zfaces agree within1e-9mm.",
+    "Same2000Hz per-frequency sigma/epsilon values, contact arealZ, receipt hashes, pad settings, channel count and mask SHA; no material/contact reevaluation.",
+    "One carrier c=[1,0], output0 highZ1Vpp, output1 ideal0V through50ohm, pad2and3GND;4pads/2outputs. No secondcarrier/TISmodulation.",
+    "Actual owner-prepared786000cells below800000; sourceSC16notregistered. No cellcap exception is allowed."
+  ],
+  "estimator_protocol": {
+    "primary_scopes": "all/interior r<=23.75mm/periphery r>23.75mm on BOTH SC4/SC8; native24mm scopes also retained separately",
+    "common_two_point": "Exactly2nearestpotentialpoints per side, eachinterface, on BOTH SC4/SC8.",
+    "nearest_three": "Exactly3nearestpotentialpoints per side, eachinterface, on BOTH SC4/SC8; no2→3orderconfound.",
+    "sampling_note": "Same polynomial order does not mean same physical stencil width: SCspacing halves as the intended discretization refinement.",
+    "source_assertions": "independent_comparison validates metadata h=.5,SC4/8,radius, andpointcounts2/2or3/3; allmethods/scopes/failures retained.",
+    "future_output_requirement": "Verify upper/lowerpoint metadata actuallypresent before claimingmatchedorder; retain missingmetadata as blocker ratherthanselectfavorablemethod."
+  },
+  "absolute_error_definitions": {
+    "upper_lower": "sqrt(mean(abs(Jcomplex)^2)) over equal-area nativefacecolumns,unitsA/m² complex peak amplitude; not temporalRMS.",
+    "absolute_jump": "difference_spatial_complex_RMS=sqrt(mean(abs(Jupper-Jlower)^2)),A/m².",
+    "normalized_jump": "absolute_jump/max(upper_spatial_complex_RMS,lower_spatial_complex_RMS,1e-12A/m²),dimensionless; upper/lower J=-gamma*dphi/dz includes displacement.",
+    "reporting": "For each interface/scope/order show upperRMS,lowerRMS,absolute_jump,denominator,floor andnormalized_L2 side by side forSC4/SC8; report deltaabsolute_jump anddeltadenominator separately.",
+    "naming_warning": "independent_comparison.absolute_change is a dimensionless normalized-L2 change, NOT an absolute current-density difference. It may be reported as percentage-points only afterx100. Scalar adjacency.absolute_difference has its own metric's listed units.",
+    "inaccessible_truth": "Actual cylindrical-CEM exactinterfaceJ is unknown; do not call upper/lower native estimates errors against analytic truth. True side-error claims belong only to manufactured exactprofiles.",
+    "time_norm_separation": "Skin/contactcarrierJ_RMS quantities include temporal1/sqrt(2); independentspatialcomplexRMS retains peakphasors. Do not mix their absolute scales without labels."
+  },
+  "preregistered_scalar_percent": {
+    "target.E_carrier_RMS.mean": 1,
+    "target.E_carrier_RMS.p10": 1,
+    "contact_normal_J_RMS_max_A_m2": 5,
+    "contact_normal_J_RMS_P95_A_m2": 5,
+    "contact_voltage_RMS_max_V": 5,
+    "source_power_W": 2,
+    "contact_power_W": 2,
+    "source_resistor_power_W": 2,
+    "SC_power_W": 2,
+    "skin_power_W": 2,
+    "dermis_power_W": 2,
+    "fat_power_W": 2,
+    "muscle_power_W": 2
+  },
+  "fixed_criteria": {
+    "native_gates": {
+      "max_residual": 2e-07,
+      "max_power_error": 2e-07,
+      "max_current_error": 2e-06,
+      "max_area_relative_error": 1e-10,
+      "max_interface_normal_current_relative_error": 2e-07
+    },
+    "independent_normal_J_L2_limit": 0.05,
+    "analytic_absolute_tolerance": 1e-10,
+    "analytic_relative_tolerance": 1e-10,
+    "no_after_result_changes": true,
+    "failures_do_not_suppress_export": true
+  },
+  "post_result_interpretation": [
+    "All13scalarpass would establishonlythelistedSC4→8adjacentquantities; notfullSC/XY/bulk/edge/contactconvergence.",
+    "A5%passorfallingjumpdoesnotprovephysicalaccuracy; a5%failurewithstableSCscalarandfixed3/3valuesremainsanexplicitfailure.",
+    "MMS showedactualFVMSCfluxerrorcanimprovewhile3/3jumpincreasesduebiascancellation. Do not subtractmanufacturedbiasfromrealfields.",
+    "SharedCEMfacecurrentconservationandphi→storedEselfconsistencyarealgebraicchecks, separatefromindependentone-sidedpotentialgradientandphysicalaccuracy."
+  ],
+  "conditional_next_finite_diagnostic": {
+    "condition": "SC8scalar13checksremainstablebutfixedorder5%screeningstillfails",
+    "recommendation": "One bounded manufactured VS-grading/estimator test at fixedSC8/XY0.5/bulk18,18,56 counts, redistributing the existing18VS cells toward interfaces while preserving5mm thickness and totalcellcount.",
+    "why": "Targets the VS-side stencilbias indicated by manufactured evidence without exceeding800k or addingSC16. Pre-register gradedfaces,retaincommon2and3/3originalflags andtestabsoluteeachsideerrorvsanalytictruth before any realgradedmeshcase.",
+    "not_authorized_by_this_audit": "No realgradedrun, thresholdrelaxation, biascorrection, resourceexpansion orcandidateadoption is performed."
+  },
+  "holds": {
+    "full_SC_XY_bulk_edge_contact_convergence": false,
+    "material_anatomic_experimental_validation": false,
+    "activation_safety_validation": false,
+    "candidate_adopted": false
+  },
+  "mutations": "Only this requested QA JSON written; frozenSC8/estimator source unchanged",
+  "audited_source_matches_preregistered_pins": {
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_run.py": true,
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_inputs.py": true,
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_post.py": true,
+    "/dev/shm/task1-sc8-2000-20261025/source/sc8_interfaces.py": true
+  }
+}
