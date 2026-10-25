@@ -1,13 +1,13 @@
 {
   "OneDrive_sync_verified": false,
   "Windows_backup_complete": false,
-  "active_local_lease_count": 2,
+  "active_local_lease_count": 0,
   "candidates": [
     {
-      "actual_owner_CreationTime_UTC": "2026-10-25T10:25:15.942219+00:00",
-      "actual_owner_PID": 39132,
+      "actual_owner_CreationTime_UTC": null,
+      "actual_owner_PID": null,
       "assigned_environment": "local_windows_01",
-      "assignment_status": "active_lease_waiting_local_admission",
+      "assignment_status": "completed_user_reported_pending_remote_artifact_review",
       "candidate_id": "LOCAL14-c9-diagonal",
       "canonical_config_SHA256": "f3a56046aa93f9413a531b045387559501be861002cfab4b607e2f2e7d6f2720",
       "canonical_config_repo_relative_path": "data-native/local-handoff-20261025/prepared/LOCAL14-c9-diagonal-canonical-config.json",
@@ -21,42 +21,8 @@
         "model": "8f28166729af4bab1a5361166a4777f0241ff0a12add2dffeb35374a2c0adfc9",
         "reconstruction": "ea87dffd4d8997b2852545e7966b518ee49806d745ad89d14167dc488f3ab176"
       },
-      "execution_permitted": true,
-      "lease": {
-        "OS_process_identity": {
-          "CreationTime_UTC": "2026-10-25T10:25:15.942219+00:00",
-          "PID": 39132,
-          "WindowsJob_identity": "local-pair-admission-20261025102515",
-          "frozen_owner_source_SHA256": "1bfc952308fab84672e596c3562073a600e80be4e40002794d7dbdb46a648e60"
-        },
-        "extends_owner_deadline": false,
-        "finite_candidate_run_id": "task1-local-L14-c9-20261025",
-        "issued_UTC": "2026-10-25T10:35:43.978427+00:00",
-        "keep_both_group_rows_unchanged_until_owner_completes_or_explicit_revocation": true,
-        "lease_epoch": 1,
-        "lease_group": "local-pair-39132-20261025T102515",
-        "lease_id": "task1-local-5fbb622483b44b55a98311b7b6f4c23e",
-        "limits": {
-          "Windows_Job_policy_bytes": 4000000000,
-          "actual_page_rounded_Job_commit_bytes": 3999997952,
-          "affinity_mask": 13653,
-          "max_evaluation_cells": 800000,
-          "max_physical_CPU_cores": 8
-        },
-        "maximum_new_driven_RHS": 2,
-        "owner_original_wait_deadline_UTC": "2026-10-25T10:55:15.942219+00:00",
-        "source_binding": {
-          "canonical_config_SHA256": "f3a56046aa93f9413a531b045387559501be861002cfab4b607e2f2e7d6f2720",
-          "layout_mapping_SHA256": "4275c7cd75a67e521dd1c4da9e1dfd0d02e4837e8991e75966bb414f36ac1229",
-          "owner_code_commit": "db8e7b403205f9729befdf7781e810b3a0b13d6d",
-          "owner_repo_relative_path": "tools/windows_owner_adapter_20261025/windows_pair_owner.py",
-          "pair_adapter_SHA256": "cbf5f839b345c3d8b45718e9f307c8cade397c1648c5218743cdeefc584a9ef4",
-          "synthetic_validation_SHA256": "9ec523700d1cceb6f57be01d559a010e74a90f5276ca3dff96ba5815a1096709",
-          "synthetic_validation_repo_relative_path": "tools/windows_owner_adapter_20261025/synthetic-validation.json",
-          "windows_guard_SHA256": "2e91598ba6b474d7d691c4561ec91b88468c2f43a2399279a28d85aeb6fbeca9"
-        },
-        "verification_scope": "Root verified fixed public bytes; current Windows process/Job/folder state is freshly user-attested and self-rechecked by the frozen dispatcher. Active lease and full numerical path remain dynamically unverified until actual execution."
-      },
+      "execution_permitted": false,
+      "lease": null,
       "mask_SHA256": "50b5c7ee8402d765292b8fb87660b3d54570ed46ee55ca96a71b330bbbdedad5",
       "mask_repo_relative_path": "data-native/local-handoff-20261025/prepared/masks/LOCAL14-c9-diagonal.csv",
       "maximum_new_driven_RHS": 2,
@@ -114,13 +80,58 @@
           "width_mm": 14
         }
       ],
-      "run_id": "task1-local-L14-c9-20261025"
+      "run_id": "task1-local-L14-c9-20261025",
+      "lease_history": [
+        {
+          "OS_process_identity": {
+            "CreationTime_UTC": "2026-10-25T10:25:15.942219+00:00",
+            "PID": 39132,
+            "WindowsJob_identity": "local-pair-admission-20261025102515",
+            "frozen_owner_source_SHA256": "1bfc952308fab84672e596c3562073a600e80be4e40002794d7dbdb46a648e60"
+          },
+          "extends_owner_deadline": false,
+          "finite_candidate_run_id": "task1-local-L14-c9-20261025",
+          "issued_UTC": "2026-10-25T10:35:43.978427+00:00",
+          "keep_both_group_rows_unchanged_until_owner_completes_or_explicit_revocation": true,
+          "lease_epoch": 1,
+          "lease_group": "local-pair-39132-20261025T102515",
+          "lease_id": "task1-local-5fbb622483b44b55a98311b7b6f4c23e",
+          "limits": {
+            "Windows_Job_policy_bytes": 4000000000,
+            "actual_page_rounded_Job_commit_bytes": 3999997952,
+            "affinity_mask": 13653,
+            "max_evaluation_cells": 800000,
+            "max_physical_CPU_cores": 8
+          },
+          "maximum_new_driven_RHS": 2,
+          "owner_original_wait_deadline_UTC": "2026-10-25T10:55:15.942219+00:00",
+          "source_binding": {
+            "canonical_config_SHA256": "f3a56046aa93f9413a531b045387559501be861002cfab4b607e2f2e7d6f2720",
+            "layout_mapping_SHA256": "4275c7cd75a67e521dd1c4da9e1dfd0d02e4837e8991e75966bb414f36ac1229",
+            "owner_code_commit": "db8e7b403205f9729befdf7781e810b3a0b13d6d",
+            "owner_repo_relative_path": "tools/windows_owner_adapter_20261025/windows_pair_owner.py",
+            "pair_adapter_SHA256": "cbf5f839b345c3d8b45718e9f307c8cade397c1648c5218743cdeefc584a9ef4",
+            "synthetic_validation_SHA256": "9ec523700d1cceb6f57be01d559a010e74a90f5276ca3dff96ba5815a1096709",
+            "synthetic_validation_repo_relative_path": "tools/windows_owner_adapter_20261025/synthetic-validation.json",
+            "windows_guard_SHA256": "2e91598ba6b474d7d691c4561ec91b88468c2f43a2399279a28d85aeb6fbeca9"
+          },
+          "verification_scope": "Root verified fixed public bytes; current Windows process/Job/folder state is freshly user-attested and self-rechecked by the frozen dispatcher. Active lease and full numerical path remain dynamically unverified until actual execution.",
+          "status": "completed_user_reported_pending_remote_artifact_review",
+          "completed_UTC_user_reported": "2026-10-25T10:41:41.919550+00:00",
+          "retired_UTC": "2026-10-25T10:57:17.649070+00:00",
+          "owner_and_launcher_exit_user_reported": true,
+          "result_summary_SHA256": "82d9be9f08efc264753fa23505e869a31dd994268692e7b64931e610a862ad1f",
+          "execution_receipt_SHA256": "6e2d5d373bd584370d39ec0f1da64433908139b6ff6048f0e9ef0de64902a4de"
+        }
+      ],
+      "last_lease_epoch": 1,
+      "completed_new_driven_RHS_user_reported": 2
     },
     {
-      "actual_owner_CreationTime_UTC": "2026-10-25T10:25:15.942219+00:00",
-      "actual_owner_PID": 39132,
+      "actual_owner_CreationTime_UTC": null,
+      "actual_owner_PID": null,
       "assigned_environment": "local_windows_01",
-      "assignment_status": "active_lease_waiting_local_admission",
+      "assignment_status": "completed_user_reported_pending_remote_artifact_review",
       "candidate_id": "LOCAL16-c8p5-diagonal",
       "canonical_config_SHA256": "43175402aedcd4395057ecc32fa1d0fe363fd090b9d5d8a0d4771efab1366126",
       "canonical_config_repo_relative_path": "data-native/local-handoff-20261025/prepared/LOCAL16-c8p5-diagonal-canonical-config.json",
@@ -134,42 +145,8 @@
         "model": "8f28166729af4bab1a5361166a4777f0241ff0a12add2dffeb35374a2c0adfc9",
         "reconstruction": "ea87dffd4d8997b2852545e7966b518ee49806d745ad89d14167dc488f3ab176"
       },
-      "execution_permitted": true,
-      "lease": {
-        "OS_process_identity": {
-          "CreationTime_UTC": "2026-10-25T10:25:15.942219+00:00",
-          "PID": 39132,
-          "WindowsJob_identity": "local-pair-admission-20261025102515",
-          "frozen_owner_source_SHA256": "1bfc952308fab84672e596c3562073a600e80be4e40002794d7dbdb46a648e60"
-        },
-        "extends_owner_deadline": false,
-        "finite_candidate_run_id": "task1-local-L16-c8p5-20261025",
-        "issued_UTC": "2026-10-25T10:35:43.978427+00:00",
-        "keep_both_group_rows_unchanged_until_owner_completes_or_explicit_revocation": true,
-        "lease_epoch": 1,
-        "lease_group": "local-pair-39132-20261025T102515",
-        "lease_id": "task1-local-3f843d71c26f4abebc6ebe6732293be5",
-        "limits": {
-          "Windows_Job_policy_bytes": 4000000000,
-          "actual_page_rounded_Job_commit_bytes": 3999997952,
-          "affinity_mask": 13653,
-          "max_evaluation_cells": 800000,
-          "max_physical_CPU_cores": 8
-        },
-        "maximum_new_driven_RHS": 2,
-        "owner_original_wait_deadline_UTC": "2026-10-25T10:55:15.942219+00:00",
-        "source_binding": {
-          "canonical_config_SHA256": "43175402aedcd4395057ecc32fa1d0fe363fd090b9d5d8a0d4771efab1366126",
-          "layout_mapping_SHA256": "4275c7cd75a67e521dd1c4da9e1dfd0d02e4837e8991e75966bb414f36ac1229",
-          "owner_code_commit": "db8e7b403205f9729befdf7781e810b3a0b13d6d",
-          "owner_repo_relative_path": "tools/windows_owner_adapter_20261025/windows_pair_owner.py",
-          "pair_adapter_SHA256": "cbf5f839b345c3d8b45718e9f307c8cade397c1648c5218743cdeefc584a9ef4",
-          "synthetic_validation_SHA256": "9ec523700d1cceb6f57be01d559a010e74a90f5276ca3dff96ba5815a1096709",
-          "synthetic_validation_repo_relative_path": "tools/windows_owner_adapter_20261025/synthetic-validation.json",
-          "windows_guard_SHA256": "2e91598ba6b474d7d691c4561ec91b88468c2f43a2399279a28d85aeb6fbeca9"
-        },
-        "verification_scope": "Root verified fixed public bytes; current Windows process/Job/folder state is freshly user-attested and self-rechecked by the frozen dispatcher. Active lease and full numerical path remain dynamically unverified until actual execution."
-      },
+      "execution_permitted": false,
+      "lease": null,
       "mask_SHA256": "4a6bc81fb6b330713a150166c8a2eebc2165eb900836b5f8226d04ca16a05598",
       "mask_repo_relative_path": "data-native/local-handoff-20261025/prepared/masks/LOCAL16-c8p5-diagonal.csv",
       "maximum_new_driven_RHS": 2,
@@ -227,7 +204,52 @@
           "width_mm": 16
         }
       ],
-      "run_id": "task1-local-L16-c8p5-20261025"
+      "run_id": "task1-local-L16-c8p5-20261025",
+      "lease_history": [
+        {
+          "OS_process_identity": {
+            "CreationTime_UTC": "2026-10-25T10:25:15.942219+00:00",
+            "PID": 39132,
+            "WindowsJob_identity": "local-pair-admission-20261025102515",
+            "frozen_owner_source_SHA256": "1bfc952308fab84672e596c3562073a600e80be4e40002794d7dbdb46a648e60"
+          },
+          "extends_owner_deadline": false,
+          "finite_candidate_run_id": "task1-local-L16-c8p5-20261025",
+          "issued_UTC": "2026-10-25T10:35:43.978427+00:00",
+          "keep_both_group_rows_unchanged_until_owner_completes_or_explicit_revocation": true,
+          "lease_epoch": 1,
+          "lease_group": "local-pair-39132-20261025T102515",
+          "lease_id": "task1-local-3f843d71c26f4abebc6ebe6732293be5",
+          "limits": {
+            "Windows_Job_policy_bytes": 4000000000,
+            "actual_page_rounded_Job_commit_bytes": 3999997952,
+            "affinity_mask": 13653,
+            "max_evaluation_cells": 800000,
+            "max_physical_CPU_cores": 8
+          },
+          "maximum_new_driven_RHS": 2,
+          "owner_original_wait_deadline_UTC": "2026-10-25T10:55:15.942219+00:00",
+          "source_binding": {
+            "canonical_config_SHA256": "43175402aedcd4395057ecc32fa1d0fe363fd090b9d5d8a0d4771efab1366126",
+            "layout_mapping_SHA256": "4275c7cd75a67e521dd1c4da9e1dfd0d02e4837e8991e75966bb414f36ac1229",
+            "owner_code_commit": "db8e7b403205f9729befdf7781e810b3a0b13d6d",
+            "owner_repo_relative_path": "tools/windows_owner_adapter_20261025/windows_pair_owner.py",
+            "pair_adapter_SHA256": "cbf5f839b345c3d8b45718e9f307c8cade397c1648c5218743cdeefc584a9ef4",
+            "synthetic_validation_SHA256": "9ec523700d1cceb6f57be01d559a010e74a90f5276ca3dff96ba5815a1096709",
+            "synthetic_validation_repo_relative_path": "tools/windows_owner_adapter_20261025/synthetic-validation.json",
+            "windows_guard_SHA256": "2e91598ba6b474d7d691c4561ec91b88468c2f43a2399279a28d85aeb6fbeca9"
+          },
+          "verification_scope": "Root verified fixed public bytes; current Windows process/Job/folder state is freshly user-attested and self-rechecked by the frozen dispatcher. Active lease and full numerical path remain dynamically unverified until actual execution.",
+          "status": "completed_user_reported_pending_remote_artifact_review",
+          "completed_UTC_user_reported": "2026-10-25T10:41:41.919550+00:00",
+          "retired_UTC": "2026-10-25T10:57:17.649110+00:00",
+          "owner_and_launcher_exit_user_reported": true,
+          "result_summary_SHA256": "82d9be9f08efc264753fa23505e869a31dd994268692e7b64931e610a862ad1f",
+          "execution_receipt_SHA256": "6e2d5d373bd584370d39ec0f1da64433908139b6ff6048f0e9ef0de64902a4de"
+        }
+      ],
+      "last_lease_epoch": 1,
+      "completed_new_driven_RHS_user_reported": 2
     }
   ],
   "canonical_hash_recipe": "SHA256 of UTF8 JSON with sort_keys=true, ensure_ascii=false, allow_nan=false, indent2 and one final newline; portable_pair.encoded",
@@ -248,7 +270,7 @@
     "exclusive_scope": "Per canonical scientific candidate and verified symmetry aliases; disjoint local/cloud work may run concurrently",
     "local_owner": "One verified Windows Job owner/local lock"
   },
-  "local_execution_started": false,
+  "local_execution_started": true,
   "local_limits": {
     "actual_8core_acceleration_verified": false,
     "actual_PDE_executed": false,
@@ -358,7 +380,9 @@
   "source_fixed_commit": "6694e1a2931c149d0cb62ba5098e858464d75318",
   "source_publication_commit": "6694e1a2931c149d0cb62ba5098e858464d75318",
   "source_publication_readback_verified": true,
-  "status": "two_local_leases_active_execution_admission_pending",
+  "status": "local_pair_completed_no_active_local_leases",
   "transfer_manifest_repo_relative_path": "docs/TASK1_LOCAL_HANDOFF_20261025/transfer-manifest.json",
-  "updated_UTC": "2026-10-25T10:35:43.978427+00:00"
+  "updated_UTC": "2026-10-25T10:57:17.649114+00:00",
+  "local_execution_completed_user_reported": true,
+  "local_completion_evidence_repository_relative_path": "docs/TASK1_LOCAL_COMPLETION_20261025/user-reported-completion.json"
 }
