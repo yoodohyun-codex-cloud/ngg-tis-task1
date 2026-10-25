@@ -1,0 +1,248 @@
+{
+  "schema": "task1-human-thoracoabdominal-primary-source-review-v1",
+  "reviewed_utc": "2026-10-25T01:09:52.196774+00:00",
+  "scope": "Prioritize human thoracoabdominal access-path materials, distinguish muscle identities, fixedgeometry retained",
+  "current_carriers_Hz": [
+    3000,
+    3030,
+    9000,
+    9090
+  ],
+  "historical_experiment_Hz": [
+    2000,
+    2010
+  ],
+  "direct_human_thoracoabdominal_complete_layer_sigma_epsilon_at_current_carriers_verified": false,
+  "absence_claim": "No complete directly applicable source verified in this targeted review; not a claim none exists",
+  "primary_sources": [
+    {
+      "id": "Bora2020_regional_human_EIS",
+      "DOI": "10.1049/iet-syb.2020.0049",
+      "title": "Estimation of skin impedance models with experimental data and a proposed model for human skin impedance",
+      "primary_URL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8687349/",
+      "read_scope": "Primary full article text exposed by search cache; direct page intermittently returned CAPTCHA; temperature/math images not decoded",
+      "species": "human",
+      "condition": "in_vivo",
+      "site": "10 body sites including pectoral chest and lower-quadrant abdomen",
+      "subjects": 24,
+      "sex_counts": {
+        "male": 18,
+        "female": 6
+      },
+      "reported_sweep_Hz": [
+        1000,
+        250000
+      ],
+      "reported_analysis_band_Hz": [
+        2000,
+        200000
+      ],
+      "step_Hz": 500,
+      "apparatus": "Two-electrode EVAL-AD5933EBZ; circular11mm Ag/AgCl BIOPAC contacts",
+      "preparation": "15min rest; site rubbed/cleaned with alcohol; no ointment that day",
+      "processing": "LOESS smoothing after low-frequency acquisition limitations",
+      "ambient_temperature_C": null,
+      "ambient_temperature_status": "Article states controlled conditions but numeric value was rendered as an unread math image; do not guess",
+      "quantity": "Lumped two-electrode impedance and fitted RC/CPE circuit parameters, not independent layer bulk sigma/epsilon",
+      "usable_for_current_layer_material_table": false,
+      "reason": "Even though region and kHz band match, contact/electrode/geometry/whole-path impedance cannot uniquely identify separate SC/dermis/fat/muscle bulk admittivity",
+      "source_sections": [
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "3.1"
+      ],
+      "orientation": "No muscle fibre tensor identified",
+      "uncertainty": "Subject/site variability and instrument/processing limitations; no independently identified layer bulk confidence bounds"
+    },
+    {
+      "id": "MicoRosa2025_human_abdominal_microwave",
+      "DOI": "10.1109/JERM.2025.3625656",
+      "primary_URL": "https://riunet.upv.es/server/api/core/bitstreams/df63e101-b161-4943-99de-896e527ea4c0/content",
+      "read_scope": "Primary9page accepted manuscript methods/results",
+      "species": "human",
+      "condition": [
+        "in_vivo_during_laparoscopy",
+        "ex_vivo_10to30min_after_excision"
+      ],
+      "site": "Abdominal fat, liver, small intestine during colorectal surgery; fat not independently established as subcutaneous rather than visceral",
+      "frequency_band_Hz": [
+        500000000,
+        26500000000
+      ],
+      "instrument_IFBW_Hz": 3000,
+      "IFBW_is_tissue_carrier": false,
+      "temperature_C": {
+        "in_vivo": 37,
+        "ex_vivo": 23
+      },
+      "temperature_status": "Both are assumptions based on in-vivo body and ex-vivo room conditions, not direct tissue temperature measurements",
+      "source_locations": [
+        "p1 abstract",
+        "p2-p3 sectionIIA",
+        "p3 sectionIIB",
+        "p4 sectionIIC",
+        "p6 tableIII"
+      ],
+      "quantity": "Complex permittivity; mean/SD and fitted2-poleColeCole over microwave band",
+      "usable_for_current_layer_material_table": false,
+      "reason": "0.5–26.5GHz fit cannot be extrapolated to3/3.03/9/9.09kHz; fat subtype does not establish skin-path SCT",
+      "orientation": "No abdominalwall/intercostal/diaphragm tensor",
+      "uncertainty": "Reported microwave sample SD and system uncertainty; these are not kHz parameter intervals"
+    },
+    {
+      "id": "He2024_human_torso_MRI",
+      "DOI": "10.1038/s41598-024-67014-9",
+      "primary_URL": "https://www.nature.com/articles/s41598-024-67014-9",
+      "read_scope": "Primary full article methods/statistics/discussion",
+      "species": "human",
+      "condition": "in_vivo",
+      "subjects_enrolled": 17,
+      "usable_torso_subjects": 15,
+      "site": "Torso visceral organs and visceral adipose tissue; no SC/dermis/subcutaneous-fat/abdominalwall-muscle ROIs",
+      "frequency_Hz": 123000000,
+      "frequency_status": "3T MRI Larmor RF; simulation explicitly123MHz",
+      "temperature_C": null,
+      "quantity": "Macroscopic MR-EPT conductivity; permittivity not studied",
+      "source_sections": [
+        "Simulation",
+        "MRI measurements",
+        "Statistical analysis",
+        "Discussion"
+      ],
+      "usable_for_current_layer_material_table": false,
+      "reason": "Wrong frequency and tissue partition for this fixed layered kHz comparison",
+      "orientation": "No skeletal-muscle conductivity tensor",
+      "uncertainty": "ROI distributions, imaging noise/boundary effects, small cohort; not a kHz dispersion or uncertainty range"
+    },
+    {
+      "id": "Lipicky1971_human_external_intercostal",
+      "DOI": "10.1172/JCI106703",
+      "primary_URL": "https://www.jci.org/articles/view/106703",
+      "read_scope": "Primary journal abstract; full cable methods not independently audited here",
+      "species": "human",
+      "condition": "isolated_fibre_bundles_ex_vivo",
+      "site": "External intercostal muscle",
+      "subjects": {
+        "normal": 13,
+        "myotonia_congenita": 6
+      },
+      "frequency_band_Hz": null,
+      "temperature_C": null,
+      "quantity": "Intracellular resistivity, membrane resistance/capacitance, cable and ion properties",
+      "usable_for_current_layer_material_table": false,
+      "reason": "Cell/fibre cable parameters in Ohm.cm/Ohm.cm2/uF.cm−2 are not bulk frequency-dependent sigmaS/m and relativeepsilon; converting by simple inversion would be invalid",
+      "orientation": "Fibre-level measurements, not a macroscopic3D tissue tensor",
+      "uncertainty": "Disease and control groups distinct; no bulk kHz admittivity spectrum"
+    },
+    {
+      "id": "NICT_diaphragm_measurements",
+      "primary_URL": "https://www2.nict.go.jp/cgi-bin/202303080003/public_html/index.py/measurements/Diaphragm",
+      "read_scope": "Original laboratory data page/table",
+      "species": "animal_byproducts_in_almost_all_cases; exactdiaphragmrow_species_notverified",
+      "condition": "excised_tissue",
+      "site": "Diaphragm tissue",
+      "frequency_band_Hz": [
+        1000000,
+        100000000000
+      ],
+      "temperature_C_range": [
+        30,
+        37
+      ],
+      "quantity": "Measuredcomplexpermittivity/conductivity; firstrow1MHz",
+      "usable_for_current_layer_material_table": false,
+      "reason": "Not confirmedhuman; measurementbandstarts1MHz and lacks kHz/diaphragm fiber-direction characterization",
+      "orientation": "No fibre-direction field identified in the opened page",
+      "uncertainty": "Do not borrow frequency-extrapolated values or broad database label as verifiedhuman"
+    },
+    {
+      "id": "Subit2015_human_intercostal_orientation",
+      "DOI": "10.1080/10255842.2015.1069624",
+      "primary_URL": "https://sam.ensam.eu/handle/10985/18675",
+      "read_scope": "Author repository metadata/abstract; PDF403",
+      "species": "human",
+      "condition": "postmortem_dissection_PMHS",
+      "site": "External and internal intercostal layers of ribcage",
+      "quantity": "Regional fibre orientation; anatomical, not electrical properties",
+      "usable_for_current_layer_material_table": false,
+      "reason": "Can support need for distinct regional orientation mapping, cannot supply bulk sigma/epsilon",
+      "temperature_C": null,
+      "frequency_band_Hz": null,
+      "orientation": "Both intercostal layers distinguished; no constant fibre angle adopted here"
+    },
+    {
+      "id": "Urquhart2005_human_abdominalwall_morphology",
+      "DOI": "10.1016/j.clinbiomech.2004.11.007",
+      "primary_URL": "https://pubmed.ncbi.nlm.nih.gov/15698694/",
+      "read_scope": "Primary PubMed abstract and author university metadata",
+      "species": "human",
+      "condition": "embalmed_cadaver",
+      "subjects": 26,
+      "site": "Anterior/posterolateral abdominalwall, transversus/internaloblique/externaloblique",
+      "quantity": "Regionalfascicleorientation/thickness/length; notdielectricmeasurement",
+      "usable_for_current_layer_material_table": false,
+      "reason": "Supports regional muscular architecture, not frequency-dependent electrical input",
+      "temperature_C": null,
+      "frequency_band_Hz": null,
+      "orientation": "Upper/middle/lower fascicles differ; a single slab axis is an explicit geometric surrogate"
+    },
+    {
+      "id": "Tsai2019_human_other_site_dermis_proxy",
+      "DOI": "10.2478/joeb-2019-0003",
+      "primary_URL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7531215/",
+      "read_scope": "Primary fullHTML abstract/method context; fit extraction delegated to skin-source agent",
+      "species": "human",
+      "condition": "in_vivo, stripped skin, saline-soaked1minute",
+      "site": "Volarforearm; NOTthoracoabdominal",
+      "subjects": 24,
+      "frequency_band_Hz": [
+        1000,
+        1000000
+      ],
+      "temperature_C": null,
+      "quantity": "Separatelivingepidermis/dermis inversefit resistivity and relativepermittivity",
+      "usable_for_current_layer_material_table": "candidate_explicit_other_site_substitute_after_fit_verification",
+      "reason": "SeparateDE can be used as labelled site-transfer hypothesis; do not label directabdominal DE or copywhole-skin toSC andDE",
+      "orientation": "Effective skin model, no chest-specifictensor",
+      "uncertainty": "Site/preparation/inverseidentification and fixedgeometrytransfer limitations; extraction owned by other source agent"
+    }
+  ],
+  "direct_region_input_gaps": [
+    {
+      "layer": "SC",
+      "sigma_S_m_at_current_carriers": null,
+      "epsilon_r_at_current_carriers": null,
+      "reason": "No independently verifiedhumanthoracoabdominal constitutive spectrum for this layer atcurrentcarrier; no values invented"
+    },
+    {
+      "layer": "dermis",
+      "sigma_S_m_at_current_carriers": null,
+      "epsilon_r_at_current_carriers": null,
+      "reason": "No independently verifiedhumanthoracoabdominal constitutive spectrum for this layer atcurrentcarrier; no values invented"
+    },
+    {
+      "layer": "subcutaneous_fat",
+      "sigma_S_m_at_current_carriers": null,
+      "epsilon_r_at_current_carriers": null,
+      "reason": "No independently verifiedhumanthoracoabdominal constitutive spectrum for this layer atcurrentcarrier; no values invented"
+    },
+    {
+      "layer": "access_path_skeletal_muscle",
+      "sigma_S_m_at_current_carriers": null,
+      "epsilon_r_at_current_carriers": null,
+      "reason": "No independently verifiedhumanthoracoabdominal constitutive spectrum for this layer atcurrentcarrier; no values invented"
+    }
+  ],
+  "required_muscle_distinctions": [
+    "abdominalwall muscle (multiple namedsheetmuscles)",
+    "external/internal/parasternal intercostals",
+    "costal/crural diaphragm itself"
+  ],
+  "model_interpretation": "A single15mm muscle slab cannot resolve abdominalwall/intercostal/diaphragm layers or their patient-specificfiberaxes; anygenericmuscleis explicit surrogate, not actual diaphragm anatomy",
+  "new_simulations_or_parameter_evaluations": 0,
+  "PDE_or_input_table_numeric_values_generated": false,
+  "papers_or_images_for_publication": false,
+  "own_paraphrase_evidence_may_be_published": true,
+  "private_fetch_failure": "EuropePMC fullTextXML forPMC8687349 returnedHTTP500; no filebody retained and no temperature guessed"
+}

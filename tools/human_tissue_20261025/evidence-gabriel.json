@@ -1,0 +1,240 @@
+{
+  "schema": "task1-gabriel-primary-parameter-evidence-v1",
+  "source_agent": "gabriel_material_sources",
+  "scientific_numeric_evaluation_performed": false,
+  "PDE_executed": false,
+  "tests_executed": false,
+  "primary_sources": {
+    "Gabriel1996I": {
+      "DOI": "10.1088/0031-9155/41/11/001",
+      "title": "The dielectric properties of biological tissues: I. Literature survey",
+      "journal_pages": "2231-2249",
+      "PubMed": "https://pubmed.ncbi.nlm.nih.gov/8938024/",
+      "original_full_PDF_independently_read_here": false
+    },
+    "Gabriel1996II": {
+      "DOI": "10.1088/0031-9155/41/11/002",
+      "title": "The dielectric properties of biological tissues: II. Measurements in the frequency range10Hz to20GHz",
+      "original_PDF_URL": "https://s.mriquestions.com/uploads/3/4/5/7/34572113/s_gabriel_1996_phys._med._biol._41_002.pdf",
+      "original_full_text_independently_read": true,
+      "sections_read": [
+        "3_uncertainties_p2254",
+        "4_materials_p2254",
+        "Figure2_caption_p2255",
+        "5.1-5.3_p2268"
+      ],
+      "measured_frequency_domain_Hz": [
+        10,
+        20000000000
+      ]
+    },
+    "Gabriel1996III": {
+      "DOI": "10.1088/0031-9155/41/11/003",
+      "title": "The dielectric properties of biological tissues: III. Parametric models for the dielectric spectrum of tissues",
+      "original_PDF_URL": "https://mriquestions.com/uploads/3/4/5/7/34572113/s_gabriel_1996_phys._med._biol._41_003.pdf",
+      "original_full_text_independently_read": true,
+      "PDF_SHA256": "ec17adbeaf6e9195600698d5c978c985c72c134baa3803c3d7a7a5a6cf5c3767",
+      "PDF_bytes": 1748384,
+      "original_model_equation": 4,
+      "equation_page": 2272,
+      "parameter_table": 1,
+      "parameter_table_page": 2291,
+      "parameter_table_visually_inspected": true,
+      "confidence_caution_pages": [
+        2292,
+        2293
+      ],
+      "formal_model_frequency_domain_Hz": [
+        10,
+        100000000000
+      ],
+      "private_PDF_and_render_must_not_be_public": true
+    }
+  },
+  "model_definition": {
+    "epsilon_complex": "epsilon_inf + sum_n Delta_epsilon_n/(1+(j*omega*tau_n)^(1-alpha_n)) + sigma_i/(j*omega*epsilon0)",
+    "phasor_convention": "Compatible with peak +j*omega*t: epsilon_complex has negative imaginary loss",
+    "gamma_S_m": "j*omega*epsilon0*epsilon_complex = sigma_i + j*omega*epsilon0*(epsilon_inf + sum Cole terms)",
+    "effective_epsilon_r": "real(epsilon_complex)",
+    "effective_sigma_S_m": "-omega*epsilon0*imag(epsilon_complex)",
+    "double_count_warning": "sigma_i is static ionic term, not the full frequency-dependent conductivity. Do not use sigma_i plus an independently tabulated full conductivity, or omit dispersive loss.",
+    "tau_unit_scaling_to_seconds": {
+      "ps": "1e-12",
+      "ns": "1e-9",
+      "us": "1e-6",
+      "ms": "1e-3"
+    }
+  },
+  "original_Table1_parameters": {
+    "fat_infiltrated": {
+      "table_label": "Fat (infiltrated)",
+      "epsilon_infinity": 2.5,
+      "sigma_i_S_m": 0.035,
+      "delta_epsilon": [
+        9.0,
+        35.0,
+        33000.0,
+        10000000.0
+      ],
+      "tau_original": [
+        7.96,
+        15.92,
+        159.15,
+        15.915
+      ],
+      "alpha": [
+        0.2,
+        0.1,
+        0.05,
+        0.01
+      ],
+      "tau_units": [
+        "ps",
+        "ns",
+        "us",
+        "ms"
+      ],
+      "source": "Gabriel1996III_Table1_p2291",
+      "fit_not_measured_value": true,
+      "tissue_species_status": "mixed_source_generic_tissue_fit; not verified human-only at kHz",
+      "thoracoabdominal_site_specific": false,
+      "frequency_values_not_evaluated_by_source_agent": true
+    },
+    "fat_not_infiltrated": {
+      "table_label": "Fat (not infiltrated)",
+      "epsilon_infinity": 2.5,
+      "sigma_i_S_m": 0.01,
+      "delta_epsilon": [
+        3.0,
+        15.0,
+        33000.0,
+        10000000.0
+      ],
+      "tau_original": [
+        7.96,
+        15.92,
+        159.15,
+        7.958
+      ],
+      "alpha": [
+        0.2,
+        0.1,
+        0.05,
+        0.01
+      ],
+      "tau_units": [
+        "ps",
+        "ns",
+        "us",
+        "ms"
+      ],
+      "source": "Gabriel1996III_Table1_p2291",
+      "fit_not_measured_value": true,
+      "tissue_species_status": "mixed_source_generic_tissue_fit; not verified human-only at kHz",
+      "thoracoabdominal_site_specific": false,
+      "frequency_values_not_evaluated_by_source_agent": true
+    },
+    "skeletal_muscle_generic": {
+      "table_label": "Muscle",
+      "epsilon_infinity": 4.0,
+      "sigma_i_S_m": 0.2,
+      "delta_epsilon": [
+        50.0,
+        7000.0,
+        1200000.0,
+        25000000.0
+      ],
+      "tau_original": [
+        7.23,
+        353.68,
+        318.31,
+        2.274
+      ],
+      "alpha": [
+        0.1,
+        0.1,
+        0.1,
+        0.0
+      ],
+      "tau_units": [
+        "ps",
+        "ns",
+        "us",
+        "ms"
+      ],
+      "source": "Gabriel1996III_Table1_p2291",
+      "fit_not_measured_value": true,
+      "tissue_species_status": "mixed_source_generic_tissue_fit; not verified human-only at kHz",
+      "thoracoabdominal_site_specific": false,
+      "frequency_values_not_evaluated_by_source_agent": true
+    }
+  },
+  "source_population_and_conditions": {
+    "animals": "Excised tissue, mainly sheep with some pigs (II section4); Figure2a-h examples specifically bovine per caption",
+    "animal_postmortem_interval": "Mostly within2h",
+    "human_conditions": [
+      "Autopsy material24-48h after death",
+      "Human skin and tongue in vivo"
+    ],
+    "small_human_material_frequency_limitation": "II section5.1 p2268: small human samples measured only above1MHz on two network analysers; no human-only kHz muscle/fat provenance established for generic fits",
+    "temperature": "New experimental examples at body temperature; III Figure1 labels experimental data37C. Literature selected in fit can include other temperatures; a universal temperature correction is not provided.",
+    "site_specificity": "Muscle measurements paravertebral; skin Figure2caption ventral forearm. Neither establishes human abdominalwall/intercostal/diaphragm values.",
+    "human_only_thoracoabdominal_carrier_values_verified": false
+  },
+  "muscle_orientation": {
+    "source": "II section5.3 p2268",
+    "measured_specimen_site": "paravertebral",
+    "cuts": [
+      "transverse section facing coaxial probe",
+      "cut along fibres facing coaxial probe"
+    ],
+    "limitation": "Radial fringing field does not isolate true electric-field-parallel/perpendicular tensor eigenvalues",
+    "Table1_model": "single scalar Muscle fit; no longitudinal/transverse pair",
+    "abdominal_wall_specific_parameters": null,
+    "intercostal_specific_parameters": null,
+    "diaphragm_specific_parameters": null,
+    "permissible_substitution_label": "Generic mixed-source scalar skeletal-muscle proxy; isotropy is an explicit substitute, not validated fibre direction or diaphragm tissue"
+  },
+  "uncertainty": {
+    "parameter_covariance_or_95percent_CI": null,
+    "III_fit_method": "Visually adjusted/intercorrelated/nonunique fit; not unique least-squares parameter identification",
+    "III_validity_caution": "Model declared10Hz-100GHz; authors give stronger confidence above1MHz and caution at lower frequencies where data are sparse and uncertain",
+    "II_standard_reproducibility_context_fraction": 0.01,
+    "II_biological_spread_lower_end_context_fraction": [
+      0.15,
+      0.25
+    ],
+    "II_biological_spread_above100MHz_context_fraction": [
+      0.05,
+      0.1
+    ],
+    "interpretation": "These are broad experimental context, NOT carrier-specific confidence intervals or a formal probability distribution for a new subject.",
+    "electrode_polarization": "II: effects below1kHz, significant below100Hz; residual permittivity errors below100Hz may be factor2-3. Do not transfer that low-frequency bound as a validated3kHz error bar."
+  },
+  "carrier_usage": {
+    "actual_baseline_Hz": [
+      3000,
+      3030,
+      9000,
+      9090
+    ],
+    "initial_experiment_separate_Hz": [
+      2000,
+      2010
+    ],
+    "all_inside_formal_model_domain": true,
+    "all_below_stronger_confidence_1MHz": true,
+    "carrier_values_sigma_epsilon": null,
+    "note": "Root must evaluate the complex model separately at each actual frequency and preserve modelversion and rounding."
+  },
+  "authoritative_implementation_crosscheck": {
+    "URL": "https://webnir.eu/04-Dosimetry/04-Gabriel.php?lang=gb",
+    "old_URL_redirect": "https://niremf.ifac.cnr.it/docs/DIELECTRIC/home.html",
+    "scope": "IFAC-CNR hosted authorized original-report transcription plus extended parameter database; not an original human-only measurement",
+    "rounding_difference": "Current database Muscle tau1=7.234ps vs journal Table1=7.23ps; Fat tau1=7.958ps vs7.96ps and tau3=159.16us vs159.15us. These are separately versioned alternatives, not silently blended.",
+    "default_Fat_row": "Corresponds to not-infiltrated model, not the infiltrated alternative",
+    "do_not_substitute_breast_fat_as_thoracoabdominal_subcutaneous_without_explicit_label": true
+  },
+  "adoption_status": "source_verified_candidate_only; root selects and evaluates; not adopted by evidence agent",
+  "whole_skin_warning": "Dry/wet whole-skin models in the same table must not be assigned independently to both SC and dermis."
+}
