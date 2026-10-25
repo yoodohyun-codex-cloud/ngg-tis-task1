@@ -1,0 +1,155 @@
+{
+  "schema": "task1-layer-dtn-xy102-cem-reference-spec-v1",
+  "plan": {
+    "new_CEM_conditions": 1,
+    "new_CEM_RHS": 2,
+    "frequency_Hz": 2000,
+    "source_resistance_ohm": 50.0,
+    "ideal_voltage_peak_V": 0.5,
+    "pad_count": 4,
+    "independent_outputs": 2,
+    "return_topology": "pads2,3 common0V; inactive ideal output0V through its50ohm, never open circuit",
+    "nx": 102,
+    "h_m": 0.0004901960784313725,
+    "layers_m": [
+      0.0001,
+      0.005,
+      0.005,
+      0.015
+    ],
+    "evaluation_layer_counts": [
+      4,
+      19,
+      18,
+      56
+    ],
+    "XY_nodes": 8184,
+    "evaluation_cells": 793848,
+    "max_physical_evaluation_cells": 800000,
+    "numerical_child_timeout_seconds": 600,
+    "CPU_limit": 4,
+    "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+    "field_ABI": "potential and analytic downward normal current only; no old half-face E ABI or TIS metric",
+    "physical_top_contact": "g_patch=patchArea/z_specific; analytic SC includes its whole0.1mm; no extra SC half-cell",
+    "reconstruction_depth_block": 8,
+    "diagonal_column_block": 128,
+    "candidate_adopted": false
+  },
+  "gmres": {
+    "rtol": 1e-12,
+    "atol": 0.0,
+    "restart": 80,
+    "max_outer_iterations": 40,
+    "callback_type": "pr_norm",
+    "preconditioner": "diagonal h2 sum_j Qij squared Yj plus physical contact conductance; two metal diagonal sums plus1/50"
+  },
+  "gates": {
+    "relative_algebraic_residual": 2e-07,
+    "relative_loaded_current_residual": 2e-07,
+    "relative_all_pad_KCL": 2e-06,
+    "relative_output_pad_current": 2e-06,
+    "relative_complex_power_error": 2e-07,
+    "relative_transfer_reciprocity": 2e-07,
+    "passivity_absolute_floor_W": 1e-14,
+    "passivity_relative_allowance": 1e-12,
+    "current_absolute_floor_A": 1e-12,
+    "power_absolute_floor_W": 1e-12
+  },
+  "admission_sha256": "658bdc6fadc9fa9680a9f19ed9b5a6476f6f9563b1a9e70d95b5a083fd4f93e8",
+  "phase1_commit": "ea11fdd9198a7e0c82d91d87f594a5063087486a",
+  "phase1_summary_sha256": "33e6585e3ff2c797a8fb3cb42040d252dfe5da1aa848aa3817feb2747b538cd4",
+  "phase1_arrays_sha256": "f69596f7b38a9063489963588fcbf3861e4a2e78c13179cff8e422c034b73525",
+  "cache_manifest_sha256": "26da99d7edfcb24a418ab56e1091bab5cb156eccd998653631d5852108c683aa",
+  "phase1_summary_path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/summary.json",
+  "phase1_cache_directory": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache",
+  "phase1_kernel_sha256": "7ff50b6b30198abe4d2cfc5f4ac4fa2afa0873f040ca23175f0e881fb22e1d08",
+  "coarse_reference_commit": "e4c09902bf529b4111c006dd4b4fb6681ca81252",
+  "coarse_reference_run": "/dev/shm/task1-layer-dtn-cem-20261025-run",
+  "coarse_reference_summary_path": "/dev/shm/task1-layer-dtn-cem-20261025-run/reference-summary.json",
+  "coarse_reference_arrays_path": "/dev/shm/task1-layer-dtn-cem-20261025-run/reference-arrays.npz",
+  "material_rows": [
+    {
+      "layer": "sc",
+      "sigma_S_m": 5.959456590514033e-06,
+      "epsilon_r": 225.18780331254555,
+      "gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      }
+    },
+    {
+      "layer": "dermis",
+      "sigma_S_m": 0.29312219368408116,
+      "epsilon_r": 870716.5653512729,
+      "gamma_S_m": {
+        "real": 0.29312219368408116,
+        "imaginary": 0.0968802834717473
+      }
+    },
+    {
+      "layer": "fat",
+      "sigma_S_m": 0.1968291518398069,
+      "epsilon_r": 10307.859184332388,
+      "gamma_S_m": {
+        "real": 0.1968291518398069,
+        "imaginary": 0.001146904009299627
+      }
+    },
+    {
+      "layer": "muscle",
+      "sigma_S_m": 0.2516252154881487,
+      "epsilon_r": 168024.57464128954,
+      "gamma_S_m": {
+        "real": 0.2516252154881487,
+        "imaginary": 0.01869525522912356
+      }
+    }
+  ],
+  "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+  "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+  "actual_U19_provenance_config_sha256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+  "pad_rectangles_mm": {
+    "0": [
+      -17.5,
+      -2.5,
+      -17.5,
+      -2.5
+    ],
+    "1": [
+      2.5,
+      17.5,
+      2.5,
+      17.5
+    ],
+    "2": [
+      2.5,
+      17.5,
+      -17.5,
+      -2.5
+    ],
+    "3": [
+      -17.5,
+      -2.5,
+      2.5,
+      17.5
+    ]
+  },
+  "mask_path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask.csv",
+  "mask_sha256": "04ef856c91caac24557892a46d17447af71ee12d647dfa2fa01fa00af4c7e1c7",
+  "mask_receipt_path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask-receipt.json",
+  "mask_receipt_sha256": "90fd7c33836314c2f4a56b7316df75e2ceb934faf033731bbc1793bb3dbcd3db",
+  "contact_specific_impedance_ohm_m2": {
+    "real": 5.5504758759767015e-05,
+    "imaginary": -0.00012307933145190832
+  },
+  "z_faces_path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/evaluation-z-faces.json",
+  "z_faces_sha256": "63ebdd16015232bd3ae10b9e90010906eea232fff9d7101f0f983afd814719da",
+  "phi_ref_evaluation_grid_receipt_sha256": "63ebdd16015232bd3ae10b9e90010906eea232fff9d7101f0f983afd814719da",
+  "phi_ref_cell_order": "fine97depthplanes/z outer; fine j then i XY inside circle; xy_mm defines fineQ order; cell_index=z_index*8184+xy_index; NOT old native indices",
+  "phasor_convention": "peak complex exp(+j*omega*t); source1Vpp high-impedance convention=.5Vpeak before50ohm",
+  "power_convention": "S=.5 V conj(I); tissue S=.5 integral conj(gamma)|E|^2, positive real dissipation and capacitive reactive imaginary negative",
+  "comparison_scope": "NEW XY102 graph/physical fractional mask CEM, same physical polygons/material/contact/circuit; any coarse comparison requires separately registered physical projection/quadrature, never node-index subtraction",
+  "old_independent_QA_limit": 0.05,
+  "old_failed_QA_preserved": true,
+  "experimental_validation": false
+}
