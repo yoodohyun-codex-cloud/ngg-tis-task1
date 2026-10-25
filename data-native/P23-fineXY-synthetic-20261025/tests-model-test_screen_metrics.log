@@ -1,0 +1,27 @@
+test_expired_deadline_never_returns_partial_angular_maximum (test_screen_metrics.ScreenMetricsTests.test_expired_deadline_never_returns_partial_angular_maximum) ... FAIL
+test_joint_eight_names_limiting_contact_voltage_and_retained_absolute_am (test_screen_metrics.ScreenMetricsTests.test_joint_eight_names_limiting_contact_voltage_and_retained_absolute_am) ... ok
+test_missing_electrical_inputs_are_not_invented (test_screen_metrics.ScreenMetricsTests.test_missing_electrical_inputs_are_not_invented) ... ok
+test_separate_normalizations_preserve_raw_voltage_absolute_target (test_screen_metrics.ScreenMetricsTests.test_separate_normalizations_preserve_raw_voltage_absolute_target) ... ok
+test_shared_direction_count_order_and_unit_norms (test_screen_metrics.ScreenMetricsTests.test_shared_direction_count_order_and_unit_norms) ... ok
+test_two_carrier_fields_complete_sampled_max_waveform_and_derived_current (test_screen_metrics.ScreenMetricsTests.test_two_carrier_fields_complete_sampled_max_waveform_and_derived_current) ... ok
+test_volume_weighted_inverse_ecdf_std_and_representative_extrema (test_screen_metrics.ScreenMetricsTests.test_volume_weighted_inverse_ecdf_std_and_representative_extrema) ... ok
+
+======================================================================
+FAIL: test_expired_deadline_never_returns_partial_angular_maximum (test_screen_metrics.ScreenMetricsTests.test_expired_deadline_never_returns_partial_angular_maximum)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/task1-P23-fineXY-synthetic-20261025-run/source/model/test_screen_metrics.py", line 81, in test_expired_deadline_never_returns_partial_angular_maximum
+    with self.assertRaises(TimeoutError):f.evaluate(np,None,None,None,None,None,None,{},deadline=0.)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-P23-fineXY-synthetic-20261025-run/source/owner/synthetic_boundary.py", line 30, in call
+    if current_test[0]is None or not current_test[0].startswith('test_')or not limit(args,kwargs):return forbidden(name)(*args,**kwargs)
+                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-P23-fineXY-synthetic-20261025-run/source/owner/synthetic_boundary.py", line 25, in call
+    def call(*args,**kwargs):state['forbidden_field_calls'].append(name);raise AssertionError('Manufactured-only boundary: forbidden native field/input API '+name)
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Manufactured-only boundary: forbidden native field/input API synthetic_angular_metric_fixture_calls
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.071s
+
+FAILED (failures=1)
