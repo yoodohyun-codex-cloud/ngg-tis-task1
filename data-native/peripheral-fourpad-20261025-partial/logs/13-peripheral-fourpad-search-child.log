@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/dev/shm/task1-peripheral-fourpad-20261025-run/source/owner/worker.py", line 127, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/dev/shm/task1-peripheral-fourpad-20261025-run/source/owner/worker.py", line 110, in main
+    guard();result=model.build(spec,guard,deadline_monotonic=deadline,output_dir=out)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-peripheral-fourpad-20261025-run/source/model/peripheral_screen.py", line 109, in build
+    result=screen_metrics.evaluate(np,grid,weights,fields[0],fields[1],np.asarray([cv(v)for v in catalog['gamma_by_frequency']['2000']]),np.asarray([cv(v)for v in catalog['gamma_by_frequency']['2010']]),electrical,guard,deadline_monotonic);new_metrics+=1;record=dict(candidate_id=cid,status='new_peripheral_geometry_computed_unadopted',geometry=candidate,source_physics_proofs=proofs,metrics=result['summary'],normalizations=screen_metrics.normalize(result['summary'],baseline),scalar_arrays=science.archive(np,cdir/(cid+'-scalars.npz'),**result['arrays']),actual_new_RHS=2,actual_new_metric_evaluations=1,candidate_adopted=False);new_json(cdir/(cid+'-summary.json'),record);records.append(record);new_json(out/('checkpoint-'+cid+'-metrics.json'),dict(status='new_peripheral_geometry_metrics_complete',candidate_id=cid,actual_new_RHS=actual_RHS,actual_new_metric_evaluations=new_metrics));del fields,result
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/task1-peripheral-fourpad-20261025-run/source/model/screen_metrics.py", line 123, in evaluate
+    rms=np.sqrt((sq0+sq1)/2.);xyz=2.*np.minimum(abs(a),abs(b))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 18.2 MiB for an array with shape (793860, 3) and data type float64
