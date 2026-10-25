@@ -13,3 +13,8 @@
 - If COMSOL is used, the user requires 5.3a, planned build 5.3.1.201; installed build/license/runtime are unverified.
 
 - User channel count means physical PADS: experimental baseline4pads/2outputs; simulations up to16pads. Read PAD_COUNT_DESIGN_CONTRACT.md. Do not equate16pads with16sources or claim current code/UI supports it.
+
+
+## Explicit user storage override — 2026-10-25
+
+Storage-capacity stopping guards are disabled by the user: no minimum root-free reserve, per-run output quota, atomic-ledger disk preflight, or Windows destination free-space rejection. This explicitly supersedes historical storage limits; preserve their old registrations as evidence. CPU, RAM (including tmpfs), elapsed-time and single-owner limits remain. Read `tools/all_layer_report_20261025/STORAGE_POLICY.md` and the sanitized `docs/TASK1_ALL_LAYER_REPORT_20261025/storage-policy.json` before a new batch. The reported >=1TB destination is the private Windows C: folder, which is not connected to this cloud; never claim Windows saving or 1TB cloud capacity without verification.
