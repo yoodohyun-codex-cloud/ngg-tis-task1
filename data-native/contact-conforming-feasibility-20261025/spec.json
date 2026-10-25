@@ -1,0 +1,129 @@
+{
+  "schema": "task1-contact-conforming-scalar-preflight-spec-v1",
+  "plan": {
+    "base_uniform_nx": 102,
+    "physical_diameter_m": 0.05,
+    "physical_layer_thickness_m": [
+      0.0001,
+      0.005,
+      0.005,
+      0.015
+    ],
+    "pad_centres_mm": [
+      [
+        -10,
+        -10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        -10
+      ],
+      [
+        -10,
+        10
+      ]
+    ],
+    "pad_width_mm": 15.0,
+    "pad_height_mm": 15.0,
+    "pad_area_m2": 0.000225,
+    "geometry_methods": [
+      "move_nearest_faces",
+      "union_faces"
+    ],
+    "evaluation_options": [
+      {
+        "id": "moved_faces_keep97",
+        "geometry": "move_nearest_faces",
+        "layer_samples": [
+          4,
+          19,
+          18,
+          56
+        ],
+        "planes": 97
+      },
+      {
+        "id": "union_faces_keep97",
+        "geometry": "union_faces",
+        "layer_samples": [
+          4,
+          19,
+          18,
+          56
+        ],
+        "planes": 97
+      },
+      {
+        "id": "union_faces_explicit90",
+        "geometry": "union_faces",
+        "layer_samples": [
+          4,
+          18,
+          18,
+          50
+        ],
+        "planes": 90
+      }
+    ],
+    "physical_evaluation_cell_cap": 800000,
+    "CPU_limit": 4,
+    "total_RSS_plus_all_owned_tmpfs_limit_bytes": 8000000000,
+    "root_scalar_preflight_timeout_seconds": 60,
+    "future_numerical_child_timeout_seconds": 600,
+    "real_Q_cache_chunk_max_bytes": 33554432,
+    "no_automatic_method_or_sampling_selection": true,
+    "new_eigen_runs": 0,
+    "new_CEM_conditions": 0,
+    "new_CEM_RHS": 0,
+    "new_actual_phantom_PDE": 0
+  },
+  "proposed_validation_gates": {
+    "weighted_null_relative": 1e-12,
+    "full_contact_analytic_relative": 1e-10,
+    "uniform_limit_operator_relative": 1e-12,
+    "eigen_residual_spectral_relative": 1e-11,
+    "selected_orthogonality_absolute": 2e-10,
+    "real_transform_relative": 2e-10,
+    "CEM_loaded_current_residual": 2e-07,
+    "CEM_KCL": 2e-06,
+    "CEM_complex_power": 2e-07,
+    "CEM_reciprocity": 2e-07,
+    "existing_independent_potential_gradient_screen": 0.05
+  },
+  "baseline_geometry_metadata": {
+    "commit": "ea11fdd9198a7e0c82d91d87f594a5063087486a",
+    "summary_SHA256": "33e6585e3ff2c797a8fb3cb42040d252dfe5da1aa848aa3817feb2747b538cd4",
+    "XY_nodes": 8184,
+    "h_m": 0.0004901960784313725
+  },
+  "insertion_face_coordinates_m": [
+    -0.0175,
+    -0.0025,
+    0.0025,
+    0.0175
+  ],
+  "physical_geometry": "Same50mm body/four-layer thickness/pad polygons; new Cartesian staircase and local spacing are numerical geometry changes and must be compared on physical overlap.",
+  "material_and_contact": "No material/gamma/contact data evaluated here. Future admission must pin unchanged owner-selected latest verified material/contact/frequency inputs; no invented constants or inherited experimental validation.",
+  "mass_operator": "M_i=dx_i*dy_i; K_ij=-shared_face_length/centre_distance, diagonal=sum conductances; A=M^(-1/2) K M^(-1/2)",
+  "modal_operator": "I_tissue=M^(1/2) Q diag(Y) Q^T M^(1/2) phi; Q real Euclidean-orthonormal, zeroq=sqrt(M)/sqrt(sumM)",
+  "reconstruction": "b=Q^T sqrt(M) phi_top; phi(z)=M^(-1/2) Q diag(F(z)) b; integratedJ(z)=sqrt(M) Q diag(Junit(z)) b",
+  "contacts": "Conforming full physical cell faces only, G=actual_area/zA with noSC halfcell; pad0/1 two outputs each50ohm, pad2/3 common0V, inactive output0V behind50ohm.",
+  "zero_mode": "Actual insulated bottom givesY(0)=0; a grounded-bottom full-contact analytic validation is separately labelled synthetic and must not change actual boundary conditions.",
+  "cell_semantics": "Unique physical evaluation samples=Nxy*selected_planes <=800000; densebasis entries are disclosed storage, not cells. Streaming/chunking cannot bypass total evaluation cap.",
+  "resource_semantics": "No resource admission from approximate historic4.4GB tmpfs. Root supplies fresh aggregate task-tmpfs/other-owned-RSS snapshot; theoretical passing estimate is not a runtime guarantee.",
+  "required_before_actual_four_pad": [
+    "nonuniform constant/mass/null and uniform-grid reduction checks",
+    "separate grounded-full-contact analytic current/power check",
+    "controlled Fourier/MMS operator consistency/refinement with nonuniform waves NOT assumed eigenmodes",
+    "weighted eigen residual/orthogonality and transforms",
+    "fresh resource/cell/sampling admission and source publication"
+  ],
+  "no_old_graph_recomputation": true,
+  "no_actual_solver_admission": true,
+  "no_criteria_relaxation": true,
+  "candidate_adopted": false
+}
