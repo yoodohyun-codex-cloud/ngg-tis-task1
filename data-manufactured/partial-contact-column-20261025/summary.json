@@ -1,0 +1,1064 @@
+{
+  "schema": "task1-partial-contact-column-result-v1",
+  "status": "calculated_mechanism_MMS_only_no_model_change",
+  "spec": {
+    "schema": "task1-partial-contact-column-spec-v1",
+    "plan": {
+      "frequency_Hz": 2000,
+      "SC_thickness_m": 0.0001,
+      "DeltaV_peak_V": 1.0,
+      "DeltaV_Vpp": 2.0,
+      "contact_impedance_scale_factors": [
+        1.0,
+        1000.0,
+        100000.0
+      ],
+      "masks": [
+        "COARSE_XY100",
+        "FINE_XY102"
+      ],
+      "toy_conditions": 1,
+      "fixed_contact_scales": 3,
+      "new_phantom_PDE": 0,
+      "new_CEM_conditions": 0,
+      "new_CEM_RHS": 0,
+      "finite_timeout_seconds": 60,
+      "CPU_limit": 4,
+      "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+      "model_uniform": "Each contacted pixel has one uniform tissue top potential and fullh² independent SC-column admittance; contact occupiesA=f*h²",
+      "model_area_resolved": "Independent SCcolumn only under actualA, uniform bottomDirichlet; NO lateral spread; analytical comparison, NOT true3D reference",
+      "boundary": "Each toy column has metal1Vpeak and SC-bottom0V; pad IDs index geometry only, no actualground/source topology/50ohm network",
+      "formula_uniform": "I=h²*Y*f/(f+Y*zA)*DeltaV; J=Y*DeltaV/(f+Y*zA)",
+      "formula_area_resolved": "I=A*Y/(1+Y*zA)*DeltaV; J=Y*DeltaV/(1+Y*zA)",
+      "fraction_roundoff_allowance": 1e-10,
+      "area_relative_gate": 1e-10,
+      "analytic_relative_gate": 1e-10,
+      "original_contact_input_changed": false,
+      "model_correction_applied": false,
+      "candidate_adopted": false
+    },
+    "masks": [
+      {
+        "id": "COARSE_XY100",
+        "path": "/dev/shm/task1-vs19-uniform-2000-20261025-run/masks/baseline-square15-human-sine2000-sc8-vs19uniform-bulk19-18-56-xy100.csv",
+        "SHA256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+        "h_m": 0.0005,
+        "nx": 100,
+        "patches": 3600,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 1,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 2,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 3,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009,
+        "whole_contacted_pixel_footprint_m2": 0.0009
+      },
+      {
+        "id": "FINE_XY102",
+        "path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask.csv",
+        "SHA256": "04ef856c91caac24557892a46d17447af71ee12d647dfa2fa01fa00af4c7e1c7",
+        "h_m": 0.0004901960784313725,
+        "nx": 102,
+        "patches": 3844,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 1,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 2,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 3,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009000000000000001,
+        "whole_contacted_pixel_footprint_m2": 0.0009236831987697038
+      }
+    ],
+    "config_sha256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+    "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+    "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+    "gamma_SC_S_m": {
+      "real": 5.959456590514033e-06,
+      "imaginary": 2.5055522184188793e-05
+    },
+    "sigma_SC_S_m": 5.959456590514033e-06,
+    "epsilon_SC_r": 225.18780331254555,
+    "Y_SC_column_S_m2": {
+      "real": 0.059594565905140326,
+      "imaginary": 0.2505552218418879
+    },
+    "actual_zA_ohm_m2": {
+      "real": 5.5504758759767015e-05,
+      "imaginary": -0.00012307933145190832
+    },
+    "source_actual_reference_commit": "d2456af62d0686e06555d9e6664ee5d3504d8c64",
+    "actual_comparison_sha256": "29b0b4d505b770fb51e650385c03d03733b2808db5d517d9e6f0377e31165b7e",
+    "actual_basis0_burden_context": {
+      "contact_J_RMS_max_A_m2": {
+        "coarse": 0.0699537575796483,
+        "fine": 0.1426372907495671,
+        "fine_to_coarse_ratio": 2.0390225726925735
+      },
+      "edge_J_RMS_P95_A_m2": {
+        "coarse": 0.06902031258639639,
+        "fine": 0.09854832649816628,
+        "fine_to_coarse_ratio": 1.4278162877748215
+      },
+      "source_power_W": {
+        "coarse": 1.2965344068802122e-06,
+        "fine": 1.3314446859744035e-06,
+        "fine_to_coarse_ratio": 1.0269258408484463
+      },
+      "contact_power_W": {
+        "coarse": 7.740921530102334e-11,
+        "fine": 8.230246231836488e-11,
+        "fine_to_coarse_ratio": 1.0632127195491263
+      }
+    },
+    "mechanism_hypothesis": "A shared whole-pixel topDOF can draw SC current throughh² even when contactA=f*h² ispartial. Unit independent-column limit diagnoses possiblefootprintaliasing; no quantitative attribution of actual coupledCEM burden change.",
+    "actual_geometry_and_powers_not_replaced": true,
+    "lower_SC4_sampling_not_changed_by_this_diagnostic": true,
+    "actual_contact_scales_not_applied": true,
+    "no_fitted_parameters": true,
+    "old_failed_screens_preserved": true,
+    "physiological_or_safety_threshold": false
+  },
+  "rows": [
+    {
+      "mask": "COARSE_XY100",
+      "zA_scale": 1.0,
+      "synthetic_zA_ohm_m2": {
+        "real": 5.5504758759767015e-05,
+        "imaginary": -0.00012307933145190832
+      },
+      "actual_contact_input_modified": false,
+      "geometry": {
+        "id": "COARSE_XY100",
+        "path": "/dev/shm/task1-vs19-uniform-2000-20261025-run/masks/baseline-square15-human-sine2000-sc8-vs19uniform-bulk19-18-56-xy100.csv",
+        "SHA256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+        "h_m": 0.0005,
+        "nx": 100,
+        "patches": 3600,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 1,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 2,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 3,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009,
+        "whole_contacted_pixel_footprint_m2": 0.0009
+      },
+      "models": {
+        "uniform_pixel": {
+          "total_complex_current_peak_A": {
+            "real": 5.363475986917452e-05,
+            "imaginary": 0.00022549164753533075
+          },
+          "contact_J_RMS_max_A_m2": 0.18210560390022798,
+          "contact_J_RMS_area_P95_A_m2": 0.18210560390022798,
+          "contact_drop_RMS_max_V": 2.4587156606844175e-05,
+          "source_complex_power_W": {
+            "real": 2.681737993458726e-05,
+            "imaginary": -0.00011274582376766537
+          },
+          "SC_complex_power_W": {
+            "real": 2.681572332813107e-05,
+            "imaginary": -0.00011274215031660763
+          },
+          "contact_complex_power_W": {
+            "real": 1.6566064569684026e-09,
+            "imaginary": -3.673451065431515e-09
+          },
+          "source_real_power_W": 2.681737993458726e-05,
+          "SC_real_power_W": 2.681572332813107e-05,
+          "contact_real_power_W": 1.6566064569684026e-09,
+          "maximum_relative_voltage_identity_error": 3.3404428361268803e-16,
+          "maximum_relative_complex_power_identity_error": 2.348065574884151e-16,
+          "total_complex_power_identity_error": 6.667379549556718e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "area_resolved": {
+          "total_complex_current_peak_A": {
+            "real": 5.363475986917452e-05,
+            "imaginary": 0.00022549164753533075
+          },
+          "contact_J_RMS_max_A_m2": 0.18210560390022798,
+          "contact_J_RMS_area_P95_A_m2": 0.18210560390022798,
+          "contact_drop_RMS_max_V": 2.4587156606844175e-05,
+          "source_complex_power_W": {
+            "real": 2.681737993458726e-05,
+            "imaginary": -0.00011274582376766537
+          },
+          "SC_complex_power_W": {
+            "real": 2.681572332813107e-05,
+            "imaginary": -0.00011274215031660763
+          },
+          "contact_complex_power_W": {
+            "real": 1.6566064569684026e-09,
+            "imaginary": -3.673451065431515e-09
+          },
+          "source_real_power_W": 2.681737993458726e-05,
+          "SC_real_power_W": 2.681572332813107e-05,
+          "contact_real_power_W": 1.6566064569684026e-09,
+          "maximum_relative_voltage_identity_error": 3.3404428361268803e-16,
+          "maximum_relative_complex_power_identity_error": 2.348065574884151e-16,
+          "total_complex_power_identity_error": 6.667379549556718e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "ratio_max_per_patch_J_magnitude": 1.0,
+        "ratio_area_P95_per_patch_J_magnitude": 1.0,
+        "ratio_min_per_patch_J_magnitude": 1.0
+      },
+      "interpretation": "Predeclared toycontactscale only; no refit or change toactual coupledphantom/contact/outputs. Area-column forbidslateralspread and isnottrue3D truth."
+    },
+    {
+      "mask": "COARSE_XY100",
+      "zA_scale": 1000.0,
+      "synthetic_zA_ohm_m2": {
+        "real": 0.055504758759767014,
+        "imaginary": -0.12307933145190833
+      },
+      "actual_contact_input_modified": false,
+      "geometry": {
+        "id": "COARSE_XY100",
+        "path": "/dev/shm/task1-vs19-uniform-2000-20261025-run/masks/baseline-square15-human-sine2000-sc8-vs19uniform-bulk19-18-56-xy100.csv",
+        "SHA256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+        "h_m": 0.0005,
+        "nx": 100,
+        "patches": 3600,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 1,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 2,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 3,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009,
+        "whole_contacted_pixel_footprint_m2": 0.0009
+      },
+      "models": {
+        "uniform_pixel": {
+          "total_complex_current_peak_A": {
+            "real": 5.324777282850016e-05,
+            "imaginary": 0.0002177156398113771
+          },
+          "contact_J_RMS_max_A_m2": 0.17609520630893397,
+          "contact_J_RMS_area_P95_A_m2": 0.17609520630893397,
+          "contact_drop_RMS_max_V": 0.02377565721483475,
+          "source_complex_power_W": {
+            "real": 2.662388641425008e-05,
+            "imaginary": -0.00010885781990568855
+          },
+          "SC_complex_power_W": {
+            "real": 2.5074827995906265e-05,
+            "imaginary": -0.00010542285182783007
+          },
+          "contact_complex_power_W": {
+            "real": 1.5490584183427128e-06,
+            "imaginary": -3.434968077868144e-06
+          },
+          "source_real_power_W": 2.662388641425008e-05,
+          "SC_real_power_W": 2.5074827995906265e-05,
+          "contact_real_power_W": 1.5490584183427128e-06,
+          "maximum_relative_voltage_identity_error": 2.2435179452531617e-16,
+          "maximum_relative_complex_power_identity_error": 1.6913717546365683e-16,
+          "total_complex_power_identity_error": 8.674837929515529e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "area_resolved": {
+          "total_complex_current_peak_A": {
+            "real": 5.324777282850016e-05,
+            "imaginary": 0.0002177156398113771
+          },
+          "contact_J_RMS_max_A_m2": 0.17609520630893397,
+          "contact_J_RMS_area_P95_A_m2": 0.17609520630893397,
+          "contact_drop_RMS_max_V": 0.02377565721483475,
+          "source_complex_power_W": {
+            "real": 2.662388641425008e-05,
+            "imaginary": -0.00010885781990568855
+          },
+          "SC_complex_power_W": {
+            "real": 2.5074827995906265e-05,
+            "imaginary": -0.00010542285182783007
+          },
+          "contact_complex_power_W": {
+            "real": 1.5490584183427128e-06,
+            "imaginary": -3.434968077868144e-06
+          },
+          "source_real_power_W": 2.662388641425008e-05,
+          "SC_real_power_W": 2.5074827995906265e-05,
+          "contact_real_power_W": 1.5490584183427128e-06,
+          "maximum_relative_voltage_identity_error": 2.2435179452531617e-16,
+          "maximum_relative_complex_power_identity_error": 1.6913717546365683e-16,
+          "total_complex_power_identity_error": 8.674837929515529e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "ratio_max_per_patch_J_magnitude": 1.0,
+        "ratio_area_P95_per_patch_J_magnitude": 1.0,
+        "ratio_min_per_patch_J_magnitude": 1.0
+      },
+      "interpretation": "Predeclared toycontactscale only; no refit or change toactual coupledphantom/contact/outputs. Area-column forbidslateralspread and isnottrue3D truth."
+    },
+    {
+      "mask": "COARSE_XY100",
+      "zA_scale": 100000.0,
+      "synthetic_zA_ohm_m2": {
+        "real": 5.5504758759767014,
+        "imaginary": -12.307933145190832
+      },
+      "actual_contact_input_modified": false,
+      "geometry": {
+        "id": "COARSE_XY100",
+        "path": "/dev/shm/task1-vs19-uniform-2000-20261025-run/masks/baseline-square15-human-sine2000-sc8-vs19uniform-bulk19-18-56-xy100.csv",
+        "SHA256": "884d3bc2537bc88d87a82bffcd735a197c48afda02485573ec27b80469b688ca",
+        "h_m": 0.0005,
+        "nx": 100,
+        "patches": 3600,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 1,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 2,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          },
+          {
+            "pad": 3,
+            "patches": 900,
+            "actual_contact_area_m2": 0.000225,
+            "whole_contacted_pixel_footprint_m2": 0.000225,
+            "footprint_to_contact_area_ratio": 1.0,
+            "min_raw_fraction": 1.0,
+            "max_raw_fraction": 1.0,
+            "full_cells_within_roundoff": 900,
+            "partial_cells": 0,
+            "area_relative_error": 0.0
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009,
+        "whole_contacted_pixel_footprint_m2": 0.0009
+      },
+      "models": {
+        "uniform_pixel": {
+          "total_complex_current_peak_A": {
+            "real": 1.9325692410807498e-05,
+            "imaginary": 4.8203416883955144e-05
+          },
+          "contact_J_RMS_max_A_m2": 0.040802534011462506,
+          "contact_J_RMS_area_P95_A_m2": 0.040802534011462506,
+          "contact_drop_RMS_max_V": 0.5508991882784442,
+          "source_complex_power_W": {
+            "real": 9.662846205403749e-06,
+            "imaginary": -2.4101708441977572e-05
+          },
+          "SC_complex_power_W": {
+            "real": 1.346223496001018e-06,
+            "imaginary": -5.659967843816321e-06
+          },
+          "contact_complex_power_W": {
+            "real": 8.316622709403318e-06,
+            "imaginary": -1.84417405981609e-05
+          },
+          "source_real_power_W": 9.662846205403749e-06,
+          "SC_real_power_W": 1.346223496001018e-06,
+          "contact_real_power_W": 8.316622709403318e-06,
+          "maximum_relative_voltage_identity_error": 1.1188630228279524e-16,
+          "maximum_relative_complex_power_identity_error": 2.5643258051237653e-16,
+          "total_complex_power_identity_error": 2.632709050167909e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "area_resolved": {
+          "total_complex_current_peak_A": {
+            "real": 1.9325692410807498e-05,
+            "imaginary": 4.8203416883955144e-05
+          },
+          "contact_J_RMS_max_A_m2": 0.040802534011462506,
+          "contact_J_RMS_area_P95_A_m2": 0.040802534011462506,
+          "contact_drop_RMS_max_V": 0.5508991882784442,
+          "source_complex_power_W": {
+            "real": 9.662846205403749e-06,
+            "imaginary": -2.4101708441977572e-05
+          },
+          "SC_complex_power_W": {
+            "real": 1.346223496001018e-06,
+            "imaginary": -5.659967843816321e-06
+          },
+          "contact_complex_power_W": {
+            "real": 8.316622709403318e-06,
+            "imaginary": -1.84417405981609e-05
+          },
+          "source_real_power_W": 9.662846205403749e-06,
+          "SC_real_power_W": 1.346223496001018e-06,
+          "contact_real_power_W": 8.316622709403318e-06,
+          "maximum_relative_voltage_identity_error": 1.1188630228279524e-16,
+          "maximum_relative_complex_power_identity_error": 2.5643258051237653e-16,
+          "total_complex_power_identity_error": 2.632709050167909e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "ratio_max_per_patch_J_magnitude": 1.0,
+        "ratio_area_P95_per_patch_J_magnitude": 1.0,
+        "ratio_min_per_patch_J_magnitude": 1.0
+      },
+      "interpretation": "Predeclared toycontactscale only; no refit or change toactual coupledphantom/contact/outputs. Area-column forbidslateralspread and isnottrue3D truth."
+    },
+    {
+      "mask": "FINE_XY102",
+      "zA_scale": 1.0,
+      "synthetic_zA_ohm_m2": {
+        "real": 5.5504758759767015e-05,
+        "imaginary": -0.00012307933145190832
+      },
+      "actual_contact_input_modified": false,
+      "geometry": {
+        "id": "FINE_XY102",
+        "path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask.csv",
+        "SHA256": "04ef856c91caac24557892a46d17447af71ee12d647dfa2fa01fa00af4c7e1c7",
+        "h_m": 0.0004901960784313725,
+        "nx": 102,
+        "patches": 3844,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 1,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 2,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 3,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009000000000000001,
+        "whole_contacted_pixel_footprint_m2": 0.0009236831987697038
+      },
+      "models": {
+        "uniform_pixel": {
+          "total_complex_current_peak_A": {
+            "real": 5.504612802556582e-05,
+            "imaginary": 0.00023142509453914862
+          },
+          "contact_J_RMS_max_A_m2": 0.37163088238137176,
+          "contact_J_RMS_area_P95_A_m2": 0.2023387922420487,
+          "contact_drop_RMS_max_V": 5.017608744240866e-05,
+          "source_complex_power_W": {
+            "real": 2.752306401278291e-05,
+            "imaginary": -0.00011571254726957431
+          },
+          "SC_complex_power_W": {
+            "real": 2.7521304105727687e-05,
+            "imaginary": -0.00011570864475402077
+          },
+          "contact_complex_power_W": {
+            "real": 1.7599070555814223e-09,
+            "imaginary": -3.902515543864836e-09
+          },
+          "source_real_power_W": 2.752306401278291e-05,
+          "SC_real_power_W": 2.7521304105727687e-05,
+          "contact_real_power_W": 1.7599070555814223e-09,
+          "maximum_relative_voltage_identity_error": 4.455814248384939e-16,
+          "maximum_relative_complex_power_identity_error": 5.268406792924493e-16,
+          "total_complex_power_identity_error": 8.136722043840953e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "area_resolved": {
+          "total_complex_current_peak_A": {
+            "real": 5.363475986917568e-05,
+            "imaginary": 0.00022549164753535056
+          },
+          "contact_J_RMS_max_A_m2": 0.18210560390022806,
+          "contact_J_RMS_area_P95_A_m2": 0.18210560390022804,
+          "contact_drop_RMS_max_V": 2.4587156606844185e-05,
+          "source_complex_power_W": {
+            "real": 2.681737993458784e-05,
+            "imaginary": -0.00011274582376767528
+          },
+          "SC_complex_power_W": {
+            "real": 2.6815723328131186e-05,
+            "imaginary": -0.00011274215031659974
+          },
+          "contact_complex_power_W": {
+            "real": 1.6566064569684075e-09,
+            "imaginary": -3.6734510654315096e-09
+          },
+          "source_real_power_W": 2.681737993458784e-05,
+          "SC_real_power_W": 2.6815723328131186e-05,
+          "contact_real_power_W": 1.6566064569684075e-09,
+          "maximum_relative_voltage_identity_error": 2.2228925015125564e-16,
+          "maximum_relative_complex_power_identity_error": 8.766970193803247e-17,
+          "total_complex_power_identity_error": 8.725231358940684e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "ratio_max_per_patch_J_magnitude": 2.0407438015195885,
+        "ratio_area_P95_per_patch_J_magnitude": 1.1111068957158838,
+        "ratio_min_per_patch_J_magnitude": 0.9999999999999998
+      },
+      "interpretation": "Predeclared toycontactscale only; no refit or change toactual coupledphantom/contact/outputs. Area-column forbidslateralspread and isnottrue3D truth."
+    },
+    {
+      "mask": "FINE_XY102",
+      "zA_scale": 1000.0,
+      "synthetic_zA_ohm_m2": {
+        "real": 0.055504758759767014,
+        "imaginary": -0.12307933145190833
+      },
+      "actual_contact_input_modified": false,
+      "geometry": {
+        "id": "FINE_XY102",
+        "path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask.csv",
+        "SHA256": "04ef856c91caac24557892a46d17447af71ee12d647dfa2fa01fa00af4c7e1c7",
+        "h_m": 0.0004901960784313725,
+        "nx": 102,
+        "patches": 3844,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 1,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 2,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 3,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009000000000000001,
+        "whole_contacted_pixel_footprint_m2": 0.0009236831987697038
+      },
+      "models": {
+        "uniform_pixel": {
+          "total_complex_current_peak_A": {
+            "real": 5.463330765694331e-05,
+            "imaginary": 0.0002231770242966929
+          },
+          "contact_J_RMS_max_A_m2": 0.34741756080589287,
+          "contact_J_RMS_area_P95_A_m2": 0.19494524913031128,
+          "contact_drop_RMS_max_V": 0.04690690342611474,
+          "source_complex_power_W": {
+            "real": 2.7316653828471654e-05,
+            "imaginary": -0.00011158851214834645
+          },
+          "SC_complex_power_W": {
+            "real": 2.5676029192001738e-05,
+            "imaginary": -0.000107950500058361
+          },
+          "contact_complex_power_W": {
+            "real": 1.6406246364705264e-06,
+            "imaginary": -3.6380120899960416e-06
+          },
+          "source_real_power_W": 2.7316653828471654e-05,
+          "SC_real_power_W": 2.5676029192001738e-05,
+          "contact_real_power_W": 1.6406246364705264e-06,
+          "maximum_relative_voltage_identity_error": 2.306595211858756e-16,
+          "maximum_relative_complex_power_identity_error": 2.4682452606536465e-16,
+          "total_complex_power_identity_error": 9.23704203655064e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "area_resolved": {
+          "total_complex_current_peak_A": {
+            "real": 5.324777282849596e-05,
+            "imaginary": 0.0002177156398113767
+          },
+          "contact_J_RMS_max_A_m2": 0.17609520630893397,
+          "contact_J_RMS_area_P95_A_m2": 0.17609520630893397,
+          "contact_drop_RMS_max_V": 0.02377565721483475,
+          "source_complex_power_W": {
+            "real": 2.662388641424798e-05,
+            "imaginary": -0.00010885781990568835
+          },
+          "SC_complex_power_W": {
+            "real": 2.5074827995905808e-05,
+            "imaginary": -0.00010542285182783115
+          },
+          "contact_complex_power_W": {
+            "real": 1.5490584183427562e-06,
+            "imaginary": -3.434968077868618e-06
+          },
+          "source_real_power_W": 2.662388641424798e-05,
+          "SC_real_power_W": 2.5074827995905808e-05,
+          "contact_real_power_W": 1.5490584183427562e-06,
+          "maximum_relative_voltage_identity_error": 2.328942987176587e-16,
+          "maximum_relative_complex_power_identity_error": 2.042091870396612e-16,
+          "total_complex_power_identity_error": 1.0204150864179803e-13,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "ratio_max_per_patch_J_magnitude": 1.9728961854668452,
+        "ratio_area_P95_per_patch_J_magnitude": 1.1070446107902994,
+        "ratio_min_per_patch_J_magnitude": 0.9999999999999999
+      },
+      "interpretation": "Predeclared toycontactscale only; no refit or change toactual coupledphantom/contact/outputs. Area-column forbidslateralspread and isnottrue3D truth."
+    },
+    {
+      "mask": "FINE_XY102",
+      "zA_scale": 100000.0,
+      "synthetic_zA_ohm_m2": {
+        "real": 5.5504758759767014,
+        "imaginary": -12.307933145190832
+      },
+      "actual_contact_input_modified": false,
+      "geometry": {
+        "id": "FINE_XY102",
+        "path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask.csv",
+        "SHA256": "04ef856c91caac24557892a46d17447af71ee12d647dfa2fa01fa00af4c7e1c7",
+        "h_m": 0.0004901960784313725,
+        "nx": 102,
+        "patches": 3844,
+        "pads": [
+          {
+            "pad": 0,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 1,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 2,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          },
+          {
+            "pad": 3,
+            "patches": 961,
+            "actual_contact_area_m2": 0.00022500000000000002,
+            "whole_contacted_pixel_footprint_m2": 0.00023092079969242596,
+            "footprint_to_contact_area_ratio": 1.0263146652996709,
+            "min_raw_fraction": 0.49000000000000005,
+            "max_raw_fraction": 1.0000000000000002,
+            "full_cells_within_roundoff": 841,
+            "partial_cells": 120,
+            "area_relative_error": 1.2046690805394493e-16
+          }
+        ],
+        "raw_areas_preserved": true,
+        "fractions_clamped_or_rescaled": false,
+        "fraction_definition": "f=actualA/float(h)^2; up to1e-10 above1 accepted as roundoff and reported unchanged",
+        "actual_contact_area_m2": 0.0009000000000000001,
+        "whole_contacted_pixel_footprint_m2": 0.0009236831987697038
+      },
+      "models": {
+        "uniform_pixel": {
+          "total_complex_current_peak_A": {
+            "real": 1.94487795920182e-05,
+            "imaginary": 4.840976124569064e-05
+          },
+          "contact_J_RMS_max_A_m2": 0.045993415137971665,
+          "contact_J_RMS_area_P95_A_m2": 0.0417270130837685,
+          "contact_drop_RMS_max_V": 0.6209843501029632,
+          "source_complex_power_W": {
+            "real": 9.7243897960091e-06,
+            "imaginary": -2.420488062284532e-05
+          },
+          "SC_complex_power_W": {
+            "real": 1.3294645155801361e-06,
+            "imaginary": -5.589507559503791e-06
+          },
+          "contact_complex_power_W": {
+            "real": 8.394925280427759e-06,
+            "imaginary": -1.861537306334248e-05
+          },
+          "source_real_power_W": 9.7243897960091e-06,
+          "SC_real_power_W": 1.3294645155801361e-06,
+          "contact_real_power_W": 8.394925280427759e-06,
+          "maximum_relative_voltage_identity_error": 2.3263411494723067e-16,
+          "maximum_relative_complex_power_identity_error": 3.894266078627019e-16,
+          "total_complex_power_identity_error": 5.89086886119614e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "area_resolved": {
+          "total_complex_current_peak_A": {
+            "real": 1.9325692410810642e-05,
+            "imaginary": 4.82034168839569e-05
+          },
+          "contact_J_RMS_max_A_m2": 0.04080253401146252,
+          "contact_J_RMS_area_P95_A_m2": 0.04080253401146252,
+          "contact_drop_RMS_max_V": 0.5508991882784442,
+          "source_complex_power_W": {
+            "real": 9.662846205405321e-06,
+            "imaginary": -2.410170844197845e-05
+          },
+          "SC_complex_power_W": {
+            "real": 1.3462234960009396e-06,
+            "imaginary": -5.659967843816704e-06
+          },
+          "contact_complex_power_W": {
+            "real": 8.316622709403132e-06,
+            "imaginary": -1.8441740598162768e-05
+          },
+          "source_real_power_W": 9.662846205405321e-06,
+          "SC_real_power_W": 1.3462234960009396e-06,
+          "contact_real_power_W": 8.316622709403132e-06,
+          "maximum_relative_voltage_identity_error": 1.1295700899707568e-16,
+          "maximum_relative_complex_power_identity_error": 3.628769732643263e-16,
+          "total_complex_power_identity_error": 6.221676893605315e-14,
+          "power_definition": "Signed complexVI*/2; real loss notabs-clipped; RMS=peak/sqrt2"
+        },
+        "ratio_max_per_patch_J_magnitude": 1.127219577221623,
+        "ratio_area_P95_per_patch_J_magnitude": 1.0226573935836012,
+        "ratio_min_per_patch_J_magnitude": 1.0
+      },
+      "interpretation": "Predeclared toycontactscale only; no refit or change toactual coupledphantom/contact/outputs. Area-column forbidslateralspread and isnottrue3D truth."
+    }
+  ],
+  "limiting_contracts": [
+    {
+      "fraction": 0.25,
+      "zA": {
+        "real": 0.0,
+        "imaginary": 0.0
+      },
+      "uniform_I": {
+        "real": 0.059594565905140326,
+        "imaginary": 0.2505552218418879
+      },
+      "resolved_I": {
+        "real": 0.014898641476285081,
+        "imaginary": 0.06263880546047197
+      },
+      "uniform_to_resolved_J_magnitude_ratio": 4.0,
+      "expected_ratio": 4.0,
+      "interpretation": "With contactz0, wholepixel currentapproachesh²Y independentactualA, whilearea-resolvedcurrentapproachesAY. Toy only, notactual3D correction."
+    }
+  ],
+  "invariants": {
+    "f_equals_one_models_agree": true,
+    "zero_contact_impedance_footprint_limit_checked": true,
+    "finite_signed_complex_power_identity_passed": true,
+    "areas_or_fractions_rescaled": false,
+    "z_scales_fitted": false
+  },
+  "new_phantom_PDE": 0,
+  "new_CEM_conditions": 0,
+  "new_CEM_RHS": 0,
+  "wall_seconds": 16.025873560996843,
+  "interpretation": "IndependentSCcolumns with prescribedunitvoltage test possible partialcontact/wholepixelDOF mechanism. They do notreproduceactual2RHS, lateralspread, bulkcoupling,50ohm sources orTIS; no correctionfactor orburdenprediction isapplied.",
+  "holds": {
+    "actual_fine_CEM_screens_still_failed": true,
+    "old_5percent_flags_preserved": true,
+    "source_and_contact_originals_unchanged": true,
+    "candidate_adopted": false,
+    "full_convergence": false,
+    "experimental_validation": false,
+    "Windows_saved_verified": false
+  }
+}
