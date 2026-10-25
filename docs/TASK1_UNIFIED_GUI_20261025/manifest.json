@@ -1,0 +1,300 @@
+{
+  "schema": "task1-unified-offline-gui-v1",
+  "generated_utc": "2026-10-25T02:05:54.130406+00:00",
+  "sources": {
+    "human": {
+      "file": "views/human-current.html",
+      "label": "사람 문헌 비교",
+      "model": "HREF-MIX-v1: 전완 SC·VS, 인간 전도도와 혼합 출처 유전율",
+      "run_id": "task1-human-tissue-20261025-run / task1-human-sc4-20261025-run",
+      "topology": "4 pads / 2 outputs / common return / 50 Ω",
+      "validation": "계산·보존검사 및 SC 인접 비교 완료; 전체 수렴·실험 미검증",
+      "source_commit": "8b50883a66ab270ea0a43b4abeeacc1ce9e4aa7a",
+      "limitations": "dermis 위치는 VS(LE+DE) 대체층. 흉복부 직접 물성·새 Best5/C1/프로브 예측은 미계산.",
+      "result_commit": "5431631e4fbf7feae19440835fa415308827e8eb",
+      "SHA256": "9cba879d335596dc9265be594000ee3d5ef95da5489670a22059b33a0ed7c6c1",
+      "bytes": 18637368,
+      "original_SHA256": "9cba879d335596dc9265be594000ee3d5ef95da5489670a22059b33a0ed7c6c1",
+      "display_adapter": false,
+      "key": "human"
+    },
+    "manual": {
+      "file": "views/manual-phantom.html",
+      "label": "기존 best1/C1·전기장·파형",
+      "model": "기존 팬텀 가정 물성; 사람 문헌 모델과 별도",
+      "run_id": "rounded-expand-f35b23a22166 / centered-square15-C1-y0-xy80-f3000",
+      "topology": "TIS 4 pads / 2 outputs / common return; C1 2 pads / 1 output / y=0",
+      "validation": "기존 실제 계산과 22개 수동 그래프 검증; 전체 수렴·장비 부하 미검증",
+      "source_commit": "70a551dab57e85576820406825ee418529687cc6",
+      "limitations": "단일 전극쌍은 귀환 포함 2전극. RMS 일치는 생리적 활성화 일치가 아님. 기존 source/run/원시 통계 유지.",
+      "result_commit": "df2ebf6c707658c69eeefcf50fa09342243e52b5",
+      "SHA256": "7cf7db90092f0e0b3aa2a17a67af669b477b8f6579c159bbf473042c4d20e2d7",
+      "bytes": 3810551,
+      "original_SHA256": "7cf7db90092f0e0b3aa2a17a67af669b477b8f6579c159bbf473042c4d20e2d7",
+      "display_adapter": false,
+      "key": "manual"
+    },
+    "top5": {
+      "file": "views/top5-phantom.html",
+      "label": "기존 전극 Best5",
+      "model": "기존 팬텀 가정 물성에서의 후보 순위",
+      "run_id": "task1-top5-context-20261022 / 기존 후보별 run 참조",
+      "topology": "기준 4 pads / 2 outputs / common return; 4·8·12·16 pad 대조 별도",
+      "validation": "기존 후보 보존; 수렴·실험 미검증. 이번 변경은 표시용 눈금만.",
+      "source_commit": "317cd38af623d02a902d6b713d6433fb8f8800fc",
+      "result_commit": "f0749c17b99a4d4096b9b0fdbd070a3518190651",
+      "limitations": "새 사람 문헌 물성의 Best5가 아님. packed 과학 데이터와 순위는 보존하고 모든 배치의 공통 수동 축·색 범위만 추가.",
+      "SHA256": "218a34f5acf90fa9f9898c9554ab332bbceb28a110de0ef430ee48558a77dd7d",
+      "bytes": 1937565,
+      "original_SHA256": "b7b76be60f82ee14e494f08c8982a99907ca8c75cf7942a8498163bf613e0400",
+      "display_adapter": true,
+      "key": "top5"
+    },
+    "sc": {
+      "file": "views/sc-sensitivity.html",
+      "label": "이전 SC 민감도",
+      "model": "SC εr110000→1100 가정 민감도; 나머지 기존 물성 유지",
+      "run_id": "task1-all-layer-sensitivity-20261025-run / task1-all-layer-sc4-check-20261025-run",
+      "topology": "4 pads / 2 outputs / common return / 50 Ω",
+      "validation": "계산·SC 인접 비교 완료; 물성 교정·전체 수렴 미완료",
+      "source_commit": "3b9fd031f42226201f1578307cebd4b67466332a",
+      "limitations": "문헌 기반 사람 모델과 별도 가정 민감도이며 후보 채택·안전·활성화 검증 아님.",
+      "result_commit": "5d1e7ab24dd7ba933aeb80f178a90e56515cce12",
+      "SHA256": "f2e83adeb061c5fd844b08451d370d0e0cc1bc59074850d457eb397e02d680ed",
+      "bytes": 17627797,
+      "original_SHA256": "f2e83adeb061c5fd844b08451d370d0e0cc1bc59074850d457eb397e02d680ed",
+      "display_adapter": false,
+      "key": "sc"
+    },
+    "probe": {
+      "file": "views/probes.html",
+      "label": "실제 저장된40점 차동 전압",
+      "model": "기존 팬텀 가정의 TIS f35와 중앙 C1 무부하 예측",
+      "run_id": "rounded-expand-f35b23a22166 / centered-C1-y0",
+      "topology": "TIS4pads/2outputs/commonreturn; C1twoelectrodes/oneoutput",
+      "validation": "기존 native-phi 후처리 완료; 장비 부하/실측 미검증",
+      "source_commit": null,
+      "result_commit": null,
+      "limitations": "5mm는 팁 간격이며 중심 위치±5mm와 별개. ETA5001 감쇠·표시배율과 물리적 부하를 구분. 사람 모델 프로브는 미계산.",
+      "SHA256": "c052f8efb5b5a4a5ad0766eabef165352d4963f0cc98ba9e9cb08f5a5632c6c6",
+      "bytes": 952224,
+      "key": "probe"
+    }
+  },
+  "views": [
+    {
+      "id": "human-fields",
+      "label": "사람 문헌 비교",
+      "source": "human",
+      "anchor": "metric",
+      "detail": "인간 전완·VS·전도도 평균·혼합 유전율의 명시적 대체 모델입니다. 같은 4패드 기준과 비교합니다.",
+      "range_anchor": "limits",
+      "group": "human"
+    },
+    {
+      "id": "human-inputs",
+      "label": "사람 자료·출처",
+      "source": "human",
+      "anchor": "material-inputs",
+      "detail": "SC와 VS의 의미, σ/ε의 서로 다른 출처와 조건, 근육 방향성 가정을 확인합니다.",
+      "range_anchor": "limits",
+      "group": "human"
+    },
+    {
+      "id": "human-roi",
+      "label": "사람 모델 ROI·부담",
+      "source": "human",
+      "anchor": "bars",
+      "detail": "전체 부피 ROI와 표층·비표적, 피부·접촉·층별 손실 및 서로 다른 정규화 조건을 확인합니다.",
+      "range_anchor": "limits",
+      "group": "human"
+    },
+    {
+      "id": "top5",
+      "label": "기존 전극 Best 5",
+      "source": "top5",
+      "anchor": "cards",
+      "detail": "기존 팬텀 가정에서 선별한 전극 배치 5종입니다. 사람 문헌 모델의 새 순위가 아닙니다.",
+      "range_anchor": "top5-manual-ranges",
+      "group": "legacy"
+    },
+    {
+      "id": "top5-burden",
+      "label": "Best 5 피부 부담",
+      "source": "top5",
+      "anchor": "burdens",
+      "detail": "기존 후보의 Jmax/J95·접촉·전력과 전압/전력/부담 비교 조건을 함께 확인합니다.",
+      "range_anchor": "top5-manual-ranges",
+      "group": "legacy"
+    },
+    {
+      "id": "pair",
+      "label": "Best 1 ↔ 2전극",
+      "source": "manual",
+      "anchor": "TIS",
+      "detail": "기존 best1과 y=0 중심의 단일 자극 전극쌍을 비교합니다. 단일 쌍에는 귀환 전극이 포함됩니다.",
+      "range_anchor": "manual-range-controls",
+      "group": "legacy"
+    },
+    {
+      "id": "pair-voltage",
+      "label": "필요 전압·손실",
+      "source": "manual",
+      "anchor": "source-ratios",
+      "detail": "목표 RMS를 맞춘 전압·전류·접촉·손실과 공간분포 차이를 확인합니다.",
+      "range_anchor": "manual-range-controls",
+      "group": "legacy"
+    },
+    {
+      "id": "field-shape",
+      "label": "전기장 형태·방향",
+      "source": "manual",
+      "anchor": "field-shape",
+      "detail": "기존 best1/C1의 실제 복소 E에서 만든 순간 벡터·화살표와 전극 배치입니다.",
+      "range_anchor": "manual-range-controls",
+      "group": "legacy"
+    },
+    {
+      "id": "paper-waveforms",
+      "label": "Carrier·변조·파형",
+      "source": "manual",
+      "anchor": "paper-figure",
+      "detail": "Carrier RMS·방향별 변조·실제 합성 파형·envelope·선 프로파일을 구분해 표시합니다.",
+      "range_anchor": "manual-range-controls",
+      "group": "legacy"
+    },
+    {
+      "id": "probes",
+      "label": "40점 전압·파형·스펙트럼",
+      "source": "probe",
+      "anchor": "",
+      "detail": "기존 팬텀의 저장된 복소 전위차로 계산한 5mm 차동 프로브·깊이별 십자 위치입니다. 사람 문헌 모델의 새 측정 결과가 아닙니다.",
+      "range_anchor": "probe-ranges",
+      "group": "legacy"
+    },
+    {
+      "id": "legacy-probe-proof",
+      "label": "기존 측정 근거",
+      "source": "manual",
+      "anchor": "probes",
+      "detail": "기존 best1/C1의 측정 정의·원본 연결을 함께 확인합니다.",
+      "range_anchor": "manual-range-controls",
+      "group": "legacy"
+    },
+    {
+      "id": "manual-ranges",
+      "label": "모든 눈금 조절",
+      "source": "manual",
+      "anchor": "manual-range-controls",
+      "detail": "기존 22개 수치 그래프의 공통/개별 축·색 범위와 설정 JSON 저장·불러오기를 사용합니다.",
+      "range_anchor": "manual-range-controls",
+      "group": "legacy"
+    },
+    {
+      "id": "pad-count",
+      "label": "4·8·12·16 패드",
+      "source": "top5",
+      "anchor": "pad-count-reference",
+      "detail": "물리적 패드 수와 독립 출력·귀환 경로를 구분한 기존 strip 가족 대조입니다.",
+      "range_anchor": "top5-manual-ranges",
+      "group": "legacy"
+    },
+    {
+      "id": "sc-sensitivity",
+      "label": "SC 가정 민감도",
+      "source": "sc",
+      "anchor": "metric",
+      "detail": "이전 SC εr 민감도 결과를 사람 문헌 비교와 별도 자료로 보존합니다.",
+      "range_anchor": "limits",
+      "group": "sensitivity"
+    },
+    {
+      "id": "human-proof",
+      "label": "새 모델 검증 상태",
+      "source": "human",
+      "anchor": "proof",
+      "detail": "소스·설정·입력 해시와 보존 검사, SC 비교 및 전체 수렴 보류 항목을 확인합니다.",
+      "range_anchor": "limits",
+      "group": "human"
+    },
+    {
+      "id": "legacy-proof",
+      "label": "기존 모델 실행 근거",
+      "source": "manual",
+      "anchor": "provenance",
+      "detail": "기존 best1/C1의 실행 ID·출처·실험 검증 보류와 원시 필드 연결을 확인합니다.",
+      "range_anchor": "manual-range-controls",
+      "group": "legacy"
+    }
+  ],
+  "features": [
+    {
+      "request": "전극 Best 5와 피부 부담",
+      "status": "기존 검증 화면 연결",
+      "view_id": "top5",
+      "detail": "기존 팬텀 가정의 후보·순위와 단위/ROI를 유지합니다."
+    },
+    {
+      "request": "단일 전극쌍 y=0 및 필요 Vpp/RMS 비교",
+      "status": "기존 검증 화면 연결",
+      "view_id": "pair",
+      "detail": "귀환 전극을 포함한 2전극과 목표 RMS 일치 조건을 연결합니다."
+    },
+    {
+      "request": "전기장 공간 형태·방향·전극 배치",
+      "status": "기존 검증 화면 연결",
+      "view_id": "field-shape",
+      "detail": "순간 벡터와 RMS/변조를 구분합니다."
+    },
+    {
+      "request": "Cell 논문을 참고한 carrier·파형·envelope·프로파일",
+      "status": "기존 검증 화면 연결",
+      "view_id": "paper-waveforms",
+      "detail": "본 연구의 원시 필드로 만든 그림이며 논문 그림을 복사하지 않습니다."
+    },
+    {
+      "request": "공통 눈금과 그래프별 수동 조절",
+      "status": "기존 검증 화면 연결",
+      "view_id": "manual-ranges",
+      "detail": "고정 기본 눈금과 수동 축/색 범위를 함께 유지합니다."
+    },
+    {
+      "request": "깊이별 십자 위치·5mm 차동 프로브 예측",
+      "status": "기존 검증 화면 연결",
+      "view_id": "probes",
+      "detail": "무부하/장비 미확인 상태를 보존합니다."
+    },
+    {
+      "request": "주파수별 사람 문헌 입력·출처·불확실성",
+      "status": "새 비교 모델 연결",
+      "view_id": "human-inputs",
+      "detail": "VS 대체층·전완 전이·혼합 유전율을 명시합니다."
+    },
+    {
+      "request": "목표/비표적 부피 ROI와 고변조 범위",
+      "status": "새 비교 모델 연결",
+      "view_id": "human-roi",
+      "detail": "임의의 수치 기준을 생리적 역치로 표시하지 않습니다."
+    },
+    {
+      "request": "4·8·12·16 패드와 출력/귀환 구분",
+      "status": "기존 검증 화면 연결",
+      "view_id": "pad-count",
+      "detail": "패드 수를 독립 전원 출력 수로 간주하지 않습니다."
+    },
+    {
+      "request": "이전 SC 민감도 및 검증 근거 보존",
+      "status": "기존 검증 화면 연결",
+      "view_id": "sc-sensitivity",
+      "detail": "새 모델과 별도 run·물성으로 확인합니다."
+    }
+  ],
+  "new_PDE": 0,
+  "source_views_modified_by_hub_renderer": false,
+  "original_source_files_overwritten": false,
+  "one_active_iframe": true,
+  "data_separation": "Human reference model, historical phantom ranking/C1/probes, and SC sensitivity retain separate material/run identities.",
+  "human_top5_single_pair_or_loaded_probe_new_calculation": false,
+  "Windows_storage_verified": false,
+  "OneDrive_sync_verified": false
+}
