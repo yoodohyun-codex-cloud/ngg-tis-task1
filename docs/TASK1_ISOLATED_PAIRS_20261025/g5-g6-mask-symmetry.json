@@ -1,0 +1,25 @@
+{
+  "mask_reflection_exact": true,
+  "transform": "x -> -x; pad permutation0<->2,1<->3; negate both source solutions to retain positive differential source convention",
+  "pairs": [
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "frequency_labels_preserved": true,
+  "independent_outputs": 2,
+  "pads": 4,
+  "source_R_total_ohm": 50,
+  "source_Vpp_each": 1,
+  "mask_hashes": {
+    "G5.csv": "408b09cdf02634436b20cd23f29bd2e6c82ea56d2bfa30ddc8445b324325abb9",
+    "G6.csv": "934e7a9be36a30c5ecc86b4ff8e1855e618357fca66c4ed352a6ef00271443fd"
+  },
+  "physical_inference": "For the isotropic layered cylinder and floating differential pairs, reflected and sign-reversed solutions satisfy the corresponding G6 equations. This is not valid for a physical common-ground constraint and does not equate the published common-ground baselines.",
+  "angular_caveat": "The fixed2074real-direction sample is not exactly reflection closed; recompute transformed-field metrics to measure orientation sampling sensitivity. Not a new independent geometry solve or proof of full angular/mesh convergence."
+}
