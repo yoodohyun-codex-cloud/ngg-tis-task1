@@ -1,0 +1,1054 @@
+{
+  "schema": "task1-surrogate-equipotential-contact-slab-result-v1",
+  "status": "five_finite_Galerkin_cases_calculated_diagnostic_unadopted",
+  "spec": {
+    "schema": "task1-surrogate-equipotential-contact-slab-spec-v1",
+    "plan": {
+      "period_width_m": 0.002,
+      "SC_thickness_m": 0.0001,
+      "contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "transferred_gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      },
+      "transferred_contact_ohm_m2": {
+        "real": 5.5504758759767015e-05,
+        "imaginary": -0.00012307933145190832
+      },
+      "equipotential_contact_peak_V": {
+        "real": 1.0,
+        "imaginary": 0.0
+      },
+      "bottom_peak_V": 0.0,
+      "panel_counts": [
+        64,
+        128,
+        256
+      ],
+      "positive_harmonic_cutoffs": [
+        1024,
+        2048,
+        4096
+      ],
+      "unique_cases": [
+        [
+          64,
+          4096
+        ],
+        [
+          128,
+          4096
+        ],
+        [
+          256,
+          1024
+        ],
+        [
+          256,
+          2048
+        ],
+        [
+          256,
+          4096
+        ]
+      ],
+      "panel_axis": {
+        "panels": [
+          64,
+          128,
+          256
+        ],
+        "fixed_positive_harmonics": 4096
+      },
+      "harmonic_axis": {
+        "positive_harmonics": [
+          1024,
+          2048,
+          4096
+        ],
+        "fixed_panels": 256
+      },
+      "field_x_midpoints": 512,
+      "field_z_midpoints": 128,
+      "surface_x_midpoints": 1024,
+      "spectral_block_modes": 64,
+      "reconstruction_depth_block": 8,
+      "max_all_physical_evaluation_samples": 800000,
+      "surrogate_slab_conditions": 5,
+      "surrogate_slab_RHS": 5,
+      "analytic_contract_extra_slab_RHS": 1,
+      "root_admission_required": true,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0
+    },
+    "diagnostic_delta_limits": {
+      "contact_current_complex_relative": 0.01,
+      "source_real_power_relative": 0.02,
+      "contact_J_RMS_P95_relative": 0.05,
+      "slab_E_L2_RMS_relative": 0.01,
+      "same_grid_vector_field_relative_L2": 0.02
+    },
+    "algebraic_contracts": {
+      "linear_residual": 1e-10,
+      "complex_symmetry": 1e-10,
+      "complex_power_balance": 1e-10,
+      "analytic_relative": 1e-10,
+      "analytic_absolute": 1e-10,
+      "passivity_relative": 1e-12
+    },
+    "coefficient_transfer": {
+      "original_CEM_spec_sha256": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+      "frozen_synthetic_BEM_source_sha256": "5c84ed110897959bbf3336d7c0e3042fc10c7c1f3d5500512be25c6e10b1a61a",
+      "frequency_Hz": 2000,
+      "SC_source_row": {
+        "layer": "sc",
+        "sigma_S_m": 5.959456590514033e-06,
+        "epsilon_r": 225.18780331254555,
+        "gamma_S_m": {
+          "real": 5.959456590514033e-06,
+          "imaginary": 2.5055522184188793e-05
+        }
+      },
+      "gamma_unit": "S/m",
+      "zA_unit": "ohm m^2",
+      "contact_specific_impedance_ohm_m2": {
+        "real": 5.5504758759767015e-05,
+        "imaginary": -0.00012307933145190832
+      },
+      "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+      "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+      "operation": "Exact complex coefficient copy at2000Hz; no new measurement, Rs subtraction, area scaling, material evaluation or empirical correction",
+      "beta_dimensionless": 3.4772677639953304e-05,
+      "beta_definition": "abs(zA*gamma)/SC_thickness",
+      "edge_resolution_warning": "Small beta makes the contact edge difficult; unchanged diagnostic flags and increasing panel Jmax must be retained"
+    },
+    "admission_policy": "Conditional source only: root executes after actual finite-volume benchmark results are validated; no automatic admission",
+    "coordinate_system": {
+      "x": "periodic horizontal coordinate in metres, -L/2 <= x < L/2",
+      "z": "depth from physical SC top,0<=z<=t",
+      "out_of_plane": "unit length; I in A/m and complex power in W/m"
+    },
+    "phasor": "peak complex exp(+j omega t); transferred coefficients evaluated at2000Hz",
+    "circuit": "one ideal1Vpeak equipotential patch and grounded entire bottom; insulated top outside patch and periodic sides; actual four-pad/50ohm source topology is not transferred",
+    "material_provenance": "HREF-MIX declared surrogate SC and PBS-derived uncertain contact coefficients from the actual CEM input; not direct human thoracoabdominal measurements or validated skin contact",
+    "series": "finite symmetric +/-n Fourier truncation; separately evaluated positive and negative complex coefficients, never assume conjugate symmetry",
+    "power": "Ssource=.5 V conj(I); Scontact=.5 zA integral|q|^2; Sbulk=.5 integral phi_top conj(q); all per unit out-of-plane length",
+    "field": "analytic x/z derivatives of finite Fourier potential; E_RMS=sqrt((abs(Ex)^2+abs(Ez)^2)/2)",
+    "interpretation": "Separate periodic slab comparison of transferred coefficients; finite panel/harmonic diagnostics, no exact continuum truth, actual four-pad solution, anatomical/skin-contact/physiological/safety validation",
+    "original_results_preserved": true,
+    "candidate_adopted": false
+  },
+  "analytic_contract": {
+    "passed": true,
+    "scope": "Full-period ideal equipotential contact; independent 1D analytic contract, not the partial-contact continuum solution",
+    "errors": {
+      "q": 5.928593550334434e-17,
+      "potential": 1.2665532294663717e-16,
+      "horizontal_E": 4.8418191762069635e-12,
+      "vertical_E": 2.1443111144946948e-12
+    },
+    "complex_power_relative_error": 2.631188620510949e-17,
+    "solve": {
+      "relative_linear_residual": 1.1147416998515031e-16,
+      "relative_complex_symmetry": 6.437381806980615e-17,
+      "complex_symmetric_not_Hermitian": true
+    },
+    "transferred_gamma_S_m": {
+      "real": 5.959456590514033e-06,
+      "imaginary": 2.5055522184188793e-05
+    },
+    "transferred_zA_ohm_m2": {
+      "real": 5.5504758759767015e-05,
+      "imaginary": -0.00012307933145190832
+    },
+    "source_CEM_spec_sha256": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+    "periodic_slab_only": true,
+    "new_actual_phantom_PDE": 0
+  },
+  "cases": {
+    "P64-H4096": {
+      "case_id": "P64-H4096",
+      "panels": 64,
+      "positive_harmonics": 4096,
+      "total_signed_modes": 8193,
+      "physical_contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "solved_contracts": {
+        "relative_linear_residual": 1.4765608947740049e-16,
+        "relative_complex_symmetry": 4.3812446808227243e-16,
+        "complex_symmetric_not_Hermitian": true,
+        "signed_complex_power_relative_error": 2.0001054206657686e-16
+      },
+      "contact_current_peak_A_per_m": {
+        "real": 6.464869380124938e-05,
+        "imaginary": 0.0002717949403859592
+      },
+      "source_complex_power_W_per_m": {
+        "real": 3.232434690062469e-05,
+        "imaginary": -0.0001358974701929796
+      },
+      "contact_complex_power_W_per_m": {
+        "real": 2.3914549127332055e-09,
+        "imaginary": -5.302944800292295e-09
+      },
+      "bulk_complex_power_W_per_m": {
+        "real": 3.232195544571195e-05,
+        "imaginary": -0.00013589216724817934
+      },
+      "contact_q_native_panel": {
+        "complex_length_weighted_mean_peak_A_m2": {
+          "real": 0.06464869380124938,
+          "imaginary": 0.2717949403859592
+        },
+        "RMS_length_weighted_mean_A_m2": 0.19754992184916412,
+        "RMS_P95_A_m2": 0.22441641740745744,
+        "RMS_max_panel_A_m2": 0.5476848795286743,
+        "maximum_scope": "Maximum panel-constant approximation; sampling/panel dependent, not the continuum edge maximum"
+      },
+      "slab_field": {
+        "volume_L2_carrier_RMS_V_m": 5207.514471065217,
+        "volume_definition": "Entire periodic slab L*t per unit out-of-plane length; not an actual phantom target ROI",
+        "finite_series_integral_peak_E_squared_V2": 10.847282786541458,
+        "field_grid_L2_carrier_RMS_V_m": 5206.875729824884,
+        "field_grid_vs_Parseval_relative_difference": 0.00012265760256296762,
+        "mean_sampled_carrier_RMS_V_m": 3991.6930450516966,
+        "max_sampled_carrier_RMS_V_m": 27273.536479243827,
+        "maximum_scope": "Fixed physical midpoint samples; not a continuum maximum"
+      },
+      "surface_Fourier_projection": {
+        "contact_sampled_Robin_relative_RMS": 0.009312038818151815,
+        "gap_truncated_normal_flux_RMS_A_m2": 0.0008955931756111702,
+        "native_gap_flux_prescribed_zero": true,
+        "interpretation": "Native piecewise-constant panel q is zero outside the exact contact. Finite Fourier surface flux has truncation/Gibbs leakage; this is not separately solved insulation failure or validated edge Jmax"
+      },
+      "evaluated_physical_points": 66560,
+      "array_shapes": {
+        "panel_edges_m": [
+          65
+        ],
+        "panel_centres_m": [
+          64
+        ],
+        "panel_lengths_m": [
+          64
+        ],
+        "q_panel_peak_A_m2": [
+          64
+        ],
+        "q_panel_RMS_A_m2": [
+          64
+        ],
+        "q_mode0_peak_A_m2": [],
+        "q_mode_positive_peak_A_m2": [
+          4096
+        ],
+        "q_mode_negative_peak_A_m2": [
+          4096
+        ],
+        "x_m": [
+          512
+        ],
+        "z_m": [
+          128
+        ],
+        "phi_peak_V": [
+          128,
+          512
+        ],
+        "Ex_peak_V_m": [
+          128,
+          512
+        ],
+        "Ez_peak_V_m": [
+          128,
+          512
+        ],
+        "E_carrier_RMS_V_m": [
+          128,
+          512
+        ],
+        "surface_x_m": [
+          1024
+        ],
+        "surface_phi_peak_V": [
+          1024
+        ],
+        "surface_q_native_panel_peak_A_m2": [
+          1024
+        ],
+        "surface_q_Fourier_partial_peak_A_m2": [
+          1024
+        ]
+      },
+      "wall_seconds": 0.9161757179972483,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+      "method_sha256": "3709906599db427a0eb6453541dcf501480144e997d8481836660771a870b2bd",
+      "arrays_SHA256": "8018407d603a3bbed9e8ca0a34e7551111b0516f3811f8f4aa4d3cf4554eae31"
+    },
+    "P128-H4096": {
+      "case_id": "P128-H4096",
+      "panels": 128,
+      "positive_harmonics": 4096,
+      "total_signed_modes": 8193,
+      "physical_contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "solved_contracts": {
+        "relative_linear_residual": 1.8077358030412018e-16,
+        "relative_complex_symmetry": 4.634436203636442e-16,
+        "complex_symmetric_not_Hermitian": true,
+        "signed_complex_power_relative_error": 0.0
+      },
+      "contact_current_peak_A_per_m": {
+        "real": 6.474877749577219e-05,
+        "imaginary": 0.0002722153918970643
+      },
+      "source_complex_power_W_per_m": {
+        "real": 3.2374388747886094e-05,
+        "imaginary": -0.00013610769594853215
+      },
+      "contact_complex_power_W_per_m": {
+        "real": 2.475347790753561e-09,
+        "imaginary": -5.488973522352183e-09
+      },
+      "bulk_complex_power_W_per_m": {
+        "real": 3.237191340009534e-05,
+        "imaginary": -0.0001361022069750098
+      },
+      "contact_q_native_panel": {
+        "complex_length_weighted_mean_peak_A_m2": {
+          "real": 0.06474877749577218,
+          "imaginary": 0.2722153918970643
+        },
+        "RMS_length_weighted_mean_A_m2": 0.19785553292969862,
+        "RMS_P95_A_m2": 0.24040034777613098,
+        "RMS_max_panel_A_m2": 0.762619677661798,
+        "maximum_scope": "Maximum panel-constant approximation; sampling/panel dependent, not the continuum edge maximum"
+      },
+      "slab_field": {
+        "volume_L2_carrier_RMS_V_m": 5211.537376201277,
+        "volume_definition": "Entire periodic slab L*t per unit out-of-plane length; not an actual phantom target ROI",
+        "finite_series_integral_peak_E_squared_V2": 10.864048729417158,
+        "field_grid_L2_carrier_RMS_V_m": 5210.589476100245,
+        "field_grid_vs_Parseval_relative_difference": 0.00018188492811370313,
+        "mean_sampled_carrier_RMS_V_m": 3997.1789607150977,
+        "max_sampled_carrier_RMS_V_m": 33445.80897727564,
+        "maximum_scope": "Fixed physical midpoint samples; not a continuum maximum"
+      },
+      "surface_Fourier_projection": {
+        "contact_sampled_Robin_relative_RMS": 0.004476610151547142,
+        "gap_truncated_normal_flux_RMS_A_m2": 0.0011827324820782555,
+        "native_gap_flux_prescribed_zero": true,
+        "interpretation": "Native piecewise-constant panel q is zero outside the exact contact. Finite Fourier surface flux has truncation/Gibbs leakage; this is not separately solved insulation failure or validated edge Jmax"
+      },
+      "evaluated_physical_points": 66560,
+      "array_shapes": {
+        "panel_edges_m": [
+          129
+        ],
+        "panel_centres_m": [
+          128
+        ],
+        "panel_lengths_m": [
+          128
+        ],
+        "q_panel_peak_A_m2": [
+          128
+        ],
+        "q_panel_RMS_A_m2": [
+          128
+        ],
+        "q_mode0_peak_A_m2": [],
+        "q_mode_positive_peak_A_m2": [
+          4096
+        ],
+        "q_mode_negative_peak_A_m2": [
+          4096
+        ],
+        "x_m": [
+          512
+        ],
+        "z_m": [
+          128
+        ],
+        "phi_peak_V": [
+          128,
+          512
+        ],
+        "Ex_peak_V_m": [
+          128,
+          512
+        ],
+        "Ez_peak_V_m": [
+          128,
+          512
+        ],
+        "E_carrier_RMS_V_m": [
+          128,
+          512
+        ],
+        "surface_x_m": [
+          1024
+        ],
+        "surface_phi_peak_V": [
+          1024
+        ],
+        "surface_q_native_panel_peak_A_m2": [
+          1024
+        ],
+        "surface_q_Fourier_partial_peak_A_m2": [
+          1024
+        ]
+      },
+      "wall_seconds": 1.3767668970031082,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+      "method_sha256": "3709906599db427a0eb6453541dcf501480144e997d8481836660771a870b2bd",
+      "arrays_SHA256": "dd67cab68d5626fcc2645790a5584bba218a43de917d66c3165be0202c25c801"
+    },
+    "P256-H1024": {
+      "case_id": "P256-H1024",
+      "panels": 256,
+      "positive_harmonics": 1024,
+      "total_signed_modes": 2049,
+      "physical_contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "solved_contracts": {
+        "relative_linear_residual": 2.4373805400807175e-16,
+        "relative_complex_symmetry": 4.760092163811733e-16,
+        "complex_symmetric_not_Hermitian": true,
+        "signed_complex_power_relative_error": 4.8395480145823904e-17
+      },
+      "contact_current_peak_A_per_m": {
+        "real": 6.480139451085895e-05,
+        "imaginary": 0.00027243627647325177
+      },
+      "source_complex_power_W_per_m": {
+        "real": 3.2400697255429475e-05,
+        "imaginary": -0.00013621813823662588
+      },
+      "contact_complex_power_W_per_m": {
+        "real": 2.559580426088444e-09,
+        "imaginary": -5.6757556411308815e-09
+      },
+      "bulk_complex_power_W_per_m": {
+        "real": 3.239813767500338e-05,
+        "imaginary": -0.00013621246248098475
+      },
+      "contact_q_native_panel": {
+        "complex_length_weighted_mean_peak_A_m2": {
+          "real": 0.06480139451085895,
+          "imaginary": 0.27243627647325175
+        },
+        "RMS_length_weighted_mean_A_m2": 0.19801609230080608,
+        "RMS_P95_A_m2": 0.24674381016413663,
+        "RMS_max_panel_A_m2": 1.0726161284422258,
+        "maximum_scope": "Maximum panel-constant approximation; sampling/panel dependent, not the continuum edge maximum"
+      },
+      "slab_field": {
+        "volume_L2_carrier_RMS_V_m": 5213.647865002807,
+        "volume_definition": "Entire periodic slab L*t per unit out-of-plane length; not an actual phantom target ROI",
+        "finite_series_integral_peak_E_squared_V2": 10.872849624099329,
+        "field_grid_L2_carrier_RMS_V_m": 5212.156489995117,
+        "field_grid_vs_Parseval_relative_difference": 0.00028605211673392945,
+        "mean_sampled_carrier_RMS_V_m": 4000.045504343088,
+        "max_sampled_carrier_RMS_V_m": 39276.41091326704,
+        "maximum_scope": "Fixed physical midpoint samples; not a continuum maximum"
+      },
+      "surface_Fourier_projection": {
+        "contact_sampled_Robin_relative_RMS": 0.0019097393162168374,
+        "gap_truncated_normal_flux_RMS_A_m2": 0.005423161271100091,
+        "native_gap_flux_prescribed_zero": true,
+        "interpretation": "Native piecewise-constant panel q is zero outside the exact contact. Finite Fourier surface flux has truncation/Gibbs leakage; this is not separately solved insulation failure or validated edge Jmax"
+      },
+      "evaluated_physical_points": 66560,
+      "array_shapes": {
+        "panel_edges_m": [
+          257
+        ],
+        "panel_centres_m": [
+          256
+        ],
+        "panel_lengths_m": [
+          256
+        ],
+        "q_panel_peak_A_m2": [
+          256
+        ],
+        "q_panel_RMS_A_m2": [
+          256
+        ],
+        "q_mode0_peak_A_m2": [],
+        "q_mode_positive_peak_A_m2": [
+          1024
+        ],
+        "q_mode_negative_peak_A_m2": [
+          1024
+        ],
+        "x_m": [
+          512
+        ],
+        "z_m": [
+          128
+        ],
+        "phi_peak_V": [
+          128,
+          512
+        ],
+        "Ex_peak_V_m": [
+          128,
+          512
+        ],
+        "Ez_peak_V_m": [
+          128,
+          512
+        ],
+        "E_carrier_RMS_V_m": [
+          128,
+          512
+        ],
+        "surface_x_m": [
+          1024
+        ],
+        "surface_phi_peak_V": [
+          1024
+        ],
+        "surface_q_native_panel_peak_A_m2": [
+          1024
+        ],
+        "surface_q_Fourier_partial_peak_A_m2": [
+          1024
+        ]
+      },
+      "wall_seconds": 0.29231396300019696,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+      "method_sha256": "3709906599db427a0eb6453541dcf501480144e997d8481836660771a870b2bd",
+      "arrays_SHA256": "efa7cb5808faab0d4eaf192f51c593970daa4f5b7ce742677ec06ec7dc39cb44"
+    },
+    "P256-H2048": {
+      "case_id": "P256-H2048",
+      "panels": 256,
+      "positive_harmonics": 2048,
+      "total_signed_modes": 4097,
+      "physical_contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "solved_contracts": {
+        "relative_linear_residual": 2.4455940342280686e-16,
+        "relative_complex_symmetry": 4.759608458244871e-16,
+        "complex_symmetric_not_Hermitian": true,
+        "signed_complex_power_relative_error": 2.4197981527306817e-16
+      },
+      "contact_current_peak_A_per_m": {
+        "real": 6.480074671330979e-05,
+        "imaginary": 0.00027243355830921406
+      },
+      "source_complex_power_W_per_m": {
+        "real": 3.240037335665489e-05,
+        "imaginary": -0.00013621677915460703
+      },
+      "contact_complex_power_W_per_m": {
+        "real": 2.5582238637617826e-09,
+        "imaginary": -5.6727475245663e-09
+      },
+      "bulk_complex_power_W_per_m": {
+        "real": 3.239781513279115e-05,
+        "imaginary": -0.0001362111064070825
+      },
+      "contact_q_native_panel": {
+        "complex_length_weighted_mean_peak_A_m2": {
+          "real": 0.06480074671330978,
+          "imaginary": 0.27243355830921406
+        },
+        "RMS_length_weighted_mean_A_m2": 0.19801411643410766,
+        "RMS_P95_A_m2": 0.24676010815579488,
+        "RMS_max_panel_A_m2": 1.0705056519424232,
+        "maximum_scope": "Maximum panel-constant approximation; sampling/panel dependent, not the continuum edge maximum"
+      },
+      "slab_field": {
+        "volume_L2_carrier_RMS_V_m": 5213.621912497165,
+        "volume_definition": "Entire periodic slab L*t per unit out-of-plane length; not an actual phantom target ROI",
+        "finite_series_integral_peak_E_squared_V2": 10.872741378588238,
+        "field_grid_L2_carrier_RMS_V_m": 5212.302864531018,
+        "field_grid_vs_Parseval_relative_difference": 0.00025300031116282047,
+        "mean_sampled_carrier_RMS_V_m": 4000.0334844867875,
+        "max_sampled_carrier_RMS_V_m": 39939.17030724132,
+        "maximum_scope": "Fixed physical midpoint samples; not a continuum maximum"
+      },
+      "surface_Fourier_projection": {
+        "contact_sampled_Robin_relative_RMS": 0.0018828379323484708,
+        "gap_truncated_normal_flux_RMS_A_m2": 0.002951453420004799,
+        "native_gap_flux_prescribed_zero": true,
+        "interpretation": "Native piecewise-constant panel q is zero outside the exact contact. Finite Fourier surface flux has truncation/Gibbs leakage; this is not separately solved insulation failure or validated edge Jmax"
+      },
+      "evaluated_physical_points": 66560,
+      "array_shapes": {
+        "panel_edges_m": [
+          257
+        ],
+        "panel_centres_m": [
+          256
+        ],
+        "panel_lengths_m": [
+          256
+        ],
+        "q_panel_peak_A_m2": [
+          256
+        ],
+        "q_panel_RMS_A_m2": [
+          256
+        ],
+        "q_mode0_peak_A_m2": [],
+        "q_mode_positive_peak_A_m2": [
+          2048
+        ],
+        "q_mode_negative_peak_A_m2": [
+          2048
+        ],
+        "x_m": [
+          512
+        ],
+        "z_m": [
+          128
+        ],
+        "phi_peak_V": [
+          128,
+          512
+        ],
+        "Ex_peak_V_m": [
+          128,
+          512
+        ],
+        "Ez_peak_V_m": [
+          128,
+          512
+        ],
+        "E_carrier_RMS_V_m": [
+          128,
+          512
+        ],
+        "surface_x_m": [
+          1024
+        ],
+        "surface_phi_peak_V": [
+          1024
+        ],
+        "surface_q_native_panel_peak_A_m2": [
+          1024
+        ],
+        "surface_q_Fourier_partial_peak_A_m2": [
+          1024
+        ]
+      },
+      "wall_seconds": 0.9372056079955655,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+      "method_sha256": "3709906599db427a0eb6453541dcf501480144e997d8481836660771a870b2bd",
+      "arrays_SHA256": "eb7283cdea6b736f34f6f633953683cee4e74ae77a0bb9f5077df2d9b24f7b08"
+    },
+    "P256-H4096": {
+      "case_id": "P256-H4096",
+      "panels": 256,
+      "positive_harmonics": 4096,
+      "total_signed_modes": 8193,
+      "physical_contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "solved_contracts": {
+        "relative_linear_residual": 2.407630622849973e-16,
+        "relative_complex_symmetry": 4.758758933489876e-16,
+        "complex_symmetric_not_Hermitian": true,
+        "signed_complex_power_relative_error": 2.164338795075544e-16
+      },
+      "contact_current_peak_A_per_m": {
+        "real": 6.480058082138066e-05,
+        "imaginary": 0.00027243286223174366
+      },
+      "source_complex_power_W_per_m": {
+        "real": 3.240029041069033e-05,
+        "imaginary": -0.00013621643111587183
+      },
+      "contact_complex_power_W_per_m": {
+        "real": 2.5578748367976997e-09,
+        "imaginary": -5.671973572812291e-09
+      },
+      "bulk_complex_power_W_per_m": {
+        "real": 3.2397732535853545e-05,
+        "imaginary": -0.00013621075914229904
+      },
+      "contact_q_native_panel": {
+        "complex_length_weighted_mean_peak_A_m2": {
+          "real": 0.06480058082138065,
+          "imaginary": 0.2724328622317436
+        },
+        "RMS_length_weighted_mean_A_m2": 0.1980136104466306,
+        "RMS_P95_A_m2": 0.24676427446464086,
+        "RMS_max_panel_A_m2": 1.069960257398131,
+        "maximum_scope": "Maximum panel-constant approximation; sampling/panel dependent, not the continuum edge maximum"
+      },
+      "slab_field": {
+        "volume_L2_carrier_RMS_V_m": 5213.61526653236,
+        "volume_definition": "Entire periodic slab L*t per unit out-of-plane length; not an actual phantom target ROI",
+        "finite_series_integral_peak_E_squared_V2": 10.872713658967717,
+        "field_grid_L2_carrier_RMS_V_m": 5212.320481941607,
+        "field_grid_vs_Parseval_relative_difference": 0.00024834678520766157,
+        "mean_sampled_carrier_RMS_V_m": 4000.0272879877634,
+        "max_sampled_carrier_RMS_V_m": 40044.83837588503,
+        "maximum_scope": "Fixed physical midpoint samples; not a continuum maximum"
+      },
+      "surface_Fourier_projection": {
+        "contact_sampled_Robin_relative_RMS": 0.0018845230047709646,
+        "gap_truncated_normal_flux_RMS_A_m2": 0.0015219786156187365,
+        "native_gap_flux_prescribed_zero": true,
+        "interpretation": "Native piecewise-constant panel q is zero outside the exact contact. Finite Fourier surface flux has truncation/Gibbs leakage; this is not separately solved insulation failure or validated edge Jmax"
+      },
+      "evaluated_physical_points": 66560,
+      "array_shapes": {
+        "panel_edges_m": [
+          257
+        ],
+        "panel_centres_m": [
+          256
+        ],
+        "panel_lengths_m": [
+          256
+        ],
+        "q_panel_peak_A_m2": [
+          256
+        ],
+        "q_panel_RMS_A_m2": [
+          256
+        ],
+        "q_mode0_peak_A_m2": [],
+        "q_mode_positive_peak_A_m2": [
+          4096
+        ],
+        "q_mode_negative_peak_A_m2": [
+          4096
+        ],
+        "x_m": [
+          512
+        ],
+        "z_m": [
+          128
+        ],
+        "phi_peak_V": [
+          128,
+          512
+        ],
+        "Ex_peak_V_m": [
+          128,
+          512
+        ],
+        "Ez_peak_V_m": [
+          128,
+          512
+        ],
+        "E_carrier_RMS_V_m": [
+          128,
+          512
+        ],
+        "surface_x_m": [
+          1024
+        ],
+        "surface_phi_peak_V": [
+          1024
+        ],
+        "surface_q_native_panel_peak_A_m2": [
+          1024
+        ],
+        "surface_q_Fourier_partial_peak_A_m2": [
+          1024
+        ]
+      },
+      "wall_seconds": 1.657467249999172,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+      "method_sha256": "3709906599db427a0eb6453541dcf501480144e997d8481836660771a870b2bd",
+      "arrays_SHA256": "9723666a518e89f3f746ca1779f8652842551db966bb7ea2b939f9ce68762af2"
+    }
+  },
+  "adjacent_diagnostics": [
+    {
+      "axis": "panel_at_H4096",
+      "coarse_case": "P64-H4096",
+      "fine_case": "P128-H4096",
+      "rows": [
+        {
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 0.001544617117765243,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "source_real_power_relative",
+          "relative_difference": 0.0015457233077387363,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 0.06648879885797139,
+          "limit": 0.05,
+          "passed": false
+        },
+        {
+          "metric": "slab_E_L2_RMS_relative",
+          "relative_difference": 0.0007719229174928298,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "same_grid_vector_field_relative_L2",
+          "relative_difference": 0.03769299580115342,
+          "limit": 0.02,
+          "passed": false
+        }
+      ],
+      "all_diagnostic_flags_pass": false,
+      "interpretation": "Predeclared finite-panel or finite-harmonic numerical changes only; flags never suppress results and do not establish continuum truth, actual skin validity, activation or safety"
+    },
+    {
+      "axis": "panel_at_H4096",
+      "coarse_case": "P128-H4096",
+      "fine_case": "P256-H4096",
+      "rows": [
+        {
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 0.0007983158496733746,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "source_real_power_relative",
+          "relative_difference": 0.000799426871670543,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 0.025789497699034932,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "slab_E_L2_RMS_relative",
+          "relative_difference": 0.00039855076081687116,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "same_grid_vector_field_relative_L2",
+          "relative_difference": 0.02540311592990582,
+          "limit": 0.02,
+          "passed": false
+        }
+      ],
+      "all_diagnostic_flags_pass": false,
+      "interpretation": "Predeclared finite-panel or finite-harmonic numerical changes only; flags never suppress results and do not establish continuum truth, actual skin validity, activation or safety"
+    },
+    {
+      "axis": "harmonic_at_P256",
+      "coarse_case": "P256-H1024",
+      "fine_case": "P256-H2048",
+      "rows": [
+        {
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 9.978387126188131e-06,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "source_real_power_relative",
+          "relative_difference": 9.996760562493587e-06,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 6.604791909056887e-05,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "slab_E_L2_RMS_relative",
+          "relative_difference": 4.977826562282413e-06,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "same_grid_vector_field_relative_L2",
+          "relative_difference": 0.0008412198409831138,
+          "limit": 0.02,
+          "passed": true
+        }
+      ],
+      "all_diagnostic_flags_pass": true,
+      "interpretation": "Predeclared finite-panel or finite-harmonic numerical changes only; flags never suppress results and do not establish continuum truth, actual skin validity, activation or safety"
+    },
+    {
+      "axis": "harmonic_at_P256",
+      "coarse_case": "P256-H2048",
+      "fine_case": "P256-H4096",
+      "rows": [
+        {
+          "metric": "contact_current_complex_relative",
+          "relative_difference": 2.5553099797525636e-06,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "source_real_power_relative",
+          "relative_difference": 2.5600376883084856e-06,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "contact_J_RMS_P95_relative",
+          "relative_difference": 1.6883760240477834e-05,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "slab_E_L2_RMS_relative",
+          "relative_difference": 1.2747324966160346e-06,
+          "limit": 0.01,
+          "passed": true
+        },
+        {
+          "metric": "same_grid_vector_field_relative_L2",
+          "relative_difference": 0.0001366958791222172,
+          "limit": 0.02,
+          "passed": true
+        }
+      ],
+      "all_diagnostic_flags_pass": true,
+      "interpretation": "Predeclared finite-panel or finite-harmonic numerical changes only; flags never suppress results and do not establish continuum truth, actual skin validity, activation or safety"
+    }
+  ],
+  "edge_maximum_diagnostics": {
+    "axes": {
+      "panel_at_H4096": {
+        "rows": [
+          {
+            "case_id": "P64-H4096",
+            "RMS_max_panel_A_m2": 0.5476848795286743
+          },
+          {
+            "case_id": "P128-H4096",
+            "RMS_max_panel_A_m2": 0.762619677661798
+          },
+          {
+            "case_id": "P256-H4096",
+            "RMS_max_panel_A_m2": 1.069960257398131
+          }
+        ],
+        "adjacent_increases": [
+          true,
+          true
+        ]
+      },
+      "harmonic_at_P256": {
+        "rows": [
+          {
+            "case_id": "P256-H1024",
+            "RMS_max_panel_A_m2": 1.0726161284422258
+          },
+          {
+            "case_id": "P256-H2048",
+            "RMS_max_panel_A_m2": 1.0705056519424232
+          },
+          {
+            "case_id": "P256-H4096",
+            "RMS_max_panel_A_m2": 1.069960257398131
+          }
+        ],
+        "adjacent_increases": [
+          false,
+          false
+        ]
+      }
+    },
+    "edge_continuum_Jmax_converged": false,
+    "not_an_asymptotic_convergence_test": true,
+    "interpretation": "Preserve every native panel maximum and any increase. Passing integral/J95/slab-field delta flags never establishes the continuum edge maximum or human skin burden."
+  },
+  "all_diagnostic_flags_pass": false,
+  "completed_unique_cases": 5,
+  "surrogate_slab_RHS": 5,
+  "actual_new_surrogate_slab_RHS_this_call": 5,
+  "completed_partial_cases_reused": 0,
+  "analytic_contract_extra_slab_RHS": 1,
+  "analytic_contract_RHS_this_call": 1,
+  "method_sha256": "3709906599db427a0eb6453541dcf501480144e997d8481836660771a870b2bd",
+  "input_sha256": {
+    "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/spec.json": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+    "/dev/shm/task1-contact-edge-equipotential-20261025/source/contact_edge_equipotential.py": "5c84ed110897959bbf3336d7c0e3042fc10c7c1f3d5500512be25c6e10b1a61a",
+    "/dev/shm/task1-contact-edge-surrogate-20261025/source/frozen_contact_edge_equipotential.py": "5c84ed110897959bbf3336d7c0e3042fc10c7c1f3d5500512be25c6e10b1a61a",
+    "/dev/shm/task1-contact-edge-surrogate-20261025/source/contact_edge_surrogate.py": "3709906599db427a0eb6453541dcf501480144e997d8481836660771a870b2bd"
+  },
+  "coefficient_transfer": {
+    "original_CEM_spec_sha256": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+    "frozen_synthetic_BEM_source_sha256": "5c84ed110897959bbf3336d7c0e3042fc10c7c1f3d5500512be25c6e10b1a61a",
+    "frequency_Hz": 2000,
+    "SC_source_row": {
+      "layer": "sc",
+      "sigma_S_m": 5.959456590514033e-06,
+      "epsilon_r": 225.18780331254555,
+      "gamma_S_m": {
+        "real": 5.959456590514033e-06,
+        "imaginary": 2.5055522184188793e-05
+      }
+    },
+    "gamma_unit": "S/m",
+    "zA_unit": "ohm m^2",
+    "contact_specific_impedance_ohm_m2": {
+      "real": 5.5504758759767015e-05,
+      "imaginary": -0.00012307933145190832
+    },
+    "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+    "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+    "operation": "Exact complex coefficient copy at2000Hz; no new measurement, Rs subtraction, area scaling, material evaluation or empirical correction",
+    "beta_dimensionless": 3.4772677639953304e-05,
+    "beta_definition": "abs(zA*gamma)/SC_thickness",
+    "edge_resolution_warning": "Small beta makes the contact edge difficult; unchanged diagnostic flags and increasing panel Jmax must be retained"
+  },
+  "total_fixed_physical_evaluation_samples": 332800,
+  "source_voltage_peak_V": 1.0,
+  "source_voltage_Vpp": 2.0,
+  "current_unit": "A/m out-of-plane",
+  "complex_power_unit": "W/m out-of-plane",
+  "new_actual_phantom_PDE": 0,
+  "new_actual_four_pad_CEM_RHS": 0,
+  "limitations": [
+    "Partial contact reference remains finite in both panel and harmonic discretization",
+    "Full-contact1D analytic contract is not an independent solution of the partial-contact problem",
+    "Panel Jmax and finite Fourier surface flux are separate approximations",
+    "Fixed-grid visualization can have quadrature error; Parseval slab norm refers only to the finite series",
+    "Transferred HREF-MIX coefficients do not transfer actual4pad source/circuit, human anatomy, validated skin contact, TIS, activation, safety or experimental verification"
+  ],
+  "candidate_adopted": false,
+  "resume_index_sha256": "f983a0715eca92cd1eecf9755d7cbe91fa983dae25907f45999d6b04b57a7bfc"
+}
