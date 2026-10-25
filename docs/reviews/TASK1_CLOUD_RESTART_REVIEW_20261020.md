@@ -1,4 +1,72 @@
-# Task 1 클라우드 재시작 검토 — 최신 갱신 2026-10-24
+# Task 1 클라우드 재시작 검토 — 최신 갱신 2026-10-25
+
+## 00:25 UTC 정기 검토 — 새 SC 민감도 PDE 완료와 SC4 등록
+
+이번 확인은 PR2 결과 `ebbad61a7da19d13af17031ae53ab5047c3f71a8`와 후속 등록 `c8ec60cdc50db8e00977f45cb24fe9dece01498f`까지다. 직전 성공 점검 `d0047b2f6f2e1caaead2407982e5991b32be9e6d` 이후 공개 근거를 읽었다. **네 층을 포함한 새 PDE 1조건/8 RHS가 실제 완료됐다. 수치 변경은 SC εr110000→1100 하나이며, 네 층의 실측 물성 재교정 완료는 아니다.** 기존 F004/F001/F002/F006/F007/F010 · FAT-20261024 ID를 유지한다. 아래 10월24일 이하의 미수신/미실행 표는 당시 이력이며 현재 상태에는 이 절이 우선한다.
+
+### 채택·실행·검증 상태의 변경
+
+| 기존 ID / 하위 단계 | 확인한 공개 근거 | 현재 판단과 남는 범위 |
+|---|---|---|
+| F004/F010 전 층 요청 수신·채택 | [material-evidence](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/material-evidence.json)가 검토 명세 `d719c43e`와 기존 ID, `directive_received:true`, 네 층 감사를 명시 | **수신 및 부분 채택 확인**. 정확한 물성 재설정은 보류하고 가정 민감도를 선택했음 |
+| F004/F010 신규 native | [execute receipt](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/execute-receipt.json): 00:18:15.019222–00:19:36.889140 UTC, 81.8654초, started/completed 1, 3000/3030/9000/9090 Hz×2 RHS | **실제 새 PDE 완료**. run `task1-all-layer-sensitivity-20261025-run`, case `baseline-square15-sc-eps1100-xy80`; GUI/기존 native 재사용과 구분 |
+| F004 이산 방정식 gate | residual 9.872e−10/2e−7, power 7.683e−10/2e−7, current 5.173e−9/2e−6, area 1.088e−14/1e−10, shared-flux interface 6.018e−14/2e−7 (실제 max/상한) | **다섯 gate passed**. shared-flux 자기 정합은 독립 계면 정확도나 격자 수렴이 아님 |
+| F004 후처리·수식 감사 | [postprocess receipt](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/postprocess-receipt.json): 00:19:53–00:20:16, 새 PDE0. [summary](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/docs/TASK1_ALL_LAYER_SENSITIVITY_20261025/summary.json)에 φ→저장 E 일치, layered-slab/affine 검사, 실제 8점·8192표본 파형 검사가 분리됨 | 해당 제한 범위 **passed**. J=γE 일치는 파생량 자기 정합. 4주파수 RMS와 fundamental 고정방향 envelope만 확인; harmonic 포함 전체 envelope 검증은 **not_run** |
+| F001/F004 전체 fat 통계 | 생산자의 Float64 전체3D min/P10/median/P90/max·좌표·부피가 원 comparator 및 새 조건에 공개됨 | **통계 공개 하위 단계 완료**. 독립 native 전체 배열 재계산/연속체 극값 검증과 구분 |
+| F004 독립 계면·격자 | potential-only one-sided gradient가 세 경계를 내부/외곽으로 나눠 보고 | **diagnostic_not_gated**. SC/XY/bulk/edge 전체 수렴 및 기존 XY 실패는 열린 상태 |
+| F006/F007 공개 보존·복원 | native37개와 config 등 hash 목록, source/result 게시, 아래 대표3파일 readback | **이번 새 조건의 공개 증거 증가**. 기존 전체 migration/외부 영속 백업/clean restore 완료로 확대하지 않음 |
+| F004/F010 다음 SC2→4 | [등록](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/c8ec60cdc50db8e00977f45cb24fe9dece01498f/data-native/cloud-all-layer-sc4-check-20261025/preregistration.json), [준비 receipt](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/c8ec60cdc50db8e00977f45cb24fe9dece01498f/data-native/cloud-all-layer-sc4-check-20261025/prepare-receipt.json): 00:27:11–00:27:14, 새 PDE0 | **prepared**, 이 snapshot의 실행·결과는 미확인. hXY0.625 mm/bulk14·14·40/mask/물성 고정, SC2→4, 361728cells, 최대1조건/8 RHS. 제3조건 자동 등록 금지 |
+
+새 config SHA256은 `a9d2d08d7e69d3cf1b21e50c1af44510ba416cee95e101c77f5581dcfae1269b`, mask SHA는 `7cfc576d31e50dcf0621567cce225df3d2cc8e55eeff4aa5d6667c59bfc401b2`다. [config diff](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/config-diff.json)의 수치 변경은 SC εr뿐이며 mask 경로 재배치는 같은 mask hash를 유지한다. D50 mm, .1/5/5/15 mm, 4패드/2출력/commonGND/50Ω, hXY .625 mm·SC2·bulk14/14/40·351680cells는 고정됐다. [source publication](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/source-publication.json)은 실행 전 source commit `3b9fd031f42226201f1578307cebd4b67466332a`를 연결한다.
+
+### 목표 감소와 SC 손실 증가를 함께 평가
+
+아래 값은 공개 summary의 **같은 square_3h 명령/위상·진폭 convention** 비교다. 원 baseline은 동일격자의 기존 native/cache comparator이며 다시 푼 조건으로 세지 않는다. TIS는 fundamental 두 carrier의 2074개 표본방향 최대이며 carrier RMS·고정방향·모집량과 다르다. 목표는 r≤5 mm, z15–20 mm 부피다.
+
+| 지표 | 원 baseline | SC εr1100 민감도 |
+|---|---:|---:|
+| 목표 mean / P10 TIS (V/m) | 4.061849 / 3.645736 | 0.667465 / 0.608460 |
+| 표층 0–5 mm mean TIS (V/m) | 10.448931 | 23.189061 |
+| SC 최대 TIS (V/m) | 1346.400299 | 2595.184446 |
+| SC 실전력 (µW) | 2.166357 | 85.024952 |
+| 전체 fat min/P10/median/P90/max TIS (V/m) | 4.044547 / 15.511783 / 20.706918 / 25.660494 / 33.062566 | .332358 / 1.941351 / 3.439392 / 4.627130 / 5.506656 |
+
+목표 mean/P10은 각각 원값의 **16.43%/16.69%**, SC 실전력은 **39.25배**다. 같은 source real power로 선형 정규화해도 목표 mean은2.173531 V/m(원값의53.51%)이고 SC 실전력은901.614364 µW다. 단일 contact Jmax 일치에서 목표값이 커지는 행은 source/SC 전력이 함께 증가하므로 기존 다중 피부·접촉 상한 충족이나 개선으로 채택하지 않는다. 이 값들은 모델 비교이며 인체 설정이 아니다.
+
+원 전체 fat 최소 좌표는 (6.5625, −24.0625, 9.92142857143) mm, 새 최소는 (−23.4375, 8.4375, 9.92142857143) mm다. 종전 Float16 단면 반례와 별도로 **생산자 Float64 체적 통계가 공개됐음**을 기록한다. 이 리뷰는 전체 native E/φ에서 위 통계를 독립 재산출하지 않았다. fat의 균일한 최소8 V/m 주장은 계속 failed이며, 특정 gradient 모양에 맞춘 물성 보정 근거로 쓰지 않는다.
+
+독립 계면 진단은 3000 Hz SC–dermis(z.1 mm) 법선 total J의 정규화 L2 차이 **전체7.956%, 내부7.757%, 외곽25.987%**를 보고한다. 같은 정의에서 dermis–fat(z5.1 mm)은전체.15155%, fat–muscle(z10.1 mm)은전체.005859%다. SC측2점 linear fit/dermis측3점 quadratic fit의 비교이며, 등록된 독립 정확도 gate가 없어 pass/fail을 새로 만들지 않는다. shared-flux gate 통과와 이 차이를 동시에 보존한다.
+
+### 공개 원자료·복구 및 변경 범위
+
+[native SHA 목록](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/native-sha256.json)은 native37개와 config를 연결한다. 최초 [publication receipt](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/publish-results-receipt.json)의 `failed_preserved`(00:20:46–00:22:54)는 유지한다. 이후 결과 commit `ebbad61a`와 [생산자 결과 댓글](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6391402701), SC4 등록의 comparator-publication은 원격 게시·83파일 readback 복구를 기록한다. 실패를 최초 성공으로 다시 쓰지 않는다.
+
+이번 리뷰가 직접 읽어 SHA/크기까지 대조한 대표 raw는 다음3개다. grid는 gzip 해제·CSV 구조와 층별 셀수도 확인했다.
+
+| 파일 (같은 case의 bases 아래) | bytes / SHA256 | 독립 확인 범위 |
+|---|---|---|
+| source-3000.bin | 64 / `072a7f193c9aac198a4864f832c9cba43f8a42caa9f0f39e91b78734feac4840` | 불변 공개 raw 바이트·hash |
+| loss-3000.bin | 384 / `2a9c2b71b918608e0e8438f6f40974b87d3ef7f1f4a5334650233cc3e22a0dd5` | 공개 binary 바이트·hash |
+| grid.csv.gz | 945961 / `70b14da8cd9762a0d80e937fad3f8755c086fee5ca385cfd9b1d4711975bd365` | 해제22235839bytes; 351680행, SC/dermis/fat/muscle10048/70336/70336/200960 |
+
+이것은 전체37파일 독립 복원이나 과거 baseline/best1 전체 migration 검증이 아니다. main의 MIGRATION_MANIFEST에서 과거 full-native transfer/clean restore/retirement 허용이 false인 상태는 그대로다. 현재 worker 생존/전역 lock을 과거 PID·remaining_owned_children로 추정하지 않는다.
+
+| 저장소 | main | PR1 / PR2 / PR3 확인 head |
+|---|---|---|
+| Task1 | `3b5f1861c523a207d02b1a34a5f61c67b88556eb` (불변) | `d719c43e668c8b7ba98dc5f43512d6f722c8ba99` / `c8ec60cdc50db8e00977f45cb24fe9dece01498f` / `0d3039bf199a25a4417e71cf8151105c53f0597b` |
+| 이전 ngg-tis-simulation | `3feb66b4015fea968c4775e65ac176366853cc2e` (불변) | `0e84b46e62f53fe534af965a1dd177cadd7edf4e` / `33f0d6ab106ad4fa54d8fd35672092296c615f87` / `7a6b62a9154e2584548e48bef4717b7e666904df` (모두 불변) |
+
+PR1 head는 **이번 문서 commit 전** 기준이다. 양쪽 main은 실제 `main` ref 비교로 확인했고 PR metadata의 오래된 base SHA로 대체하지 않았다. Task1 main README/AGENTS/RESEARCH_LOOP/MIGRATION_MANIFEST 및 기존 장부를 다시 읽었다. 이전 저장소 main/PR1/2/3에는 새 Task2 변경이 없다. Task1 PR3도 그대로이며 PR2의 fixed/manual GUI 게시와 위 새 PDE를 구분한다. GUI 변경 자체는 계산 횟수에 포함하지 않는다.
+
+### 다음 과학적 판단
+
+이미 등록된 SC2→4 확인의 결과를 먼저 판정하는 것이 타당하다. 같은 물성·mask·drive에서 목표 절대 mean/P10, SC/contact/source power와 contact J95, 독립 계면의 전체/내부/외곽 norm을 나란히 비교해야 한다. 등록된 12개 adjacency 기준(목표/비율1%, J/contactV5%, 전력2%)은 **그 두 격자 사이의 제한된 비교**이며 전체 수렴 선언으로 확대하지 않는다. SC2→4만으로 fat 경계·XY 원통 계단 효과를 닫지 않는다.
+
+이후 설계 판단에는 단일 Jmax/전류/전력 정규화 대신 원래의 다중 피부·접촉 부담 상한을 동시에 적용한 목표 mean/P10와 표층/비표적 분포가 필요하다. SC 손실 증가를 숨기는 지표나 한 점 최대를 목적함수로 채택하지 않는다. 이 절은 장부의 과학적 제안이며 실행자에게 재지시하거나 새 배치를 등록한 것이 아니다. 리뷰는 문서만 변경하고 계산·연구 모듈 import·worker 제어·main 병합을 수행하지 않았다.
+
+---
+
+## 2026-10-24 이전 검토 이력
 
 ## 현재 지시: SC·dermis·fat·muscle 전체 물성 재설정 근거표와 신규 PDE
 

@@ -1,8 +1,16 @@
 # Task 1 SC·dermis·fat·muscle 재계산 검증 요청 — 2026-10-24
 
-**현재 지시는 네 층 전체의 물성 근거를 재검토한 뒤 별도 신규 PDE로 검증하는 것이다.** 기존 미교정 baseline·원자료·실패·GUI는 보존한다. 이번 전 층 확대 요청의 계산측 채택/새 실행 근거는 아직 없으며 이 검토 환경에서는 PDE/worker를 시작하지 않았다.
+**현재 지시는 네 층 전체의 물성 근거를 재검토한 뒤 별도 신규 PDE로 검증하는 것이다.** 기존 미교정 baseline·원자료·실패·GUI는 보존한다. 2026-10-25 공개 결과에서 요청 수신·부분 채택과 네 층을 포함한 새 PDE 1조건/8 RHS 완료를 확인했다. 수치 변경은 SC εr110000→1100 하나인 명시적 가정 민감도이며 네 층의 실측 물성 재교정은 보류다. 이 검토 환경에서는 PDE/worker를 시작하지 않았다.
 
 기존 **T1-F004/F001/F002/F006/F007/F010 — FAT-20261024** ID와 댓글6390505397을 계속 사용한다. 추적 이름은 유지하지만 범위는 SC·dermis·fat·muscle 전체로 확대됐다. 아래 예전 fat 중심 기록은 이력이며 현재 실행 범위에는 이 절과 개정 §5가 우선한다. 공개 내용은 기존 가정값·논문 대비 불일치·서지 출처·미확인 항목·재계산 지시로 한정한다.
+
+## 2026-10-25 결과 추적
+
+[새 native 실행 receipt](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/execute-receipt.json)는 run `task1-all-layer-sensitivity-20261025-run`, case `baseline-square15-sc-eps1100-xy80`의 00:18:15–00:19:36 UTC 완료를 기록한다. [material evidence](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/data-native/cloud-all-layer-sc-epsilon-sensitivity-20261025/material-evidence.json)는 이 명세 `d719c43e`와 기존 feedback ID를 인용해 수신·네 층 감사·가정 민감도 선택을 명시한다. [summary](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/ebbad61a7da19d13af17031ae53ab5047c3f71a8/docs/TASK1_ALL_LAYER_SENSITIVITY_20261025/summary.json)에 실제 다섯 이산 gate 통과, 네 층 전체3D 통계, 독립 계면 진단, 별도 수식 검사가 게시됐다.
+
+[현재 검토 장부](TASK1_CLOUD_RESTART_REVIEW_20261020.md)의 2026-10-25 절이 상세 판정·원자료 대표 readback·다음 과학적 제안을 기록한다. 동일 구동 목표 mean/P10은4.061849/3.645736→.667465/.608460 V/m, SC 실전력은2.166357→85.024952 µW다. 원 fat 전체3D 최소4.044547 V/m는 생산자의 Float64 통계 공개를 확인한 범위이며 이 리뷰의 독립 native 재계산은 아니다. SC–dermis 독립 법선 J 차이는 전체7.956%/외곽25.987%로 diagnostic_not_gated다. 물성 교정·full mesh convergence·f35 새 물성 solve는 완료되지 않았다.
+
+후속 [SC2→4 사전등록](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/blob/c8ec60cdc50db8e00977f45cb24fe9dece01498f/data-native/cloud-all-layer-sc4-check-20261025/preregistration.json)은 같은 hXY/mask/bulk/물성에서 최대1조건이다. 해당 head의 prepare receipt는 새 PDE0이며 실행·결과는 아직 미확인이다. 기존 지시를 재전송하거나 이 리뷰에서 추가 worker를 만들지 않는다. 아래 오래된 연결/자원 관측은 날짜별 이력이며 현재 실행 여부는 위 불변 artifact로 판정한다.
 
 ## 0. 전 층 물성 근거표와 현재 실행 지시
 
@@ -25,7 +33,7 @@ Anand2019의 전체 서지·SHA·방법·Fig10/11 근거는 §3에 있다. 개�
 
 **실행 요구:** 현재 담당자가 아래 §5의 단일 소유/자원 admission을 확인하고 네 층의 σ·εr·주파수·단위·물성 출처/미확인 가정을 모두 포함한 reset 근거표와 config diff를 작성한 후, 새 고유 run에서 네 층 PDE를 다시 푼다. 원물성이 없으면 가정 민감도 결과와 원자료 확보 과제를 나누며 “논문 재현”으로 표시하지 않는다. GUI 재생성·기존 native 재사용은 새 시뮬레이션 수행으로 인정하지 않는다.
 
-이전 fat 요청의 담당자 수신은 별도 확인됐고 [담당자의 공개 댓글6390625143](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6390625143)도 해당 요청을 별도 미실행으로 유지한다. **이번 전 층 확대 지시의 수신·채택·실행은 별도 확인 대상**이다. 현재 검토 환경에는 원 task로 직접 전달하는 도구가 없으므로 기존 GitHub 요청을 갱신한다. credential/보안/연결 설정을 변경하거나 중복 worker를 만들지 않는다.
+이전 fat 요청의 담당자 수신은 별도 확인됐고 [담당자의 공개 댓글6390625143](https://github.com/yoodohyun-codex-cloud/ngg-tis-task1/pull/2#issuecomment-6390625143)도 해당 요청을 별도 미실행으로 유지한다. **전 층 확대 요청의 수신·부분 채택·첫 민감도 실행은 위 2026-10-25 artifact로 확인됐다.** 정확한 물성 재교정과 f35의 새 물성 solve는 여전히 별도 완료 대상이다. 이 정기 검토에서는 기존 GitHub 요청을 다시 전송하지 않고 credential/보안/연결 설정이나 worker를 변경하지 않는다.
 
 검토 snapshot: PR2 `b7ef9aaef9dd82ce0c3bfa31f16043080519fbfe`; 직전 `8eb12d1` 대비 centered C1 결과 79개 경로가 추가됐다. README, AGENTS, RESEARCH_LOOP 및 기존 검토 장부를 읽었다. 이 checkout은 검토 패키지이며 원 계산 환경이 아니다.
 
@@ -146,14 +154,14 @@ centered C1의 작은1주파수/1RHS tmpfs 처리·공개 성공이4주파수/2R
 
 | 기존 ID / 하위 요청 | 현재 판정 | 완료에 필요한 직접 근거 |
 |---|---|---|
-| F004/F010 FAT-20261024 인계 | 이전 fat 수신 확인; 전 층 확대 requested, 채택/시작 미확인 | adoption source/commit, 기존 소유 task/environment·lock 확인 |
-| F004 config→γ 정적 감사 | passed, 공개 코드·바이트/hash 연결 범위 | 새 실행 effective material/config hash는 별도 필요 |
+| F004/F010 FAT-20261024 인계 | **received/partially adopted**: material-evidence가 명세 d719c43e와 기존 ID를 인용 | 민감도 선택까지 확인. calibrated material reset는 보류 |
+| F004 config→γ 감사 | 기존 정적 passed + 새 조건 material lookup 감사·config diff/hash 공개 | 물성 교정과 구분; 전체 raw 독립 재계산은 미실시 |
 | F004 네 층 팬텀 물성 근거 | 출처·가정·불일치 표 작성; SC/dermis 독립 bulk 근거와 fat/muscle carrier 수치 미검증 | exact σ/εr·원시표/재료 fit 미확보; 논문 재현·실험 교정 보류 |
-| F001/F004 전체 fat min8 주장 | failed, 인계된 compact XY 반례 | 원 Float64 전체3D extrema는 아직 미검증 |
-| F004 네 층 material reset·새 native 배치 | **not_run** | 고유 run ID, 시작/종료/PID/startticks/명령/환경/exit와 직접 artifact URL |
-| F004 기존 baseline 이산 보존 | 공개 기록 passed | 이 검사만으로 fat 경계/극값 수렴을 닫지 않음 |
+| F001/F004 전체 fat min8 주장 | **failed 유지**; 원 전체3D min4.044547/new .332358 V/m 통계 게시 | 생산자 Float64 체적 통계 확인. 리뷰의 원 배열 독립 재산출/극값 수렴은 보류 |
+| F004 네 층 material reset·새 native 배치 | **새 가정 민감도 PDE1/8 RHS completed**, SC εr만 변경. 실측 근거 재교정은 deferred | execute/postprocess/config/native 직접 링크는 위 결과 추적. f35 새 물성 solve not_run |
+| F004 baseline·신규 이산 보존 | 기존 기록 및 신규 다섯 gate **passed** | shared-flux 자기 정합만으로 독립 경계 정확도/극값 수렴을 닫지 않음 |
 | F004 XY surface/contact 수렴 | failed 유지 | 동일 정의·새 격자 근거; 임계값 변경 불가 |
-| F004 fat extrema/독립 경계 E 수렴 | not-run/not-established | raw φ/complex fields, analytic/gradient/mesh 수치·gate |
-| F010 원 계산 연결·현재 admission | 미확인; 이 검토환경에서 실행 불가 | 기존 담당자의 현재 lock/예산/공간 관측과 실행/정확한 blocker |
+| F004 fat extrema/독립 경계 E 수렴 | slab/affine·φ→E·제한 파형 검사 passed; 실제 계면 diagnostic_not_gated. 전체 수렴 not-established | SC4는 c8ec60c에서 prepared/새 PDE0; 원 XY 실패 및 full convergence 보류 |
+| F010 소유 실행·자원 admission | 기존 담당자의 새 run 실행/종료와 당시 자원 receipt 확인 | 기록된 PID/종료를 현재 live worker 판정으로 쓰지 않음. 이 리뷰는 실행/재지시하지 않음 |
 
 채택·실행·검증 상태를 독립 갱신한다. 코드/등록만 있으면 실행으로 세지 않고, 다른 C1 계산이나 “수신” 댓글은 fat 요청의 시작 근거가 아니다. GitHub 조정 뒤에도 원 담당자가 확인되지 않으면 정확한 연결 blocker를 부모에게 보고한다. 공개 결과가 도착하면 실제 JSON/원값을 대조한 범위만 닫는다. 깊이 집중·물성 실험 교정·dry NGG 피부 접촉·신경 모집·사람 설정·안전·최적점 주장은 이 요청의 결과가 아니다.
