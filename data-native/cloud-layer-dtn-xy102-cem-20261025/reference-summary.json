@@ -1,0 +1,589 @@
+{
+  "schema": "task1-layer-dtn-xy102-cem-reference-result-v1",
+  "status": "calculated_reference_physical_gates_passed_unadopted",
+  "spec": {
+    "schema": "task1-layer-dtn-xy102-cem-reference-spec-v1",
+    "plan": {
+      "new_CEM_conditions": 1,
+      "new_CEM_RHS": 2,
+      "frequency_Hz": 2000,
+      "source_resistance_ohm": 50.0,
+      "ideal_voltage_peak_V": 0.5,
+      "pad_count": 4,
+      "independent_outputs": 2,
+      "return_topology": "pads2,3 common0V; inactive ideal output0V through its50ohm, never open circuit",
+      "nx": 102,
+      "h_m": 0.0004901960784313725,
+      "layers_m": [
+        0.0001,
+        0.005,
+        0.005,
+        0.015
+      ],
+      "evaluation_layer_counts": [
+        4,
+        19,
+        18,
+        56
+      ],
+      "XY_nodes": 8184,
+      "evaluation_cells": 793848,
+      "max_physical_evaluation_cells": 800000,
+      "numerical_child_timeout_seconds": 600,
+      "CPU_limit": 4,
+      "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+      "field_ABI": "potential and analytic downward normal current only; no old half-face E ABI or TIS metric",
+      "physical_top_contact": "g_patch=patchArea/z_specific; analytic SC includes its whole0.1mm; no extra SC half-cell",
+      "reconstruction_depth_block": 8,
+      "diagonal_column_block": 128,
+      "candidate_adopted": false
+    },
+    "gmres": {
+      "rtol": 1e-12,
+      "atol": 0.0,
+      "restart": 80,
+      "max_outer_iterations": 40,
+      "callback_type": "pr_norm",
+      "preconditioner": "diagonal h2 sum_j Qij squared Yj plus physical contact conductance; two metal diagonal sums plus1/50"
+    },
+    "gates": {
+      "relative_algebraic_residual": 2e-07,
+      "relative_loaded_current_residual": 2e-07,
+      "relative_all_pad_KCL": 2e-06,
+      "relative_output_pad_current": 2e-06,
+      "relative_complex_power_error": 2e-07,
+      "relative_transfer_reciprocity": 2e-07,
+      "passivity_absolute_floor_W": 1e-14,
+      "passivity_relative_allowance": 1e-12,
+      "current_absolute_floor_A": 1e-12,
+      "power_absolute_floor_W": 1e-12
+    },
+    "admission_sha256": "658bdc6fadc9fa9680a9f19ed9b5a6476f6f9563b1a9e70d95b5a083fd4f93e8",
+    "phase1_commit": "ea11fdd9198a7e0c82d91d87f594a5063087486a",
+    "phase1_summary_sha256": "33e6585e3ff2c797a8fb3cb42040d252dfe5da1aa848aa3817feb2747b538cd4",
+    "phase1_arrays_sha256": "f69596f7b38a9063489963588fcbf3861e4a2e78c13179cff8e422c034b73525",
+    "cache_manifest_sha256": "26da99d7edfcb24a418ab56e1091bab5cb156eccd998653631d5852108c683aa",
+    "phase1_summary_path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/summary.json",
+    "phase1_cache_directory": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache",
+    "phase1_kernel_sha256": "7ff50b6b30198abe4d2cfc5f4ac4fa2afa0873f040ca23175f0e881fb22e1d08",
+    "coarse_reference_commit": "e4c09902bf529b4111c006dd4b4fb6681ca81252",
+    "coarse_reference_run": "/dev/shm/task1-layer-dtn-cem-20261025-run",
+    "coarse_reference_summary_path": "/dev/shm/task1-layer-dtn-cem-20261025-run/reference-summary.json",
+    "coarse_reference_arrays_path": "/dev/shm/task1-layer-dtn-cem-20261025-run/reference-arrays.npz",
+    "material_rows": [
+      {
+        "layer": "sc",
+        "sigma_S_m": 5.959456590514033e-06,
+        "epsilon_r": 225.18780331254555,
+        "gamma_S_m": {
+          "real": 5.959456590514033e-06,
+          "imaginary": 2.5055522184188793e-05
+        }
+      },
+      {
+        "layer": "dermis",
+        "sigma_S_m": 0.29312219368408116,
+        "epsilon_r": 870716.5653512729,
+        "gamma_S_m": {
+          "real": 0.29312219368408116,
+          "imaginary": 0.0968802834717473
+        }
+      },
+      {
+        "layer": "fat",
+        "sigma_S_m": 0.1968291518398069,
+        "epsilon_r": 10307.859184332388,
+        "gamma_S_m": {
+          "real": 0.1968291518398069,
+          "imaginary": 0.001146904009299627
+        }
+      },
+      {
+        "layer": "muscle",
+        "sigma_S_m": 0.2516252154881487,
+        "epsilon_r": 168024.57464128954,
+        "gamma_S_m": {
+          "real": 0.2516252154881487,
+          "imaginary": 0.01869525522912356
+        }
+      }
+    ],
+    "material_receipt_sha256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+    "contact_receipt_sha256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+    "actual_U19_provenance_config_sha256": "a20334ff9788323b065c89968cd18d764e813beb4017879bdc390f19a4db6445",
+    "pad_rectangles_mm": {
+      "0": [
+        -17.5,
+        -2.5,
+        -17.5,
+        -2.5
+      ],
+      "1": [
+        2.5,
+        17.5,
+        2.5,
+        17.5
+      ],
+      "2": [
+        2.5,
+        17.5,
+        -17.5,
+        -2.5
+      ],
+      "3": [
+        -17.5,
+        -2.5,
+        2.5,
+        17.5
+      ]
+    },
+    "mask_path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask.csv",
+    "mask_sha256": "04ef856c91caac24557892a46d17447af71ee12d647dfa2fa01fa00af4c7e1c7",
+    "mask_receipt_path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/fine-mask-receipt.json",
+    "mask_receipt_sha256": "90fd7c33836314c2f4a56b7316df75e2ceb934faf033731bbc1793bb3dbcd3db",
+    "contact_specific_impedance_ohm_m2": {
+      "real": 5.5504758759767015e-05,
+      "imaginary": -0.00012307933145190832
+    },
+    "z_faces_path": "/dev/shm/task1-layer-dtn-xy102-cem-20261025-run/evaluation-z-faces.json",
+    "z_faces_sha256": "63ebdd16015232bd3ae10b9e90010906eea232fff9d7101f0f983afd814719da",
+    "phi_ref_evaluation_grid_receipt_sha256": "63ebdd16015232bd3ae10b9e90010906eea232fff9d7101f0f983afd814719da",
+    "phi_ref_cell_order": "fine97depthplanes/z outer; fine j then i XY inside circle; xy_mm defines fineQ order; cell_index=z_index*8184+xy_index; NOT old native indices",
+    "phasor_convention": "peak complex exp(+j*omega*t); source1Vpp high-impedance convention=.5Vpeak before50ohm",
+    "power_convention": "S=.5 V conj(I); tissue S=.5 integral conj(gamma)|E|^2, positive real dissipation and capacitive reactive imaginary negative",
+    "comparison_scope": "NEW XY102 graph/physical fractional mask CEM, same physical polygons/material/contact/circuit; any coarse comparison requires separately registered physical projection/quadrature, never node-index subtraction",
+    "old_independent_QA_limit": 0.05,
+    "old_failed_QA_preserved": true,
+    "experimental_validation": false
+  },
+  "actual_new_CEM_conditions": 1,
+  "actual_new_CEM_RHS": 2,
+  "actual_new_native_FVM_RHS": 0,
+  "condition_frequency_Hz": 2000,
+  "physical_gates_passed": true,
+  "linear_solve_proofs": [
+    {
+      "basis": 0,
+      "gmres_info": 0,
+      "inner_iterations": 15,
+      "preconditioned_callback_history": [
+        0.5967788874756174,
+        0.5967781024220374,
+        0.5962018717817327,
+        0.2467081168271302,
+        0.007293828801934562,
+        0.0059934153020397484,
+        0.00044898307120234867,
+        0.0004473900441527985,
+        0.0003078481423179969,
+        1.1740619372862375e-05,
+        2.968480020498202e-07,
+        8.117274602159033e-09,
+        2.133306011550881e-10,
+        5.8382524466831256e-12,
+        4.693596035277605e-13
+      ],
+      "wall_seconds": 0.7336595679953462,
+      "physical_gates": {
+        "passed": true,
+        "rows": [
+          {
+            "metric": "relative_algebraic_residual",
+            "value": 2.5946626633458618e-14,
+            "limit": 2e-07,
+            "passed": true
+          },
+          {
+            "metric": "relative_loaded_current_residual",
+            "value": 1.1051429199923941e-11,
+            "limit": 2e-07,
+            "passed": true
+          },
+          {
+            "metric": "relative_all_pad_KCL",
+            "value": 9.003978541837786e-12,
+            "limit": 2e-06,
+            "passed": true
+          },
+          {
+            "metric": "relative_output_pad_current",
+            "value": 1.1568241395116396e-11,
+            "limit": 2e-06,
+            "passed": true
+          },
+          {
+            "metric": "relative_complex_power_error",
+            "value": 7.434022637672801e-12,
+            "limit": 2e-07,
+            "passed": true
+          }
+        ]
+      },
+      "loaded_current_scale_A": 2.3465638795968822e-05,
+      "current_absolute_floor_A": 1e-12,
+      "source_RHS_norm_A": 0.01,
+      "passivity_passed": true,
+      "negative_real_power_allowance_W": 1.0005547228993647e-14,
+      "layer_complex_power_W": [
+        {
+          "real": 1.2835997311413677e-06,
+          "imaginary": -5.396676869905212e-06
+        },
+        {
+          "real": 2.23459166091695e-08,
+          "imaginary": -7.3855845179216396e-09
+        },
+        {
+          "real": 6.728697760747454e-09,
+          "imaginary": -3.920745665483294e-11
+        },
+        {
+          "real": 4.922132864517384e-09,
+          "imaginary": -3.6570472476413513e-10
+        }
+      ],
+      "source_complex_power_W": {
+        "real": 1.3314446859744035e-06,
+        "imaginary": -5.4046498686745965e-06
+      },
+      "contact_complex_power_W": {
+        "real": 8.230246231836488e-11,
+        "imaginary": -1.8250204604677654e-10
+      },
+      "source_resistor_power_W": 1.3765905102571926e-08,
+      "source_current_A": [
+        {
+          "real": 5.325778743897614e-06,
+          "imaginary": 2.1618599474698386e-05
+        },
+        {
+          "real": -1.8066233086605043e-06,
+          "imaginary": -7.186414533486129e-06
+        }
+      ],
+      "all_pad_outward_tissue_to_metal_current_A": [
+        {
+          "real": -5.325778743971728e-06,
+          "imaginary": -2.161859947494506e-05
+        },
+        {
+          "real": 1.806623308681219e-06,
+          "imaginary": 7.186414533468953e-06
+        },
+        {
+          "real": 1.7595777175408577e-06,
+          "imaginary": 7.216092470567551e-06
+        },
+        {
+          "real": 1.7595777175405447e-06,
+          "imaginary": 7.2160924705664535e-06
+        }
+      ],
+      "passed": true,
+      "interpretation": "Fresh unpreconditioned residual against both0.01A source RHS and loaded tissue-current scale; independent current/power gates. No old5percent interface flag cleared."
+    },
+    {
+      "basis": 1,
+      "gmres_info": 0,
+      "inner_iterations": 37,
+      "preconditioned_callback_history": [
+        0.5967788874756175,
+        0.5967781024220374,
+        0.5962018717817327,
+        0.24670811682702257,
+        0.007293828801936911,
+        0.0059934153020415005,
+        0.00044898307120234927,
+        0.0004473900441528043,
+        0.0003078481423180484,
+        1.1740619372871502e-05,
+        2.9684800205042177e-07,
+        8.117274626963804e-09,
+        2.1333154452172674e-10,
+        5.872622110995553e-12,
+        7.891750532997575e-13,
+        7.755594596003685e-13,
+        7.755495546280962e-13,
+        7.755495485463665e-13,
+        7.75549548541836e-13,
+        7.755495485418331e-13,
+        7.755495485418308e-13,
+        7.755495485384755e-13,
+        7.755495439838124e-13,
+        7.755431580837925e-13,
+        7.654777987961719e-13,
+        6.63421568663707e-13,
+        6.626906035067992e-13,
+        6.626900444777813e-13,
+        6.626900441205758e-13,
+        6.626900441203124e-13,
+        6.626900441203122e-13,
+        6.626900441203057e-13,
+        6.626900441117105e-13,
+        6.62690031698104e-13,
+        6.626718755182809e-13,
+        6.405254614723196e-13,
+        5.548828731582834e-13
+      ],
+      "wall_seconds": 1.7968597010039957,
+      "physical_gates": {
+        "passed": true,
+        "rows": [
+          {
+            "metric": "relative_algebraic_residual",
+            "value": 2.3478642358134255e-14,
+            "limit": 2e-07,
+            "passed": true
+          },
+          {
+            "metric": "relative_loaded_current_residual",
+            "value": 1.0005718313295453e-11,
+            "limit": 2e-07,
+            "passed": true
+          },
+          {
+            "metric": "relative_all_pad_KCL",
+            "value": 3.488617225263304e-13,
+            "limit": 2e-06,
+            "passed": true
+          },
+          {
+            "metric": "relative_output_pad_current",
+            "value": 3.1606556838763865e-11,
+            "limit": 2e-06,
+            "passed": true
+          },
+          {
+            "metric": "relative_complex_power_error",
+            "value": 2.785728758438066e-12,
+            "limit": 2e-07,
+            "passed": true
+          }
+        ]
+      },
+      "loaded_current_scale_A": 2.3465638795842537e-05,
+      "current_absolute_floor_A": 1e-12,
+      "source_RHS_norm_A": 0.01,
+      "passivity_passed": true,
+      "negative_real_power_allowance_W": 1.0005547228993647e-14,
+      "layer_complex_power_W": [
+        {
+          "real": 1.2835997311414635e-06,
+          "imaginary": -5.3966768699056165e-06
+        },
+        {
+          "real": 2.234591660917128e-08,
+          "imaginary": -7.385584517922222e-09
+        },
+        {
+          "real": 6.7286977607480985e-09,
+          "imaginary": -3.920745665483668e-11
+        },
+        {
+          "real": 4.9221328645179176e-09,
+          "imaginary": -3.657047247641747e-10
+        }
+      ],
+      "source_complex_power_W": {
+        "real": 1.3314446859513663e-06,
+        "imaginary": -5.404649868639801e-06
+      },
+      "contact_complex_power_W": {
+        "real": 8.230246231593961e-11,
+        "imaginary": -1.8250204604139865e-10
+      },
+      "source_resistor_power_W": 1.376590510242376e-08,
+      "source_current_A": [
+        {
+          "real": -1.8066233085458071e-06,
+          "imaginary": -7.186414533589589e-06
+        },
+        {
+          "real": 5.325778743805465e-06,
+          "imaginary": 2.1618599474559205e-05
+        }
+      ],
+      "all_pad_outward_tissue_to_metal_current_A": [
+        {
+          "real": 1.80662330870876e-06,
+          "imaginary": 7.186414533421367e-06
+        },
+        {
+          "real": -5.3257787438017256e-06,
+          "imaginary": -2.1618599474544775e-05
+        },
+        {
+          "real": 1.759577717540507e-06,
+          "imaginary": 7.216092470567087e-06
+        },
+        {
+          "real": 1.7595777175402707e-06,
+          "imaginary": 7.216092470565951e-06
+        }
+      ],
+      "passed": true,
+      "interpretation": "Fresh unpreconditioned residual against both0.01A source RHS and loaded tissue-current scale; independent current/power gates. No old5percent interface flag cleared."
+    }
+  ],
+  "reciprocity": {
+    "relative_error": 2.0845401621434256e-11,
+    "limit": 2e-07,
+    "passed": true
+  },
+  "matvec_count": 54,
+  "cache_reuse": {
+    "manifest_sha256": "26da99d7edfcb24a418ab56e1091bab5cb156eccd998653631d5852108c683aa",
+    "complete_before_after_SHA_verified": true,
+    "records": [
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-00000-00512.f64le",
+        "SHA256": "8986e02c5f9055bf7cd70f8c8ba47c23003cf1a4434305fa80e037f279e9e724",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-00512-01024.f64le",
+        "SHA256": "9333a5655ac3afb2b51a70adb17534863c0c0a85f96f69b90dd4617fe4304021",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-01024-01536.f64le",
+        "SHA256": "2e739126ad89c48b0164c5706b49351192462e8ede1fd09a0061908acf095549",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-01536-02048.f64le",
+        "SHA256": "324af981f4e9eb4259e7c830bec07d65a48e628e3c4bd43f381826704fd6a815",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-02048-02560.f64le",
+        "SHA256": "275af975d4c233c1d7a3850d4d23b35af58f08f5087eb139ad345e759211deef",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-02560-03072.f64le",
+        "SHA256": "48f05a58a26139b910ace4108926235deef4bf010aad36d06736e5032bb67bdd",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-03072-03584.f64le",
+        "SHA256": "955cc4e01f11c0844de83c6412b9dc2240b67e1f03f04b1c7105cffdbcf92643",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-03584-04096.f64le",
+        "SHA256": "53d3c72cd9d2c4de5fde3d40830ffaec0237e8b53ee0d91dc5f7bcccee2bbfa5",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-04096-04608.f64le",
+        "SHA256": "d0b8f198e093e5548fe8779e289b899cbf576ded29b8b0cc2ec4bf37001ff5e6",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-04608-05120.f64le",
+        "SHA256": "2c9dd174f13153ff8da59da83ccbb64b13331b35e03fcc918b2eb73f680ae0db",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-05120-05632.f64le",
+        "SHA256": "18a8d62cae65a5ef768d9ddf140bea62ed397c7a3ccf93f97cae3812b6ed51bd",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-05632-06144.f64le",
+        "SHA256": "89aca082586a4fe02e7953d66efff8305da1c632e5a9c629363312db1282d067",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-06144-06656.f64le",
+        "SHA256": "cdbbb8fe4b721e89734fa9dedd857a3200818c60ec683423da125f7972341c43",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-06656-07168.f64le",
+        "SHA256": "f2ea54b63e966ad9c8be011900f1f67568dd4d0bf576992d4c3e700b97ed1a79",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-07168-07680.f64le",
+        "SHA256": "d7cdf4eb8e60f871e7bf1dbd0f5469859a2c05cf671581f1b7a468d30ce94208",
+        "bytes": 33521664,
+        "before_passed": true,
+        "after_passed": true
+      },
+      {
+        "path": "/dev/shm/task1-layer-dtn-xy102-20261025-run/eigen-cache/Q-cols-07680-08184.f64le",
+        "SHA256": "d54e999f38aa92472f8da9606336a5885181f78c4b7ac59b5782dbc06722455a",
+        "bytes": 32997888,
+        "before_passed": true,
+        "after_passed": true
+      }
+    ],
+    "local_cache_remote_durability_unverified": true,
+    "no_new_eigen_run": true
+  },
+  "numerical_method": {
+    "scipy_version": "1.17.0",
+    "numpy_version": "2.3.5",
+    "complex_symmetric_not_Hermitian": true,
+    "solver": "matrix-free scipy GMRES",
+    "diagonal_preconditioner": true,
+    "no_complex_dense_Q_or_K": true
+  },
+  "reference_array_ABI": {
+    "phi_ref": "complex128 peak V shape[basis=2,cell=793848] FINE97plane z-major/j/i order; not coarse indices",
+    "interface_J": "complex128 peak downward A/m2 shape[basis=2,interface=3,xy=8184],xy_mm explicitly defines order",
+    "interface_depths_mm": [
+      0.1,
+      5.1,
+      10.1
+    ],
+    "contact_current": "metal to tissue peak A; contact J=current/actual_patch_area",
+    "source_current": "ideal source to output through50ohm peak A axes[basis,output]",
+    "layer_complex_power": "S=VI*/2; conj(gamma) energy, negative capacitive reactive part; no silent absolute value or clipping",
+    "phi_ref_evaluation_grid_receipt_sha256": "63ebdd16015232bd3ae10b9e90010906eea232fff9d7101f0f983afd814719da",
+    "phi_ref_cell_order": "fine97depthplanes/z outer; fine j then i XY inside circle; xy_mm defines fineQ order; cell_index=z_index*8184+xy_index; NOT old native indices"
+  },
+  "wall_seconds": 7.910897317997296,
+  "cpu_process_seconds": 22.109947351000002,
+  "holds": {
+    "old_5percent_independent_interface_failures_preserved": true,
+    "continuousz_conditional_on_fixed_XY": true,
+    "full_SC_XY_bulk_edge_contact_convergence": false,
+    "material_contact_hardware_experiment_validated": false,
+    "candidate_adopted": false,
+    "TIS_from_one_carrier": false,
+    "old_native_E_ABI_not_exported": true,
+    "analytic_Ez_not_yet_exported": true,
+    "Windows_saved_verified": false
+  }
+}
