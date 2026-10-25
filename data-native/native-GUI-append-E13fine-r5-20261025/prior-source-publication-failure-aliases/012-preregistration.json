@@ -1,0 +1,79 @@
+{
+  "schema": "task1-append-R4-source-readback-recovery-plan-v1",
+  "fixed_commit": "f49035410f1a41f90452238ed968b8fcca1110d6",
+  "expected_parent": "c6c72a5257b313df34fed42b43d559c8aab11a95",
+  "plan_SHA256": "a6fa45fe7e08f29086f294ff49a554e0d5bbe3c0c0a5a05a163eed49b96de890",
+  "original_failed_owner": {
+    "schema": "task1-native-GUI-append-E13fine-owner-v1",
+    "status": "failed_preserved",
+    "started_utc": "2026-10-25T18:42:52.309957+00:00",
+    "pid": 221506,
+    "proc_start_ticks": 8539912,
+    "new_PDE_RHS": 0,
+    "new_Q_loads": 0,
+    "new_angular_evaluations": 0,
+    "GUI_generated": false,
+    "Windows_saved_verified": false,
+    "candidate_adopted": false,
+    "error_type": "ValueError",
+    "error": "Finite child failed source-publication; preserve log /workspace/ngg-tis-task1/runtime/native-GUI-append-E13fine-r4-20261025-run/logs/1-source-publication.log",
+    "failed_phase": "source-publication",
+    "resource_checkpoint_summary": {
+      "last_requested_monotonic": 85476.480619981,
+      "accounting_age_at_request_seconds": 0.0011324310034979135,
+      "last_request_forced": false,
+      "observed_aggregate_bytes": 7709928374,
+      "accounting_started_monotonic": 85475.820923442,
+      "accounting_finished_monotonic": 85476.47948755,
+      "accounting_duration_seconds": 0.6585641079873312,
+      "last_completed_monotonic": 85476.47948755,
+      "safe_scan_count": 81,
+      "cache_hits": 3
+    },
+    "finished_utc": "2026-10-25T18:44:09.698028+00:00",
+    "elapsed_seconds": 77.3831751980033,
+    "nonduplicated_ledger_seconds": 2.6378701100038597,
+    "resources": {
+      "peak_RSS": 72822784,
+      "peak_owned_tmpfs": 7676287926,
+      "peak_accounted": 7748614603,
+      "peak_task_shm_bytes": 7676273585,
+      "peak_task_tmp_aux_bytes": 14341
+    },
+    "remaining_approved_seconds": null
+  },
+  "original_failed_publisher": {
+    "schema": "task1-Git-only-attempt-v1",
+    "status": "failed_preserved",
+    "attempt": 1,
+    "started_utc": "2026-10-25T18:42:54.093121+00:00",
+    "stage_cap_seconds": 300,
+    "new_PDE": 0,
+    "REST_required": false,
+    "cumulative_time_unlimited": true,
+    "batch_blob_prefetch": {
+      "unique_blob_count": 61,
+      "want_list_SHA256": "5137a8ca731be91725652709cc132676d5d0503493abea0e081834a4974239f4",
+      "returncode": 1,
+      "unsupported_fallback": false,
+      "all_per_file_readback_checks_retained": true
+    },
+    "error_type": "ValueError",
+    "error": "Batch fetch failed for a reason other than unsupported blob wants; preserve failure, no transport/auth fallback",
+    "recorded_commit": "f49035410f1a41f90452238ed968b8fcca1110d6",
+    "push_attempted": true,
+    "push_confirmed": true,
+    "finished_utc": "2026-10-25T18:44:08.854382+00:00",
+    "elapsed_seconds": 74.74530508799944,
+    "remaining_approved_seconds": null,
+    "resources": {
+      "peak_RSS": 42127360,
+      "peak_owned_tmpfs": 7676271800,
+      "peak_accounted": 7718399017
+    }
+  },
+  "verifier_source_UTF8": "\"\"\"Read-only, finite verification of an already-pushed GUI partial result.\"\"\"\nimport hashlib, importlib.util, json, os, signal, subprocess, sys, threading, time\nfrom pathlib import Path\n\nsys.dont_write_bytecode = True\nROOT = Path('/workspace/ngg-tis-task1')\nOLD = ROOT/'runtime/native-GUI-append-E13fine-r4-20261025-run'\nOUT = ROOT/'runtime/append-r4-source-readback-recovery-20261025-run'\nTRANSPORT = Path('/dev/shm/task1-git-native-GUI-append-E13fine-r4-source-20261025')\nPUB = Path('/dev/shm/task1-git-verified-20261025-r3/source/git_publish_verified.py')\nOBSERVER = Path('/dev/shm/task1-floating-synthetic-owner-20261025/source/resource_scope.py')\nCHECKPOINT = Path('/dev/shm/task1-verified-transport-retirement-20261025-seventh.py')\nCOMMIT = 'f49035410f1a41f90452238ed968b8fcca1110d6'\nPARENT = 'c6c72a5257b313df34fed42b43d559c8aab11a95'\nURL = 'https://github.com/yoodohyun-codex-cloud/ngg-tis-task1.git'\nBRANCH = 'codex/task1-cloud-restart-20261020'\nCAP = 900\nsys.path[:0] = [str(ROOT/'tools'), str(OBSERVER.parent)]\nimport task1_bounded_continuation as b\nimport task1_execution_policy as ep\nimport task1_resource_policy as budget\nimport resource_scope\n\ndef sha(p):\n    h = hashlib.sha256()\n    with Path(p).open('rb') as stream:\n        for chunk in iter(lambda: stream.read(1048576), b''): h.update(chunk)\n    return h.hexdigest()\n\ndef new(p, data):\n    with Path(p).open('x') as stream:\n        json.dump(data, stream, ensure_ascii=False, allow_nan=False, indent=2)\n\ndef size(p):\n    try:\n        if p.is_file(): return p.stat().st_size\n    except FileNotFoundError: return 0\n    total = 0\n    for item in p.rglob('*'):\n        try:\n            if item.is_file(): total += item.stat().st_size\n        except FileNotFoundError: continue\n    return total\n\ndef main():\n    assert sha(PUB) == 'e29f03472c430598d9b7599eee28416b3453653b977a00c3d1999fa363f75f45'\n    assert sha(OBSERVER) == '6c09a7cd06fed12a2e9950cc921242ef12c2a4ae999e9645ae7953d732d7873e'\n    assert sha(CHECKPOINT) == '9267e662044297da1b92e4201339a930209f07a34270995b4f4724af9bc4dae5'\n    spec = importlib.util.spec_from_file_location('checkpoint', CHECKPOINT)\n    sampler = importlib.util.module_from_spec(spec); spec.loader.exec_module(sampler)\n    with b.dual_lock(ROOT/'.task1-queue-owner.lock'), b.dual_lock(ROOT/'.task1-loop.lock'), b.dual_lock(ROOT/'.task1-execution.lock'):\n        assert not OUT.exists(); OUT.mkdir(); (OUT/'tmp').mkdir()\n        limits = ep.resolve_limits(); ep.configure_process(limits)\n        assert limits['cpu_limit'] == 4 and limits['total_memory_bytes'] == 8000000000\n        old = json.loads((OLD/'receipt.json').read_text())\n        assert old['status'] == 'failed_preserved' and old['failed_phase'] == 'source-publication'\n        assert not b.live(old['pid'], old['proc_start_ticks'])\n        attempt = json.loads((TRANSPORT/'attempt-1.json').read_text())\n        state = json.loads((TRANSPORT/'transport-state.json').read_text())\n        plan = json.loads((OLD/'source-plan.json').read_text())\n        assert attempt['push_confirmed'] is True and attempt['recorded_commit'] == COMMIT\n        assert state['commit'] == COMMIT and state['push_confirmed'] is True and plan['expected_parent'] == PARENT\n        assert not (OLD/'source-publication/result-publication.json').exists()\n        pid = os.getpid(); ticks = b.ticks(pid); started = time.monotonic()\n        owned = {pid: ticks}; remembered = {}; cache = {}; mutex = threading.RLock(); stop = threading.Event()\n        record = dict(schema='task1-append-R4-source-readback-recovery-v1', status='failed_preserved', pid=pid,\n                      proc_start_ticks=ticks, source_commit=PARENT, result_commit=COMMIT,\n                      original_GUI_owner_status=old['status'], original_GUI_owner_receipt_SHA256=sha(OLD/'receipt.json'),\n                      new_PDE=0, new_native_array_decodes=0, GUI_generated=False,\n                      original_GUI_worker_failure_retained=True, old_owner_rewritten=False,\n                      Windows_saved_verified=False, branch_mutations=0, cap_seconds=CAP)\n        new(OUT/'preregistration.json', dict(schema='task1-append-R4-source-readback-recovery-plan-v1', fixed_commit=COMMIT,\n            expected_parent=PARENT, plan_SHA256=sha(OLD/'source-plan.json'), original_failed_owner=old,\n            original_failed_publisher=attempt, verifier_source_UTF8=Path(__file__).read_text(),\n            verifier_source_SHA256=sha(__file__), new_PDE=0, branch_mutations=0))\n        def measure():\n            live = b.owned_descendants(pid, ticks, dict(owned)); owned.update(live)\n            obs = resource_scope.observe(live, b.ticks, remembered); remembered.update(obs['members'])\n            return obs, dict(total_bytes=sum(size(p) for base in ('/dev/shm','/tmp') for p in Path(base).glob('task1-*')))\n        def guard(force=False):\n            with mutex:\n                # The audited sampler's600s finite accounting deadline is stricter than the outer900s watchdog.\n                return sampler.resource_checkpoint(cache, time.monotonic, started, measure, 8000000000, force)\n        def interrupted(*_): raise TimeoutError('Finite readback watchdog or actual resource guard')\n        def monitor():\n            while not stop.wait(.25):\n                try: guard()\n                except BaseException as error:\n                    record['monitor_error'] = str(error); os.kill(pid, signal.SIGTERM); return\n        handlers = {s: signal.getsignal(s) for s in (signal.SIGALRM, signal.SIGTERM, signal.SIGINT)}\n        for s in handlers: signal.signal(s, interrupted)\n        signal.alarm(CAP); thread = threading.Thread(target=monitor, daemon=True); thread.start()\n        gitdir = OUT/'verify.git'; env = dict(os.environ, TMPDIR=str(OUT/'tmp'), GIT_OPTIONAL_LOCKS='0')\n        def git(args, body=None, optional=False):\n            guard()\n            command = ['git','-c','credential.helper=!gh auth git-credential','-c','gc.auto=0','-c','pack.threads=4','--git-dir='+str(gitdir)] + args\n            result = subprocess.run(command, input=body, stdout=subprocess.PIPE, stderr=subprocess.PIPE,\n                                    env=env, timeout=min(180, max(.01, 590-(time.monotonic()-started))))\n            if result.returncode and not optional: raise RuntimeError(result.stderr.decode(errors='replace')[-2000:])\n            return result\n        try:\n            guard(True)\n            subprocess.run(['git','init','--bare',str(gitdir)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)\n            git(['remote','add','origin',URL]); git(['fetch','--no-tags','--depth=1','--filter=blob:none','origin',COMMIT])\n            assert not (gitdir/'objects/info/alternates').exists()\n            headers = git(['cat-file','-p',COMMIT]).stdout.split(b'\\n\\n',1)[0].decode().splitlines()\n            assert [s[7:] for s in headers if s.startswith('parent ')] == [PARENT]\n            tree = git(['rev-parse',COMMIT+'^{tree}']).stdout.decode().strip(); assert tree == state['tree']\n            entries = {}\n            for row in git(['ls-tree','-r','-z',COMMIT]).stdout.split(b'\\0'):\n                if row:\n                    info, name = row.split(b'\\t',1); entries[name.decode()] = tuple(info.decode().split())\n            records = state['records']; assert {r['target'] for r in records} == set(plan['files'])\n            for row in records: assert entries[row['target']] == ('100644','blob',row['Git_blob_SHA'])\n            # One remote request for all explicitly wanted blobs avoids repeated lazy-fetch latency.\n            wanted = '\\n'.join(sorted({r['Git_blob_SHA'] for r in records}))+'\\n'\n            prefetched = git(['fetch','--no-tags','--no-filter','--stdin','origin'], wanted.encode(), optional=True)\n            new(OUT/'batch-prefetch.json', dict(returncode=prefetched.returncode, blobs=len(wanted.splitlines()),\n                explicit_no_filter=True, stderr=prefetched.stderr.decode(errors='replace')[-2000:]))\n            assert prefetched.returncode == 0, 'Explicit-no-filter batch request failed; preserve diagnostics, no silent fallback'\n            proof = {}\n            for index, row in enumerate(records):\n                raw = git(['cat-file','blob',row['Git_blob_SHA']]).stdout; expected = plan['files'][row['target']]\n                assert len(raw) == row['bytes'] == expected['bytes']\n                assert hashlib.sha256(raw).hexdigest() == row['SHA256'] == expected['SHA256']\n                proof[row['target']] = dict(SHA256=row['SHA256'], bytes=row['bytes'], Git_blob_SHA=row['Git_blob_SHA'],\n                    readback_passed=True, proof_kind='fresh_separate_remote_Git_readback_recovery_full_blob')\n                del raw\n            observed = git(['ls-remote','origin','refs/heads/'+BRANCH]).stdout.decode().split()[0]\n            if observed != COMMIT:\n                git(['fetch','--no-tags','--depth=64','--filter=blob:none','origin','refs/heads/'+BRANCH])\n                assert git(['merge-base','--is-ancestor',COMMIT,observed], optional=True).returncode == 0\n            result = dict(status='published_readback_verified', commit=COMMIT, files=proof,\n                expected_parent=PARENT, tree=tree, remote_branch_head_verified=observed, new_PDE=0,\n                transport='supported_Git_HTTPS_readback_only_recovery', verification_source_SHA256=sha(__file__),\n                original_publisher_attempt_preserved=True, no_new_commit_or_push=True)\n            new(OLD/'source-publication/result-publication.json', result)\n            new(OUT/'result-publication.json', result)\n            guard(True); record.update(status='append_R4_source_readback_recovered', files_verified=len(proof),\n                result_publication_receipt_SHA256=sha(OLD/'source-publication/result-publication.json'))\n        except BaseException as error:\n            record.update(error_type=type(error).__name__, error=str(error)); raise\n        finally:\n            signal.alarm(0); stop.set(); thread.join(timeout=2)\n            for child, tick in b.owned_descendants(pid,ticks,dict(owned)).items():\n                if child != pid and b.live(child,tick):\n                    try: os.kill(child,signal.SIGKILL)\n                    except ProcessLookupError: pass\n            elapsed = time.monotonic()-started; ledger = budget.load_ledger(); ledger['spent_seconds'] += elapsed\n            ledger['runs'].append(dict(run_id=OUT.name, stage='read_only_append_R4_source_publication_recovery', seconds=elapsed, status=record['status'], new_PDE=0))\n            tmp = ROOT/'runtime'/('budget-append-R4-source-readback-'+str(pid)+'.tmp'); new(tmp,ledger); os.replace(tmp,ROOT/'runtime/task1-budget.json')\n            record.update(elapsed_seconds=elapsed, finished_utc=b.now())\n            new(OUT/'receipt.json',record)\n            for s,h in handlers.items(): signal.signal(s,h)\n            print(json.dumps({k:v for k,v in record.items() if k not in ('limits',)}))\n\nif __name__ == '__main__': main()\n",
+  "verifier_source_SHA256": "bbef461b28839471bc2cc27db090df0c7e36fe71f7a67f334ddcf8003840eb0c",
+  "new_PDE": 0,
+  "branch_mutations": 0
+}

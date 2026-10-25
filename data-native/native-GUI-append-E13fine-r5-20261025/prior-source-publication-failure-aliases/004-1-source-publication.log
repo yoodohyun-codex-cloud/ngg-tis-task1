@@ -1,0 +1,11 @@
+{"schema": "task1-Git-only-attempt-v1", "status": "failed_preserved", "attempt": 1, "started_utc": "2026-10-25T18:42:54.093121+00:00", "stage_cap_seconds": 300, "new_PDE": 0, "REST_required": false, "cumulative_time_unlimited": true, "batch_blob_prefetch": {"unique_blob_count": 61, "want_list_SHA256": "5137a8ca731be91725652709cc132676d5d0503493abea0e081834a4974239f4", "returncode": 1, "unsupported_fallback": false, "all_per_file_readback_checks_retained": true}, "error_type": "ValueError", "error": "Batch fetch failed for a reason other than unsupported blob wants; preserve failure, no transport/auth fallback", "recorded_commit": "f49035410f1a41f90452238ed968b8fcca1110d6", "push_attempted": true, "push_confirmed": true, "finished_utc": "2026-10-25T18:44:08.854382+00:00", "elapsed_seconds": 74.74530508799944, "remaining_approved_seconds": null, "resources": {"peak_RSS": 42127360, "peak_owned_tmpfs": 7676271800, "peak_accounted": 7718399017}}
+Traceback (most recent call last):
+  File "/workspace/ngg-tis-task1/runtime/git-verified-batchfetch-20261025/source/git_publish_verified.py", line 302, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/ngg-tis-task1/runtime/git-verified-batchfetch-20261025/source/git_publish_verified.py", line 254, in main
+    require(prefetched is not None or batch['unsupported_fallback'],'Batch fetch failed for a reason other than unsupported blob wants; preserve failure, no transport/auth fallback')
+  File "/workspace/ngg-tis-task1/runtime/git-verified-batchfetch-20261025/source/git_publish_verified.py", line 24, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Batch fetch failed for a reason other than unsupported blob wants; preserve failure, no transport/auth fallback
