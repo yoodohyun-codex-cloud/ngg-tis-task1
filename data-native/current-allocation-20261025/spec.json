@@ -1,0 +1,62 @@
+{
+  "schema": "task1-relative-current-allocation-spec-v1",
+  "input_sha256": {
+    "/dev/shm/task1-design-screen-coarse-20261025-run/result-publication/result-publication.json": "d20f3fd6157436c7bcbe626c056377aa5fbc83e4c05fa92acdb1108f86539159",
+    "/dev/shm/task1-multipad-extension-20261025-run/result-publication/result-publication.json": "bbc67386d2dcefbf910a6d6f5698a99c7d852ef14803a417a8d0e5ae90922640",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/summary.json": "1a05816b0358ecf1f6f31590c90ffb3bc7552c3b60c7a9828b1a999bf5337422",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/common-grid-and-ROI.npz": "f88e921b2d2877482ff368f39e52fea2bd4217fb70037072cda96892b5891d6b",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/candidates/B0-square15-c10-diagonal-scalars.npz": "b1d33c6875ae54a38468473c2f7b163bc9ad3777d1fc314ee4827a4ed196634f",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/rhs/B0-square15-c10-diagonal-2000-raw.npz": "22bc744bf44d42d5d0dae9ea87daf4ac527be43f8343d485125b03d05d65372a",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/rhs/B0-square15-c10-diagonal-2010-raw.npz": "b68ffffd610ebe11de4c0f4ba629a5d7cba25d809848cfd256ebf7d1077c3252",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/candidates/G3-square16-c9p5-diagonal-scalars.npz": "48203d0331231dbc6f89775486235193b62437cad6411a184ba98008f8df6bf1",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/rhs/G3-square16-c9p5-diagonal-2000-raw.npz": "6ac74434d5b098551896466c0a030a5c7fcc8fe143a9cc1c8049d96ff3b32bad",
+    "/dev/shm/task1-design-screen-coarse-20261025-run/rhs/G3-square16-c9p5-diagonal-2010-raw.npz": "cfd7a6e5abc2143d4e19f1d9fa19d265dcbd8783ae4efeeabfd7e056daea96b2"
+  },
+  "first8_result_commit": "4d6207caa60ae16ab7a7e997022ac72653b97ec3",
+  "prior_completed_multipad_result_commit": "9299ac1ae665fbad5e083e2683ea5789a61e54ad",
+  "geometries": [
+    "B0-square15-c10-diagonal",
+    "G3-square16-c9p5-diagonal"
+  ],
+  "relative_activecarrierallocation_multipliers": [
+    0.5,
+    0.7071067811865476,
+    1.0,
+    1.4142135623730951,
+    2.0
+  ],
+  "maximum_conditions": 10,
+  "expected_new_metric_evaluations": 8,
+  "expected_alias_conditions": 2,
+  "new_PDE_RHS": 0,
+  "allocation_definition": "r=(active I2000/output0 RMS divided by active I2010/output1 RMS)/(the same ratio in this geometry original equal1Vpp drive). This is a RELATIVE multiplier, never an absolute equal-current target.",
+  "amplitude_definition": "a2000=min(1,r); a2010=min(1,1/r), real positive, preserve original phasor phases; max(raw source Vpp)=1. r1 is EXACT original alias even when absolute carrier currents are unequal.",
+  "current_definition": "Active carrier RMS magnitudes determine achieved absolute I0/I1. Both independent output currents including induced inactive-output currents at each carrier are retained in every RMS/power calculation.",
+  "circuit": "Original two outputnodes/commonGND/one50ohm peroutput; inactive ideal output0V through50ohm. Scaling a carrier scales its entire original solved field/current state; no topology change.",
+  "powers": "Source/layer/contact signed complex powers and50ohm real losses scale separately by each carrier a_f squared; no whole-condition single factor is substituted for unequal carrier weights.",
+  "baseline_caps": "Original unscaled B0 first8 electrical values; same V/current bookkeeping/real power/joint8 burden comparisons remain separate. Above-1Vpp normalized predictions explicitly report required voltages.",
+  "alias_policy": "r1 copies original metrics and points to original scalar/raw SHA/readback identities; no redundant angular evaluation and no duplicate potential/vector archive.",
+  "pareto": {
+    "comparison": "joint_eight_surface_contact_burden_caps",
+    "maximize": [
+      "target_AM_mean_V_m",
+      "target_AM_P10_V_m"
+    ],
+    "minimize": [
+      "surface_AM_mean_V_m",
+      "off_target_AM_mean_V_m"
+    ],
+    "relative_tolerance": 1e-12,
+    "absolute_tolerance_V_m": 1e-15,
+    "scope": "Finite electrical-proxy candidate Pareto relation; not physical accuracy, adoption, activation or safety"
+  },
+  "holds": {
+    "old_5percent_interface_failures_preserved": true,
+    "old_XY_contact_burden_failures_preserved": true,
+    "full_SC_XY_bulk_edge_contact_convergence": false,
+    "material_contact_hardware_or_experiment_validated": false,
+    "provisional_screen_only": true
+  },
+  "candidate_adopted": false,
+  "Windows_saved_verified": false
+}
