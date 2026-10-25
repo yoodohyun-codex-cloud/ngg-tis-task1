@@ -1,0 +1,1779 @@
+{
+  "schema": "task1-E13-streamed-drive-root-result-and-continuation-v1",
+  "decision_UTC": "2026-10-25T19:59:47.145801+00:00",
+  "source_commit": "d31a315ef589a90861aaa150042f2d777cb5cec8",
+  "result_commit": "fa9d06dda97c6508c029ffdc9ab5fe82092bc23f",
+  "run_id": "task1-E13-fine-drive-stream-20261025-run",
+  "actual_manufactured_tests": 56,
+  "baseline_QA": {
+    "all_eight_original_scalar_ROI_summaries_checked": true,
+    "baseline_multiplier": 1.0,
+    "baseline_recomputed_for_QA_only": true,
+    "duplicate_baseline_arrays": 0,
+    "electrical_passed": true,
+    "full_agreement": {
+      "array_agreement": {
+        "all_eight_scalar_summary_metrics_required": true,
+        "atol": 1e-10,
+        "direction_first_tie": {
+          "compared_cells": 793848,
+          "differing_cells": 0,
+          "semantics": "Diagnostic only; all2074 directions and AM values are gated",
+          "status": "identical"
+        },
+        "float_maps": {
+          "AM_max2074": {
+            "compared_cells": 793848,
+            "failed_cells": 0,
+            "max_absolute_error": 0.0
+          },
+          "Jtotal_vector_RMS": {
+            "compared_cells": 793848,
+            "failed_cells": 0,
+            "max_absolute_error": 0.0
+          },
+          "carrier_RMS": {
+            "compared_cells": 793848,
+            "failed_cells": 0,
+            "max_absolute_error": 0.0
+          }
+        },
+        "native_cells": 793848,
+        "rtol": 2e-07,
+        "status": "passed",
+        "unavailable_original_pixel_maps": [
+          "AM_x",
+          "AM_y",
+          "AM_z",
+          "carrier0_RMS",
+          "carrier1_RMS"
+        ],
+        "unavailable_scope": "Original E13 producer did not save these five pixel maps; summary statistics remain gated"
+      },
+      "baseline_maps_exported": false,
+      "compared_summary_numbers": 2145,
+      "coordinate_tolerances": {
+        "atol": 1e-12,
+        "rtol": 1e-12
+      },
+      "electrical_tolerances": {
+        "atol": 1e-15,
+        "rtol": 2e-07
+      },
+      "map_tolerances": {
+        "atol": 1e-10,
+        "rtol": 2e-07
+      },
+      "pointwise_compared_original_float_maps": [
+        "AM_max2074",
+        "carrier_RMS",
+        "Jtotal_vector_RMS"
+      ],
+      "schema": "task1-streamed-baseline-agreement-v1",
+      "status": "passed",
+      "summary_failures": [],
+      "tolerance_changed_after_execution": false,
+      "unavailable_original_pixel_maps": [
+        "AM_x",
+        "AM_y",
+        "AM_z",
+        "carrier0_RMS",
+        "carrier1_RMS"
+      ],
+      "verified_native_cells": 793848,
+      "volume_tolerances": {
+        "atol": 1e-25,
+        "rtol": 1e-12
+      }
+    },
+    "map_checks": {
+      "AM_max2074": {
+        "compared_cells": 793848,
+        "failed_cells": 0,
+        "max_absolute_error": 0.0,
+        "passed": true
+      },
+      "Jtotal_vector_RMS": {
+        "compared_cells": 793848,
+        "failed_cells": 0,
+        "max_absolute_error": 0.0,
+        "passed": true
+      },
+      "carrier_RMS": {
+        "compared_cells": 793848,
+        "failed_cells": 0,
+        "max_absolute_error": 0.0,
+        "passed": true
+      }
+    },
+    "passed": true,
+    "schema": "task1-E13-fine-drive-baseline-QA-v1",
+    "source_identity_passed": true,
+    "statistics_passed": true,
+    "status": "passed",
+    "unavailable_saved_float_maps": [
+      "AM_x",
+      "AM_y",
+      "AM_z",
+      "carrier0_RMS",
+      "carrier1_RMS"
+    ]
+  },
+  "completed_conditions": 3,
+  "new_allocations": 2,
+  "new_PDE_RHS": 0,
+  "raw_original_E_phi_duplicated": false,
+  "all_original_results_failures_GUI_pointers_preserved": true,
+  "source_current_ratio_is_relative_not_absolute_equal_current": true,
+  "rows": [
+    {
+      "condition_id": "baseline-r1",
+      "relative_active_current_ratio_multiplier": 1.0,
+      "source_Vpp_by_frequency": {
+        "2000": 1.0,
+        "2010": 1.0
+      },
+      "raw_objectives": {
+        "target_CV": 0.059750906931096054,
+        "target_P10": 0.08369693347135408,
+        "target_P10_mean": 0.9230521689906879,
+        "target_mean": 0.09067410952825403,
+        "target_to_offtarget_mean": 0.017874110408067717,
+        "target_to_surface_mean": 0.0036332217952048814
+      },
+      "raw_electrical": {
+        "SC_power_W": 2.7083467435133784e-06,
+        "achieved_absolute_active_current_ratio_I0_over_I1": 0.9957093486904798,
+        "achieved_relative_active_current_ratio_multiplier": 1.0,
+        "active_source_current_RMS_by_frequency_A": {
+          "2000": 1.6589871077082952e-05,
+          "2010": 1.666135915957939e-05
+        },
+        "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+        "contact_complex_power_W": {
+          "imaginary": -2.551889700805151e-09,
+          "real": 1.1519279802105328e-09
+        },
+        "contact_normal_J_RMS_P95_A_m2": 0.07203059886176573,
+        "contact_normal_J_RMS_max_A_m2": 78.2868441889146,
+        "contact_power_W": 1.1519279802105328e-09,
+        "contact_voltage_RMS_max_V": 0.010541981290830752,
+        "independent_outputs": 2,
+        "layer_complex_power_W": [
+          {
+            "imaginary": -1.1389370719657204e-05,
+            "real": 2.7083467435133784e-06
+          },
+          {
+            "imaginary": -1.7763195806659308e-08,
+            "real": 5.374795445959265e-08
+          },
+          {
+            "imaginary": -1.1203587762022236e-10,
+            "real": 1.9245347031669152e-08
+          },
+          {
+            "imaginary": -1.092841477786961e-09,
+            "real": 1.4723288647395083e-08
+          }
+        ],
+        "layers_power_W": {
+          "dermis": 5.374795445959265e-08,
+          "fat": 1.9245347031669152e-08,
+          "muscle": 1.4723288647395083e-08,
+          "sc": 2.7083467435133784e-06
+        },
+        "new_PDE_runs": 0,
+        "physical_pad_current_RMS_A": [
+          {
+            "current_RMS_A": 1.749162594507735e-05,
+            "physical_pad_id": 0
+          },
+          {
+            "current_RMS_A": 1.7551959822950186e-05,
+            "physical_pad_id": 1
+          },
+          {
+            "current_RMS_A": 7.844564775916479e-06,
+            "physical_pad_id": 2
+          },
+          {
+            "current_RMS_A": 7.844564775914988e-06,
+            "physical_pad_id": 3
+          }
+        ],
+        "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+        "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+        "skin_power_W": 2.762094697972971e-06,
+        "skin_vector_J_RMS_P95_A_m2": 0.07040114621915862,
+        "skin_vector_J_RMS_max_A_m2": 0.11935808790606656,
+        "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+        "source_Vpp_by_frequency": {
+          "2000": 1.0,
+          "2010": 1.0
+        },
+        "source_Vpp_each": 1.0,
+        "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+        "source_complex_power_W": {
+          "imaginary": -1.141089068237417e-05,
+          "real": 2.827916675193776e-06
+        },
+        "source_current_RMS_by_output_A": [
+          1.7491625944991056e-05,
+          1.7551959822669097e-05
+        ],
+        "source_peak_V_by_frequency": {
+          "2000": 0.5,
+          "2010": 0.5
+        },
+        "source_power_W": 2.827916675193776e-06,
+        "source_resistance_ohm": 50.0,
+        "source_resistor_power_W": 3.070141359080372e-08,
+        "sum_output_current_RMS_A_bookkeeping": 3.504358576766015e-05,
+        "unequal_source_Vpp": false
+      },
+      "normalization_comparison": {
+        "same_source_voltage": {
+          "target_mean_V_m": 0.09067410952825403,
+          "target_P10_V_m": 0.08369693347135408,
+          "mean_change_percent": 0.0,
+          "P10_change_percent": 0.0,
+          "amplitude_scale": 1.0,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.7083467435133784e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "achieved_relative_active_current_ratio_multiplier": 1.0,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.6589871077082952e-05,
+              "2010": 1.666135915957939e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.551889700805151e-09,
+              "real": 1.1519279802105328e-09
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.07203059886176573,
+            "contact_normal_J_RMS_max_A_m2": 78.2868441889146,
+            "contact_power_W": 1.1519279802105328e-09,
+            "contact_voltage_RMS_max_V": 0.010541981290830752,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -1.1389370719657204e-05,
+                "real": 2.7083467435133784e-06
+              },
+              {
+                "imaginary": -1.7763195806659308e-08,
+                "real": 5.374795445959265e-08
+              },
+              {
+                "imaginary": -1.1203587762022236e-10,
+                "real": 1.9245347031669152e-08
+              },
+              {
+                "imaginary": -1.092841477786961e-09,
+                "real": 1.4723288647395083e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 5.374795445959265e-08,
+              "fat": 1.9245347031669152e-08,
+              "muscle": 1.4723288647395083e-08,
+              "sc": 2.7083467435133784e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.749162594507735e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.7551959822950186e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.844564775916479e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.844564775914988e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.762094697972971e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.07040114621915862,
+            "skin_vector_J_RMS_max_A_m2": 0.11935808790606656,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 1.0,
+              "2010": 1.0
+            },
+            "source_Vpp_each": 1.0,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -1.141089068237417e-05,
+              "real": 2.827916675193776e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.7491625944991056e-05,
+              1.7551959822669097e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.5,
+              "2010": 0.5
+            },
+            "source_power_W": 2.827916675193776e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 3.070141359080372e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.504358576766015e-05,
+            "unequal_source_Vpp": false
+          }
+        },
+        "same_sum_output_RMS_current_bookkeeping": {
+          "target_mean_V_m": 0.08384937192169575,
+          "target_P10_V_m": 0.07739734462082816,
+          "mean_change_percent": 0.0,
+          "P10_change_percent": 0.0,
+          "amplitude_scale": 0.924733337420516,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.3159932777580665e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "achieved_relative_active_current_ratio_multiplier": 1.0,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.534120684848701e-05,
+              "2010": 1.540731426159973e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.1822018937567323e-09,
+              "real": 9.850501842198267e-10
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.06660909608183904,
+            "contact_normal_J_RMS_max_A_m2": 72.39445470293492,
+            "contact_power_W": 9.850501842198267e-10,
+            "contact_voltage_RMS_max_V": 0.009748521542094562,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -9.73941246178929e-06,
+                "real": 2.3159932777580665e-06
+              },
+              {
+                "imaginary": -1.5189872632909425e-08,
+                "real": 4.596158210531892e-08
+              },
+              {
+                "imaginary": -9.58054355697305e-11,
+                "real": 1.6457307196805298e-08
+              },
+              {
+                "imaginary": -9.345234402765056e-10,
+                "real": 1.2590351518145716e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.596158210531892e-08,
+              "fat": 1.6457307196805298e-08,
+              "muscle": 1.2590351518145716e-08,
+              "sc": 2.3159932777580665e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.6175089637102665e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.6230882385347534e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.2541305658446676e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.254130565843289e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.361954859863385e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.0651022869014723,
+            "skin_vector_J_RMS_max_A_m2": 0.11037440297750825,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.924733337420516,
+              "2010": 0.924733337420516
+            },
+            "source_Vpp_each": 0.924733337420516,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -9.757814865067033e-06,
+              "real": 2.4182413221257367e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.6175089637022865e-05,
+              1.6230882385087603e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.462366668710258,
+              "2010": 0.462366668710258
+            },
+            "source_power_W": 2.4182413221257367e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.6253753388213575e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.2405972022110465e-05,
+            "unequal_source_Vpp": false
+          }
+        },
+        "same_source_real_power": {
+          "target_mean_V_m": 0.08691470545688257,
+          "target_P10_V_m": 0.08022680738916224,
+          "mean_change_percent": 0.0,
+          "P10_change_percent": 0.0,
+          "amplitude_scale": 0.9585393880245383,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.488422916895018e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "achieved_relative_active_current_ratio_multiplier": 1.0,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.5902044869633082e-05,
+              "2010": 1.5970569012480262e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.344670536769673e-09,
+              "real": 1.0583888460492912e-09
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.06904416615199793,
+            "contact_normal_J_RMS_max_A_m2": 75.04102371921458,
+            "contact_power_W": 1.0583888460492912e-09,
+            "contact_voltage_RMS_max_V": 0.010104904295079042,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -1.0464528286744496e-05,
+                "real": 2.488422916895018e-06
+              },
+              {
+                "imaginary": -1.632078448908038e-08,
+                "real": 4.9383500075761056e-08
+              },
+              {
+                "imaginary": -1.0293831321721596e-10,
+                "real": 1.7682581712221022e-08
+              },
+              {
+                "imaginary": -1.004100300071145e-09,
+                "real": 1.352772460542115e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.9383500075761056e-08,
+              "fat": 1.7682581712221022e-08,
+              "muscle": 1.352772460542115e-08,
+              "sc": 2.488422916895018e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.676641242894858e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.6824244827321956e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.519324319625831e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.519324319624402e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.537806416970779e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.06748227161313834,
+            "skin_vector_J_RMS_max_A_m2": 0.11440942853726009,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.9585393880245383,
+              "2010": 0.9585393880245383
+            },
+            "source_Vpp_each": 0.9585393880245383,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -1.0484300780249575e-05,
+              "real": 2.5982835020943453e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.6766412428865865e-05,
+              1.682424482705252e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.47926969401226915,
+              "2010": 0.47926969401226915
+            },
+            "source_power_W": 2.5982835020943453e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.8208389986771558e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.359065725591838e-05,
+            "unequal_source_Vpp": false
+          }
+        },
+        "joint_eight_surface_contact_burden_caps": {
+          "target_mean_V_m": 8.572703697817705e-05,
+          "target_P10_V_m": 7.913052742385124e-05,
+          "mean_change_percent": 0.0,
+          "P10_change_percent": 0.0,
+          "amplitude_scale": 0.0009454411785699922,
+          "limiting_constraints": [
+            "contact_normal_J_RMS_max_A_m2"
+          ],
+          "electrical": {
+            "SC_power_W": 2.42088017176159e-12,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "achieved_relative_active_current_ratio_multiplier": 1.0,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.5684747263441534e-08,
+              "2010": 1.5752335040410673e-08
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.2810296325601522e-15,
+              "real": 1.0296612179618724e-15
+            },
+            "contact_normal_J_RMS_P95_A_m2": 6.810069428097013e-05,
+            "contact_normal_J_RMS_max_A_m2": 0.07401560623649277,
+            "contact_power_W": 1.0296612179618724e-15,
+            "contact_voltage_RMS_max_V": 9.966823216065835e-06,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -1.0180491774215083e-11,
+                "real": 2.42088017176159e-12
+              },
+              {
+                "imaginary": -1.5877792833747514e-14,
+                "real": 4.804309401505185e-14
+              },
+              {
+                "imaginary": -1.001442800137399e-16,
+                "real": 1.7202627078392215e-14
+              },
+              {
+                "imaginary": -9.76846214684113e-16,
+                "real": 1.316054439298393e-14
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.804309401505185e-14,
+              "fat": 1.7202627078392215e-14,
+              "muscle": 1.316054439298393e-14,
+              "sc": 2.42088017176159e-12
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.6537303448619382e-08,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.6594345581223176e-08,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.416574567111122e-09,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.4165745671097135e-09,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.4689232657766415e-12,
+            "skin_vector_J_RMS_P95_A_m2": 6.656014265411968e-05,
+            "skin_vector_J_RMS_max_A_m2": 0.0001128460513017723,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.0009454411785699922,
+              "2010": 0.0009454411785699922
+            },
+            "source_Vpp_each": 0.0009454411785699922,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -1.0199727587045669e-11,
+              "real": 2.5277588339702764e-12
+            },
+            "source_current_RMS_by_output_A": [
+              1.65373034485378e-08,
+              1.6594345580957423e-08
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.0004727205892849961,
+              "2010": 0.0004727205892849961
+            },
+            "source_power_W": 2.5277588339702764e-12,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.7442735530463064e-14,
+            "sum_output_current_RMS_A_bookkeeping": 3.3131649029495215e-08,
+            "unequal_source_Vpp": false
+          }
+        }
+      }
+    },
+    {
+      "condition_id": "r0p8",
+      "relative_active_current_ratio_multiplier": 0.8,
+      "source_Vpp_by_frequency": {
+        "2000": 0.8,
+        "2010": 1.0
+      },
+      "raw_objectives": {
+        "target_CV": 0.08017634629388125,
+        "target_P10": 0.06859001135051244,
+        "target_P10_mean": 0.8980556647117174,
+        "target_mean": 0.07637612460529421,
+        "target_to_offtarget_mean": 0.017691290388227674,
+        "target_to_surface_mean": 0.003597991933944667
+      },
+      "raw_electrical": {
+        "SC_power_W": 2.221784321673419e-06,
+        "achieved_absolute_active_current_ratio_I0_over_I1": 0.7965674789523837,
+        "achieved_relative_active_current_ratio_multiplier": 0.7999999999999998,
+        "active_source_current_RMS_by_frequency_A": {
+          "2000": 1.327189686166636e-05,
+          "2010": 1.666135915957939e-05
+        },
+        "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+        "contact_complex_power_W": {
+          "imaginary": -2.093762906649332e-09,
+          "real": 9.453277582964261e-10
+        },
+        "contact_normal_J_RMS_P95_A_m2": 0.0707212624703053,
+        "contact_normal_J_RMS_max_A_m2": 76.88004339993837,
+        "contact_power_W": 9.453277582964261e-10,
+        "contact_voltage_RMS_max_V": 0.010351527214719566,
+        "independent_outputs": 2,
+        "layer_complex_power_W": [
+          {
+            "imaginary": -9.343701727989591e-06,
+            "real": 2.221784321673419e-06
+          },
+          {
+            "imaginary": -1.4578563786304381e-08,
+            "real": 4.411249210924515e-08
+          },
+          {
+            "imaginary": -9.193059677631533e-11,
+            "real": 1.5794922807915766e-08
+          },
+          {
+            "imaginary": -8.967213826833739e-10,
+            "real": 1.2083647701754468e-08
+          }
+        ],
+        "layers_power_W": {
+          "dermis": 4.411249210924515e-08,
+          "fat": 1.5794922807915766e-08,
+          "muscle": 1.2083647701754468e-08,
+          "sc": 2.221784321673419e-06
+        },
+        "new_PDE_runs": 0,
+        "physical_pad_current_RMS_A": [
+          {
+            "current_RMS_A": 1.4383198606489874e-05,
+            "physical_pad_id": 0
+          },
+          {
+            "current_RMS_A": 1.7236645496750895e-05,
+            "physical_pad_id": 1
+          },
+          {
+            "current_RMS_A": 7.106909865730627e-06,
+            "physical_pad_id": 2
+          },
+          {
+            "current_RMS_A": 7.106909865729272e-06,
+            "physical_pad_id": 3
+          }
+        ],
+        "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+        "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+        "skin_power_W": 2.2658968137826643e-06,
+        "skin_vector_J_RMS_P95_A_m2": 0.06318022198070558,
+        "skin_vector_J_RMS_max_A_m2": 0.11698734979742505,
+        "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+        "source_Vpp_by_frequency": {
+          "2000": 0.8,
+          "2010": 1.0
+        },
+        "source_Vpp_each": 1.0,
+        "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+        "source_complex_power_W": {
+          "imaginary": -9.361362706537885e-06,
+          "real": 2.3199196295301206e-06
+        },
+        "source_current_RMS_by_output_A": [
+          1.4383198606428273e-05,
+          1.7236645496460085e-05
+        ],
+        "source_peak_V_by_frequency": {
+          "2000": 0.4,
+          "2010": 0.5
+        },
+        "source_power_W": 2.3199196295301206e-06,
+        "source_resistance_ohm": 50.0,
+        "source_resistor_power_W": 2.5198917506129896e-08,
+        "sum_output_current_RMS_A_bookkeeping": 3.161984410288836e-05,
+        "unequal_source_Vpp": true
+      },
+      "normalization_comparison": {
+        "same_source_voltage": {
+          "target_mean_V_m": 0.07637612460529421,
+          "target_P10_V_m": 0.06859001135051244,
+          "mean_change_percent": -15.7685418664129,
+          "P10_change_percent": -18.04955270674534,
+          "amplitude_scale": 1.0,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.221784321673419e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.7965674789523837,
+            "achieved_relative_active_current_ratio_multiplier": 0.7999999999999998,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.327189686166636e-05,
+              "2010": 1.666135915957939e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.093762906649332e-09,
+              "real": 9.453277582964261e-10
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.0707212624703053,
+            "contact_normal_J_RMS_max_A_m2": 76.88004339993837,
+            "contact_power_W": 9.453277582964261e-10,
+            "contact_voltage_RMS_max_V": 0.010351527214719566,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -9.343701727989591e-06,
+                "real": 2.221784321673419e-06
+              },
+              {
+                "imaginary": -1.4578563786304381e-08,
+                "real": 4.411249210924515e-08
+              },
+              {
+                "imaginary": -9.193059677631533e-11,
+                "real": 1.5794922807915766e-08
+              },
+              {
+                "imaginary": -8.967213826833739e-10,
+                "real": 1.2083647701754468e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.411249210924515e-08,
+              "fat": 1.5794922807915766e-08,
+              "muscle": 1.2083647701754468e-08,
+              "sc": 2.221784321673419e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.4383198606489874e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.7236645496750895e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.106909865730627e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.106909865729272e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.2658968137826643e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.06318022198070558,
+            "skin_vector_J_RMS_max_A_m2": 0.11698734979742505,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.8,
+              "2010": 1.0
+            },
+            "source_Vpp_each": 1.0,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -9.361362706537885e-06,
+              "real": 2.3199196295301206e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.4383198606428273e-05,
+              1.7236645496460085e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.4,
+              "2010": 0.5
+            },
+            "source_power_W": 2.3199196295301206e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.5198917506129896e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.161984410288836e-05,
+            "unequal_source_Vpp": true
+          }
+        },
+        "same_sum_output_RMS_current_bookkeeping": {
+          "target_mean_V_m": 0.0782749765957986,
+          "target_P10_V_m": 0.07029528613703404,
+          "mean_change_percent": -6.648106238771712,
+          "P10_change_percent": -9.17610096132796,
+          "amplitude_scale": 1.0248618531028841,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.333632983509219e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.7965674789523837,
+            "achieved_relative_active_current_ratio_multiplier": 0.7999999999999998,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.3601860811837737e-05,
+              "2010": 1.7075591423499243e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.199166737716867e-09,
+              "real": 9.929172762033913e-10
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.07247952410909254,
+            "contact_normal_J_RMS_max_A_m2": 78.791423745491,
+            "contact_power_W": 9.929172762033913e-10,
+            "contact_voltage_RMS_max_V": 0.01060888536372243,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -9.814080659316889e-06,
+                "real": 2.333632983509219e-06
+              },
+              {
+                "imaginary": -1.5312475190341053e-08,
+                "real": 4.63331951561301e-08
+              },
+              {
+                "imaginary": -9.655855014284772e-11,
+                "real": 1.6590067936374737e-08
+              },
+              {
+                "imaginary": -9.418639672782375e-10,
+                "real": 1.2691960494473482e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.63331951561301e-08,
+              "fat": 1.6590067936374737e-08,
+              "muscle": 1.2691960494473482e-08,
+              "sc": 2.333632983509219e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.4740791577394034e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.7665180445077606e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.28360081482786e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.283600814826471e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.3799661786653495e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.06475099937859749,
+            "skin_vector_J_RMS_max_A_m2": 0.11989587210298434,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.8198894824823073,
+              "2010": 1.0248618531028841
+            },
+            "source_Vpp_each": 1.0248618531028841,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -9.832630723632e-06,
+              "real": 2.4367086011680662e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.47407915773309e-05,
+              1.7665180444779566e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.40994474124115365,
+              "2010": 0.5124309265514421
+            },
+            "source_power_W": 2.4367086011680662e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.64674768236466e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.2405972022110465e-05,
+            "unequal_source_Vpp": true
+          }
+        },
+        "same_source_real_power": {
+          "target_mean_V_m": 0.08082848080269225,
+          "target_P10_V_m": 0.07258847505490008,
+          "mean_change_percent": -7.002525777654078,
+          "P10_change_percent": -9.520922722513836,
+          "amplitude_scale": 1.0582951311081503,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.4883730775557754e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.7965674789523837,
+            "achieved_relative_active_current_ratio_multiplier": 0.7999999999999998,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.404558382927105e-05,
+              "2010": 1.763263527622705e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.344990554153777e-09,
+              "real": 1.0587562979287015e-09
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.07484396773814567,
+            "contact_normal_J_RMS_max_A_m2": 81.36177560953807,
+            "contact_power_W": 1.0587562979287015e-09,
+            "contact_voltage_RMS_max_V": 0.010954970850871229,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -1.0464839272575574e-05,
+                "real": 2.4883730775557754e-06
+              },
+              {
+                "imaginary": -1.6327825019462792e-08,
+                "real": 4.940548759740151e-08
+              },
+              {
+                "imaginary": -1.0296121895824775e-10,
+                "real": 1.7690133238354235e-08
+              },
+              {
+                "imaginary": -1.0043177121068408e-09,
+                "real": 1.3533547485413545e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.940548759740151e-08,
+              "fat": 1.7690133238354235e-08,
+              "muscle": 1.3533547485413545e-08,
+              "sc": 2.4883730775557754e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.5221669055009766e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.8241458005848698e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.521208108127201e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.521208108125767e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.537778565153177e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.06686332130451285,
+            "skin_vector_J_RMS_max_A_m2": 0.12380714269186098,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.8466361048865203,
+              "2010": 1.0582951311081503
+            },
+            "source_Vpp_each": 1.0582951311081503,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -1.0484619366941244e-05,
+              "real": 2.5982835020943458e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.5221669054944573e-05,
+              1.8241458005540934e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.42331805244326015,
+              "2010": 0.5291475655540752
+            },
+            "source_power_W": 2.5982835020943458e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.8222499949308533e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.346312706048551e-05,
+            "unequal_source_Vpp": true
+          }
+        },
+        "joint_eight_surface_contact_burden_caps": {
+          "target_mean_V_m": 7.35304627138035e-05,
+          "target_P10_V_m": 6.603444856900495e-05,
+          "mean_change_percent": -14.227220132988327,
+          "P10_change_percent": -16.549970385890433,
+          "amplitude_scale": 0.0009627414731213862,
+          "limiting_constraints": [
+            "contact_normal_J_RMS_max_A_m2"
+          ],
+          "electrical": {
+            "SC_power_W": 2.0593077761016466e-12,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 0.7965674789523837,
+            "achieved_relative_active_current_ratio_multiplier": 0.7999999999999998,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.2777405535715772e-08,
+              "2010": 1.604058146149796e-08
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -1.940648420693075e-15,
+              "real": 8.761970208513864e-16
+            },
+            "contact_normal_J_RMS_P95_A_m2": 6.808629241166592e-05,
+            "contact_normal_J_RMS_max_A_m2": 0.07401560623649277,
+            "contact_power_W": 8.761970208513864e-16,
+            "contact_voltage_RMS_max_V": 9.965844559755234e-06,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -8.660407510451269e-12,
+                "real": 2.0593077761016466e-12
+              },
+              {
+                "imaginary": -1.3512450095479333e-14,
+                "real": 4.088659602898388e-14
+              },
+              {
+                "imaginary": -8.520781740891157e-17,
+                "real": 1.4639858173437635e-14
+              },
+              {
+                "imaginary": -8.311451738779209e-16,
+                "real": 1.1199984369839057e-14
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.088659602898388e-14,
+              "fat": 1.4639858173437635e-14,
+              "muscle": 1.1199984369839057e-14,
+              "sc": 2.0593077761016466e-12
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.384730181460953e-08,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.6594433477213064e-08,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 6.8421168734744165e-09,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 6.842116873473112e-09,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.1001943721306307e-12,
+            "skin_vector_J_RMS_P95_A_m2": 6.0826219981840676e-05,
+            "skin_vector_J_RMS_max_A_m2": 0.00011262857348053989,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.000770193178497109,
+              "2010": 0.0009627414731213862
+            },
+            "source_Vpp_each": 0.0009627414731213862,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -8.676776961843687e-12,
+              "real": 2.150266561168247e-12
+            },
+            "source_current_RMS_by_output_A": [
+              1.3847301814550225e-08,
+              1.659443347693309e-08
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.0003850965892485545,
+              "2010": 0.0004813707365606931
+            },
+            "source_power_W": 2.150266561168247e-12,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.3356149498180177e-14,
+            "sum_output_current_RMS_A_bookkeeping": 3.0441735291483314e-08,
+            "unequal_source_Vpp": true
+          }
+        }
+      }
+    },
+    {
+      "condition_id": "r1p25",
+      "relative_active_current_ratio_multiplier": 1.25,
+      "source_Vpp_by_frequency": {
+        "2000": 1.0,
+        "2010": 0.8
+      },
+      "raw_objectives": {
+        "target_CV": 0.07987721056730797,
+        "target_P10": 0.06885941453842874,
+        "target_P10_mean": 0.8981945314698522,
+        "target_mean": 0.07666425493121587,
+        "target_to_offtarget_mean": 0.017757962519946782,
+        "target_to_surface_mean": 0.0036115740481423627
+      },
+      "raw_electrical": {
+        "SC_power_W": 2.219904337688522e-06,
+        "achieved_absolute_active_current_ratio_I0_over_I1": 1.2446366858630997,
+        "achieved_relative_active_current_ratio_multiplier": 1.25,
+        "active_source_current_RMS_by_frequency_A": {
+          "2000": 1.6589871077082952e-05,
+          "2010": 1.332908732766351e-05
+        },
+        "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+        "contact_complex_power_W": {
+          "imaginary": -2.0913362026711155e-09,
+          "real": 9.438341292488479e-10
+        },
+        "contact_normal_J_RMS_P95_A_m2": 0.07045769017989709,
+        "contact_normal_J_RMS_max_A_m2": 76.59688897795955,
+        "contact_power_W": 9.438341292488479e-10,
+        "contact_voltage_RMS_max_V": 0.010339774944650104,
+        "independent_outputs": 2,
+        "layer_complex_power_W": [
+          {
+            "imaginary": -9.334866252248226e-06,
+            "real": 2.219904337688522e-06
+          },
+          {
+            "imaginary": -1.4553077336616885e-08,
+            "real": 4.40341532044868e-08
+          },
+          {
+            "imaginary": -9.180824252084937e-11,
+            "real": 1.5767446324021646e-08
+          },
+          {
+            "imaginary": -8.955386408872425e-10,
+            "real": 1.206254567997347e-08
+          }
+        ],
+        "layers_power_W": {
+          "dermis": 4.40341532044868e-08,
+          "fat": 1.5767446324021646e-08,
+          "muscle": 1.206254567997347e-08,
+          "sc": 2.219904337688522e-06
+        },
+        "new_PDE_runs": 0,
+        "physical_pad_current_RMS_A": [
+          {
+            "current_RMS_A": 1.7172450090140682e-05,
+            "physical_pad_id": 0
+          },
+          {
+            "current_RMS_A": 1.4426883709475434e-05,
+            "physical_pad_id": 1
+          },
+          {
+            "current_RMS_A": 7.10019960698303e-06,
+            "physical_pad_id": 2
+          },
+          {
+            "current_RMS_A": 7.100199606981685e-06,
+            "physical_pad_id": 3
+          }
+        ],
+        "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+        "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+        "skin_power_W": 2.2639384908930087e-06,
+        "skin_vector_J_RMS_P95_A_m2": 0.0631453479154431,
+        "skin_vector_J_RMS_max_A_m2": 0.11655017705884373,
+        "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+        "source_Vpp_by_frequency": {
+          "2000": 1.0,
+          "2010": 0.8
+        },
+        "source_Vpp_each": 1.0,
+        "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+        "source_complex_power_W": {
+          "imaginary": -9.352498012555754e-06,
+          "real": 2.317863717787672e-06
+        },
+        "source_current_RMS_by_output_A": [
+          1.717245009004813e-05,
+          1.4426883709262036e-05
+        ],
+        "source_peak_V_by_frequency": {
+          "2000": 0.5,
+          "2010": 0.4
+        },
+        "source_power_W": 2.317863717787672e-06,
+        "source_resistance_ohm": 50.0,
+        "source_resistor_power_W": 2.515140078278821e-08,
+        "sum_output_current_RMS_A_bookkeeping": 3.159933379931017e-05,
+        "unequal_source_Vpp": true
+      },
+      "normalization_comparison": {
+        "same_source_voltage": {
+          "target_mean_V_m": 0.07666425493121587,
+          "target_P10_V_m": 0.06885941453842874,
+          "mean_change_percent": -15.450777151191863,
+          "P10_change_percent": -17.727673305980318,
+          "amplitude_scale": 1.0,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.219904337688522e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 1.2446366858630997,
+            "achieved_relative_active_current_ratio_multiplier": 1.25,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.6589871077082952e-05,
+              "2010": 1.332908732766351e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.0913362026711155e-09,
+              "real": 9.438341292488479e-10
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.07045769017989709,
+            "contact_normal_J_RMS_max_A_m2": 76.59688897795955,
+            "contact_power_W": 9.438341292488479e-10,
+            "contact_voltage_RMS_max_V": 0.010339774944650104,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -9.334866252248226e-06,
+                "real": 2.219904337688522e-06
+              },
+              {
+                "imaginary": -1.4553077336616885e-08,
+                "real": 4.40341532044868e-08
+              },
+              {
+                "imaginary": -9.180824252084937e-11,
+                "real": 1.5767446324021646e-08
+              },
+              {
+                "imaginary": -8.955386408872425e-10,
+                "real": 1.206254567997347e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.40341532044868e-08,
+              "fat": 1.5767446324021646e-08,
+              "muscle": 1.206254567997347e-08,
+              "sc": 2.219904337688522e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.7172450090140682e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.4426883709475434e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.10019960698303e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.100199606981685e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.2639384908930087e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.0631453479154431,
+            "skin_vector_J_RMS_max_A_m2": 0.11655017705884373,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 1.0,
+              "2010": 0.8
+            },
+            "source_Vpp_each": 1.0,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -9.352498012555754e-06,
+              "real": 2.317863717787672e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.717245009004813e-05,
+              1.4426883709262036e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.5,
+              "2010": 0.4
+            },
+            "source_power_W": 2.317863717787672e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.515140078278821e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.159933379931017e-05,
+            "unequal_source_Vpp": true
+          }
+        },
+        "same_sum_output_RMS_current_bookkeeping": {
+          "target_mean_V_m": 0.07862126828924354,
+          "target_P10_V_m": 0.07061719323462264,
+          "mean_change_percent": -6.235113648000334,
+          "P10_change_percent": -8.760186049562401,
+          "amplitude_scale": 1.0255270642072178,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.3346861773117335e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 1.2446366858630997,
+            "achieved_relative_active_current_ratio_multiplier": 1.25,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.7013361781257114e-05,
+              "2010": 1.366933979570039e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.1994703292358494e-09,
+              "real": 9.926357896695662e-10
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.07225626816101158,
+            "contact_normal_J_RMS_max_A_m2": 78.55218268097306,
+            "contact_power_W": 9.926357896695662e-10,
+            "contact_voltage_RMS_max_V": 0.01060371904355037,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -9.81753260091862e-06,
+                "real": 2.3346861773117335e-06
+              },
+              {
+                "imaginary": -1.530555525222612e-08,
+                "real": 4.631097253640637e-08
+              },
+              {
+                "imaginary": -9.655525742154085e-11,
+                "real": 1.658271411034253e-08
+              },
+              {
+                "imaginary": -9.41843146405593e-10,
+                "real": 1.2686248764912732e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.631097253640637e-08,
+              "fat": 1.658271411034253e-08,
+              "muscle": 1.2686248764912732e-08,
+              "sc": 2.3346861773117335e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.7610812326186947e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.4795159696237279e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.281446858234548e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.281446858233169e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.3809971498481403e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.06475726326606773,
+            "skin_vector_J_RMS_max_A_m2": 0.11952536091198744,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 1.0255270642072178,
+              "2010": 0.8204216513657743
+            },
+            "source_Vpp_each": 1.0255270642072178,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -9.836076024782786e-06,
+              "real": 2.437710621551367e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.7610812326092032e-05,
+              1.4795159696018433e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.5127635321036089,
+              "2010": 0.41021082568288714
+            },
+            "source_power_W": 2.437710621551367e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.645187306077616e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.2405972022110465e-05,
+            "unequal_source_Vpp": true
+          }
+        },
+        "same_source_real_power": {
+          "target_mean_V_m": 0.08116938183057927,
+          "target_P10_V_m": 0.07290589488301469,
+          "mean_change_percent": -6.610300979681149,
+          "P10_change_percent": -9.1252696503744,
+          "amplitude_scale": 1.0587643733498155,
+          "limiting_constraints": null,
+          "electrical": {
+            "SC_power_W": 2.488472800441037e-06,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 1.2446366858630997,
+            "achieved_relative_active_current_ratio_multiplier": 1.25,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.756476445488196e-05,
+              "2010": 1.4112362791798623e-05
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -2.344350235534757e-09,
+              "real": 1.0580210682453556e-09
+            },
+            "contact_normal_J_RMS_P95_A_m2": 0.0745980921909942,
+            "contact_normal_J_RMS_max_A_m2": 81.09805715929474,
+            "contact_power_W": 1.0580210682453556e-09,
+            "contact_voltage_RMS_max_V": 0.01094738533985059,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -1.0464217025073468e-05,
+                "real": 2.488472800441037e-06
+              },
+              {
+                "imaginary": -1.6313737713848903e-08,
+                "real": 4.9361493051505515e-08
+              },
+              {
+                "imaginary": -1.0291538715912172e-10,
+                "real": 1.767502348799287e-08
+              },
+              {
+                "imaginary": -1.0038826951941045e-09,
+                "real": 1.352189656061805e-08
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.9361493051505515e-08,
+              "fat": 1.767502348799287e-08,
+              "muscle": 1.352189656061805e-08,
+              "sc": 2.488472800441037e-06
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.8181578358568784e-05,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.527467049005342e-05,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 7.517438387545994e-06,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 7.51743838754457e-06,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.5378342934925427e-06,
+            "skin_vector_J_RMS_P95_A_m2": 0.0668560447156502,
+            "skin_vector_J_RMS_max_A_m2": 0.12339917517751672,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 1.0587643733498155,
+              "2010": 0.8470114986798525
+            },
+            "source_Vpp_each": 1.0587643733498155,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -1.0483981910976104e-05,
+              "real": 2.5982835020943458e-06
+            },
+            "source_current_RMS_by_output_A": [
+              1.818157835847079e-05,
+              1.5274670489827484e-05
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.5293821866749078,
+              "2010": 0.42350574933992624
+            },
+            "source_power_W": 2.5982835020943458e-06,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.8194267508900995e-08,
+            "sum_output_current_RMS_A_bookkeeping": 3.345624884829828e-05,
+            "unequal_source_Vpp": true
+          }
+        },
+        "joint_eight_surface_contact_burden_caps": {
+          "target_mean_V_m": 7.389902190598665e-05,
+          "target_P10_V_m": 6.637569735692801e-05,
+          "mean_change_percent": -13.797298365976863,
+          "P10_change_percent": -16.118722422515685,
+          "amplitude_scale": 0.0009639306084992253,
+          "limiting_constraints": [
+            "contact_voltage_RMS_max_V"
+          ],
+          "electrical": {
+            "SC_power_W": 2.0626512381582324e-12,
+            "achieved_absolute_active_current_ratio_I0_over_I1": 1.2446366858630997,
+            "achieved_relative_active_current_ratio_multiplier": 1.25,
+            "active_source_current_RMS_by_frequency_A": {
+              "2000": 1.599148452225627e-08,
+              "2010": 1.2848315258493999e-08
+            },
+            "baseline_active_current_ratio_I0_over_I1": 0.9957093486904798,
+            "contact_complex_power_W": {
+              "imaginary": -1.9431905846611186e-15,
+              "real": 8.769750129585502e-16
+            },
+            "contact_normal_J_RMS_P95_A_m2": 6.791632416855809e-05,
+            "contact_normal_J_RMS_max_A_m2": 0.07383408580167215,
+            "contact_power_W": 8.769750129585502e-16,
+            "contact_voltage_RMS_max_V": 9.966825554141618e-06,
+            "independent_outputs": 2,
+            "layer_complex_power_W": [
+              {
+                "imaginary": -8.673605031688054e-12,
+                "real": 2.0626512381582324e-12
+              },
+              {
+                "imaginary": -1.3522169616841025e-14,
+                "real": 4.0914871459307036e-14
+              },
+              {
+                "imaginary": -8.530475025150917e-17,
+                "real": 1.4650515398650494e-14
+              },
+              {
+                "imaginary": -8.321006698730063e-16,
+                "real": 1.1208061698750814e-14
+              }
+            ],
+            "layers_power_W": {
+              "dermis": 4.0914871459307036e-14,
+              "fat": 1.4650515398650494e-14,
+              "muscle": 1.1208061698750814e-14,
+              "sc": 2.0626512381582324e-12
+            },
+            "new_PDE_runs": 0,
+            "physical_pad_current_RMS_A": [
+              {
+                "current_RMS_A": 1.6553050264811883e-08,
+                "physical_pad_id": 0
+              },
+              {
+                "current_RMS_A": 1.3906514792822216e-08,
+                "physical_pad_id": 1
+              },
+              {
+                "current_RMS_A": 6.844099727625112e-09,
+                "physical_pad_id": 2
+              },
+              {
+                "current_RMS_A": 6.844099727623816e-09,
+                "physical_pad_id": 3
+              }
+            ],
+            "power_definition": "Signed complexVI*/2 preserved; real losses not absolute-valued/clipped; two-frequency RMS sums squares after coherent per-frequency scaling",
+            "return_topology": "Unchanged commonGND; inactive idealoutput0Vbehind its50ohm",
+            "skin_power_W": 2.1035661096175396e-12,
+            "skin_vector_J_RMS_P95_A_m2": 6.086773364002836e-05,
+            "skin_vector_J_RMS_max_A_m2": 0.00011234628309302368,
+            "skin_vector_J_burdens": "Not calculated here; full weightedE metric evaluation supplies skin_vector_J_RMS_max/P95",
+            "source_Vpp_by_frequency": {
+              "2000": 0.0009639306084992253,
+              "2010": 0.0007711444867993803
+            },
+            "source_Vpp_each": 0.0009639306084992253,
+            "source_Vpp_each_semantics": "Legacy screen_metrics API maximum active sourceVpp, NOT a claim that unequal frequency drives are identical",
+            "source_complex_power_W": {
+              "imaginary": -8.689987797202671e-12,
+              "real": 2.153671393045229e-12
+            },
+            "source_current_RMS_by_output_A": [
+              1.655305026472267e-08,
+              1.3906514792616516e-08
+            ],
+            "source_peak_V_by_frequency": {
+              "2000": 0.00048196530424961264,
+              "2010": 0.00038557224339969015
+            },
+            "source_power_W": 2.153671393045229e-12,
+            "source_resistance_ohm": 50.0,
+            "source_resistor_power_W": 2.3369731337184855e-14,
+            "sum_output_current_RMS_A_bookkeeping": 3.045956505733919e-08,
+            "unequal_source_Vpp": true
+          }
+        }
+      }
+    }
+  ],
+  "conclusion": "Neither attenuation allocation improves absolute target mean/P10 under raw voltage, matched output-current bookkeeping, matched total source power, or original joint8 burden limits. Target/surface and target/offtarget ratios also decrease; uniformity worsens. Keep original equal1Vpp E13 drive among these three, with all original SC/contact/grid/material failure gates unchanged. This is not a converged/adopted deep-focused configuration.",
+  "actual_worker_elapsed_seconds": 95.38534988299944,
+  "actual_worker_process_CPU_seconds": 294.158430611,
+  "actual_worker_average_CPU_cores": 3.083895283414251,
+  "actual_worker_peak_RSS_bytes": 162258944,
+  "actual_all_research_RSS_plus_owned_tmpfs_peak_bytes": 7913108984,
+  "next_geometry_resource_diagnostic": {
+    "schema": "task1-next-geometry-post-drive-resource-diagnostic-v2",
+    "observed_UTC": "2026-10-25T19:57:32.885315+00:00",
+    "baseline_bytes": 7800885378,
+    "all_owned_tmp_bytes": 7782125698,
+    "all_research_RSS_bytes": 18759680,
+    "complete_first_attempt_candidates": [
+      {
+        "transport": "task1-git-E13-fine-drive-stream-result-20261025",
+        "object_cache_bytes": 48495921,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-E13-fine-drive-stream-source-20261025",
+        "object_cache_bytes": 3067958,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-after-E13fine-GUI-root-review-20261025",
+        "object_cache_bytes": 2628894,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-native-GUI-append-E13fine-r5-result-20261025",
+        "object_cache_bytes": 12142460,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-native-GUI-append-E13fine-r5-source-20261025",
+        "object_cache_bytes": 3798220,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-seven-preview-20261025",
+        "object_cache_bytes": 6155941,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-native-GUI-lite-r5-source-20261025",
+        "object_cache_bytes": 4460788,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-native-GUI-lite-r4-source-20261025",
+        "object_cache_bytes": 4360361,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      },
+      {
+        "transport": "task1-git-contact-edge-bem-transfer-20261025",
+        "object_cache_bytes": 1942569,
+        "status": "published_readback_verified",
+        "no_deletion_performed": true
+      }
+    ],
+    "optimistic_reclaim_if_all_pass_further_checks_bytes": 87053112,
+    "optimistic_baseline_bytes": 7713832266,
+    "NUM_forecast_bytes": 8300885378,
+    "PUB_diagnostic_forecast_bytes": 8410885378,
+    "optimistic_NUM_forecast_bytes": 8213832266,
+    "optimistic_PUB_diagnostic_forecast_bytes": 8323832266,
+    "physical_cap_bytes": 8000000000,
+    "forecasts_unmeasured": true,
+    "no_files_deleted": true,
+    "no_PDE_started": true,
+    "failed_and_mixed_attempts_excluded": true,
+    "correction_of": {
+      "path": "/workspace/ngg-tis-task1/runtime/E13-drive-next-geometry-resource-diagnostic-20261025.json",
+      "SHA256": "07e2a32c0d37dfd045a28c10dde644eb245807de22be1d11a7cb236813a14217",
+      "reason": "Original candidate count glob also matched attempt-start-N.json, incorrectly rejecting every transport. Corrected exact numeric attempt filename filter; original record retained. No action or numerical result was based on it."
+    }
+  },
+  "resource_diagnostic_original_preserved": {
+    "schema": "task1-next-geometry-post-drive-resource-diagnostic-v1",
+    "observed_UTC": "2026-10-25T19:56:46.752277+00:00",
+    "baseline_bytes": 7800881282,
+    "all_owned_tmp_bytes": 7782125698,
+    "all_research_RSS_bytes": 18755584,
+    "conservative_complete_first_attempt_cache_candidates": [],
+    "optimistic_reclaim_if_all_candidates_pass_full_retirement_checks_bytes": 0,
+    "optimistic_baseline_bytes": 7800881282,
+    "fresh_one_geometry_NUM_forecast_bytes": 8300881282,
+    "fresh_one_geometry_PUB_diagnostic_bytes": 8410881282,
+    "optimistic_one_geometry_NUM_forecast_bytes": 8300881282,
+    "optimistic_one_geometry_PUB_diagnostic_bytes": 8410881282,
+    "physical_cap_bytes": 8000000000,
+    "forecasts_unmeasured": true,
+    "no_files_deleted": true,
+    "no_PDE_started": true,
+    "failed_or_mixed_git_attempts_excluded": true
+  },
+  "resource_diagnostic_corrected_SHA256": "772b9a6c5afc1a2a00a3e414ce1f8bb7a835c210c078f75e5e563dfa1529b57f",
+  "next_scientific_step": {
+    "candidate_id": "E11-tangent-P23-centroids-225",
+    "new_PDE_RHS": 2,
+    "fixed_D50_layers_and_4pads_2outputs_common_return_50ohm_preserved": true,
+    "max_cells": 793860,
+    "state": "not_started_memory_forecast_exceeds_latest_user8e9_limit",
+    "current_provisional_NUM_bytes": 8300885378,
+    "current_provisional_PUB_bytes": 8410885378,
+    "optimistic_after_eligible_transport_only_reclaim_NUM_bytes": 8213832266,
+    "optimistic_after_eligible_transport_only_reclaim_PUB_bytes": 8323832266,
+    "optimistic_reclaim_not_performed_because_still_insufficient": true,
+    "actual_8GB_solver_OOM_claimed": false,
+    "resume_condition": "Explicit increased total RSS+ownedtmpfs limit sufficient for a fresh full NUM/PUB forecast, or accessible non-tmpfs storage plus a reviewed preservation/path strategy. No policy/resource expansion, installation, security change, local-PC worker, deletion, duplicate owner or main merge performed. Research is not complete."
+  },
+  "numerical_convergence_complete": false,
+  "candidate_adopted": false,
+  "experimental_validation": false,
+  "activation_or_safety_claim": false,
+  "browser_execution_verified": false,
+  "Windows_saved_verified": false,
+  "OneDrive_sync_verified": false,
+  "GUI_pointer": "7d298d450be46a19b70193b91aabf25a9a207d2f/data-native/native-GUI-append-E13fine-r5-20261025/index.html",
+  "GUI_scope": "Eight previous designs retained; these two rejected drive variants are new separate result artifacts, not silently inserted into prior GUI or represented as a new best."
+}
