@@ -1,0 +1,128 @@
+{
+  "schema": "task1-skin-fit-independent-source-review-v1",
+  "status": "original_PDF_visual_verification_completed_no_material_evaluation",
+  "Tsai2019": {
+    "DOI": "10.2478/joeb-2019-0003",
+    "primary_PDF_URL": "https://europepmc.org/articles/PMC7531215?pdf=render",
+    "artifact": {
+      "private_path": "/dev/shm/task1-human-tissue-20261025/evidence/skin-fit-review/private/Tsai2019-europe.pdf",
+      "bytes": 619816,
+      "SHA256": "c2b2aae7363b42d5e103e8379ffdaf9f045897b29cb412cbdf56ca953ea62c7d",
+      "publish_full_text_or_images": false
+    },
+    "verified_page": {
+      "PDF_page_1_based": 4,
+      "printed_page": 17
+    },
+    "source_locations": [
+      "Eqs7-9",
+      "Table3"
+    ],
+    "equation_7_literal_order": "log10(rho_Ohm_m)=c5*N^5+c4*N^4+c3*N^3+c2*N^2+c1*N+c0",
+    "equation_8_literal_order": "log10(epsilon_r)=d5*N^5+d4*N^4+d3*N^3+d2*N^2+d1*N+d0",
+    "N_definition": "log10(f/1Hz)",
+    "Table3_DE_c_row_j0_through5": [
+      -0.010475,
+      0.22902,
+      -1.9609,
+      8.2439,
+      -17.209,
+      14.687
+    ],
+    "Table3_DE_d_row_j0_through5": [
+      -0.25399,
+      5.5554,
+      -47.903,
+      203.3,
+      -425.27,
+      357.41
+    ],
+    "HTML_conversion_error_resolved": "PDF Eq8 contains d5*N^5; HTML/MathML omitted N^5 after d5",
+    "coefficient_index_ordering_status": "The printed equations and table define a literal row-j coefficient mapping. Its physical agreement with the paper curves/ranges has NOT been numerically tested by this reviewer. The coefficient sequence suggests a possible intended descending-order convention, but that correction is unverified. Do not silently reverse it; root must verify both interpretations under its admitted material evaluation or choose a separate declared surrogate.",
+    "recommendation": "Do not silently reverse coefficient order. Root should evaluate the literal mapping and any proposed correction against the paper reported ranges under its sole numerical owner. If unresolved, use a separate explicitly labelled substitute.",
+    "proposed_unique_dermis_inputs": null,
+    "numerical_property_evaluation_performed": false,
+    "suspected_author_table_order_error_proven": false
+  },
+  "Tsai2018": {
+    "DOI": "10.2478/joeb-2018-0006",
+    "primary_PDF_URL": "https://europepmc.org/articles/PMC7852014?pdf=render",
+    "artifact": {
+      "private_path": "/dev/shm/task1-human-tissue-20261025/evidence/skin/private/Tsai2018-europe.pdf",
+      "bytes": 1041212,
+      "SHA256": "895a1d5f027a579b525f4221cf491fab955b28c89521917f1d9388467d01f9e0",
+      "publish_full_text_or_images": false
+    },
+    "verified_page": {
+      "PDF_page_1_based": 6,
+      "printed_page": 36
+    },
+    "source_locations": [
+      "Eqs89-92",
+      "Table1"
+    ],
+    "SC": {
+      "sigma_log10_coefficients_descending_N5_to_N0": [
+        -0.011516,
+        0.25509,
+        -2.2537,
+        9.9955,
+        -21.404,
+        11.803
+      ],
+      "epsilon_r_log10_coefficients_descending_N5_to_N0": [
+        -0.011319,
+        0.23953,
+        -2.0255,
+        8.5278,
+        -17.961,
+        17.57
+      ],
+      "conductivity_unit": "S/m",
+      "epsilon_r_unit": "dimensionless"
+    },
+    "viable_skin": {
+      "meaning": "living epidermis plus dermis lumped together; not isolated dermis",
+      "sigma_log10_coefficients_descending_N5_to_N0": [
+        0.015178,
+        -0.34167,
+        3.0088,
+        -12.952,
+        27.471,
+        -23.688
+      ],
+      "epsilon_r_log10_coefficients_descending_N5_to_N0": [
+        -0.044465,
+        0.92429,
+        -7.7649,
+        32.847,
+        -70.466,
+        67.61
+      ],
+      "verified_XML_conversion_error": "Original PDF Eq91 has +27.471*N. XML renders the decimal incorrectly as a minus-separated expression.",
+      "allowed_mapping": "Assign ONLY to dermis geometry slot as an explicit viable-skin surrogate; do not call this exact isolated dermis or replicate whole-skin into both layers."
+    },
+    "source_thicknesses": {
+      "SC_um": 14,
+      "viable_skin_mm": 1.2,
+      "adipose_mm": 1.2
+    },
+    "retained_comparison_geometry": "User geometry remains SC0.1/dermis5/fat5/muscle15mm; material transfer is not anatomical replication",
+    "printed_epsilon0_typo": {
+      "Table1_literal": "8.85 x10^7 Fm^-1",
+      "use_as_physical_input": false,
+      "action": "Keep the existing standard physical epsilon0 constant near8.854e-12 F/m; do not copy the erroneous printed value."
+    },
+    "lineage": "2018 author model reproduces constitutive relations attributed to Birgersson2013 [9]; original2013 full text not independently verified in this check.",
+    "numeric_coefficients_visual_verified": true,
+    "layered_fit_uniquely_readable": true,
+    "numerical_property_evaluation_performed": false
+  },
+  "constraints": {
+    "no_PDE": true,
+    "no_tests": true,
+    "no_native_array_decode": true,
+    "no_locks_or_ledger_or_Git_actions": true,
+    "full_PDFs_and_images_private_only": true
+  }
+}
