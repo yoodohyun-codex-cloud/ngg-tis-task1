@@ -1,0 +1,9 @@
+# Evidence-based next finite step
+
+The two original-signal-preserving return pairings for LOCAL14 completed. Mean target AM was 0.0450465516764 and 0.0450460648793 V/m (the directional sampling grid is not exactly rotation invariant), versus the common-ground reference 0.0649633506467 V/m. Pair0 selectivity target mean/surface P95 improved from0.309412 to0.343819, but maximum remains at z0.00625 mm. At equal source real power target mean is0.0552876146773 V/m, still below reference. No deep focus demonstrated. Both runs passed resource limits and were copied to the user-selected private destination with readback hashes.
+
+The LOCAL16 same-pairing size comparison is now selected. Next: transfer the published P23p5-peripheral-polyomino225 mask at b30e7b7bd200170ff2b45f2a103c37ddff582a3f to the floating (0,2)/(1,3) circuit, preserving original signal pad positions and225 mm2 per pad. Exact mask SHA25609f29590ff68d7768550a20013ce3748e8ff5ea2df71af746eb42577b703540d. Compare against its existing same-material/contact/common-ground result; do not infer a smooth annular electrode from the pixel mask. One finite case: two operating-frequency RHS plus one2000Hz reverse excitation for phantom reciprocity. Same original grid/ROI/directions and inherited convergence limitations.
+
+Then evaluate diagonal role-changing pairing(0,1)/(2,3) separately; it is not an isolation-only matched contrast. No ideal-current or transformer equivalence is introduced.
+
+The second LOCAL14 run additionally passed phantom reciprocity6.02936e-9 relative and tissue gauge-shift test5.43742e-13. These are algebraic checks, not mesh or physiological validation. The first run's unchanged metrics helper emitted an inherited common-ground topology label; the run's isolated solver/config/pair proofs and explicit correction in first-matched-results.json are authoritative. Subsequent worker output corrects this metadata without changing metric arithmetic.
