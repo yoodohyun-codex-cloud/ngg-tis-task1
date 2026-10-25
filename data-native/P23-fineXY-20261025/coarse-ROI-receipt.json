@@ -1,0 +1,54 @@
+{
+  "analytic_cylinder_volume_m3": 4.9283734753189886e-05,
+  "analytic_target_volume_m3": 3.926990816987242e-07,
+  "cells": 762420,
+  "coordinate_system": {
+    "depth_axis": "+z",
+    "surface_z_mm": 0,
+    "xy": "local phantom axes, no anatomical registration"
+  },
+  "domain_definition": "source FVM whole-square centre-inside-cylinder mask; no outer-wall clipping",
+  "domain_relative_volume_deviation": 0.000766282161837939,
+  "domain_relative_volume_tolerance": 0.002,
+  "field_integration": "native cell-constant E; fractional target XY area and exact z overlap",
+  "h_xy_mm": 0.5,
+  "layer_counts": [
+    4,
+    19,
+    18,
+    56
+  ],
+  "layer_faces_mm": [
+    0.0,
+    0.1,
+    5.1,
+    10.1,
+    25.1
+  ],
+  "max_relative_partition_roundoff": 0.0,
+  "region_definitions": {
+    "off_target": "all cells excluding target",
+    "remaining": "10<=z<=25.1mm excluding target",
+    "subsurface_5_10": "5<=z<10mm",
+    "surface_0_5": "0<=z<5mm"
+  },
+  "region_volumes_m3": {
+    "off_target": 4.8928795227050784e-05,
+    "remaining": 2.9278795227050784e-05,
+    "subsurface_5_10": 9.825e-06,
+    "surface_0_5": 9.825e-06,
+    "target": 3.927047729492188e-07,
+    "total": 4.9321500000000005e-05
+  },
+  "renormalized_to_analytic_volume": false,
+  "represented_domain_volume_m3": 4.9321500000000005e-05,
+  "represented_target_volume_m3": 3.927047729492188e-07,
+  "source_csv_volume_relative_rounding": 0.0,
+  "target_boundary_cell_centres_can_be_outside_ROI": true,
+  "target_boundary_subdivisions": 128,
+  "target_definition": "r<=5mm and surface-depth 15<=z<=20mm",
+  "target_relative_volume_deviation": 1.4492650377340155e-05,
+  "target_relative_volume_tolerance": 0.001,
+  "target_xy_boundary_cells": 68,
+  "xy_cells": 7860
+}
