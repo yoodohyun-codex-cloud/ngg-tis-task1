@@ -1,0 +1,93 @@
+{
+  "schema": "task1-contact-edge-fv-spec-v1",
+  "plan": {
+    "period_width_m": 0.002,
+    "SC_thickness_m": 0.0001,
+    "contact_endpoints_m": [
+      -0.0005,
+      0.0005
+    ],
+    "gamma_S_m": {
+      "real": 1.0,
+      "imaginary": 0.25
+    },
+    "zA_ohm_m2": {
+      "real": 0.0001,
+      "imaginary": -2e-05
+    },
+    "metal_peak_V": 1.0,
+    "bottom_peak_V": 0.0,
+    "methods": [
+      "physical_area_robin",
+      "wholepixel_halfcell_lumping",
+      "boundary_fitted"
+    ],
+    "cases": [
+      {
+        "nx": 40,
+        "nz": 8,
+        "phase": "aligned"
+      },
+      {
+        "nx": 40,
+        "nz": 8,
+        "phase": "half_cell"
+      },
+      {
+        "nx": 80,
+        "nz": 16,
+        "phase": "aligned"
+      },
+      {
+        "nx": 80,
+        "nz": 16,
+        "phase": "half_cell"
+      },
+      {
+        "nx": 160,
+        "nz": 32,
+        "phase": "aligned"
+      },
+      {
+        "nx": 160,
+        "nz": 32,
+        "phase": "half_cell"
+      }
+    ],
+    "synthetic_case_entries": 18,
+    "expected_unique_FV_solves": 12,
+    "maximum_registered_cells": 5184,
+    "new_actual_phantom_PDE": 0,
+    "new_actual_four_pad_CEM_RHS": 0,
+    "max_cells_per_case": 800000,
+    "CPU_limit": 4,
+    "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+    "numerical_child_timeout_seconds": 600,
+    "field_definition": "Cell E is arithmetic mean of signed conservative opposite-face fields; independent of reference; contactq=I/actualcontactlength",
+    "reference": "Published P128-H2048 finite Galerkin solution; conditional comparator, NOT continuum truth",
+    "reference_mode_block": 64
+  },
+  "gates": {
+    "relative_algebraic_residual": 1e-10,
+    "relative_current_balance": 1e-10,
+    "relative_complex_power_balance": 1e-10,
+    "reference_current_relative": 0.02,
+    "reference_contact_P95_relative": 0.05,
+    "reference_primary_E_relative_L2": 0.05
+  },
+  "reference_commit": "c25c7d62783aa2ed310961ebc39784092b8b315c",
+  "reference_arrays_sha256": "bf2eee9185dd27cf2e61d2b9e0b618e7cbc34482385683cc27af8a0b9da70b88",
+  "coordinate_system": "Periodic x over2mm; depthz0top to0.1mmbottom; unit out-of-plane length. I:A/m,complexpower:W/m.",
+  "excitation": "One synthetic equipotentialpatch1Vpeak=2Vpp, entirebottom0V. No50ohm/fourpad/material/hardware model.",
+  "operators": {
+    "physical_area_robin": "G=ell/(zA+dz/(2gamma))",
+    "wholepixel_halfcell_lumping": "G=ell/(zA+f*dz/(2gamma)),f=ell/dx",
+    "boundary_fitted": "Insert exactcontact endpoints into xedges; fullcontactfaces use physicalareaRobin"
+  },
+  "reference_projection": "Exact analytic Fourier rectangle-average Ex/Ez; primary full physical L2 includes finite-reference Parsevalenergy. Secondary cell-average projection is separately labelled smoothing.",
+  "contact_comparison": "Primary pairwise physical interval intersections versus native BEMpanels; secondary conservative length-averageprojection separate.",
+  "reference_validity": "Finite panel/harmonic diagnostics passed; edgeJmax not continuum-converged. This stage establishes no actualphantom/contact model correction.",
+  "original_failures_preserved": true,
+  "model_correction_applied": false,
+  "candidate_adopted": false
+}
