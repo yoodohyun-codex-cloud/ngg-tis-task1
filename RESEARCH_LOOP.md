@@ -32,3 +32,7 @@
 새 보고서·수신 확인·빈 commit을 반복하는 통신 루프를 만들지 않는다. 서로의 문서 검토를 계산 진척으로 세지 않는다.
 기존 자동화·worker 설정을 복사해 켜지 않는다. GitHub 협업은 실제 read/write와 commit으로 확인하며
 연결되지 않은 dot–Codex 자동 통신을 작동 중이라고 보고하지 않는다.
+
+## Latest cumulative-time authorization — 2026-10-25
+
+The user explicitly removed the cumulative compute-time limit for this research. Do not stop or ask repeatedly because of the historical 13,800-second ceiling or 52.02-second remainder. Debit real elapsed seconds and preserve history; each scientifically selected batch still has finite cases, finite stage timeouts, a single owner and checkpoints. Review results and failures before selecting the next batch. All CPU/RAM, geometry, original-preservation, installation/security/merge and service/billing boundaries remain. Actual service termination or unavailable storage/access must be reported honestly. Canonical authorization: `runtime/time-unlimited-20261025/approval.json` and SHA-bound amendment; active ledger uses a null cumulative limit.

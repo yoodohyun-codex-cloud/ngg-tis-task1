@@ -1,8 +1,10 @@
-"""Validate the one authorized Task 1 time extension without changing physics.
+"""Validate Task 1 time authorization without changing numerical resource caps.
 
 Importing this module never reads or changes the live budget.  Old 6600-second
 receipts remain valid.  Expansion is a separate, dual-lock-protected amendment;
-it does not debit time, erase history, or authorize paid resources.
+it does not debit time, erase history, or authorize paid resources. The explicit
+2026-10-25 cumulative-time override uses JSON null, never Infinity or a fabricated
+finite ceiling. Every execution stage must still have its own finite timeout.
 """
 from __future__ import annotations
 
@@ -93,7 +95,7 @@ def _pinned(path, expected):
     return path
 
 
-def _validate(ledger):
+def _validate_finite(ledger):
     _require(isinstance(ledger, dict), 'Budget ledger must be an object')
     limit = ledger.get('limit_seconds')
     spent = ledger.get('spent_seconds')
@@ -134,13 +136,77 @@ def _validate(ledger):
     return limit, {str(approval_path): refs['approval_sha256'], str(amendment_path): refs['amendment_sha256']}
 
 
+def _validate(ledger):
+    if not isinstance(ledger, dict) or ledger.get('cumulative_time_unlimited') is not True:
+        return _validate_finite(ledger)
+    _require(ledger.get('limit_seconds') is None, 'Unlimited cumulative time must use JSON null')
+    spent = ledger.get('spent_seconds')
+    _require(type(spent) in (int, float) and math.isfinite(spent) and spent >= 0,
+             'Unlimited time still requires finite actual spending')
+    _require(isinstance(ledger.get('runs'), list), 'Preserved run history required')
+    _canonical_sha(ledger['runs'])
+    refs = ledger.get('cumulative_time_policy')
+    _require(isinstance(refs, dict), 'Explicit cumulative-time authorization pins required')
+    approval_path = _pinned(refs.get('approval_path'), refs.get('approval_sha256'))
+    amendment_path = _pinned(refs.get('amendment_path'), refs.get('amendment_sha256'))
+    baseline_path = _pinned(refs.get('baseline_ledger_path'), refs.get('baseline_ledger_sha256'))
+    approval, amendment, baseline = _read(approval_path), _read(amendment_path), _read(baseline_path)
+    _require(approval.get('schema') == 'task1-cumulative-time-unlimited-approval-v1' and
+             approval.get('status') == 'approved' and
+             approval.get('cumulative_time_limit_seconds') is None and
+             approval.get('cumulative_time_unlimited') is True and
+             approval.get('authority') == 'explicit_current_user_instruction' and
+             approval.get('authorization_id') == 'TASK1-TIME-UNLIMITED-20261025',
+             'Explicit user unlimited-time approval required')
+    preserved_caps = dict(cpu=1, concurrent_solves=1, max_cells=800000,
+                          java_heap_bytes=2*GIB, aggregate_rss_plus_all_owned_tmpfs_bytes=3*GIB)
+    _require(approval.get('preserved_numerical_caps') == preserved_caps and
+             approval.get('finite_batch_timeouts_required') is True and
+             approval.get('external_paid_resources_authorized') is False and
+             approval.get('service_limits_bypass_authorized') is False and
+             approval.get('security_installation_merge_permissions_changed') is False,
+             'Cumulative-time approval cannot change other permissions or finite stages')
+    old_limit, old_refs = _validate_finite(baseline)
+    _require(amendment.get('schema') == 'task1-cumulative-time-unlimited-amendment-v1' and
+             amendment.get('status') == 'applied' and amendment.get('previous_limit_seconds') == old_limit and
+             amendment.get('new_limit_seconds') is None and
+             amendment.get('baseline_ledger_sha256') == refs['baseline_ledger_sha256'] and
+             amendment.get('approval_sha256') == refs['approval_sha256'] and
+             amendment.get('baseline_runs_count') == len(baseline['runs']) and
+             amendment.get('baseline_spent_seconds') == baseline['spent_seconds'] and
+             amendment.get('baseline_runs_sha256') == _canonical_sha(baseline['runs']) and
+             amendment.get('ledger_path') == refs.get('ledger_path'),
+             'Unlimited amendment must bind exact historical ledger and approval')
+    count = len(baseline['runs'])
+    _require(len(ledger['runs']) >= count and spent >= baseline['spent_seconds'] and
+             _canonical_sha(ledger['runs'][:count]) == _canonical_sha(baseline['runs']) and
+             ledger.get('resource_policy') == baseline.get('resource_policy'),
+             'Unlimited approval must preserve all previous spending, run prefix and finite policy')
+    return None, {**old_refs, str(approval_path): refs['approval_sha256'],
+                  str(amendment_path): refs['amendment_sha256'],
+                  str(baseline_path): refs['baseline_ledger_sha256']}
+
+
 def effective_limit(ledger):
-    """Return 6600 or the SHA-validated authorized 13800-second limit."""
+    """Return the SHA-validated finite limit, or None for authorized unlimited time."""
     return _validate(ledger)[0]
 
 
 def remaining_seconds(ledger):
-    return effective_limit(ledger) - ledger['spent_seconds']
+    limit = effective_limit(ledger)
+    return None if limit is None else limit - ledger['spent_seconds']
+
+
+def time_available(ledger, reserved_seconds):
+    """Admit a finite reservation; None denotes no cumulative ceiling."""
+    _require(type(reserved_seconds) in (int, float) and math.isfinite(reserved_seconds) and
+             reserved_seconds >= 0, 'A finite nonnegative batch reservation is required')
+    remaining = remaining_seconds(ledger)
+    return remaining is None or remaining >= reserved_seconds
+
+
+def require_time_budget(ledger, reserved_seconds):
+    _require(time_available(ledger, reserved_seconds), 'Insufficient authorized cumulative time')
 
 
 def policy_refs(ledger):
@@ -244,14 +310,57 @@ def expand_ledger(ledger_path, approval_path, amendment_path, lock_path=None):
         return new
 
 
+def remove_cumulative_limit(ledger_path, approval_path, amendment_path, baseline_path, lock_path=None):
+    """Apply the user's cumulative-only override; preserve the exact finite ledger."""
+    ledger_path = _canonical(Path(ledger_path).absolute())
+    approval_path = _canonical(Path(approval_path).absolute())
+    baseline_path = _canonical(Path(baseline_path).absolute())
+    amendment_path = Path(amendment_path).absolute()
+    with execution_lock(ledger_path, lock_path):
+        _canonical(amendment_path, exists=False)
+        old = load_ledger(ledger_path)
+        _require(effective_limit(old) is not None and _sha(ledger_path) == _sha(baseline_path),
+                 'Exact pre-override finite ledger snapshot required; no reset or repeat')
+        amendment = dict(schema='task1-cumulative-time-unlimited-amendment-v1', status='applied',
+            previous_limit_seconds=effective_limit(old), new_limit_seconds=None,
+            ledger_path=str(ledger_path), approval_sha256=_sha(approval_path),
+            baseline_ledger_sha256=_sha(baseline_path), baseline_runs_count=len(old['runs']),
+            baseline_spent_seconds=old['spent_seconds'], baseline_runs_sha256=_canonical_sha(old['runs']),
+            applied_utc=datetime.now(timezone.utc).isoformat(), operator_pid=os.getpid())
+        with amendment_path.open('x') as stream:
+            json.dump(amendment, stream, ensure_ascii=False, indent=2, allow_nan=False)
+            stream.flush()
+            os.fsync(stream.fileno())
+        new = copy.deepcopy(old)
+        new.update(limit_seconds=None, cumulative_time_unlimited=True,
+            cumulative_time_policy=dict(ledger_path=str(ledger_path), approval_path=str(approval_path),
+                approval_sha256=_sha(approval_path), amendment_path=str(amendment_path),
+                amendment_sha256=_sha(amendment_path), baseline_ledger_path=str(baseline_path),
+                baseline_ledger_sha256=_sha(baseline_path)))
+        effective_limit(new)
+        partial = ledger_path.with_name(ledger_path.name+f'.unlimited-{os.getpid()}-{time.time_ns()}.partial')
+        with partial.open('x') as stream:
+            json.dump(new, stream, ensure_ascii=False, separators=(',', ':'), allow_nan=False)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(partial, ledger_path)
+        return new
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ledger', type=Path, required=True)
     parser.add_argument('--approval', type=Path, required=True)
     parser.add_argument('--amendment', type=Path, required=True)
     parser.add_argument('--lock', type=Path)
+    parser.add_argument('--unlimited', action='store_true')
+    parser.add_argument('--baseline', type=Path)
     args = parser.parse_args()
-    ledger = expand_ledger(args.ledger, args.approval, args.amendment, args.lock)
+    if args.unlimited:
+        _require(args.baseline is not None, '--baseline is required for unlimited authorization')
+        ledger = remove_cumulative_limit(args.ledger, args.approval, args.amendment, args.baseline, args.lock)
+    else:
+        ledger = expand_ledger(args.ledger, args.approval, args.amendment, args.lock)
     print(json.dumps(dict(status='applied', limit_seconds=effective_limit(ledger),
                          spent_seconds=ledger['spent_seconds'], remaining_seconds=remaining_seconds(ledger),
                          immutable_policy_refs=policy_refs(ledger)), ensure_ascii=False))
