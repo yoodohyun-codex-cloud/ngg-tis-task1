@@ -1,0 +1,113 @@
+{
+  "schema": "task1-VS-spacing-estimator-finite-stage-v1",
+  "status": "VS_spacing_manufactured_diagnostic_computed",
+  "started_utc": "2026-10-25T04:13:26.615626+00:00",
+  "pid": 77015,
+  "proc_start_ticks": 3323344,
+  "finite_seconds": 60,
+  "cumulative_time_unlimited": true,
+  "new_real_native_PDE": 0,
+  "actual_SC8_native_started": false,
+  "resource_limits": {
+    "schema": "task1-resolved-execution-limits-v2",
+    "cpu_limit": 4,
+    "effective_cpu_limit": 4,
+    "affinity_cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "total_memory_bytes": 8000000000,
+    "effective_total_memory_bytes": 8000000000,
+    "requested_cpu_limit": 4,
+    "requested_total_memory_bytes": 8000000000,
+    "requested_total_memory_GiB": 7.450580596923828,
+    "java_heap_bytes": 2147483648,
+    "java_heap_fits_effective_total_cap": true,
+    "java_active_processor_count": 4,
+    "blas_threads": 4,
+    "max_cells": 800000,
+    "concurrent_solves": 1,
+    "numerical_owners": 1,
+    "cumulative_time_unlimited": true,
+    "finite_batch_timeouts_required": true,
+    "memory_accounting_scope": "Aggregate owned process RSS plus all task1-owned tmpfs bytes; caller must enforce",
+    "visible_cgroup_memory_headroom_bytes": 7854977024,
+    "host_MemAvailable_bytes": 15424684032,
+    "environment": {
+      "schema": "task1-execution-environment-snapshot-v1",
+      "helper_version": "task1-execution-policy-2.0",
+      "python_version": "3.12.14",
+      "cgroup_version": 2,
+      "affinity_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "affinity_status": "observed",
+      "visible_cpuset_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "visible_cpu_quota_us": 400000,
+      "visible_cpu_period_us": 100000,
+      "visible_cpu_quota_cores": 4.0,
+      "visible_cpu_quota_status": "visible_finite",
+      "visible_cgroup_memory_limit_bytes": 17179869184,
+      "visible_cgroup_memory_limit_status": "visible_finite",
+      "visible_cgroup_memory_current_bytes": 9324892160,
+      "visible_cgroup_memory_headroom_bytes": 7854977024,
+      "host_MemAvailable_bytes": 15424684032,
+      "hidden_ancestor_limits_verified": false,
+      "capacity_guaranteed": false,
+      "measurement_scope": "Current process affinity and visible cgroup v2 mount only; host availability is informational"
+    },
+    "immutable_policy_refs": {
+      "/workspace/ngg-tis-task1/runtime/task1-execution-resource-policy.json": "3f1cf1bced28489b85f0f8795b81c0a20aab2950ab70c91c8ac2018034256804",
+      "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/approval.json": "2bf9de71a70a1c7a3e054372a51d0f40e34c74077446784b6bcba58578f725a8",
+      "/workspace/ngg-tis-task1/runtime/resource4-8gb-20261025/environment-snapshot.json": "76ee85eb5776408782edfa0091ea91543765e8bda881009c78d8d4dc090b0fd4"
+    },
+    "hidden_ancestor_limits_verified": false,
+    "capacity_guaranteed": false
+  },
+  "manufactured_cases": 15,
+  "test_count": 3,
+  "analytic_contracts": {
+    "passed": true,
+    "status": "passed",
+    "absolute_tolerance": 1e-10,
+    "relative_tolerance": 1e-10,
+    "checks": [
+      "zero mode insulated",
+      "nonzero-current layered zero-mode slab",
+      "homogeneous continuum",
+      "small-k limit",
+      "transfer inverse",
+      "homogeneous discrete recurrence",
+      "FVM zero mode",
+      "complex energy identity",
+      "independent admittance recurrence"
+    ],
+    "new_real_phantom_PDE": 0,
+    "native_arrays_read": false
+  },
+  "summary_SHA256": "110a4bfbec9914baa23526275ab649ec93a94a709cb44524841024d45e35c080",
+  "profiles_SHA256": "b70ecd7f3c6d777910e6c68d3d08289d0b227ddd8c1429d74bc0ecdcae64938d",
+  "source_implementation": "stdlib complex serial; CPU4 is an allowed cap, not a claim of4coreuse",
+  "finished_utc": "2026-10-25T04:13:27.440327+00:00",
+  "elapsed_seconds": 0.8113492390039028,
+  "CPU_seconds": 0.810247769,
+  "observed_average_CPU_cores": 0.9986424218438227,
+  "resources": {
+    "peak_RSS": 19308544,
+    "peak_owned_tmpfs": 2570461648,
+    "peak_accounted": 2589770192
+  },
+  "remaining_seconds": null
+}
