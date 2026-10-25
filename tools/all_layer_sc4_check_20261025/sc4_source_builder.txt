@@ -1,0 +1,131 @@
+from pathlib import Path
+source=Path('/dev/shm/task1-all-layer-sensitivity-20261025/source/whole_layer_post.py').read_text()
+source=source.replace('for a four-layer assumption sensitivity','for a one-axis SC2 to SC4 mesh check')
+source=source.replace("CASE='baseline-square15-sc-eps1100-xy80'","CASE='baseline-square15-sc-eps1100-sc4-xy80'\nSC2_RUN=Path('/dev/shm/task1-all-layer-sensitivity-20261025-run')\nSC2_CASE='baseline-square15-sc-eps1100-xy80'")
+a=source.index('def _metadata():');b=source.index('\ndef required_inputs():',a)
+source=source[:a]+'''def _metadata():
+    """Only small already-completed SC2 metadata and source declarations."""
+    path=SC2_RUN/'postprocess/summary.json';raw=path.read_bytes()
+    require(len(raw)<4*1024**2,'Bounded completed SC2 metadata')
+    post=json.loads(raw);require(post['case_id']==SC2_CASE and post['status']=='calculated_sensitivity_unadopted','Actual completed SC2 reference')
+    require(post['maximum_direction_search']['status']=='complete','Actual cached SC2 2074 metric required')
+    for key,limit in NATIVE_GATES.items():require(0<=post['native_gates']['values'][key]<=limit,'SC2 discrete gate '+key)
+    manifest_path=SC2_RUN/'native-sha256.json';manifest_raw=manifest_path.read_bytes();manifest=json.loads(manifest_raw)
+    artifact_path=SC2_RUN/'postprocess/artifact-sha256.json';artifact_raw=artifact_path.read_bytes();artifacts=json.loads(artifact_raw)
+    require(manifest['native_conditions_completed']==1 and manifest['native_RHS_completed']==8,'Completed eight-RHS SC2 reference')
+    require(sha(raw)==artifacts['summary.json']['SHA256'],'Declared SC2 summary identity')
+    pins=dict(manifest['files']);pins.update({str(path):sha(raw),str(manifest_path):sha(manifest_raw),str(artifact_path):sha(artifact_raw),
+        str(SC2_RUN/'postprocess/scalars.npz'):artifacts['scalars.npz']['SHA256']})
+    for name in('selectivity_volume.py','explore_tis.py','SelectivityShapeBasis.java','TisSweep.java'):
+        p=ROOT/'tis-java'/name;pins[str(p)]=sha(p.read_bytes())
+    for name in('whole_layer_post.py','whole_layer_interfaces.py'):
+        p=Path('/dev/shm/task1-all-layer-sensitivity-20261025/source')/name;pins[str(p)]=sha(p.read_bytes())
+    return dict(post=post,summary_path=path,archive_path=SC2_RUN/'postprocess/scalars.npz'),pins
+
+''' + source[b:]
+source=source.replace("(len(x),len(y),len(z),n)==(80,80,70,351680)and len(faces)==71", "(len(x),len(y),len(z),n)==(80,80,72,361728)and len(faces)==73")
+source=source.replace("lookup=np.full((70,80,80),-1,np.int32)","lookup=np.full((len(z),80,80),-1,np.int32)")
+source=source.replace("[2,14,14,40])[iz]","[4,14,14,40])[iz]")
+source=source.replace("task1-all-layer-sensitivity-20261025-run'and folder.is_dir()", "task1-all-layer-sc4-check-20261025-run'and folder.is_dir()")
+source=source.replace("meta['cells']==351680", "meta['cells']==361728").replace("meta['sc_cells']==2", "meta['sc_cells']==4")
+source=source.replace("oldconfig=_properties(read(ROOT/'data-native'/RUN_ID/'configs'/(OLD_CASE+'.properties')))","oldconfig=_properties(read(SC2_RUN/'configs'/(SC2_CASE+'.properties')))\n    require(all(config[k+'.sigma']==oldconfig[k+'.sigma']and config[k+'.epsilon_r']==oldconfig[k+'.epsilon_r']for k in LAYERS),'SC4 must change only grid; identical material arithmetic')")
+source=source.replace("grid.shape==(351680,5)","grid.shape==(361728,5)")
+a=source.index("    oldfolder=ROOT/'data-native'/RUN_ID/'bases'/OLD_CASE")
+b=source.index("    spectra={}",a)
+source=source[:a]+'''    oldfolder=SC2_RUN/'bases'/SC2_CASE
+    oldgrid=np.loadtxt(io.BytesIO(decoded(path(oldfolder,'grid.csv'))),delimiter=',',skiprows=1)
+    oldmeta=js(oldfolder/'mesh-metadata.json')
+    require(oldgrid.shape==(351680,5)and oldmeta['sc_cells']==2,'Actual SC2 reference grid')
+    bulk_ids=np.flatnonzero(grid[:,3]>0);old_bulk_ids=np.flatnonzero(oldgrid[:,3]>0)
+    require(np.array_equal(grid[bulk_ids],oldgrid[old_bulk_ids]),'Unchanged exact bulk coordinates, layer IDs, volume and order')
+    geometry=_geometry(grid,meta);layer=grid[:,3].astype(int);old_layer=oldgrid[:,3].astype(int);coeff=coefficients()
+    from selectivity_volume import native_region_weights
+    def region_weights(grid_,meta_):
+        columns={name:grid_[:,i]for i,name in enumerate(('x_mm','y_mm','z_mm','layer','volume_m3'))}
+        declared=dict(meta_,radius_mm=25,layer_counts=[meta_['sc_cells']]+meta_['bulk_layer_counts'],
+            geometry_volume_tolerance_relative=.002,target_volume_tolerance_relative=.001)
+        guard();return native_region_weights(columns,declared,deadline_monotonic=deadline_monotonic)
+    weights,weight_receipt=region_weights(grid,meta);old_weights,old_weight_receipt=region_weights(oldgrid,oldmeta)
+    with np.load(io.BytesIO(read(old['archive_path'])),allow_pickle=False)as archive:
+        old_arrays={name:np.array(archive[name],copy=True)for name in ('total_E_RMS_V_m','fundamental_maxTIS_2074_V_m','total_Jtotal_RMS_A_m2')}
+        for region,w in old_weights.items():require(np.array_equal(w,archive[region+'_volume_weight_m3']),'Frozen physical ROI regeneration reproduces SC2 cache exactly')
+    old_rms=old_arrays['total_E_RMS_V_m'];old_max=old_arrays['fundamental_maxTIS_2074_V_m']
+    old_regions={**{name:old_weights['total']*(old_layer==i)for i,name in enumerate(LAYERS)},**old_weights}
+    require(all(abs(weights[name].sum()-old_weights[name].sum())<=1e-12*old_weights[name].sum()for name in weights),'SC-only subdivision preserves physical ROI volumes')
+''' + source[b:]
+source=source.replace("import whole_layer_interfaces as iface","import sc4_interfaces as iface")
+source=source.replace("interfaces={};electrical_rows=[]", "interfaces={};common_interfaces={};sc2_common_interfaces={};field_comparison={};electrical_rows=[]")
+source=source.replace("interfaces[str(f)]=iface.interface_diagnostics(phi,grid,meta,gamma,guard)","interfaces[str(f)]=iface.interface_diagnostics(phi,grid,meta,gamma,guard)\n        common_interfaces[str(f)]=iface.common_two_point_diagnostics(phi,grid,meta,gamma,guard)")
+source=source.replace("old_native=binary(oldfolder,'field-'+str(f)+'.bin',(2,len(grid),3))", "old_native=binary(oldfolder,'field-'+str(f)+'.bin',(2,len(oldgrid),3))")
+source=source.replace("old_energy=np.zeros(len(grid))","old_energy=np.zeros(len(oldgrid))")
+needle="        del phi,density,transfer,loss_matrix,old_native"
+source=source.replace(needle,"""        old_phi=np.einsum('c,cn->n',c,binary(oldfolder,'potential-'+str(f)+'.bin',(2,len(oldgrid))))
+        sc2_common_interfaces[str(f)]=iface.common_two_point_diagnostics(old_phi,oldgrid,oldmeta,gamma,guard)
+        field_comparison[str(f)]=compare_native_fields(field,grid,old_field,oldgrid)
+        del phi,old_phi,density,transfer,loss_matrix,old_native""")
+source=source.replace("baseline_total_RMS=weighted_statistics(old_rms,w,grid)","baseline_total_RMS=weighted_statistics(old_rms,old_regions[region],oldgrid)")
+for key,arr in (("baseline_X_TIS","old_am[:,0]"),("baseline_Y_TIS","old_am[:,1]"),("baseline_Z_TIS","old_am[:,2]"),("baseline_cached_maxTIS_2074","old_max")):
+ source=source.replace(key+'=weighted_statistics('+arr+',w,grid)',key+'=weighted_statistics('+arr+',old_regions[region],oldgrid)')
+source=source.replace("baseline_electrical=old['square']['metrics']", "baseline_electrical=dict(old['post']['electrical'])\n    baseline_electrical.update(surface_J_RMS_max_A_m2=baseline_electrical['contact_normal_J_RMS_max_A_m2'],surface_J_RMS_p95_A_m2=baseline_electrical['contact_normal_J_RMS_P95_A_m2'])")
+source=source.replace("schema='task1-whole-layer-assumption-sensitivity-post-v1'", "schema='task1-whole-layer-sc4-check-post-v1'")
+source=source.replace("material_status='Uncalibrated four-layer hypotheses; only SCepsilon110000to1100; not a paper-material reproduction or experimental correction'", "material_status='Identical SCepsilon1100 four-layer hypotheses; only SC2to4 mesh refinement; not a paper-material reproduction or experimental correction'")
+source=source.replace("independent_interface_potential_gradient_diagnostics=interfaces,", "independent_interface_potential_gradient_diagnostics=interfaces,common_two_point_interface_diagnostics=dict(SC2=sc2_common_interfaces,SC4=common_interfaces),SC2_to_SC4_native_field_comparison=field_comparison,")
+source=source.replace("layer_counts=[2,14,14,40]", "layer_counts=[4,14,14,40]")
+source=source.replace("comparator=dict(run_id=RUN_ID,case_id=OLD_CASE,status='existing_native_and_cached_maxTIS_reused; not a new comparator solve')", "comparator=dict(run_id=SC2_RUN.name,case_id=SC2_CASE,status='actual SC2 native/cache reused; no comparator solve'),ROI_geometry_receipts=dict(SC2=old_weight_receipt,SC4=weight_receipt),adjacent_SC2_to_SC4_checks=adjacent_mesh_checks(old['post'],statistics,electrical),")
+# The replacement above ends with comma before the next comma in the original.
+source=source.replace("electrical),,", "electrical),")
+source=source.replace("initial_2000_2010_condition_reproduced=False", "SC2_to_SC4_is_full_convergence=False,initial_2000_2010_condition_reproduced=False")
+source=source.replace("Exact predeclared one-factor SC epsilon sensitivity; no hidden retuning", "Exact unchanged SCepsilon1100 material hypothesis; only SC mesh changes")
+source=source.replace("Original same-grid fractional region weights", "Recomputed frozen physical fractional ROI weights")
+source=source.replace("Native cell-constant Float64 fields; original same-grid volume weights", "Native cell-constant Float64 fields; physical ROI weights regenerated by pinned original128-square algorithm")
+# Inject comparison helpers before build, all pure and guard-owned.
+a=source.index('\ndef build(')
+helpers='''
+def compare_native_fields(actual,grid,reference,refgrid):
+    """Exact bulk-centre comparison plus volume-averaged SC complex E per XY."""
+    current_bulk=actual[grid[:,3]>0];old_bulk=reference[refgrid[:,3]>0]
+    def difference(a,b):
+        delta=a-b;den=max(float(np.sqrt(np.mean(abs(b)**2))),1e-30)
+        return dict(samples=int(len(a)),complex_component_RMS_reference=float(np.sqrt(np.mean(abs(b)**2))),
+            complex_component_RMS_difference=float(np.sqrt(np.mean(abs(delta)**2))),
+            relative_component_L2=float(np.sqrt(np.mean(abs(delta)**2)))/den,
+            maximum_absolute_component_difference=float(abs(delta).max()),scope='Complex peak vector components; no temporal RMS conversion')
+    def sc_average(field,grid_):
+        ids=np.flatnonzero(grid_[:,3]==0);xy,inverse=np.unique(grid_[ids,:2],axis=0,return_inverse=True)
+        weights=grid_[ids,4];vol=np.bincount(inverse,weights=weights);out=np.empty((len(xy),3),complex)
+        for k in range(3):out[:,k]=(np.bincount(inverse,weights=weights*field[ids,k].real)+1j*np.bincount(inverse,weights=weights*field[ids,k].imag))/vol
+        return xy,out
+    xy,a=sc_average(actual,grid);oldxy,b=sc_average(reference,refgrid);require(np.array_equal(xy,oldxy),'Exact SC XY columns')
+    return dict(bulk_same_native_centres=difference(current_bulk,old_bulk),SC_full_thickness_volume_averaged_complex_E=difference(a,b),
+        interpretation='SC column averaging is an electrical diagnostic, not interpolation, an accuracy gate, or a skin model validation')
+
+
+def adjacent_mesh_checks(reference,statistics,electrical):
+    """Unchanged 1% ROI /5% J /2% powers, SC axis only; no full convergence."""
+    rows=[]
+    def check(name,before,after,tolerance,unit):
+        require(math.isfinite(before)and math.isfinite(after),'Finite adjacent-mesh metric')
+        relative=abs(after-before)/max(abs(before),1e-30)
+        rows.append(dict(metric=name,reference_SC2=float(before),new_SC4=float(after),units=unit,
+            absolute_difference=float(abs(after-before)),relative_difference=float(relative),relative_limit=tolerance,passed=bool(relative<=tolerance)))
+    for metric in('total_E_RMS_V_m','fundamental_maxTIS_2074_V_m'):
+        for statistic in('mean','p10'):
+            if metric in statistics['target']:
+                check('target.'+metric+'.'+statistic,reference['statistics']['target'][metric][statistic],statistics['target'][metric][statistic],.01,'V/m')
+            else:rows.append(dict(metric='target.'+metric+'.'+statistic,status='not_run_missing_max2074',passed=False))
+    olde=reference['electrical']
+    for key in('contact_normal_J_RMS_max_A_m2','contact_normal_J_RMS_P95_A_m2','SC_plus_dermis_Jtotal_RMS_max_A_m2','SC_plus_dermis_Jtotal_RMS_P95_A_m2'):
+        check(key,olde[key],electrical[key],.05,'A/m2')
+    for key in('source_power_W','contact_power_W','source_resistor_power_W'):
+        check(key,olde[key],electrical[key],.02,'W')
+    for layer in LAYERS:check(layer+'_power_W',olde['layers_power_W'][layer],electrical['layers_power_W'][layer],.02,'W')
+    return dict(status='adjacent_SC_axis_only_all_metrics_passed'if all(r['passed']for r in rows)else'adjacent_SC_axis_only_metrics_failed_or_incomplete',
+        all_passed=all(r['passed']for r in rows),rows=rows,
+        thresholds=dict(ROI_mean_P10_relative=.01,Jmax_J95_relative=.05,individual_power_relative=.02),
+        denominator='max(abs(SC2 reference),1e-30); absolute differences also reported',
+        full_convergence_validated=False,independent_interface_gradient_accuracy_gated=False,
+        interpretation='This one SC2→4 check does not close SC/XY/bulk/edge/contact sensitivity, old failures, material or experimental holds')
+
+'''
+source=source[:a]+helpers+source[a:]
+Path('/dev/shm/task1-all-layer-sc4-check-20261025/source/sc4_post.py').write_text(source)
