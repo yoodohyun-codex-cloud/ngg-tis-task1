@@ -1,0 +1,13 @@
+# New narrow peripheral band: matched topology and area tradeoff
+
+The new top-surface band contains four connected pixelated patches wholly between radii21 and23.5mm. Each has61.25mm2 contact area; total245mm2. Same phantom,layers,contact model,2000/2010Hz,1Vpp sources and793860-cell graph are used. Four pads and two outputs remain explicit. One finite worker completed both a new geometry-specific common-ground control and floating pairs(0,2)/(1,3), with4operatingRHS and2reciprocityRHS total. This did not modify the original common-ground research.
+
+Isolated targetmean/P10 is0.01608160/0.01488518V/m; its matched common-ground values are0.02317015/0.02162636V/m. Against that exact common-ground control, isolated mean/P10 changes-14.931%/-15.639% at equal sourcepower and-15.520%/-16.223% under joint8 skin/contact caps. The equal-current mean increase is a separate budget and does not establish an isolation advantage without its power cost.
+
+Corrected targetmean/central10-15mm mean improves from original isolated P23.5's0.837594 to0.861262; targetP10/annulusP95 changes0.868528to0.874223. Both remain below1. This new isolated geometry therefore still fails the regional concentration test. The paired common-ground ratios are0.856589 and0.888161, respectively. Corrected support weights with exact zero forbidden support are reused.
+
+The contact-area cost is substantial: total area falls900to245mm2. Against original isolated P23.5, at equal sourcepower targetmean/P10 falls46.096%/45.796%. At equal-current bookkeeping mean increases1.952%, but sourcepower increases257.724%; that is not a concentration success. At common P23.5 skin/contact caps mean/P10 falls72.193%/72.038%. Full sourcecurrent,power,contactdensity/voltage and skinloss values are in the companion JSON.
+
+The next finite candidate keeps inner radius21mm and increases the outer full-cell radius limit23.5to24.5mm. Exact integer corner tests yield four connected96.5mm2 patches,total386mm2; the phantom remainsD50mm and contacts stay on its top surface. This tests whether adding only farther-out contact faces recovers amplitude at a smaller regional-contrast penalty. Area increases245to386mm2 and is reported explicitly; it is not an equal-area contrast. A new matched common-ground control and floating comparison are calculated sequentially under the same resource/slot/watchdog limits. The old failed P24 recipe is not used or repaired.
+
+This is a bounded directional hypothesis after negative results, not an assertion that the full size/spacing/shape space is exhausted. There is no full angular/spatial convergence,physiology,hardware or COMSOL claim. Source-publication restrictions and original failure artifacts remain unchanged.
