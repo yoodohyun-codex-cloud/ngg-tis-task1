@@ -1,0 +1,2573 @@
+{
+  "schema": "task1-contact-edge-fv-recovery-result-v1",
+  "status": "finite_FV_reference_comparison_calculated_unadopted",
+  "spec": {
+    "schema": "task1-contact-edge-fv-recovery-spec-v1",
+    "plan": {
+      "period_width_m": 0.002,
+      "SC_thickness_m": 0.0001,
+      "contact_endpoints_m": [
+        -0.0005,
+        0.0005
+      ],
+      "gamma_S_m": {
+        "real": 1.0,
+        "imaginary": 0.25
+      },
+      "zA_ohm_m2": {
+        "real": 0.0001,
+        "imaginary": -2e-05
+      },
+      "metal_peak_V": 1.0,
+      "bottom_peak_V": 0.0,
+      "methods": [
+        "physical_area_robin",
+        "wholepixel_halfcell_lumping",
+        "boundary_fitted"
+      ],
+      "cases": [
+        {
+          "nx": 40,
+          "nz": 8,
+          "phase": "aligned"
+        },
+        {
+          "nx": 40,
+          "nz": 8,
+          "phase": "half_cell"
+        },
+        {
+          "nx": 80,
+          "nz": 16,
+          "phase": "aligned"
+        },
+        {
+          "nx": 80,
+          "nz": 16,
+          "phase": "half_cell"
+        },
+        {
+          "nx": 160,
+          "nz": 32,
+          "phase": "aligned"
+        },
+        {
+          "nx": 160,
+          "nz": 32,
+          "phase": "half_cell"
+        }
+      ],
+      "synthetic_case_entries": 18,
+      "expected_unique_FV_solves": 12,
+      "maximum_registered_cells": 5184,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "max_cells_per_case": 800000,
+      "CPU_limit": 4,
+      "total_RSS_plus_all_owned_tmpfs_bytes": 8000000000,
+      "numerical_child_timeout_seconds": 600,
+      "field_definition": "Cell E is arithmetic mean of signed conservative opposite-face fields; independent of reference; contactq=I/actualcontactlength",
+      "reference": "Published P128-H2048 finite Galerkin solution; conditional comparator, NOT continuum truth",
+      "reference_mode_block": 64
+    },
+    "gates": {
+      "relative_algebraic_residual": 1e-10,
+      "relative_current_balance": 1e-10,
+      "relative_complex_power_balance": 1e-10,
+      "reference_current_relative": 0.02,
+      "reference_contact_P95_relative": 0.05,
+      "reference_primary_E_relative_L2": 0.05
+    },
+    "reference_commit": "c25c7d62783aa2ed310961ebc39784092b8b315c",
+    "reference_arrays_sha256": "bf2eee9185dd27cf2e61d2b9e0b618e7cbc34482385683cc27af8a0b9da70b88",
+    "coordinate_system": "Periodic x over2mm; depthz0top to0.1mmbottom; unit out-of-plane length. I:A/m,complexpower:W/m.",
+    "excitation": "One synthetic equipotentialpatch1Vpeak=2Vpp, entirebottom0V. No50ohm/fourpad/material/hardware model.",
+    "operators": {
+      "physical_area_robin": "G=ell/(zA+dz/(2gamma))",
+      "wholepixel_halfcell_lumping": "G=ell/(zA+f*dz/(2gamma)),f=ell/dx",
+      "boundary_fitted": "Insert exactcontact endpoints into xedges; fullcontactfaces use physicalareaRobin"
+    },
+    "reference_projection": "Exact analytic Fourier rectangle-average Ex/Ez; primary full physical L2 includes finite-reference Parsevalenergy. Secondary cell-average projection is separately labelled smoothing.",
+    "contact_comparison": "Primary pairwise physical interval intersections versus native BEMpanels; secondary conservative length-averageprojection separate.",
+    "reference_validity": "Finite panel/harmonic diagnostics passed; edgeJmax not continuum-converged. This stage establishes no actualphantom/contact model correction.",
+    "original_failures_preserved": true,
+    "model_correction_applied": false,
+    "candidate_adopted": false,
+    "recovery": {
+      "original_run": "/dev/shm/task1-contact-edge-fv-20261025-run",
+      "original_source_commit": "64f0f2fa6bd7c4cbe1c5b62cf58ac1c812117225",
+      "original_source_sha256": "d02813aacdbdccc390666878562e7bb5f9ce9dd4f0f2332f53e3b7c2aa5835cf",
+      "original_spec_sha256": "b40f51193bb00df8989aada648fcf2ff7c6698dc22dc928fa9d1369b19ec671f",
+      "failure_publication_commit": "f96126ff2b6e4c5beebc89dfb9fa295eb00ebbfe",
+      "failure_publication_receipt": "/dev/shm/task1-contact-continuation-20261025/fv-failure-stage/result-publication.json",
+      "first_case_id": "N40-Z8-aligned-physical_area_robin",
+      "first_case_NPZ_sha256": "76fd031deaa845a93fd7ab5ea8549f89cd56b9c87a4a766af91d47290c111abc",
+      "first_case_NPZ_bytes": 21259,
+      "prior_solved_first_phi_reused_without_spsolve": true,
+      "expected_recovered_prior_unique_solutions": 1,
+      "expected_new_unique_FV_solves": 11,
+      "expected_alias_entries": 6,
+      "unchanged_physics": true,
+      "old_empty_JSON_logs_and_originals_preserved": true,
+      "rederived_array_relative_tolerance": 1e-12,
+      "rederived_array_absolute_tolerance": 1e-12
+    }
+  },
+  "cases": [
+    {
+      "case_id": "N40-Z8-aligned-physical_area_robin",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 20,
+        "mathematically_partial_faces": 0
+      },
+      "nx_nominal": 40,
+      "nx_actual": 40,
+      "nz": 8,
+      "cells": 320,
+      "phase": "aligned",
+      "method": "physical_area_robin",
+      "unique_solve": true,
+      "new_solve_performed": false,
+      "recovered_prior_compute": true,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 1.922117530195228e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 7.696818783740441e-16,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 3.676187909816956e-16,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0035336639653772745,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.00412746017290879,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.07488372295188105,
+          "limit": 0.05,
+          "passed": false
+        }
+      ],
+      "reference_flags_passed": false,
+      "contact_current_peak_A_per_m": {
+        "real": 5.036393449339891,
+        "imaginary": 1.1256082459975145
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.036393449339887,
+        "imaginary": 1.1256082459975127
+      },
+      "contact_J_RMS_P95_A_m2": 4158.425536445082,
+      "contact_J_RMS_max_A_m2": 4158.425536445082,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5181967246699455,
+          "imaginary": -0.5628041229987573
+        },
+        "contact": {
+          "real": 1.3349011633745866,
+          "imaginary": -0.26698023267491733
+        },
+        "top_half_SC": {
+          "real": 0.07852359784556392,
+          "imaginary": -0.01963089946139098
+        },
+        "graph_bulk": {
+          "real": 1.0356975964953719,
+          "imaginary": -0.25892439912384296
+        },
+        "bottom_half_SC": {
+          "real": 0.06907436695442232,
+          "imaginary": -0.01726859173860558
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 181.94940294176516,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 187.54915171174162,
+        "primary_relative_L2": 0.07488372295188105,
+        "numerical_E_RMS_L2_V_m": 2425.8116752444253,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.013242234092345928,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.023154210587437385,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.025884132522778776,
+        "primary_pairwise_absolute_RMS_A_m2": 94.97915052555521,
+        "secondary_average_projection_relative_L2": 0.009958301138546984,
+        "common_contact_length_m": 0.001,
+        "pairwise_intersections": 144,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.023393581999698654,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "calculation_source_sha256": "d02813aacdbdccc390666878562e7bb5f9ce9dd4f0f2332f53e3b7c2aa5835cf",
+      "calculation_source_commit": "64f0f2fa6bd7c4cbe1c5b62cf58ac1c812117225",
+      "verification_source_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "recovery_prior_array_checks": [
+        {
+          "array": "x_edges_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "z_faces_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "dx_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "contact_length_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "phi_peak_V",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "Ex_FV_peak_V_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "Ez_FV_peak_V_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "Ex_reference_cell_average_peak_V_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "Ez_reference_cell_average_peak_V_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "contact_J_peak_A_m2",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        },
+        {
+          "array": "contact_I_peak_A_per_m",
+          "passed": true,
+          "maximum_absolute_difference": 0.0
+        }
+      ],
+      "original_NPZ_bytes_reused": true,
+      "recovered_from_NPZ_SHA256": "76fd031deaa845a93fd7ab5ea8549f89cd56b9c87a4a766af91d47290c111abc",
+      "failure_publication_commit": "f96126ff2b6e4c5beebc89dfb9fa295eb00ebbfe",
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "76fd031deaa845a93fd7ab5ea8549f89cd56b9c87a4a766af91d47290c111abc"
+    },
+    {
+      "arrays_SHA256": "76fd031deaa845a93fd7ab5ea8549f89cd56b9c87a4a766af91d47290c111abc",
+      "bottom_current_peak_A_per_m": {
+        "imaginary": 1.1256082459975127,
+        "real": 5.036393449339887
+      },
+      "calculation_source_commit": "64f0f2fa6bd7c4cbe1c5b62cf58ac1c812117225",
+      "calculation_source_sha256": "d02813aacdbdccc390666878562e7bb5f9ce9dd4f0f2332f53e3b7c2aa5835cf",
+      "candidate_adopted": false,
+      "case_id": "N40-Z8-aligned-wholepixel_halfcell_lumping",
+      "cells": 320,
+      "complex_powers_W_per_m": {
+        "bottom_half_SC": {
+          "imaginary": -0.01726859173860558,
+          "real": 0.06907436695442232
+        },
+        "contact": {
+          "imaginary": -0.26698023267491733,
+          "real": 1.3349011633745866
+        },
+        "graph_bulk": {
+          "imaginary": -0.25892439912384296,
+          "real": 1.0356975964953719
+        },
+        "source": {
+          "imaginary": -0.5628041229987573,
+          "real": 2.5181967246699455
+        },
+        "top_half_SC": {
+          "imaginary": -0.01963089946139098,
+          "real": 0.07852359784556392
+        }
+      },
+      "contact_J_RMS_P95_A_m2": 4158.425536445082,
+      "contact_J_RMS_max_A_m2": 4158.425536445082,
+      "contact_comparison": {
+        "common_contact_length_m": 0.001,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim.",
+        "pairwise_intersections": 144,
+        "primary_pairwise_absolute_RMS_A_m2": 94.97915052555521,
+        "primary_pairwise_relative_L2": 0.025884132522778776,
+        "secondary_average_projection_relative_L2": 0.009958301138546984
+      },
+      "contact_current_peak_A_per_m": {
+        "imaginary": 1.1256082459975145,
+        "real": 5.036393449339891
+      },
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "failure_publication_commit": "f96126ff2b6e4c5beebc89dfb9fa295eb00ebbfe",
+      "internal_gates": [
+        {
+          "limit": 1e-10,
+          "metric": "relative_algebraic_residual",
+          "passed": true,
+          "value": 1.922117530195228e-15
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_current_balance",
+          "passed": true,
+          "value": 7.696818783740441e-16
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_complex_power_balance",
+          "passed": true,
+          "value": 3.676187909816956e-16
+        }
+      ],
+      "internal_gates_passed": true,
+      "mesh_receipt": {
+        "exact_contact_length_m": 0.001,
+        "exact_rational_geometry": true,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 20,
+        "mathematically_partial_faces": 0,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false
+      },
+      "method": "wholepixel_halfcell_lumping",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "new_actual_four_pad_CEM_RHS": 0,
+      "new_actual_phantom_PDE": 0,
+      "new_solve_performed": false,
+      "nx_actual": 40,
+      "nx_nominal": 40,
+      "nz": 8,
+      "original_NPZ_bytes_reused": true,
+      "phase": "aligned",
+      "physical_E_comparison": {
+        "numerical_E_RMS_L2_V_m": 2425.8116752444253,
+        "primary_absolute_RMS_L2_V_m": 181.94940294176516,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 187.54915171174162,
+        "primary_error_energy_peak_V2": 0.013242234092345928,
+        "primary_relative_L2": 0.07488372295188105,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.023154210587437385,
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "recovered_from_NPZ_SHA256": "76fd031deaa845a93fd7ab5ea8549f89cd56b9c87a4a766af91d47290c111abc",
+      "recovered_prior_compute": false,
+      "recovery_prior_array_checks": [
+        {
+          "array": "x_edges_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "z_faces_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "dx_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "contact_length_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "phi_peak_V",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ex_FV_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ez_FV_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ex_reference_cell_average_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ez_reference_cell_average_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "contact_J_peak_A_m2",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "contact_I_peak_A_per_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        }
+      ],
+      "reference_flags": [
+        {
+          "limit": 0.02,
+          "metric": "reference_current_relative",
+          "passed": true,
+          "value": 0.0035336639653772745
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_contact_P95_relative",
+          "passed": true,
+          "value": 0.00412746017290879
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_primary_E_relative_L2",
+          "passed": false,
+          "value": 0.07488372295188105
+        }
+      ],
+      "reference_flags_passed": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "unique_solve": false,
+      "verification_source_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "wall_seconds": 0.023393581999698654,
+      "uses_prior_recovered_solution": true,
+      "alias_of": "N40-Z8-aligned-physical_area_robin",
+      "alias_reason": "Contact edges already lie on uniform faces; exactf1 matrices/physical geometry identical, no new solve"
+    },
+    {
+      "arrays_SHA256": "76fd031deaa845a93fd7ab5ea8549f89cd56b9c87a4a766af91d47290c111abc",
+      "bottom_current_peak_A_per_m": {
+        "imaginary": 1.1256082459975127,
+        "real": 5.036393449339887
+      },
+      "calculation_source_commit": "64f0f2fa6bd7c4cbe1c5b62cf58ac1c812117225",
+      "calculation_source_sha256": "d02813aacdbdccc390666878562e7bb5f9ce9dd4f0f2332f53e3b7c2aa5835cf",
+      "candidate_adopted": false,
+      "case_id": "N40-Z8-aligned-boundary_fitted",
+      "cells": 320,
+      "complex_powers_W_per_m": {
+        "bottom_half_SC": {
+          "imaginary": -0.01726859173860558,
+          "real": 0.06907436695442232
+        },
+        "contact": {
+          "imaginary": -0.26698023267491733,
+          "real": 1.3349011633745866
+        },
+        "graph_bulk": {
+          "imaginary": -0.25892439912384296,
+          "real": 1.0356975964953719
+        },
+        "source": {
+          "imaginary": -0.5628041229987573,
+          "real": 2.5181967246699455
+        },
+        "top_half_SC": {
+          "imaginary": -0.01963089946139098,
+          "real": 0.07852359784556392
+        }
+      },
+      "contact_J_RMS_P95_A_m2": 4158.425536445082,
+      "contact_J_RMS_max_A_m2": 4158.425536445082,
+      "contact_comparison": {
+        "common_contact_length_m": 0.001,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim.",
+        "pairwise_intersections": 144,
+        "primary_pairwise_absolute_RMS_A_m2": 94.97915052555521,
+        "primary_pairwise_relative_L2": 0.025884132522778776,
+        "secondary_average_projection_relative_L2": 0.009958301138546984
+      },
+      "contact_current_peak_A_per_m": {
+        "imaginary": 1.1256082459975145,
+        "real": 5.036393449339891
+      },
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "failure_publication_commit": "f96126ff2b6e4c5beebc89dfb9fa295eb00ebbfe",
+      "internal_gates": [
+        {
+          "limit": 1e-10,
+          "metric": "relative_algebraic_residual",
+          "passed": true,
+          "value": 1.922117530195228e-15
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_current_balance",
+          "passed": true,
+          "value": 7.696818783740441e-16
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_complex_power_balance",
+          "passed": true,
+          "value": 3.676187909816956e-16
+        }
+      ],
+      "internal_gates_passed": true,
+      "mesh_receipt": {
+        "exact_contact_length_m": 0.001,
+        "exact_rational_geometry": true,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 20,
+        "mathematically_partial_faces": 0,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false
+      },
+      "method": "boundary_fitted",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "new_actual_four_pad_CEM_RHS": 0,
+      "new_actual_phantom_PDE": 0,
+      "new_solve_performed": false,
+      "nx_actual": 40,
+      "nx_nominal": 40,
+      "nz": 8,
+      "original_NPZ_bytes_reused": true,
+      "phase": "aligned",
+      "physical_E_comparison": {
+        "numerical_E_RMS_L2_V_m": 2425.8116752444253,
+        "primary_absolute_RMS_L2_V_m": 181.94940294176516,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 187.54915171174162,
+        "primary_error_energy_peak_V2": 0.013242234092345928,
+        "primary_relative_L2": 0.07488372295188105,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.023154210587437385,
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "recovered_from_NPZ_SHA256": "76fd031deaa845a93fd7ab5ea8549f89cd56b9c87a4a766af91d47290c111abc",
+      "recovered_prior_compute": false,
+      "recovery_prior_array_checks": [
+        {
+          "array": "x_edges_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "z_faces_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "dx_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "contact_length_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "phi_peak_V",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ex_FV_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ez_FV_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ex_reference_cell_average_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "Ez_reference_cell_average_peak_V_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "contact_J_peak_A_m2",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        },
+        {
+          "array": "contact_I_peak_A_per_m",
+          "maximum_absolute_difference": 0.0,
+          "passed": true
+        }
+      ],
+      "reference_flags": [
+        {
+          "limit": 0.02,
+          "metric": "reference_current_relative",
+          "passed": true,
+          "value": 0.0035336639653772745
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_contact_P95_relative",
+          "passed": true,
+          "value": 0.00412746017290879
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_primary_E_relative_L2",
+          "passed": false,
+          "value": 0.07488372295188105
+        }
+      ],
+      "reference_flags_passed": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "unique_solve": false,
+      "verification_source_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "wall_seconds": 0.023393581999698654,
+      "uses_prior_recovered_solution": true,
+      "alias_of": "N40-Z8-aligned-physical_area_robin",
+      "alias_reason": "Contact edges already lie on uniform faces; exactf1 matrices/physical geometry identical, no new solve"
+    },
+    {
+      "case_id": "N40-Z8-half_cell-physical_area_robin",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 19,
+        "mathematically_partial_faces": 2
+      },
+      "nx_nominal": 40,
+      "nx_actual": 40,
+      "nz": 8,
+      "cells": 320,
+      "phase": "half_cell",
+      "method": "physical_area_robin",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 2.2192196586257797e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 1.7426483383504742e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 3.4442111936845327e-16,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0036166537049486624,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.14251377699816037,
+          "limit": 0.05,
+          "passed": false
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.08632129007623535,
+          "limit": 0.05,
+          "passed": false
+        }
+      ],
+      "reference_flags_passed": false,
+      "contact_current_peak_A_per_m": {
+        "real": 5.072803409476979,
+        "imaginary": 1.1323618362728
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.07280340947697,
+        "imaginary": 1.1323618362727983
+      },
+      "contact_J_RMS_P95_A_m2": 4770.749544750352,
+      "contact_J_RMS_max_A_m2": 4770.749544750353,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5364017047384895,
+          "imaginary": -0.5661809181364
+        },
+        "contact": {
+          "real": 1.3583901609644446,
+          "imaginary": -0.27167803219288894
+        },
+        "top_half_SC": {
+          "real": 0.07990530358614381,
+          "imaginary": -0.019976325896535953
+        },
+        "graph_bulk": {
+          "real": 1.0288112578270967,
+          "imaginary": -0.2572028144567742
+        },
+        "bottom_half_SC": {
+          "real": 0.06929498236080348,
+          "imaginary": -0.01732374559020087
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 209.73993508077055,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 216.194976562052,
+        "primary_relative_L2": 0.08632129007623535,
+        "numerical_E_RMS_L2_V_m": 2420.2851441759103,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.017596336147074343,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.034749193994495255,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.023668885047774462,
+        "primary_pairwise_absolute_RMS_A_m2": 86.85052874560446,
+        "secondary_average_projection_relative_L2": 0.016961858702947682,
+        "common_contact_length_m": 0.0010000000000000002,
+        "pairwise_intersections": 144,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.023280032000911888,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "c7ae6a258812ae262ac82645f83c7c96c2fbf954ce1dac73bbbf6da901e6a655"
+    },
+    {
+      "case_id": "N40-Z8-half_cell-wholepixel_halfcell_lumping",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 19,
+        "mathematically_partial_faces": 2
+      },
+      "nx_nominal": 40,
+      "nx_actual": 40,
+      "nz": 8,
+      "cells": 320,
+      "phase": "half_cell",
+      "method": "wholepixel_halfcell_lumping",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 2.570856297682498e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 2.12156055686183e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 3.518016165668843e-16,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0049816218858826245,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.17050311109671756,
+          "limit": 0.05,
+          "passed": false
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.08668217537242826,
+          "limit": 0.05,
+          "passed": false
+        }
+      ],
+      "reference_flags_passed": false,
+      "contact_current_peak_A_per_m": {
+        "real": 5.0797629211132005,
+        "imaginary": 1.1336022816681575
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.07976292111319,
+        "imaginary": 1.1336022816681546
+      },
+      "contact_J_RMS_P95_A_m2": 4887.623499005323,
+      "contact_J_RMS_max_A_m2": 4887.6234990053235,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5398814605566002,
+          "imaginary": -0.5668011408340787
+        },
+        "contact": {
+          "real": 1.3633844861014268,
+          "imaginary": -0.2726768972202854
+        },
+        "top_half_SC": {
+          "real": 0.0766860192606679,
+          "imaginary": -0.019171504815166975
+        },
+        "graph_bulk": {
+          "real": 1.0304085104705354,
+          "imaginary": -0.25760212761763385
+        },
+        "bottom_half_SC": {
+          "real": 0.06940244472396909,
+          "imaginary": -0.01735061118099227
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 210.61679939232405,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 217.0988276060194,
+        "primary_relative_L2": 0.08668217537242826,
+        "numerical_E_RMS_L2_V_m": 2422.14585903237,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.01774377447450659,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.035641740253989244,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.029214235458847437,
+        "primary_pairwise_absolute_RMS_A_m2": 107.19861925807363,
+        "secondary_average_projection_relative_L2": 0.0241047722445796,
+        "common_contact_length_m": 0.0010000000000000002,
+        "pairwise_intersections": 144,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.023092390001693275,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "33ec7da5daa866ddfe7ae9f984d4ebccabf44afdc7f0f7186a0c527c4405b7e6"
+    },
+    {
+      "case_id": "N40-Z8-half_cell-boundary_fitted",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 21,
+        "mathematically_partial_faces": 0
+      },
+      "nx_nominal": 40,
+      "nx_actual": 42,
+      "nz": 8,
+      "cells": 336,
+      "phase": "half_cell",
+      "method": "boundary_fitted",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 2.1845264290781642e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 1.1013236356360231e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 5.434908868489008e-16,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0021458522373313045,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.06030056214838481,
+          "limit": 0.05,
+          "passed": false
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.056973791043886134,
+          "limit": 0.05,
+          "passed": false
+        }
+      ],
+      "reference_flags_passed": false,
+      "contact_current_peak_A_per_m": {
+        "real": 5.043462488661176,
+        "imaginary": 1.1269072903516875
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.043462488661171,
+        "imaginary": 1.1269072903516855
+      },
+      "contact_J_RMS_P95_A_m2": 4427.455078448558,
+      "contact_J_RMS_max_A_m2": 4427.45507844856,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.521731244330588,
+          "imaginary": -0.5634536451758437
+        },
+        "contact": {
+          "real": 1.339583318136069,
+          "imaginary": -0.2679166636272138
+        },
+        "top_half_SC": {
+          "real": 0.07879901871388639,
+          "imaginary": -0.019699754678471598
+        },
+        "graph_bulk": {
+          "real": 1.0341916373707223,
+          "imaginary": -0.25854790934268057
+        },
+        "bottom_half_SC": {
+          "real": 0.06915727010990914,
+          "imaginary": -0.017289317527477286
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 138.43258394651667,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 142.69304140966798,
+        "primary_relative_L2": 0.056973791043886134,
+        "numerical_E_RMS_L2_V_m": 2426.716766212236,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.0076654321192437536,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.016649024335570327,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.01734863385542367,
+        "primary_pairwise_absolute_RMS_A_m2": 63.659019861567835,
+        "secondary_average_projection_relative_L2": 0.005328502805891167,
+        "common_contact_length_m": 0.0010000000000000002,
+        "pairwise_intersections": 144,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.02357374399434775,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "c0ccf1b134149c74552229b832f7fe8fa1bf92f523270db3e42b0ceab2d39bfe"
+    },
+    {
+      "case_id": "N80-Z16-aligned-physical_area_robin",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 40,
+        "mathematically_partial_faces": 0
+      },
+      "nx_nominal": 80,
+      "nx_actual": 80,
+      "nz": 16,
+      "cells": 1280,
+      "phase": "aligned",
+      "method": "physical_area_robin",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 6.176461535205469e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 2.7902158840106723e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 2.4282837816102934e-16,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0012079558704555448,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.03294399804087572,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.04286642832409824,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.048233029449752,
+        "imaginary": 1.1278216894494295
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.048233029449738,
+        "imaginary": 1.127821689449424
+      },
+      "contact_J_RMS_P95_A_m2": 4038.097460160444,
+      "contact_J_RMS_max_A_m2": 4426.52135480323,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.524116514724876,
+          "imaginary": -0.5639108447247148
+        },
+        "contact": {
+          "real": 1.3423656791300955,
+          "imaginary": -0.2684731358260191
+        },
+        "top_half_SC": {
+          "real": 0.03948134350382635,
+          "imaginary": -0.009870335875956588
+        },
+        "graph_bulk": {
+          "real": 1.1077082639352553,
+          "imaginary": -0.27692706598381384
+        },
+        "bottom_half_SC": {
+          "real": 0.03456122815569862,
+          "imaginary": -0.008640307038924655
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 104.15509181918586,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 107.3606112541023,
+        "primary_relative_L2": 0.04286642832409824,
+        "numerical_E_RMS_L2_V_m": 2428.291508635134,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.0043393132607452145,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.0117596355157109,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.014075567496139323,
+        "primary_pairwise_absolute_RMS_A_m2": 51.648840955822315,
+        "secondary_average_projection_relative_L2": 0.004177599486739956,
+        "common_contact_length_m": 0.0010000000000000002,
+        "pairwise_intersections": 160,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.05298728300112998,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "feab2cd047e1773ba1b99fa83bd677b8cb65352fd62d9f6e9cb4ee8279139dfd"
+    },
+    {
+      "arrays_SHA256": "feab2cd047e1773ba1b99fa83bd677b8cb65352fd62d9f6e9cb4ee8279139dfd",
+      "bottom_current_peak_A_per_m": {
+        "imaginary": 1.127821689449424,
+        "real": 5.048233029449738
+      },
+      "candidate_adopted": false,
+      "case_id": "N80-Z16-aligned-wholepixel_halfcell_lumping",
+      "cells": 1280,
+      "complex_powers_W_per_m": {
+        "bottom_half_SC": {
+          "imaginary": -0.008640307038924655,
+          "real": 0.03456122815569862
+        },
+        "contact": {
+          "imaginary": -0.2684731358260191,
+          "real": 1.3423656791300955
+        },
+        "graph_bulk": {
+          "imaginary": -0.27692706598381384,
+          "real": 1.1077082639352553
+        },
+        "source": {
+          "imaginary": -0.5639108447247148,
+          "real": 2.524116514724876
+        },
+        "top_half_SC": {
+          "imaginary": -0.009870335875956588,
+          "real": 0.03948134350382635
+        }
+      },
+      "contact_J_RMS_P95_A_m2": 4038.097460160444,
+      "contact_J_RMS_max_A_m2": 4426.52135480323,
+      "contact_comparison": {
+        "common_contact_length_m": 0.0010000000000000002,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim.",
+        "pairwise_intersections": 160,
+        "primary_pairwise_absolute_RMS_A_m2": 51.648840955822315,
+        "primary_pairwise_relative_L2": 0.014075567496139323,
+        "secondary_average_projection_relative_L2": 0.004177599486739956
+      },
+      "contact_current_peak_A_per_m": {
+        "imaginary": 1.1278216894494295,
+        "real": 5.048233029449752
+      },
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "internal_gates": [
+        {
+          "limit": 1e-10,
+          "metric": "relative_algebraic_residual",
+          "passed": true,
+          "value": 6.176461535205469e-15
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_current_balance",
+          "passed": true,
+          "value": 2.7902158840106723e-15
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_complex_power_balance",
+          "passed": true,
+          "value": 2.4282837816102934e-16
+        }
+      ],
+      "internal_gates_passed": true,
+      "mesh_receipt": {
+        "exact_contact_length_m": 0.001,
+        "exact_rational_geometry": true,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 40,
+        "mathematically_partial_faces": 0,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false
+      },
+      "method": "wholepixel_halfcell_lumping",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "new_actual_four_pad_CEM_RHS": 0,
+      "new_actual_phantom_PDE": 0,
+      "new_solve_performed": false,
+      "nx_actual": 80,
+      "nx_nominal": 80,
+      "nz": 16,
+      "phase": "aligned",
+      "physical_E_comparison": {
+        "numerical_E_RMS_L2_V_m": 2428.291508635134,
+        "primary_absolute_RMS_L2_V_m": 104.15509181918586,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 107.3606112541023,
+        "primary_error_energy_peak_V2": 0.0043393132607452145,
+        "primary_relative_L2": 0.04286642832409824,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.0117596355157109,
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "recovered_prior_compute": false,
+      "reference_flags": [
+        {
+          "limit": 0.02,
+          "metric": "reference_current_relative",
+          "passed": true,
+          "value": 0.0012079558704555448
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_contact_P95_relative",
+          "passed": true,
+          "value": 0.03294399804087572
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_primary_E_relative_L2",
+          "passed": true,
+          "value": 0.04286642832409824
+        }
+      ],
+      "reference_flags_passed": true,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "unique_solve": false,
+      "wall_seconds": 0.05298728300112998,
+      "uses_prior_recovered_solution": false,
+      "alias_of": "N80-Z16-aligned-physical_area_robin",
+      "alias_reason": "Contact edges already lie on uniform faces; exactf1 matrices/physical geometry identical, no new solve"
+    },
+    {
+      "arrays_SHA256": "feab2cd047e1773ba1b99fa83bd677b8cb65352fd62d9f6e9cb4ee8279139dfd",
+      "bottom_current_peak_A_per_m": {
+        "imaginary": 1.127821689449424,
+        "real": 5.048233029449738
+      },
+      "candidate_adopted": false,
+      "case_id": "N80-Z16-aligned-boundary_fitted",
+      "cells": 1280,
+      "complex_powers_W_per_m": {
+        "bottom_half_SC": {
+          "imaginary": -0.008640307038924655,
+          "real": 0.03456122815569862
+        },
+        "contact": {
+          "imaginary": -0.2684731358260191,
+          "real": 1.3423656791300955
+        },
+        "graph_bulk": {
+          "imaginary": -0.27692706598381384,
+          "real": 1.1077082639352553
+        },
+        "source": {
+          "imaginary": -0.5639108447247148,
+          "real": 2.524116514724876
+        },
+        "top_half_SC": {
+          "imaginary": -0.009870335875956588,
+          "real": 0.03948134350382635
+        }
+      },
+      "contact_J_RMS_P95_A_m2": 4038.097460160444,
+      "contact_J_RMS_max_A_m2": 4426.52135480323,
+      "contact_comparison": {
+        "common_contact_length_m": 0.0010000000000000002,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim.",
+        "pairwise_intersections": 160,
+        "primary_pairwise_absolute_RMS_A_m2": 51.648840955822315,
+        "primary_pairwise_relative_L2": 0.014075567496139323,
+        "secondary_average_projection_relative_L2": 0.004177599486739956
+      },
+      "contact_current_peak_A_per_m": {
+        "imaginary": 1.1278216894494295,
+        "real": 5.048233029449752
+      },
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "internal_gates": [
+        {
+          "limit": 1e-10,
+          "metric": "relative_algebraic_residual",
+          "passed": true,
+          "value": 6.176461535205469e-15
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_current_balance",
+          "passed": true,
+          "value": 2.7902158840106723e-15
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_complex_power_balance",
+          "passed": true,
+          "value": 2.4282837816102934e-16
+        }
+      ],
+      "internal_gates_passed": true,
+      "mesh_receipt": {
+        "exact_contact_length_m": 0.001,
+        "exact_rational_geometry": true,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 40,
+        "mathematically_partial_faces": 0,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false
+      },
+      "method": "boundary_fitted",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "new_actual_four_pad_CEM_RHS": 0,
+      "new_actual_phantom_PDE": 0,
+      "new_solve_performed": false,
+      "nx_actual": 80,
+      "nx_nominal": 80,
+      "nz": 16,
+      "phase": "aligned",
+      "physical_E_comparison": {
+        "numerical_E_RMS_L2_V_m": 2428.291508635134,
+        "primary_absolute_RMS_L2_V_m": 104.15509181918586,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 107.3606112541023,
+        "primary_error_energy_peak_V2": 0.0043393132607452145,
+        "primary_relative_L2": 0.04286642832409824,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.0117596355157109,
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "recovered_prior_compute": false,
+      "reference_flags": [
+        {
+          "limit": 0.02,
+          "metric": "reference_current_relative",
+          "passed": true,
+          "value": 0.0012079558704555448
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_contact_P95_relative",
+          "passed": true,
+          "value": 0.03294399804087572
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_primary_E_relative_L2",
+          "passed": true,
+          "value": 0.04286642832409824
+        }
+      ],
+      "reference_flags_passed": true,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "unique_solve": false,
+      "wall_seconds": 0.05298728300112998,
+      "uses_prior_recovered_solution": false,
+      "alias_of": "N80-Z16-aligned-physical_area_robin",
+      "alias_reason": "Contact edges already lie on uniform faces; exactf1 matrices/physical geometry identical, no new solve"
+    },
+    {
+      "case_id": "N80-Z16-half_cell-physical_area_robin",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 39,
+        "mathematically_partial_faces": 2
+      },
+      "nx_nominal": 80,
+      "nx_actual": 80,
+      "nz": 16,
+      "cells": 1280,
+      "phase": "half_cell",
+      "method": "physical_area_robin",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 6.050098115570213e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 6.660678044572896e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 2.4718725540368604e-15,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0012135863446124375,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.008933959039275411,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.04831155503430802,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.060569121381713,
+        "imaginary": 1.130079475562005
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.060569121381679,
+        "imaginary": 1.1300794755619976
+      },
+      "contact_J_RMS_P95_A_m2": 4212.965587527916,
+      "contact_J_RMS_max_A_m2": 4867.953646811987,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5302845606908564,
+          "imaginary": -0.5650397377810025
+        },
+        "contact": {
+          "real": 1.3506280478342325,
+          "imaginary": -0.2701256095668465
+        },
+        "top_half_SC": {
+          "real": 0.039724354348065656,
+          "imaginary": -0.009931088587016414
+        },
+        "graph_bulk": {
+          "real": 1.1053183394729724,
+          "imaginary": -0.2763295848682431
+        },
+        "bottom_half_SC": {
+          "real": 0.03461381903557964,
+          "imaginary": -0.00865345475889491
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 117.38543767821263,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 120.99813961415744,
+        "primary_relative_L2": 0.04831155503430802,
+        "numerical_E_RMS_L2_V_m": 2426.266027819392,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.005511736391562216,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.018226659029082812,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.014279122137024371,
+        "primary_pairwise_absolute_RMS_A_m2": 52.39576368385976,
+        "secondary_average_projection_relative_L2": 0.009423453991112375,
+        "common_contact_length_m": 0.001,
+        "pairwise_intersections": 164,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.04913604499597568,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "957e5ea110cd1294cdc8c5cc55da426729de264ab46720ce876472e3c5d56f3e"
+    },
+    {
+      "case_id": "N80-Z16-half_cell-wholepixel_halfcell_lumping",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 39,
+        "mathematically_partial_faces": 2
+      },
+      "nx_nominal": 80,
+      "nx_actual": 80,
+      "nz": 16,
+      "cells": 1280,
+      "phase": "half_cell",
+      "method": "wholepixel_halfcell_lumping",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 6.089779061576799e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 5.814280717136833e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 8.938498994182004e-16,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0015649433086203479,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.008262356242324811,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.048388905353234105,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.0623611240734485,
+        "imaginary": 1.130395629986329
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.062361124073419,
+        "imaginary": 1.1303956299863218
+      },
+      "contact_J_RMS_P95_A_m2": 4210.161202318467,
+      "contact_J_RMS_max_A_m2": 4931.993546983125,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5311805620367243,
+          "imaginary": -0.5651978149931645
+        },
+        "contact": {
+          "real": 1.3519465103203347,
+          "imaginary": -0.27038930206406697
+        },
+        "top_half_SC": {
+          "real": 0.038868847349587655,
+          "imaginary": -0.009717211837396914
+        },
+        "graph_bulk": {
+          "real": 1.1057378196754033,
+          "imaginary": -0.2764344549188508
+        },
+        "bottom_half_SC": {
+          "real": 0.03462738469139627,
+          "imaginary": -0.008656846172849068
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 117.5733803150257,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 121.1918664499418,
+        "primary_relative_L2": 0.048388905353234105,
+        "numerical_E_RMS_L2_V_m": 2426.725144012675,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.0055293999034806696,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.018431112795869155,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.016238262752807448,
+        "primary_pairwise_absolute_RMS_A_m2": 59.58462779910242,
+        "secondary_average_projection_relative_L2": 0.0121900047516296,
+        "common_contact_length_m": 0.001,
+        "pairwise_intersections": 164,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.04875824799819384,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "9dcb90a25f49a1e2a864c6741d0ddbe0dc294423cdd7b1dd270d4ea5ab013f19"
+    },
+    {
+      "case_id": "N80-Z16-half_cell-boundary_fitted",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 41,
+        "mathematically_partial_faces": 0
+      },
+      "nx_nominal": 80,
+      "nx_actual": 82,
+      "nz": 16,
+      "cells": 1312,
+      "phase": "half_cell",
+      "method": "boundary_fitted",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 6.541412745057004e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 3.3015112758024795e-15,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 1.2204674249765471e-15,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0008107714645936313,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.0047928486050847945,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.03427410248063517,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.050257632597953,
+        "imaginary": 1.1281854086238665
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.050257632597936,
+        "imaginary": 1.1281854086238639
+      },
+      "contact_J_RMS_P95_A_m2": 4195.6737166407365,
+      "contact_J_RMS_max_A_m2": 4628.574517797876,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5251288162989765,
+          "imaginary": -0.5640927043119333
+        },
+        "contact": {
+          "real": 1.3437899952562131,
+          "imaginary": -0.26875799905124265
+        },
+        "top_half_SC": {
+          "real": 0.0395232351545945,
+          "imaginary": -0.009880808788648625
+        },
+        "graph_bulk": {
+          "real": 1.1072400675012881,
+          "imaginary": -0.27681001687532203
+        },
+        "bottom_half_SC": {
+          "real": 0.03457551838687778,
+          "imaginary": -0.008643879596719445
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 83.27781040912832,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 85.84080214674948,
+        "primary_relative_L2": 0.03427410248063517,
+        "numerical_E_RMS_L2_V_m": 2428.5199610664154,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.002774077482615489,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.008503443037815353,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.010990289364487045,
+        "primary_pairwise_absolute_RMS_A_m2": 40.32773155331388,
+        "secondary_average_projection_relative_L2": 0.00238433419644587,
+        "common_contact_length_m": 0.001,
+        "pairwise_intersections": 164,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.05040077599551296,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "38ce3fd4977c1937fce8ff23924757ec1be419489bca6f936f669fc6671bfc5c"
+    },
+    {
+      "case_id": "N160-Z32-aligned-physical_area_robin",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 80,
+        "mathematically_partial_faces": 0
+      },
+      "nx_nominal": 160,
+      "nx_actual": 160,
+      "nz": 32,
+      "cells": 5120,
+      "phase": "aligned",
+      "method": "physical_area_robin",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 1.8605895012997016e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 1.6358868889766263e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 3.4834043540268314e-15,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0003770592740007677,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.03377529679573705,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.02394084912764147,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.052465056842765,
+        "imaginary": 1.1286008715285218
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.052465056842681,
+        "imaginary": 1.1286008715285076
+      },
+      "contact_J_RMS_P95_A_m2": 4316.694578091169,
+      "contact_J_RMS_max_A_m2": 4626.802766144668,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5262325284213825,
+          "imaginary": -0.5643004357642609
+        },
+        "contact": {
+          "real": 1.3451539268216806,
+          "imaginary": -0.2690307853643361
+        },
+        "top_half_SC": {
+          "real": 0.019781675394436486,
+          "imaginary": -0.004945418848609121
+        },
+        "graph_bulk": {
+          "real": 1.144008075352997,
+          "imaginary": -0.2860020188382493
+        },
+        "bottom_half_SC": {
+          "real": 0.017288850852259466,
+          "imaginary": -0.0043222127130648665
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 58.17049464130341,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 59.960773425130014,
+        "primary_relative_L2": 0.02394084912764147,
+        "numerical_E_RMS_L2_V_m": 2429.2599608659334,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.0013535225787255634,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.006026485422101559,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.007881722837009268,
+        "primary_pairwise_absolute_RMS_A_m2": 28.921167787957373,
+        "secondary_average_projection_relative_L2": 0.0013698157973383361,
+        "common_contact_length_m": 0.001,
+        "pairwise_intersections": 196,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.13943668799765874,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "ebd9c22dba8b8f01f839caabc5a63dc41a45f9fb64f1124f402733080869c801"
+    },
+    {
+      "arrays_SHA256": "ebd9c22dba8b8f01f839caabc5a63dc41a45f9fb64f1124f402733080869c801",
+      "bottom_current_peak_A_per_m": {
+        "imaginary": 1.1286008715285076,
+        "real": 5.052465056842681
+      },
+      "candidate_adopted": false,
+      "case_id": "N160-Z32-aligned-wholepixel_halfcell_lumping",
+      "cells": 5120,
+      "complex_powers_W_per_m": {
+        "bottom_half_SC": {
+          "imaginary": -0.0043222127130648665,
+          "real": 0.017288850852259466
+        },
+        "contact": {
+          "imaginary": -0.2690307853643361,
+          "real": 1.3451539268216806
+        },
+        "graph_bulk": {
+          "imaginary": -0.2860020188382493,
+          "real": 1.144008075352997
+        },
+        "source": {
+          "imaginary": -0.5643004357642609,
+          "real": 2.5262325284213825
+        },
+        "top_half_SC": {
+          "imaginary": -0.004945418848609121,
+          "real": 0.019781675394436486
+        }
+      },
+      "contact_J_RMS_P95_A_m2": 4316.694578091169,
+      "contact_J_RMS_max_A_m2": 4626.802766144668,
+      "contact_comparison": {
+        "common_contact_length_m": 0.001,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim.",
+        "pairwise_intersections": 196,
+        "primary_pairwise_absolute_RMS_A_m2": 28.921167787957373,
+        "primary_pairwise_relative_L2": 0.007881722837009268,
+        "secondary_average_projection_relative_L2": 0.0013698157973383361
+      },
+      "contact_current_peak_A_per_m": {
+        "imaginary": 1.1286008715285218,
+        "real": 5.052465056842765
+      },
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "internal_gates": [
+        {
+          "limit": 1e-10,
+          "metric": "relative_algebraic_residual",
+          "passed": true,
+          "value": 1.8605895012997016e-14
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_current_balance",
+          "passed": true,
+          "value": 1.6358868889766263e-14
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_complex_power_balance",
+          "passed": true,
+          "value": 3.4834043540268314e-15
+        }
+      ],
+      "internal_gates_passed": true,
+      "mesh_receipt": {
+        "exact_contact_length_m": 0.001,
+        "exact_rational_geometry": true,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 80,
+        "mathematically_partial_faces": 0,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false
+      },
+      "method": "wholepixel_halfcell_lumping",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "new_actual_four_pad_CEM_RHS": 0,
+      "new_actual_phantom_PDE": 0,
+      "new_solve_performed": false,
+      "nx_actual": 160,
+      "nx_nominal": 160,
+      "nz": 32,
+      "phase": "aligned",
+      "physical_E_comparison": {
+        "numerical_E_RMS_L2_V_m": 2429.2599608659334,
+        "primary_absolute_RMS_L2_V_m": 58.17049464130341,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 59.960773425130014,
+        "primary_error_energy_peak_V2": 0.0013535225787255634,
+        "primary_relative_L2": 0.02394084912764147,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.006026485422101559,
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "recovered_prior_compute": false,
+      "reference_flags": [
+        {
+          "limit": 0.02,
+          "metric": "reference_current_relative",
+          "passed": true,
+          "value": 0.0003770592740007677
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_contact_P95_relative",
+          "passed": true,
+          "value": 0.03377529679573705
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_primary_E_relative_L2",
+          "passed": true,
+          "value": 0.02394084912764147
+        }
+      ],
+      "reference_flags_passed": true,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "unique_solve": false,
+      "wall_seconds": 0.13943668799765874,
+      "uses_prior_recovered_solution": false,
+      "alias_of": "N160-Z32-aligned-physical_area_robin",
+      "alias_reason": "Contact edges already lie on uniform faces; exactf1 matrices/physical geometry identical, no new solve"
+    },
+    {
+      "arrays_SHA256": "ebd9c22dba8b8f01f839caabc5a63dc41a45f9fb64f1124f402733080869c801",
+      "bottom_current_peak_A_per_m": {
+        "imaginary": 1.1286008715285076,
+        "real": 5.052465056842681
+      },
+      "candidate_adopted": false,
+      "case_id": "N160-Z32-aligned-boundary_fitted",
+      "cells": 5120,
+      "complex_powers_W_per_m": {
+        "bottom_half_SC": {
+          "imaginary": -0.0043222127130648665,
+          "real": 0.017288850852259466
+        },
+        "contact": {
+          "imaginary": -0.2690307853643361,
+          "real": 1.3451539268216806
+        },
+        "graph_bulk": {
+          "imaginary": -0.2860020188382493,
+          "real": 1.144008075352997
+        },
+        "source": {
+          "imaginary": -0.5643004357642609,
+          "real": 2.5262325284213825
+        },
+        "top_half_SC": {
+          "imaginary": -0.004945418848609121,
+          "real": 0.019781675394436486
+        }
+      },
+      "contact_J_RMS_P95_A_m2": 4316.694578091169,
+      "contact_J_RMS_max_A_m2": 4626.802766144668,
+      "contact_comparison": {
+        "common_contact_length_m": 0.001,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim.",
+        "pairwise_intersections": 196,
+        "primary_pairwise_absolute_RMS_A_m2": 28.921167787957373,
+        "primary_pairwise_relative_L2": 0.007881722837009268,
+        "secondary_average_projection_relative_L2": 0.0013698157973383361
+      },
+      "contact_current_peak_A_per_m": {
+        "imaginary": 1.1286008715285218,
+        "real": 5.052465056842765
+      },
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "internal_gates": [
+        {
+          "limit": 1e-10,
+          "metric": "relative_algebraic_residual",
+          "passed": true,
+          "value": 1.8605895012997016e-14
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_current_balance",
+          "passed": true,
+          "value": 1.6358868889766263e-14
+        },
+        {
+          "limit": 1e-10,
+          "metric": "relative_complex_power_balance",
+          "passed": true,
+          "value": 3.4834043540268314e-15
+        }
+      ],
+      "internal_gates_passed": true,
+      "mesh_receipt": {
+        "exact_contact_length_m": 0.001,
+        "exact_rational_geometry": true,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 80,
+        "mathematically_partial_faces": 0,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false
+      },
+      "method": "boundary_fitted",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "new_actual_four_pad_CEM_RHS": 0,
+      "new_actual_phantom_PDE": 0,
+      "new_solve_performed": false,
+      "nx_actual": 160,
+      "nx_nominal": 160,
+      "nz": 32,
+      "phase": "aligned",
+      "physical_E_comparison": {
+        "numerical_E_RMS_L2_V_m": 2429.2599608659334,
+        "primary_absolute_RMS_L2_V_m": 58.17049464130341,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 59.960773425130014,
+        "primary_error_energy_peak_V2": 0.0013535225787255634,
+        "primary_relative_L2": 0.02394084912764147,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.006026485422101559,
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "recovered_prior_compute": false,
+      "reference_flags": [
+        {
+          "limit": 0.02,
+          "metric": "reference_current_relative",
+          "passed": true,
+          "value": 0.0003770592740007677
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_contact_P95_relative",
+          "passed": true,
+          "value": 0.03377529679573705
+        },
+        {
+          "limit": 0.05,
+          "metric": "reference_primary_E_relative_L2",
+          "passed": true,
+          "value": 0.02394084912764147
+        }
+      ],
+      "reference_flags_passed": true,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "unique_solve": false,
+      "wall_seconds": 0.13943668799765874,
+      "uses_prior_recovered_solution": false,
+      "alias_of": "N160-Z32-aligned-physical_area_robin",
+      "alias_reason": "Contact edges already lie on uniform faces; exactf1 matrices/physical geometry identical, no new solve"
+    },
+    {
+      "case_id": "N160-Z32-half_cell-physical_area_robin",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 79,
+        "mathematically_partial_faces": 2
+      },
+      "nx_nominal": 160,
+      "nx_actual": 160,
+      "nz": 32,
+      "cells": 5120,
+      "phase": "half_cell",
+      "method": "physical_area_robin",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 1.858937000530171e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 2.536497534212778e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 6.0805495706031755e-15,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.00038764298575896935,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.00851448394027491,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.02649693948517592,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.056361844124036,
+        "imaginary": 1.1293075059107218
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.056361844123907,
+        "imaginary": 1.1293075059107005
+      },
+      "contact_J_RMS_P95_A_m2": 4211.214001964678,
+      "contact_J_RMS_max_A_m2": 4918.192973963557,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.528180922062018,
+          "imaginary": -0.5646537529553609
+        },
+        "contact": {
+          "real": 1.3478295512028458,
+          "imaginary": -0.26956591024056914
+        },
+        "top_half_SC": {
+          "real": 0.019821022811806557,
+          "imaginary": -0.004955255702951639
+        },
+        "graph_bulk": {
+          "real": 1.1432318754851947,
+          "imaginary": -0.28580796887129867
+        },
+        "bottom_half_SC": {
+          "real": 0.017298472562155807,
+          "imaginary": -0.004324618140538952
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 64.38117829971937,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 66.36259960786664,
+        "primary_relative_L2": 0.02649693948517592,
+        "numerical_E_RMS_L2_V_m": 2428.5642763800906,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.0016579744477041025,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.009367112258651554,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.008586339089989329,
+        "primary_pairwise_absolute_RMS_A_m2": 31.50668434315391,
+        "secondary_average_projection_relative_L2": 0.0051754107386395385,
+        "common_contact_length_m": 0.0009999999999999996,
+        "pairwise_intersections": 204,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.12328613900172058,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "74c9c243208a1a661e6e00601dbbef240e144b696f5f9966b18c6f43ff5390db"
+    },
+    {
+      "case_id": "N160-Z32-half_cell-wholepixel_halfcell_lumping",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 79,
+        "mathematically_partial_faces": 2
+      },
+      "nx_nominal": 160,
+      "nx_actual": 160,
+      "nz": 32,
+      "cells": 5120,
+      "phase": "half_cell",
+      "method": "wholepixel_halfcell_lumping",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 1.8756397905474015e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 2.5877142198864172e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 1.0480363883637262e-14,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0004767517650793147,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.008340426107043965,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.026512568431072924,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.056816389242707,
+        "imaginary": 1.1293872784162913
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.056816389242575,
+        "imaginary": 1.1293872784162697
+      },
+      "contact_J_RMS_P95_A_m2": 4210.48719556167,
+      "contact_J_RMS_max_A_m2": 4952.142060839199,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5284081946213535,
+          "imaginary": -0.5646936392081456
+        },
+        "contact": {
+          "real": 1.3481681889438268,
+          "imaginary": -0.26963363778876537
+        },
+        "top_half_SC": {
+          "real": 0.019600601023156153,
+          "imaginary": -0.004900150255789038
+        },
+        "graph_bulk": {
+          "real": 1.1433392229110353,
+          "imaginary": -0.2858348057277588
+        },
+        "bottom_half_SC": {
+          "real": 0.017300181743308433,
+          "imaginary": -0.004325045435827108
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 64.4191528723297,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 66.40174290135667,
+        "primary_relative_L2": 0.026512568431072924,
+        "numerical_E_RMS_L2_V_m": 2428.6782162232726,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.001659930902715434,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.009411258371207086,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.009244738183458926,
+        "primary_pairwise_absolute_RMS_A_m2": 33.92261180564493,
+        "secondary_average_projection_relative_L2": 0.0062068826752781905,
+        "common_contact_length_m": 0.0009999999999999996,
+        "pairwise_intersections": 204,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.16318175900232745,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "b5bc7e2b30f155e89504fca605f131a229be42828214586a48a8072c133e8952"
+    },
+    {
+      "case_id": "N160-Z32-half_cell-boundary_fitted",
+      "mesh_receipt": {
+        "exact_rational_geometry": true,
+        "no_positive_ghost_contact": true,
+        "partial_areas_snapped_or_rescaled": false,
+        "exact_contact_length_m": 0.001,
+        "exported_contact_length_m": 0.001,
+        "float_length_error_m": 0.0,
+        "mathematically_full_faces": 81,
+        "mathematically_partial_faces": 0
+      },
+      "nx_nominal": 160,
+      "nx_actual": 162,
+      "nz": 32,
+      "cells": 5184,
+      "phase": "half_cell",
+      "method": "boundary_fitted",
+      "unique_solve": true,
+      "new_solve_performed": true,
+      "recovered_prior_compute": false,
+      "internal_gates": [
+        {
+          "metric": "relative_algebraic_residual",
+          "value": 1.8791470730771604e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_current_balance",
+          "value": 2.198050984446747e-14,
+          "limit": 1e-10,
+          "passed": true
+        },
+        {
+          "metric": "relative_complex_power_balance",
+          "value": 7.988469986588016e-15,
+          "limit": 1e-10,
+          "passed": true
+        }
+      ],
+      "internal_gates_passed": true,
+      "reference_flags": [
+        {
+          "metric": "reference_current_relative",
+          "value": 0.0002712519452330802,
+          "limit": 0.02,
+          "passed": true
+        },
+        {
+          "metric": "reference_contact_P95_relative",
+          "value": 0.007619348192219387,
+          "limit": 0.05,
+          "passed": true
+        },
+        {
+          "metric": "reference_primary_E_relative_L2",
+          "value": 0.019820001727472437,
+          "limit": 0.05,
+          "passed": true
+        }
+      ],
+      "reference_flags_passed": true,
+      "contact_current_peak_A_per_m": {
+        "real": 5.053004630647841,
+        "imaginary": 1.128696485206497
+      },
+      "bottom_current_peak_A_per_m": {
+        "real": 5.053004630647728,
+        "imaginary": 1.1286964852064818
+      },
+      "contact_J_RMS_P95_A_m2": 4207.47621906131,
+      "contact_J_RMS_max_A_m2": 4762.362272756854,
+      "contact_maximum_scope": "Mesh-dependent piecewise constant patch density, not continuum maximum",
+      "complex_powers_W_per_m": {
+        "source": {
+          "real": 2.5265023153239206,
+          "imaginary": -0.5643482426032485
+        },
+        "contact": {
+          "real": 1.3455467245545951,
+          "imaginary": -0.26910934491091903
+        },
+        "top_half_SC": {
+          "real": 0.01978745183168523,
+          "imaginary": -0.004946862957921307
+        },
+        "graph_bulk": {
+          "real": 1.1438773173762786,
+          "imaginary": -0.28596932934406966
+        },
+        "bottom_half_SC": {
+          "real": 0.017290821561341242,
+          "imaginary": -0.0043227053903353106
+        }
+      },
+      "physical_E_comparison": {
+        "primary_absolute_RMS_L2_V_m": 48.157828409995965,
+        "primary_derived_J_absolute_RMS_L2_A_m2": 49.63995330869609,
+        "primary_relative_L2": 0.019820001727472437,
+        "numerical_E_RMS_L2_V_m": 2429.3128449420255,
+        "reference_E_RMS_L2_V_m": 2429.7590420108068,
+        "primary_error_energy_peak_V2": 0.0009276705748666458,
+        "roundoff_negative_energy_truncated": false,
+        "secondary_cell_average_projection_relative_L2": 0.004353901643038693,
+        "reference_integral": "Exact finite Fourier Parseval energy and analytic rectangle averages, no pointwise or indexwise subtraction",
+        "secondary_scope": "Averaged projection can conceal unresolved reference-field variation"
+      },
+      "contact_comparison": {
+        "primary_pairwise_relative_L2": 0.00697463665923802,
+        "primary_pairwise_absolute_RMS_A_m2": 25.592708758381328,
+        "secondary_average_projection_relative_L2": 0.0013053875052936798,
+        "common_contact_length_m": 0.0009999999999999996,
+        "pairwise_intersections": 204,
+        "interpretation": "Primary retains panel/subcell variation; secondary averaging can hide error. No indexwise difference or continuum-edge-maximum claim."
+      },
+      "wall_seconds": 0.17672241500258679,
+      "new_actual_phantom_PDE": 0,
+      "new_actual_four_pad_CEM_RHS": 0,
+      "candidate_adopted": false,
+      "spec_sha256": "3219723fcd192bdea34bf9d828663b46f6c75815a7e8a955e1b64563203820d3",
+      "method_sha256": "f623499ee5c2d35e4e5f0475d2ff889d153125db6057d46661f941ff08b14327",
+      "arrays_SHA256": "a71814c86eb44776ac7a9120a6f2f658d87ff1645db9ea90fd7f3910e2464640"
+    }
+  ],
+  "completed_entries": 18,
+  "unique_FV_solutions": 12,
+  "new_solves_this_invocation": 11,
+  "recovered_prior_unique_solutions": 1,
+  "new_unique_solutions_in_recovery_batch": 11,
+  "all_internal_gates_passed": true,
+  "all_reference_flags_passed": false,
+  "reference_scope": "Conditional finite P128-H2048 comparator; neither continuum edge Jmax nor actual4pad/contact validation",
+  "reference_arrays_SHA256": "bf2eee9185dd27cf2e61d2b9e0b618e7cbc34482385683cc27af8a0b9da70b88",
+  "new_actual_phantom_PDE": 0,
+  "new_actual_four_pad_CEM_RHS": 0,
+  "synthetic_FV_linear_system_RHS": 12,
+  "old_failed_actual_screens_preserved": true,
+  "model_correction_applied": false,
+  "candidate_adopted": false,
+  "resume_index_SHA256": "75d52468d51ad0b938ab08a83b59970f9365c1c28ac5d4c05a03e47f0349edc1"
+}
