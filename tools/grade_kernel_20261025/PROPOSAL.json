@@ -1,0 +1,158 @@
+{
+  "schema": "task1-graded-periodic-log-kernel-math-proposal-v1",
+  "status": "source_math_proposal_pending_independent_review_and_root_admission",
+  "execution_performed_by_preparer": {
+    "NumPy_imports": false,
+    "array_evaluation": false,
+    "tests": false,
+    "PDE": false,
+    "network": false
+  },
+  "scope": "Separate2D periodic SC slab with original HREF-MIX transferred coefficients, one equipotential patch and grounded bottom. No change to actual D50mm four-pad phantom, no empirical material/contact correction, no new actual four-pad CEM solve.",
+  "input_provenance": {
+    "original_HREF_benchmark_spec_path": "/dev/shm/task1-contact-edge-surrogate-20261025-run/benchmark-spec.json",
+    "original_HREF_benchmark_spec_SHA256": "3e8dfadadc9a3f39854e61b2aee6ba12c351464f9a5ef8995b5c2c6388f0ae8c",
+    "original_CEM_spec_SHA256": "98840b84c321ea57ff255fec56e565277765cafda3c2aa84a96ebc28931e556c",
+    "material_receipt_SHA256": "cccca81905a4db874184d35b1343ece700e45091693a34ab811cf363c0f9c469",
+    "contact_receipt_SHA256": "cdf186c9d00876474b6fb0c10ae33e6a69d75e8fb41031b9ec0145a3e40dc40b",
+    "frequency_Hz": 2000,
+    "gamma_S_m": {
+      "imaginary": 2.5055522184188793e-05,
+      "real": 5.959456590514033e-06
+    },
+    "zA_ohm_m2": {
+      "imaginary": -0.00012307933145190832,
+      "real": 5.5504758759767015e-05
+    },
+    "period_width_m": 0.002,
+    "SC_thickness_m": 0.0001,
+    "contact_endpoints_m": [
+      -0.0005,
+      0.0005
+    ],
+    "equipotential_peak_V": {
+      "imaginary": 0.0,
+      "real": 1.0
+    },
+    "coefficient_operation": "Exact copy of already evaluated2000Hz SC gamma and zA. No refit, Rs subtraction, area scaling or transfer of four-pad/50ohm topology.",
+    "uncertainty": "HREF-MIX declared surrogate SC and uncertain PBS-derived interface impedance; not direct human thoracoabdominal or validated skin-contact measurements."
+  },
+  "kernel": {
+    "definitions": "s=x-y, k_n=2*pi*n/L, a=4*pi*t/L, G_ij=integral_i integral_j gamma*K(x-y) dy dx; G is real geometric and has units m^2.",
+    "formula": "gamma*K(s)=t/L - log(2*abs(sin(pi*s/L)))/pi - (2/pi)*sum_{n=1..infinity} cos(k_n*s)/(n*(exp(a*n)+1))",
+    "derivation": "Use tanh(2*pi*n*t/L)=1-2/(exp(a*n)+1) and sum cos(2*pi*n*s/L)/n=-log(2*abs(sin(pi*s/L))). The constant mode remains t/L.",
+    "correction_positive_modes": 64,
+    "stable_correction_weight": "w_n=exp(-a*n)/(n*(1+exp(-a*n))); do not form overflowing exp(a*n).",
+    "uniform_pointwise_correction_tail_bound": "R_N <= (2/pi)*exp(-a*(N+1))/((N+1)*(1-exp(-a)))",
+    "entry_tail_bound": "abs(delta G_ij) <= l_i*l_j*R_N; abs(delta A_ij) <= l_i*l_j*R_N/abs(gamma). This is a kernel/entry bound, not a solved-current or field error bound; conditioning must be reported.",
+    "constant_panel_integral": "G_const_ij=t*l_i*l_j/L",
+    "correction_exact_panel_integral": "G_corr_ij=-(2/pi)*l_i*l_j*sum_{n=1..N} w_n*sinc(k_n*l_i/2)*sinc(k_n*l_j/2)*cos(k_n*(c_i-c_j)); sinc(v)=sin(v)/v.",
+    "no_Fourier_huge_H": "The singular infinite-harmonic logarithmic part is integrated directly; only the exponentially decaying finite-thickness correction is truncated."
+  },
+  "panel_integration": {
+    "periodic_shift": "For each panel pair choose nearest-center integer m=round((c_i-c_j)/L) and shift the second interval by m*L. Use the same shifted endpoints in every log/smooth term. Reverse pair uses the opposite shift; periodic full-contact seam pairs at +/-L are near pairs.",
+    "panel_width_restriction": "Require max(panel width)<=L/4. This prevents another periodic singular image inside the shifted rectangle. If future meshes violate it, split rectangles at periodic images rather than applying this formula unchanged.",
+    "near_classification": "Self, touching, or interval gap <=2*max(l_i,l_j) after periodic shift. Criterion is fixed before execution.",
+    "singular_split": "log(2*abs(sin(pi*s/L)))=log(abs(s/L))+log(2*pi*sinc(s/L)); the shifted rectangle has abs(s)<L, so the second term is smooth and sinc is positive.",
+    "F": "F(u)=0.5*u^2*log(abs(u))-0.75*u^2 for u!=0; F(0)=0; F_second_derivative=log(abs(u)).",
+    "exact_log_rectangle": "Jlog=L^2*(F((b-c)/L)-F((a-c)/L)-F((b-d)/L)+F((a-d)/L)); G_singular=-Jlog/pi, for intervals[a,b],[c,d] after shift.",
+    "near_smooth": "Integrate -log(2*pi*sinc(s/L))/pi by tensor Gauss-Legendre at the declared order, multiplied by physical panel Jacobians. Add constant and exact correction once.",
+    "far_regular": "Integrate the full periodic logarithmic part -log(2*abs(sin(pi*s/L)))/pi directly by regular tensor Gauss; do not evaluate four nearly cancelling F terms. Add the same analytic constant and exact correction once. Do not double-count a Gaussian correction.",
+    "roundoff_plan": "For near singular F-corner sums use a stable local-scale form plus compensated sum. When cancellation can affect the declared tolerance, reevaluate the identical analytic expression with Decimal50-digit arithmetic; record fallback count and compare50/70-digit values in a small scalar contract. Precision fallback changes arithmetic only, never kernel, material or fitted data.",
+    "periodic_constant_contract": "On full-period contact, sum_j G_ij must agree with t*l_i before adding contact impedance. Test the seam explicitly; never repair row sums or renormalize G."
+  },
+  "graded_mesh": {
+    "Robin_length": "ell_R=abs(gamma*zA), diagnostic dimensional material/contact length in metres; no empirical correction or added layer.",
+    "recommended_nested_family": {
+      "base_panels": 128,
+      "base_minimum_edge_panel": "ell_R/4",
+      "panels": [
+        128,
+        256,
+        512
+      ],
+      "refinement": "Build one symmetric geometric base mesh and bisect every panel once/twice. This yields genuinely nested edge refinement with minimum ell_R/8 and ell_R/16 at256/512.",
+      "reason": "Keeping the minimum ell_R/4 fixed at every panel count leaves the first edge average unresolved by the panel-count axis; nested refinement also preserves old trial spaces."
+    },
+    "base_construction": "On each half contact with M=64 panels, widths w_j=w_min*r^j, j=0..M-1, edge to centre. Solve w_min*sum(r^j)=half_width using a bounded scalar bisection in log(r) with expm1-stable sums. Mirror exactly about zero and retain physical endpoints. Record actual widths and terminal floating closure error; no global physical-area rescaling.",
+    "geometry_checks": "Positive widths, exact contact endpoints/centre, mirror symmetry, actual minimum/maximum widths, max width<=L/4 and length sum within predeclared floating tolerance.",
+    "peak_hold": "Save every native panel q_RMS max with its edge distance and width. Weighted J95 or integral convergence never establishes continuum edge Jmax."
+  },
+  "linear_system_and_energy": {
+    "Galerkin": "A=G/gamma + zA*diag(l_i), b_i=V*l_i; solve A*q=b.",
+    "basis_normalization": "D=diag(sqrt(l_i)); solve (D^-1*A*D^-1)*u=V*sqrt(l_i), q=D^-1*u. Exact trial/test coordinate scaling preserves complex symmetry and physics; it is not regularization.",
+    "current": "I=sum_i l_i*q_i, units A/m of out-of-plane length.",
+    "source_power": "Ssource=0.5*V*conj(I), units W/m.",
+    "contact_power": "Scontact=0.5*zA*sum_i l_i*abs(q_i)^2.",
+    "bulk_power": "Sbulk=0.5*(q^H*G*q)/gamma.",
+    "bulk_energy_indicator": "Integral_slab peak|E|^2 = (q^H*G*q)/abs(gamma)^2, conditional on the quadrature operator; RMS_L2=sqrt(real(q^H*G*q)/(2*L*t*abs(gamma)^2)). This is not independent E-field validation.",
+    "structural_gates": "Real G, complex-symmetric A, small algebraic residual, passive real powers, signed complex power closure. Report normalization/condition estimate. Reject material negative/passivity failures; no clipping of eigenvalues or fitted repair.",
+    "no_finite_field_export_claim": "The first kernel batch exports contact solution/operator diagnostics, not a newly independently reconstructed spatial E field."
+  },
+  "finite_batch": {
+    "unique_partial_contact_cases": [
+      [
+        128,
+        32
+      ],
+      [
+        256,
+        32
+      ],
+      [
+        512,
+        8
+      ],
+      [
+        512,
+        16
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "panel_axis": "128->256->512 at Gauss order32, correctionN64 fixed",
+    "quadrature_axis": "8->16->32 at512 panels, correctionN64 fixed",
+    "diagnostic_limits_inherited": {
+      "complex_contact_I_relative": 0.01,
+      "source_real_power_relative": 0.02,
+      "contact_length_weighted_J_RMS_P95_relative": 0.05,
+      "conditional_operator_slab_RMS_L2_relative": 0.01
+    },
+    "old_spatial_vector_E_L2_gate": "N/A for this kernel-only batch; do not label the old2% spatial field gate passed or silently replace it with the operator energy indicator.",
+    "nonaborting": "All delta flags/Jmax increases are exported. Passing them permits only a numerical next-step review, not continuum/human/contact safety adoption."
+  },
+  "verification": {
+    "full_period_equipotential": "q=V/(zA+t/gamma), I=L*q and signed complex source/contact/bulk power. Check all panel values, current, kernel row sum and wrap seam without rescaling.",
+    "manufactured_flux": "Full-period q_exact(x)=q0+qc*cos(k_m*x)+qs*sin(k_m*x), complex coefficients; no physical contact edge in this verification problem.",
+    "manufactured_forcing": "U(x)=(zA+t/gamma)*q0 + (zA+T_m)*(qc*cos(k_m*x)+qs*sin(k_m*x)); T_m=tanh(k_m*t)/(gamma*k_m). U is NON-equipotential and used ONLY for MMS tests, never as the partial equipotential candidate.",
+    "manufactured_RHS": "b_i=(zA+t/gamma)*q0*l_i + (zA+T_m)*l_i*sinc(k_m*l_i/2)*(qc*cos(k_m*c_i)+qs*sin(k_m*c_i)); exact panel integrals.",
+    "manufactured_metrics": "Compare solved panel q against exact panel averages and against the continuous q in a true length-weighted L2 norm. Report projection variance separately. Integral |q_exact|^2 and cross terms can be evaluated from the three exact Fourier coefficients, rather than reusing kernel quadrature.",
+    "manufactured_energy": "Compare conditional Galerkin bulk power with the independent closed-form Fourier power for the prescribed exact flux; discretization error is expected and must be reported, not forced to machine zero.",
+    "suggested_first_MMS": "Modes1 and4 across128/256/512 full-period graded panels at Gauss32, plus one full-period constant check. This is six MMS RHS plus one analytic-contract RHS; five partial-contact RHS remain separate. Root must explicitly admit the final finite list/time budget before execution.",
+    "not_MMS_claims": "A constant-mode contract or algebraic power balance alone does not validate the partial-contact solution or prove edge-current convergence."
+  },
+  "resources_and_artifacts": {
+    "CPU_limit": 4,
+    "RSS_plus_ALL_task1_tmpfs_cap_bytes": 8000000000,
+    "physical_cell_limit": 800000,
+    "max_contact_unknowns": 512,
+    "max_matrix_entries": 262144,
+    "matrix_entries_are_not_physical_cells": true,
+    "quadrature_batch_pairs": 64,
+    "max_Gauss_order": 32,
+    "simultaneous_pair_node_evaluations": 65536,
+    "total_quadrature_calls_are_not_physical_cells": true,
+    "memory_plan": "Real G plus one complex scaled solve matrix and blocked pair quadrature only; never allocate P*P*q*q or a huge Fourier matrix. No preceding field/Q cache decoding.",
+    "finite_owner": "One root owner/numerical child, actual PID/startticks and global locks, pre-import CPU/BLAS configuration, parent memory/watchdog and finite child deadline. Runtime feasibility must be measured; no600s fit promise.",
+    "save_policy": "Exclusive per-case arrays/normalized metadata, source/input/geometry SHA, immediate resume index, no overwritten partials or repeated completed solve. Normalize/encode all JSON before opening.",
+    "admission": "No numerical execution by preparer. Root requires independent source/math review and actual preceding-result review/publication before launch."
+  },
+  "open_review_items": [
+    "Confirm stable near-corner evaluation/fallback criterion at the actual extreme grading ratio.",
+    "Confirm nearest-image interval restriction covers every full-period seam pair.",
+    "Choose explicit first MMS and partial-contact total RHS count under the finite owner budget.",
+    "Do not infer independent field convergence from q^H*G*q energy closure."
+  ]
+}
