@@ -1,0 +1,75 @@
+from pathlib import Path
+p=Path('/dev/shm/task1-vs19-uniform-2000-20261025/source')
+s=Path('/dev/shm/task1-sc8-2000-20261025/source/sc8_post.py').read_text()
+a=s.index('from __future__')
+s='''"""Source-only U19 adapter; execution requires positive published MMS/root admission.
+
+Same SC8/XY0.5mm source/material/contact/mask; only VS18→19 cell placement.
+No data, imports of native arrays, PDE or IO occurs merely by importing here.
+"""\n'''+s[a:]
+s=s.replace("SOURCE=Path('/dev/shm/task1-sc8-2000-20261025/source')","SOURCE=Path('/dev/shm/task1-vs19-uniform-2000-20261025/source')")
+s=s.replace("RUN=Path('/dev/shm/task1-sc8-2000-20261025-run')","RUN=Path('/dev/shm/task1-vs19-uniform-2000-20261025-run')")
+s=s.replace("CASE='baseline-square15-human-sine2000-sc8-bulk18-18-56-xy100'","CASE='baseline-square15-human-sine2000-sc8-vs19uniform-bulk19-18-56-xy100'")
+s=s.replace("COARSE=Path('/dev/shm/task1-sc4-2000-20261025-run')","COARSE=Path('/dev/shm/task1-sc8-2000-20261025-run')\nMMS=Path('/dev/shm/task1-vs-estimator-20261025-run')")
+s=s.replace("COARSE_CASE='baseline-square15-human-sine2000-sc4-bulk18-18-56-xy100'","COARSE_CASE='baseline-square15-human-sine2000-sc8-bulk18-18-56-xy100'")
+s=s.replace("BULK_COUNTS=(18,18,56);SC_CELLS=8;COMPARATOR_SC_CELLS=4","BULK_COUNTS=(19,18,56);COMPARATOR_BULK_COUNTS=(18,18,56);SC_CELLS=8;COMPARATOR_SC_CELLS=8")
+a=s.index('def conditional_selection_matches(');b=s.index('\ndef required_inputs():',a)
+s=s[:a]+'''def conditional_selection_matches(summary):
+ """Completed SC8 metadata condition only; never native admission by itself."""
+ return(summary.get('case_id')==COARSE_CASE and summary.get('actual_new_RHS')==2 and summary.get('actual_new_native_conditions')==1 and summary.get('frequency_Hz')==2000 and 'SC8'in summary.get('scenarios',{}))
+
+
+def validate_admission(spec,summary,admission,public_commit):
+ """Positive frozen MMS review plus explicit root decision; no automatic solve."""
+ require(summary['spec']==spec and summary['analytic_contracts']['passed']is True,'Actual completed MMS specification/contracts')
+ review=next(r for r in summary['predeclared_native_review']if r['candidate']=='U19')
+ require(review['true_continuum_error_nonregression']is True and review['physical_error_improvement_review']is True,'U19 must pass the predeclared positive MMS physical-error review')
+ require(admission['schema']=='task1-u19-native-root-admission-v1'and admission['status']=='admitted_native_diagnostic'and admission['candidate']=='U19'and admission['root_review_positive']is True and admission['automatic_native_admission']is False and admission['candidate_adopted']is False and admission['new_native_conditions']==1 and admission['maximum_native_RHS']==2,'Explicit positive root-only one-condition admission')
+ require(isinstance(admission['decision_basis'],str)and bool(admission['decision_basis'].strip()),'Recorded scientific decision basis')
+ for commit in(public_commit,admission['mms_result_commit'],admission['sc8_result_commit']):require(isinstance(commit,str)and len(commit)==40 and all(c in'0123456789abcdef'for c in commit),'Immutable public decision/result commit identities')
+ return review
+
+''' +s[b:]
+s=s.replace("and 'SC4'in summary['scenarios'],'Completed actual one-carrier SC4 bulk18/18/56 comparator'", "and 'SC8'in summary['scenarios'],'Completed actual one-carrier SC8 bulk18/18/56 comparator'")
+s=s.replace("'Conditional SC8 selection requires actual SC4 scalar adjacency pass and unresolved common-two QA; root selection/publication remains mandatory'", "'Actual SC8 comparator completion required; positive MMS/root admission is separately mandatory'")
+# Pin actual prior MMS metadata without decoding arrays. Root source guard also pins source admission.
+needle=" refs[str(COARSE/'postprocess/scalars.npz')]=artifacts['scalars.npz']['SHA256']"
+s=s.replace(needle,needle+"\n for name in('spec.json','summary.json','computation-receipt.json'):\n  p=MMS/name;raw=p.read_bytes();require(len(raw)<8*1024**2,'Bounded actual MMS metadata');refs[str(p)]=sha(raw)")
+s=s.replace("SC4→SC8 with fixedXY0.5 and bulk18/18/56", "VS18→VS19 with fixedSC8/XY0.5 and fat18/muscle56")
+s=s.replace('SC4 and SC8','U18 and U19').replace('SC4/SC8','U18/U19')
+s=s.replace("SC4toSC8", "VS18toVS19").replace("SC4→SC8", "VS18→VS19")
+s=s.replace(" from sc8_math", " from u19_math").replace(" import sc8_interfaces as iface", " import u19_interfaces as iface")
+s=s.replace(" for tag,base,case,expected_sc in(('SC8',run,CASE,SC_CELLS),('SC4',COARSE,COARSE_CASE,COMPARATOR_SC_CELLS)):\n  expected_h=.5;expected_bulk=BULK_COUNTS", " for tag,base,case,expected_sc in(('U19',run,CASE,SC_CELLS),('U18',COARSE,COARSE_CASE,COMPARATOR_SC_CELLS)):\n  expected_h=.5;expected_bulk=BULK_COUNTS if base==run else COMPARATOR_BULK_COUNTS")
+# Resolve immutable run-local MMS face/admission pins at post entry.
+needle=" coarse_summary=js(COARSE/'postprocess/summary.json');old_independent=coarse_summary['independent_interface_diagnostics']['fine'];analytic=iface.analytic_validation();require(analytic['passed'],'Fixed1e-10 analytic complex slab and affine contracts')"
+replacement=""" prereg=js(run/'preregistration.json')
+ for name,key in(('z-faces.json','z_faces_sha256'),('mms-spec.json','mms_spec_sha256'),('mms-summary.json','mms_summary_sha256'),('mms-native-admission.json','root_decision_sha256')):
+  provided[str(run/name)]=prereg[key]
+ face_receipt=js(run/'z-faces.json');mms_spec=js(run/'mms-spec.json');mms_summary=js(run/'mms-summary.json');root_admission=js(run/'mms-native-admission.json')
+ require(sha(read(MMS/'spec.json'))==prereg['mms_spec_sha256']and sha(read(MMS/'summary.json'))==prereg['mms_summary_sha256'],'Run-local MMS is the actual completed immutable result')
+ require(root_admission['mms_spec_sha256']==prereg['mms_spec_sha256']and root_admission['mms_summary_sha256']==prereg['mms_summary_sha256'],'Root decision binds exact MMS spec/result')
+ mms_review=validate_admission(mms_spec,mms_summary,root_admission,prereg['root_decision_public_commit'])
+ expected_faces=mms_spec['geometry']['U19']['faces_m'];face_hash=sha(json.dumps(expected_faces,separators=(',',':'),allow_nan=False).encode())
+ require(face_receipt['schema']=='task1-u19-explicit-z-faces-v1'and face_receipt['units']=='m'and face_receipt['grid_id']=='U19'and face_receipt['layer_counts']==[8,19,18,56]and face_receipt['z_faces_m']==expected_faces and face_receipt['face_table_sha256']==face_hash==mms_spec['geometry']['U19']['face_table_sha256']and face_receipt['mms_spec_sha256']==prereg['mms_spec_sha256'],'Exact immutable MMS U19 face table with unchanged physical layers')
+ coarse_summary=js(COARSE/'postprocess/summary.json');old_independent=coarse_summary['independent_interface_diagnostics']['fine'];analytic=iface.analytic_validation();require(analytic['passed'],'Fixed1e-10 analytic complex slab and affine contracts')"""
+s=s.replace(needle,replacement)
+needle="   require(np.allclose(meta['z_faces_mm'][expected_sc:],oldmeta['z_faces_mm'][COMPARATOR_SC_CELLS:],rtol=0,atol=1e-9),'Same physical bulk faces preserved while only SC depth cells refine')"
+replacement="""   require(cfg['mesh.z_faces_path']==str(run/'z-faces.json')and cfg['mesh.z_faces_sha256']==prereg['z_faces_sha256']and cfg['mesh.face_table_sha256']==face_hash and cfg['mesh.mms_spec_sha256']==prereg['mms_spec_sha256'],'Registered explicit-face source configuration')
+   require(meta['mesh_face_file_sha256']==prereg['z_faces_sha256']and meta['mesh_face_table_sha256']==face_hash and meta['mms_spec_sha256']==prereg['mms_spec_sha256'],'Actual native exporter face-file/table/MMS pins')
+   require(np.allclose(meta['z_faces_mm'],np.asarray(expected_faces)*1000,rtol=0,atol=1e-10),'Actual native metadata follows immutable U19 face table')
+   require(np.allclose(meta['z_faces_mm'][:SC_CELLS+1],oldmeta['z_faces_mm'][:SC_CELLS+1],rtol=0,atol=1e-10)and np.allclose(meta['z_faces_mm'][SC_CELLS+BULK_COUNTS[0]:],oldmeta['z_faces_mm'][SC_CELLS+COMPARATOR_BULK_COUNTS[0]:],rtol=0,atol=1e-10),'Unchanged SC/fat/muscle faces; only VS cell placement changes')"""
+s=s.replace(needle,replacement)
+s=s.replace("same physical all /r<=declared radius /r>declared radius on U18/U19 meshes; XY0.5mm and bulk18/18/56 unchanged", "same physical all /r<=declared radius /r>declared radius on U18/U19 meshes; fixedSC8/XY0.5,fat18/muscle56,VS18→19")
+s=s.replace("'Same physical all /r<=declared radius /r>declared radius on U18/U19 meshes; XY0.5mm and bulk18/18/56 unchanged'", "'Same physical all /r<=declared radius /r>declared radius on U18/U19 meshes; fixedSC8/XY0.5,fat18/muscle56,VS18to19'")
+s=s.replace("'VS18→VS19 changes only SC depth discretization; XY0.5 and bulk18/18/56 remain fixed.", "'VS18to19 changes only VS depth discretization; SC8/XY0.5/fat18/muscle56 remain fixed.")
+s=s.replace("if tag=='SC4':", "if tag=='U18':")
+s=s.replace("coarse_summary['scenarios']['SC4']", "coarse_summary['scenarios']['SC8']")
+s=s.replace(" fine=scenarios['SC8'];coarse=scenarios['SC4']", " fine=scenarios['U19'];coarse=scenarios['U18']")
+s=s.replace("schema='task1-SC8-single2000-diagnostic-post-v1'", "schema='task1-U19-single2000-diagnostic-post-v1'")
+s=s.replace("schema='task1-SC4-single2000-diagnostic-post-v1'", "schema='task1-U19-single2000-diagnostic-post-v1'")
+s=s.replace("SC_refinement_scope=dict(coarse_SC_cells=4,fine_SC_cells=8,bulk_layer_counts=list(BULK_COUNTS),h_xy_mm=.5,source_material_contact_mask_unchanged=True,root_admission_required_before_prepare=True,selection_condition='Actual SC4 scalar adjacency checks passed; common-two QA remains unresolved; root has reviewed actual result and immutable publication')", "VS_refinement_scope=dict(SC_cells=8,coarse_VS_cells=18,fine_VS_cells=19,fat_cells=18,muscle_cells=56,h_xy_mm=.5,source_material_contact_mask_unchanged=True,root_admission_required_before_prepare=True,selection_condition='Positive published U19 MMS nonregression/physical-error review and explicit root diagnostic admission; not candidate adoption'),MMS_native_admission=dict(review=mms_review,root_decision=root_admission,root_decision_public_commit=prereg['root_decision_public_commit'],face_table_sha256=face_hash)")
+s=s.replace("adjacent_SC_checks=adjacent_checks(coarse,fine)", "adjacent_VS_checks=adjacent_checks(coarse,fine)")
+s=s.replace("SC4_to_SC8_is_only_one_adjacency=True", "U18_to_U19_is_only_one_adjacency=True")
+(p/'u19_post.py').write_text(s)
+for old,new in(('sc8_math.py','u19_math.py'),('sc8_interfaces.py','u19_interfaces.py')):
+ (p/new).write_bytes((Path('/dev/shm/task1-sc8-2000-20261025/source')/old).read_bytes())
